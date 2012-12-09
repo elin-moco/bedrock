@@ -235,6 +235,10 @@ MINIFY_BUNDLES = {
         'persona': (
             'css/persona.less',
         ),
+        'plugincheck': (
+            'css/plugincheck/plugincheck.less',
+            'css/plugincheck/qtip.css',
+        ),
         'privacy': (
             'css/privacy.less',
         ),
@@ -411,6 +415,12 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.validate.js',
             'js/partnerships.js',
             'js/mozilla-input-placeholder.js',
+        ),
+        'plugincheck': (
+            'js/plugincheck/plugincheck.js',
+            'js/plugincheck/lib/mustache.js',
+            'js/plugincheck/tmpl/plugincheck.ui.tmpl.js',
+            'js/plugincheck/check-plugins.js',
         ),
         'privacy': (
             'js/mozilla-pager.js',
