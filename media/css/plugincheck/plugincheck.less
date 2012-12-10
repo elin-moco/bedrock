@@ -172,3 +172,27 @@
         width: 220px;
     }
 }
+
+/* Tablet Layout: 760px */
+@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+    .download-button {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+/* Mobile Layout: 320px */
+@media only screen and (max-width: @breakTablet) {
+    .download-button {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+/* Wide Mobile Layout: 480px */
+@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+    .download-button {
+        position: relative;
+        margin-top: 20px;
+    }
+}
