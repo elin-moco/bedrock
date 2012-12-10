@@ -7,9 +7,14 @@ from django.views.decorators.csrf import csrf_exempt
 import basket
 import l10n_utils
 from commonware.decorators import xframe_allow
+import re
 
 from mozorg import email_contribute
 from mozorg.forms import ContributeForm, NewsletterForm
+
+from firefox import version_re
+from product_details import product_details
+from product_details.version_compare import Version
 
 
 @xframe_allow
@@ -74,3 +79,33 @@ def contribute(request, template, return_to_form):
                               'newsletter_form': newsletter_form,
                               'newsletter_success': newsletter_success,
                               'return_to_form': return_to_form})
+
+
+def plugincheck(request):
+
+    user_agent = request.META.get('HTTP_USER_AGENT', '')
+    user_version = "0"
+    ua_regexp = r"Firefox/(%s)" % version_re
+    match = re.search(ua_regexp, user_agent)
+    if match:
+        user_version = match.group(1)
+
+    data = {
+        'is_latest': is_current_or_newer(user_version)
+    }
+
+    return l10n_utils.render(request, 'mozorg/plugincheck.html', data)
+
+
+def is_current_or_newer(user_version):
+    """
+    Return true if the version (X.Y only) is for the latest Firefox or newer.
+    """
+    latest = Version(product_details.firefox_versions['LATEST_FIREFOX_VERSION'])
+    user = Version(user_version)
+
+    # similar to the way comparison is done in the Version class,
+    # but only using the major and minor versions.
+    latest_int = int('%d%02d' % (latest.major, latest.minor1))
+    user_int = int('%d%02d' % (user.major or 0, user.minor1 or 0))
+    return user_int >= latest_int

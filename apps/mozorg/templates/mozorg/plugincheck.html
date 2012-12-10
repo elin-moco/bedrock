@@ -20,7 +20,10 @@
   <hgroup class="stacked">
     <h1 class="large">Check Your Plugins</h1>
     <h4>Keeping your plugins up to date helps Firefox run safely and smoothly.</h4>
-    {{ download_button('download','small') }}
+    {{ is_latest }}
+    {% if not is_latest %}
+      {{ download_button('download','small') }}
+    {% endif %}
   </hgroup>
   </div>
 </div>
