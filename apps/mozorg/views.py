@@ -81,7 +81,7 @@ def contribute(request, template, return_to_form):
                               'return_to_form': return_to_form})
 
 
-def plugincheck(request):
+def plugincheck(request, template='mozorg/plugincheck.html'):
 
     user_agent = request.META.get('HTTP_USER_AGENT', '')
     user_version = "0"
@@ -94,7 +94,7 @@ def plugincheck(request):
         'is_latest': is_current_or_newer(user_version)
     }
 
-    return l10n_utils.render(request, 'mozorg/plugincheck.html', data)
+    return l10n_utils.render(request, template, data)
 
 
 def is_current_or_newer(user_version):
