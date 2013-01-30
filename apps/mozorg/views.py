@@ -13,8 +13,7 @@ from mozorg import email_contribute
 from mozorg.forms import ContributeForm, NewsletterForm
 
 from firefox import version_re
-from product_details import product_details
-from product_details.version_compare import Version
+from firefox.util import is_current_or_newer
 
 
 @xframe_allow
@@ -95,17 +94,3 @@ def plugincheck(request, template='mozorg/plugincheck.html'):
     }
 
     return l10n_utils.render(request, template, data)
-
-
-def is_current_or_newer(user_version):
-    """
-    Return true if the version (X.Y only) is for the latest Firefox or newer.
-    """
-    latest = Version(product_details.firefox_versions['LATEST_FIREFOX_VERSION'])
-    user = Version(user_version)
-
-    # similar to the way comparison is done in the Version class,
-    # but only using the major and minor versions.
-    latest_int = int('%d%02d' % (latest.major, latest.minor1))
-    user_int = int('%d%02d' % (user.major or 0, user.minor1 or 0))
-    return user_int >= latest_int
