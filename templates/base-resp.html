@@ -8,6 +8,7 @@
     {% block ga_experiments %}{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block extra_meta %}{% endblock %}
 
     <title>{% block page_title_prefix %}Mozilla — {% endblock %}{% block page_title %}{% endblock %}{% block page_title_suffix %} — mozilla.org{% endblock %}</title>
 
@@ -57,6 +58,8 @@
         <h2><a href="{{ url('mozorg.home') }}"><img src="{{ MEDIA_URL }}img/sandstone/header-mozilla-stone.png" alt="mozilla"></a></h2>
         {% endblock %}
 
+        {% block alt_header %}{% endblock %}
+
         {% block breadcrumbs %}{% endblock %}
 
       </header>
@@ -71,7 +74,7 @@
     </div><!-- close #wrapper -->
 
     {% block site_footer %}
-      <footer id="colophon">
+      <footer id="colophon" class="{% block footer_class %}{% endblock %}">
       <div class="row">
 
           <div class="footer-logo">
@@ -109,18 +112,18 @@
       </footer>
     {% endblock %}
 
-    {% block tabzilla_js %}
-      <script src="/tabzilla/media/js/tabzilla.js?build=1"></script>
-    {% endblock %}
     </div><!-- close #outer-wrapper -->
+
+    <!--[if IE 9]>
+      <script src="{{ MEDIA_URL }}js/libs/matchMedia.js"></script>
+    <![endif]-->
 
     {% block site_js %}
       {{ js('common-resp') }}
     {% endblock %}
-    {% block js %}{% endblock %}
-
-    {% block webtrends %}
-     {% include "includes/webtrends.html" %}
+    {% block tabzilla_js %}
+      <script src="/tabzilla/media/js/tabzilla.js?build=1"></script>
     {% endblock %}
+    {% block js %}{% endblock %}
   </body>
 </html>
