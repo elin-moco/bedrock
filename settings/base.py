@@ -89,6 +89,9 @@ MINIFY_BUNDLES = {
         'about': (
             'css/about.less',
         ),
+        'about-base': (
+            'css/about-base.less',
+        ),
         'mobile_overview': (
             'css/mobile.less',
         ),
@@ -113,9 +116,13 @@ MINIFY_BUNDLES = {
         'contribute': (
             'css/contribute.less',
             'css/sandstone/video-resp.less',
+            'css/mozilla15.less',
         ),
         'contribute-page': (
             'css/contribute-page.less',
+        ),
+        'contribute-university-ambassadors': (
+            'css/contribute-ambassadors.less',
         ),
         'channel': (
             'css/covehead/template.css',
@@ -238,6 +245,13 @@ MINIFY_BUNDLES = {
         'persona': (
             'css/persona.less',
         ),
+        'powered-by': (
+            'css/powered-by.less',
+        ),
+        'plugincheck': (
+            'css/plugincheck/plugincheck.less',
+            'css/plugincheck/qtip.css',
+        ),
         'privacy': (
             'css/privacy.less',
         ),
@@ -298,6 +312,10 @@ MINIFY_BUNDLES = {
             'js/site.js',  # this is automatically included on every page
         ),
         'collusion': (
+            'js/collusion/collusion.js',
+            'js/libs/jquery.validate.js',
+        ),
+        'collusion_demo': (
             'js/collusion/d3.layout.js',
             'js/collusion/d3.geom.js',
             'js/collusion/collusion-addon.js',
@@ -318,12 +336,18 @@ MINIFY_BUNDLES = {
             'js/mozilla-input-placeholder.js',
         ),
         'contribute': (
+            'js/libs/jquery.sequence.js',
+            'js/mozilla15.js',
             'js/contribute-page.js',
             'js/mozilla-pager.js',
             'js/mozilla-video-tools.js',
         ),
         'contribute-form': (
             'js/contribute-form.js',
+            'js/mozilla-input-placeholder.js',
+        ),
+        'contribute-university-ambassadors': (
+            'js/contribute-university-ambassadors.js',
             'js/mozilla-input-placeholder.js',
         ),
         'expanders': (
@@ -423,9 +447,18 @@ MINIFY_BUNDLES = {
             'js/partnerships.js',
             'js/mozilla-input-placeholder.js',
         ),
+        'plugincheck': (
+            'js/plugincheck/plugincheck.min.js',
+            'js/plugincheck/lib/mustache.js',
+            'js/plugincheck/tmpl/plugincheck.ui.tmpl.js',
+            'js/plugincheck/check-plugins.js',
+        ),
         'privacy': (
             'js/mozilla-pager.js',
             'js/privacy.js',
+        ),
+        'privacy-firefoxos': (
+            'js/privacy_firefoxos.js',
         ),
         'styleguide': (
             'js/styleguide.js',
@@ -610,6 +643,11 @@ LOCALES_WITH_TRANSITION = ['en-US', 'af', 'ar', 'ast', 'be', 'bg',
                            'sr', 'sv-SE', 'ta', 'ta-LK', 'te', 'th',
                            'tr', 'uk', 'vi', 'zh-CN', 'zh-TW']
 
+# Locales showing the 15th Anniversary slideshow on /contribute
+LOCALES_WITH_MOZ15 = ['de', 'el', 'en-GB', 'en-US', 'es-AR', 'es-CL', 'es-ES',
+                      'es-MX', 'fr', 'id', 'nl', 'pt-BR', 'ru', 'sq', 'zh-CN',
+                      'zh-TW']
+
 # reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY = ''
 RECAPTCHA_PRIVATE_KEY = ''
@@ -634,9 +672,10 @@ FACEBOOK_LOCALES = ['en-US', 'es-ES', 'pt-BR', 'id', 'de']
 FACEBOOK_PAGE_NAMESPACE = 'DUMMY_PAGE_NAMESPACE'
 FACEBOOK_APP_ID = 'DUMMY_APP_ID'
 
+
 # FACEBOOK_TAB_URL is lazily evaluated because it depends on the namespace
 # and app ID settings in local settings.
 def facebook_tab_url_lazy():
     from django.conf import settings
-    return '//www.facebook.com/{}/app_{}'.format(settings.FACEBOOK_PAGE_NAMESPACE, settings.FACEBOOK_APP_ID)
+    return '//www.facebook.com/{page}/app_{id}'.format(page=settings.FACEBOOK_PAGE_NAMESPACE, id=settings.FACEBOOK_APP_ID)
 FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
