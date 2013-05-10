@@ -548,7 +548,8 @@ PROD_DETAILS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)),
 MIDDLEWARE_CLASSES = (
     'mozorg.middleware.MozorgRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
-    'funfactory.middleware.LocaleURLMiddleware',
+    'mocotw.middleware.DefaultLocaleMiddleware',
+    # 'funfactory.middleware.LocaleURLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'commonware.middleware.FrameOptionsHeader',
     'mozorg.middleware.CacheMiddleware',
@@ -587,6 +588,7 @@ INSTALLED_APPS = (
     'product_details',
 
     # Local apps
+    'mocotw',
     'collusion',
     'firefox',
     'foundation',
@@ -605,6 +607,9 @@ INSTALLED_APPS = (
     # libs
     'l10n_utils',
     'captcha',
+
+    # web server
+    'gunicorn',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
