@@ -8,7 +8,7 @@ import os
 
 from django.utils.functional import lazy
 
-from funfactory.settings_base import *
+from funfactory.settings_base import *  # noqa
 
 # Make file paths relative to settings.
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -181,6 +181,14 @@ MINIFY_BUNDLES = {
         'nightly_firstrun': (
             'css/sandstone/video.less',
             'css/firefox/nightly_firstrun.less',
+        ),
+        'firefox_firstrun_new_a': (
+            'css/sandstone/video.less',
+            'css/firefox/firstrun/a.less',
+        ),
+        'firefox_firstrun_new_b': (
+            'css/sandstone/video.less',
+            'css/firefox/firstrun/b.less',
         ),
         'firefox_fx': (
             'css/firefox/fx.less',
@@ -391,6 +399,20 @@ MINIFY_BUNDLES = {
             'js/mozilla-video-tools.js',
             'js/firefox/features.js',
         ),
+        'firefox_firstrun': (
+            'js/firefox/firstrun/firstrun.js',
+        ),
+        'firefox_firstrun_new_a': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/mozilla-modal.js',
+            'js/firefox/firstrun/common.js',
+            'js/firefox/firstrun/a.js',
+        ),
+        'firefox_firstrun_new_b': (
+            'js/mozilla-modal.js',
+            'js/firefox/firstrun/common.js',
+        ),
         'firefox_fx': (
             'js/mozilla-pager.js',
             'js/mozilla-video-tools.js',
@@ -552,7 +574,9 @@ PROD_DETAILS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)),
 MIDDLEWARE_CLASSES = (
     'mozorg.middleware.MozorgRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
-    'funfactory.middleware.LocaleURLMiddleware',
+    'mocotw.middleware.DefaultLocaleMiddleware',
+    # 'funfactory.middleware.LocaleURLMiddleware',
+    'tabzilla.middleware.TabzillaLocaleURLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'commonware.middleware.FrameOptionsHeader',
     'mozorg.middleware.CacheMiddleware',
@@ -591,6 +615,7 @@ INSTALLED_APPS = (
     'product_details',
 
     # Local apps
+    'mocotw',
     'collusion',
     'firefox',
     'foundation',
@@ -609,6 +634,9 @@ INSTALLED_APPS = (
     # libs
     'l10n_utils',
     'captcha',
+
+    # web server
+    'gunicorn',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
@@ -683,3 +711,7 @@ def facebook_tab_url_lazy():
     from django.conf import settings
     return '//www.facebook.com/{page}/app_{id}'.format(page=settings.FACEBOOK_PAGE_NAMESPACE, id=settings.FACEBOOK_APP_ID)
 FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
+
+# Prefix for media. No trailing slash.
+# e.g. '//mozorg.cdn.mozilla.net'
+CDN_BASE_URL = ''

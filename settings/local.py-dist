@@ -41,3 +41,5 @@ STATSD_CLIENT = 'django_statsd.clients.normal'
 
 # Google Apps tracking code
 GA_ACCOUNT_CODE = ''
+
+DEFAULT_LOCALE = 'zh-TW'

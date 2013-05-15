@@ -18,6 +18,7 @@ handler500 = 'bedrock_util.server_error_view'
 
 urlpatterns = patterns('',
     # Main pages
+    (r'', include('mocotw.urls')),
     (r'^apps/', include('marketplace.urls')),
     (r'^collusion/', include('collusion.urls')),
     (r'^foundation/', include('foundation.urls')),
