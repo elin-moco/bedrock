@@ -576,7 +576,7 @@ MIDDLEWARE_CLASSES = (
     'django_statsd.middleware.GraphiteMiddleware',
     'mocotw.middleware.DefaultLocaleMiddleware',
     # 'funfactory.middleware.LocaleURLMiddleware',
-    'tabzilla.middleware.TabzillaLocaleURLMiddleware',
+    # 'tabzilla.middleware.TabzillaLocaleURLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'commonware.middleware.FrameOptionsHeader',
     'mozorg.middleware.CacheMiddleware',
