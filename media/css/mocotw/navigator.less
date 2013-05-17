@@ -1,0 +1,193 @@
+@navBorderColor: #98B2C9;
+
+/*nav-main*/
+#nav-main {
+	display: inline-block;
+	_height: 47px;
+	text-align: left;
+	font-family: @baseFontFamily;
+	font-size: 16px;
+	text-transform: uppercase;
+	border:0px solid #f00;
+	margin-left:20px;
+	font-weight:bold;
+    position: absolute;
+    right: 200px;
+}
+
+#nav-main li {
+	list-style: none;
+}
+
+#nav-main ul {
+	float: left;
+	z-index: 99;
+	left: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#nav-main li {
+	float: left;
+	background: none;
+	margin: 0 0 0 -1px;
+	padding: 0;
+	position: relative;
+	z-index: 100;
+}
+
+#nav-main ul li a,
+#nav-main ul li a:link,
+#nav-main ul li a:visited,
+#nav-main ul li span {
+	padding: 15px 30px 10px 10px;
+	height: 18px;
+	display: block;
+	float: left;
+	border-width: 0 0 0 1px;
+	border-style: solid;
+	border-color: @navBorderColor;
+	z-index: 100;
+	position: relative;
+	color: #484848;
+	text-decoration: none;
+}
+
+.locale-it #nav-main ul li a {
+	padding: 15px 10px 10px 10px;
+}
+
+#nav-main ul li.current.last a {
+	border-color: @navBorderColor;;
+}
+
+#nav-main ul li:hover a,
+#nav-main ul li:hover a:link,
+#nav-main ul li:hover a:visited {
+	-webkit-box-shadow:
+		inset rgba(255,255,255,0.8) 0 -6px 20px 10px;
+	-webkit-box-shadow:
+		rgba(152,178,201,0.2) 0 0px 0px,
+		inset rgba(255,255,255,0.8) 0 -6px 20px 10px;
+	box-shadow:
+		rgba(152,178,201,0.2) 0 0px 0px,
+		inset rgba(255,255,255,0.8) 0 -6px 20px 10px;
+	-moz-transition: 0.2s linear;
+	-moz-transition-property: background, box-shadow, border-right;
+	background: rgb(251,253,255);
+	background: rgba(255,255,255,0);
+	outline: 0;
+	padding-bottom: 15px;
+}
+
+#nav-main ul li.last a,
+#nav-main ul li.last span {
+    border-right: 1px solid @navBorderColor;;
+}
+
+#nav-main ul li.last a:hover,
+#nav-main ul li.last a:focus,
+#nav-main ul li.last a:active,
+#nav-main ul li.last a:focus,
+#nav-main ul li:hover a {
+	border-right-color: @navBorderColor;;
+}
+/* Second-level Menu Items */
+
+#nav-main li:hover ul {
+	top: 0;
+	margin-top: 47px;
+	opacity: 1;
+	-moz-transition: opacity 0.2s ease-in-out;
+	-webkit-transition: opacity 0.2s ease-in-out;
+}
+
+#nav-main ul ul,
+#nav-main ul ul li {
+	height: auto;
+	border: 0;
+	float: none;
+    display: block;
+}
+
+#nav-main ul ul {
+	position: absolute;
+	top: -999px;
+    left:0px;
+	opacity: 0;
+	z-index: 99;
+	border: 1px solid @navBorderColor;;
+	width: 190px;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	text-shadow: 1px 1px 0 #fff, 0 0 5px #fff;
+	background: #fbfdff;
+	background: rgba(255,255,255,0.9);
+	-webkit-box-shadow:
+		inset rgba(152,178,201,0.3) 0 -2px 0;
+	-webkit-box-shadow:
+		rgba(152,178,201,0.2) 0 2px 0px,
+		inset rgba(152,178,201,0.3) 0 -2px 0;
+	box-shadow:
+		rgba(152,178,201,0.2) 0 2px 0px,
+		inset rgba(152,178,201,0.3) 0 -2px 0;
+}
+
+#nav-main ul ul li {
+	-webkit-box-shadow:
+		inset rgba(152,178,201,0.2) 0 -1px 0 0;
+	box-shadow:
+		inset rgba(152,178,201,0.2) 0 -1px 0 0;
+	margin-left: 0;
+}
+
+#nav-main ul ul li a,
+#nav-main ul ul li a:link,
+#nav-main ul ul li a:visited,
+#nav-main ul ul li span {
+	overflow: hidden;
+	padding: 8px 10px;
+	margin: 0;
+	height: auto;
+	float: none;
+	display: block;
+	font-size: 14px;
+	border: 0;
+	background: none;
+	box-shadow: none;
+	position: relative;
+	-moz-transition: background 0.1s ease-in;
+	-webkit-transition: background 0.1s ease-in;
+}
+
+#nav-main ul li.topMenu ul li a:hover,
+#nav-main ul li.topMenu ul li a:focus,
+#nav-main ul li.topMenu ul li a:active,
+#nav-main ul li.topMenu ul li a:focus {
+	background: rgb(227,235,244);
+ 	background: rgba(152,178,201,0.2);
+ 	-webkit-box-shadow:
+		0 0 3px 2px rgba(152,178,201,.2) inset;
+ 	-webkit-box-shadow:
+		inset rgba(152,178,201,0.3) 0 2px 0px,
+		0 0 3px 2px rgba(152,178,201,.2) inset;
+ 	box-shadow:
+		inset rgba(152,178,201,0.3) 0 2px 0px,
+		0 0 3px 2px rgba(152,178,201,.2) inset;
+	-moz-transition: background 0.1s ease-out;
+	-webkit-transition: background 0.1s ease-out;
+}
+
+#nav-main ul li:hover ul li a,
+#nav-main ul li:hover ul li a:link,
+#nav-main ul li:hover ul li a:visited {
+	padding-bottom: 8px;
+}
+
