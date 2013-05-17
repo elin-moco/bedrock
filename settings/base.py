@@ -715,3 +715,15 @@ FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
 # Prefix for media. No trailing slash.
 # e.g. '//mozorg.cdn.mozilla.net'
 CDN_BASE_URL = ''
+
+SITE_URL = 'mozilla.com.tw'
+BLOG_URL = 'blog.mozilla.com.tw'
+TECH_URL = 'tech.mozilla.com.tw'
+MYFF_URL = 'myfirefox.com.tw'
+FFCLUB_URL = 'firefox.club.tw'
+
+LOCAL_SITE_URL = 'bedrock.inspire.mozilla.com.tw'
+LOCAL_BLOG_URL = 'blog.inspire.mozilla.com.tw'
+LOCAL_TECH_URL = 'tech.inspire.mozilla.com.tw'
+LOCAL_MYFF_URL = 'stage.myfirefox.com.tw'
+LOCAL_FFCLUB_URL = 'ffclub.inspire.mozilla.com.tw'

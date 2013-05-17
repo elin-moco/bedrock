@@ -42,4 +42,8 @@ STATSD_CLIENT = 'django_statsd.clients.normal'
 # Google Apps tracking code
 GA_ACCOUNT_CODE = ''
 
-DEFAULT_LOCALE = 'zh-TW'
+LOCAL_SITE_URL = 'bedrock.inspire.mozilla.com.tw'
+LOCAL_BLOG_URL = 'blog.inspire.mozilla.com.tw'
+LOCAL_TECH_URL = 'tech.inspire.mozilla.com.tw'
+LOCAL_MYFF_URL = 'stage.myfirefox.com.tw'
+LOCAL_FFCLUB_URL = 'ffclub.inspire.mozilla.com.tw'
