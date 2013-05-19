@@ -94,3 +94,43 @@
     }
   } // end sub-footer-contetn
 }
+
+@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+  #footer-wrapper{
+    width: 95%;
+    padding-left: 5%;
+  }
+
+  #footer-logo {
+    margin-right: 20px;
+  }
+
+  #sub-footer #sub-footer-contents {
+    width: 100px;
+  }
+
+}
+
+@media only screen and (max-width: @breakTablet) {
+  #footer-wrapper{
+    width: 430px;
+    margin: auto;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  #footer-wrapper{
+    width: 240px;
+    margin: auto;
+    padding: 0;
+  }
+  #footer-logo {
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+  #footer #copyright ul,
+  #footer #copyright p {
+    width: 220px;
+  }
+}
