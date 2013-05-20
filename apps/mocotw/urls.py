@@ -11,5 +11,5 @@ urlpatterns = patterns(
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html',
                 'return_to_form': False}),
-    url(r'^replace_urls\.js$', replace_urls_js, name='replace.urls'),
+    url(r'^tabzilla/replace_urls\.js$', replace_urls_js, name='replace.urls'),
 )
