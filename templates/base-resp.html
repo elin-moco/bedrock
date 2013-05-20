@@ -13,7 +13,7 @@
     <title>{% block page_title_prefix %}Mozilla — {% endblock %}{% block page_title %}{% endblock %}{% block page_title_suffix %} — mozilla.org{% endblock %}</title>
 
     {% block tabzilla_css %}
-      <link href="/tabzilla/media/css/tabzilla.css?build=1" rel="stylesheet">
+      {{ css('mocotw-tabzilla') }}
     {% endblock %}
 
     <!--[if lte IE 8]>
@@ -83,5 +83,8 @@
       <script src="/media/js/mocotw/tabzilla.js?build=1"></script>
     {% endblock %}
     {% block js %}{% endblock %}
+  {% if DEBUG %}
+      <script src="/replace_urls.js?build=1"></script>
+  {% endif %}
   </body>
 </html>

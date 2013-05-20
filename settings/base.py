@@ -86,6 +86,11 @@ def JINJA_CONFIG():
 # and js files that can be bundled together by the minify app.
 MINIFY_BUNDLES = {
     'css': {
+        'mocotw-tabzilla': (
+            'css/tabzilla.less',
+            'css/mocotw/navigator.less',
+            'css/mocotw/footer.less',
+        ),
         'about': (
             'css/about.less',
         ),
@@ -641,6 +646,7 @@ INSTALLED_APPS = (
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'mozorg.context_processors.current_year',
+    'mocotw.context_processors.urls',
 )
 
 ## Auth
@@ -716,14 +722,23 @@ FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
 # e.g. '//mozorg.cdn.mozilla.net'
 CDN_BASE_URL = ''
 
-SITE_URL = 'mozilla.com.tw'
+MOCO_URL = 'mozilla.com.tw'
 BLOG_URL = 'blog.mozilla.com.tw'
 TECH_URL = 'tech.mozilla.com.tw'
 MYFF_URL = 'myfirefox.com.tw'
 FFCLUB_URL = 'firefox.club.tw'
 
-LOCAL_SITE_URL = 'bedrock.inspire.mozilla.com.tw'
+LOCAL_MOCO_URL = 'bedrock.inspire.mozilla.com.tw'
 LOCAL_BLOG_URL = 'blog.inspire.mozilla.com.tw'
 LOCAL_TECH_URL = 'tech.inspire.mozilla.com.tw'
 LOCAL_MYFF_URL = 'stage.myfirefox.com.tw'
 LOCAL_FFCLUB_URL = 'ffclub.inspire.mozilla.com.tw'
+
+
+LOCAL_URL_MAP = {
+    MOCO_URL: LOCAL_MOCO_URL,
+    BLOG_URL: LOCAL_BLOG_URL,
+    TECH_URL: LOCAL_TECH_URL,
+    MYFF_URL: LOCAL_MYFF_URL,
+    FFCLUB_URL: LOCAL_FFCLUB_URL,
+}
