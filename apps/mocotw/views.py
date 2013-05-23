@@ -6,3 +6,9 @@ def replace_urls_js(request):
     data = {'URL_MAP': settings.LOCAL_URL_MAP}
     return render_to_response('mocotw/tabzilla/replace_urls.js', data,
                              mimetype='text/javascript')
+
+
+def tabzilla_js(request):
+    data = {'URL_MAP': settings.LOCAL_URL_MAP}
+    return render_to_response('mocotw/tabzilla/tabzilla.js', data,
+                             mimetype='text/javascript')

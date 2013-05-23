@@ -5,12 +5,17 @@
 # Django settings file for bedrock.
 
 import os
+import re
+from django.template.defaultfilters import addslashes
 
 from django.utils.functional import lazy
 
 from funfactory.settings_base import *  # noqa
 
 # Make file paths relative to settings.
+from django.utils.html import escapejs
+from jinja2.environment import DEFAULT_FILTERS
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 path = lambda *a: os.path.join(ROOT, *a)
 
@@ -467,6 +472,7 @@ MINIFY_BUNDLES = {
         'mozorg-resp': (
             'js/libs/jquery-1.7.1.min.js',
             'js/global.js',
+            # 'js/nav-main.js',
             'js/nav-main-resp.js',
             'js/footer-email-form.js',
         ),
@@ -742,3 +748,9 @@ LOCAL_URL_MAP = {
     MYFF_URL: LOCAL_MYFF_URL,
     FFCLUB_URL: LOCAL_FFCLUB_URL,
 }
+
+
+def escape_js_variables(value):
+    return value.replace('\n', '\\\n').replace('\'', '\\\'')
+
+DEFAULT_FILTERS['escape_js_vars'] = escape_js_variables

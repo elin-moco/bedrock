@@ -265,7 +265,10 @@ var Tabzilla = (function (Tabzilla) {
         }( document ));
     };
     var init = function () {
-//        $('body').prepend(content);
+        console.info(content);
+        if (0 == $('#tabzilla-panel').length) {
+            $('body').prepend(content);
+        }
         tab = $('#tabzilla');
         panel = $('#tabzilla-panel');
         nav = $('#tabzilla-nav');
@@ -347,6 +350,6 @@ var Tabzilla = (function (Tabzilla) {
         }
     })();
 
+    var content = '{% filter escape_js_vars %}{% include "mocotw/tabzilla/tabzilla.html"%}{% endfilter %}';
     return Tabzilla;
-
 })(Tabzilla || {});

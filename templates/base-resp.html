@@ -48,7 +48,7 @@
         {% endblock %}
 
         {% block site_header_logo %}
-        <h2><a href="{{ url('mozorg.home') }}"><img src="{{ MEDIA_URL }}img/sandstone/header-mozilla-stone.png" alt="mozilla"></a></h2>
+        <h2><a href="{{ url('mozorg.home') }}"><img src="{{ MEDIA_URL }}img/mocotw/mozcomtw/nav-logo-small.png" alt="mozilla"></a></h2>
         {% endblock %}
 
         {% block alt_header %}{% endblock %}
@@ -80,7 +80,7 @@
       {{ js('common-resp') }}
     {% endblock %}
     {% block tabzilla_js %}
-      <script src="/media/js/mocotw/tabzilla.js?build=1"></script>
+      <script src="/tabzilla/tabzilla.js?build=1"></script>
     {% endblock %}
     {% block js %}{% endblock %}
   {% if DEBUG %}
