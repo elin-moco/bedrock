@@ -12,7 +12,7 @@
     <meta name="description" content="{% block description %}{% endblock %}">
 
     {% block tabzilla_css %}
-      <link href="/tabzilla/media/css/tabzilla.css?build=1" rel="stylesheet">
+      {{ css('mocotw-tabzilla') }}
     {% endblock %}
 
     <!--[if lt IE 9]>
@@ -43,14 +43,7 @@
         <a href="http://www.mozilla.org/" id="tabzilla">{{ _('Mozilla') }}</a>
 
         {% block site_header_nav %}
-        <nav id="nav-main" role="navigation">
-            <ul>
-                <li><a href="{{ url('mozorg.mission') }}">{{_('Mission')}}</a></li>
-                <li><a href="{{ url('mozorg.about') }}">{{_('About')}}</a></li>
-                <li><a href="{{ url('mozorg.products') }}">{{_('Products')}}</a></li>
-                <li><a href="{{ url('mozorg.contribute') }}">{{_('Get Involved')}}</a></li>
-            </ul>
-        </nav>
+          {% include 'mocotw/tabzilla/navigator.html' %}
         {% endblock %}
 
         {% block site_header_logo %}
@@ -68,42 +61,7 @@
     </div><!-- close #wrapper -->
 
     {% block site_footer %}
-      <footer id="colophon">
-      <div class="row">
-
-          <div class="footer-logo">
-              <a href="{{ php_url('/') }}"><img src="{{ media('img/sandstone/footer-mozilla.png') }}" alt="mozilla"></a>
-          </div>
-
-          <div class="footer-license">
-              <p>
-                {% trans url='/foundation/licensing/website-content.html' %}
-                Portions of this content are ©1998–{{ current_year }} by individual
-                mozilla.org contributors. Content available under
-                a <a href="{{ url }}">Creative Commons license</a>.
-                {% endtrans %}
-              </p>
-              <p>
-                <a href="{{ url('mozorg.contribute_page') }}">{{_('Contribute to this page')}}</a>
-              </p>
-          </div>
-          <ul class="footer-nav">
-            <li><a href="{{ php_url('/about/contact.html#map-mountain_view') }}">{{_('Contact Us')}}</a></li>
-            <li><a href="{{ url('privacy.index') }}">{{_('Privacy Policy')}}</a></li>
-            <li><a href="{{ php_url('/about/legal.html') }}">{{_('Legal Notices')}}</a></li>
-            <li><a href="{{ php_url('/legal/fraud-report/index.html') }}">{{_('Report Trademark Abuse')}}</a></li>
-          </ul>
-
-          {% block social %}
-          <ul class="footer-nav">
-            <li><a href="http://twitter.com/firefox">{{_('Twitter')}}</a></li>
-            <li><a href="http://facebook.com/Firefox">{{_('Facebook')}}</a></li>
-            <li><a href="https://affiliates.mozilla.org/">{{_('Firefox Affiliates')}}</a></li>
-          </ul>
-          {% endblock %}
-
-      </div>
-      </footer>
+       {% include "mocotw/tabzilla/footer.html" %}
     {% endblock %}
 
     </div><!-- close #outer-wrapper -->
@@ -112,7 +70,7 @@
       {{ js('common') }}
     {% endblock %}
     {% block tabzilla_js %}
-      <script src="/tabzilla/media/js/tabzilla.js?build=1"></script>
+      <script src="/tabzilla/tabzilla.js?build=1"></script>
     {% endblock %}
     {% block js %}{% endblock %}
     {% if DEBUG %}
