@@ -20,6 +20,7 @@ from django.conf import settings
 import jingo
 import jinja2
 from product_details import product_details
+from mocotw.utils import latest_nightly_version, make_nightly_link, make_nightly_mobile_link
 
 
 download_urls = {
@@ -104,7 +105,9 @@ def make_download_link(product, build, version, platform, locale,
                        force_direct=False, force_full_installer=False,
                        force_funnelcake=False, force_stub_installer=False):
     # Aurora has a special download link format
-    if build == 'aurora':
+    if build == 'nightly':
+        return make_nightly_link(product, version, platform, locale)
+    elif build == 'aurora':
         return make_aurora_link(product, version, platform, locale,
                                 force_full_installer=force_full_installer)
 
@@ -170,7 +173,9 @@ def download_firefox(ctx, build='release', small=False, icon=True,
     dom_id = dom_id or 'download-button-%s-%s' % (platform, build)
 
     def latest(locale):
-        if build == 'aurora':
+        if build == 'nightly':
+            return latest_nightly_version(locale)
+        elif build == 'aurora':
             return latest_aurora_version(locale)
         elif build == 'beta':
             return latest_beta_version(locale)
@@ -222,7 +227,9 @@ def download_firefox(ctx, build='release', small=False, icon=True,
                            'download_link': download_link,
                            'download_link_direct': download_link_direct})
     if mobile is not False:
-        if build == 'aurora':
+        if build == 'nightly':
+            android_link = make_nightly_mobile_link(version)
+        elif build == 'aurora':
             android_link = download_urls['aurora-mobile']
         elif build == 'beta':
             android_link = ('https://market.android.com/details?'

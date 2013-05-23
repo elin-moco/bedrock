@@ -16,17 +16,28 @@ $(document).ready(function() {
             window.location = '/firefox/beta/';
         } else if (href.indexOf('#aurora') != -1) {
             window.location = '/firefox/aurora/';
+        } else if (href.indexOf('#nightly') != -1) {
+            window.location = '/firefox/nightly/';
         } else if (href.indexOf('#firefox') != -1) {
             window.location = '/firefox/';
         }
     }
 
     pager.$container.bind('changePage', function(e, tab) {
-        if (pager.currentPage.id == 'aurora') {
+        if (pager.currentPage.id == 'nightly') {
+            $('body').addClass('night');
+            $('body').removeClass('space');
+            $('body').removeClass('sky');
+            $logo.attr('src', $logo.attr('data-inverse-src'));
+        } else if (pager.currentPage.id == 'aurora') {
             $('body').addClass('space');
+            $('body').removeClass('night');
+            $('body').removeClass('sky');
             $logo.attr('src', $logo.attr('data-inverse-src'));
         } else {
+            $('body').addClass('sky');
             $('body').removeClass('space');
+            $('body').removeClass('night');
             $logo.attr('src', logoOriginalSrc);
         }
 
@@ -47,13 +58,20 @@ $(document).ready(function() {
     });
 
     // init
-    if (pager.currentPage.id == 'aurora') {
+    if (pager.currentPage.id == 'nightly') {
+        $('body').addClass('night');
+        $('body').removeClass('space');
         $('body').removeClass('sky');
+        $logo.attr('src', $logo.attr('data-inverse-src'));
+    } else if (pager.currentPage.id == 'aurora') {
         $('body').addClass('space');
+        $('body').removeClass('night');
+        $('body').removeClass('sky');
         $logo.attr('src', $logo.attr('data-inverse-src'));
     } else {
-        $('body').removeClass('space');
         $('body').addClass('sky');
+        $('body').removeClass('space');
+        $('body').removeClass('night');
         $logo.attr('src', logoOriginalSrc);
     }
 

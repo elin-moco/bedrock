@@ -51,6 +51,7 @@
     #beta-link { left: 335px; z-index: 3; top: 0; }
     #aurora-link    { left: 110px; z-index: 1; }
     #firefox-link  { left: 635px; z-index: 2; }
+    #nightly-link  { left: 635px; z-index: 2; }
 
     #beta-link img {
         height: 225px;
@@ -78,13 +79,19 @@
 .pager-selected-firefox #beta-link   { left: 110px; z-index: 1; }
 .pager-selected-firefox #aurora-link { left: 635px; z-index: 2; }
 
+.pager-selected-nightly #beta-link   { left: 110px; z-index: 1; }
+.pager-selected-nightly #aurora-link { left: 635px; z-index: 2; }
+
 .pager-selected-beta #aurora-link  { left: 110px; z-index: 1; }
 .pager-selected-beta #firefox-link { left: 635px; z-index: 2; }
+.pager-selected-beta #nightly-link { left: 635px; z-index: 2; }
 
 .pager-selected-aurora #firefox-link { left: 110px; z-index: 1; }
+.pager-selected-aurora #nightly-link { left: 110px; z-index: 1; }
 .pager-selected-aurora #beta-link    { left: 635px; z-index: 2; }
 
 .pager-selected-firefox #firefox-link,
+.pager-selected-nightly #nightly-link,
 .pager-selected-beta    #beta-link,
 .pager-selected-aurora  #aurora-link {
     top: 0;
@@ -93,6 +100,7 @@
 }
 
 .pager-selected-firefox #firefox-link a:hover,
+.pager-selected-nightly #nightly-link a:hover,
 .pager-selected-beta    #beta-link    a:hover,
 .pager-selected-aurora  #aurora-link  a:hover {
     top: 0;
@@ -101,17 +109,20 @@
 /* To override default image styles */
 
 .pager-selected-firefox #beta-link,
+.pager-selected-nightly #beta-link,
 .pager-selected-aurora  #beta-link {
     top: 25px;
 }
 
 .pager-selected-firefox #beta-link img,
+.pager-selected-nightly #beta-link img,
 .pager-selected-aurora  #beta-link img {
     width: 150px;
     height: 150px;
 }
 
 .pager-selected-firefox #firefox-link img,
+.pager-selected-nightly #nightly-link img,
 .pager-selected-beta    #beta-link img,
 .pager-selected-aurora  #aurora-link img {
     height: 225px;
@@ -168,10 +179,57 @@ p.more {
     .warning {
         color: #888;
     }
+}
+
+.night {
+    color: #fff;
+
+    #wrapper {
+//        background-color: #04020b;
+        background: url(/media/img/mocotw/firefox/channel/nightly-bg.png) repeat-x scroll 50% 0 #000000;
+//        background-repeat: repeat-x;
+    }
+
+    a {
+        color: @linkSpaceBlue;
+        &:hover,
+        &:active {
+            color: lighten(@linkSpaceBlue, 10%);
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6, .huge, .large {
+        color: #fff;
+        text-shadow: none;
+    }
+
+    #masthead nav li {
+        a,
+        a:link,
+        a:visited {
+            color: @linkSpacePurple;
+        }
+        li {
+            a,
+            a:link,
+            a:visited {
+                color: @textColorSecondary;
+            }
+        }
+    }
+
+    #main-content {
+//      background-image: url(/media/img/mocotw/firefox/channel/nightly-content-bg.png);
+    }
+    .pager-page h3 {
+        color: @textColorSpaceYellow;
+    }
+    .warning {
+        color: #888;
+    }
 
 }
 
 .pager-page h3 {
     margin-bottom: @baseLine;
 }
-

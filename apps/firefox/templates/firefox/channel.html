@@ -17,7 +17,7 @@
 
   <ul id="toggler-container" class="pager-tabs">
     <li id="beta-link"><a href="{{ php_url('/firefox/beta/') }}"><img src="{{ media('/img/firefox/channel/toggler-beta.png') }}" id="toggler-logo-beta" /></a></li>
-    <li id="firefox-link"><a href="{{ php_url('/firefox/') }}"><img src="{{ media('/img/firefox/channel/toggler-firefox.png') }}" id="toggler-logo-firefox" /></a></li>
+    <li id="nightly-link"><a href="{{ php_url('/firefox/nightly') }}"><img src="{{ media('/img/mocotw/firefox/channel/toggler-nightly.png') }}" id="toggler-logo-nightly" /></a></li>
     <li id="aurora-link"><a href="{{ php_url('/firefox/aurora/') }}"><img src="{{ media('/img/firefox/channel/toggler-aurora.png') }}" id="toggler-logo-aurora" /></a></li>
   </ul>
 
@@ -38,14 +38,14 @@
       <p class="more"><a href="{{ php_url('/firefox/beta/') }}">Learn more about Firefox Beta<span> »</span></a></p>
     </div>
 
-    <div id="firefox" class="pager-page">
-      <h2 class="channel-title channel-title-firefox"><img src="{{ media('/img/firefox/channel/title-firefox.png') }}" alt="Firefox" /></h2>
-      <h3>Tried, tested and used by millions around the world</h3>
-      <div class="download-box" id="firefox-desktop">
-        {{ download_firefox(icon=False, small=True) }}
+    <div id="nightly" class="pager-page">
+      <h2 class="channel-title channel-title-nightly"><img src="{{ media('/img/mocotw/firefox/channel/nightly-header-bg.png') }}" alt="Firefox Nightly" /></h2>
+      <h3>For testing purpose only</h3>
+      <div class="download-box" id="nightly-desktop">
+        {{ download_firefox('nightly', icon=False, small=True, force_direct=True) }}
       </div>
-      <div class="download-box mobile" id="firefox-mobile">
-        {{ download_firefox(icon=False, mobile=True, small=True) }}
+      <div class="download-box mobile" id="nightly-mobile">
+        {{ download_firefox('nightly', icon=False, mobile=True, small=True, force_direct=True) }}
       </div>
       <p class="more"><a href="{{ php_url('/firefox/') }}">Learn more about Firefox<span> »</span></a></p>
     </div>

@@ -45,10 +45,12 @@
                 <strong class="download-title">{{ _('<span>Firefox Beta</span> for Android') }}</strong>
               {% elif build == 'aurora' %}
                 <strong class="download-title">{{ _('<span>Firefox Aurora</span> for Android') }}</strong>
+              {% elif build == 'nightly' %}
+                <strong class="download-title">{{ _('<span>Firefox Nightly</span> for Android') }}</strong>
               {% else %}
                 <strong class="download-title">{{ _('<span>Firefox</span> for Android') }}</strong>
               {% endif %}
-              {% if build != 'aurora' %}
+              {% if build not in ('nightly', 'aurora') %}
                 <span class="download-subtitle">{{ _('Get it free on Google Play') }}</span>
               {% endif %}
             {% else %}
@@ -56,11 +58,15 @@
                 <strong class="download-title">{{ _('Firefox Beta') }}</strong>
               {% elif build == 'aurora' %}
                 <strong class="download-title">{{ _('Firefox Aurora') }}</strong>
+              {% elif build == 'nightly' %}
+                <strong class="download-title">{{ _('Firefox Nightly') }}</strong>
               {% else %}
                 <strong class="download-title">{{ _('Firefox') }}</strong>
               {% endif %}
               <span class="download-subtitle">{{ _('Free Download') }}</span>
-              <span class="download-lang">{{ locale_name }}</span>
+              {% if build != 'nightly' %}
+                <span class="download-lang">{{ locale_name }}</span>
+              {% endif %}
               <span class="download-platform">{{ plat.os_pretty }}</span>
             {% endif %}
           </span>
