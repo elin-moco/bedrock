@@ -33,6 +33,7 @@
   </head>
 
   <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} {% block body_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
+    {% include 'mocotw/tabzilla/tabzilla.html' %}
     <div id="strings" {% block string_data %}{% endblock %}></div>
     <div id="outer-wrapper">
     <div id="wrapper">
@@ -114,5 +115,8 @@
       <script src="/tabzilla/media/js/tabzilla.js?build=1"></script>
     {% endblock %}
     {% block js %}{% endblock %}
+    {% if DEBUG %}
+      <script src="/tabzilla/replace_urls.js?build=1"></script>
+    {% endif %}
   </body>
 </html>

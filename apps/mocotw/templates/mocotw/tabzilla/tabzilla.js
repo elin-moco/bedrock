@@ -265,7 +265,6 @@ var Tabzilla = (function (Tabzilla) {
         }( document ));
     };
     var init = function () {
-        console.info(content);
         if (0 == $('#tabzilla-panel').length) {
             $('body').prepend(content);
         }
