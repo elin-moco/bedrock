@@ -52,7 +52,7 @@ def download_nightly_details():
             f.write('{"%s":"%s"}' % (nightly_key, version))
         finally:
             f.close()
-            log.info('Written newest nightly version in %s' % nightly_file)
+            log.info('Written newest nightly version in %s%s' % (PROD_DETAILS_DIR, nightly_file))
     except IOError:
         log.error('Failed to write nightly version file.')
 
