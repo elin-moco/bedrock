@@ -21,6 +21,7 @@ from captcha.fields import ReCaptchaField
 from l10n_utils.dotlang import _
 from l10n_utils.dotlang import _lazy
 from product_details import product_details
+from settings import MOFO_URL
 
 from .email_contribute import INTEREST_CHOICES
 
@@ -82,7 +83,7 @@ class PrivacyWidget(widgets.CheckboxInput):
             '%s '
             '<span class="title">%s</span></label>'
             % (attrs['id'], input_txt,
-               policy_txt % '/en-US/privacy-policy')
+               policy_txt % ('//' + MOFO_URL + '/en-US/privacy-policy'))
          )
 
 
