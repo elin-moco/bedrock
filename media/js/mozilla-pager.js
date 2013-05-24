@@ -758,6 +758,7 @@ Mozilla.Page = function(el, index, tab)
 
     if (tab) {
         this.tab = tab;
+        $(this.tab).attr('url', this.tab.href);
         this.tab.href = '#' + this.id;
         this.$tab = $(this.tab);
     } else {

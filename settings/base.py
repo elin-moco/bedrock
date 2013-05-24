@@ -728,6 +728,8 @@ FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
 # e.g. '//mozorg.cdn.mozilla.net'
 CDN_BASE_URL = ''
 
+NIGHTLY_URL = 'nightly.mozilla.org'
+MOFO_URL = 'www.mozilla.org'
 MOCO_URL = 'mozilla.com.tw'
 BLOG_URL = 'blog.mozilla.com.tw'
 TECH_URL = 'tech.mozilla.com.tw'

@@ -7,6 +7,8 @@ def urls(request):
 
     """
     return {
+        'NIGHTLY_URL': settings.NIGHTLY_URL,
+        'MOFO_URL': settings.MOFO_URL,
         'MOCO_URL': settings.MOCO_URL,
         'BLOG_URL': settings.BLOG_URL,
         'TECH_URL': settings.TECH_URL,

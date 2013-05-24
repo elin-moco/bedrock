@@ -17,7 +17,7 @@
 
   <ul id="toggler-container" class="pager-tabs">
     <li id="beta-link"><a href="{{ php_url('/firefox/beta/') }}"><img src="{{ media('/img/firefox/channel/toggler-beta.png') }}" id="toggler-logo-beta" /></a></li>
-    <li id="nightly-link"><a href="{{ php_url('/firefox/nightly') }}"><img src="{{ media('/img/mocotw/firefox/channel/toggler-nightly.png') }}" id="toggler-logo-nightly" /></a></li>
+    <li id="nightly-link"><a href="//{{ NIGHTLY_URL }}"><img src="{{ media('/img/mocotw/firefox/channel/toggler-nightly.png') }}" id="toggler-logo-nightly" /></a></li>
     <li id="aurora-link"><a href="{{ php_url('/firefox/aurora/') }}"><img src="{{ media('/img/firefox/channel/toggler-aurora.png') }}" id="toggler-logo-aurora" /></a></li>
   </ul>
 
@@ -47,7 +47,8 @@
       <div class="download-box mobile" id="nightly-mobile">
         {{ download_firefox('nightly', icon=False, mobile=True, small=True, force_direct=True) }}
       </div>
-      <p class="more"><a href="{{ php_url('/firefox/') }}">Learn more about Firefox<span> »</span></a></p>
+      <p class="more"><a href="//{{ NIGHTLY_URL }}">Learn more about Firefox Nightly<span> »</span></a></p>
+      <p class="warning">Firefox Nightly automatically sends feedback to Mozilla. <a href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">Learn more</a>.</p>
     </div>
 
     <div id="aurora" class="pager-page">

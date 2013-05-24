@@ -7,18 +7,14 @@ from django.conf import settings
 from django.core.cache import cache
 
 from funfactory.urlresolvers import reverse
+from settings import MOFO_URL
 
 
 @jingo.register.function
 @jinja2.contextfunction
 def php_url(ctx, url):
     """Process a URL on the PHP site and prefix the locale to it."""
-    locale = getattr(ctx['request'], 'locale', None)
-
-    # Do this only if we have a locale and the URL is absolute
-    if locale and url[0] == '/':
-        return path.join('/', locale, url.lstrip('/'))
-    return url
+    return '//' + MOFO_URL + url
 
 
 @jingo.register.function
