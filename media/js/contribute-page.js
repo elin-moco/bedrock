@@ -88,4 +88,5 @@ $(document).ready(function() {
     $('#thank-you').delay(8500).fadeOut('fast', function() {
         $('#form-content').fadeIn('fast');
     });
+    $('section#opportunities a').attr('target', '_blank');
 });
