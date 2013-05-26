@@ -13,7 +13,7 @@ from django.utils.functional import lazy
 from funfactory.settings_base import *  # noqa
 
 # Make file paths relative to settings.
-from django.utils.html import escapejs
+from sandstone.utils import escape_js_variables
 from jinja2.environment import DEFAULT_FILTERS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,10 +91,17 @@ def JINJA_CONFIG():
 # and js files that can be bundled together by the minify app.
 MINIFY_BUNDLES = {
     'css': {
-        'mocotw-tabzilla': (
+        'sandstone-tabzilla': (
             'css/tabzilla.less',
-            'css/mocotw/navigator.less',
-            'css/mocotw/footer.less',
+        ),
+        'sandstone-tabzilla-footer': (
+            'css/tabzilla.less',
+            'css/sandstone/footer.less',
+        ),
+        'sandstone-tabzilla-nav-footer': (
+            'css/tabzilla.less',
+            'css/sandstone/navigator.less',
+            'css/sandstone/footer.less',
         ),
         'about': (
             'css/about.less',
@@ -332,6 +339,12 @@ MINIFY_BUNDLES = {
     'js': {
         'site': (
             'js/site.js',  # this is automatically included on every page
+        ),
+        'sandstone-tabzilla': (
+            'js/sandstone/tabzilla.js',
+        ),
+        'sandstone-replace-urls': (
+            'js/sandstone/replace_urls.js',
         ),
         'collusion': (
             'js/collusion/collusion.js',
@@ -626,6 +639,7 @@ INSTALLED_APPS = (
     'product_details',
 
     # Local apps
+    'sandstone',
     'mocotw',
     'collusion',
     'firefox',
@@ -652,7 +666,7 @@ INSTALLED_APPS = (
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'mozorg.context_processors.current_year',
-    'mocotw.context_processors.urls',
+    'sandstone.context_processors.urls',
 )
 
 ## Auth
@@ -728,31 +742,12 @@ FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
 # e.g. '//mozorg.cdn.mozilla.net'
 CDN_BASE_URL = ''
 
+DEFAULT_FILTERS['escape_js_vars'] = escape_js_variables
+
 NIGHTLY_URL = 'nightly.mozilla.org'
 MOFO_URL = 'www.mozilla.org'
-MOCO_URL = 'mozilla.com.tw'
-BLOG_URL = 'blog.mozilla.com.tw'
-TECH_URL = 'tech.mozilla.com.tw'
-MYFF_URL = 'myfirefox.com.tw'
-FFCLUB_URL = 'firefox.club.tw'
-
-LOCAL_MOCO_URL = 'bedrock.inspire.mozilla.com.tw'
-LOCAL_BLOG_URL = 'blog.inspire.mozilla.com.tw'
-LOCAL_TECH_URL = 'tech.inspire.mozilla.com.tw'
-LOCAL_MYFF_URL = 'stage.myfirefox.com.tw'
-LOCAL_FFCLUB_URL = 'ffclub.inspire.mozilla.com.tw'
-
-
-LOCAL_URL_MAP = {
-    MOCO_URL: LOCAL_MOCO_URL,
-    BLOG_URL: LOCAL_BLOG_URL,
-    TECH_URL: LOCAL_TECH_URL,
-    MYFF_URL: LOCAL_MYFF_URL,
-    FFCLUB_URL: LOCAL_FFCLUB_URL,
-}
-
-
-def escape_js_variables(value):
-    return value.replace('\n', '\\\n').replace('\'', '\\\'')
-
-DEFAULT_FILTERS['escape_js_vars'] = escape_js_variables
+LOCAL_MOCO_URL = MOCO_URL = 'mozilla.com.tw'
+LOCAL_BLOG_URL = BLOG_URL = 'blog.mozilla.com.tw'
+LOCAL_TECH_URL = TECH_URL = 'tech.mozilla.com.tw'
+LOCAL_MYFF_URL = MYFF_URL = 'myfirefox.com.tw'
+LOCAL_FFCLUB_URL = FFCLUB_URL = 'firefox.club.tw'

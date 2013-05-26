@@ -25,3 +25,6 @@
 [submodule "vendor-local/src/django"]
 	path = vendor-local/src/django
 	url = git://github.com/django/django.git
+[submodule "apps/sandstone"]
+	path = apps/sandstone
+	url = https://github.com/elin-moco/sandstone.git

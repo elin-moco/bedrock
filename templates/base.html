@@ -12,7 +12,7 @@
     <meta name="description" content="{% block description %}{% endblock %}">
 
     {% block tabzilla_css %}
-      {{ css('mocotw-tabzilla') }}
+      {{ css('sandstone-tabzilla-nav-footer') }}
     {% endblock %}
 
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
   </head>
 
   <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} {% block body_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
-    {% include 'mocotw/tabzilla/tabzilla.html' %}
+    {% include 'sandstone/tabzilla.html' %}
     <div id="strings" {% block string_data %}{% endblock %}></div>
     <div id="outer-wrapper">
     <div id="wrapper">
@@ -43,7 +43,7 @@
         <a href="http://www.mozilla.org/" id="tabzilla">{{ _('Mozilla') }}</a>
 
         {% block site_header_nav %}
-          {% include 'mocotw/tabzilla/navigator.html' %}
+          {% include 'sandstone/navigator.html' %}
         {% endblock %}
 
         {% block site_header_logo %}
@@ -61,7 +61,7 @@
     </div><!-- close #wrapper -->
 
     {% block site_footer %}
-       {% include "mocotw/tabzilla/footer.html" %}
+       {% include "sandstone/footer.html" %}
     {% endblock %}
 
     </div><!-- close #outer-wrapper -->
@@ -70,11 +70,11 @@
       {{ js('common') }}
     {% endblock %}
     {% block tabzilla_js %}
-      <script src="/tabzilla/tabzilla.js?build=1"></script>
+      {{ js('sandstone-tabzilla') }}
     {% endblock %}
     {% block js %}{% endblock %}
     {% if DEBUG %}
-      <script src="/tabzilla/replace_urls.js?build=1"></script>
+      {{ js('sandstone-replace-urls') }}
     {% endif %}
   </body>
 </html>
