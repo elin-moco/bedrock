@@ -20,6 +20,10 @@
 <meta name="og:image" content="{{ media('img/firefox/firefox-100.jpg') }}">
 {% endblock %}
 
+{% block site_header_logo %}
+<h2><a href="{{ url('mozorg.home') }}"><img src="{{ media('img/firefox/template/header-logo.png') }}" alt="Mozilla Firefox" height="70" width="185" data-inverse-src="{{media('img/firefox/template/header-logo-inverse.png') }}"></a></h2>
+{% endblock %}
+
 {% block site_js %}
   {{ js('firefox') }}
 {% endblock %}
