@@ -744,10 +744,10 @@ CDN_BASE_URL = ''
 
 DEFAULT_FILTERS['escape_js_vars'] = escape_js_variables
 
-NIGHTLY_URL = 'nightly.mozilla.org'
-MOFO_URL = 'www.mozilla.org'
-LOCAL_MOCO_URL = MOCO_URL = 'mozilla.com.tw'
-LOCAL_BLOG_URL = BLOG_URL = 'blog.mozilla.com.tw'
-LOCAL_TECH_URL = TECH_URL = 'tech.mozilla.com.tw'
-LOCAL_MYFF_URL = MYFF_URL = 'myfirefox.com.tw'
-LOCAL_FFCLUB_URL = FFCLUB_URL = 'firefox.club.tw'
+#NIGHTLY_URL = 'nightly.mozilla.org'
+#MOFO_URL = 'www.mozilla.org'
+#LOCAL_MOCO_URL = MOCO_URL = 'mozilla.com.tw'
+#LOCAL_BLOG_URL = BLOG_URL = 'blog.mozilla.com.tw'
+#LOCAL_TECH_URL = TECH_URL = 'tech.mozilla.com.tw'
+#LOCAL_MYFF_URL = MYFF_URL = 'myfirefox.com.tw'
+#LOCAL_FFCLUB_URL = FFCLUB_URL = 'firefox.club.tw'

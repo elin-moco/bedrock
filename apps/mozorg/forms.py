@@ -21,7 +21,7 @@ from captcha.fields import ReCaptchaField
 from l10n_utils.dotlang import _
 from l10n_utils.dotlang import _lazy
 from product_details import product_details
-from settings import MOFO_URL
+from sandstone.settings import MOFO_URL
 
 from .email_contribute import INTEREST_CHOICES
 

@@ -7,7 +7,7 @@ from django.conf import settings
 from django.core.cache import cache
 
 from funfactory.urlresolvers import reverse
-from settings import MOFO_URL
+from sandstone.settings import MOFO_URL
 
 
 @jingo.register.function

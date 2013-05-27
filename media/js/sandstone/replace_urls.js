@@ -6,7 +6,7 @@
     })
     links = $('a[href*="//mozilla.com.tw"]');
     links.each(function() {
-      $(this).attr('href', $(this).attr('href').replace('//mozilla.com.tw', '//fancy.mozilla.com.tw:8000'));
+      $(this).attr('href', $(this).attr('href').replace('//mozilla.com.tw', '//bedrock.inspire.mozilla.com.tw'));
     })
     links = $('a[href*="//myfirefox.com.tw"]');
     links.each(function() {
