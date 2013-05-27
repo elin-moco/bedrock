@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     function redirect(a) {
         var href = a.href;
-        window.location = $(a).attr('url');
+        window.open($(a).attr('url'));
     }
 
     pager.$container.bind('changePage', function(e, tab) {

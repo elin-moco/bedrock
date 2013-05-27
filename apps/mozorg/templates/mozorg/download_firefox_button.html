@@ -76,29 +76,34 @@
   </ul>
   {% if show_mobile %}
     <small class="download-other os_android">
-      <a href="//{{ MOFO_URL }}/zh-TW/firefox/mobile/platforms">{{ _('Supported Devices') }}</a> |
-      {% if build != 'nightly' %}
-        {% if build %}
-          <a href="//{{ MOFO_URL }}/zh-TW/mobile/{{ build }}/notes">{{ _('What’s New') }}</a> |
+      <a href="//{{ MOFO_URL }}/en-US/firefox/mobile/platforms">{{ _('Supported Devices') }}</a> |
+      {% if build %}
+        {% if build != 'nightly' %}
+          <a target="_blank" href="//{{ MOFO_URL }}/en-US/mobile/{{ build }}/notes">{{ _('What’s New') }}</a> |
         {% else %}
-          <a href="//{{ MOFO_URL }}/zh-TW/mobile/notes">{{ _('What’s New') }}</a> |
+          <a target="_blank" href="http://hg.mozilla.org/mozilla-central/pushloghtml?startdate=48+hours+ago&enddate=now">{{ _('48 小時內的更新') }}</a> |
         {% endif %}
+      {% else %}
+        <a target="_blank" href="//{{ MOFO_URL }}/en-US/mobile/notes">{{ _('What’s New') }}</a> |
       {% endif %}
-      <a href="//{{ MOFO_URL }}/zh-TW/legal/privacy/firefox.html">{{ _('Privacy') }}</a>
+      <a target="_blank" href="//{{ MOFO_URL }}/en-US/legal/privacy/firefox.html">{{ _('Privacy') }}</a>
     </small>
   {% endif %}
   {% if show_desktop %}
     <small class="download-other os_linux os_osx os_windows">
-      {% if build != 'nightly' %}
-        {% if build %}
-          <a href="//{{ MOFO_URL }}/zh-TW/firefox/all-{{ build }}.html">{{ _('Systems &amp; Languages') }}</a> |
-          <a href="//{{ MOFO_URL }}/zh-TW/firefox/{{ build }}/notes">{{ _('What’s New') }}</a> |
+      {% if build %}
+        {% if build != 'nightly' %}
+          <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/all-{{ build }}.html">{{ _('Systems &amp; Languages') }}</a> |
+          <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/{{ build }}/notes">{{ _('What’s New') }}</a> |
         {% else %}
-          <a href="//{{ MOFO_URL }}/zh-TW/firefox/all">{{ _('Systems &amp; Languages') }}</a> |
-          <a href="//{{ MOFO_URL }}/zh-TW/firefox/notes">{{ _('What’s New') }}</a> |
+          <a target="_blank" href="http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/">{{ _('其它 Nightly 版本 (FTP)') }}</a> |
+          <a target="_blank" href="http://hg.mozilla.org/mozilla-central/pushloghtml?startdate=48+hours+ago&enddate=now">{{ _('48 小時內的更新') }}</a> |
         {% endif %}
+      {% else %}
+        <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/all">{{ _('Systems &amp; Languages') }}</a> |
+        <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/notes">{{ _('What’s New') }}</a> |
       {% endif %}
-      <a href="//{{ MOFO_URL }}/zh-TW/legal/privacy/firefox.html">{{ _('Privacy') }}</a>
+      <a target="_blank" href="//{{ MOFO_URL }}/en-US/legal/privacy/firefox.html">{{ _('Privacy') }}</a>
     </small>
   {% endif %}
 </div>

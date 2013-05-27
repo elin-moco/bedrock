@@ -35,7 +35,7 @@
       <div class="download-box mobile" id="beta-mobile">
         {{ download_firefox('beta', icon=False, mobile=True, small=True) }}
       </div>
-      <p class="more"><a href="{{ php_url('/firefox/beta/') }}">瞭解更多關於 Firefox Beta 的資訊<span> »</span></a></p>
+      <p class="more"><a target="_blank" href="{{ php_url('/firefox/beta/') }}">瞭解更多關於 Firefox Beta 的資訊<span> »</span></a></p>
     </div>
 
     <div id="nightly" class="pager-page">
@@ -47,8 +47,8 @@
       <div class="download-box mobile" id="nightly-mobile">
         {{ download_firefox('nightly', icon=False, mobile=True, small=True, force_direct=True) }}
       </div>
-      <p class="more"><a href="//{{ NIGHTLY_URL }}">瞭解更多關於 Firefox Nightly 的資訊<span> »</span></a></p>
-      <p class="warning">Firefox Nightly 將會自動傳送使用回饋資訊至 Mozilla。 <a href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
+      <p class="more"><a target="_blank" href="//{{ NIGHTLY_URL }}">瞭解更多關於 Firefox Nightly 的資訊<span> »</span></a></p>
+      <p class="warning">Firefox Nightly 將會自動傳送使用回饋資訊至 Mozilla。 <a target="_blank" href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
     </div>
 
     <div id="aurora" class="pager-page">
@@ -60,8 +60,8 @@
       <div class="download-box mobile" id="aurora-mobile">
         {{ download_firefox('aurora', icon=False, mobile=True, small=True) }}
       </div>
-      <p class="more"><a href="{{ php_url('/mobile/aurora/') }}">瞭解更多關於 Firefox Aurora 的資訊<span> »</span></a></p>
-      <p class="warning">Firefox Aurora 將會自動傳送使用回饋資訊至 Mozilla. <a href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
+      <p class="more"><a target="_blank" href="{{ php_url('/mobile/aurora/') }}">瞭解更多關於 Firefox Aurora 的資訊<span> »</span></a></p>
+      <p class="warning">Firefox Aurora 將會自動傳送使用回饋資訊至 Mozilla. <a target="_blank" href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
     </div>
 
   </div>

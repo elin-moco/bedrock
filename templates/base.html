@@ -40,14 +40,14 @@
 
     {% block site_header %}
       <header id="masthead">
-        <a href="http://www.mozilla.org/" id="tabzilla">{{ _('Mozilla') }}</a>
+        <a href="{{ MOCO_URL }}" id="tabzilla">{{ _('Mozilla') }}</a>
 
         {% block site_header_nav %}
           {% include 'sandstone/navigator.html' %}
         {% endblock %}
 
         {% block site_header_logo %}
-        <h2><a href="{{ url('mozorg.home') }}"><img src="{{ MEDIA_URL }}img/sandstone/header-mozilla-stone.png" alt="mozilla"></a></h2>
+        <h2><a href="{{ url('mozorg.home') }}"><img src="{{ MEDIA_URL }}img/mocotw/mozcomtw/nav-logo-small.png" alt="mozilla"></a></h2>
         {% endblock %}
 
         {% block breadcrumbs %}{% endblock %}
