@@ -32,7 +32,7 @@
     {% include 'includes/google-analytics.html' %}
   </head>
 
-  <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} {% block body_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
+  <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} sky lang-{{ LANG }}"{% block body_attrs %}{% endblock %}>
     {% include 'sandstone/tabzilla.html' %}
     <div id="strings" {% block string_data %}{% endblock %}></div>
     <div id="outer-wrapper">
