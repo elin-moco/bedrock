@@ -105,7 +105,7 @@ LOCALE_CONTACTS = {
     'sr'   : ['prikljucise@mozilla-srbija.org'],
     'sq'   : ['besnik@mozilla-albania.org'],
     'zh-CN': ['contributor-zh-cn@mozilla.org'],
-    'zh-TW': ['contribute@mail.moztw.org'],
+    'zh-TW': ['contribute@mail.moztw.org', 'tw-mktg@mozilla.com'],
 }
 
 
