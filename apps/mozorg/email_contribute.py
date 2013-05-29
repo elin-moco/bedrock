@@ -105,7 +105,7 @@ LOCALE_CONTACTS = {
     'sr'   : ['prikljucise@mozilla-srbija.org'],
     'sq'   : ['besnik@mozilla-albania.org'],
     'zh-CN': ['contributor-zh-cn@mozilla.org'],
-    'zh-TW': ['contribute@mail.moztw.org', 'tw-mktg@mozilla.com'],
+    'zh-TW': ['contribute@mail.moztw.org'],
 }
 
 
@@ -140,14 +140,14 @@ def send(request, data):
     msg = jingo.render_to_string(request, 'mozorg/emails/infos.txt', data)
     headers = {'Reply-To': data['email']}
 
-    to = ['contribute@mozilla.org']
+    # to = ['contribute@mozilla.org']
+    to = ['tw-mktg@mozilla.com']
 
     cc = None
     if request.locale in LOCALE_CONTACTS:
         cc = LOCALE_CONTACTS[request.locale]
     else:
         cc = functional_area.contacts
-
     email = EmailMessage(subject, msg, from_, to, cc=cc, headers=headers)
     email.send()
 

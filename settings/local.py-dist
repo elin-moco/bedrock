@@ -3,6 +3,25 @@
 
 from settings.base import *
 
+################
+### Security ###
+################
+
+# Register keys for your own site
+# http://www.google.com/recaptcha
+RECAPTCHA_PUBLIC_KEY = ''
+RECAPTCHA_PRIVATE_KEY = ''
+
+# Generate your own and keep it safe
+# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
+SECRET_KEY = 'hushhhhhh'
+
+# Generate your own and keep it safe
+# https://github.com/fwenzel/django-sha2#readme
+HMAC_KEYS = {
+    '2013-05-05': 'zongzi',
+}
+
 ADMINS = ('foo@bar.com',)
 MANAGERS = ADMINS
 
