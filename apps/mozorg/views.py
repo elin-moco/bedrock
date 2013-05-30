@@ -6,6 +6,7 @@ import re
 
 from django.conf import settings
 from django.core.context_processors import csrf
+from django.core.mail import EmailMessage
 from django.http import (HttpResponse, HttpResponseRedirect)
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.views.decorators.http import require_POST
@@ -17,6 +18,7 @@ import requests
 from commonware.decorators import xframe_allow
 from funfactory.urlresolvers import reverse
 from l10n_utils.dotlang import _
+from jinja2 import TemplateNotFound
 
 from firefox import version_re
 from firefox.utils import is_current_or_newer
@@ -24,6 +26,7 @@ from mozorg import email_contribute
 from mozorg.forms import (ContributeForm, ContributeUniversityAmbassadorForm,
                           NewsletterForm, WebToLeadForm)
 from mozorg.util import hide_contrib_form
+import jingo
 
 
 @xframe_allow
@@ -120,25 +123,25 @@ def contact_bizdev(request):
     success = 0
 
     if form.is_valid():
+
         data = form.cleaned_data.copy()
 
-        honeypot = data.pop('superpriority')
+        subject = 'New partner submission from %s' % data['company']
+        to = ['tw-bd@mozilla.com']
+        cc = ['tw-mktg@mozilla.com']
+        from_ = 'tw-mktg@mozilla.com'
+        reply_to = [data['email']]
+        msg = jingo.render_to_string(request, 'mocotw/emails/notify_bizdev.txt', data)
 
-        if honeypot:
-            msg = 'Visitor invalid'
-            stat = 400
-        else:
-            interest = data.pop('interest')
-            data['00NU0000002pDJr'] = interest
-            data['oid'] = '00DU0000000IrgO'
-            data['retURL'] = ('http://www.mozilla.org/en-US/about/'
-                              'partnerships?success=1')
-            r = requests.post('https://www.salesforce.com/servlet/'
-                              'servlet.WebToLead?encoding=UTF-8', data)
-            msg = requests.status_codes._codes.get(r.status_code, ['error'])[0]
-            stat = r.status_code
+        # FIXME Why ?
+        msg = msg.replace('\n', '\r\n')
+        headers = {'Reply-To': ','.join(reply_to)}
 
-            success = 1
+        email = EmailMessage(subject, msg, from_, to, cc=cc, headers=headers)
+        email.send()
+
+        stat = 200
+        success = 1
 
     if request.is_ajax():
         return HttpResponse(msg, status=stat)

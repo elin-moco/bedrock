@@ -1,0 +1,9 @@
+姓名：{{ last_name }} {{ first_name }}
+公司：{{ company }}
+職稱：{{ title }}
+網站：{{ URL }}
+Email：{{ email }}
+電話：{{ phone }}
+手機：{{ mobile }}
+感興趣項目：{{ interest|join(", ") }}
+意見回饋：{{ description }}
