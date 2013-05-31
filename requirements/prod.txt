@@ -29,3 +29,5 @@ Babel>=0.9.4
 python-memcached==1.45
 
 django-statsd-mozilla==0.3.5
+
+-r custom.txt

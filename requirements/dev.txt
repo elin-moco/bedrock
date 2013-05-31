@@ -16,3 +16,5 @@ pyquery==1.0
 
 # L10n
 translate-toolkit==1.8.0
+
+-r custom.txt
