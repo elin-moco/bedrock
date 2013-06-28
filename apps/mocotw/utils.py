@@ -5,10 +5,21 @@ from product_details import settings_fallback, product_details
 
 
 log = logging.getLogger('prod_details')
-version_pattern = re.compile('firefox\-([a-z0-9\.]+)\.en\-US')
+aurora_version_pattern = re.compile('firefox\-([a-z0-9\.]+)\.zh\-TW')
+aurora_file = '/firefox_aurora_version.json'
+aurora_key = 'LATEST_AURORA_VERSION'
+nightly_version_pattern = re.compile('firefox\-([a-z0-9\.]+)\.en\-US')
 nightly_file = '/firefox_nightly_version.json'
 nightly_key = 'LATEST_NIGHTLY_VERSION'
 
+
+def latest_aurora_version(locale):
+    try:
+        aurora_version = product_details.firefox_aurora_version[aurora_key]
+    except KeyError:
+        log.error('No version key found.')
+        aurora_version = '23.0a2'
+    return aurora_version, []
 
 def latest_nightly_version(locale):
     try:
@@ -22,6 +33,8 @@ def latest_nightly_version(locale):
 def make_nightly_mobile_link(version):
     return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-central-android/fennec-%s.multi.android-arm.apk' % version
 
+def make_aurora_mobile_link(version):
+    return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-aurora-android/en-US/fennec-%s.en-US.android-arm.apk' % version
 
 def make_nightly_link(product, version, platform, locale):
     # Download links are different for localized versions
@@ -37,22 +50,36 @@ def make_nightly_link(product, version, platform, locale):
              product, version, locale, filename))
 
 
-def download_nightly_details():
+def download_version_details(source_file, version_pattern, target_file, target_key):
     """
     parse latest nightly version from ftp page
     >>> download_nightly_details(nightly_file)
     """
     import urllib2
-    response = urllib2.urlopen('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/').read()
-    version = version_pattern.search(response).group(1)
+    response = urllib2.urlopen(source_file).read()
+    versions_match = version_pattern.finditer(response)
+    for version_match in versions_match:
+        version = version_match.group(1)
+    print version
     try:
         PROD_DETAILS_DIR = settings_fallback('PROD_DETAILS_DIR')
-        f = open(PROD_DETAILS_DIR + nightly_file, 'w')
+        f = open(PROD_DETAILS_DIR + target_file, 'w')
         try:
-            f.write('{"%s":"%s"}' % (nightly_key, version))
+            f.write('{"%s":"%s"}' % (target_key, version))
         finally:
             f.close()
-            log.info('Written newest nightly version in %s%s' % (PROD_DETAILS_DIR, nightly_file))
+            log.info('Written newest version in %s%s' % (PROD_DETAILS_DIR, target_file))
     except IOError:
-        log.error('Failed to write nightly version file.')
+        log.error('Failed to write version file.')
 
+def download_aurora_details():
+    download_version_details('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n/',
+                             aurora_version_pattern,
+                             aurora_file,
+                             aurora_key)
+
+def download_nightly_details():
+    download_version_details('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/',
+                             nightly_version_pattern,
+                             nightly_file,
+                             nightly_key)
