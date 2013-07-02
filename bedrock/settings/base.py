@@ -16,8 +16,6 @@ from funfactory.settings_base import *  # noqa
 from bedrock.sandstone.utils import escape_js_variables
 from jinja2.environment import DEFAULT_FILTERS
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-path = lambda *a: os.path.join(ROOT, *a)
 # No database yet. Override in local.py.
 # Need at least this for Django to run.
 DATABASES = {
@@ -636,7 +634,7 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mocotw.middleware.DefaultLocaleMiddleware',
     'bedrock.mozorg.middleware.MozorgRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
     'commonware.middleware.FrameOptionsHeader',
     'bedrock.mozorg.middleware.CacheMiddleware',
     # 'bedrock.mozorg.middleware.NewsletterMiddleware',
@@ -649,12 +647,11 @@ MIDDLEWARE_CLASSES = (
     'mobility.middleware.DetectMobileMiddleware',
     'mobility.middleware.XMobileMiddleware',
 ), append=(
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'bedrock.mozorg.middleware.CacheMiddleware',
     'bedrock.newsletter.middleware.NewsletterMiddleware',
     'dnt.middleware.DoNotTrackMiddleware',
-    # 'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
+    'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
 ))
 
 INSTALLED_APPS = get_apps(exclude=(
