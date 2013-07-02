@@ -1,6 +1,6 @@
 import logging
 from django.core.management.base import NoArgsCommand
-from bedrock.mocotw.utils import download_nightly_details
+from bedrock.mocotw.utils import download_nightly_details, download_aurora_details
 from product_details import settings_fallback
 
 log = logging.getLogger('prod_details')
@@ -16,6 +16,7 @@ class Command(NoArgsCommand):
         self.options = options
 
         # Should we be quiet?
+        download_aurora_details()
         download_nightly_details()
-
+        # download_aurora_details()
         log.debug('Nightly Version update run complete.')

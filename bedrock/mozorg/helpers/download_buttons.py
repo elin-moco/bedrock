@@ -20,7 +20,7 @@ from django.conf import settings
 import jingo
 import jinja2
 from product_details import product_details
-from bedrock.mocotw.utils import latest_nightly_version, make_nightly_link, make_nightly_mobile_link
+from bedrock.mocotw.utils import latest_aurora_version, latest_nightly_version, make_nightly_link, make_aurora_mobile_link, make_nightly_mobile_link
 
 
 download_urls = {
@@ -43,11 +43,6 @@ def _latest_pre_version(locale, version):
 
     if locale in builds and vers in builds[locale]:
         return vers, builds[locale][vers]
-
-
-def latest_aurora_version(locale):
-    return _latest_pre_version(locale, 'FIREFOX_AURORA')
-
 
 def latest_beta_version(locale):
     return _latest_pre_version(locale, 'LATEST_FIREFOX_DEVEL_VERSION')
@@ -227,7 +222,7 @@ def download_firefox(ctx, build='release', small=False, icon=True,
         if build == 'nightly':
             android_link = make_nightly_mobile_link(version)
         elif build == 'aurora':
-            android_link = download_urls['aurora-mobile']
+            android_link = make_aurora_mobile_link(version)
         elif build == 'beta':
             android_link = ('https://play.google.com/store/apps/details?'
                             'id=org.mozilla.firefox_beta')
