@@ -362,7 +362,7 @@ MINIFY_BUNDLES = {
             'js/sandstone/tabzilla.js',
         ),
         'sandstone-tabzilla-nav': (
-            'js/nav-main-resp.js',
+            'js/base/nav-main-resp.js',
             'js/sandstone/tabzilla.js',
         ),
         'sandstone-replace-urls': (
