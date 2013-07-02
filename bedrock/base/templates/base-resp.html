@@ -1,0 +1,94 @@
+{% from "macros.html" import email_newsletter_form with context %}
+{% set_lang_files "main" %}
+<!doctype html>
+{# Note the "windows" class, without javascript platform-specific
+     assets default to windows #}
+<html class="windows no-js" lang="{{ LANG }}" dir="{{ DIR }}">
+  <head>
+    {% block ga_experiments %}{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block extra_meta %}{% endblock %}
+
+    <title>{% block page_title_prefix %}Mozilla — {% endblock %}{% block page_title %}{% endblock %}{% block page_title_suffix %} — mozilla.org{% endblock %}</title>
+    <meta content="ClhuMhUFrYEw-zfAsWNx5l7JzCyXoFESHZhnirdMcsA" name="google-site-verification">
+    <meta content="0DCEE643E9ACDEE9FDC2E8036E0CFB78" name="msvalidate.01">
+
+    {% block tabzilla_css %}
+      {{ css('sandstone-tabzilla-nav-footer') }}
+    {% endblock %}
+
+    <!--[if lte IE 8]>
+    <script src="{{ MEDIA_URL }}js/libs/html5shiv.js"></script>
+    <![endif]-->
+
+    {% block site_css %}
+      {{ css('responsive') }}
+    {% endblock %}
+
+    {% block extrahead %}{% endblock %}
+
+    {% block favicon %}<link rel="shortcut icon" href="{{ MEDIA_URL }}img/favicon.ico">{% endblock %}
+
+    {{ js('site') }}
+
+    {% include 'includes/google-analytics.html' %}
+  </head>
+
+  <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} sky lang-{{ LANG }}"{% block body_attrs %}{% endblock %}>
+    {% include 'sandstone/tabzilla.html' %}
+    <div id="strings" {% block string_data %}{% endblock %}></div>
+    <div id="outer-wrapper">
+    <div id="wrapper">
+
+    {% block site_header %}
+      <header id="masthead">
+        <a href="//{{ MOCO_URL }}" id="tabzilla">{{ _('Mozilla') }}</a>
+
+        {% block site_header_nav %}
+          {% include 'sandstone/navigator.html' %}
+        {% endblock %}
+
+        {% block site_header_logo %}
+        <h2><a href="{{ url('mozorg.home') }}"><img src="{{ media('img/firefox/template/header-logo.png') }}" alt="mozilla"></a></h2>
+        {% endblock %}
+
+        {% block alt_header %}{% endblock %}
+
+        {% block subnav %}{% endblock %}
+
+        {% block breadcrumbs %}{% endblock %}
+
+      </header>
+    {% endblock %}
+
+    {% block mosaic %}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block email_form %}{{ email_newsletter_form() }}{% endblock %}
+
+    </div><!-- close #wrapper -->
+
+    {% block site_footer %}
+      {% include "sandstone/footer.html" %}
+    {% endblock %}
+
+    </div><!-- close #outer-wrapper -->
+
+    <!--[if IE 9]>
+      <script src="{{ MEDIA_URL }}js/libs/matchMedia.js"></script>
+    <![endif]-->
+
+    {% block site_js %}
+      {{ js('common-resp') }}
+    {% endblock %}
+    {% block tabzilla_js %}
+      {{ js('sandstone-tabzilla') }}
+    {% endblock %}
+    {% block js %}{% endblock %}
+    {% if DEBUG %}
+      {{ js('sandstone-replace-urls') }}
+    {% endif %}
+  </body>
+</html>

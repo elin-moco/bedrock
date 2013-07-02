@@ -1,0 +1,50 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+from django import forms
+from django.forms import widgets
+
+from bedrock.mozorg.forms import HoneyPotWidget
+from lib.l10n_utils.dotlang import _lazy as _
+
+
+class EmailInput(widgets.TextInput):
+    input_type = 'email'
+
+
+class PrivacyContactForm(forms.Form):
+    name = forms.CharField(
+        required=True,
+        error_messages={
+            'required': _('This field is required, please enter your name.')
+        },
+        widget=forms.TextInput(
+            attrs={
+                'required': 'true'
+            }))
+    sender = forms.EmailField(
+        required=True,
+        error_messages={
+            'required': _('This field is required, please enter your email address.')
+        },
+        widget=EmailInput(
+            attrs={
+                'required': 'true',
+                'placeholder': 'you@yourdomain.com'
+            }))
+    comments = forms.CharField(
+        required=True,
+        error_messages={
+            'required': _('This field is required, please enter your comments or questions.')
+        },
+        widget=forms.Textarea(
+            attrs={
+                'required': 'true',
+                'placeholder': 'Enter your comments...',
+                'rows': '10',
+                'cols': '77'
+            }))
+    superpriority = forms.BooleanField(
+        widget=HoneyPotWidget,
+        required=False)

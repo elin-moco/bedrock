@@ -14,7 +14,10 @@ if newrelic:
     else:
         newrelic = False
 
-os.environ['CELERY_LOADER'] = 'django'
+os.environ.setdefault('CELERY_LOADER', 'django')
+# NOTE: you can also set DJANGO_SETTINGS_MODULE in your environment to override
+# the default value in manage.py
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bedrock.settings')
 
 # Add the app dir to the python path so we can import manage.
 wsgidir = os.path.dirname(__file__)
@@ -24,7 +27,6 @@ site.addsitedir(os.path.abspath(os.path.join(wsgidir, '../')))
 import manage
 
 import django.core.handlers.wsgi
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 application = django.core.handlers.wsgi.WSGIHandler()
 
 if newrelic:

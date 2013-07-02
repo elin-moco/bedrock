@@ -1,0 +1,77 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "/firefox/base.html" %}
+
+{% block page_title %}Download Firefox Aurora or Beta &amp; Help Determine the Next Firefox{% endblock %}
+{% block body_id %}channel{% endblock %}
+
+{% block site_css %}
+  {{ css('firefox_channel') }}
+{% endblock %}
+
+{% block content %}
+
+<div id="main-content" class="pager pager-with-tabs pager-cleartype-fix">
+
+  <ul id="toggler-container" class="pager-tabs">
+    <li id="beta-link"><a href="{{ php_url('/firefox/beta/') }}"><img src="{{ media('/img/firefox/channel/toggler-beta.png') }}" id="toggler-logo-beta" /></a></li>
+    <li id="nightly-link"><a href="//{{ NIGHTLY_URL }}"><img src="{{ media('/img/mocotw/firefox/channel/toggler-nightly.png') }}" id="toggler-logo-nightly" /></a></li>
+    <li id="aurora-link"><a href="{{ php_url('/firefox/aurora/') }}"><img src="{{ media('/img/firefox/channel/toggler-aurora.png') }}" id="toggler-logo-aurora" /></a></li>
+  </ul>
+
+  <a href="#" id="carousel-left"></a>
+  <a href="#" id="carousel-right"></a>
+
+  <div class="pager-content">
+
+    <div id="beta" class="pager-page">
+      <h2 class="channel-title channel-title-beta"><img src="{{ media('/img/firefox/channel/title-beta.png') }}" alt="Firefox Beta" /></h2>
+      <h3>在相對穩定的環境下體驗最新功能</h3>
+      <div class="download-box" id="beta-desktop">
+        {{ download_firefox('beta', icon=False, small=True, force_full_installer=False, force_direct=True) }}
+      </div>
+      <div class="download-box mobile" id="beta-mobile">
+        {{ download_firefox('beta', icon=False, mobile=True, small=True) }}
+      </div>
+      <p class="more"><a target="_blank" href="{{ php_url('/firefox/beta/') }}">瞭解更多關於 Firefox Beta 的資訊<span> »</span></a></p>
+    </div>
+
+    <div id="nightly" class="pager-page">
+      <h2 class="channel-title channel-title-nightly"><img src="{{ media('/img/mocotw/firefox/channel/nightly-header-bg.png') }}" alt="Firefox Nightly" /></h2>
+      <h3>純測試用途，不建議一般人安裝使用</h3>
+      <div class="download-box" id="nightly-desktop">
+        {{ download_firefox('nightly', icon=False, small=True, force_direct=True) }}
+      </div>
+      <div class="download-box mobile" id="nightly-mobile">
+        {{ download_firefox('nightly', icon=False, mobile=True, small=True, force_direct=True) }}
+      </div>
+      <p class="more"><a target="_blank" href="//{{ NIGHTLY_URL }}">瞭解更多關於 Firefox Nightly 的資訊<span> »</span></a></p>
+      <p class="warning">Firefox Nightly 將會自動傳送使用回饋資訊至 Mozilla。 <a target="_blank" href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
+    </div>
+
+    <div id="aurora" class="pager-page">
+      <h2 class="channel-title channel-title-aurora"><img src="{{ media('/img/firefox/channel/title-aurora.png') }}" alt="Firefox Aurora" /></h2>
+      <h3>在不穩定的環境中體驗創新</h3>
+      <div class="download-box" id="aurora-desktop">
+        {{ download_firefox('aurora', icon=False, small=True) }}
+      </div>
+      <div class="download-box mobile" id="aurora-mobile">
+        {{ download_firefox('aurora', icon=False, mobile=True, small=True) }}
+      </div>
+      <p class="more"><a target="_blank" href="{{ php_url('/mobile/aurora/') }}">瞭解更多關於 Firefox Aurora 的資訊<span> »</span></a></p>
+      <p class="warning">Firefox Aurora 將會自動傳送使用回饋資訊至 Mozilla. <a target="_blank" href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
+    </div>
+
+  </div>
+
+</div><!-- end #main-content div -->
+
+{% endblock %}
+
+{% block js %}
+{{ js('firefox_channel') }}
+{% endblock %}
+
+{% block email_form %}{% endblock %}

@@ -1,7 +1,7 @@
 $(function() {
 
     var $panels = $('section');
-    var $anchors = $('main a');
+    var $anchors = $('main a:not([href*="http"])');
     var $success = $('.success');
     var $submission_state = $success.data('submission-state');
 
@@ -30,10 +30,10 @@ $(function() {
 
     function setText($elem) {
         var currentTxt = $elem.text();
-        if(currentTxt === 'Learn More') {
-            $elem.text('Show Less');
+        if(currentTxt === $elem.attr('data-panel-open-text')) {
+            $elem.text($elem.attr('data-panel-close-text'));
         } else {
-            $elem.text('Learn More');
+            $elem.text($elem.attr('data-panel-open-text'));
         }
     }
 
@@ -44,11 +44,11 @@ $(function() {
         var txtContent = $anchor.text();
         var $currentElement = $(elementID);
 
-        if(txtContent === 'Learn More' ||
-                txtContent === 'Show Less') {
+        if($anchor.attr('data-panel-disclosure')) {
             // We only want to prevent default for these links
             // for the others, the default behavior is required.
             event.preventDefault();
+
             setText($anchor);
             $currentElement.toggle();
         } else {

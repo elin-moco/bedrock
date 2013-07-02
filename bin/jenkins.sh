@@ -7,6 +7,10 @@
 # codebase.
 set -e
 
+if [ -z $WORKSPACE ] ; then
+  WORKSPACE=`/bin/pwd`
+fi
+
 cd $WORKSPACE
 VENV=$WORKSPACE/venv
 
@@ -23,6 +27,7 @@ if [ ! -d "$VENV/bin" ]; then
   pip install coverage
 fi
 
+git submodule sync -q
 git submodule update --init --recursive
 
 if [ ! -d "$WORKSPACE/vendor" ]; then
@@ -34,15 +39,24 @@ source $VENV/bin/activate
 pip install -q -r requirements/compiled.txt
 pip install -q -r requirements/dev.txt
 
-cat > settings/local.py <<SETTINGS
-from settings.base import *
+cat > bedrock/settings/local.py <<SETTINGS
+import logging
 
-ROOT_URLCONF = 'workspace.urls'
+ROOT_URLCONF = 'bedrock.urls'
 LOG_LEVEL = logging.ERROR
 
 ADMINS = ('foo@bar.com',)
 MANAGERS = ADMINS
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.dummy',
+    },
+}
+
+HMAC_KEYS = {
+    '2013-01-01': 'prositneujahr',
+}
 SETTINGS
 
 echo "Update product_details"
@@ -51,6 +65,6 @@ echo "Update product_details"
 echo "Starting tests..."
 export FORCE_DB=1
 coverage run manage.py test --noinput --with-xunit
-coverage xml $(find apps lib -name '*.py')
+coverage xml $(find bedrock lib -name '*.py')
 
 echo "FIN"

@@ -21,7 +21,7 @@ Example::
 
 Bedrock comes with a handy shortcut to automate all of this::
 
-    from mozorg.util import page
+    from bedrock.mozorg.util import page
     page('channel', 'mozorg/channel.html')
 
 You don't even need to create a view. It will serve up the specified
@@ -43,7 +43,7 @@ If you need to write a view and the page has a newsletter signup form
 in the footer (most do), make sure to handle this in your view.
 Bedrock comes with a function for doing this automatically::
 
-    from mozorg.util import handle_newsletter
+    from bedrock.mozorg.util import handle_newsletter
     from django.views.decorators.csrf import csrf_exempt
     
     @csrf_exempt
@@ -59,3 +59,9 @@ post, you also need the `csrf_exempt` decorator.
 Make sure to namespace your templates by putting them in a directory
 named after your app, so instead of templates/template.html they would
 be in templates/blog/template.html if `blog` was the name of your app.
+
+Python and Django Style
+-----------------------
+
+See the `Mozilla Coding Standards
+<http://mozweb.readthedocs.org/en/latest/coding.html>`_.

@@ -14,7 +14,7 @@
 
   window.gaq_track = function(category, action, label) {
     if (window._gaq) {
-      _gaq.push(['_trackEvent', category, action, label]);
+      window._gaq.push(['_trackEvent', category, action, label]);
     }
   };
 
@@ -59,7 +59,7 @@
 
     $video_content = $video.detach();
 
-    Mozilla.Modal.create_modal(this, $video_content, position_video, reattach_video);
+    Mozilla.Modal.create_modal(this, $video_content, { onCreate: position_video, onDestroy: reattach_video });
 
     video_closing = false;
 
