@@ -1,7 +1,7 @@
-import json
 import logging
 import re
 from product_details import settings_fallback, product_details
+from bedrock.mocotw.models import Newsletter
 
 
 log = logging.getLogger('prod_details')
@@ -21,6 +21,7 @@ def latest_aurora_version(locale):
         aurora_version = '23.0a2'
     return aurora_version, []
 
+
 def latest_nightly_version(locale):
     try:
         nightly_version = product_details.firefox_nightly_version[nightly_key]
@@ -33,8 +34,10 @@ def latest_nightly_version(locale):
 def make_nightly_mobile_link(version):
     return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-central-android/fennec-%s.multi.android-arm.apk' % version
 
+
 def make_aurora_mobile_link(version):
     return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-aurora-android/en-US/fennec-%s.en-US.android-arm.apk' % version
+
 
 def make_nightly_link(product, version, platform, locale):
     # Download links are different for localized versions
@@ -72,14 +75,24 @@ def download_version_details(source_file, version_pattern, target_file, target_k
     except IOError:
         log.error('Failed to write version file.')
 
+
 def download_aurora_details():
     download_version_details('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n/',
                              aurora_version_pattern,
                              aurora_file,
                              aurora_key)
 
+
 def download_nightly_details():
     download_version_details('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/',
                              nightly_version_pattern,
                              nightly_file,
                              nightly_key)
+
+
+def newsletter_subscribe(email):
+    print email + ' subscribed'
+    subscription = Newsletter(u_email=email)
+    subscription.save()
+    print email + ' subscribed'
+    log.error(email + ' subscribed')

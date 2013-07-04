@@ -634,10 +634,8 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mocotw.middleware.DefaultLocaleMiddleware',
     'bedrock.mozorg.middleware.MozorgRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
     'commonware.middleware.FrameOptionsHeader',
     'bedrock.mozorg.middleware.CacheMiddleware',
-    # 'bedrock.mozorg.middleware.NewsletterMiddleware',
 ) + get_middleware(exclude=(
     'funfactory.middleware.LocaleURLMiddleware',
     'multidb.middleware.PinningRouterMiddleware',
@@ -647,9 +645,8 @@ MIDDLEWARE_CLASSES = (
     'mobility.middleware.DetectMobileMiddleware',
     'mobility.middleware.XMobileMiddleware',
 ), append=(
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'bedrock.newsletter.middleware.NewsletterMiddleware',
+    'bedrock.mocotw.middleware.NewsletterMiddleware',
     'dnt.middleware.DoNotTrackMiddleware',
     'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
 ))

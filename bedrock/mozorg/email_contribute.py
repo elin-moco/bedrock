@@ -9,6 +9,7 @@ from django.core.mail import EmailMessage
 import basket
 import jingo
 from jinja2.exceptions import TemplateNotFound
+from bedrock.mocotw.utils import newsletter_subscribe
 
 from lib.l10n_utils.dotlang import _lazy as _
 
@@ -122,11 +123,7 @@ def handle_form(request, form):
         autorespond(request, data)
 
         if data['newsletter']:
-            try:
-                basket.subscribe(data['email'], 'about-mozilla')
-            except basket.BasketException:
-                pass
-
+            newsletter_subscribe(data['email'])
         return True
     return False
 

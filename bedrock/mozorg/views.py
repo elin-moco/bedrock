@@ -13,6 +13,7 @@ from django.views.decorators.http import require_POST
 from django.shortcuts import redirect
 
 import basket
+from bedrock.mocotw.utils import newsletter_subscribe
 from lib import l10n_utils
 import requests
 from commonware.decorators import xframe_allow
@@ -73,18 +74,7 @@ def contribute(request, template, return_to_form):
         if newsletter_form.is_valid():
             data = newsletter_form.cleaned_data
 
-            try:
-                basket.subscribe(data['email'],
-                                 'about-mozilla',
-                                 format=data['fmt'],
-                                 country=data['country'])
-                newsletter_success = True
-            except basket.BasketException:
-                msg = newsletter_form.error_class(
-                    [_('We apologize, but an error occurred in our system. '
-                       'Please try again later.')]
-                )
-                newsletter_form.errors['__all__'] = msg
+        newsletter_subscribe(data['email'])
     else:
         newsletter_form = NewsletterForm(locale, prefix='newsletter')
 

@@ -358,22 +358,6 @@
 
   <div id="useful-links">
     <section class="item container">
-      <div class="column column-first">
-        <h3>{{_('For partners &amp; developers:')}}</h3>
-        <ul>
-          <li>
-            {% trans link=url('firefox.partners.index') %}
-            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
-            {% endtrans %}
-          </li>
-          <li>
-            {% trans link="https://developer.mozilla.org/docs/Web/Apps/Publishing/Submitting_an_app" %}
-            Get your app on Firefox OS <a href="{{link}}">Submit it to the Firefox Marketplace</a>
-            {% endtrans %}
-          </li>
-        </ul>
-      </div>
-
       <div class="column">
         <h3>{{_('For users:')}}</h3>
         <ul>
@@ -389,6 +373,35 @@
           </li>
         </ul>
       </div>
+
+      <div class="column column-first">
+        <h3>{{_('For partners &amp; developers:')}}</h3>
+        <ul>
+          <li>
+            {% trans link=url('firefox.partners.index') %}
+            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="https://developer.mozilla.org/docs/Web/Apps/Publishing/Submitting_an_app" %}
+            Get your app on Firefox OS <a href="{{link}}">Submit it to the Firefox Marketplace</a>
+            {% endtrans %}
+          </li>
+          <li>
+            免費下載 Firefox OS 模擬器
+            <a href="https://addons.mozilla.org/zh-TW/firefox/addon/firefox-os-simulator/?src=search">Firefox OS Simulator</a>
+          </li>
+          <li>
+            Firefox OS 研發部落格 <a href="http://tech.inspire.mozilla.com.tw/">謀智台客</a>
+          </li>
+          <li>
+            下載 Firefox OS 相關文件
+            <a href="http://bedrock.inspire.mozilla.com.tw/eDM/WebAPIs.pdf">Web APIs</a>
+            <a href="http://bedrock.inspire.mozilla.com.tw/eDM/business.pdf">營運模式</a>
+          </li>
+        </ul>
+      </div>
+
     </section>
   </div>
 </div>
@@ -429,7 +442,7 @@
           <h3>{{ _('Thank you for signing up!') }}</h3>
         </div>
 
-        {{ email_newsletter_form('mozilla-and-you,os', _('Sign up for our monthly newsletter')) }}
+        {{ email_newsletter_form('mozilla-and-you,os', '訂閱 Mozilla 電子報', include_country=False, include_language=False) }}
       </div>
     </div>
   </div>
