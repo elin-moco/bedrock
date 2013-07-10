@@ -543,17 +543,22 @@ html[lang="en-US"] #get-firefox-os {
     z-index: 1;
   }
 
-  .screen {
+  .screen-wrapper {
     position: absolute;
     top: 141px;
     left: 144px;
-    background-image: url('/media/img/firefox/os/phone/screens-en-us.jpg');
-    background-repeat: no-repeat;
     z-index: 2;
     width: 218px;
     height: 332px;
-    @transition: background-position 0.5s ease-out;
-    .transition(@transition);
+    background-color: #000;
+    overflow: hidden;
+  }
+
+  .screen {
+    width: 218px;
+    height: 332px;
+    background-image: url('/media/img/firefox/os/phone/screens-en-us.jpg');
+    background-repeat: no-repeat;
   }
 
   .screen-soccer {
@@ -1033,6 +1038,7 @@ html[lang=hu] {
     padding: 0;
     list-style-type: none;
     margin: @baseLine 0 0 0;
+    overflow: hidden;
     li {
       width: 34px;
       height: 34px;
@@ -1381,6 +1387,19 @@ html[lang="pl"] {
     from { background-position: 0 1px; } // webkit browsers seem to need this 1px offset
     to { background-position: 0 -875px; }
   }
+
+  #screen-intro {
+    .screen {
+      position: absolute;
+      top: 0;
+    }
+    #screen-intro-a {
+      left: 0;
+    }
+    #screen-intro-b {
+      left: 218px;
+    }
+  }
 }
 
 #colophon {
@@ -1482,7 +1501,7 @@ body.noscroll {
     .scroller-off {
       #contacts-app, #photos-app, #messages-app {
         left: auto;
-        right: -25px;
+        right: 0;
       } 
       .content {
         padding-top: @baseLine * 3;
@@ -1500,6 +1519,10 @@ body.noscroll {
       #mail-app {
         display: none;
         visibility: hidden;
+      }
+      #social .left .icon-list {
+        display: block;
+        visibility: visible;
       } 
     } 
     .scroller-on {
@@ -1549,7 +1572,7 @@ body.noscroll {
   #useful-links {
     padding: (@baseLine * 4) 0;
     .item {
-      width: @widthTablet;
+      width: @widthTablet - (@gridGutterWidth * 2);
     }
     .column {
       width: 100%;
@@ -1586,7 +1609,7 @@ body.noscroll {
     }
   }
   #footer-email-form, #get-phone {
-    width: @widthTablet - (@gridGutterWidth * 2);
+    width: @widthTablet - (@gridGutterWidth * 4);
   }
   #footer-email-errors {
     width: @widthTablet;
@@ -2104,6 +2127,12 @@ body.noscroll {
     background: url('/media/img/firefox/os/bg/480/birthday.jpg') no-repeat center center; 
   }
   .js {
+    #get-phone {
+      .content {
+        font-size: 16px;
+        letter-spacing: 0;
+      }
+    }
     #modal {
       width: 100%;
       bottom: auto;
@@ -2112,6 +2141,9 @@ body.noscroll {
         margin: 5px auto;
         padding: 0 10px;
       }
+      header {
+        height: 28px;
+      }
     }
     .modal-content {
       width: 100%;
@@ -2119,12 +2151,27 @@ body.noscroll {
         padding: 10px;
       }
       header {
-        padding: 20px 10px 10px;
+        padding: 10px;
         img {
           display: none;
         }
+        button {
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+      .close {
+        margin-top: 0;
+      }
+      h2 {
+        font-size: 22px;
+        line-height: 26px;
+        margin: 10px;
+        padding-bottom: 30px;
       }
       #provider-links {
+        margin-bottom: 0px;
         .last {
           border-left: none;
         }
