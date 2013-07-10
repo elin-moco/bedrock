@@ -2,13 +2,15 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
 
-{% extends "base-resp.html" %}
+{% extends "firefox/base-resp.html" %}
 
 {% block page_title_prefix %}{% endblock %}
-{% block page_title %}Firefox OS{% endblock %}
+{% block page_title %}{{_('Firefox OS — The Adaptive Phone — Great Smartphone Features, Apps and More')}}{% endblock %}
 
 {% block body_id %}firefox-os{% endblock %}
 {% block body_class %}firefox-os{% endblock %}
+
+{% block description %}{{_('Firefox OS — The Adaptive Phone — Great Smartphone Features, Apps and More')}}{% endblock %}
 
 {% block string_data %}
   {# L10n: This is the label for a button that closes a modal dialog #}
@@ -20,6 +22,7 @@
 {% endblock %}
 
 {% block extrahead %}
+{{ super() }}
 <!--[if lt IE 9]>
   {{ css('firefox_os_ie') }}
 <![endif]-->
