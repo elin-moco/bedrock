@@ -396,7 +396,7 @@
     var $navs = $('nav[role="navigation"], #ffos-main-logo');
     var $side_nav = $('#side-nav');
     var side_nav_targets = [];
-
+/*
     // handle clicks on any nav element
     $navs.on('click', '.nav', function(e) {
       e.preventDefault();
@@ -432,7 +432,7 @@
 
       $w.scrollTop(new_scroll - nav_height);
     });
-
+*/
     // store possible nav targets in array for easier searching
     $side_nav.find('a').each(function(index, anchor) {
       side_nav_targets.push(anchor.getAttribute('href'));
