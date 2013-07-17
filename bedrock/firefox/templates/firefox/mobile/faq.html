@@ -13,9 +13,11 @@
 
 {% block breadcrumbs %}
   <nav class="breadcrumbs">
-    <a href="{{ url('mozorg.home') }}">{{_('Home')}}</a> >
-    <a href="{{ url('firefox.fx') }}#mobile">{{_('Mobile')}}</a> >
-    <span>常見問答集</span>
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}#mobile">Firefox 行動版</a>
+    <b>»</b>
+    <span>{{_('FAQ')}}</span>
   </nav>
 {% endblock %}
 

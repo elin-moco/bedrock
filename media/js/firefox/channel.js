@@ -69,4 +69,24 @@ $(document).ready(function() {
     $('.pager-tabs a.selected').bind('click.outgoing', function() {
         redirect(this);
     });
+    $('#beta-desktop .download-link').click(function(){
+        console.info('download beta');
+//		_gaq.push(['_trackEvent', 'download', 'firefox-beta-desktop', 'Channel 下載']);
+	});
+    $('#beta-mobile .download-link').click(function(){
+		_gaq.push(['_trackEvent', 'download', 'firefox-beta-mobile', 'Channel 下載']);
+	});
+    $('#aurora-desktop .download-link').click(function(){
+		_gaq.push(['_trackEvent', 'download', 'firefox-aurora-desktop', 'Channel 下載']);
+	});
+    $('#aurora-mobile .download-link').click(function(){
+		_gaq.push(['_trackEvent', 'download', 'firefox-aurora-mobile', 'Channel 下載']);
+	});
+    $('#nightly-desktop .download-link').click(function(){
+		_gaq.push(['_trackEvent', 'download', 'firefox-nightly-desktop', 'Channel 下載']);
+	});
+    $('#nightly-mobile .download-link').click(function(){
+		_gaq.push(['_trackEvent', 'download', 'firefox-nightly-mobile', 'Channel 下載']);
+	});
+
 });

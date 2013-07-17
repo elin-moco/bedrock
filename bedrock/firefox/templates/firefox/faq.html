@@ -13,8 +13,10 @@
 
 {% block breadcrumbs %}
   <nav class="breadcrumbs">
-    <a href="{{ url('mozorg.home') }}">首頁</a> >
-    <a href="{{ url('firefox.fx') }}">{{_('Firefox')}}</a> >
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}">Firefox 桌面版</a>
+    <b>»</b>
     <span>{{_('FAQ')}}</span>
   </nav>
 {% endblock %}
