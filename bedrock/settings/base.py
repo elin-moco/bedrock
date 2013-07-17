@@ -362,7 +362,8 @@ MINIFY_BUNDLES = {
             'js/sandstone/tabzilla.js',
         ),
         'sandstone-tabzilla-nav': (
-            'js/base/nav-main-resp.js',
+            #'js/base/nav-main-resp.js',
+            'js/sandstone/nav.js',
             'js/sandstone/tabzilla.js',
         ),
         'sandstone-replace-urls': (
@@ -388,7 +389,8 @@ MINIFY_BUNDLES = {
         'common-resp': (
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
-            'js/base/nav-main-resp.js',
+            'js/sandstone/nav.js',
+            #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
         ),
@@ -413,7 +415,8 @@ MINIFY_BUNDLES = {
         'firefox': (
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
-            'js/base/nav-main.js',
+            'js/sandstone/nav.js',
+            #'js/base/nav-main.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
         ),
@@ -423,7 +426,8 @@ MINIFY_BUNDLES = {
         'firefox-resp': (
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
-            'js/base/nav-main-resp.js',
+            'js/sandstone/nav.js',
+            #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
         ),
@@ -520,10 +524,12 @@ MINIFY_BUNDLES = {
         'home': (
             'js/base/mozilla-pager.js',
             'js/libs/video-js/video.js',
-            'js/mozorg/home.js'
+            'js/mozorg/home.js',
+            'js/sandstone/nav.js',
         ),
         'marketplace': (
-            'js/base/nav-main-resp.js',
+            'js/sandstone/nav.js',
+            #'js/base/nav-main-resp.js',
             'js/base/mozilla-pager.js',
             'js/marketplace/marketplace.js',
         ),
@@ -531,7 +537,7 @@ MINIFY_BUNDLES = {
             'js/libs/jquery-1.7.1.min.js',
             # 'js/nav-main.js',
             'js/base/global.js',
-            'js/base/nav-main-resp.js',
+            #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
         ),
         'pager': (
