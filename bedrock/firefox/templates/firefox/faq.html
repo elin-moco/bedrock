@@ -1,0 +1,101 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "/firefox/base-resp.html" %}
+
+{% block page_title %}Frequently Asked Questions{% endblock %}
+{% block body_id %}mobile-faq{% endblock %}
+
+{% block site_css %}
+  {{ css('firefox_faq') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a href="{{ url('mozorg.home') }}">首頁</a> >
+    <a href="{{ url('firefox.fx') }}">{{_('Firefox')}}</a> >
+    <span>{{_('FAQ')}}</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<div id="main-feature">
+  {{ download_firefox(mobile=True, small=True) }}
+  <h1 class="large">Firefox 常見問答集</h1>
+</div>
+
+<div id="main-content">
+
+  <ul class="expander-list">
+    <li class="expander">
+      <h2 class="expander-header">此版本跟原本的 Firefox有什麼不一樣？</h2>
+      <div class="expander-content">
+        <p>此版本是基於原本的 Firefox，並新增了一些台灣人常用的附加元件，且未來仍會持續開發加強的在地化版本。Windows使用者在安裝過程中，可以選擇安裝哪些新功能；而 Mac 和 Linux 使用者，則可以直接安裝到特定重要功能。當然，原來 Firefox 的功能與未來開發新功能，都依然能在此版本中使用。</p>
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">我可以自訂 Firefox 的功能嗎？</h2>
+      <div class="expander-content">
+        <p>當然可以如果您是 Windows 系統使用者，在 Firefox 安裝過程中，即可選擇基本安裝或是透過自訂安裝的選項，安裝更多或自訂附加元件。
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">Firefox 也可以安裝附加元件嗎？</h2>
+      <div class="expander-content">
+        <p>當然可以！安裝完成後還可透過附加元件管理員自訂各種附加元件。 <a href="https://support.mozilla.org/zh-TW/kb/%E4%BD%BF%E7%94%A8%E9%99%84%E5%8A%A0%E5%85%83%E4%BB%B6%E8%87%AA%E8%A8%82%20Firefox" target="_blank">了解更多</a>
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">我是否也可以參與建議 Firefox 功能？</h2>
+      <div class="expander-content">
+        <p>當然可以！歡迎使用者提供各式意見幫助我們把產品做得更好，您可以建議更多台灣人常用且需要的優質附加元件，或是參與開發附加元件，都可以透過 Firefox 瀏覽器右上方的『提供意見』按鈕。
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">Firefox 可以自訂佈景主題嗎？</h2>
+      <div class="expander-content">
+        <p>當然可以！Firefox 更換個性面板的操作方式與原本的一樣。若是安裝 Firefox 的 Windows 使用者，還可以使用瀏覽器右下角附加元件列上的『Personas Plus (佈景主題)』功能，輕鬆點選、隨時更換喔
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">安裝了此版本 Firefox ，原先的書籤 、佈景主題、附加元件、瀏覽紀錄是否會變更？</h2>
+      <div class="expander-content">
+        <p>不會變，基本上原本的都會保留。功能上，若與此版本 Firefox 新增的附加元件沒有任何衝突，或與 Firefox 更新之後的版本都相容的話，那麼原則上也不會有問題。至於瀏覽紀錄，若只是單純的安裝覆蓋掉原本的程式(手動安裝或自動升級)，原先的瀏覽記錄依然會存在；但若是先完整移除所有 Firefox之後再安裝，那麼瀏覽記錄就會消失。
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">請問安裝完此版本 Firefox 後，如何回復成原始的 Firefox？</h2>
+      <div class="expander-content">
+        <p>方法1：安裝前，可參考<a href="https://support.mozilla.org/zh-TW/kb/Backing%20up%20your%20information" target="_blank">此步驟</a>備份您的 profile 使用者設定檔，便可以隨時切換，回到原始設定。<br>方法2：至附加元件，移除新增的附加元件即可。
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">此版本 Firefox 安裝後設定檔會被覆蓋，有沒有方法避免？</h2>
+      <div class="expander-content">
+        <p>請參考上一題。當初若未新增使用者設定檔，雖然不能立即切換為原先設定檔，仍可透過移除新增的附加元件，就能恢復原先設定檔，
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">當我執行 Sync (同步功能) 時，此版本 Firefox 的設定是否會一起同步？</h2>
+      <div class="expander-content">
+        <p>會的，原本 Sync 帳號的資訊都會同步至此版本 Firefox。但反之，因為此版本 Firefox 可能有部分新增的附加元件，還沒有在 <a href="http://addons.mozilla.org" target="_blank">AMO</a> (<a href="http://addons.mozilla.org" target="_blank">http://addons.mozilla.org</a>) 上，所以不會被 Sync。一旦這些附加元件都放上 <a href="http://addons.mozilla.org" target="_blank">AMO</a> 後，則不論是此版本 Firefox Sync 到其他語言版本、或是其他版本到此版本 Firefox，都會一起同步。
+      </div>
+    </li>
+    <li class="expander">
+      <h2 class="expander-header">我好喜歡 MyFirefox 首頁的每日科技文章，有沒有方式可以讓我收藏？</h2>
+      <div class="expander-content">
+        <p>當您點選了任一 MyFirefox 的文章，右上方都有『加入 My Shelf』的按鈕，在您註冊會員及登入後，即可輕鬆收藏喜愛的文章囉！當您心血來潮時，也隨時可以透過 MyFirefox 每一頁上方的 My Shelf ，前往閱讀收藏的文章。 至 <a href="http://myfirefox.com.tw" target="_blank">MyFirefox</a>
+      </div>
+    </li>
+
+  </ul>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+  {{ js('firefox_faq') }}
+{% endblock %}

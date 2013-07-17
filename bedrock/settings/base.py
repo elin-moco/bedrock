@@ -389,7 +389,7 @@ MINIFY_BUNDLES = {
         'common-resp': (
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
-            'js/sandstone/nav.js',
+            # 'js/sandstone/nav.js',
             #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
@@ -415,7 +415,7 @@ MINIFY_BUNDLES = {
         'firefox': (
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
-            'js/sandstone/nav.js',
+            # 'js/sandstone/nav.js',
             #'js/base/nav-main.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
@@ -426,7 +426,7 @@ MINIFY_BUNDLES = {
         'firefox-resp': (
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
-            'js/sandstone/nav.js',
+            # 'js/sandstone/nav.js',
             #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
@@ -525,7 +525,7 @@ MINIFY_BUNDLES = {
             'js/base/mozilla-pager.js',
             'js/libs/video-js/video.js',
             'js/mozorg/home.js',
-            'js/sandstone/nav.js',
+            # 'js/sandstone/nav.js',
         ),
         'marketplace': (
             'js/sandstone/nav.js',
