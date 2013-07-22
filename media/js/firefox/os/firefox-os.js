@@ -141,4 +141,11 @@
     setPartnerContent();
   });
 
+$('#nav-main-menu').click(function() {
+    if($('.slided-it').size()!=0){
+      $('.slide-x').removeClass('slided-it');
+      $('#body-wrapper').removeClass('body-wrapper-lock').addClass('body-wrapper-default');
+    }
+});
+
 })(jQuery);

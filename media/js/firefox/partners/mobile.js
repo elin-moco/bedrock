@@ -30,6 +30,10 @@
 
             var $that = $(this);
             var $li = $that.parent('li');
+            if($('.slided-it').size()!=0){
+              $('.slide-x').removeClass('slided-it');
+              $('#body-wrapper').removeClass('body-wrapper-lock').addClass('body-wrapper-default');
+            }
 
             if (!$li.hasClass('active')) {
                 _show_scene($that.attr('href'));
