@@ -4,9 +4,11 @@
 
 from django.conf.urls.defaults import *
 from bedrock.mozorg.views import contribute
+from bedrock.redirects.util import redirect
 
 urlpatterns = patterns(
     '',
+    redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html',
                 'return_to_form': False}),

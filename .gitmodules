@@ -18,4 +18,4 @@
 	url = git://github.com/jsocol/pystatsd.git
 [submodule "bedrock/sandstone"]
 	path = bedrock/sandstone
-	url = https://github.com/elin-moco/sandstone.git
+	url = https://elin-moco@github.com/elin-moco/sandstone.git
