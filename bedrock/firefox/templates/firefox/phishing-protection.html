@@ -1,0 +1,99 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "/firefox/base-resp.html" %}
+
+{% block page_title %}釣魚網站與惡意軟體防護{% endblock %}
+{% block body_id %}phishing-protection{% endblock %}
+
+{% block site_css %}
+  {{ css('dnt') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">首頁</a>
+    <b>»</b>
+    <span>釣魚網站與惡意軟體防護</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<div id="main-feature" class="large">
+  <h1>釣魚網站與<br>惡意軟體防護</h1>
+</div>
+
+<div id="main-content">
+
+<article class="main-column">
+
+<p>Firefox 內建釣魚網站與惡意軟體的防護機制，可確保你的線上安全。一旦你瀏覽的網頁已有人回報為合法網站的偽造網頁 (即所謂的釣魚網頁)，或回報為可能攻擊電腦的有害網站 (即所謂的惡意軟體)，Firefox 就會提醒你注意這些網站。</p>
+
+<h3 id="faq">常見問答集<span></span></h3>
+<div class="expander expander-even expander-first">
+  <h4 class="expander-header">何謂偽造網頁？什麼又是釣魚網站？</h4>
+  <div class="expander-content">
+    <p>偽造網頁亦即所謂的釣魚網站，是由惡意網站偽裝為合法網站，誘騙使用者提供如密碼、帳號細節、信用卡號等個人財務資料，達到身分盜用的目的。釣魚攻擊往往是透過電子郵件訊息，誘騙收件人進入外觀高度相似的偽造網頁，要求他們更新個人資訊。可至 <a href="http://www.antiphishing.org/">Anti-Phishing Working Group</a> 獲得更多偽造網頁的資訊，另可參閱 <a href="http://zh.wikipedia.org/wiki/Phishing">Wikipedia 的「釣魚式攻擊」</a>條目找到相關範例與資源。</p>
+  </div>
+</div>
+
+<div class="expander expander-odd">
+  <h4 class="expander-header">什麼是攻擊型網站？什麼是惡意軟體？</h4>
+  <div class="expander-content">
+    <p>惡意軟體將趁你毫不知情時，企圖感染你的電腦進而竊取個人資訊、送出垃圾電子郵件 (Spam)，或散播更多惡意軟體。</p>
+    <p>惡意網站則會趁你瀏覽網站時，企圖以惡意軟體感染你的電腦。一般使用者難以發現這些攻擊行為，甚至某些看來安全的網站也可能嘗試攻擊你。有時正常網站的擁有者，甚至不知道自己的網站已遭他人駭為惡意網站。</p>
+    <p>你可至 <a href="http://www.stopbadware.org/firefox">StopBadware</a> 進一步了解惡意軟體與惡意網站。<a href="http://www.stopbadware.org/firefox">StopBadware</a> 為非營利組織，長期與類似 Mozilla 的組織合作，保護使用者免受惡意軟體或其他危險軟體的攻擊。</p>
+  </div>
+</div>
+
+<div class="expander expander-even">
+  <h4 class="expander-header">Firefox 是如何運作釣魚與惡意軟體的防護機制？</h4>
+  <div class="expander-content">
+    <p>釣魚與惡意軟體防護機制，將根據現已收到回報的釣魚與惡意軟體網站黑名單，檢查使用者所瀏覽的各個網站。只要啟用釣魚與惡意軟體防護機制，Firefox 每隔 30 分鐘均將自動下載並更新清單。另已公布<a href="http://code.google.com/p/google-safe-browsing/wiki/Protocolv2Spec">安全瀏覽協定</a>的技術細節。</p>
+  </div>
+</div>
+
+<div class="expander expander-odd">
+  <h4 class="expander-header">啟用釣魚與惡意軟體防護機制之後，Mozilla 與合作夥伴又將收到哪些資訊？</h4>
+  <div class="expander-content">
+    <p>在啟用釣魚與惡意軟體防護機制之後，有 2 種情況會讓 Firefox 和 Mozilla 合作夥伴交換資訊。首先是定期更新釣魚與惡意網站的黑名單。Firefox 這時並不會提供你的個人資訊，也不會提供你的網站瀏覽記錄。另一種情況就是在你進入已登錄在案的釣魚或惡意網站之時。在封鎖該網站之前，Firefox 將再次確認最近的更新作業之後，這個登錄在案的網站尚未移出黑名單。這 2 種資訊交換作業也可能送出你在 google.com (負責為 Mozilla 提供黑名單) 現存的 cookies。</p>
+    <p><a href="/en-US/privacy-policy.html">Mozilla 隱私權保護政策</a>即明確表達：除了為提升釣魚與惡意軟體防護功能之外，嚴禁 Mozilla 或合作夥伴因任何目的而蒐集此類資料。而 <a href="http://www.google.com/intl/en/privacypolicy.html">Google 隱私權政策</a>亦說明了 Google 處理使用者 cookies 的方法。</p>
+  </div>
+</div>
+
+<div class="expander expander-even">
+  <h4 class="expander-header">我要如何使用釣魚網站與惡意軟體防護功能？</h4>
+  <div class="expander-content">
+    <p>相關功能已預設為開啟。除非使用者自行更改了安全性設定，否則應該已在使用相關功能。只要點選 工具 > 選項 > 安全，就能找到安全設定介面，讓你自行設定釣魚網站與惡意軟體的防護功能。</p>
+    <p>你可透過 Mozilla 的<a href="https://www.mozilla.org/en-US/firefox/its-a-trap.html">釣魚測試網站</a>與<a href="https://www.mozilla.org/en-US/firefox/its-an-attack.html">惡意軟體測試網站</a>，確認是否啟動了釣魚網站與惡意軟體的防護功能。只要啟動了防護機制，Firefox 就會封鎖這 2 種網站而停止載入網頁。</p>
+  </div>
+</div>
+
+<div class="expander expander-odd">
+  <h4 class="expander-header">我確認我的網站安全無虞，該如何移出危險網站黑名單？</h4>
+  <div class="expander-content">
+    <p>如果你自己的網站遭受過攻擊，而你已將之修復；或你認為自己的網站經他人錯誤回報而登記在案，都可要求將自己的網站移出黑名單。任何一個網站都可能在沒有任何改動的狀況下，遭他人駭為惡意網站。Mozilla 鼓勵網站擁有人徹底檢查相關報告。</p>
+    <ul style='list-style-position:inside'>
+      <li>若想移出登記在案的釣魚網站黑名單，則請使用這份由 <a href="http://www.google.com/safebrowsing/report_error/?tpl=mozilla">Google 提供的表格</a>。</li>
+      <li>若想移出登記在案的惡意軟體黑名單，則請使用這份由 <a href="http://www.stopbadware.org/home/reviewinfo">stopbadware.org 所提供的表格</a>。</li>
+    </ul>
+  </div>
+</div>
+
+
+</article>
+
+
+
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+{{ js('expanders') }}
+{% endblock %}
+
+{% block email_form %}{% endblock %}
