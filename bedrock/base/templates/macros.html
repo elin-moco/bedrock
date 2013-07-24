@@ -13,6 +13,10 @@
                 <li>{{ _('Please enter a valid email address') }}</li>
             {% endif %}
 
+            {% if request.newsletter_form.lang.errors %}
+                <li>{{ request.newsletter_form.lang.errors }}</li>
+            {% endif %}
+
             {% if request.newsletter_form.newsletter.errors %}
                 <li>{{ request.newsletter_form.newsletter.errors }}</li>
             {% endif %}
@@ -24,11 +28,11 @@
       </div>
     {% endif %}
 
-    <form class="billboard{% if request.newsletter_form.errors %} has-errors{% endif %}"
+    <form class="billboard newsletter-form{% if request.newsletter_form.errors %} has-errors{% endif %}"
           {% if footer %}
              id="footer-email-form" action="#footer-email-form"
           {% else %}
-              id="email-form" action=""
+              id="newsletter-form" action=""
           {% endif %}
           method="post">
       {% if footer %}
@@ -37,10 +41,12 @@
       <input type="hidden" name="newsletter" value="{{ newsletter_id }}">
       <input type="hidden" name="source_url" value="{{ request.build_absolute_uri() }}">
 
-      <h3>{{ title|d(_('Get Firefox news'), true) }}</h3>
+      {% if footer %}
+        <h3>{{ title|d(_('Get Firefox news'), true) }}</h3>
+      {% endif %}
 
       <div class="form-contents">
-        <div class="field field-email {% if request.newsletter_form.email.errors %}field-error{% endif %}">
+        <div class="field field-email {% if request.newsletter_form.email.errors %}form-field-error{% endif %}">
           {{ field_with_attrs(request.newsletter_form.email, placeholder=_('YOUR EMAIL HERE'))|safe }}
         </div>
 
@@ -51,14 +57,14 @@
             </div>
           {% endif %}
           {% if include_language %}
-            <div class="field field-language">
+            <div class="field field-language {% if request.newsletter_form.lang.errors %}form-field-error{% endif %}">
               {{ request.newsletter_form.lang|safe }}
             </div>
           {% endif %}
           <div class="field field-format">
             {{ request.newsletter_form.fmt|safe }}
           </div>
-          <div class="field field-privacy {% if request.newsletter_form.privacy.errors %}field-error{% endif %}">
+          <div class="field field-privacy {% if request.newsletter_form.privacy.errors %}form-field-error{% endif %}">
             {{ request.newsletter_form.privacy|safe }}
           </div>
         </div>

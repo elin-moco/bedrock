@@ -16,13 +16,13 @@ import basket
 import commonware.log
 import lib.l10n_utils as l10n_utils
 import requests
+from lib.l10n_utils.dotlang import _lazy
 from commonware.decorators import xframe_allow
 from funfactory.urlresolvers import reverse
-from tower import ugettext_lazy as _lazy
 
 from .forms import (
-    ManageSubscriptionsForm, NewsletterForm
-)
+    ManageSubscriptionsForm, NewsletterForm,
+    NewsletterFooterForm)
 # Cannot use short "from . import utils" because we need to mock
 # utils.get_newsletters in our tests
 from bedrock.newsletter import utils
@@ -30,12 +30,12 @@ from bedrock.newsletter import utils
 
 log = commonware.log.getLogger('b.newsletter')
 
-general_error = _lazy(u'Something is amiss with our system, sorry! Please try '
-                      'again later.')
+LANG_FILES = ['mozorg/contribute']
+general_error = _lazy(u'We are sorry, but there was a problem '
+                      u'with our system. Please try again later!')
 thank_you = _lazy(u'Thank you for updating your email preferences.')
 bad_token = _lazy(u'The supplied link has expired. You will receive a new '
                   u'one in the next newsletter.')
-
 
 UNSUB_UNSUBSCRIBED_ALL = 1
 UNSUB_REASONS_SUBMITTED = 2
@@ -114,7 +114,8 @@ def existing(request, token=None):
                 'subscribed': newsletter in user['newsletters'],
                 'newsletter': newsletter,
                 'description': data['description'],
-                'english_only': len(langs) == 1 and langs[0].startswith('en')
+                'english_only': len(langs) == 1 and langs[0].startswith('en'),
+                'order': data['order'],
             })
 
     # Sort by 'order' field if we were given it; otherwise, by title
@@ -306,3 +307,38 @@ def updated(request):
     return l10n_utils.render(request,
                              'newsletter/updated.html',
                              context)
+
+
+def one_newsletter_signup(request, template_name):
+    success = False
+
+    # not in a footer, but we use the same form
+    form = NewsletterFooterForm(request.locale, request.POST or None)
+
+    if form.is_valid():
+        data = form.cleaned_data
+        request.newsletter_lang = data.get('lang', 'en') or 'en'
+        kwargs = {
+            'format': data['fmt'],
+        }
+        # add optional data
+        kwargs.update(dict((k, data[k]) for k in ['country',
+                                                  'lang',
+                                                  'source_url']
+                           if data[k]))
+        try:
+            basket.subscribe(data['email'], data['newsletter'],
+                             **kwargs)
+        except basket.BasketException:
+            log.exception("Error subscribing %s to newsletter %s" %
+                          (data['email'], data['newsletter']))
+            form.errors['__all__'] = form.error_class([general_error])
+        else:
+            success = True
+
+    request.newsletter_form = form
+    request.newsletter_success = success
+
+    return l10n_utils.render(request,
+                             template_name,
+                             {})

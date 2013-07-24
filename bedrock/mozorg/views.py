@@ -16,6 +16,7 @@ import basket
 from bedrock.mocotw.utils import newsletter_subscribe
 from lib import l10n_utils
 import requests
+from lib import l10n_utils
 from commonware.decorators import xframe_allow
 from funfactory.urlresolvers import reverse
 from lib.l10n_utils.dotlang import _
@@ -23,10 +24,13 @@ from lib.l10n_utils.dotlang import _
 from bedrock.firefox import version_re
 from bedrock.firefox.utils import is_current_or_newer
 from bedrock.mozorg import email_contribute
-from bedrock.mozorg.forms import (ContributeForm, ContributeUniversityAmbassadorForm,
-                                  NewsletterForm, WebToLeadForm)
+from bedrock.mozorg.forms import (ContributeForm,
+                                  ContributeUniversityAmbassadorForm,
+                                  WebToLeadForm)
 from bedrock.mozorg.util import hide_contrib_form
 import jingo
+from bedrock.newsletter.forms import NewsletterFooterForm
+
 
 def csrf_failure(request, reason=''):
     template_vars = {'reason': reason}
@@ -68,7 +72,7 @@ def contribute(request, template, return_to_form):
         form = ContributeForm()
 
     if has_newsletter_form:
-        newsletter_form = NewsletterForm(locale,
+        newsletter_form = NewsletterFooterForm(locale,
                                          request.POST,
                                          prefix='newsletter')
         if newsletter_form.is_valid():
@@ -76,7 +80,7 @@ def contribute(request, template, return_to_form):
 
         newsletter_subscribe(data['email'])
     else:
-        newsletter_form = NewsletterForm(locale, prefix='newsletter')
+        newsletter_form = NewsletterFooterForm(locale, prefix='newsletter')
 
     return l10n_utils.render(request,
                              template,

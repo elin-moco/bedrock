@@ -2,18 +2,23 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from mock import Mock, patch
-from captcha.fields import ReCaptchaField
-
+from django.conf import settings
 from django.core import mail
 from django.test.client import Client
+from django.test.utils import override_settings
 
-from lib import l10n_utils
-from bedrock.mozorg.tests import TestCase
+from captcha.fields import ReCaptchaField
 from funfactory.urlresolvers import reverse
+from jinja2.exceptions import TemplateNotFound
+from mock import Mock, patch
 from nose.tools import assert_false, eq_, ok_
-from nose.plugins.skip import SkipTest
 from pyquery import PyQuery as pq
+
+from bedrock.mozorg.tests import TestCase
+from lib import l10n_utils
+
+
+_ALL = settings.STUB_INSTALLER_ALL
 
 
 class TestViews(TestCase):
@@ -29,6 +34,25 @@ class TestViews(TestCase):
             resp = self.client.get(reverse('mozorg.hacks_newsletter'))
 
         ok_('x-frame-options' not in resp)
+
+    @override_settings(STUB_INSTALLER_LOCALES={'win': _ALL})
+    def test_download_button_funnelcake(self):
+        """The download button should have the funnelcake ID."""
+        with self.activate('en-US'):
+            resp = self.client.get(reverse('mozorg.home'), {'f': '5'})
+            ok_('product=firefox-stub-f5&' in resp.content)
+
+    @override_settings(STUB_INSTALLER_LOCALES={'win': _ALL})
+    def test_download_button_bad_funnelcake(self):
+        """The download button should not have a bad funnelcake ID."""
+        with self.activate('en-US'):
+            resp = self.client.get(reverse('mozorg.home'), {'f': '5dude'})
+            ok_('product=firefox-stub&' in resp.content)
+            ok_('product=firefox-stub-f5dude&' not in resp.content)
+
+            resp = self.client.get(reverse('mozorg.home'), {'f': '999999999'})
+            ok_('product=firefox-stub&' in resp.content)
+            ok_('product=firefox-stub-f999999999&' not in resp.content)
 
 
 class TestUniversityAmbassadors(TestCase):
@@ -145,10 +169,14 @@ class TestContribute(TestCase):
         eq_(m.extra_headers['Reply-To'], ','.join(cc))
 
     @patch.object(ReCaptchaField, 'clean', Mock())
-    def test_no_autoresponse_locale(self):
+    @patch('bedrock.mozorg.email_contribute.jingo.render_to_string')
+    def test_no_autoresponse_locale(self, render_mock):
         """
         L10N version to test contacts for functional area without autoresponses
         """
+        # first value is for send() and 2nd is for autorespond()
+        render_mock.side_effect = ['The Dude minds, man!',
+                                   TemplateNotFound('coding.txt')]
         self.data.update(interest='coding')
         self.client.post(self.url_pt_br, self.data)
         eq_(len(mail.outbox), 1)
@@ -160,17 +188,17 @@ class TestContribute(TestCase):
         eq_(m.extra_headers['Reply-To'], self.contact)
 
     @patch.object(ReCaptchaField, 'clean', Mock())
-    def test_with_autoresponse_locale(self):
+    @patch('bedrock.mozorg.email_contribute.jingo.render_to_string')
+    def test_with_autoresponse_locale(self, render_mock):
         """
         L10N version to test contacts for functional area with autoresponses
         """
-        # UnSkip once pt-BR translation of support.txt is done
-        raise SkipTest
+        render_mock.side_effect = 'The Dude abides.'
         self.data.update(interest='support')
         self.client.post(self.url_pt_br, self.data)
         eq_(len(mail.outbox), 2)
 
-        cc = ['marcelo.araldi@yahoo.com.br']
+        cc = ['envolva-se-mozilla-brasil@googlegroups.com']
         m = mail.outbox[0]
         eq_(m.from_email, 'contribute-form@mozilla.org')
         eq_(m.to, ['contribute@mozilla.org'])

@@ -6,7 +6,7 @@
 
 {% from 'macros.html' import facebook_share_url, twitter_share_url %}
 
-{% block page_title %}Home of the Mozilla Project{% endblock %}
+{% block page_title %}{{_('Home of the Mozilla Project')}}{% endblock %}
 {% block body_id %}home{% endblock %}
 {% block body_class %}sand{% endblock %}
 
@@ -74,15 +74,15 @@
       </a>
     </div>
 
-    <div class="pager-page" id="promo-mozilla15">
+    <div class="pager-page" id="promo-makerparty">
       <script>
-        document.getElementById('promo-mozilla15').id = 'page-promo-mozilla15';
+        document.getElementById('promo-makerparty').id = 'page-promo-makerparty';
       </script>
-      <a href="{{ url('mozorg.contribute')  }}?icn=hpromo2" class="container">
+      <a href="https://webmaker.org/party/?icn=hpromo2" class="container">
         <div class="content">
-          <h3>{{_('Mozilla turns 15!')}}</h3>
-          <h4>{{_('Help us celebrate with a look at who we are and what we’ve accomplished.')}}</h4>
-          <p class="go">{{_('See all 15 facts')}}</p>
+          <h3>{{_('Did you know?')}}</h3>
+          <h4>{{_('From June 15 &ndash; September 15, thousands of Mozillians worldwide are throwing parties to make and share amazing projects.')}}</h4>
+          <p class="go">{{_('Join us')}}</p>
         </div>
       </a>
     </div>
@@ -91,19 +91,19 @@
       <script>
         document.getElementById('promo-flicksvideo').id = 'page-promo-flicksvideo';
       </script>
-      <a href="https://firefoxflicks.mozilla.org/" class="container">
+      <a href="https://firefoxflicks.mozilla.org/video/winners/" class="container">
         <div class="content">
-          <h3>{{_('You’re the director. Mobile is the star.')}}</h3>
-          <h4>{{_('Enter Firefox Flicks, a global video contest about the power of mobile.')}}</h4>
-          <p class="go">{{_('Learn more')}}</p>
+          <h3><i class="hidden">{{_('Firefox Flicks')}}</i> {{_('Early Entry Winners')}}</h3>
+          <h4>{{_('Help us congratulate our second group of Early Entry Winners who will automatically qualify for the Firefox Flicks Grand Prize.')}}</h4>
+          <p class="go">{{_('Watch all of the Early Entry Winners')}}</p>
         </div>
       </a>
-      <img id="promo-flicks-keyframe" src="{{ media('img/home/promo-flicks-allthree-video-thumb.jpg') }}" alt="{{_('Play Video')}}" tabindex="0" role="button" />
+      <img id="promo-flicks-keyframe" src="{{ media('img/home/promo/flicks/birthday-thumb.jpg') }}" alt="{{_('Play Video')}}" tabindex="0" role="button" />
       <div id="promo-flicks-overlay" class="video-overlay">
         <a class="video-visit" href="https://firefoxflicks.mozilla.org/">{{_('Visit FirefoxFlicks.org')}}</a>
         <ul class="share-links">
           <li><a href="{{ facebook_share_url('https://firefoxflicks.org') }}" class="share-facebook">{{_('Share on Facebook')}}</a></li>
-          <li><a href="{{ twitter_share_url('https://firefoxflicks.org', _('I just watched this great video about the new #FirefoxFlicks contest. See for yourself and enter to win!')) }}" class="share-twitter">{{_('Tweet')}}</a></li>
+          <li><a href="{{ twitter_share_url('https://firefoxflicks.org', _('I just watched this great video about #FirefoxOS and the #FirefoxFlicks contest. See for yourself and enter to win!')) }}" class="share-twitter">{{_('Tweet')}}</a></li>
         </ul>
         <span tabindex="0" role="button" class="video-replay">{{_('Replay')}}</span>
         <span tabindex="0" role="button" class="video-continue">{{_('Continue')}}</span>
@@ -142,13 +142,13 @@
     <h3>{{ _('In the news') }}</h3>
     <ul>
       <li>
+        <h4><a href="https://blog.mozilla.org/blog/2013/07/11/deutsche-telekom-announces-european-launch-of-firefox-os-devices/">{{ _('Deutsche Telekom Announces European Launch of Firefox OS Devices') }}</a></h4>
+      </li>
+      <li>
         <h4><a href="https://blog.mozilla.org/blog/2013/07/01/mozilla-and-partners-prepare-to-launch-first-firefox-os-smartphones">{{ _('Mozilla and partners prepare to launch first Firefox OS smartsphones') }}</a></h4>
       </li>
       <li>
         <h4><a href="https://blog.mozilla.org/blog/2013/06/11/stopwatching-us-mozilla-launches-massive-campaign-on-digital-surveillance/">{{ _('Mozilla takes a stand with StopWatching.Us campaign') }}</a></h4>
-      </li>
-      <li>
-        <h4><a href="https://blog.mozilla.org/blog/2013/05/14/stay-social-with-firefox/">{{ _('Stay social with Firefox') }}</a></h4>
       </li>
     </ul>
     <a href="https://blog.mozilla.org/" id="all-news">{{ _('See all news »') }}</a>

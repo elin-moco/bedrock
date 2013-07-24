@@ -14,7 +14,6 @@ from django.views.decorators.vary import vary_on_headers
 
 import basket
 from lib import l10n_utils
-import requests
 from jingo_minify.helpers import BUILD_ID_JS, BUNDLE_HASHES
 from funfactory.urlresolvers import reverse
 
@@ -30,20 +29,20 @@ from lib.l10n_utils.dotlang import _
 UA_REGEXP = re.compile(r"Firefox/(%s)" % version_re)
 
 LOCALE_OS_URLS = {
-    'en-US': 'http://blog.mozilla.org/press/2013/02/firefox-os-expansion',
-    'de': 'http://blog.mozilla.org/press-de/?p=760',
-    'it': 'http://blog.mozilla.org/press-it/?p=353',
-    'pl': 'http://blog.mozilla.org/press-pl/?p=407',
-    'fr': 'http://blog.mozilla.org/press-fr/?p=366',
-    'es-ES': 'http://blog.mozilla.org/press-es/?p=340',
-    'en-GB': 'http://blog.mozilla.org/press-uk/?p=471'
+    'en-US': 'https://blog.mozilla.org/press/2013/02/firefox-os-expansion',
+    'de': 'https://blog.mozilla.org/press-de/?p=760',
+    'it': 'https://blog.mozilla.org/press-it/?p=353',
+    'pl': 'https://blog.mozilla.org/press-pl/?p=407',
+    'fr': 'https://blog.mozilla.org/press-fr/?p=366',
+    'es-ES': 'https://blog.mozilla.org/press-es/?p=340',
+    'en-GB': 'https://blog.mozilla.org/press-uk/?p=471'
 }
 
 LOCALE_OS_RELEASE_URLS = {
     'de': 'https://blog.mozilla.org/press-de/2013/07/01/mozilla-und-partner-machen-sich-bereit-fur-den-ersten-firefox-os-launch/',
     'en-GB': 'https://blog.mozilla.org/press-uk/2013/07/01/mozilla-and-partners-prepare-to-launch-first-firefox-os-smartphones/',
     'en-US': 'https://blog.mozilla.org/blog/2013/07/01/mozilla-and-partners-prepare-to-launch-first-firefox-os-smartphones',
-    'es-ES': 'http://blog.mozilla.org/press-es/?p=482',
+    'es-ES': 'https://blog.mozilla.org/press-es/?p=482',
     'fr': 'https://blog.mozilla.org/press-fr/2013/07/01/mozilla-et-ses-partenaires-preparent-le-lancement-des-premiers-smartphones-sous-firefox-os/',
     'it': 'https://blog.mozilla.org/press-it/2013/07/01/mozilla-e-i-suoi-partner-si-preparano-al-lancio-dei-primi-smartphone-con-firefox-os/',
     'pl': 'https://blog.mozilla.org/press-pl/2013/07/01/mozilla-wraz-z-partnerami-przygotowuje-sie-do-wprowadzenia-na-rynek-pierwszych-smartfonow-z-firefox-os/',
@@ -146,12 +145,37 @@ def dnt(request):
 
 
 @vary_on_headers('User-Agent')
+def firefox_redirect(request):
+    """
+    Redirect visitors based on their user-agent.
+
+    - Up-to-date Firefox users go to firefox/fx/.
+    - Other Firefox users go to the firefox/new/.
+    - Non Firefox users go to the new page.
+    """
+    user_agent = request.META.get('HTTP_USER_AGENT', '')
+    if not 'Firefox' in user_agent:
+        # TODO : Where to redirect bug 757206
+        return HttpResponsePermanentRedirect(reverse('firefox.new'))
+
+    user_version = '0'
+    match = UA_REGEXP.search(user_agent)
+    if match:
+        user_version = match.group(1)
+
+    if not is_current_or_newer(user_version):
+        return HttpResponsePermanentRedirect(reverse('firefox.new'))
+
+    return HttpResponseRedirect(reverse('firefox.fx'))
+
+
+@vary_on_headers('User-Agent')
 def latest_fx_redirect(request, fake_version, template_name):
     """
     Redirect visitors based on their user-agent.
 
     - Up-to-date Firefox users see the whatsnew page.
-    - Other Firefox users go to the update page.
+    - Other Firefox users go to the new page.
     - Non Firefox users go to the new page.
     """
     user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -160,13 +184,13 @@ def latest_fx_redirect(request, fake_version, template_name):
         # TODO : Where to redirect bug 757206
         return HttpResponsePermanentRedirect(url)
 
-    user_version = "0"
+    user_version = '0'
     match = UA_REGEXP.search(user_agent)
     if match:
         user_version = match.group(1)
 
     if not is_current_or_newer(user_version):
-        url = reverse('firefox.update')
+        url = reverse('firefox.new')
         return HttpResponsePermanentRedirect(url)
 
     locales_with_video = {
@@ -219,7 +243,7 @@ def firefox_partners(request):
     return l10n_utils.render(request, 'firefox/partners/index.html', template_vars)
 
 
-def firstrun_new(request, view, version):
+def firstrun_new(request, view):
     # only Firefox users should see the firstrun pages
     user_agent = request.META.get('HTTP_USER_AGENT', '')
     if not 'Firefox' in user_agent:
@@ -238,20 +262,6 @@ def firstrun_new(request, view, version):
         url = reverse('firefox.update')
         return HttpResponsePermanentRedirect(url)
 
-    # b only has 1-5 version
-    if (view == 'b' and (int(version) < 1 or int(version) > 5)):
-        version = '1'
-
-    if (view == 'a'):
-        copy = 'a' if (version in '123') else 'b'
-    else:
-        copy = 'a' if (version in '12') else 'b'
-
-    template_vars = {
-        'version': version,
-        'copy': copy,
-    }
-
     template = view + '.html'
 
-    return l10n_utils.render(request, 'firefox/firstrun/' + template, template_vars)
+    return l10n_utils.render(request, 'firefox/firstrun/' + template)

@@ -10,7 +10,8 @@ from django.utils.safestring import mark_safe
 
 from bedrock.mozorg.forms import (
     FORMATS, LANGS, EmailInput, PrivacyWidget,
-    SideRadios, get_lang_choices)
+    SideRadios, get_lang_choices
+)
 from product_details import product_details
 from tower import ugettext as _
 
@@ -156,7 +157,10 @@ class ManageSubscriptionsForm(forms.Form):
 
 
 class NewsletterForm(forms.Form):
-    """Form to let a user subscribe to or unsubscribe from a newsletter"""
+    """
+    Form to let a user subscribe to or unsubscribe from a newsletter
+    on the manage existing newsletters page.  Used in a FormSet.
+    """
     title = forms.CharField(required=False)
     description = forms.CharField(required=False)
     subscribed = forms.BooleanField(
@@ -164,13 +168,16 @@ class NewsletterForm(forms.Form):
         required=False,  # they have to answer, but answer can be False
     )
     newsletter = forms.CharField(widget=forms.HiddenInput)
-    # another hidden one, just so the template can get the data
-    english_only = forms.BooleanField(required=False)
 
 
 class NewsletterFooterForm(forms.Form):
+    """
+    Form used to subscribe to a single newsletter, typically in the
+    footer of a page (see newsletters/middleware.py) but sometimes
+    on a dedicated page.
+    """
     newsletter = forms.CharField(widget=forms.HiddenInput)
-    email = forms.EmailField(widget=EmailInput(attrs={'required': 'true'}))
+    email = forms.EmailField(widget=EmailInput(attrs={'required': 'required'}))
     fmt = forms.ChoiceField(widget=forms.RadioSelect(renderer=SideRadios),
                             choices=FORMATS,
                             initial='H')
@@ -186,15 +193,27 @@ class NewsletterFooterForm(forms.Form):
         lang = country = locale.lower()
         if '-' in lang:
             lang, country = lang.split('-', 1)
-        lang = lang if lang in LANGS else 'en'
+        lang_choices = self.LANG_CHOICES[:]
+        if lang not in LANGS:
+            # The lang from their locale is not one that our newsletters
+            # are translated into. Initialize the language field to no
+            # choice, to force the user to pick one of the languages that
+            # we do support.
+            lang = ''
+            lang_choices.insert(0, (lang, lang))
 
         super(NewsletterFooterForm, self).__init__(*args, **kwargs)
         self.fields['country'] = forms.ChoiceField(choices=regions,
                                                    initial=country,
                                                    required=False)
-        self.fields['lang'] = forms.ChoiceField(choices=self.LANG_CHOICES,
-                                                initial=lang,
-                                                required=False)
+        # TypedChoiceField knows that '' is an empty choice, and with
+        # required=True, will not accept '' as valid input.
+        select_widget = widgets.Select(attrs={'required': 'required'})
+        self.fields['lang'] = forms.TypedChoiceField(widget=select_widget,
+                                                     choices=lang_choices,
+                                                     initial=lang,
+                                                     required=True,
+                                                     empty_value='')
 
     def clean_newsletter(self):
         # We didn't want to have to look up the list of valid newsletters
