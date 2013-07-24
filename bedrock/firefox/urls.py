@@ -25,7 +25,7 @@ whatsnew_re = latest_re % (version_re, 'whatsnew')
 
 
 urlpatterns = patterns('',
-    url(r'^firefox/$', views.firefox_redirect, name='firefox'),
+    # url(r'^firefox/$', views.firefox_redirect, name='firefox'),
     url(r'^firefox/all/$', views.all_downloads, name='firefox.all'),
     page('firefox/central', 'firefox/central.html'),
     page('firefox/channel', 'firefox/channel.html'),
@@ -75,7 +75,7 @@ urlpatterns = patterns('',
         name='firefox.partners.index'),
 
     # This dummy page definition makes it possible to link to /firefox/ (Bug 878068)
-    url('^firefox/$', views.fx_home_redirect, name='firefox'),
+    # url('^firefox/$', views.fx_home_redirect, name='firefox'),
 
     page('firefox/os', 'firefox/os/index.html'),
 

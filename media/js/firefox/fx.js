@@ -7,8 +7,8 @@
 
     // If Firefox is the latest version and not mobile,
     // hide the out-of-date messaging and show up-to-date
-    if (isFirefox() && !isMobile() && isFirefoxUpToDate()) {
-        $('#out-of-date').hide();
-        $('#up-to-date').show();
-    }
+//    if (isFirefox() && !isMobile() && isFirefoxUpToDate()) {
+//        $('#out-of-date').hide();
+//        $('#up-to-date').show();
+//    }
 });
