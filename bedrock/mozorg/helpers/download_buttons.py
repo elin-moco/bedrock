@@ -25,6 +25,7 @@ from bedrock.mocotw.utils import latest_aurora_version, latest_nightly_version, 
 
 download_urls = {
     'transition': '/{locale}/products/download.html',
+    'mocotw': 'https://mozilla.com.tw/firefox/download/',
     'direct': 'https://download.mozilla.org/',
     'aurora': 'https://ftp.mozilla.org/pub/mozilla.org/firefox/'
               'nightly/latest-mozilla-aurora',
@@ -105,40 +106,49 @@ def make_download_link(product, build, version, platform, locale,
     elif build == 'aurora':
         return make_aurora_link(product, version, platform, locale,
                                 force_full_installer=force_full_installer)
+    elif build== 'beta':
+        # The downloaders expect the platform in a certain format
+        platform = {
+            'os_windows': 'win',
+            'os_linux': 'linux',
+            'os_osx': 'osx'
+        }[platform]
 
-    # The downloaders expect the platform in a certain format
-    platform = {
-        'os_windows': 'win',
-        'os_linux': 'linux',
-        'os_osx': 'osx'
-    }[platform]
+        # stub installer exceptions
+        # TODO: NUKE FROM ORBIT!
+        stub_langs = settings.STUB_INSTALLER_LOCALES.get(platform, [])
+        if stub_langs and (stub_langs == settings.STUB_INSTALLER_ALL or
+                           locale.lower() in stub_langs):
+            suffix = 'stub'
+            if force_funnelcake or force_full_installer:
+                suffix = 'latest'
 
-    # stub installer exceptions
-    # TODO: NUKE FROM ORBIT!
-    stub_langs = settings.STUB_INSTALLER_LOCALES.get(platform, [])
-    if stub_langs and (stub_langs == settings.STUB_INSTALLER_ALL or
-                       locale.lower() in stub_langs):
-        suffix = 'stub'
-        if force_funnelcake or force_full_installer:
-            suffix = 'latest'
+            version = ('beta-' if build == 'beta' else '') + suffix
 
-        version = ('beta-' if build == 'beta' else '') + suffix
+        # append funnelcake id to version if we have one
+        if funnelcake_id:
+            version = '{vers}-f{fc}'.format(vers=version, fc=funnelcake_id)
 
-    # append funnelcake id to version if we have one
-    if funnelcake_id:
-        version = '{vers}-f{fc}'.format(vers=version, fc=funnelcake_id)
+        # Figure out the base url. certain locales have a transitional
+        # thankyou-style page (most do)
+        src = 'direct'
+        if locale in settings.LOCALES_WITH_TRANSITION and not force_direct:
+            src = 'transition'
 
-    # Figure out the base url. certain locales have a transitional
-    # thankyou-style page (most do)
-    src = 'direct'
-    if locale in settings.LOCALES_WITH_TRANSITION and not force_direct:
-        src = 'transition'
+        tmpl = '?'.join([download_urls[src], 'product={prod}-{vers}&os={plat}'
+                                             '&lang={locale}'])
 
-    tmpl = '?'.join([download_urls[src], 'product={prod}-{vers}&os={plat}'
-                                         '&lang={locale}'])
-
-    return tmpl.format(prod=product, vers=version,
-                       plat=platform, locale=locale)
+        return tmpl.format(prod=product, vers=version,
+                           plat=platform, locale=locale)
+    else:
+        # The downloaders expect the platform in a certain format
+        platform = {
+            'os_windows': 'win',
+            'os_linux': 'linux',
+            'os_osx': 'osx'
+        }[platform]
+        tmpl = '?'.join([download_urls['mocotw'], 'os={plat}'])
+        return tmpl.format(plat=platform, locale=locale)
 
 
 @jingo.register.function
