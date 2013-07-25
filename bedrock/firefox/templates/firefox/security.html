@@ -6,9 +6,20 @@
 
 {% block page_title %}安全瀏覽 Web{% endblock %}
 {% block body_id %}firefox-security{% endblock %}
+{% block description %}Firefox 時時保護 個人隱私安全。在瀏覽網路時，你所留下的資料或多或少都內含個人資訊。Mozilla 認為這些資訊只屬於你個人所有 (某些使用誇張手法的廣告商更不該擁有)，因此 Firefox 內建多項功能以確保個人資訊安全，例如：不要追蹤我。{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_security') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}">Firefox 桌面版</a>
+    <b>»</b>
+    <span>安全瀏覽 Web</span>
+  </nav>
 {% endblock %}
 
 {% block content %}

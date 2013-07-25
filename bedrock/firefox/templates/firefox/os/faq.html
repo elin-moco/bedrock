@@ -4,12 +4,23 @@
 
 {% extends "/firefox/base-resp.html" %}
 
-{% block page_title %}Firefox OS 常見問答集{% endblock %}
+{% block page_title_prefix %}Firefox OS － {% endblock %}
+{% block page_title %}常見問答集{% endblock %}
 {% block body_id %}firefox-os-faq{% endblock %}
-{% block description %}Firefox OS  是由 HTML5, CSS, JavaScript 等網路技術所打造，搭配 WebAPI 網路標準，將行動網路的潛力完全釋放，打破現有封閉的行動平台架構，提供無縫的 Web Apps 體驗。Firefox OS 可依不同使用情境自訂需求，除了透過 Marketplace 提供全球知名的 Apps 應用程式之外，也提供最貼近使用者生活的在地化程式與服務內容。{% endblock %}
+{% block description %}什麼是 Firefox OS？受到業界多家知名公司的支持，Mozilla 開發出全新的 Firefox OS 智慧型手機作業系統。Firefox OS 是以 HTML5 與其他 Open Web 標準所打造，可跳脫現有專利平台的限制。Firefox OS 與其他作業系統不同之處？Firefox OS 是唯一具備自訂性 App 搜尋功能 (Adaptive App Search) 的作業系統。相較於其他手機只提供相同 Apps 的靜態搜尋功能，Firefox OS 卻能針對你的需求而提供最切實的搜尋結果，進而滿足你生活的每一刻。{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_faq') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="/firefox/os/">Firefox OS</a>
+    <b>»</b>
+    <span>{{_('FAQ')}}</span>
+  </nav>
 {% endblock %}
 
 {% block content %}

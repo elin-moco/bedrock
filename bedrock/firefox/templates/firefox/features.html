@@ -4,8 +4,9 @@
 
 {% extends "/firefox/base.html" %}
 
-{% block page_title %}Firefox 功能特色{% endblock %}
+{% block page_title %}功能特色介紹{% endblock %}
 {% block body_id %}firefox-features{% endblock %}
+{% block description %}Firefox 功能介紹，瀏覽變得簡單、超高效能、安全第一及豐富個人化等功能。{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_features') }}
@@ -13,6 +14,16 @@
 
 {% block js %}
   {{ js('firefox_features') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}">Firefox 桌面版</a>
+    <b>»</b>
+    <span>功能特色介紹</span>
+  </nav>
 {% endblock %}
 
 {% block content %}

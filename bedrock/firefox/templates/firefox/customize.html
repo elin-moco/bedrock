@@ -6,6 +6,7 @@
 
 {% block page_title %}客製自己的瀏覽器{% endblock %}
 {% block body_id %}firefox-customize{% endblock %}
+{% block description %}Firefox 可讓你盡情客製自己喜歡的介面！為你的 Firefox 新添風格、佈景主題自由客製、附加元件作業順暢、外掛程式改造自己的介面保持同步{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_customize') }}
@@ -13,6 +14,16 @@
 
 {% block js %}
   {{ js('firefox_customize') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}">Firefox 桌面版</a>
+    <b>»</b>
+    <span>客製自己的瀏覽器</span>
+  </nav>
 {% endblock %}
 
 {% block content %}
