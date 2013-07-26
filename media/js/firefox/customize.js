@@ -44,7 +44,7 @@ if (typeof Mozilla == 'undefined') {
 
 Mozilla.hasPersonas = (function() {
 	var hasPersonas = false;
-
+    /*
 	var matches = navigator.userAgent.match(
 		/Gecko\/[0-9]+ .*(Firefox|Namoroka|Minefield)\/([0-9]+\.[0-9]+)/
 	);
@@ -52,7 +52,7 @@ Mozilla.hasPersonas = (function() {
 	if (matches !== null) {
 		hasPersonas = (parseFloat(matches[2]) >= 3.6);
 	}
-
+    */
 	return hasPersonas;
 })();
 
