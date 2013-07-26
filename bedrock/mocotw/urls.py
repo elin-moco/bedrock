@@ -9,8 +9,10 @@ from bedrock.redirects.util import redirect
 
 urlpatterns = patterns(
     '',
-    redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
+    page('firefox/mobile/sync', 'firefox/mobile/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
+    redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
+    redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html',
                 'return_to_form': False}),

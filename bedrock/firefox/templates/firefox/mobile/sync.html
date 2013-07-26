@@ -1,0 +1,102 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "/firefox/base-resp.html" %}
+
+{% block page_title %}讓自己的 Firefox  隨時保持同步{% endblock %}
+{% block body_id %}dnt{% endblock %}
+{% block description %}我們將使用者放在第一位，並且深信每個人都應該可以自行控制 Web 的瀏覽體驗。針對你在上網時被第三方網站所蒐集、使用、儲存、分享的個人資訊，Mozilla 認為你有權利了解相關方式並能自己決定是否要被追蹤。我們提供不要追蹤我 (Do Not Track，簡稱 DNT) 功能，讓你透過瀏覽器告訴網站你不希望自己的瀏覽行為被追蹤。只要啟動此功能，Firefox 就會告知廣告性質的網站與應用程式，你拒絕受到如行為廣告等機制的追蹤。{% endblock %}
+
+{% block site_css %}
+  {{ css('dnt') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}#mobile">Firefox 行動版</a>
+    <b>»</b>
+    <span>保持同步</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<div id="main-feature" class="large">
+  {{ download_firefox(mobile=True, small=True) }}
+  <h1>讓自己的 Firefox  <br>隨時保持同步</h1>
+</div>
+
+<div id="main-content">
+
+<article class="main-column">
+
+  <p>
+    完美同步你的 Firefox 瀏覽器，不論何款裝置都能存取自己的資料。
+  </p>
+
+  <p><a href="https://support.mozilla.org/sync">進一步了解 Firefox Sync</a></p>
+  <p>對 Firefox Sync 同步功能有疑問？到<a href="https://support.mozilla.org/questions/new?product=sync">我們的討論區</a>提出意見。</p>
+
+  <h3>只要完成下列<span>簡單步驟：</span></h3>
+
+  <ol>
+    <li>
+          <p>點選 Firefox 的「工具」，找到「選項」中的「同步」分頁。<br>
+          <span class="advice">(Not sure where your <a href="https://support.mozilla.org/kb/Options%20window">preference pane</a> is?)</span></p>
+    </li>
+    <li>
+          <p>點選「設定 Firefox Sync」，接著「建立新帳號」。</p>
+    </li>
+    <li>
+          <p>輸入自己的電子郵件地址，設定密碼並再次輸入以確認該密碼。接著勾選「我同意服務條款與隱私權保護政策」。</p>
+    </li>
+    <li>
+          <p>輸入圖片顯示的文字，讓 Firefox 確認你不是機器人。點選「下一步」。</p>
+    </li>
+    <li>
+          <p>點選「完成」即可關閉設定視窗，接著回到 Sync 視窗。</p>
+    </li>
+    <li>
+          <p>這樣就完成了！Firefox Sync 現在會自動在背景同步你的資料。</p>
+    </li>
+  </ol>
+
+  <p>需要更多<a href="https://support.mozilla.org/kb/how-do-i-set-up-firefox-sync">詳細說明</a>？</p>
+
+</article>
+
+<div class="sidebar">
+
+  <div class="sidebar-inset">
+
+
+    <h3>保障<span>安全</span></h3>
+    <p class="intro">Firefox Sync 可於背景中執行，以保障你的安全。</p>
+
+    <h4>只有你看得到：</h4>
+    <p>隨時保護你的資料。只有你能取得自己的密碼與瀏覽記錄等資訊。</p>
+
+    <h4>安全為上：</h4>
+    <p>Firefox Sync 是唯一具備點對點加密 (End-to-end encryption) 的服務。透過 Sync 的高階安全機制，你可避免有心人士的線上攻擊，或讓公司販售你的資訊。</p>
+
+    <h4>自由行動：</h4>
+    <p>讓你所有的裝置都能共用個人資訊，並兼顧絕佳的隱私與安全性。</p>
+
+
+  </div>
+
+</div>
+
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+{{ js('expanders') }}
+{% endblock %}
+
+{% block email_form %}{% endblock %}
