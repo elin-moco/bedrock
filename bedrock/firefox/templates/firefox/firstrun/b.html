@@ -11,7 +11,7 @@
 {% block site_header_logo %}{% endblock %}
 
 {% block extrahead %}
- <link rel="canonical" href="https://www.mozilla.org/en-US/firefox/22.0/firstrun/" />
+ <link rel="canonical" href="https://mozilla.com.tw/firefox/22.0/firstrun/" />
 {% endblock %}
 
 {% block string_data %}
@@ -38,16 +38,20 @@
 
       <p>{{ _('We’re always looking for ways to make your browsing easier and more efficient.') }}</p>
 
-      <a class="featurelink" href="{{ url('firefox.central') }}">{{ _('Learn about how we make browsing better for you') }}</a>
+      <a class="featurelink" href="{{ url('firefox.features') }}">{{ _('Learn about how we make browsing better for you') }}</a>
 
       <ul class="social">
         <li>
           <img src="{{ media('img/firefox/firstrun/facebook.png') }}">
-          <a class="facebook" href="https://www.facebook.com/Firefox">{{ _('Like us on Facebook') }}</a>
+          <a class="facebook" href="https://www.facebook.com/MozillaTaiwan">{{ _('Like us on Facebook') }}</a>
         </li>
         <li>
-          <img src="{{ media('img/firefox/firstrun/twitter.png') }}">
-          <a class="twitter" href="https://twitter.com/firefox">{{ _('Follow us on Twitter') }}</a>
+          <img src="{{ media('img/firefox/firstrun/gplus-32.png') }}">
+          <a class="twitter" href="https://plus.google.com/114653167240123163859">{{ _('Follow us on Google+') }}</a>
+        </li>
+        <li>
+          <img src="{{ media('img/firefox/firstrun/logo.png') }}">
+          <a class="blog" href="http://blog.mozilla.com.tw">{{ _('Read our blog') }}</a>
         </li>
       </ul>
     </div>
@@ -115,7 +119,7 @@
   </div>
 
   <aside class="form">
-    {{ email_newsletter_form(title='Get Firefox Updates') }}
+    {{ email_newsletter_form(title=_('Get Firefox Updates'), include_country=False, include_language=False) }}
   </aside>
 </main>
 

@@ -90,19 +90,7 @@
 {% block site_footer %}
 <section id="colophon" class="billboard">
   <nav>
-    <ul class="primary">
-      <li><a href="/firefox/">桌面</a></li>
-      <li><a href="/firefox/mobile/">行動裝置</a></li>
-      <li><a href="https://addons.mozilla.org/">附加元件</a></li>
-      <li><a href="/firefox/faq/" title="Frequently Asked Questions">常見問答集</a></li>
-      <li><a href="http://support.mozilla.org/">支援</a></li>
-      <li><a href="/about/">關於</a></li>
-    </ul>
-    <ul class="secondary">
-        <li><a href="http://www.mozilla.com/zh-TW/privacy-policy.html" title="Privacy Policy">隱私權保護政策</a></li>
-        <li><a href="/firefox/ueip/" title="User Experience Improvement Program">使用者經驗改善計畫</a></li>
-        <li><a href="http://www.mozilla.com/about/legal.html" title="legal">法律聲明</a></li>
-    </ul>
+    {% include 'firefox/includes/simple_footer_items.html' %}
   </nav>
 </section>
 {% endblock %}
