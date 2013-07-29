@@ -266,6 +266,9 @@ MINIFY_BUNDLES = {
         'firefox_releasenotes': (
             'css/firefox/releasenotes.less',
         ),
+        'firefox_download': (
+            'css/firefox/download.less',
+        ),
         'installer_help': (
             'css/firefox/template-resp.less',
             'css/firefox/installer-help.less',
@@ -514,6 +517,9 @@ MINIFY_BUNDLES = {
         'firefox_sms': (
             'js/firefox/sms.js',
             'js/libs/socialshare.min.js',
+        ),
+        'firefox_download': (
+            'js/firefox/download.js',
         ),
         'geolocation': (
             'js/libs/jquery.nyroModal.pack.js',

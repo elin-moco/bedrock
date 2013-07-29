@@ -1,0 +1,108 @@
+{% extends "/firefox/base-resp.html" %}
+
+{% add_lang_files "mobile" %}
+
+{% block page_title %}Mozilla Firefox 免費下載{% endblock %}
+{% block page_title_suffix %}{% endblock %}
+{% block body_id %}firefox-download{% endblock %}
+{% block description %}最快速、最流暢的個性化瀏覽器 Firefox 桌面版，官方中文版免費下載與功能介紹，適用於 Windows、Mac 和 Linux{% endblock %}
+{% block site_header_logo %}
+<h2><a href="{{ url('mozorg.home') }}"><img src="{{ media('img/firefox/template/header-logo-inverse.png') }}" alt="Mozilla Firefox" width="130" height="49"></a></h2>
+{% endblock %}
+
+{% block site_css %}
+  {{ css('firefox_download') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('firefox_download') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs-inversed">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}">Firefox 桌面版</a>
+    <b>»</b>
+    <span>Firefox 下載</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+{% if request.locale.startswith('en') %}
+  {% set mobile_link = url('firefox.fx') + '#mobile' %}
+{% else %}
+  {% set mobile_link = '/firefox/mobile/features/' %}
+{% endif %}
+
+<div id="main-feature">
+  <h1>Firefox 瀏覽器<br /><strong>永遠將您放在第一位</strong><br /></h1>
+</div>
+
+<article id="main-content" class="billboard">
+    <p>感謝您下載Firefox!<br>作為一個非營利組織，Mozilla勇於創新不妥協。<br>立即體驗，您將會愛上我們的與眾不同。</p>
+    <div id="default-steps" class="download">
+      <p>下載程序應該已經啟動。如果你還沒看到下載視窗，請<a id="default-download" href="http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe" title="firefox download">按此</a>。下載過程可能會花費數分鐘，請耐心等候。</p>
+    </div>
+    <div id="mac-steps" class="download">
+      <ol class="install-steps">
+        <li class="one"><p>下載程序應該已經啟動。如果你還沒看到下載視窗，請<a id="mac-download" href="http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.dmg" title="firefox download">按此</a>。下載過程可能會花費數分鐘，請耐心等候。</p></li>
+        <li class="two"><p>提示畫面出現時，請將 Firefox 的圖示拖曳至應用程式資料夾中。</p></li>
+        <li class="three"><p>將Firefox圖示從應用程式資料夾中拖曳至 Mac dock。想開啓網路時，只需點選Firefox 即可上網。</p></li>
+      </ol>
+    </div>
+    <p>下載時，建議您不妨參考 <a href="/firefox/features/">Firefox 介紹</a>，了解更多最新功能，<br>
+      或於安裝前，先閱讀 <a href="/firefox/faq/">常見問答集</a>，以提早解決疑難雜症。
+    <div class="download-separator"></div>
+
+    {{ download_firefox(install=request.GET['install'], direct_download=True) }}
+
+    <div class="all_versions">
+      <ul>
+        <li>Windows</li>
+        <li class="win-express"><a href="?os=win&amp;install=express">Windows 網路安裝</a></li>
+        <li class="win-full"><a href="?os=win&amp;install=full">Windows 完整安裝</a></li>
+      </ul>
+      <ul>
+        <li>Mac</li>
+        <li class="osx"><a href="?os=osx">Mac OSX</a></li>
+      </ul>
+      <ul>
+        <li>Linux</li>
+        <li class="linux-32bit"><a href="?os=linux&amp;install=32bit">Linux 32bit</a></li>
+        <li class="linux-64bit"><a href="?os=linux&amp;install=64bit">Linux 64bit</a></li>
+      </ul>
+    </div>
+    <div class="other_langs">
+      <a href="http://www.mozilla.org/en-US/firefox/all/">其它語言版本 Other Language Versions</a>
+    </div>
+
+</article>
+{% endblock %}
+
+{% block email_form %}
+  <div id="email-form-wrapper" class="billboard">
+    {{ super() }}
+  </div>
+{% endblock%}
+
+
+{% block site_footer %}
+<section id="colophon" class="billboard">
+  <nav>
+    <ul class="primary">
+      <li><a href="/firefox/">桌面</a></li>
+      <li><a href="/firefox/mobile/">行動裝置</a></li>
+      <li><a href="https://addons.mozilla.org/">附加元件</a></li>
+      <li><a href="/firefox/faq/" title="Frequently Asked Questions">常見問答集</a></li>
+      <li><a href="http://support.mozilla.org/">支援</a></li>
+      <li><a href="/about/">關於</a></li>
+    </ul>
+    <ul class="secondary">
+        <li><a href="http://www.mozilla.com/zh-TW/privacy-policy.html" title="Privacy Policy">隱私權保護政策</a></li>
+        <li><a href="/firefox/ueip/" title="User Experience Improvement Program">使用者經驗改善計畫</a></li>
+        <li><a href="http://www.mozilla.com/about/legal.html" title="legal">法律聲明</a></li>
+    </ul>
+  </nav>
+</section>
+{% endblock %}

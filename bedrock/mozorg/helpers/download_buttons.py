@@ -37,6 +37,16 @@ download_urls = {
                      product_details.mobile_details['alpha_version'],
 }
 
+direct_download_urls = {
+    'win': 'http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe',
+    'win_express': 'http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe',
+    'win_full': 'http://download.myfirefox.com.tw/releases/full/zh-TW/Firefox-full-latest.exe',
+    'osx': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.dmg',
+    'linux': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.tar.bz2',
+    'linux_32bit': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.tar.bz2',
+    'linux_64bit': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest-x86_64.tar.bz2',
+}
+
 
 def _latest_pre_version(locale, version):
     builds = product_details.firefox_primary_builds
@@ -99,7 +109,7 @@ def make_aurora_link(product, version, platform, locale,
 
 def make_download_link(product, build, version, platform, locale,
                        force_direct=False, force_full_installer=False,
-                       force_funnelcake=False, funnelcake_id=None):
+                       force_funnelcake=False, funnelcake_id=None, install=None, direct_download=False):
     # Aurora has a special download link format
     if build == 'nightly':
         return make_nightly_link(product, version, platform, locale)
@@ -147,16 +157,26 @@ def make_download_link(product, build, version, platform, locale,
             'os_linux': 'linux',
             'os_osx': 'osx'
         }[platform]
-        tmpl = '?'.join([download_urls['mocotw'], 'os={plat}'])
-        return tmpl.format(plat=platform, locale=locale)
+        if direct_download:
+            platform_install = platform + ('' if install is None or 0 == len(install) else '_' + install)
+            if platform_install in direct_download_urls:
+                return direct_download_urls[platform_install]
+            else:
+                return direct_download_urls[platform]
+        else:
+            if install is None or 0 == len(install):
+                tmpl = '?'.join([download_urls['mocotw'], 'os={plat}'])
+            else:
+                tmpl = '?'.join([download_urls['mocotw'], 'os={plat}&install={install}'])
 
+            return tmpl.format(plat=platform, locale=locale, install=install)
 
 @jingo.register.function
 @jinja2.contextfunction
 def download_firefox(ctx, build='release', small=False, icon=True,
                      mobile=None, dom_id=None, locale=None,
                      force_direct=False, force_full_installer=False,
-                     force_funnelcake=False):
+                     force_funnelcake=False, install=None, direct_download=False):
     """ Output a "download firefox" button.
 
     :param ctx: context from calling template.
@@ -207,9 +227,9 @@ def download_firefox(ctx, build='release', small=False, icon=True,
             # Normalize the platform os name
             plat_os = 'os_%s' % plat_os.lower().replace(' ', '')
             plat_os_pretty = {
-                'os_osx': 'Mac OS X',
-                'os_windows': 'Windows',
-                'os_linux': 'Linux'
+                'os_osx': 'for Mac OS X',
+                'os_windows': 'for Windows',
+                'os_linux': 'for Linux'
             }[plat_os]
 
             # And generate all the info
@@ -219,6 +239,8 @@ def download_firefox(ctx, build='release', small=False, icon=True,
                 force_full_installer=force_full_installer,
                 force_funnelcake=force_funnelcake,
                 funnelcake_id=funnelcake_id,
+                install=install,
+                direct_download=direct_download,
             )
 
             # If download_link_direct is False the data-direct-link attr
@@ -233,6 +255,8 @@ def download_firefox(ctx, build='release', small=False, icon=True,
                     force_full_installer=force_full_installer,
                     force_funnelcake=force_funnelcake,
                     funnelcake_id=funnelcake_id,
+                    install=install,
+                    direct_download=direct_download,
                 )
                 if download_link_direct == download_link:
                     download_link_direct = False

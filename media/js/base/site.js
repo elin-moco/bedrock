@@ -1,9 +1,29 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+function getParameterByName(name)
+{
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 (function () {
     'use strict';
+
     function getPlatform() {
+        var os = getParameterByName('os');
+        if (os == 'win') {
+            return 'windows';
+        }
+        else if (os != '') {
+            return os;
+        }
         if (navigator.platform.indexOf("Win32") !== -1 ||
                 navigator.platform.indexOf("Win64") !== -1) {
             return 'windows';
