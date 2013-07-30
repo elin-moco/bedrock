@@ -14,22 +14,6 @@
 {% block site_header_nav %}{% endblock %}
 {% block site_header_logo %}{% endblock %}
 
-{% block ga_experiments %}
-<!-- Google Analytics Content Experiment code -->
-<script>function utmx_section(){}function utmx(){}(function(){var
-k='55777084-0',d=document,l=d.location,c=d.cookie;
-if(l.search.indexOf('utm_expid='+k)>0)return;
-function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-</script><script>utmx('url','A/B');</script>
-<!-- End of Google Analytics Content Experiment code -->
-{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_firstrun') }}
@@ -40,7 +24,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 <article id="main-content" class="billboard">
 
-  <h3>{{ _('See how Firefox keeps the power of the web in your hands:') }}</h3>
+  <h3>看看 Firefox 如何將 Web 的威力交予你</h3>
 
   <div id="video-player" class="mozilla-video-control mozilla-video-shadow">
     <video
@@ -66,15 +50,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 {% block site_footer %}
 <section id="colophon" class="billboard">
   <nav>
-    <ul class="primary">
-      <li> <a href="{{ php_url('/firefox/notes') }}">{{ _('Release Notes') }}</a></li>
-      <li><a href="{{ url('firefox.features') }}">{{ _('Firefox Features') }}</a></li>
-      <li><a href="https://support.mozilla.org/">{{ _('Firefox Help') }}</a></li>
-    </ul>
-    <ul class="secondary">
-      <li><a href="{{ php_url('/privacy-policy.html') }}">{{ _('Privacy Policy') }}</a></li>
-      <li><a href="{{ php_url('/about/legal.html') }}">{{ _('Legal Notices') }}</a></li>
-    </ul>
+    {% include 'firefox/includes/simple_footer_items.html' %}
   </nav>
 </section>
 {% endblock %}

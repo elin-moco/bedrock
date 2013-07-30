@@ -110,15 +110,7 @@
 {% block site_footer %}
 <section id="colophon" class="billboard">
   <nav>
-    <ul class="primary">
-      <li> <a href="{{ php_url('/firefox/notes') }}">{{ _('Release Notes') }}</a></li>
-      <li><a href="{{ url('firefox.features') }}">{{ _('Firefox Features') }}</a></li>
-      <li><a href="https://support.mozilla.org/">{{ _('Firefox Help') }}</a></li>
-    </ul>
-    <ul class="secondary">
-      <li><a href="{{ php_url('/privacy-policy.html') }}">{{ _('Privacy Policy') }}</a></li>
-      <li><a href="{{ php_url('/about/legal.html') }}">{{ _('Legal Notices') }}</a></li>
-    </ul>
+    {% include 'firefox/includes/simple_footer_items.html' %}
   </nav>
   <p class="attribution"><small>
     {{ _('The Android Robot was reproduced from work created and <a href="%s">shared by Google</a> and used according to terms described in the <a href="%s">Creative Commons 3.0 Attribution License</a>.')|format('https://code.google.com/policies.html', 'http://creativecommons.org/licenses/by/3.0/') }}
