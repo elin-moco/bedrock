@@ -99,6 +99,9 @@ $(function(){
       startDownload($('#mac-download').attr('href'));
     }else {
       $('#default-steps').show();
+      if (currentDownloadUrl != "") {
+        $('#default-download').attr('href', currentDownloadUrl);
+      }
       startDownload($('#default-download').attr('href'));
     }
   });
