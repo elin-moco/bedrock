@@ -1,0 +1,73 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "firefox/base-resp.html" %}
+
+{% block page_title %}使用者體驗改善計劃{% endblock %}
+{% block body_id %}firefox-ueip{% endblock %}
+{% block description %}歡迎您使用 Firefox。為了進一步改善產品，提供您更好的上網體驗，我們將收集您使用 Firefox 過程的非個人化資訊，並分析統計資料。我們只對 Firefox 的內容進行統計，絕不涉及使用者的個人資料。{% endblock %}
+
+{% block site_css %}
+  {{ css('firefox_ueip') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="{{ url('firefox.fx') }}#desktop">Firefox 桌面版</a>
+    <b>»</b>
+    <span>使用者體驗改善計劃</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<div id="main-feature">
+  {{ download_firefox(small=True) }}
+  <hgroup>
+    <h1 class="large">使用者體驗改善計劃</h1>
+    <p>歡迎您使用 Firefox。為了進一步改善產品，提供您更好的上網體驗，我們將收集您使用 Firefox 過程的非個人化資訊，並分析統計資料。我們只對 Firefox 的內容進行統計，絕不涉及使用者的個人資料。</p>
+  </hgroup>
+</div>
+
+<div id="main-content">
+  <h2>計畫目的</h2>
+  <p>為了改善我們的產品及服務，我們想要瞭解：</p>
+  <ol>
+    <li>使用者的使用習慣。主要包括使用 Firefox 時，某個功能或附加元件的使用頻率。但不包含使用者的隱私訊息，<br>
+      例如：歷史記錄、書籤及 cookie。</li>
+    <li>Firefox相關功能的使用情況，主要包括使用 Firefox 的部分功能時的按鈕被點擊率及功能被使用的情況等，<br>
+      例如：新分頁預設熱門網站的點擊數。但不包含任何因使用者而產生涉及隱私的資訊，例如：網站連結。</li>
+  </ol>
+
+  <hr class="divider">
+
+    <h2>資訊用途</h2>
+  <ol>
+    <li>瞭解Firefox部分功能的點擊及使用情況。</li>
+    <li>統計每日不重複使用者與新使用者的數量。</li>
+    <li>分頁管理器相關功能的使用情況，包括每個附加元件的選擇組合。</li>
+    <li>字體管理及網頁縮放相關功能的使用情況，包括按鈕的點選次數及使用者數量。</li>
+    <li>是否安裝並使用火狐主頁、附加元件管理器、分頁管理器等附加元件的使用者數量。</li>
+  </ol>
+
+  <hr class="divider">
+
+  <h2>如何自訂發送資訊</h2>
+    <p>您可以在『偏好設定 – 進階 – 資料』 中作選擇。</p>
+    <p><img src="/media/img/mocotw/firefox/ueip/option.png"/></p>
+
+  <hr class="divider">
+
+  <h2>重要聲明</h2>
+  <ul>
+    <p>Mozilla 不會蒐集或追蹤任何個人訊息或使用者瀏覽過的任何網站，亦不會對外發佈這些透過Firefox功能所取得的原始資料。<br>
+      為了做出更好的產品，我們或許會對全球的社群公佈已彙整的資料。使用者可隨時透過偏好設定來開啟或關閉此項功能。</p>
+    <p>「已彙整的資料」 來自於使用者的使用行為，並進一步整合為統計數字．因此該資訊絕對不會指涉任何獨立的使用個體。</p>
+    <p>上述資訊的收集，將只用於改進我們的產品，不會提供給任何第三方或用於任何其他商業用途。 <a href="http://www.mozilla.org/en-US/legal/privacy/firefox.html" target="_blank">了解更多</a></p>
+  </ul>
+</div>
+
+{% endblock %}

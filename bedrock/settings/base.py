@@ -184,6 +184,10 @@ MINIFY_BUNDLES = {
             'css/sandstone/video.less',
             'css/firefox/features.less',
         ),
+        'firefox_ueip': (
+            'css/firefox/template-resp.less',
+            'css/firefox/ueip.less',
+        ),
         'mobile_features': (
             'css/firefox/template-resp.less',
             'css/firefox/mobile-features.less',

@@ -10,6 +10,7 @@ from bedrock.redirects.util import redirect
 urlpatterns = patterns(
     '',
     page('firefox/download', 'firefox/download.html'),
+    page('firefox/ueip', 'firefox/ueip.html'),
     page('firefox/mobile/sync', 'firefox/mobile/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
     redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
