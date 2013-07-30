@@ -24,6 +24,10 @@ var currentLabelTag = '<span class="currentDownload">(系統偵測版本)</span>
     gPlatform = PLATFORM_LINUX, install = "64bit";
   else if (navigator.platform.indexOf("Linux") != -1)
     gPlatform = PLATFORM_LINUX;
+  else if (navigator.platform.indexOf("iPhone") != -1 ||
+      navigator.platform.indexOf("iPod") != -1 ||
+      navigator.platform.indexOf("iPad") != -1)
+    gPlatform = PLATFORM_OTHER;
   else if (navigator.userAgent.indexOf("Mac OS X") != -1)
     gPlatform = PLATFORM_MACOSX;
   else if (navigator.userAgent.indexOf("MSIE 5.2") != -1)
@@ -65,6 +69,7 @@ $(function(){
   $(window).load(function(){
     var currentDownloadUrl = "";
     var downloadButton = "";
+    $('.download').hide();
     switch(gPlatform) {
       case PLATFORM_WINDOWS:
         downloadButton = $('.download-button .os_windows');
@@ -84,15 +89,15 @@ $(function(){
       case PLATFORM_MAC:
       case PLATFORM_OTHER:
         $('.other .download-list').show();
+        $('.download-content, .all_versions, .other_langs, .download-separator').hide();
         return;
     }
     downloadButton.find('span.download-platform').append(currentLabel);
     currentDownloadUrl = downloadButton.show().find('a.download-link').attr('href');
-    $('.download').hide();
     if(gPlatform==PLATFORM_MACOSX){
       $('#mac-steps').show();
       startDownload($('#mac-download').attr('href'));
-    }else if(gPlatform!=PLATFORM_MAC && gPlatform!=PLATFORM_OTHER){
+    }else {
       $('#default-steps').show();
       startDownload($('#default-download').attr('href'));
     }
