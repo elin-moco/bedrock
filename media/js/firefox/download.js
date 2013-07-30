@@ -84,19 +84,16 @@ $(function(){
       case PLATFORM_MAC:
       case PLATFORM_OTHER:
         $('.other .download-list').show();
-        break;
+        return;
     }
     downloadButton.find('span.download-platform').append(currentLabel);
     currentDownloadUrl = downloadButton.show().find('a.download-link').attr('href');
     $('.download').hide();
-    if(gPlatform==3){
+    if(gPlatform==PLATFORM_MACOSX){
       $('#mac-steps').show();
       startDownload($('#mac-download').attr('href'));
-    }else{
+    }else if(gPlatform!=PLATFORM_MAC && gPlatform!=PLATFORM_OTHER){
       $('#default-steps').show();
-      if (currentDownloadUrl != "") {
-        $('#default-download').attr('href', currentDownloadUrl);
-      }
       startDownload($('#default-download').attr('href'));
     }
   });
