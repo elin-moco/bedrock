@@ -100,7 +100,7 @@
           <a target="_blank" href="http://hg.mozilla.org/mozilla-central/pushloghtml?startdate=48+hours+ago&enddate=now">{{ _('48 小時內的更新') }}</a> |
         {% endif %}
       {% else %}
-        <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/all">{{ _('Systems &amp; Languages') }}</a> |
+        <a target="_blank" href="{{ url('firefox.all') }}">{{ _('Systems &amp; Languages') }}</a> |
         <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/notes">{{ _('What’s New') }}</a> |
       {% endif %}
       <a target="_blank" href="//{{ MOFO_URL }}/en-US/legal/privacy/firefox.html">{{ _('Privacy') }}</a>
