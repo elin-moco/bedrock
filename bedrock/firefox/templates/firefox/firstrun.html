@@ -24,7 +24,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 {% endblock %}
 
 {#{% block page_title_prefix %}{% endblock %}#}
-{% block page_title %}歡迎使用 Firefox{% endblock %}
+{% block page_title %}{{ _('Welcome to Firefox') }}{% endblock %}
 {#{% block page_title_suffix %}{% endblock %}#}
 {% block body_id %}firefox-firstrun{% endblock %}
 {% block description %}最快速、最流暢的個性化瀏覽器 Firefox 桌面版，官方中文版免費下載與功能介紹，適用於 Windows、Mac 和 Linux{% endblock %}
@@ -38,11 +38,11 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 {% endblock %}
 
 {% block content %}
-<h1 id="firstrun-header">歡迎使用 Firefox！</h1>
+<h1 id="firstrun-header">{{ _('Welcome to Firefox!') }}</h1>
 
 <article id="main-content" class="billboard">
 
-  <h3>看看 Firefox 如何將 Web 的威力交予你：</h3>
+  <h3>{{ _('See how Firefox keeps the power of the web in your hands:') }}</h3>
 
   <div id="video-player" class="mozilla-video-control mozilla-video-shadow">
     <iframe width="640" height="360" src="//www.youtube.com/embed/fUmhf6JezoI" frameborder="0" allowfullscreen></iframe>

@@ -13,6 +13,7 @@ urlpatterns = patterns(
     page('firefox/ueip', 'firefox/ueip.html'),
     page('firefox/mobile/sync', 'firefox/mobile/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
+    redirect(r'^firefox/central/$', '/firefox/features'),
     redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
