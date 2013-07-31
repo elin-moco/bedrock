@@ -23,10 +23,11 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 <!-- End of Google Analytics Content Experiment code -->
 {% endblock %}
 
-{% block page_title_prefix %}{% endblock %}
+{#{% block page_title_prefix %}{% endblock %}#}
 {% block page_title %}歡迎使用 Firefox{% endblock %}
-{% block page_title_suffix %}{% endblock %}
+{#{% block page_title_suffix %}{% endblock %}#}
 {% block body_id %}firefox-firstrun{% endblock %}
+{% block description %}最快速、最流暢的個性化瀏覽器 Firefox 桌面版，官方中文版免費下載與功能介紹，適用於 Windows、Mac 和 Linux{% endblock %}
 
 {% block site_header_nav %}{% endblock %}
 {% block site_header_logo %}{% endblock %}
@@ -37,24 +38,30 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 {% endblock %}
 
 {% block content %}
-<h1 id="firstrun-header">歡迎使用 Firefox</h1>
+<h1 id="firstrun-header">歡迎使用 Firefox！</h1>
 
 <article id="main-content" class="billboard">
 
-  <h3>看看 Firefox 如何將 Web 的威力交予你</h3>
+  <h3>看看 Firefox 如何將 Web 的威力交予你：</h3>
 
   <div id="video-player" class="mozilla-video-control mozilla-video-shadow">
-    <video
-      controls="controls"
-      poster="{{ media('/img/firefox/firstrun/video-poster.jpg') }}"
-      height="360"
-      width="640"
-      data-overlay-hidden-text="{{_('Play video')}}"
-      id="firstrun-video">
-      <source src="//videos-cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm">
-    </video>
+    <iframe width="640" height="360" src="//www.youtube.com/embed/fUmhf6JezoI" frameborder="0" allowfullscreen></iframe>
   </div>
 
+  <ul class="social">
+    <li>
+      <img src="{{ media('img/firefox/firstrun/facebook.png') }}">
+      <a class="facebook" href="https://www.facebook.com/MozillaTaiwan">{{ _('Like us on Facebook') }}</a>
+    </li>
+    <li>
+      <img src="{{ media('img/firefox/firstrun/gplus-32.png') }}">
+      <a class="twitter" href="https://plus.google.com/114653167240123163859">{{ _('Follow us on Google+') }}</a>
+    </li>
+    <li>
+      <img src="{{ media('img/firefox/firstrun/logo.png') }}">
+      <a class="blog" href="http://blog.mozilla.com.tw">{{ _('Read our blog') }}</a>
+    </li>
+  </ul>
 </article>
 {% endblock %}
 
