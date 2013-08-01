@@ -9,10 +9,6 @@ $(document).ready(function() {
     var pager = Mozilla.Pager.rootPagers[0];
     var selected_href = false;
 
-    function redirect(a) {
-        var href = a.href;
-        window.open($(a).attr('url'));
-    }
     var gaq_track = function(category, action, label) {
         if (window._gaq) {
           window._gaq.push(['_trackEvent', category, action, label]);
@@ -26,6 +22,10 @@ $(document).ready(function() {
           window.location.href = url;
         }, 500);
     };
+    function redirect(a) {
+        gaq_track('channel interaction', 'click', $(a).attr('url'));
+        window.open($(a).attr('url'));
+    }
 
     pager.$container.bind('changePage', function(e, tab) {
         if (pager.currentPage.id == 'nightly') {
@@ -44,6 +44,7 @@ $(document).ready(function() {
             $('body').removeClass('night');
             $logo.attr('src', logoOriginalSrc);
         }
+        gaq_track('channel interaction', 'changePage', pager.currentPage.id);
 
         $('.pager-tabs a').unbind('click.outgoing');
         $('.pager-tabs a.selected').bind('click.outgoing', function() {
@@ -100,5 +101,7 @@ $(document).ready(function() {
     $('#nightly-mobile .download-link').click(function(){
         track_and_redirect('mobile nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-
+    $('p.more a').click(function() {
+        gaq_track('channel interaction', 'click', $(this).attr('href'));
+    });
 });
