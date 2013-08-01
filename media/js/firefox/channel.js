@@ -13,6 +13,19 @@ $(document).ready(function() {
         var href = a.href;
         window.open($(a).attr('url'));
     }
+    var gaq_track = function(category, action, label) {
+        if (window._gaq) {
+          window._gaq.push(['_trackEvent', category, action, label]);
+        }
+    };
+    // delay redirect so GA tracking has time to fire
+    var track_and_redirect = function(category, action, label, url) {
+        gaq_track(category, action, label);
+
+        setTimeout(function() {
+          window.location.href = url;
+        }, 500);
+    };
 
     pager.$container.bind('changePage', function(e, tab) {
         if (pager.currentPage.id == 'nightly') {
@@ -70,23 +83,22 @@ $(document).ready(function() {
         redirect(this);
     });
     $('#beta-desktop .download-link').click(function(){
-        console.info('download beta');
-//		_gaq.push(['_trackEvent', 'download', 'firefox-beta-desktop', 'Channel 下載']);
+        track_and_redirect('beta download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
     $('#beta-mobile .download-link').click(function(){
-		_gaq.push(['_trackEvent', 'download', 'firefox-beta-mobile', 'Channel 下載']);
+        track_and_redirect('mobile beta download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
     $('#aurora-desktop .download-link').click(function(){
-		_gaq.push(['_trackEvent', 'download', 'firefox-aurora-desktop', 'Channel 下載']);
+        track_and_redirect('aurora download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
     $('#aurora-mobile .download-link').click(function(){
-		_gaq.push(['_trackEvent', 'download', 'firefox-aurora-mobile', 'Channel 下載']);
+        track_and_redirect('mobile aurora download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
     $('#nightly-desktop .download-link').click(function(){
-		_gaq.push(['_trackEvent', 'download', 'firefox-nightly-desktop', 'Channel 下載']);
+        track_and_redirect('nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
     $('#nightly-mobile .download-link').click(function(){
-		_gaq.push(['_trackEvent', 'download', 'firefox-nightly-mobile', 'Channel 下載']);
+        track_and_redirect('mobile nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
 
 });

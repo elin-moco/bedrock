@@ -9,6 +9,26 @@
     }
   };
 
+  // delay redirect so GA tracking has time to fire
+  var track_and_redirect = function(category, action, label, url) {
+    gaq_track(category, action, label);
+
+    setTimeout(function() {
+      window.location.href = url;
+    }, 500);
+  };
+
+  // GA tracking
+  $('a.featurelink').on('click', function(e) {
+    e.preventDefault();
+    track_and_redirect('first run interaction', 'click', $(this).attr('href'), $(this).attr('href'));
+  });
+
+  $('.social a').on('click', function(e) {
+    e.preventDefault();
+    track_and_redirect('social interaction', 'click', $(this).attr('class'), $(this).attr('href'));
+  });
+
   $video.on('play', function() {
     gaq_track("play");
   }).on('pause', function() {
