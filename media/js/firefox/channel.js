@@ -83,22 +83,28 @@ $(document).ready(function() {
     $('.pager-tabs a.selected').bind('click.outgoing', function() {
         redirect(this);
     });
-    $('#beta-desktop .download-link').click(function(){
+    $('#beta-desktop .download-link').click(function(e){
+        e.preventDefault();
         track_and_redirect('beta download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#beta-mobile .download-link').click(function(){
+    $('#beta-mobile .download-link').click(function(e){
+        e.preventDefault();
         track_and_redirect('mobile beta download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#aurora-desktop .download-link').click(function(){
+    $('#aurora-desktop .download-link').click(function(e){
+        e.preventDefault();
         track_and_redirect('aurora download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#aurora-mobile .download-link').click(function(){
+    $('#aurora-mobile .download-link').click(function(e){
+        e.preventDefault();
         track_and_redirect('mobile aurora download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#nightly-desktop .download-link').click(function(){
+    $('#nightly-desktop .download-link').click(function(e){
+        e.preventDefault();
         track_and_redirect('nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#nightly-mobile .download-link').click(function(){
+    $('#nightly-mobile .download-link').click(function(e){
+        e.preventDefault();
         track_and_redirect('mobile nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
     $('p.more a').click(function() {
