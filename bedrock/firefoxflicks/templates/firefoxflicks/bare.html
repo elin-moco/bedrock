@@ -1,0 +1,59 @@
+{# Substitute in an empty settings object if it is not available (error handlers
+   during tests).  #}
+{% if not settings %}
+  {% set settings = {} %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="{{ LANG }}" dir="{{ DIR }}" class="{{ LANG }} {{ DIR }}" data-ga-code="{{ settings.GA_ACCOUNT_CODE }}">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ _('Firefox Flicks') }} － {% block page_title %}{% endblock %} － Mozilla Taiwan</title>
+
+    {# L10n: Meta Description - used for page description and og:description #}
+    {% set meta_description =  meta_description or _(
+      'Firefox Flicks is a contest that invites Firefox fans and filmmakers '
+      'from all over the world to create short videos (or &#34;flicks&#34;) to '
+      'help tell the Firefox story.'
+    ) %}
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="robots" content="noodp">
+
+    {# OpenGraph Metadata #}
+    <meta property="og:title" content="{% block og_title %}{{ _('Firefox Flicks') }}{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ request.build_absolute_uri() + media('img/firefoxflicks/flicks-logo-180.png') }}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri() }}{% endblock %}">
+    <meta property="og:site_name" content="{{ _('Firefox Flicks') }}">
+    <meta property="og:description" content="{{ meta_description }}">
+
+    <!--[if lt IE 9]>
+      <script src="{{ media('js/libs/html5shiv.js') }}"></script>
+    <![endif]-->
+
+    {% block tabzilla_css %}
+      {{ css('sandstone-tabzilla') }}
+    {% endblock %}
+    {% block site_css %}{% endblock %}
+    <link rel="shortcut icon" type="image/png" href="{{ media('img/firefoxflicks/favicon.png') }}">
+
+    {% include 'includes/google-analytics.html' %}
+
+  </head>
+  <body class="{{ page_type }} voting" data-csrf-token="{{ csrf_token }}" {% block body_data %}{% endblock %}>
+    {% include 'sandstone/tabzilla.html' %}
+    <div id="strings"
+         data-close="{{ _('Close') }}"
+         data-input-required="{{ _('This field is required.') }}"
+         {% block string_data %}{% endblock %}>
+    </div>
+{#    {{ browserid_info() }}#}
+    {% block body %}{% endblock %}
+    {% block site_js %}{% endblock %}
+    {% block tabzilla_js %}
+      {{ js('sandstone-tabzilla') }}
+    {% endblock %}
+  </body>
+</html>

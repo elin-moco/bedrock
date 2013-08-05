@@ -1,0 +1,62 @@
+{% extends 'firefoxflicks/bare.html' %}
+
+{% block site_css %}
+  {{ css('firefox_flicks') }}
+{% endblock %}
+
+{% block body %}
+  <div id="page">
+    {% include "firefoxflicks/header.html" %}
+
+    <main class="content-wrapper" role="main">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% block videocontent %}{% endblock %}
+
+    {% block footer %}
+      <footer id="footer">
+        <div class="wrap">
+
+          <aside class="partners">
+            <h4><a href="https://firefoxflicks.mozilla.org/zh-TW/partners">我們的夥伴</a></h4>
+            <ul>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-panavision-sm.png') }}" alt="Panavision" width="114" height="45"></li>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-dolby-sm.png') }}" alt="Dolby" width="145" height="27"></li>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-creativecommons-sm.png') }}" alt="Creative Commons" width="130" height="32"></li>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-movingart-sm.png') }}" alt="Moving Art by Louie Schwartzberg" width="174" height="30"></li>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-techsmith-sm.png') }}" alt="TechSmith" width="145" height="25"></li>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-givit-sm.png') }}" alt="Givit" width="68" height="40"></li>
+              <li><img src="{{ media('img/firefoxflicks/partners/logo-avid-sm.png') }}" alt="Avid" width="90" height="27"></li>
+            </ul>
+            <p><a href="https://firefoxflicks.mozilla.org/zh-TW/partners" class="go">更多夥伴</a></p>
+          </aside>
+
+          <div class="util">
+            <nav id="nav-social-foot" class="nav-social">
+              <h4>分享 Firefox Flicks</h4>
+              <ul>
+                <li><a href="http://vimeo.com/firefoxflicks" title="Vimeo" class="vimeo" rel="external">Vimeo</a></li>
+                <li><a href="http://facebook.com/firefoxflicks" title="Facebook" class="facebook" rel="external">Facebook</a></li>
+                <li><a href="http://twitter.com/firefoxflicks" title="Twitter" class="twitter" rel="external">Twitter</a></li>
+              </ul>
+            </nav>
+
+            <aside class="firefoxos">
+              <h4>了解關於 Firefox OS 的資訊</h4>
+              <p><a href="http://www.mozilla.org/firefoxos/" rel="external">{{ _('Firefox OS') }}</a></p>
+            </aside>
+          </div>
+
+          {% include "firefoxflicks/footer_fineprint.html" %}
+
+        </div>
+      </footer>
+    {% endblock %}
+
+  </div>{# close #page #}
+{% endblock %}
+
+{% block site_js %}
+  {{ js('firefox_flicks') }}
+{% endblock %}

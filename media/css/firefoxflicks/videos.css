@@ -1,0 +1,655 @@
+.video {
+    background: #000;
+    position: relative;
+}
+
+.video iframe {
+    height: 529px;
+}
+
+.video iframe.vidly {
+    height: 337px;
+}
+
+.video .winner-mark {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.video-details {
+    border-top: none;
+    padding: 30px 240px 0 15px;
+    position: relative;
+}
+
+.video-details .awards {
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    float: right;
+    list-style-type: none;
+    width: 200px;
+    padding: 10px 10px 1px;
+    background: rgba(0,0,0,.05);
+    border-radius: 6px;
+    box-shadow: 0 1px 1px rgba(255,255,255,.75), inset 0 1px 1px rgba(0,0,0,.08);
+}
+
+.video-details .awards li {
+    background: url('/media/img/firefoxflicks/winner-trophy-sm.png') no-repeat;
+    margin-bottom: 10px;
+    padding: 5px 0 5px 48px;
+    min-height: 20px;
+}
+
+.video-details .vcard {
+    margin: 30px 0;
+    padding-left: 65px;
+}
+
+.video-details h1 {
+    font-size: 38px;
+    margin: 0 240px 15px 0;
+}
+
+.video-details .profile {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.video-details .photo {
+    float: left;
+    margin: -3px 0 .5em -68px;
+    border: 3px solid #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+/* Voting controls */
+.video-details .vote-control {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 220px;
+}
+
+.vote-control .vote-count {
+    margin: 0 0 10px;
+    font: 20px/1.15 "Open Sans", sans-serif;
+    color: #fff;
+    background: #2d3438;
+    background: rgba(27,34,38,.9);
+    padding: .5em 20px;
+    border-radius: 1.75em;
+    text-align: center;
+}
+
+.vote-control .vote-button {
+    margin: 0 0 10px;
+}
+
+.vote-button button,
+.vote-control .share .toggle {
+    position: relative;
+    font-size: 18px;
+    line-height: 1;
+    display: inline-block;
+    width: 153px;
+    padding: 10px 50px 10px 15px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: left;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    border-radius: 6px;
+    -moz-box-shadow: 0 2px 0 0 rgba(0,0,0,.1), inset 0 -2px 0 0 rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 2px 0 0 rgba(0,0,0,.1), inset 0 -2px 0 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 0 0 rgba(0,0,0,.1), inset 0 -1px 0 0 rgba(0,0,0,.05);
+}
+.vote-button button:after,
+.vote-control .share .toggle:after {
+  font-size: 30px;
+  font-family: 'Awesome';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  position: absolute;
+  right: 12px;
+  top: .2em;
+}
+
+.add-vote {
+    background: #3a90d4;
+    background: -webkit-linear-gradient(to bottom, #3c88cc, #276195);
+    background:    -moz-linear-gradient(to bottom, #3c88cc, #276195);
+    background:      -o-linear-gradient(to bottom, #3c88cc, #276195);
+    background:         linear-gradient(to bottom, #3c88cc, #276195);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.25);
+    border-color: #5ea3da;
+}
+.add-vote:hover,
+.add-vote:focus {
+    background: #409de7;
+    background: -webkit-linear-gradient(to bottom, #409de7, #3484c5);
+    background:    -moz-linear-gradient(to bottom, #409de7, #3484c5);
+    background:      -o-linear-gradient(to bottom, #409de7, #3484c5);
+    background:         linear-gradient(to bottom, #409de7, #3484c5);
+}
+.add-vote:after,
+.remove-vote:after {
+    content: "\f046";
+}
+
+.remove-vote,
+.vote-control .share .toggle {
+    background: #e8e8e8;
+    background: -webkit-linear-gradient(to bottom, #fff, #e8e8e8);
+    background:    -moz-linear-gradient(to bottom, #fff, #e8e8e8);
+    background:      -o-linear-gradient(to bottom, #fff, #e8e8e8);
+    background:         linear-gradient(to bottom, #fff, #e8e8e8);
+}
+.remove-vote:hover,
+.remove-vote:focus,
+.vote-control .share .toggle:hover,
+.vote-control .share .toggle:focus {
+    background: #dcdcdc;
+    background: -webkit-linear-gradient(to bottom, #fff, #dcdcdc);
+    background:    -moz-linear-gradient(to bottom, #fff, #dcdcdc);
+    background:      -o-linear-gradient(to bottom, #fff, #dcdcdc);
+    background:         linear-gradient(to bottom, #fff, #dcdcdc);
+    text-decoration: none;
+}
+
+.vote-control .share .toggle:after {
+    content: "\f045";
+}
+
+.vote-control .share .popup {
+    top: 42px;
+}
+
+/* Post-vote Thanks */
+.vote-thanks {
+    border: 1px solid #d0e7f9;
+    background: #dff0f5;
+    display: none;
+    margin: 20px 0 0;
+    padding: 19px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+
+.vote-thanks h2 {
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+
+.vote-thanks .share {
+  list-style: none;
+  font-size: 16px;
+  margin: 0;
+}
+
+.vote-thanks .share li {
+  background: url(/media/img/firefoxflicks/social-icons-dark.png) no-repeat;
+  display: inline-block;
+  margin: 0 25px .5em;
+}
+
+.vote-thanks .share a {
+  display: inline-block;
+  padding: 8px 5px 8px 45px;
+}
+
+.vote-thanks .share .facebook {
+  background-position: 0 -98px;
+}
+
+.vote-thanks .share .twitter {
+  background-position: 0 -198px;
+}
+
+.vote-thanks .share .tumblr {
+  background-position: 0 -298px;
+}
+
+#modal .video {
+    width: 600px;
+    height: 338px;
+    margin: 0 auto;
+}
+#modal .video-details {
+    width: 600px;
+    margin: 0 auto;
+}
+#modal .video-details h1 {
+    font-size: 24px;
+}
+
+#gallery .thumbnail {
+  width: 200px;
+  height: 150px;
+}
+
+/* Award winners */
+.winners-page .section-intro {
+    width: 60%;
+}
+
+.winners-page .entry-list {
+    margin: 0 0 2em;
+    margin-left: -10px;
+}
+
+.period {
+    margin: 0 -10px 2em;
+    padding: 19px 19px 0;
+    background: rgba(255,255,255,.35);
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+    box-shadow: inset 0 0 3px rgba(0,0,0,.1);
+}
+
+.period header h2 {
+    margin: 0 auto .5em;
+}
+.period header h2 span {
+    display: block;
+    font-size: .823em;
+}
+
+.period .entry-list {
+  margin: 0 -20px 0 0;
+}
+
+.period .entry-list .entry {
+    width: 210px;
+}
+
+.winner {
+    position: relative;
+}
+
+.winner .placing {
+    font-size: 14px;
+    text-transform: uppercase;
+    background: #eee;
+    border: 1px outset rgba(0,0,0,.1);
+    width: 70%;
+    padding: 3px 14px;
+    position: absolute;
+    left: -7px;
+    top: 14px;
+    z-index: 10;
+    box-shadow: 2px 2px 1px rgba(0,0,0,.2);
+}
+
+.first-place .placing {
+    background-color: #ffd745;
+    background-image: linear-gradient(150deg, #ffdf69 0%, #fff5d2 35%, #ebb217 100%);
+}
+
+.second-place .placing {
+    background-color: #d2dedf;
+    background-image: linear-gradient(150deg, #c6d0d2 0%, #edf0f2 35%, #b0b7bd 100%);
+}
+
+.third-place .placing {
+    background-color: #e2ab75;
+    background-image: linear-gradient(150deg, #c0a665 0%, #ffe8d0 35%, #9f7d38 100%);
+}
+
+/* Search */
+.search-form {
+    background: #e4e4e4;
+    background: rgba(150,150,150,.15);
+    padding: 15px 30px 10px;
+    margin: 0 0 30px;
+    font: 14px "Open Sans", sans-serif;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px rgba(150,150,150,.25);
+}
+.search-form:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.search-form ul {
+    list-style: none;
+    margin: 0;
+}
+
+.search-form li {
+    float: left;
+    margin-right: 20px;
+}
+
+.search-form input,
+.search-form select {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #bbb;
+}
+.search-form input:hover,
+.search-form select:hover {
+    border-color: #68b8e9;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+    border-color: #68b8e9;
+    box-shadow: 0 0 1px 2px rgba(104,184,233,.5);
+}
+
+.search-query,
+.search-region {
+    width: 300px;
+    position: relative;
+}
+
+.search-query label {
+    display: block;
+    margin: 5px 25px 5px 5px;
+    font-size: 11px;
+}
+.search-query input {
+    width: 253px;
+    padding: 2px 25px 2px 10px;
+    background: #fff url(/media/img/firefoxflicks/icn-search.png) 97% 50% no-repeat;
+    box-sizing: content-box;
+    appearance: textfield;
+    -webkit-box-sizing: content-box;
+    -webkit-appearance: textfield;
+}
+.search-region label {
+    position: absolute;
+    left: -999em;
+}
+.search-region select {
+    width: 280px;
+    padding: 2px 5px;
+}
+
+.search-field,
+.search-sort {
+    display: none;
+    visibility: hidden;
+}
+
+#search-suggest {
+    display: none;
+    position: absolute;
+    top: 1.9em;
+    width: 298px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    background: #fff;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 2px 1px rgba(0,0,0,.1);
+}
+#search-suggest li {
+    display: block;
+    color: #333;
+    cursor: pointer;
+    float: none;
+    margin: 0;
+    padding: 5px 10px;
+}
+#search-suggest li:hover,
+#search-suggest li.selected {
+    background: #0095dd;
+    color: #fff;
+    text-decoration: none;
+}
+#search-suggest li:first-child {
+    border-radius: 3px 3px 0 0;
+}
+#search-suggest li:last-child {
+    border-radius: 0 0 3px 3px;
+}
+#search-suggest .category {
+    display: block;
+    font-size: .85em;
+    color: #888;
+}
+#search-suggest li:hover .category,
+#search-suggest li.selected .category {
+    color: #fff;
+}
+
+.gallery-header {
+    margin: 0 0 20px;
+    clear: both;
+    overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+}
+.gallery-header:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.gallery-header h2 {
+    width: 70%;
+    float: left;
+    font: 20px "Open Sans", sans-serif;
+}
+.gallery-header h2 i {
+    font-style: normal;
+    font-weight: bold;
+}
+
+.gallery-header .gallery-sort {
+    width: 25%;
+    float: right;
+    font-size: 14px;
+    text-align: right;
+}
+.gallery-header .gallery-sort select {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #bbb;
+    padding: 2px;
+}
+.gallery-sort button {
+    position: absolute;
+    left: -999em;
+}
+.gallery-sort .hidden-inputs {
+    display: none;
+    visibility: hidden;
+}
+
+/* Message about voting */
+.section-intro .voting {
+  margin: 0 auto 1em;
+  font: 14px/1.2 "Open Sans", sans-serif;
+  color: #fff;
+  background: #2d3438;
+  background: rgba(27,34,38,.9);
+  padding: .75em 20px;
+  border-radius: 1.75em;
+}
+.section-intro .voting a:link,
+.section-intro .voting a:visited {
+  color: #62b5dd;
+}
+.section-intro .voting a:hover,
+.section-intro .voting a:focus {
+  color: #9fc9dd;
+}
+
+/* Tablet Layout: 760px */
+@media only screen and (min-width: 760px) and (max-width: 1000px) {
+
+  .video iframe {
+    height: 405px;
+  }
+
+  #trailers {
+    width: auto;
+    float: none;
+    margin: 0 auto 1em;
+  }
+
+  #trailers h3 {
+    text-align: center;
+  }
+
+  #trailers .entry-list {
+    width: auto;
+  }
+
+  #trailers .entry {
+    float: left;
+    margin: 0 15px 1.5em;
+  }
+
+  .winners-page .section-intro {
+      width: auto;
+  }
+
+  .period {
+      margin: 0 -20px 2em 0;
+      width: auto;
+  }
+
+  .search-query,
+  .search-region {
+      width: 220px;
+  }
+  .search-query input {
+      width: 163px;
+  }
+  .search-region select {
+      width: 200px;
+  }
+
+}
+
+/* Mobile Layout: 320px */
+@media only screen and (max-width: 760px) {
+
+  .video iframe,
+  .video iframe.vidly {
+      height: 169px;
+  }
+
+  .video-details h1 {
+      font-size: 28px;
+      margin: 0 0 15px;
+  }
+
+  .video-details .awards {
+      float: none;
+      width: auto;
+  }
+
+  #trailers {
+      width: auto;
+      float: none;
+      margin: 0 auto 1em;
+  }
+
+  #trailers h3 {
+      text-align: center;
+  }
+
+  #trailers .entry-list {
+      width: auto;
+  }
+
+  #trailers .entry {
+      margin: 0 auto 1.5em;
+  }
+
+  .winners-page .section-intro,
+  .winners-page .entry-list {
+      width: auto;
+  }
+
+  .period {
+      margin: 0 0 2em;
+  }
+
+  .search-query,
+  .search-region {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+  .search-query input {
+      width: 203px;
+  }
+  .search-region select {
+      width: 240px;
+  }
+
+  .gallery-header h2,
+  .gallery-header .gallery-sort {
+      width: auto;
+      float: none;
+      text-align: left;
+  }
+
+  .video-details {
+    padding-right: 15px;
+  }
+
+  .video-details .vote-control {
+    position: static;
+    margin: 0 auto 30px;
+  }
+
+}
+
+/* Wide Mobile Layout: 480px */
+@media only screen and (min-width: 480px) and (max-width: 760px) {
+
+  .video iframe,
+  .video iframe.vidly {
+      height: 259px;
+  }
+
+  #trailers .entry {
+      width: 28%;
+      float: left;
+      margin: 0 2.5% 1em;
+  }
+
+  #trailers .entry:nth-child(3n+1) {
+      clear: left;
+  }
+
+  #trailers .entry:nth-child(2n+1) {
+      clear: none;
+  }
+
+  .period .entry-list {
+      margin-left: -10px;
+  }
+
+  .period .entry-list .entry {
+      width: 190px;
+  }
+
+  .period .entry-list .third-place {
+      float: none;
+      clear: both;
+      display: block;
+      margin: 0 auto 1.5em;
+  }
+
+  .search-query input {
+      width: 363px;
+  }
+  .search-region select {
+      width: 400px;
+  }
+
+}

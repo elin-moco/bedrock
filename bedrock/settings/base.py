@@ -273,6 +273,10 @@ MINIFY_BUNDLES = {
         'firefox_download': (
             'css/firefox/download.less',
         ),
+        'firefox_flicks': (
+            'css/firefoxflicks/main.css',
+            'css/firefoxflicks/videos.css',
+        ),
         'installer_help': (
             'css/firefox/template-resp.less',
             'css/firefox/installer-help.less',
@@ -525,6 +529,11 @@ MINIFY_BUNDLES = {
         'firefox_download': (
             'js/firefox/download.js',
         ),
+        'firefox_flicks': (
+            'js/firefoxflicks/init.js',
+            'js/firefoxflicks/search.js',
+            'js/firefoxflicks/vote.js',
+        ),
         'geolocation': (
             'js/libs/jquery.nyroModal.pack.js',
             'js/base/mozilla-expanders.js',
@@ -683,6 +692,7 @@ INSTALLED_APPS = get_apps(exclude=(
 
     '%s.sandstone' % PROJECT_MODULE,
     '%s.mocotw' % PROJECT_MODULE,
+    '%s.firefoxflicks' % PROJECT_MODULE,
     '%s.base' % PROJECT_MODULE,
     '%s.collusion' % PROJECT_MODULE,
     '%s.firefox' % PROJECT_MODULE,

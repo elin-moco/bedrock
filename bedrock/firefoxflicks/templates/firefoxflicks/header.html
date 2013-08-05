@@ -1,0 +1,43 @@
+<header id="masthead">
+  <div id="head-inner">
+    <div class="wrap">
+      <h1 class="logo">
+        <a href="">
+          <img src="{{ media('img/firefoxflicks/flicks-logo-sm-lt.png') }}" alt="{{ _('Firefox Flicks') }}">
+        </a>
+      </h1>
+
+      <nav id="page-nav">
+        <h3 class="toggle">{{ _('Menu') }}</h3>
+
+        <ul id="page-nav-list">
+          <li id="nav-about"><a href="https://firefoxflicks.mozilla.org/zh-TW/#about" target="_global_flicks">關於</a></li>
+          <li id="nav-judges"><a href="https://firefoxflicks.mozilla.org/zh-TW/#judges" target="_global_flicks">評審</a></li>
+          <li id="nav-prizes"><a href="https://firefoxflicks.mozilla.org/zh-TW/#prizes" target="_global_flicks">獎項</a></li>
+          <li id="nav-rules"><a href="https://firefoxflicks.mozilla.org/zh-TW/#rules" target="_global_flicks">規則</a></li>
+          <li id="nav-vote"><a href="https://firefoxflicks.mozilla.org/zh-TW/video" target="_global_flicks" class="go">所有影片</a></li>
+          <li id="nav-blog"><a href="http://firefoxflicks.tumblr.com" class="go" rel="external">部落格</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <nav id="nav-social-head" class="nav-social">
+      <ul>
+        {% if user.is_authenticated() %}
+          <li id="nav-submit" class="logged-in">
+            {{ browserid_logout(text=_('Sign out')) }}
+          </li>
+          <li id="nav-submit">
+            {{ browserid_login(text=_('Submit your flick'), next=url('flicks.videos.upload')) }}
+          </li>
+        {% endif %}
+        <li><a href="http://vimeo.com/firefoxflicks" title="Vimeo" class="vimeo" rel="external">Vimeo</a></li>
+        <li><a href="http://facebook.com/firefoxflicks" title="Facebook" class="facebook" rel="external">Facebook</a></li>
+        <li><a href="http://twitter.com/firefoxflicks" title="Twitter" class="twitter" rel="external">Twitter</a></li>
+      </ul>
+    </nav>
+    <a href="https://www.mozilla.org" id="tabzilla">Mozilla</a>
+  </div>
+</header>

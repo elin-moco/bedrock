@@ -9,6 +9,7 @@ from bedrock.redirects.util import redirect
 
 urlpatterns = patterns(
     '',
+    page('firefoxflicks', 'firefoxflicks/list.html'),
     page('firefox/download', 'firefox/download.html'),
     page('firefox/ueip', 'firefox/ueip.html'),
     page('firefox/mobile/sync', 'firefox/mobile/sync.html'),

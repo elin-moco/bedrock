@@ -1,0 +1,138 @@
+{% macro input_in_label(input, label) -%}
+  {{ input.label_tag(' '.join((input|string, label))) }}
+{%- endmacro %}
+
+{% macro pagination(page, current_url) -%}
+  {% set new_url = current_url|urlparams(**kwargs)  %}
+  <nav class="pagination" role="navigation">
+    <ol>
+      {% if page.has_previous() %}
+        <li class="prev">
+          <a href="{{ new_url|urlparams(page=page.previous_page_number()) }}">
+            {{ _('Previous page') }}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if page.number - 3 > 1 %}
+        <li>
+          <a href="{{ new_url|urlparams(page=1) }}">
+            {% trans page_number=1 %}
+              <span>Go to page</span> {{ page_number }}
+            {% endtrans %}
+          </a>
+        </li>
+
+        {% if page.number - 4 > 1 %}
+          <li class="gap">&hellip;</li>
+        {% endif %}
+      {% endif %}
+
+      {% set page_range = range(page.number - 3, page.number + 4) %}
+      {% for number in page_range if number > 0 and number <= page.paginator.num_pages %}
+         {% if number == page.number %}
+           <li class="current">
+            {% trans page_number=number %}
+              <span>You're on page</span> {{ page_number }}
+            {% endtrans %}
+          </li>
+         {% else %}
+           <li>
+             <a href="{{ new_url|urlparams(page=number) }}">
+              {% trans page_number=number %}
+                <span>Go to page</span> {{ page_number }}
+              {% endtrans %}
+            </a>
+          </li>
+         {% endif %}
+      {% endfor %}
+
+      {% if page.number + 3 < page.paginator.num_pages %}
+        {% if page.number + 4 < page.paginator.num_pages %}
+          <li class="gap">&hellip;</li>
+        {% endif %}
+
+        <li>
+          <a href="{{ new_url|urlparams(page=page.paginator.num_pages) }}">
+            {% trans page_number=page.paginator.num_pages %}
+              <span>Go to page</span> {{ page_number }}
+            {% endtrans %}
+          </a>
+        </li>
+      {% endif %}
+
+      {% if page.has_next() %}
+        <li class="next">
+          <a href="{{ new_url|urlparams(page=page.next_page_number()) }}">
+            {{ _('Next page') }}
+          </a>
+        </li>
+      {% endif %}
+    </ol>
+  </nav>
+{%- endmacro %}
+
+{% macro twitterShare(url, text, via=None) -%}
+    {{ 'http://twitter.com/share'|urlparams(url=url, text=text, via=via) }}
+{%- endmacro %}
+
+{% macro facebookShare(url) -%}
+    {{ 'http://www.facebook.com/sharer.php'|urlparams(u=url) }}
+{%- endmacro %}
+
+{% macro tumblrShareUrl(url, title=None, description=None) -%}
+    {{ 'http://www.tumblr.com/share/link'|urlparams(url=url, title=title, description=description) }}
+{%- endmacro %}
+
+{% macro tumblrShareVideo(embed, caption=None) -%}
+    {{ 'http://www.tumblr.com/share/video'|urlparams(embed=embed|e, caption=caption) }}
+{%- endmacro %}
+
+{% macro shareWidget(video=None) -%}
+  <div class="share">
+    <a href="#" class="toggle trigger-share-dialog" title="{{ _('Share this video with your social network') }}">
+      {{ _('Share Video') }}
+    </a>
+    {{ shareLinks(video, 'popup') }}
+  </div>
+{%- endmacro %}
+
+{% macro shareLinks(video=None, class='', showEmbed=True) -%}
+  {% set url = request.build_absolute_uri() %}
+  {% if video %}
+    {# L10n: Text is used in a tweet, please keep the length under 70 characters. #}
+    {% set text = _('Vote For "%s" in the #FirefoxFlicks #FirefoxOS People\'s Choice Awards!')|format(video.title|truncate(67)) %}
+
+    {% set tumblrUrl = tumblrShareVideo(video.embed_html(width='100%'), caption=' '.join([text, url])) %}
+  {% else %}
+    {# L10n: Text is used in a tweet, please keep the length under 110 characters. #}
+    {% set text = _('You\'re the director. Mobile is the star.') %}
+    {% set tumblrUrl = tumblrShareLink(url, title=text, description=video.description) %}
+  {% endif %}
+
+  <ul class="{{ class }}">
+    <li class="twitter">
+      <a href="{{ twitterShare(url, text, via='firefoxflicks') }}" rel="external" data-window-opts="toolbar=0, status=0, resizable=1, width=626, height=436">
+        {{ _('Share on Twitter') }}
+      </a>
+    </li>
+    <li class="facebook">
+      <a href="{{ facebookShare(url) }}" rel="external" data-window-opts="toolbar=0, status=0, resizable=1, width=626, height=436">
+        {{ _('Share on Facebook') }}
+      </a>
+    </li>
+    <li class="tumblr">
+      <a href="{{ tumblrUrl }}" rel="external" data-window-opts="toolbar=0, status=0, resizable=1, width=626, height=436">
+        {{ _('Share on Tumblr') }}
+      </a>
+    </li>
+    {% if showEmbed %}
+      <li class="embed">
+        <span>{{ _('Embed') }}</span>
+        <textarea readonly="readonly">
+          {{- video.embed_html(width='100%')|e -}}
+        </textarea>
+      </li>
+    {% endif %}
+  </ul>
+{%- endmacro %}

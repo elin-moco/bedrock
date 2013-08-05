@@ -1,0 +1,217 @@
+{% extends 'firefoxflicks/base.html' %}
+
+{% from 'firefoxflicks/macros.html' import pagination %}
+
+{% block page_title %}2013 台灣之光{% endblock %}
+
+{% block og_title %}2013 台灣之光{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri() }}{% endblock %}
+
+{% block site_css %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <div class="section wrap">
+    <h1 class="page-title">台灣之光，投票開催！</h1>
+
+    <div class="section-intro">
+      <p>我們誠摯邀請您一起為全球性影片募集活動 Firefox Flicks (微影片競賽) 的 13 支優秀台灣作品加油！以 Web 進軍行動為故事主軸，快來觀賞並大力投票／分享你最喜歡的作品，鬥陣為台灣加油！</p>
+
+      <p class="voting">點選你喜歡的影片進去投票吧！</p>
+    </div>
+
+
+    {% block results %}
+      <div id="gallery">
+
+        <ul class="entry-list">
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/30/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/59994222.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Anyone, Anywhere</h2>
+                <h3 class="vcard">
+                  <span class="fn">Jiabin</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-02-19">2013年2月19日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/405/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69357007.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Makes Me Mobile</h2>
+                <h3 class="vcard">
+                  <span class="fn">GJ</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-06-28">2013年6月28日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/449/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69729911.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Start your dream</h2>
+                <h3 class="vcard">
+                  <span class="fn">Bill LI</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-04">2013年7月4日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/421/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69533222.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Touch your heart</h2>
+                <h3 class="vcard">
+                  <span class="fn">MaryPai</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-02">2013年7月2日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/411/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69445759.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Try Firefox.</h2>
+                <h3 class="vcard">
+                  <span class="fn">洗刷</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-06-30">2013年6月30日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/664/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/71474294.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Mobile can jump a heart</h2>
+                <h3 class="vcard">
+                  <span class="fn">Dana Chiueh</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-31">2013年7月31日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/608/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/71340722.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Relieved & Mobile</h2>
+                <h3 class="vcard">
+                  <span class="fn">A.Dolf</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-30">2013年7月30日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/437/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69612592.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">A Shortcut to Happiness</h2>
+                <h3 class="vcard">
+                  <span class="fn">turtle</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-03">2013年7月3日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/403/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69339732.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Broaden your horizons / Firefox</h2>
+                <h3 class="vcard">
+                  <span class="fn">hay</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-06-28">2013年6月28日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/576/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/71271173.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Fulfill your dream for you life</h2>
+                <h3 class="vcard">
+                  <span class="fn">YuTsung Wu</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-29">2013年7月29日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/343/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/67191202.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Up</h2>
+                <h3 class="vcard">
+                  <span class="fn">Wang Ka Ki Katie</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-05-28">2013年5月28日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/384/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/68853307.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">pass FIREFOX forward</h2>
+                <h3 class="vcard">
+                  <span class="fn">Chen Han Yi </span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-06-21">2013年6月21日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/407/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/69371784.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">Firefox_Be part of you !</h2>
+                <h3 class="vcard">
+                  <span class="fn">陳映安 / 楊佳諺</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-06-29">2013年6月29日</time></p>
+          </li>
+          <li class="entry">
+            <a href="https://firefoxflicks.mozilla.org/zh-TW/video/2013/593/">
+              <img src="https://firefoxflicks.mozilla.org/media/vimeo_thumbs/71315241.jpg" alt="" class="thumbnail">
+              <hgroup>
+                <h2 class="title">The Big Future</h2>
+                <h3 class="vcard">
+                  <span class="fn">溫溫</span>,
+                  <span class="country-name">台灣</span>
+                </h3>
+              </hgroup>
+            </a>
+            <p>投稿於 <time datetime="2013-07-29">2013年7月29日</time></p>
+          </li>
+        </ul>
+
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
