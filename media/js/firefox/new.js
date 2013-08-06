@@ -13,7 +13,7 @@
     var query_str = window.location.search ? window.location.search + '&' : '?';
     var referrer = path_parts[path_parts.length-2];
     var locale = path_parts[1];
-    var virtual_url = ('/' + locale + '/products/download.html' +
+    var virtual_url = ('/download/' +
                        query_str + 'referrer=' + referrer);
     var $scene1 = $('#scene1');
     var $stage = $('#stage-firefox');
