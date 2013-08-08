@@ -86,10 +86,10 @@
     {% block site_js %}
       {{ js('common-resp') }}
     {% endblock %}
+    {% block js %}{% endblock %}
     {% block tabzilla_js %}
       {{ js('sandstone-tabzilla-nav') }}
     {% endblock %}
-    {% block js %}{% endblock %}
     {% if DEBUG %}
       {{ js('sandstone-replace-urls') }}
     {% endif %}
