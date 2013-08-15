@@ -69,7 +69,7 @@ urlpatterns = patterns('',
         kwargs={'template_name': 'firefox/whatsnew.html'}),
     # firstrun tests (bug 865433 & 881207)
     # remove when instructed by bug 877202
-    url('^firefox/22.0/firstrun/(?P<view>[a|b])/$', views.firstrun_new, name='firefox.firstrun.new'),
+    url('^firefox/23.0/firstrun/(?P<view>[a|b])/$', views.firstrun_new, name='firefox.firstrun.new'),
 
     url(r'^firefox/partners/$', views.firefox_partners,
         name='firefox.partners.index'),
