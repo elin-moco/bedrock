@@ -9,6 +9,14 @@ from bedrock.redirects.util import redirect
 
 urlpatterns = patterns(
     '',
+    page("", "mozorg/home.html"),
+    page('news', 'mocotw/news.html'),
+    page('about', 'mocotw/about/index.html'),
+    page('about/manifesto', 'mocotw/about/manifesto.html'),
+    page('about/space', 'mocotw/about/space.html'),
+    page('about/careers', 'mocotw/about/careers.html'),
+    page('about/intern', 'mocotw/about/intern.html'),
+    page('about/contact', 'mocotw/about/contact.html'),
     page('firefoxflicks', 'firefoxflicks/list.html'),
     page('firefox/download', 'firefox/download.html'),
     page('firefox/ueip', 'firefox/ueip.html'),

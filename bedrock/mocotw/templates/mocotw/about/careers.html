@@ -1,0 +1,30 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "mocotw/about/base.html" %}
+
+{% block page_title %}工作機會{% endblock %}
+{% block description %}Mozilla 提供各式程式相關的工作機會。加入我們一起打造更美好的網路未來。{% endblock %}
+{% block body_id %}about-manifesto{% endblock %}
+
+{% block article %}
+  <h1 class="title-banner">工作機會</h1>
+  <script type="text/javascript" src="http://www.104.com.tw/i/apis/qjob.cfm?c=53020568000&fmt=8"></script>
+  <script type="text/javascript">
+    b = new j104Widget({
+      "sc":"#4d4d4f",
+      "stc":"#4d4d4f",
+      "sw":"540px",
+      "fs":"13px",
+      "fts":"15px",
+      "sh":"",
+      "bc":"",
+      "bs":""
+    });
+
+    document.write(b.output());
+  </script>
+  <a id='button-104' href="http://www.104.com.tw/jobbank/custjob/index.php?r=cust&j=3f4943275d453e5530313962515336186375f416a3f453e202020201c373a2524290j02&jobsource=qjob">美商謀智 (Mozilla) 台灣分公司職缺清單</a>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% set navigation_bar = [
+    (url('mocotw.about.index'), '認識 Mozilla'),
+    (url('mocotw.about.manifesto'),  'Mozilla 宣言'),
+    (url('mocotw.about.space'),  'Mozilla Space'),
+    (url('mocotw.about.careers'),  '工作機會'),
+    (url('mocotw.about.intern'),  '實習機會'),
+    (url('mocotw.about.contact'),  '聯絡我們'),
+] -%}
+
+{% block extrahead %}
+    {{ css('about-base') }}
+{% endblock %}
+
+{% block content %}
+
+<div id="main-content">
+<div class="row">
+
+<article class="main-column">
+{% block article %}{% endblock %}
+</article>
+
+<aside class="sidebar">
+  <nav>
+    <ul>
+    {% for href, caption in navigation_bar %}
+      <li>
+      {% if href == request.path %}
+        <b>{{ caption|e }}</b>
+      {% else %}
+        <a href="{{ href|e }}">{{ caption|e }}</a>
+      {% endif %}
+      </li>
+    {% endfor %}
+    <ul>
+  </nav>
+
+  <div class="reference">
+    <h4>加入我們</h4>
+    <p>在各種領域參與我們志工的行列。</p>
+    <a class="more" href="/contribute/">了解更多 »</a>
+  </div>
+
+</aside>
+
+</div>
+</div>
+
+{% endblock %}

@@ -115,11 +115,22 @@ MINIFY_BUNDLES = {
         'csrf-failure': (
             'css/csrf-failure.less',
         ),
+        'news': (
+            'css/mocotw/news.less',
+        ),
         'about': (
             'css/mozorg/about.less',
         ),
         'about-base': (
             'css/mozorg/about-base.less',
+        ),
+        'about-space': (
+            'css/mozorg/about-base.less',
+            'css/libs/prettyPhoto.css',
+        ),
+        'about-intern': (
+            'css/mozorg/about-base.less',
+            'css/mocotw/about-intern.less',
         ),
         'mobile_overview': (
             'css/mozorg/mobile.less',
@@ -379,6 +390,10 @@ MINIFY_BUNDLES = {
         ),
         'sandstone-replace-urls': (
             'js/sandstone/replace_urls.js',
+        ),
+        'about-space': (
+            'js/libs/jquery.prettyPhoto.js',
+            'js/mocotw/about-space.js',
         ),
         'collusion': (
             'js/collusion/collusion.js',

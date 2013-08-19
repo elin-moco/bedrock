@@ -1,0 +1,46 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "mocotw/about/base.html" %}
+
+{% block page_title %}Mozilla Space{% endblock %}
+{% block description %}Mozilla Space 是一個開放性的空間。你可以在這邊找到 Mozillians 了解最新的技術與狀況，體驗 Mozilla 開放的文化。Mozilla Space 是所有 Mozillians 的窩，你可以在這裡寫程式、設計、研究、打造新玩意、跟其他同好交流，一同讓網路有更美好的未來。{% endblock %}
+{% block body_id %}about-manifesto{% endblock %}
+
+{% block extrahead %}
+  {{ css('about-space') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('about-space') }}
+{% endblock %}
+
+{% block article %}
+  <h1 class="title-banner">Mozilla Space</h1>
+  <h2>為了增加參與及交流的機會，美商謀智在台灣設立了 Mozilla Space</h2>
+  <p>您可以在這裡找到 Mozilla 員工和社群成員，了解最新的技術與狀況，體驗 Mozilla 開放的文化。Mozilla Space 是所有 Mozillians 的窩，你可以在這裡寫程式、設計、研究、打造新玩意、跟其他同好交流，一同讓網路有更美好的未來。</p>
+  <h3>我們有：</h3>
+  <ul>
+    <li>舒服的桌椅、高速無線網路、當然還有絕對少不了的電源</li>
+    <li>隨手可及的咖啡、茶包、飲水</li>
+    <li>投影設備</li>
+    <li>可容納 25 人左右的空間</li>
+  </ul>
+  <ul id="prettyPhoto-gallery" class="gallery clearfix">
+    <li><a href="{{ media('img/mocotw/pic/mozilla_space/fullscreen/1.jpg') }}" rel="prettyPhoto[pp_gal]"><img src="{{ media('img/mocotw/pic/mozilla_space/thumbnails/1.jpg') }}" alt="舒適的Mozilla Sofa" /></a></li>
+    <li><a href="{{ media('img/mocotw/pic/mozilla_space/fullscreen/2.jpg') }}" rel="prettyPhoto[pp_gal]"><img src="{{ media('img/mocotw/pic/mozilla_space/thumbnails/2.jpg') }}" alt="高級的投影設備" /></a></li>
+    <li><a href="{{ media('img/mocotw/pic/mozilla_space/fullscreen/3.jpg') }}" rel="prettyPhoto[pp_gal]"><img src="{{ media('img/mocotw/pic/mozilla_space/thumbnails/3.jpg') }}" alt="輕鬆寫意的吧檯(不含Macbook)" /></a></li>
+    <li><a href="{{ media('img/mocotw/pic/mozilla_space/fullscreen/4.jpg') }}" rel="prettyPhoto[pp_gal]"><img src="{{ media('img/mocotw/pic/mozilla_space/thumbnails/4.jpg') }}" alt="Mozilla Café" /></a></li>
+    <li><a href="{{ media('img/mocotw/pic/mozilla_space/fullscreen/5.jpg') }}" rel="prettyPhoto[pp_gal]"><img src="{{ media('img/mocotw/pic/mozilla_space/thumbnails/5.jpg') }}" alt="陪你聚會的Mozilla 雷克斯" /></a></li>
+  </ul>
+  <h3>我想借用場地辦活動</h3>
+  <p>我們也歡迎與 Open Web 或自由軟體、開放原始碼軟體相關的社群，在下班時間及假日申請使用 Mozilla Space，只要你：</p>
+  <ul>
+    <li>辦的活動與 Open Web 或自由軟體、開放原始碼軟體相關</li>
+    <li>承諾在會後恢復場地</li>
+  </ul>
+  <p>都歡迎您於活動至少一週前提出申請，我們會與您聯絡。</p>
+  <a class="online_button right_button"  href="/reg/space/" target="_blank" >線上報名</a>
+
+{% endblock %}

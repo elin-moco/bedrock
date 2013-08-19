@@ -1,0 +1,65 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+{% from "mocotw/mosaic-grid.html" import mosaic with context %}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% block page_title %}認識 Mozilla{% endblock %}
+{% block description %}了解 Mozilla 的宗旨與理念，認識 Mozilla 的 Mission & Vision 並鼓勵全球社群參與，知道 Mozilla 宣言並進而在網路上實踐，共同打造更美好的網路未來與網路體驗。透過使用 Firefox，人人都可以是 Firefox 社群的一份子{% endblock %}
+{% block body_id %}mission{% endblock %}
+{% block body_class %}sand{% endblock %}
+
+{% block extrahead %}
+  {{ css('mission') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('video') }}
+  {{ js('mosaic') }}
+{% endblock %}
+
+{% block mosaic %}
+  {{ mosaic('mocotw/about') }}
+{% endblock %}
+
+{% block content %}
+<article id="main-content">
+  <h1 class="title-banner">認識 Mozilla</h1>
+
+  <div class="main">
+    <p class="lede">Mozilla 是全球化非營利組織</p>
+    <p class="lede2">Proudly Non-Profit, We Answer to No One but You</p>
+    <p>Mozilla是一個全球化的非營利組織，我們的願景是打造一個更開放自由的網路未來，提升人們的網路經驗，並支持開放源碼的資源共享精神。Mozilla 同時也是全球性的社群，由來自世界各地的軟體開發工程師、測試人員、 廣告創意人員共同組成，一致的目標是支持網路資源的完全開放共享。Mozilla 相信只有開放的標準才能確保任何人、在任何地方都能感受到最安全、最流暢、多元化的網路經驗。</p>
+    <p>只要你是Firefox，或任何Mozilla產品的使用者，你就是Mozilla全球社群的一份子，因為你也在幫我們一同打造網路更美好的未來。若你懷抱著一份對網路的熱情，想要改變些什麼，歡迎<a href="/community/">加入我們的行列。</a></p>
+    <p>請閱讀 <a href="{{ url('mocotw.about.manifesto') }}">Mozilla 宣言</a> 了解更多關於Mozilla的理念、價值、精神與原則。</p>
+  </div>
+
+  <div class="video">
+    <div id="welcome-video" class="mozilla-video-control mozilla-video-shadow">
+      <iframe width="460" height="259" src="http://www.youtube-nocookie.com/embed/fUmhf6JezoI?autohide=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p class="caption">從影片中瞭解我們是誰、從何而來，以及如何為你打造更好的網路體驗。</p>
+  </div>
+
+  <ul class="links">
+    <li>
+      <h4><a href="{{ url('mocotw.about.space') }}">Mozilla Space</a></h4>
+      <p>來這裡體驗 Mozilla 開放的文化。</p>
+    </li>
+    <li>
+      <h4><a href="{{ url('mocotw.about.careers') }}">工作機會</a></h4>
+      <p>加入我們一起打造更美好的網路未來。</p>
+    </li>
+    <li>
+      <h4><a href="{{ url('mocotw.about.intern') }}">實習機會</a></h4>
+      <p>提供台灣學生參與國際大型專案與國際接軌的機會。</p>
+    </li>
+    <li>
+      <h4><a href="{{ url('mocotw.about.contact') }}">聯絡我們</a></h4>
+      <p>我們的完整聯絡方式。</p>
+    </li>
+  </ul>
+
+</article>
+{% endblock %}
