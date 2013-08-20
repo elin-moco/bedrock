@@ -5,7 +5,9 @@
 from django.conf import settings
 from django.conf.urls.defaults import handler404, include, patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+from django.http import HttpResponse
+from bedrock.base import ViewsSitemap, PathsSitemap
+from bedrock.settings import ENGAGE_ROBOTS, DEBUG
 from funfactory.monkeypatches import patch
 patch()
 
@@ -16,6 +18,35 @@ patch()
 # The default django 500 handler doesn't run the ContextProcessors, which breaks
 # the base template page. So we replace it with one that does!
 handler500 = 'lib.bedrock_util.server_error_view'
+
+sitemaps = {
+    'base': ViewsSitemap(
+        ['mozorg.home'],
+        0.9, 'weekly'),
+    'firefox': ViewsSitemap(
+        ['firefox.fx', 'firefox.features', 'firefox.mobile.features', 'firefox.download', 'firefox.os.index'],
+        0.8, 'monthly'),
+    'firefox_details': ViewsSitemap(
+        ['firefox.customize', 'firefox.performance', 'firefox.technology', 'firefox.security',
+         'firefox.faq', 'firefox.ueip',
+         'firefox.mobile.platforms', 'firefox.mobile.faq', 'firefox.mobile.sync',
+         'firefox.partners.index', 'firefox.os.faq',
+         'firefox.all', 'firefox.channel',
+         'firefox.dnt', 'firefox.phishing-protection', 'firefoxflicks.list', 'plugincheck',
+         ],
+        0.7, 'monthly'),
+    'about': ViewsSitemap(
+        ['mozorg.about', 'mocotw.about.manifesto', 'mocotw.about.space',
+         'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact', 'mocotw.news'],
+        0.6, 'montyly'),
+    'community': ViewsSitemap(
+        ['mozorg.contribute', ],
+        0.5, 'monthly'),
+    'community_old': PathsSitemap(
+        ['/community/', '/community/contribute/', '/community/student/',
+         '/community/student_rules/', '/community/student_details/', '/community/package/'],
+        0.5, 'monthly'),
+}
 
 urlpatterns = patterns('',
     # Main pages
@@ -40,6 +71,17 @@ urlpatterns = patterns('',
 
     # Facebook Apps
     (r'^facebookapps/', include('bedrock.facebookapps.urls')),
+
+    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+
+    # Generate a robots.txt
+    (
+        r'^robots\.txt$',
+        lambda r: HttpResponse(
+            "User-agent: *\n%s: /" % 'Allow' if ENGAGE_ROBOTS else 'Disallow',
+            mimetype="text/plain"
+        )
+    ),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),

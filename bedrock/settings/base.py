@@ -96,6 +96,12 @@ def JINJA_CONFIG():
 JINGO_MINIFY_USE_STATIC = False
 CACHEBUST_IMGS = False
 
+JINGO_EXCLUDE_APPS = [
+    'sitemap.xml',
+    'admin',
+]
+
+
 # Bundles is a dictionary of two dictionaries, css and js, which list css files
 # and js files that can be bundled together by the minify app.
 MINIFY_BUNDLES = {
@@ -687,6 +693,7 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mocotw.middleware.NewsletterMiddleware',
     'dnt.middleware.DoNotTrackMiddleware',
     'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ))
 
 INSTALLED_APPS = get_apps(exclude=(
@@ -704,6 +711,8 @@ INSTALLED_APPS = get_apps(exclude=(
     'django_sha2',  # Load after auth to monkey-patch it.
     'django.contrib.contenttypes',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     '%s.sandstone' % PROJECT_MODULE,
     '%s.mocotw' % PROJECT_MODULE,
@@ -846,3 +855,6 @@ DEFAULT_FILTERS['escape_js_vars'] = escape_js_variables
 #LOCAL_MYFF_URL = MYFF_URL = 'myfirefox.com.tw'
 #LOCAL_FFCLUB_URL = FFCLUB_URL = 'firefox.club.tw'
 CSRF_FAILURE_VIEW = 'bedrock.mozorg.views.csrf_failure'
+
+SITE_ID = 1
+ENGAGE_ROBOTS = False
