@@ -368,6 +368,9 @@ var Tabzilla = (function (Tabzilla) {
           <div>\
             <ul>\
               <li>\
+                <a href="//mozilla.com.tw/firefox/download/" title="下載 Mozilla Firefox 中文桌面版" tabindex="-1">Firefox 免費下載</a>\
+              </li>\
+              <li>\
                 <a href="//mozilla.com.tw/firefox/" title="下載 Mozilla Firefox 中文桌面版">Firefox 桌面版</a>\
               </li>\
               <li>\
