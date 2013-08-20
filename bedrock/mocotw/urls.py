@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
+from bedrock.mozorg.views import plugincheck
 from bedrock.redirects.util import redirect
 
 urlpatterns = patterns(
@@ -31,8 +32,7 @@ urlpatterns = patterns(
     url(r'^$', TemplateView.as_view(template_name="mozorg/home.html"), name='mozorg.home'),
     url('^about/$', TemplateView.as_view(template_name="mocotw/about/index.html"), name='mozorg.about'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
-        kwargs={'template': 'mozorg/contribute.html',
-                'return_to_form': False}),
-    url(r'^about/partnerships/contact-bizdev/$', contact_bizdev,
-        name='about.partnerships.contact-bizdev'),
+        kwargs={'template': 'mozorg/contribute.html', 'return_to_form': False}),
+    url(r'^about/partnerships/contact-bizdev/$', contact_bizdev, name='about.partnerships.contact-bizdev'),
+    url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
 )
