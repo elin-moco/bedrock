@@ -5,7 +5,7 @@ ul, ol {
   li {
   }
 }
-/*
+
 .animate(@settings) {
   animation: @settings;
   -moz-animation: @settings;
@@ -22,6 +22,9 @@ ul, ol {
   -ms-animation-delay: @time;
 }
 
+div#main-content {
+  padding-bottom: 0;
+}
 
 ul#contentTab li#intern-tab {
 	padding: 0;
@@ -51,6 +54,7 @@ ul#contentTab li#intern-tab {
 .poster {
 	width: 100%;
 	float: left;
+    margin-top: 30px;
 }
 
 .poster-left {
@@ -79,30 +83,31 @@ ul#contentTab li#intern-tab {
 	background: url(/media/img/mocotw/about/intern/title01.png);
 	width: 369px;
 	height: 95px;
-	margin-top: -100px;
 	margin-left: 30px;
 }
-.intern-title	h2 {
-	color: transparent;
+.intern-title h2 {
+    text-indent: -999999px;
 }
 
 .dev-doll {
-	background: url(/media/img/mocotw/about/intern/pic_engineer.gif);
-	width: 356px;
-	height: 471px;
-	margin: auto;
-	margin-top: 100px;
+	background: url(/media/img/mocotw/about/intern/pic_engineer.gif) no-repeat;
+    background-size: 100% 100%;
+	width: 151px;
+	height: 200px;
 	position: relative;
+    margin-top: -120px;
+    margin-right: -50px;
+    float: right;
 }
 
 .dev-title {
-	background: url(/media/img/mocotw/about/intern/title02.png);
-	width: 318px;
+	background: url(/media/img/mocotw/about/intern/title02.png) no-repeat;
+	width: 100%;
 	height: 79px;
 	margin-left: 30px;
 }
 .dev-title h3 {
-	color: transparent;
+    text-indent: -999999px;
 }
 
 a.dev-apply {
@@ -116,22 +121,24 @@ a.dev-apply:hover {
 }
 
 .mktg-doll {
-	background: url(/media/img/mocotw/about/intern/pic_marketing.gif);
-	width: 360px;
-	height: 396px;
-	margin: auto;
-	margin-top: 100px;
+	background: url(/media/img/mocotw/about/intern/pic_marketing.gif) no-repeat;
+	width: 180px;
+	height: 200px;
 	position: relative;
+    background-size: 100% 100%;
+    margin-top: -120px;
+    margin-right: -50px;
+    float: right;
 }
 
 .mktg-title {
-	background: url(/media/img/mocotw/about/intern/title03.png);
-	width: 360px;
+	background: url(/media/img/mocotw/about/intern/title03.png) no-repeat;
+	width: 100%;
 	height: 79px;
 	margin-left: 30px;
 }
 .mktg-title h3 {
-	color: transparent;
+    text-indent: -999999px;
 }
 a.mktg-apply {
 	background: url(/media/img/mocotw/about/intern/btn_M.png);
@@ -205,20 +212,22 @@ a.mktg-apply:hover {
 
 .blink-mktg {
 	background: url(/media/img/mocotw/about/intern/blink.png) no-repeat center;
-	width: 15px;
-	height: 21px;
-	top: 35px;
-	left: 160px;
+	width: 10px;
+	height: 15px;
+	top: 18px;
+	left: 80px;
 	position: absolute;
+    background-size: 100% 100%;
   .animate(blink 0.3s infinite linear);
 }
 
 .globe {
 	background: url(/media/img/mocotw/about/intern/globe.png) no-repeat center;
-	width: 51px;
-	height: 52px;
-	top: 180px;
-	left: 300px;
+	width: 25px;
+	height: 25px;
+	top: 77px;
+	left: 130px;
+    background-size: 100% 100%;
 	position: absolute;
   .animate(rotate 3s infinite linear);
 }
@@ -354,4 +363,122 @@ a.mktg-apply:hover {
 	.animation-delay(0.7s);
 }
 
-*/
+
+.blinkKeyframes {
+  0% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 50% 50%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.rotateKeyframes {
+  from {
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+
+.rainbowKeyframes {
+  0% {
+    background: #FBAF3A;
+  }
+  9% {
+    background: #D9E026;
+  }
+  18% {
+    background: #3AB449;
+  }
+  27% {
+    background: #00A99C;
+  }
+  36% {
+    background: #29AAE1;
+  }
+  45% {
+    background: #0C71B9;
+  }
+  54% {
+    background: #92288D;
+  }
+  63% {
+    background: #662F8F;
+  }
+  72% {
+    background: #ED1F79;
+  }
+  80% {
+    background: #D31C5B;
+  }
+  88% {
+    background: #EB2026;
+  }
+  96% {
+    background: #F79320;
+  }
+  100% {
+    background: #FBAF3A;
+  }
+}
+
+@keyframes blink {
+  .blinkKeyframes();
+}
+@-moz-keyframes blink {
+  .blinkKeyframes();
+}
+@-webkit-keyframes blink {
+  .blinkKeyframes();
+}
+@-o-keyframes blink {
+  .blinkKeyframes();
+}
+@-ms-keyframes blink {
+  .blinkKeyframes();
+}
+
+@keyframes rotate {
+  .rotateKeyframes();
+}
+@-moz-keyframes rotate {
+  .rotateKeyframes();
+}
+@-webkit-keyframes rotate {
+  .rotateKeyframes();
+}
+@-o-keyframes rotate {
+  .rotateKeyframes();
+}
+@-ms-keyframes rotate {
+  .rotateKeyframes();
+}
+
+@keyframes rainbow {
+  .rainbowKeyframes();
+}
+@-moz-keyframes rainbow {
+  .rainbowKeyframes();
+}
+@-webkit-keyframes rainbow {
+  .rainbowKeyframes();
+}
+@-o-keyframes rainbow {
+  .rainbowKeyframes();
+}
+@-ms-keyframes rainbow {
+  .rainbowKeyframes();
+}
