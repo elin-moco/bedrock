@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from django.conf.urls.defaults import *
+from django.conf.urls import *
+from django.views.generic import TemplateView
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.redirects.util import redirect
@@ -11,7 +12,7 @@ urlpatterns = patterns(
     '',
     page("", "mozorg/home.html"),
     page('news', 'mocotw/news.html'),
-    page('about', 'mocotw/about/index.html'),
+    # page('about', 'mocotw/about/index.html'),
     page('about/manifesto', 'mocotw/about/manifesto.html'),
     page('about/space', 'mocotw/about/space.html'),
     page('about/careers', 'mocotw/about/careers.html'),
@@ -26,6 +27,8 @@ urlpatterns = patterns(
     redirect(r'^firefox/central/$', '/firefox/features'),
     redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
+    url(r'^$', TemplateView.as_view(template_name="mozorg/home.html"), name='mozorg.home'),
+    url('^about/$', TemplateView.as_view(template_name="mocotw/about/index.html"), name='mozorg.about'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html',
                 'return_to_form': False}),
