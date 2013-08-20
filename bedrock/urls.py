@@ -32,7 +32,7 @@ sitemaps = {
          'firefox.mobile.platforms', 'firefox.mobile.faq', 'firefox.mobile.sync',
          'firefox.partners.index', 'firefox.os.faq',
          'firefox.all', 'firefox.channel',
-         'firefox.dnt', 'firefox.phishing-protection', 'firefoxflicks.list', 'plugincheck',
+         'firefox.dnt', 'firefox.phishing-protection', 'firefoxflicks.list', 'mozorg.plugincheck',
          ],
         0.7, 'monthly'),
     'about': ViewsSitemap(
