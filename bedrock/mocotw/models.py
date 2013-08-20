@@ -16,6 +16,7 @@ class Bbs(models.Model):
     pair_lock = models.TextField()
     actived = models.IntegerField()
     edit_date = models.DateField()
+
     class Meta:
         db_table = u'bbs'
 
@@ -25,6 +26,7 @@ class Imagedata(models.Model):
     filename = models.CharField(max_length=60)
     u_email = models.CharField(max_length=300, blank=True)
     upload_date = models.DateTimeField()
+
     class Meta:
         db_table = u'imagedata'
 
@@ -34,5 +36,6 @@ class Newsletter(models.Model):
     u_email = models.TextField(blank=False)
     u_status = models.IntegerField(default=1)
     edit_date = models.DateField(default=datetime.now)
+
     class Meta:
         db_table = u'newsletter'

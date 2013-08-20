@@ -212,7 +212,7 @@ class NewsletterFooterForm(forms.Form):
         self.fields['lang'] = forms.TypedChoiceField(widget=select_widget,
                                                      choices=lang_choices,
                                                      initial=lang,
-                                                     required=True,
+                                                     required=False,
                                                      empty_value='')
 
     def clean_newsletter(self):

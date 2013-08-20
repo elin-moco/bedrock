@@ -91,8 +91,10 @@ def download_nightly_details():
 
 
 def newsletter_subscribe(email):
-    print email + ' subscribed'
-    subscription = Newsletter(u_email=email)
-    subscription.save()
-    print email + ' subscribed'
-    log.error(email + ' subscribed')
+    if not Newsletter.objects.filter(u_email=email).exists():
+        subscription = Newsletter(u_email=email)
+        subscription.save()
+        log.info(email + ' subscribed!')
+        return
+    log.warn(email + ' already exists!')
+
