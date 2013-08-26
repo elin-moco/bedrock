@@ -5,7 +5,7 @@
 <title>{{ params.title }}</title>
 <style>
 body {
-  width: 100%;
+  margin: 0;
   background-color: #CAE1F4;
   background: url("http://{{ MOCO_URL }}/media/img/sandstone/bg-gradient-sky.png") repeat-x scroll 0 0px, url("http://{{ MOCO_URL }}/media/img/sandstone/grain.png") repeat scroll 0 0px, none repeat scroll 0 0 rgb(238, 238, 238);
 }
@@ -34,8 +34,16 @@ table.container {
   padding-left: 30px;
 }
 
+td.header-tip {
+  text-align: center;
+  padding-bottom: 7px;
+}
+td.header-tip small{
+  color: #808080;
+  text-decoration: underline;
+}
 table.header {
-  margin: 7px auto 8px auto;
+  margin: 0 auto 8px auto;
   width: 653px;
   font-weight: bold;
   color: #4D4E53;
@@ -61,7 +69,7 @@ table.banner td {
 
 table.banner b {
   display: block;
-  margin-top: 12px;
+  margin-top: 7px;
   margin-bottom: 0;
 }
 
@@ -269,6 +277,11 @@ table.footer td.license {
     <td>
       <a href="{{ NEWSLETTER_URL }}">
         <table class="header">
+          <tr>
+            <td class="header-tip" colspan="2">
+              <small>無法正常顥示？請點此開啟網頁版</small>
+            </td>
+          </tr>
           <tr>
             <td>
               <img src="{{ imgpath_prefix }}images/header.png">
