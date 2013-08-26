@@ -162,6 +162,9 @@ MINIFY_BUNDLES = {
         'newsletter': (
             'css/newsletter/newsletter.less',
         ),
+        'newsletter_index': (
+            'css/newsletter/index.less',
+        ),
         'contribute': (
             'css/mozorg/contribute.less',
             'css/sandstone/video-resp.less',

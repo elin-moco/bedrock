@@ -42,7 +42,6 @@ a.web-link {
 
 td.header-tip {
   text-align: center;
-  padding-bottom: 7px;
 }
 td.header-tip small{
   color: #808080;
@@ -123,8 +122,13 @@ td.subscribe a {
   height: 100%;
 }
 
+table.header td.logo {
+  padding-top: 7px;
+}
+
 table.header td.issue {
   text-align: right;
+  padding-top: 7px;
 }
 
 span.volumn {
@@ -276,12 +280,16 @@ table.footer td.license {
   font-size: 10px;
 }
 </style>
+{% if request %}
+  {% include 'includes/google-analytics.html' %}
+{% endif %}
 </head>
 <body>
 <table class="container">
   <tr>
     <td>
         <table class="header">
+          {% if not request %}
           <tr>
             <td class="header-tip" colspan="2">
               <a class="web-link" href="{{ NEWSLETTER_URL }}">
@@ -289,8 +297,9 @@ table.footer td.license {
               </a>
             </td>
           </tr>
+          {% endif %}
           <tr>
-            <td>
+            <td class="logo">
               <a class="web-link" href="{{ NEWSLETTER_URL }}">
                 <img src="{{ imgpath_prefix }}images/header.png">
               </a>
