@@ -10,6 +10,7 @@ from bedrock.mozorg.views import contact_bizdev
 from bedrock.mozorg.views import plugincheck
 from bedrock.mocotw.views import issue, article_subpic_svg, menu_svg
 from bedrock.redirects.util import redirect
+from bedrock.sandstone.settings import BLOG_URL
 
 urlpatterns = patterns(
     '',
@@ -26,6 +27,8 @@ urlpatterns = patterns(
     page('firefox/ueip', 'firefox/ueip.html'),
     page('firefox/mobile/sync', 'firefox/mobile/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
+    redirect(r'^press/$', 'http://' + BLOG_URL + '/press'),
+    redirect(r'^news/press/$', 'http://' + BLOG_URL + '/press'),
     redirect(r'^firefoxos/$', '/firefox/os'),
     redirect(r'^firefox/central/$', '/firefox/features'),
     redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
