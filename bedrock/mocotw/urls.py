@@ -8,6 +8,7 @@ from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
 from bedrock.mozorg.views import plugincheck
+from bedrock.mocotw.views import issue, article_subpic_svg, menu_svg
 from bedrock.redirects.util import redirect
 
 urlpatterns = patterns(
@@ -35,4 +36,11 @@ urlpatterns = patterns(
         kwargs={'template': 'mozorg/contribute.html', 'return_to_form': False}),
     url(r'^about/partnerships/contact-bizdev/$', contact_bizdev, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
+
+    # url('^newsletter/(?P<issue_number>[\d\-]+)/images/menu-(?P<menu_title>.*).svg$',
+    #     menu_svg, name='newsletter.subpic'),
+    # url('^newsletter/(?P<issue_number>[\d\-]+)/images/subpic-(?P<article_number>\d+)-(?P<article_tag>[a-z]+)\.svg$',
+    #     article_subpic_svg, name='newsletter.subpic'),
+    url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
+
 )

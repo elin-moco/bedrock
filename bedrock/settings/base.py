@@ -693,7 +693,6 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mocotw.middleware.NewsletterMiddleware',
     'dnt.middleware.DoNotTrackMiddleware',
     'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ))
 
 INSTALLED_APPS = get_apps(exclude=(
@@ -845,7 +844,13 @@ FACEBOOK_TAB_URL = lazy(facebook_tab_url_lazy, str)()
 # e.g. '//mozorg.cdn.mozilla.net'
 CDN_BASE_URL = ''
 
+
+def do_html_to_text(value):
+    import html2text
+    converter = html2text.HTML2Text()
+    return converter.handle(value)
 DEFAULT_FILTERS['escape_js_vars'] = escape_js_variables
+DEFAULT_FILTERS['html2text'] = do_html_to_text
 
 #NIGHTLY_URL = 'nightly.mozilla.org'
 #MOFO_URL = 'www.mozilla.org'

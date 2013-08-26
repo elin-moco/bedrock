@@ -1,0 +1,96 @@
+[如無法正常顯示，請點此連結](http://mozilla.com.tw/newsletter/2013-07/index.html?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307)
+
+[mozilla Taiwan | Firefox](http://mozilla.com.tw?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=mozilla)
+
+[認識 mozilla ](http://mozilla.com.tw/about/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=about) [下載 Firefox](http://mozilla.com.tw/firefox/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=download)
+
+# 第9期 eNews
+
+![活動](cid:2013-07/res/event.png)
+
+## [7/27 第二屆校園大使訓練營 - 超 High 花絮！(上集)](http://blog.mozilla.com.tw/posts/3321/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+第二屆 Firefox 校園大使訓練營已於 7/27 順利落幕。當天大使們不只學習到 Mozilla 精神、豐富的 Firefox 知識，更認識來自全台各校的好朋友，期待接下來的發光發熱！ [more](http://blog.mozilla.com.tw/posts/3321/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+## [7/27 第二屆校園大使訓練營 - 超 High 花絮！(下集)](http://blog.mozilla.com.tw/posts/3354/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+超 High 花絮下集除了精彩的現場實況報導外，還貼心準備活動投影片供大家搶先看！ [more](http://blog.mozilla.com.tw/posts/3354/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+## [7/20 Hands-on 超精彩花絮報導！](http://blog.mozilla.com.tw/posts/3233/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+7/20 是很特別的一天!! 當天有兩場 Mozilla Taiwan 與 COSCUP 合辦的精彩 Hands-on 活動，現在，就讓獨家花絮報導帶你回到現場！ [more](http://blog.mozilla.com.tw/posts/3233/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+## [「2013 軟體創作達人暑期成長營」台南場、台北場演講花絮](http://blog.mozilla.com.tw/posts/3070/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+Mozilla 這次大力參與「2013 軟體創作達人暑期成長營」，工程師們在忙碌的 mentor 專案學生外，還受邀參加成大、北科大的校園演講。 [more](http://blog.mozilla.com.tw/posts/3070/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=event)
+
+![文章](cid:2013-07/res/article.png)
+
+## [德國電信宣佈 Firefox OS 手機於歐洲上市！](http://blog.mozilla.com.tw/posts/3092/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+搭載 Firefox OS 的 Open Web 裝置正式登陸波蘭。德國、匈牙利...等緊接著在秋天開始販售 Alcatel One Touch Fire！ [more](http://blog.mozilla.com.tw/posts/3092/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+## [Mozilla 近期動態與每季度發表的 Firefox OS 版本](http://blog.mozilla.com.tw/posts/3235/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+Firefox OS 也加入更新週期囉！Firefox OS 將針對前 2 個主要版本，採每 3 個月就發表新功能，而且每 6 個星期就會釋出安全性更新！ [more](http://blog.mozilla.com.tw/posts/3235/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+## [Firefox OS 模擬器 4.0 發佈](http://blog.mozilla.com.tw/posts/3123/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+Firefox OS 模擬器 (Firefox OS Simulator) 4.0 正式推出！歡迎 Firefox OS 開發者搶先試用。 [more](http://blog.mozilla.com.tw/posts/3123/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+## [全新 Firefox 識別標誌 ─ 迎向 Firefox 的新世代](http://blog.mozilla.com.tw/posts/3017/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+Firefox Logo 經歷了幾次的更新和改變，這次更是用心詮釋 Firefox 在 Web 以及 2013 年開始以後所將扮演的角色，新標誌更貼近「著眼於 Web/來自於 Web」的行動概念。 [more](http://blog.mozilla.com.tw/posts/3017/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+## [Firefox OS 所代表的意義](http://blog.mozilla.com.tw/posts/3139/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+你知道 Firefox OS 為什麼很重要嗎? 以純 HTML5 打造的 Firefox OS 又有什麼驚人的魅力? [more](http://blog.mozilla.com.tw/posts/3139/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+## [開發 App - Firefox OS：讓 HTML5 完全發揮的平台](http://blog.mozilla.com.tw/posts/3277/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+Firefox OS 的推出，讓 HTML5 App 的開發者有個大展身手的平台！如何踏入這一片新藍海? 就讓 Chris Heilmann 帶領大家著手開發自己的 HTML5 App。 [more](http://blog.mozilla.com.tw/posts/3277/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+## [四週手機變平板 - 見證奇蹟的時刻](http://tech.mozilla.com.tw/posts/2627/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+搭載 Firefox OS 的行動裝置從手機跨到平板已經不是新聞，但這一切是如何發生的？看看最有才的工程師團隊，如何用不到四週的時間，做出可以操作的實機展示版，甚至具備平板特色 - 數位相框功能！ [more](http://tech.mozilla.com.tw/posts/2627/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=article)
+
+  * ### Firefox 桌布下載
+
+![](cid:2013-07/res/watermalon-small.jpg)[1920 X 1080](http://mozilla.com.tw/newsletter/2013-07/watermalon-1920x1080.jpg)  
+[1366 X 768](http://mozilla.com.tw/newsletter/2013-07/watermalon-1366x768.jpg)
+![](cid:2013-07/res/ice-small.jpg)[1920 X 1080](http://mozilla.com.tw/newsletter/2013-07/ice-1920x1080.jpg)  
+[1366 X 768](http://mozilla.com.tw/newsletter/2013-07/ice-1366x768.jpg)
+  * ### 07月電子報好禮送
+
+Firefox 電子報有獎徵答：Firefox OS 目前已加入更新週期，請問針對前 2 個主要版本，其更新週期為？  
+
+
+A.( 3 週 )  
+  
+B.( 3 個月 )  
+  
+C.( 6 個月 )  
+  
+
+
+請將上述正確答案 [寄給我們](mailto:tw-mktg@mozilla.com)，並在標題註明「電子報有獎徵答」。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！截止日期 2013/8/11。
+
+  * ### 與我們為友
+
+    * [Facebook](https://www.facebook.com/MozillaTaiwan)
+    * [Google](https://plus.google.com/u/0/114653167240123163859/posts)
+    * [Plurk](http://plurk.com/MozillaTaiwan)
+    * [Youtube](http://www.youtube.com/user/MozillaTaiwan)
+    * [Flickr](http://www.flickr.com/photos/mozillataiwan/)
+
+### 聯繫我們
+
+[tw-mktg@mozilla.com](mailto:tw-mktg@mozilla.com)
+
+Mozilla Taiwan   
+美商謀智股份有限公司台灣分公司  
+[http://mozilla.com.tw](http://mozilla.com.tw?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=mozilla)
+
+Mozilla Taiwan 美商謀智
+
+除另有 [註明](http://www.mozilla.org/zh-TW/about/legal.html#site)外，本電子報內容皆採用[創用 CC 姓名標示--相同方式分享條款 3.0 ](http://creativecommons.org/licenses/by-sa/3.0/)或更新版本授權大眾使用。 [取消訂閱電子報](http://www.mozilla.com.tw/join_us/un_subscribe/?utm_source=epaper&utm_medium=email&utm_campaign=epaper1307&utm_content=unsubscribe)

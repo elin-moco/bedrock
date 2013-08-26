@@ -1,5 +1,8 @@
+import csv
 import logging
 import re
+import imp
+from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL
 from product_details import settings_fallback, product_details
 from bedrock.mocotw.models import Newsletter
 
@@ -98,3 +101,45 @@ def newsletter_subscribe(email):
         return
     log.warn(email + ' already exists!')
 
+
+def read_newsletter_context(issue_number):
+    if issue_number > '2013-07':
+        config = imp.load_source('bedrock.newsletter.%s' % issue_number.replace('-', ''),
+                                 'bedrock/newsletter/templates/newsletter/%s/config.py' % issue_number)
+        config.params['year'] = issue_number[:4]
+        config.params['month'] = issue_number[5:]
+        articles = []
+        events = []
+        quiz = {'answers': []}
+        with open('bedrock/newsletter/templates/newsletter/%s/articles.csv' % issue_number, 'rb') as articles_file:
+            reader = csv.reader(articles_file)
+            for row in reader:
+                if row[0].isdigit():
+                    article = {
+                        'category': row[1].replace(' ', ''),
+                        'title': row[2].decode('utf-8'),
+                        'link': row[4],
+                        'content': row[5].decode('utf-8'),
+                    }
+                    if 'event' == article['category']:
+                        events.append(article)
+                    elif 'quiz' == article['category']:
+                        quiz['content'] = article['content']
+                    elif 'answer' == article['category']:
+                        quiz['answers'].append(article['content'])
+                    elif 'deadline' == article['category']:
+                        quiz['deadline'] = article['content']
+                    elif 'banner' == article['category']:
+                        banner = article
+                    else:
+                        articles.append(article)
+        return {'params': config.params, 'banner': banner, 'articles': articles, 'events': events, 'quiz': quiz}
+    else:
+        return {}
+
+
+def newsletter_context_vars(context, issue_number):
+    context['MOCO_URL'] = MOCO_URL
+    context['TECH_URL'] = TECH_URL
+    context['FFCLUB_URL'] = FFCLUB_URL
+    context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
