@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from email.errors import MessageError
 from email.mime.image import MIMEImage
 from genericpath import isfile
@@ -9,7 +10,6 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars
 import premailer
-from bedrock.sandstone.settings import MOCO_URL, TECH_URL, FFCLUB_URL
 
 
 class Command(BaseCommand):
@@ -18,13 +18,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.options = options
+        testing = True if args[1] else False
+
         to_mail = (args[1], )
         issue_number = args[0]
         context = read_newsletter_context(issue_number)
         # context['imgpath_prefix'] = 'cid:'
-        context['imgpath_prefix'] = 'http://fancy.mozilla.com.tw:8000/newsletter/%s/' % issue_number
         newsletter_context_vars(context, issue_number)
-        subject = Header(context['params']['title'], 'utf-8')
+        subject = Header((u'[試寄] ' if testing else '') + context['params']['title'], 'utf-8')
         from_email = 'no-reply@mozilla.com'
         text_content = render_to_string('newsletter/%s/mail.txt' % issue_number, context)
         html_content = render_to_string('newsletter/%s/index.html' % issue_number, context)
