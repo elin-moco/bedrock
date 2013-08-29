@@ -104,19 +104,25 @@ table.social-share td {
 
 table.social-share td a {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
 }
 
 table.social-share td img {
   vertical-align: middle;
-  padding-right: 6px;
+  padding: 0 6px 0 0;
+  margin: 0;
 }
 
 table.social-share td.head {
   height: 25px;
   border-bottom: 1px dotted #4D4E53;
   font-weight: bold;
+}
+table.social-share td.link {
+  height: 28px;
 }
 
 td.subscribe img{
@@ -212,7 +218,7 @@ td ol.answer {
   margin-top: 0;
   margin-bottom: 12px;
 }
-td ol.answer {
+td ol.answer a {
   color: #000000;
   text-decoration: underline;
 }
@@ -460,8 +466,8 @@ table.footer td.license {
               {% endfor %}
             </ol>
             <p class="deadline">
-{#              請將上述正確答案寄給我們，並在標題註明「電子報有獎徵答」。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！<br>#}
-              請點選一個上述的正確答案並將它寄給我們。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！截止日期 {{ quiz.deadline }}。
+              請<b>點選</b>一個上述的正確答案並將它寄給我們。<br>
+              我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！截止日期 {{ quiz.deadline }}。
             </p>
           </td>
         </tr>
