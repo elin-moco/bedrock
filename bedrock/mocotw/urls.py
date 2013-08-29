@@ -28,6 +28,8 @@ urlpatterns = patterns(
     page('firefox/mobile/sync', 'firefox/mobile/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
     page('newsletter', 'newsletter/index.html'),
+    page('sumo', 'mocotw/sumo.html'),
+    page('community/student/workshop', 'mocotw/community/student/workshop.html'),
     redirect(r'^press/$', 'http://' + BLOG_URL + '/press'),
     redirect(r'^news/press/$', 'http://' + BLOG_URL + '/press'),
     redirect(r'^firefoxos/$', '/firefox/os'),

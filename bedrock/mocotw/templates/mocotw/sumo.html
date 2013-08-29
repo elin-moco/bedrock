@@ -1,0 +1,82 @@
+{% extends "base-resp.html" %}
+
+{% block extrahead %}
+  {{ css('sumo') }}
+{% endblock %}
+
+{% block site_header %}
+  <header>
+    <div class="container_12 cf">
+      <div class="grid_12">
+        <a id="tabzilla" href="http://www.mozilla.org/" aria-label="Mozilla 鏈結">mozilla</a>
+
+        <div class="cf">
+          <nav role="navigation" id="aux-nav">
+            <ul>
+              <li><a class="ask" href="https://support.mozilla.org/zh-TW/kb/get-community-support">問個問題</a></li>
+              <li><a class="sign-in register" href="https://support.mozilla.org/zh-TW/users/auth">
+                登入 / 註冊
+              </a></li>
+
+              <li><a class="locale-picker" href="https://support.mozilla.org/zh-TW/locales">正體中文 (繁體)</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="cf">
+          <form class="simple-search-form" method="get" action="https://support.mozilla.org/zh-TW/search" id="support-search">
+            <input type="hidden" value="a" name="esab">
+            <input type="search" class="searchbox" placeholder="搜尋 Mozilla 技術支援網站" required="required" name="q">
+            <button class="submit-button" title="搜尋" type="submit">搜尋</button>
+          </form>
+
+          <a href="https://support.mozilla.org/zh-TW/home"><img src="//support.cdn.mozilla.net/static/img/mozilla-support.png"
+                                     alt="mozilla support" class="logo"></a>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="grid_12">
+    <div class="hero-bar cf">
+      <h1>技術支援</h1>
+
+      <div class="column">
+        <p>「Mozilla 支援中心」簡稱 SUMO，是 <b>SU</b>pport <b>MO</b>zilla 的縮寫字。其技術說明的內容由熱血志工和員工協力完成，支援全球各種語言界面的 Mozilla 產品使用者。
+
+        <p><br>在瀏覽器內快速開啟 SUMO：<br>Firefox > 說明 > Firefox 說明
+      </div>
+      <img class="hero-butler" src="{{ media('img/mocotw/sumo/gi-hero-butler.png') }}" alt="">
+    </div>
+  </div>
+  <h2>請選擇下一步：</h2>
+  <div class="grid_12">
+    <section id="help-topics">
+      <ul class="card-grid cf">
+        <li>
+          <a class="cf" href="https://support.mozilla.org/zh-TW/kb/get-community-support">
+            <img alt="" class="topic-icon" src="{{ media('img/mocotw/sumo/get-involved-icons.png') }}">
+            <span class="title">
+              <h3>我有問題</h3>
+              瀏覽技術支援文件
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="cf" href="https://support.mozilla.org/zh-TW/get-involved">
+            <img alt="" class="topic-icon" src="{{ media('img/mocotw/sumo/icon.get-community-support.png') }}">
+            <span class="title">
+              <h3>參與我們</h3>
+              <p>幫助其它使用者</p>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+    </section>
+
+  </div>
+{% endblock %}

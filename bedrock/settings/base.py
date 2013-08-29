@@ -121,6 +121,12 @@ MINIFY_BUNDLES = {
         'csrf-failure': (
             'css/csrf-failure.less',
         ),
+        'sumo': (
+            'css/mocotw/sumo.less',
+        ),
+        'community-student-workshop': (
+            'css/mocotw/community-student-workshop.less',
+        ),
         'news': (
             'css/mocotw/news.less',
         ),
