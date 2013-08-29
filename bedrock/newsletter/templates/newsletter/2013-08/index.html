@@ -15,8 +15,17 @@ table, thead, tbody, tr, td {
   padding: 0;
 }
 
+a, a img {
+  outline: none;
+}
+
+img {
+  border: 0;
+}
+
 a, a p, a p b {
   text-decoration: none;
+  border-width: 0;
 }
 
 b, p b {
@@ -154,7 +163,8 @@ td.event-box {
   line-height: 15px;
 }
 
-td.article-box p {
+td.article-box p,
+td.event-box p {
   margin: 0;
 }
 
@@ -184,11 +194,6 @@ td.article-box img,
 td.event-box img {
   width: 194px;
   height: 128px;
-}
-
-td.event-box p {
-  margin-top: 12px;
-  margin-bottom: 0;
 }
 
 td p.quiz {
@@ -239,7 +244,7 @@ td img.more {
   text-align: right;
   color: #ffffff;
   font-size: 8px;
-  margin-top: -15px;
+  margin-top: -6px;
   margin-bottom: 0;
   padding-right: 5px;
   width: 30px;
