@@ -8,13 +8,13 @@ from lib import l10n_utils
 
 def issue(request, issue_number=None, path=None):
     if not path or path == 'index.html':
-        context = read_newsletter_context(issue_number)
+        context = read_newsletter_context(issue_number, False)
         newsletter_context_vars(context, issue_number)
         return l10n_utils.render(request,
                                  'newsletter/%s/index.html' % issue_number,
                                  context)
     elif path == 'mail.txt':
-        context = read_newsletter_context(issue_number)
+        context = read_newsletter_context(issue_number, False)
         newsletter_context_vars(context, issue_number)
         response = render_to_string('newsletter/%s/mail.txt' % issue_number, context)
         return HttpResponse(response, content_type='text/plain')

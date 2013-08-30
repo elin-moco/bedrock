@@ -303,7 +303,7 @@ table.footer td.license {
           {% if not request %}
           <tr>
             <td class="header-tip" colspan="2">
-              <a class="web-link" href="{{ NEWSLETTER_URL }}">
+              <a class="web-link" href="{{ NEWSLETTER_URL }}{{ params.tracking_code }}">
                 <small>無法正常顥示？請點此開啟網頁版</small>
               </a>
             </td>
@@ -311,12 +311,12 @@ table.footer td.license {
           {% endif %}
           <tr>
             <td class="logo">
-              <a class="web-link" href="http://{{ MOCO_URL }}">
+              <a class="web-link" href="http://{{ MOCO_URL }}{{ params.tracking_code }}">
                 <img src="{{ NEWSLETTER_URL }}images/header.png">
               </a>
             </td>
             <td class="issue">
-              <a class="web-link" href="{{ NEWSLETTER_URL }}">
+              <a class="web-link" href="{{ NEWSLETTER_URL }}{{ params.tracking_code }}}">
               Vol. <span class="volumn">{{ params.volume }}</span><br>
               {{ params.year }}年{{ params.month }}月號
               </a>
@@ -326,7 +326,7 @@ table.footer td.license {
       <table class="banner">
         <tr>
           <td class="main">
-            <a href="{{ banner.link }}" target="_blank">
+            <a href="{{ banner.link }}{{ params.tracking_code }}" target="_blank">
               <img src="{{ NEWSLETTER_URL }}images/mainpic.png"/>
               <b>
                 {{ banner.content }}
@@ -338,7 +338,7 @@ table.footer td.license {
             <table>
               <tr>
                 <td>
-                  <a href="http://{{ MOCO_URL }}/firefox/download/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-downloadfirefox.png"/></a>
+                  <a href="http://{{ MOCO_URL }}/firefox/download/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-downloadfirefox.png"/></a>
                 </td>
               </tr>
               <tr>
@@ -367,7 +367,7 @@ table.footer td.license {
               </tr>
               <tr>
                 <td class="subscribe">
-                  <a href="http://{{ MOCO_URL }}/join_us/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-downloadnewsletter-withtext.png"/></a>
+                  <a href="http://{{ MOCO_URL }}/join_us/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-downloadnewsletter-withtext.png"/></a>
                 </td>
               </tr>
             </table>
@@ -387,13 +387,13 @@ table.footer td.license {
             <tr>
           {% endif %}
         <td class="article-box {{ 'padright' if 0 != loop.index % 3 }} {{ 'padbottom' if loop.index <= 6 }}">
-          <a class="article-link" target="_blank" href="{{ article.link }}">
+          <a class="article-link" target="_blank" href="{{ article.link }}{{ params.tracking_code }}">
             <img src="{{ NEWSLETTER_URL }}images/subpic{{ loop.index }}-tagged.png"/>
             <p>
               <b>{{ article.title }} » </b>{{ article.content }}
             </p>
           </a>
-          <a target="_blank" href="{{ article.link }}">
+          <a target="_blank" href="{{ article.link }}{{ params.tracking_code }}">
             <img src="{{ NEWSLETTER_URL }}images/button-submore-withtext.png" class="more"/>
           </a>
         </td>
@@ -413,13 +413,13 @@ table.footer td.license {
         <tr>
           {% for event in events %}
             <td class="event-box  {{ 'padright' if 0 != loop.index % 3 }}">
-              <a class="event-link" target="_blank" href="{{ event.link }}">
+              <a class="event-link" target="_blank" href="{{ event.link }}{{ params.tracking_code }}">
                 <img src="{{ NEWSLETTER_URL }}images/event{{ loop.index }}.png"/>
                 <p>
                   <b>{{ event.title }} » </b>{{ event.content }}
                 </p>
               </a>
-              <a target="_blank" href="{{ event.link }}">
+              <a target="_blank" href="{{ event.link }}{{ params.tracking_code }}">
                 <img src="{{ NEWSLETTER_URL }}images/button-submore-withtext.png" class="more"/>
               </a>
             </td>
@@ -435,15 +435,15 @@ table.footer td.license {
     <td>
       <table class="links">
         <tr>
-          <td class="padright2 padbottom2"><a href="http://{{ MOCO_URL }}/community/student/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-school.png"/></a></td>
-          <td class="padright2 padbottom2"><a href="http://{{ TECH_URL }}/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-blog.png"/></a></td>
-          <td class="padright2 padbottom2"><a href="http://{{ MOCO_URL }}/community/student/workshop/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-workshop.png"/></a></td>
-          <td class="padbottom2"><a href="http://{{ FFCLUB_URL }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-people.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="http://{{ MOCO_URL }}/community/student/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-school.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="http://{{ TECH_URL }}/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-blog.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="http://{{ MOCO_URL }}/community/student/workshop/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-workshop.png"/></a></td>
+          <td class="padbottom2"><a href="http://{{ FFCLUB_URL }}{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-people.png"/></a></td>
         </tr>
         <tr>
-          <td class="padright2"><a href="http://{{ MOCO_URL }}/sumo" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-sumo.png"/></a></td>
-{#          <td class="padright2"><a href="http://{{ FFCLUB_URL }}/events/attack-on-web/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-app.png"/></a></td>#}
-          <td class="padright2"><a href="http://{{ MOCO_URL }}/firefoxflicks/" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-firefoxflicks.png"/></a></td>
+          <td class="padright2"><a href="http://{{ MOCO_URL }}/sumo{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-sumo.png"/></a></td>
+{#          <td class="padright2"><a href="http://{{ FFCLUB_URL }}/events/attack-on-web/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-app.png"/></a></td>#}
+          <td class="padright2"><a href="http://{{ MOCO_URL }}/firefoxflicks/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-firefoxflicks.png"/></a></td>
           <td></td>
         </tr>
       </table>
@@ -501,7 +501,7 @@ table.footer td.license {
                     <tr>
                       <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
                       <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
-                      <td><a href="http://mozilla.com.tw/join_us/" target="_blank">電子報</a></td>
+                      <td><a href="http://mozilla.com.tw/join_us/{{ params.tracking_code }}" target="_blank">電子報</a></td>
                     </tr>
                   </table>
                 </td>
@@ -511,7 +511,7 @@ table.footer td.license {
           <td class="about-col">
             <table>
               <tr>
-                <td class="official">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</td>
+                <td class="official"><a href="http://{{ MOCO_URL }}{{ params.tracking_code }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
               </tr>
               <tr>
                 <td class="contact">聯繫我們：<a href="mailto:tw-mktg@mozilla.com">tw-mktg@mozilla.com.tw</a></td>

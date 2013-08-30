@@ -102,12 +102,16 @@ def newsletter_subscribe(email):
     log.warn(email + ' already exists!')
 
 
-def read_newsletter_context(issue_number):
+def read_newsletter_context(issue_number, is_mail=True):
     if issue_number > '2013-07':
         config = imp.load_source('bedrock.newsletter.%s' % issue_number.replace('-', ''),
                                  'bedrock/newsletter/templates/newsletter/%s/config.py' % issue_number)
         config.params['year'] = issue_number[:4]
         config.params['month'] = issue_number[5:]
+        if is_mail:
+            config.params['tracking_code'] = '?utm_source=epaper&utm_medium=email&utm_campaign=epaper' + config.params['year'][2:] + config.params['month'] + '&utm_content=mozilla'
+        else:
+            config.params['tracking_code'] = ''
         articles = []
         events = []
         quiz = {'answers': []}
