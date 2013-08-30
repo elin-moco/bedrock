@@ -27,7 +27,7 @@ class Command(BaseCommand):
         # context['imgpath_prefix'] = 'cid:'
         newsletter_context_vars(context, issue_number)
         subject = Header((u'[試寄] ' if testing else '') + context['params']['title'], 'utf-8')
-        from_email = 'no-reply@mozilla.com'
+        from_email = '"Mozilla Taiwan" <no-reply@mozilla.com>'
         text_content = render_to_string('newsletter/%s/mail.txt' % issue_number, context)
         html_content = render_to_string('newsletter/%s/index.html' % issue_number, context)
         mail_content = premailer.transform(html_content)
@@ -68,7 +68,6 @@ class Command(BaseCommand):
             print('Failed to send verification mail: ', e)
         except RuntimeError as e:
             print('Unexpected error when sending verification mail: ', e)
-
 
     def named(self, email, name):
         if name:
