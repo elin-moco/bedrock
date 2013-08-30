@@ -317,7 +317,7 @@ table.footer td.license {
           <tr>
             <td class="logo">
               <a class="web-link" href="http://{{ MOCO_URL }}{{ params.tracking_code }}">
-                <img src="{{ NEWSLETTER_URL }}images/header.png?vol={{ params.volume }}">
+                <img src="{{ NEWSLETTER_URL }}images/header.png{{ '?vol=%d' % params.volume if not request else '' }} ">
               </a>
             </td>
             <td class="issue">
