@@ -65,9 +65,9 @@ class Command(BaseCommand):
             mail.send()
             print('Send %s Newsletter to %s.' % (issue_number, to_mail))
         except MessageError as e:
-            print('Failed to send verification mail: ', e)
+            print('Failed to send to %s' % to_mail, e)
         except RuntimeError as e:
-            print('Unexpected error when sending verification mail: ', e)
+            print('Unexpected error when sending to %s' % to_mail, e)
 
     def named(self, email, name):
         if name:
