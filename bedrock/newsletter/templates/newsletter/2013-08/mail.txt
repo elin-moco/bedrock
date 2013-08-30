@@ -1,12 +1,12 @@
 [Firefox OS 電子報 Vol. {{params.volume}} - {{params.year}}年{{params.month}}月號]
-({{ NEWSLETTER_URL }})
+({{ NEWSLETTER_URL }}{{ params.tracking_code }})
 
 [{{ banner.content }}]
-({{ banner.link }})
+({{ banner.link }}{{ params.tracking_code }})
 
 
 [Firefox 免費下載]
-(http://{{ MOCO_URL }}/firefox/download/)
+(http://{{ MOCO_URL }}/firefox/download/{{ params.tracking_code }})
 
 
 分享電子報至
@@ -20,15 +20,15 @@
 [Email]
 (mailto:?subject={{ params.title }}&body=詳見 Firefox 電子報第 {{ params.volume }} 期：{{ NEWSLETTER_URL }})
 
-[訂閱電子報](http://{{ MOCO_URL }}/join_us/)
+[訂閱電子報](http://{{ MOCO_URL }}/join_us/{{ params.tracking_code }})
 
 
 最新消息
 
 {% for article in articles %}
-[{{article.title}}]({{article.link}})
+[{{article.title}}]({{article.link}}{{ params.tracking_code }})
 {{article.content}}
-[more]({{article.link}})
+[more]({{article.link}}{{ params.tracking_code }})
 
 {% endfor %}
 
@@ -36,28 +36,28 @@
 近期活動
 
 {% for event in events %}
-[{{ event.title }}]({{ event.link }})
+[{{ event.title }}]({{ event.link }}{{ params.tracking_code }})
 {{ event.content }}
-[more]({{ event.link }})
+[more]({{ event.link }}{{ params.tracking_code }})
 
 {% endfor %}
 
 
 與我同行
 
-[校園大使](http://{{ MOCO_URL }}/community/student/)
+[校園大使](http://{{ MOCO_URL }}/community/student/{{ params.tracking_code }})
 
-[謀智台客](http://{{ TECH_URL }}/)
+[謀智台客](http://{{ TECH_URL }}/{{ params.tracking_code }})
 
-[狐狐工作坊](http://{{ MOCO_URL }}/community/student/workshop/)
+[狐狐工作坊](http://{{ MOCO_URL }}/community/student/workshop/{{ params.tracking_code }})
 
-[活力軍](http://{{ FFCLUB_URL }})
+[活力軍](http://{{ FFCLUB_URL }}{{ params.tracking_code }})
 
-[支援中心](http://{{ MOCO_URL }}/sumo)
+[支援中心](http://{{ MOCO_URL }}/sumo{{ params.tracking_code }})
 
-[App校園競賽](http://{{ FFCLUB_URL }}/events/attack-on-web/)
+{# [App校園競賽](http://{{ FFCLUB_URL }}/events/attack-on-web/{{ params.tracking_code }}) #}
 
-[Firefox Flicks 全球微影片競賽](http://{{ MOCO_URL }}/firefoxflicks/)
+[Firefox Flicks 全球微影片競賽](http://{{ MOCO_URL }}/firefoxflicks/{{ params.tracking_code }})
 
 
 有獎徵答
@@ -84,7 +84,7 @@
 
 [Flickr](http://www.flickr.com/photos/mozillataiwan/)
 
-[電子報](http://mozilla.com.tw/join_us/)
+[電子報](http://mozilla.com.tw/join_us/{{ params.tracking_code }})
 
 
 Mozilla Taiwan | 美商謀智 | mozilla.com.tw
