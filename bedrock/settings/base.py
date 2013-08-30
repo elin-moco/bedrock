@@ -126,6 +126,7 @@ MINIFY_BUNDLES = {
         ),
         'community-student-workshop': (
             'css/mocotw/community-student-workshop.less',
+            'css/libs/jquery.eventCalendar.css',
         ),
         'news': (
             'css/mocotw/news.less',
@@ -409,6 +410,12 @@ MINIFY_BUNDLES = {
         'about-space': (
             'js/libs/jquery.prettyPhoto.js',
             'js/mocotw/about-space.js',
+        ),
+        'community-student-workshop': (
+            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-ui.js',
+            'js/libs/jquery.ui.datepicker-zh-TW.js',
+            'js/mocotw/community-student-workshop.js',
         ),
         'collusion': (
             'js/collusion/collusion.js',
