@@ -12,6 +12,19 @@
   {{ js('community-student-workshop') }}
 {% endblock %}
 
+{% block breadcrumbs %}
+  <nav class="breadcrumbs">
+    <a class="home" href="{{ url('mozorg.home') }}">{{_('Home')}}</a>
+    <b>»</b>
+    <a href="/community/">社群參與</a>
+    <b>»</b>
+    <a href="/community/student/">校園大使</a>
+    <b>»</b>
+    <span>狐狐工作坊</span>
+  </nav>
+{% endblock %}
+
+
 {% block content %}
   <div id="main-feature">
     <div class="row">
