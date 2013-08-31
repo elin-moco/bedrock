@@ -3,6 +3,7 @@ import logging
 import re
 import imp
 from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL
+from bedrock.settings import GA_ACCOUNT_CODE
 from product_details import settings_fallback, product_details
 from bedrock.mocotw.models import Newsletter
 
@@ -106,10 +107,13 @@ def read_newsletter_context(issue_number, is_mail=True):
     if issue_number > '2013-07':
         config = imp.load_source('bedrock.newsletter.%s' % issue_number.replace('-', ''),
                                  'bedrock/newsletter/templates/newsletter/%s/config.py' % issue_number)
+        config.params['issue_number'] = issue_number
         config.params['year'] = issue_number[:4]
         config.params['month'] = issue_number[5:]
+        config.params['yearmonth'] = config.params['year'][2:] + config.params['month']
         if is_mail:
-            config.params['tracking_code'] = '?utm_source=epaper&utm_medium=email&utm_campaign=epaper' + config.params['year'][2:] + config.params['month'] + '&utm_content=mozilla'
+            config.params['tracking_code'] = '?utm_source=epaper&utm_medium=email&utm_campaign=epaper' + \
+                                             config.params['yearmonth'] + '&utm_content=mozilla'
         else:
             config.params['tracking_code'] = ''
         articles = []
@@ -143,6 +147,7 @@ def read_newsletter_context(issue_number, is_mail=True):
 
 
 def newsletter_context_vars(context, issue_number):
+    context['GA_ACCOUNT_CODE'] = GA_ACCOUNT_CODE
     context['MOCO_URL'] = MOCO_URL
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL

@@ -480,6 +480,9 @@ table.footer td.license {
     </td>
   </tr>
 </table>
+{% if not request %}
+<img src="http://www.google-analytics.com/__utm.gif?utmhn={{ MOCO_URL }}&utmje=0&utmp=/newsletter/{{ params.issue_number }}/email-open?utm_source=epaper&utm_campaign=epaper{{ params.yearmonth }}&utm_content=mozilla&utm_medium=email&utmac={{ GA_ACCOUNT_CODE }}"/>
+{% endif %}
 <table class="footer">
   <tr>
     <td>
