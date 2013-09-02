@@ -2,8 +2,9 @@
 
 {% from 'firefoxflicks/macros.html' import pagination %}
 
-{% block page_title %}2013 台灣之光{% endblock %}
+{% set meta_description =  '台灣之光，投票開催！我們誠摯邀請您一起為全球性影片募集活動 Firefox Flicks (微影片競賽) 的 14 支優秀台灣作品加油！以 Web 進軍行動為故事主軸，快來觀賞並大力投票／分享你最喜歡的作品，鬥陣為台灣加油！' %}
 
+{% block page_title %}2013 台灣之光{% endblock %}
 {% block og_title %}2013 台灣之光{% endblock %}
 {% block og_type %}article{% endblock %}
 {% block og_url %}{{ request.build_absolute_uri() }}{% endblock %}

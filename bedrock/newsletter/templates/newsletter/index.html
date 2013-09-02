@@ -1,15 +1,22 @@
 {% extends 'base-resp.html' %}
 
-{% block page_title %}{{ _('Newsletter Subscriptions') }}{% endblock page_title %}
-
+{% block page_title_prefix %}Firefox 電子報 － {% endblock page_title_prefix %}
+{% block page_title %}過去電子報列表{% endblock page_title %}
+{% block description %}回味過去發行的電子報。{% endblock %}
 {% block site_css %}
   {{ super() }}
   {{ css('newsletter_index') }}
 {% endblock %}
 
 {% block content %}
-<h1 class="section-title">Firefox 電子報</h1>
-
+<div id="main-feature">
+  <div class="row">
+    <hgroup class="stacked">
+      <h1><span class="large">Firefox 電子報</span></h1><br>
+      <h4>回味過去發行的電子報。</h4>
+    </hgroup>
+  </div>
+</div>
 <article class="post-1047 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="post-1047">
   <header class="entry-header">
     <h2 class="entry-title"><a rel="bookmark" title="Firefox OS 大步向前，邁向全球市場，再次掀起 Web 浪潮" href="2013-08">Firefox OS 大步向前，邁向全球市場，再次掀起 Web 浪潮</a></h2>

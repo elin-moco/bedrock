@@ -14,7 +14,6 @@ from bedrock.sandstone.settings import BLOG_URL
 
 urlpatterns = patterns(
     '',
-    page("", "mozorg/home.html"),
     page('news', 'mocotw/news.html'),
     # page('about', 'mocotw/about/index.html'),
     page('about/manifesto', 'mocotw/about/manifesto.html'),
@@ -36,7 +35,7 @@ urlpatterns = patterns(
     redirect(r'^firefox/central/$', '/firefox/features'),
     redirect(r'^firefox/mobile/$', '/firefox/mobile/features'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
-    url(r'^$', TemplateView.as_view(template_name="mozorg/home.html"), name='mozorg.home'),
+    url(r'^$', TemplateView.as_view(template_name="mocotw/home.html"), name='mozorg.home'),
     url('^about/$', TemplateView.as_view(template_name="mocotw/about/index.html"), name='mozorg.about'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html', 'return_to_form': False}),
