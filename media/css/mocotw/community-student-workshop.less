@@ -10,7 +10,10 @@ h2 {
 }
 
 a.moreLink {
-  float: right;
+//  float: right;
+  width: 100%;
+  display: block;
+  text-align: right;
 }
 
 a.moreLink:after {
@@ -98,6 +101,68 @@ nav.menu-bar {
   background-color: rgba(0, 0, 0, 0.02);
   border-bottom: 1px solid rgb(255, 255, 255);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) inset;
-  padding: 20px 20px 40px 20px;
+  padding: 20px 20px 20px 20px;
 }
 
+@media only screen and (max-width: @breakDesktop) {
+  .span3 {
+    float: left;
+    margin-left: 30px;
+  }
+
+  .sidebar {
+    width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    .event-calendar, .sidebar-inset {
+      display: inline-block;
+      width: 300px;
+      margin-left: 20px;
+      vertical-align: top;
+    }
+  }
+
+}
+
+@media only screen and (max-width: @breakTablet) {
+  .row {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    .leftCol {
+      width: 400px;
+    }
+  }
+  .sidebar {
+    width: 480px;
+    .event-calendar, .sidebar-inset {
+      display: block;
+      margin: 30px auto;
+    }
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  .main-column {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .row {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    .leftCol {
+      width: 260px;
+    }
+    .span3 {
+      width: 260px;
+      margin-left: 10px;
+    }
+  }
+  .sidebar {
+    width: 300px;
+    .event-calendar, .sidebar-inset {
+      width: 260px;
+    }
+  }
+}
