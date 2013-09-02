@@ -37,15 +37,23 @@ sitemaps = {
         0.7, 'monthly'),
     'about': ViewsSitemap(
         ['mozorg.about', 'mocotw.about.manifesto', 'mocotw.about.space',
-         'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact', 'mocotw.news'],
+         'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact'],
         0.6, 'montyly'),
     'community': ViewsSitemap(
-        ['mozorg.contribute', ],
+        ['mozorg.contribute', 'mocotw.community.student.workshop'],
         0.5, 'monthly'),
     'community_old': PathsSitemap(
         ['/community/', '/community/contribute/', '/community/student/',
          '/community/student_rules/', '/community/student_details/', '/community/package/'],
         0.5, 'monthly'),
+    'newsletter': PathsSitemap(
+        ['/newsletter/2013-08/', '/newsletter/2013-07/', '/newsletter/2013-06/', '/newsletter/2013-05/',
+         '/newsletter/2013-04/', '/newsletter/2013-03/',
+         '/newsletter/2012-11/', '/newsletter/2012-10/', '/newsletter/2012-09/', '/newsletter/2012-08/', ],
+        0.4, 'monthly'),
+    'misc': ViewsSitemap(
+        ['mocotw.news', 'mocotw.sumo', 'newsletter.index'],
+        0.4, 'monthly'),
 }
 
 urlpatterns = patterns('',
