@@ -472,11 +472,12 @@ $(document).ready(function() {
     // {{{ createGoLink()
 
     function createGoLink($link) {
-        var $goLink = $('<a class="go"></a>');
-        $goLink.attr('href', $link.attr('href'))
-            .text($link.find('.go').text());
-
-        return $goLink;
+            var $goLink = $('<a class="go"></a>');
+            if ($link.size() > 0) {
+                $goLink.attr('href', $link.attr('href'))
+                    .text($link.find('.go').text());
+            }
+            return $goLink;
     }
 
     // }}}
