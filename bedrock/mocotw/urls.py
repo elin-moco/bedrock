@@ -3,7 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.conf.urls import *
-from django.views.generic import TemplateView
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
@@ -12,6 +11,7 @@ from bedrock.mocotw.views import issue
 from bedrock.newsletter.views import one_newsletter_signup
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
+from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns(
     '',
@@ -42,12 +42,13 @@ urlpatterns = patterns(
     redirect(r'^products/download/$', '/firefox/channel'),
     redirect(r'^mobile/$', '/firefox/mobile'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
+
     url('^newsletter/subscribe/$',
         one_newsletter_signup,
         name='newsletter.mozilla-and-you',
         kwargs={'template_name': 'newsletter/mozilla-and-you.html'}),
-    url(r'^$', TemplateView.as_view(template_name="mocotw/home.html"), name='mozorg.home'),
-    url('^about/$', TemplateView.as_view(template_name="mocotw/about/index.html"), name='mozorg.about'),
+    url(r'^$', direct_to_template, {'template': 'mocotw/home.html'}, name='mozorg.home'),
+    url('^about/$', direct_to_template, {'template': 'mocotw/about/index.html'}, name='mozorg.about'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html', 'return_to_form': False}),
     url(r'^about/partnerships/contact-bizdev/$', contact_bizdev, name='about.partnerships.contact-bizdev'),
