@@ -86,15 +86,14 @@ html[lang="zh-TW"] #main-feature h2 {
 }
 
 html[lang="zh-TW"] h4 {
-  font-size: 16px;
+  font-size: 14px;
 }
-
 #main-content {
   width: 920px;
   padding-bottom: 20px;
 }
 
-#home-news, #home-promos, #home-about {
+#home-about {
   width: 285px;
 }
 
@@ -102,11 +101,25 @@ html[lang="zh-TW"] h4 {
   height: 58px;
   margin-top: 12px;
 }
-
+#home-news, #home-promos {
+  width: 250px;
+  padding-right: 35px;
+  h4 a {
+    color: rgb(68, 123, 196);
+  }
+}
 #home-about a {
   height: 61px;
   background:url('/media/img/mocotw/mozcomtw/black_icon.png') no-repeat;
 }
+#home-about a p {
+  font-size: 14px;
+}
+html[lang="zh-TW"] #home-about h4 {
+  color: rgb(175, 50, 50);
+  font-size: 18px;
+}
+
 #home-about a:hover {
   background:url('/media/img/mocotw/mozcomtw/color_icon.png') no-repeat;
   .animation(glow .5s linear alternate);
@@ -152,7 +165,7 @@ html[lang="zh-TW"] h4 {
 
 #firefox_store{
   float: left;
-  margin:-120px 0 40px 30px;
+  margin:-110px 0 40px 30px;
 }
 #firefox_store a{
   display:block;
@@ -303,6 +316,7 @@ html[lang="zh-TW"] h4 {
   }
   #home-news, #home-promos {
     width: 210px;
+    padding-right: 0;
   }
   #home-about {
     width: 240px;
