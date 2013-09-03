@@ -9,6 +9,7 @@ from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
 from bedrock.mozorg.views import plugincheck
 from bedrock.mocotw.views import issue
+from bedrock.newsletter.views import one_newsletter_signup
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 
@@ -41,6 +42,10 @@ urlpatterns = patterns(
     redirect(r'^products/download/$', '/firefox/channel'),
     redirect(r'^mobile/$', '/firefox/mobile'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
+    url('^newsletter/subscribe/$',
+        one_newsletter_signup,
+        name='newsletter.mozilla-and-you',
+        kwargs={'template_name': 'newsletter/mozilla-and-you.html'}),
     url(r'^$', TemplateView.as_view(template_name="mocotw/home.html"), name='mozorg.home'),
     url('^about/$', TemplateView.as_view(template_name="mocotw/about/index.html"), name='mozorg.about'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',

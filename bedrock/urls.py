@@ -70,15 +70,15 @@ urlpatterns = patterns('',
     (r'^tabzilla/', include('bedrock.tabzilla.urls')),
     (r'', include('bedrock.firefox.urls')),
     # (r'', include('bedrock.mozorg.urls')),
-    (r'', include('bedrock.newsletter.urls')),
+    # (r'', include('bedrock.newsletter.urls')),
     (r'', include('bedrock.redirects.urls')),
     (r'', include('bedrock.research.urls')),
 
     # L10n example.
-    (r'^l10n_example/', include('bedrock.l10n_example.urls')),
+    # (r'^l10n_example/', include('bedrock.l10n_example.urls')),
 
     # Facebook Apps
-    (r'^facebookapps/', include('bedrock.facebookapps.urls')),
+    # (r'^facebookapps/', include('bedrock.facebookapps.urls')),
 
     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 

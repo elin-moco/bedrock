@@ -45,7 +45,7 @@
       </div>
     {% else %}
       {% block newsletter_content %}{% endblock newsletter_content %}
-      {{ email_newsletter_form(newsletter_id=newsletter_id,title=newsletter_title,footer=False) }}
+      {{ email_newsletter_form(newsletter_id=newsletter_id,title=newsletter_title, include_country=False, include_language=False, footer=False) }}
     {% endif %}
   </div><!-- doc -->
 {% endblock content %}

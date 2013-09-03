@@ -62,14 +62,14 @@ function wpJson(type,rule,count,words,target,tech_reuslt){
         	    var blogdate= new Date(date_INFO[0]);
         	    //console.log((blogdate-techDate)+":"+techDate+":"+blogdate);
         	    if((blogdate-techDate)<0&&tech_reuslt.posts[0].used==0){
-        	      items.push('<li><p>'+tech_info_date[0]+'</p><h4><a href="'+tech_reuslt.posts[0].url+'">【謀智台客】' + tech_reuslt.posts[0].title+'</a></h4></li>');
+        	      items.push('<li><p>'+tech_info_date[0].replace(/\-/g, '/')+'</p><h4><a href="'+tech_reuslt.posts[0].url+'">【謀智台客】' + tech_reuslt.posts[0].title+'</a></h4></li>');
         	      tech_reuslt.posts[0].used=1;
         	      if(ci<4){
-        	        items.push('<li><p>'+date_INFO[0]+'</p><h4><a href="'+val.url+'">' + val.title+'</a></h4></li>');
+        	        items.push('<li><p>'+date_INFO[0].replace(/\-/g, '/')+'</p><h4><a href="'+val.url+'">' + val.title+'</a></h4></li>');
         	        ci+=1;
         	      }
         	    }else{
-        	      items.push('<li><p>'+date_INFO[0]+'</p><h4><a href="'+val.url+'">' + val.title+'</a></h4></li>');
+        	      items.push('<li><p>'+date_INFO[0].replace(/\-/g, '/')+'</p><h4><a href="'+val.url+'">' + val.title+'</a></h4></li>');
         	    }
         	  }
         	  ci+=1;
