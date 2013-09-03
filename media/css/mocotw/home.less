@@ -1,18 +1,22 @@
+@import "../sandstone/lib";
+
 /* Current banners */
 
 #page-promo-firefox-flicks-vote > a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_flicks_vote.png) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_flicks_vote.png) no-repeat;
 }
 
 #page-promo-firefoxos-lookahead > a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_lookahead.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_lookahead.jpg) no-repeat;
   background-position: -2px -2px;
 }
+
 #page-promo-firefoxpage > a.container {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner3.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner3.jpg) no-repeat;
 }
+
 #page-promo-firefoxmobile > a.container {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner4.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner4.jpg) no-repeat;
   background-position: -2px -2px;
 }
 
@@ -28,13 +32,11 @@
   right: 150px;
 }
 
-
 .pager-page h3,
 .pager-page h4,
 .pager-page p.go {
   text-indent: -999999px;
 }
-
 
 .pager-page {
   width: 920px;
@@ -60,80 +62,379 @@
         font-size: 16px;
       }
     }
-    li:nth-child(3){
+    li:nth-child(3) {
       width: 120px;
     }
   }
 }
 
-#main-feature h1 {
+html[lang="zh-TW"] #main-feature h1 {
   margin-top: 30px;
   font-size: 64px;
   font-weight: bold;
   letter-spacing: 0.012em;
   img {
     vertical-align: bottom;
-    height: 84px;
+    height: 1.4em;
     width: auto;
   }
 }
 
-#main-feature h2 {
+html[lang="zh-TW"] #main-feature h2 {
   font-size: 40px;
   letter-spacing: 0.005em;
 }
 
+html[lang="zh-TW"] h4 {
+  font-size: 16px;
+}
 
+#main-content {
+  width: 920px;
+  padding-bottom: 20px;
+}
+
+#home-news, #home-promos, #home-about {
+  width: 285px;
+}
+
+#home-news ul li, #home-promos ul li {
+  height: 58px;
+  margin-top: 12px;
+}
+
+#home-about a {
+  height: 61px;
+  background:url('/media/img/mocotw/mozcomtw/black_icon.png') no-repeat;
+}
+#home-about a:hover {
+  background:url('/media/img/mocotw/mozcomtw/color_icon.png') no-repeat;
+  .animation(glow .5s linear alternate);
+}
+
+.glowKeyframes {
+    0%{ margin-left:0px; padding-right: 0; }
+    20%{ margin-left:-5px; padding-right: 5px; }
+    40%{ margin-left:0px; padding-right: 0; }
+    60%{ margin-left:-2px; padding-right: 2px; }
+    70%{ margin-left:0px; padding-right: 0; }
+    80%{ margin-left:-1px; padding-right: 1px; }
+    100%{margin-left:0px; padding-right: 0; }
+}
+
+@-moz-keyframes glow {
+  .glowKeyframes();
+}
+@-webkit-keyframes glow {
+  .glowKeyframes();
+}
+
+
+#home-about li a#reps{
+  background-position:0 0;
+}
+#home-about li a#fb_mozilla_tw{
+  background-position:0 -88px;
+}
+#home-about li a#moztech{
+  background-position:0 -175px;
+}
+#home-about li a#community{
+  background-position:0 -272px;
+}
+#home-about li a#careers{
+  background-position:0 -372px;
+}
+#home-about li a#myfirefox{
+  background-position:0 -462px;
+}
+
+
+#firefox_store{
+  float: left;
+  margin:-120px 0 40px 30px;
+}
+#firefox_store a{
+  display:block;
+  width:550px;
+  height:85px;
+  background:url('/media/img/mocotw/mozcomtw/offical_banner.jpg') no-repeat;
+  text-indent:-99999px;
+}
+
+#footer-email-form {
+  width: 920px;
+}
 
 /* Old banners */
 #page-promo-mocotw-intern a {
   background: url(/media/img/mocotw/mozcomtw/banner/banner_intern.jpg) no-repeat;
 }
+
 #page-promo-firefox-foxconn a {
   background: url(/media/img/mocotw/mozcomtw/banner/banner_foxconn.jpg) no-repeat;
 }
+
 #page-promo-firefox-game a {
   background: url(/media/img/mocotw/mozcomtw/banner/banner_firefox_game.jpg) no-repeat;
 }
+
 #page-promo-ambassador a {
   background: url(/media/img/mocotw/mozcomtw/banner/banner_ambassador.jpg) no-repeat;
 }
+
 #page-promo-myfirefox a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_myfirefox.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_myfirefox.jpg) no-repeat;
 }
+
 #page-promo-mwc2013 a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_MWC_open.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_MWC_open.jpg) no-repeat;
 }
+
 #page-promo-firefox-flicks a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_Firefox_flicks.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_Firefox_flicks.jpg) no-repeat;
 }
+
 #page-promo-firefox-xmas a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_Xmas-01.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_Xmas-01.jpg) no-repeat;
 }
+
 #page-promo-webappday a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_app_days.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_app_days.jpg) no-repeat;
 }
+
 #page-promo-newyear a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_2013.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_2013.jpg) no-repeat;
 }
+
 #page-promo-firefoxandbbs a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner1.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner1.jpg) no-repeat;
 }
+
 #page-promo-firefoxreps a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner2.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner2.jpg) no-repeat;
 }
+
 #page-promo-firefoxforstudents a {
   background: url(img/student201209/banner_school.jpg) no-repeat;
 }
+
 #page-promo-firefoxaurora a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner6.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner6.jpg) no-repeat;
   background-position: -2px -2px;
 }
+
 #page-promo-firefoxsocial a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner_FB.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner_FB.jpg) no-repeat;
   background-position: -2px -2px;
 }
+
 #page-promo-firefoxos a {
-  background:url(/media/img/mocotw/mozcomtw/banner/banner5.jpg) no-repeat;
+  background: url(/media/img/mocotw/mozcomtw/banner/banner5.jpg) no-repeat;
   background-position: -2px -2px;
+}
+
+@media only screen and (max-width: @breakDesktop) {
+  html[lang="zh-TW"] #main-feature h1 {
+    font-size: 56px;
+    img {
+      height: 1.35em;
+    }
+  }
+  html[lang="zh-TW"] #main-feature h2 {
+    font-size: 36px;
+  }
+
+  #firefox-promo {
+    width: 720px;
+    height: 92px;
+    #firefox-promo-link {
+      left: 280px;
+    }
+    h3 {
+      margin-left: 20px;
+      float: left;
+      width: 400px;
+    }
+    ul.features {
+      float: left;
+      margin: 0 20px 10px;
+      width: 400px;
+      li small {
+        font-size: 14px;
+      }
+    }
+    .download-button {
+      right: 20px;
+    }
+  }
+
+  .pager-page {
+    width: 760px;
+    height: 218px;
+    margin-top: 0;
+    margin-bottom: 0;
+    > .container {
+      height: 218px;
+      background-size: 760px 220px !important;
+    }
+  }
+
+  #page-promo-firefoxpage div#download-button-desktop-release {
+    bottom: 20px;
+    left: 86px;
+    a.container {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  #page-promo-firefoxmobile div#download-button-mobile-release {
+    bottom: 20px;
+    right: 106px;
+    a.container {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  #main-content {
+    width: 720px;
+  }
+  #home-news, #home-promos {
+    width: 210px;
+  }
+  #home-about {
+    width: 240px;
+    a {
+      padding-left: 70px;
+    }
+  }
+  #firefox_store {
+    margin-left: 10px;
+    margin-top: -90px;
+  }
+  #firefox_store a{
+    /*margin: auto;*/
+    width: 440px;
+    height: 68px;
+    background-size: 100%;
+  }
+  #footer-email-form {
+    width: 720px;
+  }
+}
+
+@media only screen and (max-width: @breakTablet) {
+  html[lang="zh-TW"] #main-feature h1 {
+    font-size: 30px;
+    img {
+      height: 1.3em;
+    }
+  }
+  html[lang="zh-TW"] #main-feature h2 {
+    font-size: 20px;
+  }
+  #firefox-promo {
+    width: 420px;
+    height: 180px;
+    padding-bottom: 10px;
+    #firefox-promo-link {
+      height: auto;
+      left: 20px;
+      top: 10px;
+      width: 80px;
+    }
+    h3 {
+      float: none;
+      font-size: 28px;
+      margin: 25px auto auto 100px;
+      min-height: 60px;
+      white-space: normal;
+      width: auto;
+    }
+  }
+  .pager-page, #main-content {
+    width: 440px;
+  }
+  .pager-page {
+    width: 440px;
+    height: 292px;
+    margin-top: 0;
+    margin-bottom: 0;
+    h3, h4, p.go {
+      text-indent: 0;
+    }
+    div.content {
+      height: 155px;
+    }
+    > .container {
+      height: 126px;
+      background-size: 440px 126px !important;
+    }
+  }
+  #page-promo-firefoxpage div#download-button-desktop-release {
+    display: none;
+  }
+
+  #page-promo-firefoxmobile div#download-button-mobile-release {
+    display: none;
+  }
+  #home-news, #home-promos, #home-about {
+    width: 400px;
+  }
+
+  #firefox_store {
+    margin: -20px 0 20px 20px;
+    width: 400px;
+    height: 90px;
+  }
+  #firefox_store a{
+    width: 400px;
+    height: 90px;
+    background-origin: content-box;
+    background-position: top left;
+    background-size: auto 90px;
+  }
+  #footer-email-form {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  #firefox-promo {
+    width: 300px;
+    height: 160px;
+    h3 {
+      margin-top: 10px;
+    }
+  }
+  .pager-page, #main-content {
+    width: 320px;
+  }
+  .pager-page {
+    div.content {
+      height: 189px;
+    }
+    > .container {
+      height: 92px;
+      background-size: 320px 92px !important;
+    }
+  }
+  #home-news, #home-promos, #home-about {
+    width: 280px;
+  }
+
+  #firefox_store {
+    margin: -20px 0 0 10px;
+    width: 300px;
+  }
+  #firefox_store a{
+    width: 284px;
+    height: 64px;
+    background-size: auto 64px;
+  }
+  #footer-email-form {
+    width: 320px;
+  }
 }

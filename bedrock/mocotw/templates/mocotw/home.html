@@ -125,82 +125,66 @@
 
   <div id="main-content">
 
-    {% l10n home, 20130225 %}
-      <section id="home-news">
-        <h3>{{ _('In the news') }}</h3>
-        <ul>
-          <li>
-            <h4>
-              <a href="https://blog.mozilla.org/blog/2013/07/11/deutsche-telekom-announces-european-launch-of-firefox-os-devices/">{{ _('Deutsche Telekom Announces European Launch of Firefox OS Devices') }}</a>
-            </h4>
-          </li>
-          <li>
-            <h4>
-              <a href="https://blog.mozilla.org/blog/2013/07/01/mozilla-and-partners-prepare-to-launch-first-firefox-os-smartphones">{{ _('Mozilla and partners prepare to launch first Firefox OS smartsphones') }}</a>
-            </h4>
-          </li>
-          <li>
-            <h4>
-              <a href="https://blog.mozilla.org/blog/2013/06/11/stopwatching-us-mozilla-launches-massive-campaign-on-digital-surveillance/">{{ _('Mozilla takes a stand with StopWatching.Us campaign') }}</a>
-            </h4>
-          </li>
-        </ul>
-        <a href="https://blog.mozilla.org/" id="all-news">{{ _('See all news »') }}</a>
-      </section>
-    {% endl10n %}
+    <section id="home-news">
+      <h3>發燒部落文</h3>
+      <ul>
+      </ul>
+    </section>
 
     <section id="home-promos">
-      <h3>{{ _('In the know') }}</h3>
+      <h3>最新活動</h3>
       <ul>
-        <li>
-          <h4><a href="{{ url('firefox.os.index') }}">{{ _('Firefox OS') }}</a></h4>
-
-          <p>{{ _('See what’s next for the mobile Web.') }}</p>
-        </li>
-        <li>
-          <h4><a href="https://affiliates.mozilla.org/">{{ _('Become an Affiliate') }}</a></h4>
-
-          <p>{{ _('Help us share Firefox with the world!') }}</p>
-        </li>
-        <li>
-          <h4><a href="{{ url('marketplace.marketplace') }}">{{ _('Firefox Marketplace') }}</a></h4>
-
-          <p>{{ _('Launch your app on the web') }}</p>
-        </li>
       </ul>
     </section>
 
     <section id="home-about">
-      <h3>{{ _('Be a part of Mozilla') }}</h3>
+      <h3>成為 Mozilla 的一員</h3>
       <ul>
-        <li id="about-volunteer"><a href="{{ url('mozorg.contribute') }}">
-          <h4>{{ _('Volunteer with us') }}</h4>
-
-          <p>{{ _('Get involved in any area of the Mozilla Project.') }}</p>
-        </a></li>
-        <li id="about-work"><a href="http://careers.mozilla.org/">
-          <h4>{{ _('Work with us') }}</h4>
-
-          <p>{{ _('Apply today and love the Web for a living.') }}</p>
-        </a></li>
-        <li id="about-find"><a href="{{ php_url('/about/mozilla-spaces/') }}">
-          <h4>{{ _('Find us') }}</h4>
-
-          <p>{{ _('Contact one of our global Mozilla Spaces.') }}</p>
-        </a></li>
-        <li id="about-join"><a href="https://sendto.mozilla.org/Join-Moz-Org">
-          <h4>{{ _('Donate') }}</h4>
-
-          <p>{{ _('Show your support and help us build a better Web.') }}</p>
-        </a></li>
-        <li id="about-learn"><a href="{{ url('mozorg.about') }}">
-          <h4>{{ _('Learn more') }}</h4>
-
-          <p>{{ _('Get to know Mozilla a little bit better.') }}</p>
-        </a></li>
+          <li>
+            <a href='/community/student/' id="reps">
+              <h4>Firefox 校園大使</h4>
+              <p>加入 Firefox 校園大使，流下熱血、青春、自由的全紀錄</p>
+            </a>
+          </li>
+          <li>
+            <a href='https://www.facebook.com/MozillaTaiwan' id="fb_mozilla_tw">
+              <h4>Mozilla Taiwan 粉絲團</h4>
+              <p>所有Firefox 相關最新活動、資訊、新聞盡在FB</p>
+            </a>
+          </li>
+          <li>
+            <a href='http://tech.mozilla.com.tw' id="moztech">
+              <h4>謀智台客部落格</h4>
+              <p>所有技術討論、Firefox OS 相關資訊都在此、歡迎你來互相交流</p>
+            </a>
+          </li>
+          <li>
+            <a href='/community/' id="community">
+              <h4>參與我們</h4>
+              <p>支持和幫助我們建立更好的網絡</p>
+            </a>
+          </li>
+          <li>
+            <a href='/about/careers/' id="careers">
+              <h4>工作機會</h4>
+              <p>歡迎有共同理念與熱情的伙伴加入我們</p>
+            </a>
+          </li>
+          <li>
+            <a href='http://myfirefox.com.tw/' id="myfirefox" target="_blank" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'index_icon', '']);">
+              <h4>MyFirefox</h4>
+              <p>台灣版Firefox全新正體中文首頁，讓您每天都能享受最新科技新知</p>
+            </a>
+          </li>
       </ul>
     </section>
 
+  <div id="firefox_store">
+    <a href="http://tw.mall.yahoo.com/store/firefox" target="Firefox Online 火狐商城" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'store_banner', '']);" target="_blank">
+      Firefox Online 火狐商城
+    </a>
   </div>
+  </div>
+
 
 {% endblock %}
