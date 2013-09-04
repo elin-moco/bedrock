@@ -1,0 +1,21 @@
+{% extends "mocotw/base-resp.html" %}
+
+{% block page_title_prefix %}Mozilla 社群 － {% endblock %}
+{% block page_title %}申請表單{% endblock %}
+
+
+<div id="main-content">
+  <div class="hidden-back">
+    <img src="/assets/css/img/mozcomtw/community_Rule_03.png">
+
+    <div id="show_result"><h2>報名完成，Mozilla Taiwan會儘快跟您聯絡。</h2><a href="/community/student/">回校園大使首頁</a></div>
+  </div>
+</div>
+<div class="ss-form-container">
+  {{ gform }}
+</div>
+<div id="hidden_frame">
+  <iframe name="google_form"></iframe>
+</div>
+
+{% block email_form %}{% endblock %}

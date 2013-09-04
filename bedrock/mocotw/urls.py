@@ -7,7 +7,7 @@ from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe
+from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template
@@ -60,10 +60,9 @@ urlpatterns = patterns(
     url(r'^about/partnerships/contact-bizdev/$', contact_bizdev, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
 
-    # url('^newsletter/(?P<issue_number>[\d\-]+)/images/menu-(?P<menu_title>.*).svg$',
-    #     menu_svg, name='newsletter.subpic'),
-    # url('^newsletter/(?P<issue_number>[\d\-]+)/images/subpic-(?P<article_number>\d+)-(?P<article_tag>[a-z]+)\.svg$',
-    #     article_subpic_svg, name='newsletter.subpic'),
+    url('^reg/$', google_form, name='google.form'),
+
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
+
 
 )

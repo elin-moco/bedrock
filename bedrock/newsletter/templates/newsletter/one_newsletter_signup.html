@@ -14,6 +14,9 @@
 
 {% block email_form %}{% endblock %}{# Don't need another signup form on the page. #}
 
+{% block page_title_prefix %}Mozilla 社群 － {% endblock %}
+{% block page_title %}訂閱 Firefox 電子報{% endblock %}
+
 {% block body_id %}newsletter{% endblock %}
 
 {% from "macros.html" import email_newsletter_form with context %}

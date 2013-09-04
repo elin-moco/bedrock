@@ -84,3 +84,13 @@ def one_newsletter_unsubscribe(request):
     return l10n_utils.render(request,
                              'newsletter/unsubscribe.html',
                              context)
+
+
+def google_form(request):
+    gform = ''
+    context = {
+        'gform': gform,
+    }
+    return l10n_utils.render(request,
+                             'mocotw/reg/gform.html',
+                             context)
