@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.forms.formsets import formset_factory
+import urllib2
+from BeautifulSoup import BeautifulSoup
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
@@ -86,11 +87,16 @@ def one_newsletter_unsubscribe(request):
                              context)
 
 
-def google_form(request):
+def google_form(request, template='mocotw/reg/gform.html', formkey=None):
     gform = ''
+
+    if formkey:
+        soup = BeautifulSoup(urllib2.urlopen('https://docs.google.com/spreadsheet/viewform?formkey=%s' % formkey).read())
+        formResult = soup('div', {'class': 'ss-form-container'})
+        for div in formResult:
+            gform += div.prettify('utf-8').decode('utf-8')
+
     context = {
         'gform': gform,
     }
-    return l10n_utils.render(request,
-                             'mocotw/reg/gform.html',
-                             context)
+    return l10n_utils.render(request, template, context)

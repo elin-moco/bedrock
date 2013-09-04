@@ -45,6 +45,10 @@ urlpatterns = patterns(
     redirect(r'^join_us/share/$', '/newsletter/subscribe'),
     redirect(r'^join_us/reps_news/$', '/newsletter/subscribe/student'),
     redirect(r'^join_us/un_subscribe/$', '/newsletter/unsubscribe'),
+    redirect(r'^reg/$', '/register/student'),
+    redirect(r'^reg/repsup/$', '/register/supply'),
+    redirect(r'^reg/space/$', '/register/space'),
+    redirect(r'^reg/moztour/$', '/register/tour'),
 
     url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)$',
         one_newsletter_subscribe,
@@ -60,7 +64,30 @@ urlpatterns = patterns(
     url(r'^about/partnerships/contact-bizdev/$', contact_bizdev, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
 
-    url('^reg/$', google_form, name='google.form'),
+    url('^register/student/$', google_form,
+        {
+            'template': 'mocotw/register/student.html',
+            'formkey': 'dDlJaHh6OEtoZzlTZ09WZlloNVdRS3c6MA'
+        },
+        name='google.form'),
+    url('^register/supply/$', google_form,
+        {
+            'template': 'mocotw/register/supply.html',
+            'formkey': 'dG9Hc1ZTOGRfLWpwV3BCcWtydkd1ekE6MQ'
+        },
+        name='google.form'),
+    url('^register/space/$', google_form,
+        {
+            'template': 'mocotw/register/space.html',
+            'formkey': 'dGU1RnliSzFTWFNvdkRlY2pKX3VrLVE6MQ'
+        },
+        name='google.form'),
+    url('^register/tour/$', google_form,
+        {
+            'template': 'mocotw/register/tour.html',
+            'formkey': 'dFZ3Vy1OUjBHSXZJLTRvaF9FYXRWcHc6MQ'
+        },
+        name='google.form'),
 
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
 

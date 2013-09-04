@@ -397,6 +397,9 @@ MINIFY_BUNDLES = {
             'css/libs/h5bp_main.css',
             'css/facebookapps/downloadtab.less',
         ),
+        'gform': (
+            'css/mocotw/gform.less',
+        ),
     },
     'js': {
         'site': (
@@ -680,6 +683,9 @@ MINIFY_BUNDLES = {
             'js/facebookapps/Slider.js',
             'js/facebookapps/App.js',
             'js/facebookapps/downloadtab.js',
+        ),
+        'gform': (
+            'js/mocotw/gform.js',
         ),
     }
 }

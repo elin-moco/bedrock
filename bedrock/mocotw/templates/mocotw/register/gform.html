@@ -1,0 +1,37 @@
+{% extends "mocotw/base-resp.html" %}
+
+{% block page_title_prefix %}Mozilla 社群 － {% endblock %}
+{% block page_title %}申請表單{% endblock %}
+
+
+{% block extrahead %}
+  {{ css('gform') }}
+{% endblock %}
+
+{% block content %}
+
+  <div id="main-content">
+    <div class="hidden-back">
+      {% block complete %}
+        <img src="{{ media('img/mocotw/mozcomtw/community_Rule_03.png') }}">
+        <div id="show_result">
+          <h2>申請完成，Mozilla Taiwan會儘快跟您聯絡。</h2>
+          <a href="{{ url('mozorg.home') }}">回首頁</a>
+        </div>
+      {% endblock %}
+    </div>
+    <div class="ss-form-container">
+      {{ gform|safe }}
+    </div>
+  </div>
+  <div id="hidden_frame">
+    <iframe name="google_form"></iframe>
+  </div>
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+
+{% block js %}
+  {{ js('gform') }}
+{% endblock %}
