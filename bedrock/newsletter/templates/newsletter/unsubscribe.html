@@ -1,0 +1,29 @@
+{% extends 'newsletter/base.html' %}
+
+{% block body_id %}newsletter-existing{% endblock body_id %}
+
+{% block content %}
+
+  <form method="post" action="#unsubscribe-form" id="footer-email-form" class="billboard newsletter-form">
+    {% if unsubscribed %}
+      <h4>已取消訂閱</h4>
+    {% else %}
+      <h3>取消訂閱 Firefox 電子報</h3>
+
+      <div class="form-contents">
+        <div class="field field-email ">
+          {{ field_with_attrs(form.email, placeholder=_('YOUR EMAIL HERE'))|safe }}
+        </div>
+      </div>
+      <div class="form-submit">
+        <input type="submit" value="取消訂閱" class="button">
+      </div>
+    {% endif %}
+  </form>
+  <!-- End content -->
+{% endblock %}
+
+{% block site_js %}
+  {{ js('common-lib') }}
+{% endblock site_js %}
+{% block js %}{% endblock js %}

@@ -3,6 +3,7 @@ from django.core.management.base import NoArgsCommand, BaseCommand
 # import commonware.log
 
 # log = commonware.log.getLogger('bedrock')
+from django.db.models import Count
 from bedrock.mocotw.models import Newsletter
 
 
@@ -18,3 +19,16 @@ class Command(BaseCommand):
         for subscription in subscriptions:
             print subscription.u_email
             subscription.delete()
+
+        duplicates = Newsletter.objects.values('u_email').annotate(count=Count('id')).order_by().filter(count__gt=1)
+        print duplicates
+        duplicateEmails = Newsletter.objects.filter(u_email__in=[item['u_email'] for item in duplicates]).order_by('u_email')
+        print 'Found %d duplicate subscriptions.' % len(duplicateEmails)
+
+        previousEmail = None
+        for duplicateEmail in duplicateEmails:
+            currentEmail = duplicateEmail.u_email.lower()
+            if previousEmail == currentEmail:
+                print 'duplicate: %s' % currentEmail
+                duplicateEmail.delete()
+            previousEmail = currentEmail

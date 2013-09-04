@@ -7,7 +7,7 @@ from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import issue, one_newsletter_subscribe
+from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template
@@ -41,11 +41,18 @@ urlpatterns = patterns(
     redirect(r'^products/download/$', '/firefox/channel'),
     redirect(r'^mobile/$', '/firefox/mobile'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
+    redirect(r'^join_us/$', '/newsletter/subscribe'),
+    redirect(r'^join_us/share/$', '/newsletter/subscribe'),
+    redirect(r'^join_us/reps_news/$', '/newsletter/subscribe/student'),
+    redirect(r'^join_us/un_subscribe/$', '/newsletter/unsubscribe'),
 
     url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)$',
         one_newsletter_subscribe,
         name='newsletter.mozilla-and-you',
         kwargs={'template_name': 'newsletter/mozilla-and-you.html'}),
+    url('^newsletter/unsubscribe/$',
+        one_newsletter_unsubscribe,
+        name='newsletter.unsubscribe'),
     url(r'^$', direct_to_template, {'template': 'mocotw/home.html'}, name='mozorg.home'),
     url('^about/$', direct_to_template, {'template': 'mocotw/about/index.html'}, name='mozorg.about'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',

@@ -95,12 +95,30 @@ def download_nightly_details():
 
 
 def newsletter_subscribe(email):
-    if not Newsletter.objects.filter(u_email=email).exists():
-        subscription = Newsletter(u_email=email)
+    if not email:
+        return
+    existingEmails = Newsletter.objects.filter(u_email=email)
+    if not existingEmails.exists():
+        subscription = Newsletter(u_email=email.lower())
         subscription.save()
         log.info(email + ' subscribed!')
+    else:
+        log.warn(email + ' already exists!')
+        for existingEmail in existingEmails:
+            if 0 == existingEmail.u_status:
+                existingEmail.u_status = 1
+                existingEmail.save()
+
+
+def newsletter_unsubscribe(emailAddress):
+    emails = Newsletter.objects.filter(u_email=emailAddress)
+    if emails.exists():
+        for email in emails:
+            email.u_status = 0
+            email.save()
+            log.info(emailAddress + ' unsubscribed!')
         return
-    log.warn(email + ' already exists!')
+    log.warn(emailAddress + ' does not exists!')
 
 
 def read_newsletter_context(issue_number, is_mail=True):

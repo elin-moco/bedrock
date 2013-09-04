@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+from django.forms.formsets import formset_factory
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from django.views.decorators.cache import never_cache
 from django.views.static import serve
-from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe
+from bedrock.mocotw.forms import NewsletterForm
+from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe
 from bedrock.newsletter.forms import NewsletterFooterForm
 from lib import l10n_utils
 
@@ -61,3 +64,23 @@ def one_newsletter_subscribe(request, template_name, target=None):
     return l10n_utils.render(request,
                              template_name,
                              {'target': target})
+
+
+@never_cache
+def one_newsletter_unsubscribe(request):
+
+    form = NewsletterForm()
+    unsubscribed = False
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            newsletter_unsubscribe(form.cleaned_data['email'])
+            unsubscribed = True
+
+    context = {
+        'form': form,
+        'unsubscribed': unsubscribed,
+    }
+    return l10n_utils.render(request,
+                             'newsletter/unsubscribe.html',
+                             context)

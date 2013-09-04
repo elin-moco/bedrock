@@ -448,6 +448,11 @@ MINIFY_BUNDLES = {
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
         ),
+        'common-lib': (
+            'js/libs/jquery-1.7.1.min.js',
+            'js/base/global.js',
+            'js/base/mozilla-input-placeholder.js',
+        ),
         'contribute': (
             'js/libs/jquery.sequence.js',
             'js/mozorg/mozilla15.js',
