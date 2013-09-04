@@ -1,26 +1,59 @@
 {% extends 'newsletter/one_newsletter_signup.html' %}
 
+{% from "macros.html" import facebook_share_url, gplus_share_url, plurk_share_url, email_share_url %}
+
 {% set newsletter_title = _('Mozilla Newsletter') %}
 {% set newsletter_id = 'mozilla-and-you' %}
 
-{% block page_title %}{{ _('Mozilla Newsletter') }}{% endblock %}
+{% block page_title_prefix %}Mozilla 社群 － {% endblock %}
+{% block page_title %}訂閱 Firefox 電子報{% endblock %}
 
 {% block newsletter_content %}
   <div id="main-feature">
     {# Remove the span tags from the headline next time it changes: #}
     <h1 class="large">{{ _('Read all about it in our <span>newsletter</span>') }}</h1>
     <p>
-      {% trans %}Subscribe to monthly updates and keep current with Mozilla news, including the latest tips and tricks for getting the most out of your Firefox browser. It’s the perfect way for us to keep in touch!{% endtrans %}
+    {% if target == 'student' %}
+      Firefox 校園大使甄選已結束，想獲得下屆招生訊息通知，請訂閱 Firefox 電子報。
+    {% else %}
+      {% trans %}Subscribe to monthly updates and keep current with Mozilla news, including the latest tips and tricks
+        for getting the most out of your Firefox browser. It’s the perfect way for us to keep in touch!{% endtrans %}
+    {% endif %}
     </p>
   </div>
 {% endblock %}
 
 {% block success_no_confirm %}
-  <p>{% trans %}We look forward to soon begin sharing tips &amp; tricks on getting the most out of Firefox, as well as exciting news about Mozilla and how we’re working to create a better Web.{% endtrans %}</p>
-  <p>{% trans %}Please be sure to add our sending address: mozilla@e.mozilla.org to your address book to ensure we always reach your inbox.{% endtrans %}</p>
+  <p>{% trans %}Please be sure to add our sending address: mozilla@e.mozilla.org to your address book to ensure we
+    always reach your inbox.{% endtrans %}</p>
+  <p>{% trans %}We look forward to soon begin sharing tips &amp; tricks on getting the most out of Firefox, as well as
+    exciting news about Mozilla and how we’re working to create a better Web.{% endtrans %}</p>
+  <ul id="sharelist">
+    <li>
+      <a href="{{ facebook_share_url(request.build_absolute_uri()) }}" id="fb" target="_blank">
+        分享至 Facebook
+      </a>
+    </li>
+    <li class="default-gp show-gp" id="gplist">
+      <a href="{{ gplus_share_url(request.build_absolute_uri()) }}" id="gp" target="_blank">
+        在 Google Plus 上 +1
+      </a>
+    </li>
+    <li>
+      <a href="{{ plurk_share_url(request.build_absolute_uri(), '一起訂閱Mozilla Taiwan 電子報吧!!') }}" id="pk" target="_blank">
+        推到Plurk
+      </a>
+    </li>
+    <li>
+      <a href="{{ email_share_url(request.build_absolute_uri(), '一起訂閱Mozilla Taiwan 電子報吧!!') }}" id="em">
+        透過 Email 分享
+      </a>
+    </li>
+  </ul>
 {% endblock success_no_confirm %}
 
 {% block success_confirm %}
   <p>{% trans %}Thanks! Please check your inbox to confirm your subscription.{% endtrans %}</p>
-  <p>{% trans %}You'll receive an email from mozilla@e.mozilla.org to confirm your subscription. If you don't see it, check your spam filter. You must confirm your subscription to receive our newsletter.{% endtrans %}</p>
+  <p>{% trans %}You'll receive an email from mozilla@e.mozilla.org to confirm your subscription. If you don't see it,
+    check your spam filter. You must confirm your subscription to receive our newsletter.{% endtrans %}</p>
 {% endblock success_confirm %}

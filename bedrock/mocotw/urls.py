@@ -7,8 +7,7 @@ from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import issue
-from bedrock.newsletter.views import one_newsletter_signup
+from bedrock.mocotw.views import issue, one_newsletter_subscribe
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template
@@ -43,8 +42,8 @@ urlpatterns = patterns(
     redirect(r'^mobile/$', '/firefox/mobile'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
 
-    url('^newsletter/subscribe/$',
-        one_newsletter_signup,
+    url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)$',
+        one_newsletter_subscribe,
         name='newsletter.mozilla-and-you',
         kwargs={'template_name': 'newsletter/mozilla-and-you.html'}),
     url(r'^$', direct_to_template, {'template': 'mocotw/home.html'}, name='mozorg.home'),

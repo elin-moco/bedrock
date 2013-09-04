@@ -2,7 +2,8 @@
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.static import serve
-from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars
+from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe
+from bedrock.newsletter.forms import NewsletterFooterForm
 from lib import l10n_utils
 
 
@@ -32,3 +33,31 @@ def article_subpic_svg(request, issue_number, article_number, article_tag):
     context = {'article_number': article_number, 'article_tag': article_tag}
     image = render_to_string('newsletter/%s/images/subpic.svg' % issue_number, context)
     return HttpResponse(image, content_type='image/svg+xml')
+
+
+def one_newsletter_subscribe(request, template_name, target=None):
+    success = False
+
+    # not in a footer, but we use the same form
+    form = NewsletterFooterForm(request.locale, request.POST or None)
+
+    if form.is_valid():
+        data = form.cleaned_data
+        request.newsletter_lang = data.get('lang', 'en') or 'en'
+        kwargs = {
+            'format': data['fmt'],
+        }
+        # add optional data
+        kwargs.update(dict((k, data[k]) for k in ['country',
+                                                  'lang',
+                                                  'source_url']
+                           if data[k]))
+        newsletter_subscribe(data['email'])
+        success = True
+
+    request.newsletter_form = form
+    request.newsletter_success = success
+
+    return l10n_utils.render(request,
+                             template_name,
+                             {'target': target})

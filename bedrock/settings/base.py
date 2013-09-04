@@ -168,6 +168,7 @@ MINIFY_BUNDLES = {
         ),
         'newsletter': (
             'css/newsletter/newsletter.less',
+            'css/mocotw/newsletter.less',
         ),
         'newsletter_index': (
             'css/newsletter/index.less',

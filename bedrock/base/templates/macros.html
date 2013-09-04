@@ -46,6 +46,9 @@
       {% endif %}
 
       <div class="form-contents">
+        {% if not footer %}
+          <p>我們致力於讓網路世界變得美好，很榮幸有你加入我們的行列！</p>
+        {% endif %}
         <div class="field field-email {% if request.newsletter_form.email.errors %}form-field-error{% endif %}">
           {{ field_with_attrs(request.newsletter_form.email, placeholder=_('YOUR EMAIL HERE'))|safe }}
         </div>
@@ -79,6 +82,26 @@
         </p>
         <small><a href="{{ url('newsletter.index') }}">看看過去發行的電子報</a></small>
       </div>
+      {% if not footer %}
+      <ul id="social">
+          <small>也逛逛我們的社群頻道：</small>
+          <li>
+            <a target="_blank" href="https://www.facebook.com/MozillaTaiwan" id="fb">Fb 粉絲團</a>
+          </li>
+          <li>
+            <a target="_blank" href="https://plus.google.com/u/0/114653167240123163859/posts" id="gp">G+</a>
+          </li>
+          <li>
+           <a target="_blank" href="http://plurk.com/MozillaTaiwan" id="pk">Plurk</a>
+          </li>
+          <li>
+            <a target="_blank" href="http://www.youtube.com/user/MozillaTaiwan" id="yb">Youtube</a>
+          </li>
+          <li>
+            <a target="_blank" href="http://www.flickr.com/photos/mozillataiwan/" id="fc">Flickr</a>
+          </li>
+        </ul>
+      {% endif %}
     </form>
   {% else %}
     <div id="footer-email-form" class="thank billboard">
@@ -94,3 +117,16 @@
 {% macro twitter_share_url(url, tweet_text) -%}
   {{ 'https://www.twitter.com/intent/tweet?url=%s&text=%s'|format(url|urlencode, tweet_text|urlencode)|e }}
 {%- endmacro %}
+
+{% macro gplus_share_url(url) -%}
+  {{ 'https://plus.google.com/share?url=%s'|format(url|urlencode)|e }}
+{%- endmacro %}
+
+{% macro plurk_share_url(url, title) -%}
+  {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url+'('+title+')'|urlencode)|e }}
+{%- endmacro %}
+
+{% macro email_share_url(url, title) -%}
+  {{ 'mailto:?subject=%s&body=%s %s'|format(title, title, url|urlencode)|e }}
+{%- endmacro %}
+
