@@ -35,6 +35,7 @@ class NewsletterMiddleware(object):
                                                           'source_url']
                                    if data[k]))
                 newsletter_subscribe(data['email'])
+                success = True
 
         request.newsletter_form = form
         request.newsletter_success = success
