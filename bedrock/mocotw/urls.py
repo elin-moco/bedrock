@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.conf.urls import *
+from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute
 from bedrock.mozorg.views import contact_bizdev
@@ -11,6 +12,8 @@ from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
+
+sysreq_re = r'^firefox/(?P<version>%s)/system-requirements/$' % version_re
 
 urlpatterns = patterns(
     '',
@@ -59,8 +62,8 @@ urlpatterns = patterns(
     redirect(r'^reg/space/$', '/register/space'),
     redirect(r'^reg/moztour/$', '/register/tour'),
 
-    redirect(r'^firefox/system-requirements/$', '//www.mozilla.org/en-US/firefox/system-requirements/'),
-    redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements/'),
+    redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements.html'),
+    (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),
     ('^zh-TW/(?P<path>.*)$', redirect_to, {'url': '/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
 
