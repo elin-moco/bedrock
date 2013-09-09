@@ -64,6 +64,10 @@ urlpatterns = patterns(
 
     redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements.html'),
     (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),
+    ('^products/download\.html$', redirect_to,
+     {'url': '//www.mozilla.org/en-US/products/download.html', 'query_string': True}),
+    ('^zh-TW/products/download\.html$', redirect_to,
+     {'url': '//www.mozilla.org/en-US/products/download.html', 'query_string': True}),
     ('^zh-TW/(?P<path>.*)$', redirect_to, {'url': '/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
 
