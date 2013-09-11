@@ -50,7 +50,7 @@ urlpatterns = patterns(
     redirect(r'^reg/space/$', '/register/space'),
     redirect(r'^reg/moztour/$', '/register/tour'),
 
-    url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)$',
+    url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)(/)?$',
         one_newsletter_subscribe,
         name='newsletter.mozilla-and-you',
         kwargs={'template_name': 'newsletter/mozilla-and-you.html'}),
