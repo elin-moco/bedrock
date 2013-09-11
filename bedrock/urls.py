@@ -86,10 +86,10 @@ urlpatterns = patterns('',
     (
         r'^robots\.txt$',
         lambda r: HttpResponse(
-            "User-agent: *\n%s: /\n%s" % (
-                'Allow' if ENGAGE_ROBOTS else 'Disallow',
+            "User-agent: *\n%s%s: /" % (
                 'Disallow: /index.php\n' +
-                'Disallow: /click.php\n'
+                'Disallow: /click.php\n',
+                'Allow' if ENGAGE_ROBOTS else 'Disallow',
             ),
             mimetype="text/plain"
         )
