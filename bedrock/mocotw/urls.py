@@ -69,6 +69,7 @@ urlpatterns = patterns(
     ('^zh-TW/products/download\.html$', redirect_to,
      {'url': '//www.mozilla.org/en-US/products/download.html', 'query_string': True}),
     ('^zh-TW/(?P<path>.*)$', redirect_to, {'url': '/%(path)s'}),
+    ('^eDM/(?P<path>.*)$', redirect_to, {'url': '/media/docs/mocotw/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
 
     url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)(/)?$',
