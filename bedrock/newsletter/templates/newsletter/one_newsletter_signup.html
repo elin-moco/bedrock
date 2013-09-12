@@ -24,10 +24,9 @@
 
 {% block og_meta %}
     <meta property="og:title" content="加入電子報，Firefox 訊息一把罩">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ media('img/newsletter/envelopes.png') }}">
-    <meta property="og:url" content="{{ request.build_absolute_uri() }}">
     <meta property="og:description" content="你是 Firefox 瀏覽器的愛用者嗎？關心 Firefox OS 最近動態嗎？歡迎訂閱 Firefox 電子報，你將定期收到 Mozilla 各式開源專案的最新消息，以及港台地區的相關活動訊息。立即訂閱電子報，參與 Mozilla 社群。">
+    <meta property="og:image" content="http://{{ MOCO_URL }}{{ media('img/newsletter/envelopes.png') }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri() }}">
 {% endblock %}
 
 
