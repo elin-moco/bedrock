@@ -7,6 +7,7 @@ from django.conf.urls.defaults import handler404, include, patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.http import HttpResponse
 from bedrock.base import ViewsSitemap, PathsSitemap
+from bedrock.sandstone.settings import MOCO_URL
 from bedrock.settings import ENGAGE_ROBOTS, DEBUG
 from funfactory.monkeypatches import patch
 patch()
@@ -86,10 +87,11 @@ urlpatterns = patterns('',
     (
         r'^robots\.txt$',
         lambda r: HttpResponse(
-            "User-agent: *\n%s%s: /" % (
+            "User-agent: *\n%s%s: /\n\n%s" % (
                 'Disallow: /index.php\n' +
                 'Disallow: /click.php\n',
                 'Allow' if ENGAGE_ROBOTS else 'Disallow',
+                'Sitemap: http://'+MOCO_URL+'/sitemap.xml\n',
             ),
             mimetype="text/plain"
         )
