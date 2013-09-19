@@ -487,6 +487,7 @@ MINIFY_BUNDLES = {
         ),
         'firefox_all': (
             'js/firefox/firefox-language-search.js',
+            'js/mocotw/highlight-zh-tw.js',
         ),
         'firefox-resp': (
             'js/libs/jquery-1.7.1.min.js',

@@ -65,6 +65,7 @@ urlpatterns = patterns(
     redirect(r'^reg/moztour/$', '/register/tour'),
 
     redirect(r'^MPL/$', '//www.mozilla.org/MPL/'),
+    redirect(r'poweredby/$', '//www.mozilla.org/poweredby/'),
     redirect(r'projects/technologies.html$', '//www.mozilla.org/projects/technologies.html'),
     redirect(r'projects/calendar/$', '//www.mozilla.org/projects/calendar/'),
 
