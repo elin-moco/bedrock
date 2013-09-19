@@ -69,7 +69,7 @@ urlpatterns = patterns(
     redirect(r'projects/technologies.html$', '//www.mozilla.org/projects/technologies.html'),
     redirect(r'projects/calendar/$', '//www.mozilla.org/projects/calendar/'),
 
-    redirect(r'^about/.*$', '/about'),
+    # redirect(r'^about/.*$', '/about/'),
     redirect(r'^index.php', '/'),
     redirect(r'^click.php', '/'),
 
