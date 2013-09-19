@@ -48,6 +48,8 @@ urlpatterns = patterns(
     redirect(r'^firefox/tw_beta/$', '/firefox'),
     redirect(r'^firefox/tw_features/$', '/firefox/features'),
     redirect(r'^firefox/beta/features/$', '/firefox/features'),
+    redirect(r'^firefox/beta/$', '//www.mozilla.org/en-US/firefox/beta/'),
+    redirect(r'^firefox/aurora/$', '//www.mozilla.org/en-US/firefox/aurora/'),
 
     redirect(r'^products/download/$', '/firefox/channel'),
     redirect(r'^mobile/$', '/firefox/mobile/features'),
@@ -61,6 +63,14 @@ urlpatterns = patterns(
     redirect(r'^reg/repsup/$', '/register/supply'),
     redirect(r'^reg/space/$', '/register/space'),
     redirect(r'^reg/moztour/$', '/register/tour'),
+
+    redirect(r'^MPL/$', '//www.mozilla.org/MPL/'),
+    redirect(r'projects/technologies.html$', '//www.mozilla.org/projects/technologies.html'),
+    redirect(r'projects/calendar/$', '//www.mozilla.org/projects/calendar/'),
+
+    redirect(r'^about/.*$', '/about'),
+    redirect(r'^index.php', '/'),
+    redirect(r'^click.php', '/'),
 
     redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements.html'),
     (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),

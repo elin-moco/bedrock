@@ -84,7 +84,7 @@ class PrivacyWidget(widgets.CheckboxInput):
             '<span class="title">%s</span></label>'
             % (attrs['id'], input_txt,
                policy_txt % ('//' + MOFO_URL + '/en-US/privacy-policy'))
-         )
+        )
 
 
 class HoneyPotWidget(widgets.CheckboxInput):
