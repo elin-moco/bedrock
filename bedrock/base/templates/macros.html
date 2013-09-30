@@ -115,7 +115,11 @@
 {%- endmacro %}
 
 {% macro twitter_share_url(url, tweet_text) -%}
-  {{ 'https://www.twitter.com/intent/tweet?url=%s&text=%s'|format(url|urlencode, tweet_text|urlencode)|e }}
+  {% if tweet_text %}
+    {{ 'https://www.twitter.com/intent/tweet?url=%s&text=%s'|format(url|urlencode, tweet_text|urlencode)|e }}
+  {% else %}
+    {{ 'https://www.twitter.com/intent/tweet?url=%s'|format(url|urlencode|urlencode)|e }}
+  {% endif %}
 {%- endmacro %}
 
 {% macro gplus_share_url(url) -%}
@@ -123,7 +127,11 @@
 {%- endmacro %}
 
 {% macro plurk_share_url(url, title) -%}
-  {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url+'('+title+')'|urlencode)|e }}
+  {% if title %}
+    {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url+'('+title+')'|urlencode)|e }}
+  {% else %}
+    {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url|urlencode)|e }}
+  {% endif %}
 {%- endmacro %}
 
 {% macro email_share_url(url, title) -%}
