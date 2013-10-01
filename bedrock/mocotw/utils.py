@@ -2,7 +2,7 @@ import csv
 import logging
 import re
 import imp
-from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL
+from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG
 from bedrock.settings import GA_ACCOUNT_CODE
 from product_details import settings_fallback, product_details
 from bedrock.mocotw.models import Newsletter
@@ -150,11 +150,11 @@ def read_newsletter_context(issue_number, is_mail=True):
                     if 'event' == article['category']:
                         events.append(article)
                     elif 'quiz' == article['category']:
-                        quiz['content'] = article['content']
+                        quiz['content'] = article['title']
                     elif 'answer' == article['category']:
-                        quiz['answers'].append(article['content'])
+                        quiz['answers'].append(article['title'])
                     elif 'deadline' == article['category']:
-                        quiz['deadline'] = article['content']
+                        quiz['deadline'] = article['title']
                     elif 'banner' == article['category']:
                         banner = article
                     else:
@@ -166,7 +166,7 @@ def read_newsletter_context(issue_number, is_mail=True):
 
 def newsletter_context_vars(context, issue_number):
     context['GA_ACCOUNT_CODE'] = GA_ACCOUNT_CODE
-    context['MOCO_URL'] = MOCO_URL
+    context['MOCO_URL'] = LOCAL_MOCO_URL if DEBUG else MOCO_URL
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL
     context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
