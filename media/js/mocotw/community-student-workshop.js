@@ -1,6 +1,7 @@
 $(function () {
 
     var events = [
+        { Date: new Date("09/29/2013") },
         { Date: new Date("08/31/2013") },
         { Date: new Date("08/17/2013") },
         { Date: new Date("06/22/2013") }
