@@ -53,7 +53,6 @@ class Command(BaseCommand):
         else:
             self.send_mail(subject, headers, from_email, (args[1], ), text_content, mail_content, issue_number)
 
-    @staticmethod
     def send_mail(self, subject, headers, from_email, to_mail, text_content, mail_content, issue_number):
         mail = EmailMultiAlternatives(subject=subject, body=text_content, headers=headers,
                                       from_email=from_email, to=to_mail)
@@ -68,11 +67,11 @@ class Command(BaseCommand):
 
         try:
             mail.send()
-            self.stdout.write('Sent newsletter to %s.\n' % to_mail)
+            self.stderr.write('Sent newsletter to %s.\n' % to_mail)
         except MessageError as e:
-            self.stdout.write('Failed to send to %s\n' % to_mail, e)
+            self.stderr.write('Failed to send to %s\n' % to_mail, e)
         except RuntimeError as e:
-            self.stdout.write('Unexpected error when sending to %s\n' % to_mail, e)
+            self.stderr.write('Unexpected error when sending to %s\n' % to_mail, e)
 
     @staticmethod
     def named(email, name):
