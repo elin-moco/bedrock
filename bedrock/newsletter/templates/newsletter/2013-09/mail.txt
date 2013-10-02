@@ -12,7 +12,7 @@
 分享電子報至
 
 [Facebook]
-(http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ NEWSLETTER_URL|urlencode }}&p[images][0]={{ (NEWSLETTER_URL + 'images/mainpic.png')|urlencode }}&p[title]={{ params.title|urlencode }})
+(http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ NEWSLETTER_URL|urlencode }}&p[images][0]={{ (NEWSLETTER_URL + 'images/mainpic.jpg')|urlencode }}&p[title]={{ params.title|urlencode }})
 [Google+]
 (https://plus.google.com/share?url={{ NEWSLETTER_URL|urlencode }})
 [Plurk]
