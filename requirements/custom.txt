@@ -6,3 +6,4 @@ premailer==1.13
 html2text==3.200.3
 PIL==1.1.7
 BeautifulSoup==3.2.1
+pyga==2.5.0
