@@ -13,7 +13,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.options = options
         subscriptions = Newsletter.objects.filter(u_status=1).exclude(u_email__isnull=True).exclude(u_email__exact='')
-        file = open('subscriptions.txt', 'w')
+        filename = 'subscriptions.txt'
+        if args and len(args) > 0:
+            filename = args[0]
+        file = open(filename, 'w')
         for subscription in subscriptions:
             # print subscription.u_email.lower()
             file.write(subscription.u_email + '\n')
