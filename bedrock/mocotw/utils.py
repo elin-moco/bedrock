@@ -175,7 +175,7 @@ def newsletter_context_vars(context, issue_number):
     context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
 
 def track_page(path):
-    tracker = Tracker(GA_ACCOUNT_CODE, MOCO_URL)
+    tracker = Tracker(GA_ACCOUNT_CODE.replace('UA-', 'MO-'), MOCO_URL)
     visitor = Visitor()
     # visitor.ip_address = '194.54.176.12'
     session = Session()
