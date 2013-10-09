@@ -102,6 +102,7 @@ def newsletter_subscribe(email):
         subscription = Newsletter(u_email=email.lower())
         subscription.save()
         log.info(email + ' subscribed!')
+        return True
     else:
         log.warn(email + ' already exists!')
         for existingEmail in existingEmails:

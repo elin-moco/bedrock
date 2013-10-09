@@ -128,7 +128,7 @@
 
 {% macro plurk_share_url(url, title) -%}
   {% if title %}
-    {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url+'('+title+')'|urlencode)|e }}
+    {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url+' ('+title+')'|urlencode)|e }}
   {% else %}
     {{ 'http://www.plurk.com/?qualifier=shares&status=%s'|format(url|urlencode)|e }}
   {% endif %}
