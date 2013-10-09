@@ -12,6 +12,9 @@ from django.template.loader import render_to_string
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars
 import premailer
 from bedrock.settings import NEWSLETTER_PRESEND_LIST
+import commonware.log
+
+log = commonware.log.getLogger('newsletter')
 
 
 class Command(BaseCommand):
@@ -64,13 +67,14 @@ class Command(BaseCommand):
 
         try:
             mail.send()
-            print('Send %s Newsletter to %s.' % (issue_number, to_mail))
+            self.stderr.write('Sent newsletter to %s.\n' % to_mail)
         except MessageError as e:
-            print('Failed to send to %s' % to_mail, e)
+            self.stderr.write('Failed to send to %s\n' % to_mail, e)
         except RuntimeError as e:
-            print('Unexpected error when sending to %s' % to_mail, e)
+            self.stderr.write('Unexpected error when sending to %s\n' % to_mail, e)
 
-    def named(self, email, name):
+    @staticmethod
+    def named(email, name):
         if name:
             return '%s <%s>' % (name, email)
         return email
