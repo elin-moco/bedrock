@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import base64
 import urllib2
 from BeautifulSoup import BeautifulSoup
 from django.http import HttpResponse
@@ -6,7 +7,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
 from django.views.static import serve
 from bedrock.mocotw.forms import NewsletterForm
-from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe
+from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe, track_page
 from bedrock.newsletter.forms import NewsletterFooterForm
 from lib import l10n_utils
 
@@ -23,6 +24,14 @@ def issue(request, issue_number=None, path=None):
         newsletter_context_vars(context, issue_number)
         response = render_to_string('newsletter/%s/mail.txt' % issue_number, context)
         return HttpResponse(response, content_type='text/plain')
+    elif path == 'email.gif':
+        track_page('/newsletter/%s/email' % issue_number)
+        response = HttpResponse('', content_type='image/gif')
+        response['Pragma'] = 'no-cache'
+        response['Cache-Control'] = 'private, no-cache, no-cache=Set-Cookie, proxy-revalidate'
+        response['Expires'] = 'Wed, 17 Sep 1975 21:32:10 GMT'
+        response.write('R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs='.decode('base64'))
+        return response
     else:
         return serve(request, path, 'bedrock/newsletter/templates/newsletter/%s' % issue_number)
 

@@ -2,6 +2,8 @@ import csv
 import logging
 import re
 import imp
+from pyga.requests import Tracker
+from pyga.entities import Visitor, Session, Page
 from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG
 from bedrock.settings import GA_ACCOUNT_CODE
 from product_details import settings_fallback, product_details
@@ -171,3 +173,11 @@ def newsletter_context_vars(context, issue_number):
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL
     context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
+
+def track_page(path):
+    tracker = Tracker(GA_ACCOUNT_CODE, MOCO_URL)
+    visitor = Visitor()
+    # visitor.ip_address = '194.54.176.12'
+    session = Session()
+    page = Page(path)
+    tracker.track_pageview(page, session, visitor)
