@@ -9,19 +9,15 @@
 {% block page_title_prefix %}Mozilla 社群 ─ {% endblock %}
 {% block page_title %}Firefox 社群專案{% endblock %}
 {% block body_id %}contribute{% endblock %}
-{% block description %}Firefox 號召台灣青年學子加入 Mozilla 的專案。{% endblock %}
+{% block page_desc %}Firefox 號召台灣青年學子加入 Mozilla 的專案。{% endblock %}
 
 {% block extrahead %}
   {{ css('contribute') }}
+{% endblock %}
 
-  {% if has_moz15 %}
-    {# OpenGraph Metadata #}
-    <meta property="og:title" content="{{_('Get Involved: Volunteer Opportunities at Mozilla')}}">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ media('img/contribute/mozilla15/mozilla15-badge.png') }}">
-    <meta property="og:url" content="{{ request.build_absolute_uri() }}">
-    <meta property="og:site_name" content="{{ _('Mozilla.org') }}">
-    <meta property="og:description" content="
+{% if has_moz15 %}
+  {% block page_image %}{{ media('img/contribute/mozilla15/mozilla15-badge.png') }}{% endblock %}
+  {% block page_desc %}
     {% trans %}
       Mozilla exists to promote openness, innovation and opportunity on the Internet.
     {% endtrans %}
@@ -30,9 +26,9 @@
       we are, including some of our biggest achievements and milestones. But in some
       ways we’re just getting started, exploring new technology, entering new areas
       and reaching new users every day.
-    {% endtrans %}">
-  {% endif %}
-{% endblock %}
+    {% endtrans %}
+  {% endblock %}
+{% endif %}
 
 {% block js %}
   {{ js('contribute') }}
@@ -304,30 +300,16 @@
 
 <section id="welcome" class="container">
   <div id="welcome-video" class="mozilla-video-control mozilla-video-shadow">
-    <video
-      width="640"
-      height="360"
-      poster="{{ MEDIA_URL }}img/contribute/poster-brand.jpg"
-      controls="controls"
-      data-overlay-hidden-text="{{_('Play video')}}">
-      <source src="//videos-cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm" type="video/webm" />
-      <source src="//videos-cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.theora.ogv" type="video/ogg; codecs=&quot;theora, vorbis&quot;" />
-      <source src="//videos-cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.mp4" type="video/mp4" />
-      <object type="application/x-shockwave-flash"
-        style="width: 640px; height: 388px;"
-        data="{{ MEDIA_URL }}flash/playerWithControls.swf?flv=brand/Mozilla_Firefox_Manifesto_v0.2_640.mp4&amp;autoplay=false&amp;msg=Play%20Video">
-        <param name="movie" value="{{ MEDIA_URL }}flash/playerWithControls.swf?flv=brand/Mozilla_Firefox_Manifesto_v0.2_640.mp4&amp;autoplay=false&amp;msg=Play%20Video" />
-        <param name="wmode" value="transparent" />
-
-        <div class="video-player-no-flash">
-        {{_('This video requires a browser with support for open video or the <a href="http://www.adobe.com/go/getflashplayer">Adobe Flash Player</a>.')}}
-        </div>
-      </object>
-    </video>
-    <p>
-      {{_('You don’t have to be a C++ guru (or even know what that means!) to get involved.<br><b>You just have to love the Web.</b>')}}
-    </p>
+    {{ video('Mozilla_Firefox_Manifesto_v0.2_640.webm',
+             'Mozilla_Firefox_Manifesto_v0.2_640.theora.ogv',
+             'Mozilla_Firefox_Manifesto_v0.2_640.mp4',
+             h=360, w=640,
+             prefix='//videos-cdn.mozilla.net/brand/',
+             poster=media('img/contribute/poster-brand.jpg')) }}
   </div>
+  <p>
+    {{_('You don’t have to be a C++ guru (or even know what that means!) to get involved.<br><b>You just have to love the Web.</b>')}}
+  </p>
 </section>
 
 {% endif %}
@@ -365,7 +347,7 @@
                 <h3 id="support">{{_('Helping Users')}}</h3>
                 <div class="content">
                   <p>
-{% trans fx_support_url='https://support.mozilla.org/kb/superheroes-wanted', tb_support_url='http://support.mozillamessaging.com/kb/superheroes-wanted' %}
+{% trans fx_support_url='https://support.mozilla.org/get-involved', tb_support_url='http://support.mozillamessaging.com/kb/superheroes-wanted' %}
 Our support process relies on enthusiastic contributors like you to help others get the most out of Mozilla products. Find out more about <a href="{{ fx_support_url }}">how to help Firefox users</a> and <a href="{{ tb_support_url }}">how to help Thunderbird users</a>.
 {% endtrans %}
                   </p>
@@ -387,7 +369,7 @@ Quality assurance testing is one of the easiest ways to get started with Mozilla
                 <h3 id="coding">{{_('Coding')}}</h3>
                 <div class="content">
                   <p>
-{% trans dev_intro_url='https://developer.mozilla.org/en/Introduction', what_url='http://www.whatcanidoformozilla.org/' %}
+{% trans dev_intro_url='https://developer.mozilla.org/docs/Introduction', what_url='http://www.whatcanidoformozilla.org/' %}
 <a href="{{ dev_intro_url }}">Developers can help</a> Mozilla by adding new features, making our technology smaller and faster and making development easier for others.  Tell us <a href="{{ what_url }}">your favorite programming language</a> and we'll find the project for you.
 {% endtrans %}
                   </p>
@@ -420,7 +402,7 @@ Get involved with Mozilla by making Firefox, Thunderbird and other projects <a h
                 <h3 id="webdev">{{_('Web Development') }}</h3>
                 <div class="content">
                   <p>
-{% trans webdev_url='https://wiki.mozilla.org/Webdev/GetInvolved', gaia_url='https://wiki.mozilla.org/Gaia/Hacking' %}
+{% trans webdev_url='https://wiki.mozilla.org/Webdev/GetInvolved', gaia_url='https://developer.mozilla.org/docs/Mozilla/Firefox_OS/Platform/Gaia/Hacking' %}
 Our web sites are open for web developers to hack on.  <a href="{{ webdev_url }}">Find a web site project</a> to get started on.  Your web skills can also be used to <a href="{{ gaia_url }}">help us build our new Firefox OS</a>.
 {% endtrans %}
                   </p>
@@ -529,7 +511,7 @@ Help build a generation of webmakers by teaching others how the web works. <a hr
             // ]]></script>
             <section>
               {% if not newsletter_success %}
-                <form action="#newsletter" method="post" id="newsletter-form">
+                <form action="{{ secure_url() }}#newsletter" method="post" id="newsletter-form">
                   <input type="hidden" name="newsletter-form" value="Y" />
                   <p>{{_('Sign up for a weekly newsletter that is full of community news and contribution opportunities.')}}</p>
                   {% if newsletter_form.errors %}

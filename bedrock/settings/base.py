@@ -50,7 +50,6 @@ PROD_LANGUAGES = ('ach', 'af', 'ak', 'an', 'ar', 'as', 'ast', 'az', 'be', 'bg',
                   'sv-SE', 'sw', 'ta', 'ta-LK', 'te', 'th', 'tr', 'uk',
                   'ur', 'vi', 'wo', 'zh-CN', 'zh-TW', 'zu')
 DEV_LANGUAGES = list(DEV_LANGUAGES) + ['en-US']
-NEWSLETTER_LANGUAGES = ['de', 'en', 'es', 'fr', 'id', 'pl', 'pt', 'ru']
 
 FEED_CACHE = 3900
 DOTLANG_CACHE = 60
@@ -64,6 +63,7 @@ SUPPORTED_NONLOCALES += [
     'telemetry',
     'webmaker',
     'gameon',
+    'robots.txt',
 ]
 
 ALLOWED_HOSTS = [
@@ -71,6 +71,9 @@ ALLOWED_HOSTS = [
     'www.ipv6.mozilla.org',
     'www.allizom.org',
 ]
+
+# The canonical, production URL without a trailing slash
+CANONICAL_URL = 'http://www.mozilla.org'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ssssshhhhh'
@@ -194,6 +197,9 @@ MINIFY_BUNDLES = {
         'firefox_all': (
             'css/firefox/all.less',
         ),
+        'firefox_unsupported': (
+            'css/firefox/unsupported.less',
+        ),
         'firefox-resp': (
             'css/firefox/template-resp.less',
         ),
@@ -221,6 +227,7 @@ MINIFY_BUNDLES = {
             'css/firefox/mobile-features.less',
         ),
         'firefox_sms': (
+            'css/libs/socialshare/socialshare.less',
             'css/firefox/template-resp.less',
             'css/sandstone/video-resp.less',
             'css/firefox/mobile-sms.less',
@@ -259,22 +266,20 @@ MINIFY_BUNDLES = {
             'css/firefox/happy.less',
         ),
         'firefox_new': (
+            'css/libs/socialshare/socialshare.less',
             'css/firefox/new.less',
         ),
         'firefox_organizations': (
             'css/firefox/organizations.less',
         ),
         'firefox_os': (
-            'css/libs/jquery.pageslide.css',
             'css/firefox/os/firefox-os.less',
         ),
         'firefox_os_ie': (
             'css/firefox/os/firefox-os-ie.less',
         ),
-        'firefox_platforms': (
-            'css/firefox/template-resp.less',
-            'css/base/mozilla-expanders.less',
-            'css/firefox/platforms.less',
+        'firefox_releases_index': (
+            'css/firefox/releases-index.less',
         ),
         'firefox_security': (
             'css/firefox/security.less',
@@ -309,16 +314,28 @@ MINIFY_BUNDLES = {
             'css/firefox/template-resp.less',
             'css/firefox/installer-help.less',
         ),
+        'moco_home': (
+            'css/mozorg/home.less',
+            'css/mozorg/home-promo.less',
+            'css/mocotw/home.less',
+        ),
         'home': (
             'css/mozorg/home.less',
             'css/mozorg/home-promo.less',
             'js/libs/video-js/video-js.css',
             'js/libs/video-js/video-js-sandstone.css',
         ),
-        'moco_home': (
-            'css/mozorg/home.less',
-            'css/mozorg/home-promo.less',
-            'css/mocotw/home.less',
+        'home-b': (
+            'css/mozorg/home-b.less',
+        ),
+        'home-b-ie9': (
+            'css/mozorg/home-b-ie9.less',
+        ),
+        'home-b-ie8': (
+            'css/mozorg/home-b-ie8.less',
+        ),
+        'home-b-ie': (
+            'css/mozorg/home-b-ie.less',
         ),
         'marketplace': (
             'css/marketplace/marketplace.less',
@@ -349,6 +366,9 @@ MINIFY_BUNDLES = {
         'fb_privacy': (
             'css/privacy/fb-privacy.less',
         ),
+        'web-privacy': (
+            'css/privacy/web-privacy.less',
+        ),
         'products': (
             'css/mozorg/products.less',
         ),
@@ -357,6 +377,12 @@ MINIFY_BUNDLES = {
         ),
         'research': (
             'css/research/research.less',
+        ),
+        'security-group': (
+            'css/mozorg/security-group.less',
+        ),
+        'security-tld-idn': (
+            'css/mozorg/security-tld-idn.less',
         ),
         'styleguide': (
             'css/styleguide/styleguide.less',
@@ -442,6 +468,7 @@ MINIFY_BUNDLES = {
             'js/base/global.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
+            'js/base/mozilla-image-helper.js',
         ),
         'common-resp': (
             'js/libs/jquery-1.7.1.min.js',
@@ -450,6 +477,7 @@ MINIFY_BUNDLES = {
             #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
+            'js/base/mozilla-image-helper.js',
         ),
         'unsubscribe': (
             'js/libs/jquery-1.7.1.min.js',
@@ -484,6 +512,7 @@ MINIFY_BUNDLES = {
             #'js/base/nav-main.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
+            'js/base/mozilla-image-helper.js',
         ),
         'firefox_all': (
             'js/firefox/firefox-language-search.js',
@@ -496,6 +525,7 @@ MINIFY_BUNDLES = {
             #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
+            'js/base/mozilla-image-helper.js',
         ),
         'firefox_central': (
             'js/base/mozilla-video-tools.js',
@@ -537,6 +567,7 @@ MINIFY_BUNDLES = {
             'js/firefox/happy.js',
         ),
         'firefox_new': (
+            'js/libs/socialshare.min.js',
             'js/libs/modernizr.custom.csstransitions.js',
             'js/firefox/new.js',
         ),
@@ -545,7 +576,6 @@ MINIFY_BUNDLES = {
             'js/base/mozilla-modal.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.waypoints-sticky.min.js',
-            'js/libs/jquery.pageslide.min.js',
             'js/libs/tweenmax.1.9.7.min.js',
             'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.plusslider.js',
@@ -558,9 +588,6 @@ MINIFY_BUNDLES = {
         ),
         'firefox_os_ie9': (
             'js/libs/matchMedia.addListener.js',
-        ),
-        'firefox_platforms': (
-            'js/base/mozilla-expanders.js',
         ),
         'firefox_faq': (
             'js/base/mozilla-expanders.js',
@@ -591,15 +618,19 @@ MINIFY_BUNDLES = {
             'js/base/mozilla-expanders.js',
             'js/firefox/geolocation-demo.js',
         ),
-        'home': (
-            'js/base/mozilla-pager.js',
-            'js/libs/video-js/video.js',
-            'js/mozorg/home.js',
-            # 'js/sandstone/nav.js',
-        ),
         'moco_home': (
             'js/base/mozilla-pager.js',
             'js/mocotw/home.js',
+        ),
+        'home': (
+            'js/base/mozilla-pager.js',
+            'js/libs/video-js/video.dev.js',
+            'js/mozorg/home.js',
+        ),
+        'home-b': (
+            'js/libs/jquery.cycle2.min.js',
+            'js/libs/jquery.cycle2.carousel.min.js',
+            'js/mozorg/home-b.js',
         ),
         'marketplace': (
             'js/sandstone/nav.js',
@@ -613,12 +644,14 @@ MINIFY_BUNDLES = {
             'js/base/global.js',
             #'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
+            'js/base/mozilla-image-helper.js',
         ),
         'pager': (
             'js/base/mozilla-pager.js',
         ),
         'partnerships': (
             'js/libs/jquery.validate.js',
+            'js/base/mozilla-form-helper.js',
             'js/mozorg/partnerships.js',
             'js/base/mozilla-input-placeholder.js',
         ),
@@ -660,6 +693,7 @@ MINIFY_BUNDLES = {
         ),
         'partners_common': (
             'js/libs/enquire.min.js',
+            'js/base/mozilla-form-helper.js',
             'js/firefox/partners/common.js',
         ),
         'partners_mobile': (
@@ -667,8 +701,8 @@ MINIFY_BUNDLES = {
         ),
         'partners_desktop': (
             'js/libs/jquery.pageslide.min.js',
-            'js/libs/tweenmax.min.js',
-            'js/libs/superscrollorama.js',
+            'js/libs/tweenmax.1.9.7.min.js',
+            'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.spritely-0.6.1.js',
             'js/firefox/partners/desktop.js',
         ),
@@ -700,11 +734,11 @@ ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 DOMAIN_METHODS = {
     'messages': [
         ('%s/**.py' % PROJECT_MODULE,
-            'tower.management.commands.extract.extract_tower_python'),
+            'tower.extract_tower_python'),
         ('%s/**/templates/**.html' % PROJECT_MODULE,
-            'tower.management.commands.extract.extract_tower_template'),
+            'tower.extract_tower_template'),
         ('%s/**/templates/**.js' % PROJECT_MODULE,
-            'tower.management.commands.extract.extract_tower_template'),
+            'tower.extract_tower_template'),
     ],
 }
 
@@ -787,8 +821,10 @@ LOCALE_PATHS = (
 TEMPLATE_CONTEXT_PROCESSORS = get_template_context_processors(append=(
     'django.core.context_processors.csrf',
     'django.contrib.messages.context_processors.messages',
+    'bedrock.mozorg.context_processors.canonical_path',
     'bedrock.mozorg.context_processors.current_year',
     'bedrock.mozorg.context_processors.funnelcake_param',
+    'bedrock.mozorg.context_processors.facebook_locale',
     'bedrock.firefox.context_processors.latest_firefox_versions',
     'jingo_minify.helpers.build_ids',
     'bedrock.sandstone.context_processors.urls',
@@ -829,8 +865,8 @@ LOCALES_WITH_TRANSITION = ['en-US', 'af', 'ar', 'ast', 'be', 'bg',
 # Locales showing the 15th Anniversary slideshow on /contribute
 LOCALES_WITH_MOZ15 = ['bg', 'cs', 'de', 'el', 'en-GB', 'en-US', 'es-AR', 'es-CL',
                       'es-ES', 'es-MX', 'fr', 'fy-NL', 'hr', 'id', 'it', 'lt',
-                      'ms', 'nl', 'pl', 'pt-BR', 'ru', 'sl', 'sq', 'sr', 'ta',
-                      'zh-CN', 'zh-TW']
+                      'ms', 'nl', 'pl', 'pt-BR', 'ro', 'ru', 'sl', 'sq', 'sr',
+                      'ta', 'zh-CN', 'zh-TW']
 
 # reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY = ''
@@ -870,6 +906,25 @@ FACEBOOK_LOCALES = ['en-US', 'es-ES', 'pt-BR', 'id', 'de']
 FACEBOOK_PAGE_NAMESPACE = 'DUMMY_PAGE_NAMESPACE'
 FACEBOOK_APP_ID = 'DUMMY_APP_ID'
 
+# Facebook Like button supported locales
+# https://www.facebook.com/translations/FacebookLocales.xml
+FACEBOOK_LIKE_LOCALES = ['af_ZA', 'ar_AR', 'az_AZ', 'be_BY', 'bg_BG',
+                         'bn_IN', 'bs_BA', 'ca_ES', 'cs_CZ', 'cy_GB',
+                         'da_DK', 'de_DE', 'el_GR', 'en_GB', 'en_PI',
+                         'en_UD', 'en_US', 'eo_EO', 'es_ES', 'es_LA',
+                         'et_EE', 'eu_ES', 'fa_IR', 'fb_LT', 'fi_FI',
+                         'fo_FO', 'fr_CA', 'fr_FR', 'fy_NL', 'ga_IE',
+                         'gl_ES', 'he_IL', 'hi_IN', 'hr_HR', 'hu_HU',
+                         'hy_AM', 'id_ID', 'is_IS', 'it_IT', 'ja_JP',
+                         'ka_GE', 'km_KH', 'ko_KR', 'ku_TR', 'la_VA',
+                         'lt_LT', 'lv_LV', 'mk_MK', 'ml_IN', 'ms_MY',
+                         'nb_NO', 'ne_NP', 'nl_NL', 'nn_NO', 'pa_IN',
+                         'pl_PL', 'ps_AF', 'pt_BR', 'pt_PT', 'ro_RO',
+                         'ru_RU', 'sk_SK', 'sl_SI', 'sq_AL', 'sr_RS',
+                         'sv_SE', 'sw_KE', 'ta_IN', 'te_IN', 'th_TH',
+                         'tl_PH', 'tr_TR', 'uk_UA', 'vi_VN', 'zh_CN',
+                         'zh_HK', 'zh_TW']
+
 
 # FACEBOOK_TAB_URL is lazily evaluated because it depends on the namespace
 # and app ID settings in local settings.
@@ -899,5 +954,31 @@ DEFAULT_FILTERS['html2text'] = do_html_to_text
 #LOCAL_FFCLUB_URL = FFCLUB_URL = 'firefox.club.tw'
 CSRF_FAILURE_VIEW = 'bedrock.mozorg.views.csrf_failure'
 
+from .newsletters import DEFAULT_NEWSLETTERS  # noqa
+
 SITE_ID = 1
 ENGAGE_ROBOTS = False
+
+# Regional press blogs map to locales
+PRESS_BLOG_ROOT = 'https://blog.mozilla.org/'
+PRESS_BLOGS = {
+    'de': 'press-de/',
+    'en-GB': 'press-uk/',
+    'en-US': 'press/',
+    'es-AR': 'press-latam/',
+    'es-CL': 'press-latam/',
+    'es-ES': 'press-es/',
+    'es-MX': 'press-latam/',
+    'fr': 'press-fr/',
+    'it': 'press-it/',
+    'pl': 'press-pl/',
+}
+
+MOBILIZER_LOCALE_LINK = {
+    'en-US': 'https://wiki.mozilla.org/FirefoxOS/Community/Mobilizers',
+    'hu': 'https://wiki.mozilla.org/Mobilizers/MobilizerHungary/',
+    'pt-BR': 'https://wiki.mozilla.org/Mobilizers/MobilizerBrasil/',
+    'pl': 'https://wiki.mozilla.org/Mobilizers/MobilizerPolska/',
+    'gr': 'https://wiki.mozilla.org/Mobilizer/MobilizerGreece/',
+    'cs': 'https://wiki.mozilla.org/Mobilizer/MobilizerCzechRepublic/'
+}

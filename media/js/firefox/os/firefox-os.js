@@ -14,6 +14,14 @@
   var COUNTRY_CODE = '';
 
   var PARTNER_DATA = {
+    "co": {
+      "partner": [
+        {
+          "name": "Movistar",
+          "url": "http://www.movistar.co"
+        }
+      ]
+    },
     "es": {
       "partner": [
         {
@@ -27,6 +35,14 @@
         {
           "name": "T-Mobile",
           "url": "http://www.t-mobile.pl/pl/firefox"
+        }
+      ]
+    },
+    "ve": {
+      "partner": [
+        {
+          "name": "Movistar",
+          "url": "http://www.movistar.com.ve/movistar_firefox/index.html"
         }
       ]
     }
@@ -59,6 +75,10 @@
         links += '<a class="' + data.name.toLowerCase() + ' ' + index + '" href="' + data.url + '">' + data.name + '</a>';
       });
       $('#provider-links').html(links);
+
+      // setup GA event tracking on telecom provider exit links
+      $('#provider-links a').on('click', trackProviderExit);
+
       // persistent pencil icon is distracting/obtrusive on small screens
       if ($(window).width() > 480) {
         $('#signup-toggle-icon').fadeIn();
@@ -68,6 +88,21 @@
       $('#primary-cta-phone').addClass('visibility', 'hidden');
       $('#secondary-cta-signup').css('display', 'inline-block');
     }
+  }
+
+  /*
+   * Track telecom provider link clicks/page exits in Google Analytics
+   */
+  function trackProviderExit (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var href = this.href;
+
+    var callback = function () {
+      window.location = href;
+    };
+
+    trackGAEvent(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()], callback);
   }
 
   /*
@@ -121,7 +156,7 @@
         if (hasCallback) {
           timer = setTimeout(gaCallback, 500);
           window._gaq.push(
-            ['_set', 'hitCallback', gaCallback()],
+            ['_set', 'hitCallback', gaCallback],
             eventsArray
           );
         } else {

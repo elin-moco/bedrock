@@ -15,17 +15,9 @@ latest_re = r'^firefox(?:/(%s))?/%s/$'
 firstrun_re = latest_re % (version_re, 'firstrun')
 whatsnew_re = latest_re % (version_re, 'whatsnew')
 
-# firstrun testing
-# allow any (or no) string for version number
-# currently want to restrict to 21.0 only, but
-# left here for possible future use
-# remove when firstrun experiment is over
-#latest_new_re = r'^firefox(?:/(%s))?/firstrun/(?P<view>[a|b])(?P<version>[1-6])/$'
-#firstrun_new_re = latest_new_re % version_re
-
 
 urlpatterns = patterns('',
-    # url(r'^firefox/$', views.firefox_redirect, name='firefox'),
+    #redirect(r'^firefox/$', 'firefox.new', name='firefox'),
     url(r'^firefox/all/$', views.all_downloads, name='firefox.all'),
     # page('firefox/central', 'firefox/central.html'),
     page('firefox/channel', 'firefox/channel.html'),
@@ -36,10 +28,16 @@ urlpatterns = patterns('',
     page('firefox/geolocation', 'firefox/geolocation.html',
          gmap_api_key=settings.GMAP_API_KEY),
     page('firefox/happy', 'firefox/happy.html'),
+    url('^(?P<product>(firefox|mobile))/((?P<channel>(aurora|beta))/)?notes/$',
+        views.latest_notes, name='firefox.latest.notes'),
+    url('^firefox/system-requirements',
+        views.latest_sysreq, name='firefox.latest.sysreq'),
     page('firefox/memory', 'firefox/memory.html'),
     page('firefox/faq', 'firefox/faq.html'),
-    url('^firefox/mobile/platforms/$', views.platforms,
-        name='firefox.mobile.platforms'),
+    redirect('^firefox/mobile/platforms/$', 'https://support.mozilla.org/kb/will-firefox-work-my-mobile-device',
+             name='firefox.mobile.platforms'),
+    #url('^firefox/mobile/platforms/$', views.platforms,
+    #    name='firefox.mobile.platforms'),
     page('firefox/mobile/features', 'firefox/mobile/features.html'),
     page('firefox/mobile/faq', 'firefox/mobile/faq.html'),
     page('firefox/os/faq', 'firefox/os/faq.html'),
@@ -50,6 +48,8 @@ urlpatterns = patterns('',
     page('firefox/organizations', 'firefox/organizations/organizations.html'),
     page('firefox/performance', 'firefox/performance.html'),
     page('firefox/nightly/firstrun', 'firefox/nightly_firstrun.html'),
+    url('^firefox/releases/$', views.releases_index,
+        name='firefox.releases.index'),
     page('firefox/security', 'firefox/security.html'),
     url(r'^firefox/installer-help/$', views.installer_help,
         name='firefox.installer-help'),
@@ -57,9 +57,10 @@ urlpatterns = patterns('',
     page('firefox/technology', 'firefox/technology.html'),
     page('firefox/update', 'firefox/update.html'),
 
-    page('firefox/unsupported/warning', 'firefox/unsupported-warning.html'),
-    page('firefox/unsupported/EOL', 'firefox/unsupported-EOL.html'),
-    page('firefox/unsupported/mac', 'firefox/unsupported-mac.html'),
+    page('firefox/unsupported/warning', 'firefox/unsupported/warning.html'),
+    page('firefox/unsupported/EOL', 'firefox/unsupported/EOL.html'),
+    page('firefox/unsupported/mac', 'firefox/unsupported/mac.html'),
+    page('firefox/unsupported/details', 'firefox/unsupported/details.html'),
 
     url(r'^firefox/unsupported/win/$', views.windows_billboards),
     url('^dnt/$', views.dnt, name='firefox.dnt'),
@@ -67,10 +68,7 @@ urlpatterns = patterns('',
         kwargs={'template_name': 'firefox/firstrun.html'}),
     url(whatsnew_re, views.latest_fx_redirect, name='firefox.whatsnew',
         kwargs={'template_name': 'firefox/whatsnew.html'}),
-    # firstrun tests (bug 865433 & 881207)
-    # remove when instructed by bug 877202
-    url('^firefox/23.0/firstrun/(?P<view>[a|b])/$', views.firstrun_new, name='firefox.firstrun.new'),
-
+    #url('^firefox/23.0/firstrun/(?P<view>[a|b])/$', views.firstrun_new, name='firefox.firstrun.new'),
     url(r'^firefox/partners/$', views.firefox_partners,
         name='firefox.partners.index'),
 
@@ -78,6 +76,5 @@ urlpatterns = patterns('',
     url('^firefox/$', views.fx_home_redirect, name='firefox'),
 
     page('firefox/os', 'firefox/os/index.html'),
-
     page('firefox/os/notes/1.0.1', 'firefox/os/releasenotes.html'),
 )

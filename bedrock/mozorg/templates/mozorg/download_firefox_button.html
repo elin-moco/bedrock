@@ -4,7 +4,7 @@
 
 {% macro alt_buttons(builds) %}
   <div class="download download-dumb">
-    <h4>{{ _('Download Firefox') }} — {{ locale_name }}</h4>
+    <h4>{{ _('Download Firefox') }} — {{ locale_name|safe }}</h4>
     <ul>
       {% for plat in builds -%}
         <li><a href="{{ plat.download_link_direct or plat.download_link }}" class="button-green">{{ plat.os_pretty }}</a></li>
@@ -76,7 +76,7 @@
   </ul>
   {% if show_mobile %}
     <small class="download-other os_android">
-      <a href="/firefox/mobile/platforms">{{ _('Supported Devices') }}</a> |
+      <a href="https://support.mozilla.org/kb/will-firefox-work-my-mobile-device">{{ _('Supported Devices') }}</a> |
       {% if build %}
         {% if build != 'nightly' %}
           <a target="_blank" href="//{{ MOFO_URL }}/en-US/mobile/{{ build }}/notes">{{ _('What’s New') }}</a> |

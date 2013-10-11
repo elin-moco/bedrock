@@ -1,7 +1,7 @@
 {% extends "firefox/base-resp.html" %}
 
 {% block page_title %}下載你習慣語言版本的 Firefox{% endblock %}
-{% block description %}下載屬於你語言的 Firefox。Firefox 支援超過 70 種語言，這都要感謝全球 Mozilla 社群成員的貢獻。{% endblock %}
+{% block page_desc %}下載屬於你語言的 Firefox。Firefox 支援超過 70 種語言，這都要感謝全球 Mozilla 社群成員的貢獻。{% endblock %}
 {% block body_id %}firefox-all{% endblock %}
 
 {% block site_css %}
@@ -34,12 +34,18 @@
              {% if query %}value="{{ query }}"{% endif %}>
       <datalist id="languages">
         {% for build in full_builds -%}
-          <option value="{{ build.name_en }}"></option>
-          <option value="{{ build.name_native }}"></option>
+          {% if build.name_en != build.name_native %}
+            <option value="{{ build.name_en }}, {{ build.name_native }}"></option>
+          {% else %}
+            <option value="{{ build.name_en }}"></option>
+          {% endif %}
         {% endfor -%}
         {% for build in test_builds -%}
-          <option value="{{ build.name_en }}"></option>
-          <option value="{{ build.name_native }}"></option>
+          {% if build.name_en != build.name_native %}
+            <option value="{{ build.name_en }}, {{ build.name_native }}"></option>
+          {% else %}
+            <option value="{{ build.name_en }}"></option>
+          {% endif %}
         {% endfor -%}
       </datalist>
       <button class="button arrow" type="submit"><span>{{ _('Search') }}</span></button>

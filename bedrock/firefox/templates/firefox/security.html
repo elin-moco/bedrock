@@ -6,7 +6,7 @@
 
 {% block page_title %}安全瀏覽 Web{% endblock %}
 {% block body_id %}firefox-security{% endblock %}
-{% block description %}Firefox 時時保護 個人隱私安全。在瀏覽網路時，你所留下的資料或多或少都內含個人資訊。Mozilla 認為這些資訊只屬於你個人所有 (某些使用誇張手法的廣告商更不該擁有)，因此 Firefox 內建多項功能以確保個人資訊安全，例如：不要追蹤我。{% endblock %}
+{% block page_desc %}Firefox 時時保護 個人隱私安全。在瀏覽網路時，你所留下的資料或多或少都內含個人資訊。Mozilla 認為這些資訊只屬於你個人所有 (某些使用誇張手法的廣告商更不該擁有)，因此 Firefox 內建多項功能以確保個人資訊安全，例如：不要追蹤我。{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_security') }}
@@ -47,7 +47,7 @@
     <p class="top-link"><a href="#main-feature">回到頂端</a></p>
   </div>
   <div class="section-image span4">
-     {{ platform_img('img/firefox/security/screenshot-privacy.jpg', alt='Private Browsing screenshot') }}
+     {{ platform_img('img/firefox/security/screenshot-privacy.jpg', {'alt': 'Private Browsing screenshot'}) }}
   </div>
   <ul class="section-list span3">
     <li>
@@ -82,7 +82,7 @@
     <p class="top-link"><a href="#main-feature">回到頂端</a></p>
   </div>
   <div class="section-image span4">
-     {{ platform_img('img/firefox/security/screenshot-anti-malware.jpg', alt='Anti-Malware screenshot') }}
+     {{ platform_img('img/firefox/security/screenshot-anti-malware.jpg', {'alt': 'Anti-Malware screenshot'}) }}
   </div>
   <ul class="section-list span3">
     <li>
@@ -113,7 +113,7 @@
     <p class="top-link"><a href="#main-feature">回到頂端</a></p>
   </div>
   <div class="section-image span4">
-     {{ platform_img('img/firefox/security/screenshot-plugins.jpg', alt='Plugins screenshot') }}
+     {{ platform_img('img/firefox/security/screenshot-plugins.jpg', {'alt': 'Plugins screenshot'}) }}
   </div>
   <ul class="section-list span3">
     <li>

@@ -4,23 +4,20 @@
 
 {% extends "base-resp.html" %}
 
+{% block html_attrs %}{{ super() }} data-latest-firefox="{{ latest_firefox_version }}" data-esr-versions="{{ esr_firefox_versions }}"{% endblock %}
+
 {% block body_class %}sky{% endblock %}
 
-{% block description %}{% endblock %}
-
-{% block favicon %}<link rel="shortcut icon" type="image/icon" href="{{ MEDIA_URL }}img/firefox/favicon.ico">{% endblock %}
-
 {% block page_title_prefix %}Mozilla Firefox OS — {% endblock %}
+{% block page_image %}{{ media('img/firefox/firefox-256.jpg') }}{% endblock %}
+{% block page_favicon %}{{ media('img/firefox/favicon.ico?2013-08') }}{% endblock %}
+
+{% block facebook_id %}14696440021{# facebook.com/Firefox #}{% endblock %}
+{% block twitter_id %}firefox{% endblock %}
 
 {% block site_css %}
   {{ css('firefox-resp') }}
 {% endblock %}
-
-{% block extrahead %}
-<meta name="og:image" content="{{ media('img/firefox/firefox-100.jpg') }}">
-{% endblock %}
-
-{% block body_attrs %}{{ super() }} data-latest-firefox="{{ latest_firefox_version }}" data-esr-versions="{{ esr_firefox_versions }}"{% endblock %}
 
 {% block site_header_nav %}{% endblock %}
 

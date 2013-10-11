@@ -4,13 +4,18 @@ from mock import patch
 
 from django.conf import settings
 from django.test.client import Client, RequestFactory
+from django.test.utils import override_settings
 
 import basket
 import jingo
+import jinja2
 from nose.tools import assert_false, eq_, ok_
 from pyquery import PyQuery as pq
 from bedrock.newsletter.tests.test_views import newsletters
+from funfactory.urlresolvers import reverse
 
+from bedrock.mozorg.helpers.misc import platform_img
+from bedrock.mozorg.helpers.misc import high_res_img
 from bedrock.mozorg.tests import TestCase
 
 
@@ -23,6 +28,37 @@ TEST_L10N_IMG_PATH = os.path.join(TEST_FILES_ROOT, 'media', 'img', 'l10n')
 def render(s, context={}):
     t = jingo.env.from_string(s)
     return t.render(context)
+
+
+@patch('django.conf.settings.LANGUAGE_CODE', 'en-US')
+class TestSecureURL(TestCase):
+    host = 'www.mozilla.org'
+    test_path = '/firefox/partners/'
+    test_view_name = 'mozorg.partnerships'
+    req = RequestFactory(HTTP_HOST=host).get(test_path)
+    secure_req = RequestFactory(HTTP_HOST=host).get(test_path, {}, **{'wsgi.url_scheme': 'https'})
+
+    def _test(self, view_name, expected_url, ssl):
+        eq_(render("{{ secure_url('%s') }}" % view_name, {'request': (self.secure_req if ssl else self.req)}),
+            expected_url)
+
+    def test_no_ssl_with_view_name(self):
+        # Should output a reversed path without https
+        self._test(self.test_view_name,
+                   'http://' + self.host + reverse(self.test_view_name), False)
+
+    def test_no_ssl_without_view_name(self):
+        # Should output the current, full URL without https
+        self._test('', 'http://' + self.host + self.test_path, False)
+
+    def test_ssl_with_view_name(self):
+        # Should output a reversed, full secure URL
+        self._test(self.test_view_name,
+                   'https://' + self.host + reverse(self.test_view_name), True)
+
+    def test_ssl_without_view_name(self):
+        # Should output the current, full secure URL
+        self._test('', 'https://' + self.host + self.test_path, True)
 
 
 @patch('bedrock.mozorg.helpers.misc.L10N_IMG_PATH', TEST_L10N_IMG_PATH)
@@ -51,8 +87,19 @@ class TestImgL10n(TestCase):
 
     def test_defaults_when_lang_file_missing(self):
         """Should use default lang when file doesn't exist for lang."""
-        eq_(self._render('es', 'dino/head.png'),
+        eq_(self._render('is', 'dino/head.png'),
             settings.MEDIA_URL + 'img/l10n/en-US/dino/head.png')
+
+    def test_latam_spanishes_fallback_to_european_spanish(self):
+        """Should use es-ES image when file doesn't exist for lang."""
+        eq_(self._render('es-AR', 'dino/head.png'),
+            settings.MEDIA_URL + 'img/l10n/es-ES/dino/head.png')
+        eq_(self._render('es-CL', 'dino/head.png'),
+            settings.MEDIA_URL + 'img/l10n/es-ES/dino/head.png')
+        eq_(self._render('es-MX', 'dino/head.png'),
+            settings.MEDIA_URL + 'img/l10n/es-ES/dino/head.png')
+        eq_(self._render('es', 'dino/head.png'),
+            settings.MEDIA_URL + 'img/l10n/es-ES/dino/head.png')
 
     @patch('bedrock.mozorg.helpers.misc.path.exists')
     def test_file_not_checked_for_default_lang(self, exists_mock):
@@ -63,9 +110,9 @@ class TestImgL10n(TestCase):
             settings.MEDIA_URL + 'img/l10n/en-US/dino/does-not-exist.png')
         ok_(not exists_mock.called)
 
-        self._render('es', 'dino/does-not-exist.png')
+        self._render('is', 'dino/does-not-exist.png')
         exists_mock.assert_called_once_with(os.path.join(
-            TEST_L10N_IMG_PATH, 'es', 'dino', 'does-not-exist.png'))
+            TEST_L10N_IMG_PATH, 'is', 'dino', 'does-not-exist.png'))
 
 
 class TestVideoTag(TestCase):
@@ -199,3 +246,85 @@ class TestNewsletterFunction(TestCase):
         doc = pq(response.content)
         ok_(doc('#footer-email-errors'))
         ok_(doc('#footer-email-form.has-errors'))
+
+
+class TestPlatformImg(TestCase):
+    @override_settings(MEDIA_URL='/media/')
+    def test_platform_img_no_optional_attributes(self):
+        """Should return expected markup without optional attributes"""
+        markup = platform_img('test.png')
+        expected = (
+            u'<img class="platform-img js" src="" data-src="/media/test.png" >'
+            u'<noscript><img class="platform-img win" src="/media/test.png" >'
+            u'</noscript>')
+        self.assertEqual(markup, jinja2.Markup(expected))
+
+    @override_settings(MEDIA_URL='/media/')
+    def test_platform_img_with_optional_attributes(self):
+        """Should return expected markup with optional attributes"""
+        markup = platform_img('test.png', {'data-test-attr': 'test'})
+        expected = (
+            u'<img class="platform-img js" src="" data-src="/media/test.png" '
+            u'data-test-attr="test"><noscript><img class="platform-img win" '
+            u'src="/media/test.png" data-test-attr="test"></noscript>')
+        self.assertEqual(markup, jinja2.Markup(expected))
+
+
+class TestPressBlogUrl(TestCase):
+    rf = RequestFactory()
+
+    def _render(self, locale):
+        req = self.rf.get('/')
+        req.locale = locale
+        return render("{{{{ press_blog_url() }}}}".format('/'),
+                      {'request': req})
+
+    def test_press_blog_url_no_locale(self):
+        """No locale, fallback to default press blog"""
+        eq_(self._render(''), 'https://blog.mozilla.org/press/')
+
+    def test_press_blog_url_english(self):
+        """en-US locale, default press blog"""
+        eq_(self._render('en-US'), 'https://blog.mozilla.org/press/')
+
+    def test_press_blog_url_europe(self):
+        """Major European locales have their own blog"""
+        eq_(self._render('es-ES'), 'https://blog.mozilla.org/press-es/')
+        eq_(self._render('fr'), 'https://blog.mozilla.org/press-fr/')
+        eq_(self._render('de'), 'https://blog.mozilla.org/press-de/')
+        eq_(self._render('pl'), 'https://blog.mozilla.org/press-pl/')
+        eq_(self._render('it'), 'https://blog.mozilla.org/press-it/')
+        eq_(self._render('en-GB'), 'https://blog.mozilla.org/press-uk/')
+
+    def test_press_blog_url_latam(self):
+        """South American Spanishes have a specific blog"""
+        eq_(self._render('es-AR'), 'https://blog.mozilla.org/press-latam/')
+        eq_(self._render('es-CL'), 'https://blog.mozilla.org/press-latam/')
+        eq_(self._render('es-MX'), 'https://blog.mozilla.org/press-latam/')
+
+    def test_press_blog_url_other_locale(self):
+        """No blog for locale, fallback to default press blog"""
+        eq_(self._render('oc'), 'https://blog.mozilla.org/press/')
+
+
+class TestHighResImg(TestCase):
+    @override_settings(MEDIA_URL='/media/')
+    def test_high_res_img_no_optional_attributes(self):
+        """Should return expected markup without optional attributes"""
+        markup = high_res_img('test.png')
+        expected = (
+            u'<img class="js" src="" data-src="/media/test.png" '
+            u'data-high-res="true" >'
+            u'<noscript><img src="/media/test.png" ></noscript>')
+        self.assertEqual(markup, jinja2.Markup(expected))
+
+    @override_settings(MEDIA_URL='/media/')
+    def test_high_res_img_with_optional_attributes(self):
+        """Should return expected markup with optional attributes"""
+        markup = high_res_img('test.png', {'data-test-attr': 'test'})
+        expected = (
+            u'<img class="js" src="" data-src="/media/test.png" '
+            u'data-high-res="true" data-test-attr="test">'
+            u'<noscript><img src="/media/test.png" data-test-attr="test">'
+            u'</noscript>')
+        self.assertEqual(markup, jinja2.Markup(expected))

@@ -244,7 +244,7 @@ var Tabzilla = (function (Tabzilla) {
                     e.preventDefault();
                     timer = setTimeout(callback, 500);
                     window._gaq.push(
-                        ['_set', 'hitCallback', callback()],
+                        ['_set', 'hitCallback', callback],
                         ['_trackEvent', 'Tabzilla', 'click', href]
                     );
                 }
@@ -267,7 +267,7 @@ var Tabzilla = (function (Tabzilla) {
             if (typeof(_gaq) == 'object' && keyword !== '') {
                 timer = setTimeout(callback, 500);
                 window._gaq.push(
-                    ['_set', 'hitCallback', callback()],
+                    ['_set', 'hitCallback', callback],
                     ['_trackEvent', 'Tabzilla', 'search', keyword]
                 );
             } else {
@@ -451,7 +451,7 @@ var Tabzilla = (function (Tabzilla) {
     + '        </li>'
     + '        <li id="tabzilla-search">'
     + '          <a href="https://www.mozilla.org/community/directory.html?icn=tabz">{{ _('Website Directory')|js_escape }}</a>'
-    + '          <form title="{{ _('Search Mozilla sites')|js_escape }}" role="search" action="//www.google.com/cse">'
+    + '          <form title="{{ _('Search Mozilla sites')|js_escape }}" role="search" action="https://www.google.com/cse">'
     + '            <input type="hidden" value="002443141534113389537:ysdmevkkknw" name="cx">'
     + '            <input type="hidden" value="FORID:0" name="cof">'
     + '            <label for="q">{{ _('Search')|js_escape }}</label>'

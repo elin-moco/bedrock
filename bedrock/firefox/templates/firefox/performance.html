@@ -6,7 +6,7 @@
 
 {% block page_title %}極致暢快效能{% endblock %}
 {% block body_id %}firefox-security{% endblock %}
-{% block description %}繫好安全帶！最新版 Firefox 擁有閃電般的開機速度、強悍繪圖效能、高速頁面載入等特色，讓你馬上察覺效能明顯提升。像是郵件、影片、遊戲等 Web 應用，在越來越講究細緻的畫面之外，也需要更高效能以順暢執行之。為了確實滿足全部需求。{% endblock %}
+{% block page_desc %}繫好安全帶！最新版 Firefox 擁有閃電般的開機速度、強悍繪圖效能、高速頁面載入等特色，讓你馬上察覺效能明顯提升。像是郵件、影片、遊戲等 Web 應用，在越來越講究細緻的畫面之外，也需要更高效能以順暢執行之。為了確實滿足全部需求。{% endblock %}
 
 {% block extrahead %}
   {{ css('video') }}
@@ -50,33 +50,12 @@
   </div>
   <figure id="video-wrapper" class="span7">
     <div id="video-player" class="mozilla-video-control mozilla-video-shadow">
-      <video
-        id="video"
-        width="640"
-        height="360"
-        poster="{{ media('img/firefox/video/poster-runfield.jpg') }}"
-        controls="controls"
-        data-overlay-hidden-text="{{_('Play video')}}">
-
-        <source src="//videos-cdn.mozilla.net/serv/mozhacks/demos/screencasts/runfield/screencast.webm" type="video/webm" />
-        <source src="//videos-cdn.mozilla.net/serv/mozhacks/demos/screencasts/runfield/screencast.ogv" type="video/ogg; codecs=&quot;theora, vorbis&quot;" />
-        <source src="//videos-cdn.mozilla.net/serv/mozhacks/demos/screencasts/runfield/screencast.mp4" type="video/mp4" />
-
-        <object type="application/x-shockwave-flash"
-          style="width: 640px; height: 388px;"
-          data="/includes/flash/playerWithControls.swf?flv=serv/mozhacks/demos/screencasts/runfield/screencast.mp4&amp;autoplay=false&amp;msg=Play%20Video">
-
-          <param name="movie" value="/includes/flash/playerWithControls.swf?flv=serv/mozhacks/demos/screencasts/runfield/screencast.mp4&amp;autoplay=false&amp;msg=Play%20Video" />
-          <param name="wmode" value="transparent" />
-
-          <div class="video-player-no-flash">
-            播放此影片的瀏覽器，需支援 Open Video
-            或 <a href="http://www.adobe.com/go/getflashplayer">Adobe Flash Player</a>。
-          </div>
-
-        </object>
-
-      </video>
+      {{ video('screencast.webm',
+               'screencast.ogv',
+               'screencast.mp4',
+               h=360, w=640,
+               prefix='//videos-cdn.mozilla.net/serv/mozhacks/demos/screencasts/runfield/',
+               poster=media('img/firefox/video/poster-runfield.jpg')) }}
     </div>
     <figcaption>Runfield 即是以 JavaScript 與 Canvas 建構的 Web 遊戲。<a href="https://developer.mozilla.org/demos/detail/runfield/launch">快來玩玩看 »</a></figcaption>
   </figure>

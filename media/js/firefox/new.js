@@ -5,67 +5,137 @@
 ;(function($, Modernizr, _gaq, site) {
     'use strict';
 
-    if (site.platform === 'android') {
-        return;
-    }
-
+    var isIELT9 = (site.platform === 'windows' && $.browser.msie && $.browser.version < 9);
     var path_parts = window.location.pathname.split('/');
     var query_str = window.location.search ? window.location.search + '&' : '?';
-    var referrer = path_parts[path_parts.length-2];
+    var referrer = path_parts[path_parts.length - 2];
     var locale = path_parts[1];
     var virtual_url = ('/download/' +
                        query_str + 'referrer=' + referrer);
-    var $scene1 = $('#scene1');
-    var $stage = $('#stage-firefox');
-    var $thankYou = $('.thankyou');
-    var hash_change = ('onhashchange' in window);
 
-    function track_and_redirect(url) {
-        if (_gaq) {
-            window._gaq.push(['_trackPageview', virtual_url]);
-        }
-        setTimeout(function() {
-            window.location.href = url;
-        }, 500);
-    }
+    var $html = $(document.documentElement);
 
-    function show_scene(scene) {
-        var CSSbottom = (scene === 2) ? '-400px' : 0;
-        $stage.data('scene', scene);
-        $('.scene').css('visibility', 'visible');
-        if (!Modernizr.csstransitions) {
-            $stage.animate({
-                bottom: CSSbottom
-            }, 400);
+    if (isFirefox()) {
+        var latestFirefoxVersion = $html.attr('data-latest-firefox');
+        latestFirefoxVersion = parseInt(latestFirefoxVersion.split('.')[0], 10);
+        latestFirefoxVersion--; // subtract one since a silent update may be
+                                // complete and the user hasn't restarted their
+                                // browser. This will be removed once there's
+                                // a way to get the current version directly
+                                // from the browser
+
+        if (isFirefoxUpToDate(latestFirefoxVersion + '')) {
+            $html.addClass('firefox-latest');
         } else {
-            $stage.toggleClass('scene2');
-        }
-        if (scene === 2) {
-            setTimeout(function() {
-                $scene1.css('visibility', 'hidden');
-                $thankYou.focus();
-            }, 500);
+            $html.addClass('firefox-old');
         }
     }
 
-    // Load images on load so as not to block the loading of other images.
-    $(window).on('load', function() {
-        // Screen 1 is unique for IE < 9
-        if (site.platform === 'windows' && $.browser.msie && $.browser.version < 9) {
-            $('html').addClass('winIE8');
+    // scene2 install images are unique for IE < 9
+    if (isIELT9) {
+        $html.addClass('winIE8');
+    }
+
+    // Add GA custom tracking and external link tracking
+    var state = 'Desktop, not Firefox';
+    if (site.platform === 'android') {
+        if ($html.hasClass('firefox-latest')) {
+            state = 'Android, Firefox up-to-date';
+        } else if ($html.hasClass('firefox-old')) {
+            state = 'Android, Firefox not up-to-date';
+        } else {
+            state = 'Android, not Firefox';
+        }
+    } else if (site.platform === 'ios') {
+        state = 'iOS, Firefox not supported';
+    } else if (site.platform === 'fxos') {
+        state = 'FxOS';
+    } else {
+        if ($html.hasClass('firefox-latest')) {
+            state = 'Desktop, Firefox up-to-date';
+        } else if ($html.hasClass('firefox-old')) {
+            state = 'Desktop, Firefox not up-to-date';
+        }
+    }
+    window._gaq = _gaq || [];
+    window._gaq.push(['_setCustomVar', 4, '/new conditional message', state, 3]);
+
+    // conditions in which scene2 should not be shown, even when the
+    // #download-fx hash is set
+    var no_scene2 = (
+           $html.hasClass('firefox-latest')
+        || site.platform === 'other'    // no download available
+        || site.platform === 'ios'      // unsupported platform
+        || site.platform === 'fxos'     // no download available
+        || site.platform === 'android'  // download goes to Play Store
+    );
+
+    $(document).ready(function() {
+        var $scene1 = $('#scene1');
+        var $stage = $('#stage-firefox');
+        var $thankYou = $('.thankyou');
+        var hash_change = ('onhashchange' in window);
+
+        // Add external link tracking
+        $(document).on('click', 'a', function(e) {
+            // only track off-site links and don't track download.mozilla.org links
+            if (this.hostname && this.hostname !== location.hostname && this.hostname !== 'download.mozilla.org') {
+                var newTab = (this.target === '_blank' || e.metaKey || e.ctrlKey);
+                var href = this.href;
+                var callback = function() {
+                    window.location = href;
+                };
+
+                if (newTab) {
+                    gaTrack(['_trackEvent', '/new Interaction', 'click', href]);
+                } else {
+                    e.preventDefault();
+                    gaTrack(['_trackEvent', '/new Interaction', 'click', href], callback);
+                }
+            }
+        });
+
+        if (site.platform === 'android') {
+            $('#download-button-android .download-subtitle').html(
+                $('.android.download-button-wrapper').data('upgradeSubtitle'));
+
+            // On Android, skip all the scene transitions. We're just linking
+            // to the Play Store.
+            return;
         }
 
-        $('body').addClass('ready-for-scene2');
+        function show_scene(scene, animate) {
+            if (animate) {
+                $stage.removeClass('stage-no-anim');
+            } else {
+                $stage.addClass('stage-no-anim');
+            }
 
-        // initiate download/scene2 if coming directly to #download
-        if (location.hash === '#download-fx' && site.platform !== 'other') {
-            show_scene(2);
-            $('#direct-download-link').trigger('click');
+            var CSSbottom = (scene === 2) ? '-400px' : 0;
+            $stage.data('scene', scene);
+            $('.scene').css('visibility', 'visible');
+            if (!Modernizr.csstransitions && animate) {
+                $stage.animate({
+                    bottom: CSSbottom
+                }, 400);
+            } else {
+                $stage.toggleClass('scene2');
+            }
+            if (scene === 2) {
+                // after animation, hide scene1 so it's not focusable and
+                // reset focus
+                setTimeout(function() {
+                    $scene1.css('visibility', 'hidden');
+                    $thankYou.focus();
+                }, 500);
+            }
         }
-    });
 
-    $(function() {
-        // Pull Firefox download link from the download button and add to the
+        function show_scene_anim(scene) {
+            show_scene(scene, true);
+        }
+
+        // Pull download link from the download button and add to the
         // 'click here' link.
         // TODO: Remove and generate link in bedrock.
         $('#direct-download-link').attr(
@@ -74,27 +144,86 @@
 
         $stage.on('click', '#direct-download-link, .download-link', function(e) {
             e.preventDefault();
+            var url = $(e.currentTarget).attr('href');
 
-            track_and_redirect($(e.currentTarget).attr('href'));
+            // We must use an iframe to trigger download. If we just set
+            // the location.href, any images that are currently loading
+            // on the page get cancelled.
+            function track_and_redirect(url, virtual_url) {
+                gaTrack(
+                    ['_trackPageview', virtual_url],
+                    function() {
+                        var $iframe = $('<iframe src="' + url + '" frameborder="0" height="0" width="0"></iframe>');
+                        $('body').append($iframe);
+                    }
+                );
+            }
+
+            // we must use a popup to trigger download for IE6/7/8 as the
+            // delay sending the page view tracking in track_and_redirect()
+            // triggers the IE security blocker. Sigh.
+            function track_and_popup(url, virtual_url) {
+                // popup must go before tracking to prevent timeouts that
+                // cause the security blocker.
+                window.open(url, 'download_window', 'toolbar=0,location=no,directories=0,status=0,scrollbars=0,resizeable=0,width=1,height=1,top=0,left=0');
+                gaTrack(['_trackPageview', virtual_url]);
+            }
+
+            if (isIELT9) {
+                // We do a popup for IE < 9 users when they click the download button
+                // on scene1. If they are going straight to scene2 on page load, we
+                // still need to use the regular track_and_redirect() function because
+                // the popup will be blocked and then the download will also be blocked
+                // in the popup.
+                if (window.location.hash === '#download-fx') {
+                    track_and_redirect(url, virtual_url);
+                } else {
+                    track_and_popup(url, virtual_url);
+                }
+            } else {
+                track_and_redirect(url, virtual_url);
+            }
 
             if ($stage.data('scene') !== 2) {
                 if (hash_change) {
-                    location.hash = '#download-fx';
+                    window.location.hash = '#download-fx';
                 } else {
-                    show_scene(2);
+                    show_scene_anim(2);
                 }
             }
         });
 
-        if (hash_change) {
+        if (hash_change && !no_scene2) {
             $(window).on('hashchange', function() {
-                if (location.hash === '#download-fx') {
-                    show_scene(2);
+                if (window.location.hash === '#download-fx') {
+                    show_scene_anim(2);
                 }
-                if (location.hash === '') {
-                    show_scene(1);
+                if (window.location.hash === '') {
+                    show_scene_anim(1);
                 }
             });
         }
+
+        $(window).on('load', function() {
+            // Add CSS class that allows scene2 images to load. Done on ready()
+            // so as not to block the loading of other images.
+            $('body').addClass('ready-for-scene2');
+
+            // initiate download/scene2 if coming directly to #download-fx
+            if (window.location.hash === '#download-fx') {
+                if (no_scene2) {
+                    // if using latest Firefox or an unsupported platform just
+                    // try to drop the URL hash
+                    if (window.history && window.history.replaceState) {
+                        var uri = window.location.href.split('#')[0];
+                        window.history.replaceState({}, '', uri);
+                    }
+                } else {
+                    show_scene(2);
+                    $('#direct-download-link').trigger('click');
+                }
+            }
+        });
     });
+
 })(window.jQuery, window.Modernizr, window._gaq, window.site);

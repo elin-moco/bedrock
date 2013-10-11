@@ -5,8 +5,7 @@
 from django.conf.urls import *
 from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
-from bedrock.mozorg.views import contribute
-from bedrock.mozorg.views import contact_bizdev
+from bedrock.mozorg.views import contribute, partnerships
 from bedrock.mozorg.views import plugincheck
 from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form
 from bedrock.redirects.util import redirect
@@ -96,7 +95,7 @@ urlpatterns = patterns(
     url('^about/manifesto/$', direct_to_template, {'template': 'mocotw/about/manifesto.html'}, name='mozorg.about.manifesto'),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html', 'return_to_form': False}),
-    url(r'^about/partnerships/contact-bizdev/$', contact_bizdev, name='about.partnerships.contact-bizdev'),
+    url(r'^about/partnerships/contact-bizdev/$', partnerships, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
 
     url('^register/student/$', google_form,

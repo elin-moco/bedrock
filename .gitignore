@@ -4,6 +4,7 @@ settings/local.py
 *.py[co]
 *.sw[po]
 .coverage
+.jshintrc
 pip-log.txt
 docs/_gh-pages
 build.py
@@ -25,3 +26,4 @@ Desktop.ini
 .idea
 media/js/sandstone/replace_urls.js
 venv
+.vagrant

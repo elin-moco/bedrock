@@ -1,4 +1,9 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 $(document).ready(function() {
+    'use strict';
 
     // {{{ showLink()
 
@@ -50,14 +55,14 @@ $(document).ready(function() {
             // let the loading and big play buttons show up again.
             $videoContainer.find('.video-js').removeClass('vjs-moz-ended');
 
-            videoJS.size(currentSize.videoWidth, currentSize.videoHeight);
+            videoJS.dimensions(currentSize.videoWidth, currentSize.videoHeight);
             videoJS.play();
         } else {
-            _V_('video-player', {}, function() {
+            vjs('video-player', {}, function() {
                 videoJS = this;
 
                 // add share button to controls on first play
-                videoJS.addEvent('play', function() {
+                videoJS.on('play', function() {
                     if (!$shareButton) {
                         $shareButton = $(
                             '<button class="vjs-sandstone-share">' +
@@ -68,7 +73,7 @@ $(document).ready(function() {
                             videoJS.pause();
                             showOverlay(false);
                         });
-                        var $controls = $(videoJS.controlBar.el);
+                        var $controls = $(videoJS.controlBar.el());
                         $controls.append($shareButton);
                     }
                 });
@@ -83,7 +88,7 @@ $(document).ready(function() {
                 if (!hasVideo) {
                     videoJS.src(sources);
                 }
-                videoJS.addEvent('ended', function() { showOverlay(true); });
+                videoJS.on('ended', function() { showOverlay(true); });
                 videoJS.play();
             });
         }
@@ -323,7 +328,7 @@ $(document).ready(function() {
         // TODO: check for and stop animations
         if (state === 'opened' || state === 'opening') {
             if (videoJS) {
-                videoJS.size(currentSize.videoWidth, currentSize.videoHeight);
+                videoJS.dimensions(currentSize.videoWidth, currentSize.videoHeight);
             }
 
             $overlay.css({
@@ -408,7 +413,7 @@ $(document).ready(function() {
         // using the DOM API.
         var video = document.createElement('video');
         video.id = 'video-player';
-        video.className = 'video-js vjs-default-skin';
+        video.className = 'video-js vjs-sandstone-skin';
         video.controls = 'controls';
         video.preload = 'none';
 
@@ -464,7 +469,7 @@ $(document).ready(function() {
 
     function createContainer() {
         var $container = $('<div class="container"></div>');
-        $container.css('display', 'none')
+        $container.css('display', 'none');
         return $container;
     }
 
@@ -484,7 +489,7 @@ $(document).ready(function() {
 
     function createVideoContainer() {
         var $videoContainer = $('<div class="video-container"></div>');
-        $videoContainer.css('display', 'none')
+        $videoContainer.css('display', 'none');
         return $videoContainer;
     }
 
@@ -579,17 +584,20 @@ $(document).ready(function() {
         }
     ];
 
+    // Need to include protocol to work around a Chrome bug. See
+    // Mozilla Bug 900171.
+
     var sources = [{
-        src: '//videos-cdn.mozilla.net/serv/firefoxflicks/be-part-of-it-get-mobilized-H264.mp4',
+        src: location.protocol + '//videos-cdn.mozilla.net/uploads/firefoxflicks/Spot.the.Difference.mp4',
         type: 'video/mp4'
     }, {
-        src: '//videos-cdn.mozilla.net/serv/firefoxflicks/be-part-of-it-get-mobilized-webmvp8.webm',
+        src: location.protocol + '//videos-cdn.mozilla.net/uploads/firefoxflicks/Spot.the.Difference.webmhd.webm',
         type: 'video/webm'
     }];
 
     var currentSize = getSize();
     var $thumb = createThumb();
-    var $link = $('#page-promo-flicksvideo > a');
+    var $link = $('#page-promo-flickswinners > a');
     var $container = createContainer();
     var $goLink = createGoLink($link);
     var $close = createCloseButton();
@@ -628,6 +636,44 @@ $(document).ready(function() {
     // Mozilla CDN in the future, a crossdomain.xml file will need to be
     // configured before the SWF will work.
     var base = location.protocol + '//' + location.host;
-    _V_.options.flash.swf = base + '/media/js/libs/video-js/video-js.swf';
+    vjs.options.flash.swf = base + '/media/js/libs/video-js/video-js.swf';
+
+
+    // Track promo clicks
+    $('.pager-page > a').on('click', function(e) {
+        e.preventDefault();
+        var promo = $(this).parents('.pager-page');
+        var href = this.href;
+        var callback = function() {
+            window.location = href;
+        };
+        gaTrack(['_trackEvent','Homepage Interactions', 'click', (promo.index() + 1)+':'+promo.attr('id')], callback);
+    });
+
+    // Track news clicks
+    $('#home-news a').on('click', function(e) {
+        e.preventDefault();
+        var href = this.href;
+        var callback = function() {
+            window.location = href;
+        };
+        gaTrack(['_trackEvent', 'Mozilla in the News Interactions','click', href], callback);
+    });
+
+    // Track Firefox downloads
+    $('.download-link').on('click', function(e) {
+        e.preventDefault();
+        var href = this.href;
+        var callback = function() {
+            window.location = href;
+        };
+        var platform;
+        if ($(this).parents('li').hasClass('os_android')) {
+            platform = 'Firefox for Android';
+        } else {
+            platform = 'Firefox Desktop';
+        }
+        gaTrack(['_trackEvent', 'Firefox Downloads', 'download click', platform], callback);
+    });
 
 });

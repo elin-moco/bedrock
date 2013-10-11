@@ -6,7 +6,7 @@
 
 {% block page_title %}客製自己的瀏覽器{% endblock %}
 {% block body_id %}firefox-customize{% endblock %}
-{% block description %}Firefox 可讓你盡情客製自己喜歡的介面！為你的 Firefox 新添風格、佈景主題自由客製、附加元件作業順暢、外掛程式改造自己的介面保持同步{% endblock %}
+{% block page_desc %}Firefox 可讓你盡情客製自己喜歡的介面！為你的 Firefox 新添風格、佈景主題自由客製、附加元件作業順暢、外掛程式改造自己的介面保持同步{% endblock %}
 
 {% block site_css %}
   {{ css('firefox_customize') }}
@@ -98,29 +98,12 @@
   </div>
   <div id="addons-feature" class="span7">
     <div id="addons-video" class="mozilla-video-control mozilla-video-shadow">
-      <video
-        id="video"
-        width="620"
-        height="349"
-        poster="{{ media('img/firefox/video/poster-addons.jpg') }}"
-        controls="controls"
-        data-overlay-hidden-text="{{_('Play video')}}">
-
-        <source src="//videos-cdn.mozilla.net/serv/marketing/696470/FF%20576%20h264%20v6.webm" type="video/webm" />
-        <source src="//videos-cdn.mozilla.net/serv/marketing/696470/FF%20576%20h264%20v6.theora.ogv" type="video/ogg; codecs=&quot;theora, vorbis&quot;" />
-        <source src="//videos-cdn.mozilla.net/serv/marketing/696470/FF%20576%20h264%20v6.mp4" type="video/mp4" />
-
-        <object type="application/x-shockwave-flash"
-            style="width: 640px; height: 388px;"
-            data="/includes/flash/playerWithControls.swf?flv=serv/marketing/696470/FF%20576%20h264%20v6.mp4&amp;autoplay=false&amp;msg=Play%20Video">
-            <param name="movie" value="/includes/flash/playerWithControls.swf?flv=serv/marketing/696470/FF%20576%20h264%20v6.mp4&amp;autoplay=false&amp;msg=Play%20Video" />
-            <param name="wmode" value="transparent" />
-            <div class="video-player-no-flash">
-              This video requires a browser with support for open video
-              or the <a href="http://www.adobe.com/go/getflashplayer">Adobe Flash Player</a>.
-            </div>
-        </object>
-      </video>
+      {{ video('FF%20576%20h264%20v6.webm',
+               'FF%20576%20h264%20v6.theora.ogv',
+               'FF%20576%20h264%20v6.mp4',
+               h=349, w=620,
+               prefix='//videos-cdn.mozilla.net/serv/marketing/696470/',
+               poster=media('img/firefox/video/poster-addons.jpg')) }}
     </div>
     <p id="builder-link">你是 Web 開發者？<a href="https://addons.mozilla.org/en-US/developers/builder">快來了解應如何製作絕妙的附加元件。</a></p>
     </div>
@@ -134,7 +117,7 @@
     <p>有些外掛程式是由特定公司 (如 Adobe Systems 或 Apple) 建構的第三方軟體，可強化影片、動畫、遊戲 (如 Flash Player 或 Quicktime) 的效果。一旦外掛程式未更新至最新版本，即可能讓瀏覽器當機或造成安全性風險。Mozilla 因此提供簡易工具，讓你隨時擁有最新版外掛程式。<a href="/plugincheck/">立刻檢查外掛程式。</a></p>
   </div>
   <div class="span7">
-     {{ platform_img('img/firefox/customize/make-it-work.png?2013-06', alt='Make It Work: Plugins') }}
+     {{ platform_img('img/firefox/customize/make-it-work.png?2013-06', {'alt': 'Make It Work: Plugins'}) }}
   </div>
 </div>
 </section>
@@ -147,7 +130,7 @@
     <p>當然，每個人都有其特殊需求。而你也能應自己喜好而調整介面：排列/整理、新增/移除許多按鈕或欄位，隨時滿足自己的瀏覽需求。<a href="https://support.mozilla.org/kb/How%20to%20customize%20the%20toolbar">進一步了解。</a></p>
   </div>
   <div class="span7">
-     {{ platform_img('img/firefox/customize/adapt-your-interface.png', alt='Adapt Your Interface') }}
+     {{ platform_img('img/firefox/customize/adapt-your-interface.png', {'alt': 'Adapt Your Interface'}) }}
   </div>
 </div>
 </section>
@@ -161,31 +144,15 @@
   </div>
   <div class="span7">
     <div id="video-player" class="mozilla-video-control">
-      <video
-        id="video"
-        width="620"
-        height="349"
-        poster="{{ media('img/firefox/video/poster-fx4-sync.jpg') }}"
-        controls="controls"
-        data-overlay-hidden-text="{{_('Play video')}}">
-
-        <source src="//videos-cdn.mozilla.net/serv/marketing/firefox4/FoxySync640.webm" type="video/webm" />
-        <source src="//videos-cdn.mozilla.net/serv/marketing/firefox4/FoxySync640.theora.ogv" type="video/ogg; codecs=&quot;theora, vorbis&quot;" />
-        <source src="//videos-cdn.mozilla.net/serv/marketing/firefox4/FoxySync640.mp4" type="video/mp4" />
-
-        <object type="application/x-shockwave-flash"
-          style="width: 640px; height: 388px;"
-          data="/includes/flash/playerWithControls.swf?flv=serv/marketing/firefox4/FoxySync640.mp4&amp;autoplay=false&amp;msg=Play%20Video">
-          <param name="movie" value="/includes/flash/playerWithControls.swf?flv=serv/marketing/firefox4/FoxySync640.mp4&amp;autoplay=false&amp;msg=Play%20Video" />
-          <param name="wmode" value="transparent" />
-          <div class="video-player-no-flash">
-            播放此影片的瀏覽器，需支援 Open Video
-            或 <a href="http://www.adobe.com/go/getflashplayer">Adobe Flash Player</a>。
-          </div>
-        </object>
-      </video>
+      {{ video('FoxySync640.webm',
+               'FoxySync640.theora.ogv',
+               'FoxySync640.mp4',
+               h=349, w=620,
+               prefix='//videos-cdn.mozilla.net/serv/marketing/firefox4/',
+               poster=media('img/firefox/video/poster-fx4-sync.jpg')) }}
     </div>
   </div>
+</div>
 </section>
 
 

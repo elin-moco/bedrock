@@ -6,7 +6,7 @@
 
 {% block page_title %}{{ _('Welcome to Firefox') }}{% endblock %}
 {% block body_id %}firefox-firstrun{% endblock %}
-{% block description %}最快速、最流暢的個性化瀏覽器 Firefox 桌面版，官方中文版免費下載與功能介紹，適用於 Windows、Mac 和 Linux{% endblock %}
+{% block page_desc %}最快速、最流暢的個性化瀏覽器 Firefox 桌面版，官方中文版免費下載與功能介紹，適用於 Windows、Mac 和 Linux{% endblock %}
 
 {% block site_header_nav %}{% endblock %}
 {% block site_header_logo %}{% endblock %}
@@ -77,7 +77,7 @@
     </div>
 
     <div class="screenshot">
-      {{ platform_img('img/firefox/firstrun/themes.jpg', alt=_('Themes')) }}
+      {{ platform_img('img/firefox/firstrun/themes.jpg', {'alt': _('Themes')}) }}
     </div>
   </article>
 
@@ -98,7 +98,7 @@
     </div>
 
     <div class="screenshot">
-      {{ platform_img('img/firefox/firstrun/awesomebar.jpg', alt=_('Awesome Bar')) }}
+      {{ platform_img('img/firefox/firstrun/awesomebar.jpg', {'alt': _('Awesome Bar')}) }}
     </div>
   </article>
 
@@ -124,7 +124,7 @@
     </div>
 
     <div class="screenshot" id="pinnedtabs-screenshot">
-      {{ platform_img('img/firefox/firstrun/pinnedtabs.jpg', alt=_('Pinned tabs')) }}
+      {{ platform_img('img/firefox/firstrun/pinnedtabs.jpg', {'alt': _('Pinned tabs')}) }}
     </div>
   </article>
 

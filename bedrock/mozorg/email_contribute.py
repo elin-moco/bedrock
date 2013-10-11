@@ -8,6 +8,7 @@ from django.core.mail import EmailMessage
 
 import basket
 import jingo
+import requests
 from jinja2.exceptions import TemplateNotFound
 from bedrock.mocotw.utils import newsletter_subscribe
 
@@ -65,7 +66,7 @@ FUNCTIONAL_AREAS = (
     fa('education',
         _('Education'),
         'Education',
-        ['joinmozilla@mozilla.org'],
+        ['makerparty@mozilla.org'],
     ),
     fa('other',
         _('Other'),
@@ -89,30 +90,31 @@ INTEREST_CHOICES = (('', _('Area of interest?')),) + tuple(
 FUNCTIONAL_AREAS_DICT = dict((area.id, area) for area in FUNCTIONAL_AREAS)
 
 LOCALE_CONTACTS = {
-    'bg'   : ['community@bgzilla.org'],
+    'bg': ['community@bgzilla.org'],
     'bn-BD': ['mahayalamkhan@gmail.com'],
-    'cs'   : ['info@mozilla.cz'],
-    'de'   : ['contribute@mozilla.de'],
-    'el'   : ['core@mozilla-greece.org'],
+    'cs': ['info@mozilla.cz'],
+    'de': ['contribute@mozilla.de'],
+    'el': ['core@mozilla-greece.org'],
     'es-AR': ['participa@mozilla-hispano.org'],
     'es-CL': ['participa@mozilla-hispano.org'],
     'es-ES': ['participa@mozilla-hispano.org'],
     'es-MX': ['participa@mozilla-hispano.org'],
-    'fr'   : ['contact@mozfr.org'],
+    'fr': ['contact@mozfr.org'],
     'fy-NL': ['fryskefirefox@gmail.com'],
-    'hr'   : ['contribute@mozilla-hr.org'],
-    'id'   : ['info@mozilla.web.id'],
-    'it'   : ['collabora@mozillaitalia.org'],
-    'lt'   : ['prisijunk@mozilla.lt'],
-    'ms'   : ['community@mozilla.my'],
-    'nl'   : ['contribute@mozilla-nl.org'],
-    'pl'   : ['chcepomoc@aviary.pl'],
+    'hr': ['contribute@mozilla-hr.org'],
+    'id': ['info@mozilla.web.id'],
+    'it': ['collabora@mozillaitalia.org'],
+    'lt': ['prisijunk@mozilla.lt'],
+    'ms': ['community@mozilla.my'],
+    'nl': ['contribute@mozilla-nl.org'],
+    'pl': ['chcepomoc@aviary.pl'],
     'pt-BR': ['envolva-se-mozilla-brasil@googlegroups.com'],
-    'ru'   : ['contribute@mozilla-russia.org'],
-    'sl'   : ['info@mozilla.si'],
-    'sq'   : ['besnik@mozilla-albania.org'],
-    'sr'   : ['prikljucise@mozilla-srbija.org'],
-    'ta'   : ['vallavan2valluvan@gmail.com'],
+    'ro': ['contact@mozilla.ro'],
+    'ru': ['contribute@mozilla-russia.org'],
+    'sl': ['info@mozilla.si'],
+    'sq': ['besnik@mozilla-albania.org'],
+    'sr': ['prikljucise@mozilla-srbija.org'],
+    'ta': ['vallavan2valluvan@gmail.com'],
     'zh-CN': ['contributor-zh-cn@mozilla.org'],
     'zh-TW': ['contribute@mail.moztw.org'],
 }
@@ -124,7 +126,7 @@ def handle_form(request, form):
         send(request, data)
         autorespond(request, data)
 
-        if data['newsletter']:
+        if data.get('newsletter', False):
             newsletter_subscribe(data['email'])
         return True
     return False

@@ -5,6 +5,12 @@
 {% extends "base-resp.html" %}
 
 {% block page_title %}Mobile{% endblock %}
+{% block page_image %}{{ media('img/firefox/firefox-256.jpg') }}{% endblock %}
+{% block page_favicon %}{{ media('img/firefox/favicon.ico?2013-08') }}{% endblock %}
+
+{% block facebook_id %}14696440021{# facebook.com/Firefox #}{% endblock %}
+{% block twitter_id %}firefox{% endblock %}
+
 {% block body_id %}mobile-overview{% endblock %}
 {% block body_class %}sand{% endblock %}
 
@@ -30,7 +36,7 @@
 
     <section id="b2g">
       <h3>Firefox OS</h3>
-      <img src="{{ media('img/mobile/illo-fxosphone.png?2013-06') }}" alt="">
+      <img src="{{ media('img/mobile/fxos-mobile.png') }}" alt="">
       <p>We created Firefox OS to build the Web as the platform for
       mobile devices. That includes implementing new Web standards
       that aren't restricted by the rules of existing proprietary

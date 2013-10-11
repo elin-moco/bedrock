@@ -2,12 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url
 from util import page
 import views
 
 urlpatterns = patterns('',
-    page("", "mozorg/home.html"),
+    url('^$', views.HomeTestView.as_view(), name='mozorg.home'),
     page('about/manifesto', 'mozorg/about/manifesto.html'),
     page('about', 'mozorg/about.html'),
     page('book', 'mozorg/book.html'),
@@ -24,8 +24,13 @@ urlpatterns = patterns('',
     page('about/governance', 'mozorg/about/governance/governance.html'),
     page('about/governance/roles', 'mozorg/about/governance/roles.html'),
     page('about/governance/policies', 'mozorg/about/governance/policies.html'),
+    page('about/governance/policies/security-group', 'mozorg/about/governance/policies/security/group.html'),
+    page('about/governance/policies/security-group/bugs', 'mozorg/about/governance/policies/security/bugs.html'),
+    page('about/governance/policies/security-group/tld-idn', 'mozorg/about/governance/policies/security/tld-idn.html'),
+    page('about/governance/policies/security-group/membership', 'mozorg/about/governance/policies/security/membership.html'),
     page('about/governance/organizations', 'mozorg/about/governance/organizations.html'),
-
+    page('about/governance/policies/participation', 'mozorg/about/governance/policies/participation.html'),
+    page('about/governance/policies', 'mozorg/about/governance/policies/policies.html'),
 
 
     url('^contribute/$', views.contribute, name='mozorg.contribute',
@@ -48,9 +53,8 @@ urlpatterns = patterns('',
         name='mozorg.contribute_university_ambassadors'),
     page('contribute/universityambassadors/thanks',
          'mozorg/contribute_university_ambassadors_thanks.html'),
-    url(r'^about/partnerships/contact-bizdev/$', views.contact_bizdev,
-        name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$',
         views.plugincheck,
         name='mozorg.plugincheck'),
+    url(r'^robots.txt$', views.Robots.as_view(), name='robots.txt'),
 )

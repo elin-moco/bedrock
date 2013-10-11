@@ -10,6 +10,7 @@ from django.conf import settings
 from django.core import mail
 from django.core.cache import cache
 from django.core.urlresolvers import clear_url_caches
+from django.http import HttpRequest
 from django.test.client import Client
 
 from jingo import env
@@ -17,10 +18,13 @@ from jinja2 import FileSystemLoader
 from mock import patch
 from nose.tools import assert_not_equal, eq_, ok_
 from pyquery import PyQuery as pq
-from tower.management.commands.extract import extract_tower_python
+from tower import extract_tower_python
 
-from lib.l10n_utils.dotlang import (_, FORMAT_IDENTIFIER_RE, lang_file_is_active,
-                                    parse, translate, _lazy)
+from lib.l10n_utils import render
+from lib.l10n_utils.dotlang import (_, FORMAT_IDENTIFIER_RE, lang_file_has_tag,
+                                    lang_file_is_active, parse, translate,
+                                    _lazy)
+from product_details import product_details
 from bedrock.mozorg.tests import TestCase
 
 
@@ -48,6 +52,20 @@ class TestLangFilesActivation(TestCase):
         ok_(not lang_file_is_active('active_de_lang_file', 'es'))
         ok_(not lang_file_is_active('inactive_de_lang_file', 'de'))
         ok_(not lang_file_is_active('does_not_exist', 'de'))
+
+    def test_lang_file_has_tag(self):
+        """
+        `lang_file_has_tag` should return true if lang file has the
+        comment, and false otherwise.
+        """
+        ok_(lang_file_has_tag('active_de_lang_file', 'de', 'active'))
+        ok_(lang_file_has_tag('active_de_lang_file_bom', 'de', 'active'))
+        ok_(not lang_file_has_tag('active_de_lang_file', 'es', 'active'))
+        ok_(not lang_file_has_tag('inactive_de_lang_file', 'de', 'active'))
+        ok_(not lang_file_has_tag('file_does_not_exist', 'de', 'active'))
+        ok_(lang_file_has_tag('main', 'de', 'guten_tag'))
+        ok_(not lang_file_has_tag('main', 'de', 'tag_after_non_tag_lines'))
+        ok_(not lang_file_has_tag('main', 'de', 'no_such_tag'))
 
     @patch('lib.l10n_utils.settings.DEV', False)
     def test_active_locale_not_redirected(self):
@@ -95,6 +113,40 @@ class TestDotlang(TestCase):
                 u'Votre Firefox a \xe9t\xe9 mis \xe0 jour.',
             u'Your Firefox is out of date.':
                 u'Votre Firefox ne semble pas \xe0 jour.'
+        }
+        eq_(parsed, expected)
+
+    def test_parse_not_skip_untranslated(self):
+        path = os.path.join(ROOT, 'test.lang')
+        parsed = parse(path, skip_untranslated=False)
+        expected = {
+            u'Hooray! Your Firefox is up to date.':
+                u'F\xe9licitations&nbsp;! '
+                u'Votre Firefox a \xe9t\xe9 mis \xe0 jour.',
+            u'Your Firefox is out of date.':
+                u'Votre Firefox ne semble pas \xe0 jour.',
+            u'Firefox Beta':
+                u'Firefox Beta',
+            u'Firefox Aurora':
+                u'Firefox Aurora'
+        }
+        eq_(parsed, expected)
+
+    def test_parse_with_comments(self):
+        path = os.path.join(ROOT, 'test.lang')
+        parsed = parse(path, extract_comments=True)
+
+        expected = {
+            u'Hooray! Your Firefox is up to date.': [
+                u'This is for the Whatsnew page: '
+                u'http://www-dev.allizom.org/b/firefox/whatsnew/',
+                u'F\xe9licitations&nbsp;! '
+                u'Votre Firefox a \xe9t\xe9 mis \xe0 jour.',
+            ],
+            u'Your Firefox is out of date.': [
+                None,
+                u'Votre Firefox ne semble pas \xe0 jour.',
+            ]
         }
         eq_(parsed, expected)
 
@@ -333,3 +385,40 @@ class TestDotlang(TestCase):
         with self.activate(settings.LANGUAGE_CODE):
             translate('The Dude abides.', ['main'])
         self.assertEqual(cache_mock.get.call_count, 0)
+
+
+@patch.object(env, 'loader', FileSystemLoader(TEMPLATE_DIRS))
+@patch.object(settings, 'ROOT_URLCONF', 'lib.l10n_utils.tests.test_files.urls')
+@patch.object(settings, 'ROOT', ROOT)
+class TestTranslationList(TestCase):
+    def _test(self, lang, view_name):
+        """
+        The context of each view should have the 'links' dictionary which
+        contains the canonical and alternate URLs of the page.
+        """
+        request = HttpRequest()
+        request.path = '/' + lang + '/' + view_name + '/'
+        request.locale = lang
+        template = view_name.replace('-', '_') + '.html'
+        with patch('lib.l10n_utils.django_render') as django_render:
+            render(request, template, {})
+        translations = django_render.call_args[0][2]['translations']
+
+        # The en-US locale is always active
+        eq_(translations['en-US'], product_details.languages['en-US']['native'])
+        # The de locale is active depending on the template
+        if view_name == 'active-de-lang-file':
+            eq_(translations['de'], product_details.languages['de']['native'])
+        else:
+            eq_('de' in translations, False)
+        # The fr locale is inactive
+        eq_('fr' in translations, False)
+
+    def test_localized_en(self):
+        self._test('en-US', 'active-de-lang-file')
+
+    def test_localized_de(self):
+        self._test('de', 'active-de-lang-file')
+
+    def test_unlocalized(self):
+        self._test('en-US', 'inactive-de-lang-file')

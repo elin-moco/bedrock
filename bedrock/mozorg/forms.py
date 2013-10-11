@@ -10,12 +10,12 @@ from operator import itemgetter
 from random import randrange
 
 from django import forms
-from django.conf import settings
 from django.forms import widgets
 from django.utils.safestring import mark_safe
 
 import basket
 from basket.base import request
+from bedrock.newsletter import utils
 
 from captcha.fields import ReCaptchaField
 from lib.l10n_utils.dotlang import _
@@ -27,7 +27,6 @@ from .email_contribute import INTEREST_CHOICES
 
 
 FORMATS = (('H', _lazy('HTML')), ('T', _lazy('Text')))
-LANGS = settings.NEWSLETTER_LANGUAGES
 LANGS_TO_STRIP = ['en-US', 'es']
 PARENTHETIC_RE = re.compile(r' \([^)]+\)$')
 LANG_FILES = 'mozorg/contribute'
@@ -43,9 +42,11 @@ def strip_parenthetical(lang_name):
 def get_lang_choices():
     """
      Return a localized list of choices for language.
+
+     List looks like: [[lang_code, lang_name], [lang_code, lang_name], ...]
     """
     lang_choices = []
-    for lang in LANGS:
+    for lang in utils.get_newsletter_languages():
         if lang in product_details.languages:
             lang_name = product_details.languages[lang]['native']
         else:
@@ -124,11 +125,12 @@ class NewsletterForm(forms.Form):
     def __init__(self, locale, *args, **kwargs):
         regions = product_details.get_regions(locale)
         regions = sorted(regions.iteritems(), key=lambda x: x[1])
+        languages = utils.get_newsletter_languages()
 
         lang = country = locale.lower()
         if '-' in lang:
             lang, country = lang.split('-', 1)
-        lang = lang if lang in LANGS else 'en'
+        lang = lang if lang in languages else 'en'
 
         super(NewsletterForm, self).__init__(*args, **kwargs)
         self.fields['country'] = forms.ChoiceField(choices=regions,
@@ -154,32 +156,208 @@ class ContributeForm(forms.Form):
 
 
 class WebToLeadForm(forms.Form):
-    # l10n handled in the template
-    interest_choices = (
-        ('Firefox for Desktop', 'Firefox for Desktop'),
-        ('Firefox for Android', 'Firefox for Android'),
-        ('Firefox Marketplace', 'Firefox Marketplace'),
-        ('Firefox OS', 'Firefox OS'),
-        ('Persona', 'Persona'),
-        ('Marketing and Co-promotions', 'Marketing and Co-promotions'),
-        ('Other', 'Other'),
+    interests_standard = (
+        ('Firefox for Desktop', _lazy(u'Firefox for Desktop')),
+        ('Firefox for Android', _lazy(u'Firefox for Android')),
+        ('Firefox Marketplace', _lazy(u'Firefox Marketplace')),
+        ('Firefox OS', _lazy(u'Firefox OS')),
+        ('Persona', _lazy(u'Persona')),
+        ('Marketing and Co-promotions', _lazy(u'Marketing and Co-promotions')),
+        ('Other', _lazy(u'Other')),
     )
 
-    first_name = forms.CharField(max_length=40, required=True)
-    last_name = forms.CharField(max_length=80, required=True)
-    title = forms.CharField(max_length=40, required=False)
-    company = forms.CharField(max_length=40, required=True)
-    URL = forms.URLField(max_length=80, required=False)
-    email = forms.EmailField(max_length=80, required=True)
-    phone = forms.CharField(max_length=40, required=False)
-    mobile = forms.CharField(max_length=40, required=False)
-    interest = forms.MultipleChoiceField(choices=interest_choices,
-                                         required=False)
-    description = forms.CharField(required=False)
+    interests_fx = (
+        ('Firefox for Android', _lazy(u'Firefox for Android')),
+        ('Firefox Marketplace', _lazy(u'Firefox Marketplace')),
+        ('Firefox OS', _lazy(u'Firefox OS')),
+        ('Other', _lazy(u'Other')),
+    )
+
+    first_name = forms.CharField(
+        max_length=40,
+        required=True,
+        error_messages={
+            'required': _lazy(u'Please enter your first name.')
+        },
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'First Name'),
+                'class': 'required',
+                'required': 'required',
+                'aria-required': 'true'
+            }
+        )
+    )
+    last_name = forms.CharField(
+        max_length=80,
+        required=True,
+        error_messages={
+            'required': _('Please enter your last name.')
+        },
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Last Name'),
+                'class': 'required',
+                'required': 'required',
+                'aria-required': 'true'
+            }
+        )
+    )
+    title = forms.CharField(
+        max_length=40,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Title')
+            }
+        )
+    )
+    company = forms.CharField(
+        max_length=40,
+        required=True,
+        error_messages={
+            'required': _lazy(u'Please enter your company name.')
+        },
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Company'),
+                'class': 'required',
+                'required': 'required',
+                'aria-required': 'true'
+            }
+        )
+    )
+    URL = forms.URLField(
+        max_length=80,
+        required=False,
+        error_messages={
+            'invalid': _lazy(u'Please supply a valid URL.')
+        },
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Website')
+            }
+        )
+    )
+    email = forms.EmailField(
+        max_length=80,
+        required=True,
+        error_messages={
+            'required': _lazy(u'Please enter your email address.'),
+            'invalid': _lazy(u'Please enter a valid email address')
+        },
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Email'),
+                'class': 'required',
+                'required': 'required',
+                'aria-required': 'true'
+            }
+        )
+    )
+    phone = forms.CharField(
+        max_length=40,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Phone')
+            }
+        )
+    )
+    mobile = forms.CharField(
+        max_length=40,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'size': 20,
+                'placeholder': _lazy(u'Mobile')
+            }
+        )
+    )
+    street = forms.CharField(
+        required=False,
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': _lazy(u'Address'),
+                'rows': '',
+                'cols': ''
+            }
+        )
+    )
+    city = forms.CharField(
+        required=False,
+        max_length=40,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _lazy(u'City')
+            }
+        )
+    )
+    state = forms.CharField(
+        required=False,
+        max_length=40,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _lazy(u'State/Province')
+            }
+        )
+    )
+    country = forms.CharField(
+        required=False,
+        max_length=40,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _lazy(u'Country')
+            }
+        )
+    )
+    zip = forms.CharField(
+        required=False,
+        max_length=40,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _lazy(u'Zip')
+            }
+        )
+    )
+    description = forms.CharField(
+        required=False,
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': _lazy(u'Description'),
+                'rows': '',
+                'cols': ''
+            }
+        )
+    )
     superpriority = forms.BooleanField(widget=HoneyPotWidget, required=False)
     # uncomment below to debug salesforce
     # debug = forms.IntegerField(required=False)
     # debugEmail = forms.EmailField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        interest_set = kwargs.pop('interest_set', 'standard')
+        interest_choices = self.interests_fx if (interest_set == 'fx') else self.interests_standard
+
+        super(WebToLeadForm, self).__init__(*args, **kwargs)
+
+        self.fields['interest'] = forms.MultipleChoiceField(
+            choices=interest_choices,
+            required=False,
+            widget=forms.SelectMultiple(
+                attrs={
+                    'title': _lazy(u'Interest'),
+                    'size': 7
+                }
+            )
+        )
 
 
 class ContributeUniversityAmbassadorForm(forms.Form):

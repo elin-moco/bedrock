@@ -4,11 +4,9 @@
 
 @font-face {
     font-family: 'Open Sans ExtraBoldItalic';
-    src: url('/media/fonts/OpenSans-ExtraBoldItalic-webfont.eot');
     src: url('/media/fonts/OpenSans-ExtraBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
          url('/media/fonts/OpenSans-ExtraBoldItalic-webfont.woff') format('woff'),
-         url('/media/fonts/OpenSans-ExtraBoldItalic-webfont.ttf') format('truetype'),
-         url('/media/fonts/OpenSans-ExtraBoldItalic-webfont.svg#OpenSansExtraBoldItalic') format('svg');
+         url('/media/fonts/OpenSans-ExtraBoldItalic-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -18,22 +16,18 @@
 
 @font-face {
     font-family: 'VollkornRegular';
-    src: url('/media/fonts/Vollkorn-Regular-webfont.eot');
     src: url('/media/fonts/Vollkorn-Regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('/media/fonts/Vollkorn-Regular-webfont.woff') format('woff'),
-         url('/media/fonts/Vollkorn-Regular-webfont.ttf') format('truetype'),
-         url('/media/fonts/Vollkorn-Regular-webfont.svg#OpenSansLight') format('svg');
+         url('/media/fonts/Vollkorn-Regular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'VollkornBold';
-    src: url('/media/fonts/Vollkorn-Bold-webfont.eot');
     src: url('/media/fonts/Vollkorn-Bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('/media/fonts/Vollkorn-Bold-webfont.woff') format('woff'),
-         url('/media/fonts/Vollkorn-Bold-webfont.ttf') format('truetype'),
-         url('/media/fonts/Vollkorn-Bold-webfont.svg#OpenSansLight') format('svg');
+         url('/media/fonts/Vollkorn-Bold-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -211,28 +205,35 @@
             }
         }
     }
-    #promo-flicksvideo,
-    #page-promo-flicksvideo {
+
+    #promo-flickswinners,
+    #page-promo-flickswinners {
         position: relative;
         .content {
             width: 60%;
             padding-left: 60px;
-            padding-top: 30px;
+            padding-top: 24px;
             h3 {
-                font-size: 34px;
+                font-size: 30px;
                 font-family: VollkornBold;
                 line-height: 1;
             }
             h4 {
-                font-size: 18px;
+                color: #ff592c;
+                font-size: 16px;
                 letter-spacing: normal;
-                line-height: 1.2;
-                font-family: VollkornRegular;
+                line-height: 1.3;
+                .open-sans;
                 margin-bottom: 10px;
+            }
+            .go {
+                color: #1f9ee5;
+                font-family: VollkornRegular;
+                font-size: 16px;
             }
         }
         .container {
-            background: #212a2f url('/media/img/home/promo/flicks/1000.jpg') 0 0 repeat-x;
+            background: #212a2f url('/media/img/home/promo/flickswinners/1000.jpg') 0 0 repeat-x;
             position: relative;
             border-bottom: 1px solid #ddd;
             width: 100%;
@@ -245,7 +246,7 @@
                 position: absolute;
                 bottom: 20px;
                 left: 20px;
-                color: #fff;
+
             }
         }
         .video-container {
@@ -373,6 +374,7 @@
             }
         }
     }
+
     #promo-android a,
     #page-promo-android a {
         background-image: url('/media/img/home/promo/android/1000.jpg?2013-06');
@@ -429,27 +431,20 @@
                 }
             }
         }
-        #promo-flicksvideo,
-        #page-promo-flicksvideo {
+        #promo-flickswinners,
+        #page-promo-flickswinners {
             .container {
-                background-image: url('/media/img/home/promo/flicks/760.jpg');
-            }
-            img {
-                .span_narrow(5);
-                margin: 0;
-                top: 20px;
-                right: 20px;
+                background-image: url('/media/img/home/promo/flickswinners/760.jpg');
             }
             .content {
-                .span_narrow(7);
-                padding-left: 30px;
-                width: 50%;
+                padding-left: 40px;
+                width: 55%;
                 h3 {
-                    font-size: 30px;
+                    font-size: 26px;
                     margin-bottom: 8px;
                 }
                 h4 {
-                    font-size: 16px;
+                    font-size: 14px;
                     width: 100%;
                     margin-bottom: 8px;
                 }
@@ -526,8 +521,8 @@
                 }
             }
         }
-        #promo-flicksvideo,
-        #page-promo-flicksvideo {
+        #promo-flickswinners,
+        #page-promo-flickswinners {
             padding-top: 180px;
             img {
                 top: 0;
@@ -566,6 +561,10 @@
                     .open-sans-light;
                     width: auto;
                     float: none;
+                    color: @textColorPrimary;
+                }
+                .go {
+                    color: @textColorPrimary;
                 }
             }
         }
@@ -623,8 +622,8 @@
                 width: auto;
             }
         }
-        #promo-flicksvideo,
-        #page-promo-flicksvideo {
+        #promo-flickswinners,
+        #page-promo-flickswinners {
             padding-top: 248px;
         }
         #promo-android a,
@@ -673,9 +672,15 @@
                 color: @textColorPrimary;
             }
         }
-        #promo-flicksvideo,
-        #page-promo-flicksvideo {
-            padding-top: 180px;
+        #promo-flickswinners,
+        #page-promo-flickswinners {
+            .container {
+                background-image: url('/media/img/home/promo/flickswinners/320.jpg');
+            }
+            .content {
+                width: auto;
+                color: @textColorPrimary;
+            }
         }
         #promo-android a,
         #page-promo-android a {

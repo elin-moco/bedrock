@@ -3,6 +3,9 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
 
 <video tabindex="0" id="htmlPlayer" controls="controls" {{ 'autoplay' if autoplay }}
+  {% if poster %}
+    poster="{{ poster }}"
+  {% endif %}
   width="{{ w }}" height="{{ h }}">
   {% for ft in filetypes %}
     {% if ft in videos %}
@@ -16,7 +19,7 @@
         <param name="movie" value="{{ swf }}" />
         <param name="wmode" value="transparent" />
         <div class="video-player-no-flash">
-          This video requires a browser with support for open video or the
+          播放此影片的瀏覽器，需支援 Open Video 或
           <a href="http://www.adobe.com/go/getflashplayer">Adobe Flash Player</a>.
         </div>
       </object>

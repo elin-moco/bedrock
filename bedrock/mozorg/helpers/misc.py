@@ -13,6 +13,11 @@ from bedrock.sandstone.settings import MOFO_URL
 L10N_IMG_PATH = base_path('media', 'img', 'l10n')
 
 
+def _l10n_media_exists(locale, url):
+    """ checks if a localized media file exists for the locale """
+    return path.exists(path.join(L10N_IMG_PATH, locale, url))
+
+
 @jingo.register.function
 @jinja2.contextfunction
 def php_url(ctx, url):
@@ -31,6 +36,20 @@ def url(viewname, *args, **kwargs):
     if getattr(settings, 'FORCE_SLASH_B', False) and False:
         return path.join('/b/', url.lstrip('/'))
     return url
+
+
+@jingo.register.function
+@jinja2.contextfunction
+def secure_url(ctx, viewname=None):
+    """Retrieve a full secure URL especially for form submissions"""
+    _path = url(viewname) if viewname else None
+    _url = ctx['request'].build_absolute_uri(_path)
+
+    # only force https if current page was requested via SSL
+    # otherwise, CSRF/AJAX errors will occur (submitting to https from http)
+    if ctx['request'].is_secure():
+        return _url.replace('http://', 'https://')
+    return _url
 
 
 @jingo.register.function
@@ -79,8 +98,12 @@ def img_l10n(ctx, url):
     if not locale:
         locale = settings.LANGUAGE_CODE
 
+    # We use the same localized screenshots for all Spanishes
+    if locale.startswith('es') and not _l10n_media_exists(locale, url):
+        locale = 'es-ES'
+
     if locale != settings.LANGUAGE_CODE:
-        if not path.exists(path.join(L10N_IMG_PATH, locale, url)):
+        if not _l10n_media_exists(locale, url):
             locale = settings.LANGUAGE_CODE
 
     return path.join(settings.MEDIA_URL, 'img', 'l10n', locale, url)
@@ -95,16 +118,39 @@ def field_with_attrs(bfield, **kwargs):
 
 
 @jingo.register.function
-def platform_img(url, **kwargs):
-    attrs = ' '.join(('%s="%s"' % (attr, val)
-                      for attr, val in kwargs.items()))
+def platform_img(url, optional_attributes=None):
     url = path.join(settings.MEDIA_URL, url.lstrip('/'))
+    if optional_attributes:
+        attrs = ' '.join('%s="%s"' % (attr, val)
+                         for attr, val in optional_attributes.items())
+    else:
+        attrs = ''
 
     # Don't download any image until the javascript sets it based on
-    # data-src so we can to platform detection. If no js, show the
+    # data-src so we can do platform detection. If no js, show the
     # windows version.
     markup = ('<img class="platform-img js" src="" data-src="%s" %s>'
               '<noscript><img class="platform-img win" src="%s" %s></noscript>'
+              % (url, attrs, url, attrs))
+
+    return jinja2.Markup(markup)
+
+
+@jingo.register.function
+def high_res_img(url, optional_attributes=None):
+    if optional_attributes:
+        attrs = ' '.join(('%s="%s"' % (attr, val)
+                          for attr, val in optional_attributes.items()))
+    else:
+        attrs = ''
+
+    url = media(url)
+
+    # Don't download any image until the javascript sets it based on
+    # data-src so we can do high-dpi detection. If no js, show the
+    # normal-res version.
+    markup = ('<img class="js" src="" data-src="%s" data-high-res="true" %s>'
+              '<noscript><img src="%s" %s></noscript>'
               % (url, attrs, url, attrs))
 
     return jinja2.Markup(markup)
@@ -116,14 +162,17 @@ def video(*args, **kwargs):
     HTML5 Video tag helper.
 
     Accepted kwargs:
-    prefix, w, h, autoplay
+    prefix, w, h, autoplay, poster
 
     Use like this:
     {{ video('http://example.com/myvid.mp4', http://example.com/myvid.webm',
+             poster='http://example.com/myvid.jpg',
              w=640, h=360) }}
 
     You can also use a prefix like:
     {{ video('myvid.mp4', 'myvid.webm', prefix='http://example.com') }}
+
+    The prefix does not apply to the poster attribute.
 
     Finally, MIME type detection happens by file extension. Supported: webm,
     mp4, ogv. If you want anything else, patches welcome.
@@ -169,3 +218,40 @@ def video(*args, **kwargs):
 
     return jinja2.Markup(jingo.env.get_template(
         'mozorg/videotag.html').render(data))
+
+
+@jingo.register.function
+@jinja2.contextfunction
+def press_blog_url(ctx):
+    """Output a link to the press blog taking locales into account.
+
+    Uses the locale from the current request. Checks to see if we have
+    a press blog that match this locale, returns the localized press blog
+    url or falls back to the US press blog url if not.
+
+    Examples
+    ========
+
+    In Template
+    -----------
+
+        {{ press_blog_url() }}
+
+    For en-US this would output:
+
+        https://blog.mozilla.org/press/
+
+    For es-ES this would output:
+
+        https://blog.mozilla.org/press-es/
+
+    For es-MX this would output:
+
+        https://blog.mozilla.org/press-latam/
+
+    """
+    locale = getattr(ctx['request'], 'locale', 'en-US')
+    if locale not in settings.PRESS_BLOGS:
+        locale = 'en-US'
+
+    return settings.PRESS_BLOG_ROOT + settings.PRESS_BLOGS[locale]

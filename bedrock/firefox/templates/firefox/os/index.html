@@ -6,11 +6,10 @@
 
 {% block page_title_prefix %}Firefox OS － {% endblock %}
 {% block page_title %}開放網路行動作業系統{% endblock %}
+{% block page_desc %}Firefox OS  是由 HTML5, CSS, JavaScript 等網路技術所打造，搭配 WebAPI 網路標準，將行動網路的潛力完全釋放，打破現有封閉的行動平台架構，提供無縫的 Web Apps 體驗。Firefox OS 可依不同使用情境自訂需求，除了透過 Marketplace 提供全球知名的 Apps 應用程式之外，也提供最貼近使用者生活的在地化程式與服務內容。{% endblock %}
 
 {% block body_id %}firefox-os{% endblock %}
 {% block body_class %}firefox-os{% endblock %}
-
-{% block description %}Firefox OS  是由 HTML5, CSS, JavaScript 等網路技術所打造，搭配 WebAPI 網路標準，將行動網路的潛力完全釋放，打破現有封閉的行動平台架構，提供無縫的 Web Apps 體驗。Firefox OS 可依不同使用情境自訂需求，除了透過 Marketplace 提供全球知名的 Apps 應用程式之外，也提供最貼近使用者生活的在地化程式與服務內容。{% endblock %}
 
 {% block string_data %}
   {# L10n: This is the label for a button that closes a modal dialog #}
@@ -68,7 +67,7 @@
   </ul>
   <div id="share-pane" aria-expanded="false">
     <a class="share close" href="#share" role="button" title="{{ _('Close') }}"><span>{{ _('Close') }}</span></a>
-    <div class="socialshare" data-type="small-bubbles"></div>
+    {% include 'firefox/includes/social-share.html' %}
   </div>
 </nav>
 
@@ -81,7 +80,7 @@
         <div id="phone-hook">
           <div class="adapt-feature-sprite adapt-feature-sprite-line" id="adapt-feature-sprite-blue-line"></div>
           <div class="adapt-feature-sprite adapt-feature-sprite-line" id="adapt-feature-sprite-orange-line"></div>
-          
+
           <div class="phone"></div>
           <div id="screen-intro" class="screen-wrapper">
             <div id="screen-intro-a" class="screen screen-birthday"></div>
@@ -116,9 +115,9 @@
 
   <div id="adaptive-wrapper" class="nav-anchor">
     <div id="adaptive-bgs">
-      <div id="adaptive-bg-birthday" class="adaptive-bg bg-birthday"></div>
-      <div id="adaptive-bg-cafe" class="adaptive-bg bg-cafe"></div>
-      <div id="adaptive-bg-soccer" class="adaptive-bg bg-soccer"></div>
+      <div id="adaptive-bg-birthday" data-current="1" class="adaptive-bg bg-birthday"></div>
+      <div id="adaptive-bg-cafe" data-current="0" class="adaptive-bg bg-cafe"></div>
+      <div id="adaptive-bg-soccer" data-current="0" class="adaptive-bg bg-soccer"></div>
 
       <a title="{{_('Scroll down')}}" href="#" id="keep-scrolling"></a>
     </div>
@@ -255,7 +254,7 @@
           <h2>{{_('Moments with friends')}}</h2>
           <p>{{_('Import your contacts directly from Facebook and share updates instantly.')}}</p>
         </div>
-        <img class="app center" id="contacts-app" src="{{ img_l10n('firefox/os/have-it-all/contacts.jpg') }}" alt="{{_('Contacts app')}}">
+        <img class="app center" id="contacts-app" src="{{ img_l10n('firefox/os/have-it-all/contacts.jpg') }}?2013-09" alt="{{_('Contacts app')}}">
         <div class="content right">
           <ul class="icon-list">
             <li class="icon contacts"></li>
@@ -292,7 +291,7 @@
             <li class="icon videos"></li>
           </ul>
         </div>
-        <img class="app left" id="music-app" src="{{ img_l10n('firefox/os/have-it-all/music.jpg') }}" alt="{{_('Music app')}}">
+        <img class="app left" id="music-app" src="{{ img_l10n('firefox/os/have-it-all/music.jpg') }}?2013-09" alt="{{_('Music app')}}">
         <img class="app center" id="radio-app" src="{{ img_l10n('firefox/os/have-it-all/radio.jpg') }}" alt="{{_('Radio app')}}">
       </section>
     </div>
@@ -306,7 +305,7 @@
             <li class="icon maps"></li>
           </ul>
         </div>
-        <img class="app right" id="maps-app" src="{{ img_l10n('firefox/os/have-it-all/maps.jpg') }}" alt="{{_('Maps app')}}">
+        <img class="app right" id="maps-app" src="{{ img_l10n('firefox/os/have-it-all/maps.jpg') }}?2013-09" alt="{{_('Maps app')}}">
       </section>
     </div>
 
@@ -321,7 +320,7 @@
           </ul>
         </div>
         <img class="app center" id="messages-app" src="{{ img_l10n('firefox/os/have-it-all/messages.jpg') }}" alt="{{_('Messages app')}}">
-        <img class="app right" id="mail-app" src="{{ img_l10n('firefox/os/have-it-all/mail.jpg') }}" alt="{{_('Email app')}}">
+        <img class="app right" id="mail-app" src="{{ img_l10n('firefox/os/have-it-all/mail.jpg') }}?2013-09" alt="{{_('Email app')}}">
       </section>
     </div>
 
@@ -334,7 +333,7 @@
             <li class="icon marketplace"></li>
           </ul>
         </div>
-        <img class="app left" id="marketplace-app" src="{{ img_l10n('firefox/os/have-it-all/marketplace.jpg') }}" alt="{{_('Marketplace app')}}">
+        <img class="app left" id="marketplace-app" src="{{ img_l10n('firefox/os/have-it-all/marketplace.jpg') }}?2013-09" alt="{{_('Marketplace app')}}">
       </section>
     </div>
 
@@ -359,7 +358,7 @@
   </div>
 
   <section class="item container" id="best-of-the-web">
-    <img src="{{ MEDIA_URL }}img/firefox/os/foxy-splash.png" alt="Firefox OS">
+    <img src="{{ img_l10n('firefox/os/foxy-splash.png') }}" alt="Firefox OS">
     <div class="content">
       <h2>{{_('The best of the Web')}}</h2>
       <p>{{_('Firefox changed browsing forever by putting users first and offering a new level of choice and innovation online. Now we’re doing it all over again with Firefox OS, while bringing the same superior browsing experience to your smartphone. So you can take control of your life online and get the best the Web has to offer no matter where you go.')}}</p>
@@ -454,7 +453,13 @@
       </header>
       <div class="content">
         <div id="footer-email-thanks">
-          <h3>{{ _('Thank you for signing up!') }}</h3>
+          <h3>{{ _('Thanks! Please check your inbox to confirm your subscription.') }}</h3>
+          <p>
+            {% trans %}
+              You'll receive an email from mozilla@e.mozilla.org to confirm your subscription.
+              If you don't see it, check your spam filter. You must confirm your subscription to receive our newsletter.
+            {% endtrans %}
+          </p>
         </div>
 
         {{ email_newsletter_form('mozilla-and-you,os', '訂閱 Firefox 電子報', include_country=False, include_language=False) }}

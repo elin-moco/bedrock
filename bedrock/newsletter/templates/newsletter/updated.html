@@ -3,14 +3,6 @@
 {% block body_id %}newsletter-updated{% endblock body_id %}
 
 {% block content %}
-  {% if messages %}  {# FIXME - this ought to be in base-resp.html #}
-    <ul class="messagelist billboard">
-      {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
   {% if unsubscribed_all %}  {# user requested to unsub all #}
 
     <div id="main-feature" class="unsub">
@@ -21,7 +13,7 @@
     <div id="content" class="unsub billboard">
       <h4>{{_('Would you mind telling us why you’re leaving?') }}</h4>
 
-      <form action="{{ url('newsletter.updated') }}" method="post">
+      <form action="{{ secure_url('newsletter.updated') }}" method="post">
         <input type="hidden" name="unsub" value="2" />
         <input type="hidden" name="token" value="{{ token }}" />
         <table class="table">
@@ -37,7 +29,7 @@
           </tr>
           <tr>
             <td></td>
-            <td><input type="submit" value="Submit" class="button" name="feedback" /></td>
+            <td><input type="submit" value="{{_('Submit') }}" class="button" name="feedback" /></td>
           </tr>
         </table>
       </form>

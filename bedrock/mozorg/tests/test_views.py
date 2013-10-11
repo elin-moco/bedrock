@@ -1,24 +1,84 @@
+# -*- coding: utf8 -*-
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.conf import settings
 from django.core import mail
-from django.test.client import Client
+from django.test.client import Client, RequestFactory
 from django.test.utils import override_settings
+from django.utils import simplejson
 
 from captcha.fields import ReCaptchaField
 from funfactory.urlresolvers import reverse
 from jinja2.exceptions import TemplateNotFound
-from mock import Mock, patch
+from requests.exceptions import Timeout
+from mock import ANY, Mock, patch
 from nose.tools import assert_false, eq_, ok_
 from pyquery import PyQuery as pq
 
 from bedrock.mozorg.tests import TestCase
+from bedrock.mozorg import views
 from lib import l10n_utils
 
 
 _ALL = settings.STUB_INSTALLER_ALL
+
+
+@patch('bedrock.mozorg.views.l10n_utils.render')
+class TestHome(TestCase):
+    def setUp(self):
+        self.view = views.HomeTestView.as_view()
+        self.rf = RequestFactory()
+
+    def _test_view_template(self, resp_mock, template, qs=None, locale='en-US'):
+        args = ['/en-US/']
+        if qs is not None:
+            args.append(qs)
+        req = self.rf.get(*args)
+        req.locale = locale
+        self.view(req)
+        resp_mock.assert_called_once_with(req, template, ANY)
+        resp_mock.reset_mock()
+
+    def test_uses_default_template(self, resp_mock):
+        """Home page should render the default template with no QS."""
+        self._test_view_template(resp_mock, 'mozorg/home.html')
+
+    def test_uses_default_template_other_qs(self, resp_mock):
+        """Home page should render the default template with wrong QS."""
+        self._test_view_template(resp_mock, 'mozorg/home.html', {'a': 1})
+        self._test_view_template(resp_mock, 'mozorg/home.html', {'v': 42})
+        self._test_view_template(resp_mock, 'mozorg/home.html', {'v': 'Abide'})
+        self._test_view_template(resp_mock, 'mozorg/home.html', {'v': '1234'})
+
+    def test_uses_test_template(self, resp_mock):
+        """Home page should render the test template with the right QS."""
+        self._test_view_template(resp_mock, 'mozorg/home-b1.html', {'v': 1})
+        self._test_view_template(resp_mock, 'mozorg/home-b2.html', {'v': 2})
+
+    def test_uses_new_template_for_other_locales(self, resp_mock):
+        """Should render the new template for locales not in test."""
+        self._test_view_template(resp_mock, 'mozorg/home-b2.html', locale='xx')
+        self._test_view_template(resp_mock, 'mozorg/home-b2.html', {'v': 2}, locale='xx')
+
+    @override_settings(MOBILIZER_LOCALE_LINK={'es-ES': 'El Dudarino', 'de': 'Herr Dude'})
+    def test_gets_right_mobilizer_url(self, resp_mock):
+        """Home page should get correct mobilizer link for locale."""
+        req = self.rf.get('/')
+        req.locale = 'de'
+        self.view(req)
+        ctx = resp_mock.call_args[0][2]
+        self.assertEqual(ctx['mobilizer_link'], 'Herr Dude')
+
+    @override_settings(MOBILIZER_LOCALE_LINK={'en-US': 'His Dudeness', 'de': 'Herr Dude'})
+    def test_gets_default_mobilizer_url(self, resp_mock):
+        """Home page should get default mobilizer link for other locale."""
+        req = self.rf.get('/')
+        req.locale = 'xx'  # does not exist
+        self.view(req)
+        ctx = resp_mock.call_args[0][2]
+        self.assertEqual(ctx['mobilizer_link'], 'His Dudeness')
 
 
 class TestViews(TestCase):
@@ -170,6 +230,53 @@ class TestContribute(TestCase):
                                                   cc))
 
     @patch.object(ReCaptchaField, 'clean', Mock())
+    @patch('bedrock.mozorg.email_contribute.basket.subscribe')
+    @patch('bedrock.mozorg.email_contribute.requests.post')
+    def test_webmaker_mentor_signup(self, mock_post, mock_subscribe):
+        """Test Webmaker Mentor signup form for education functional area"""
+        self.data.update(interest='education', newsletter=True)
+        self.client.post(self.url_en, self.data)
+
+        assert_false(mock_subscribe.called)
+        payload = {'email': self.contact, 'custom-1788': '1'}
+        mock_post.assert_called_with('https://sendto.mozilla.org/page/s/mentor-signup',
+                                     data=payload, timeout=2)
+
+    @patch.object(ReCaptchaField, 'clean', Mock())
+    @patch('bedrock.mozorg.email_contribute.basket.subscribe')
+    @patch('bedrock.mozorg.email_contribute.requests.post')
+    def test_webmaker_mentor_signup_newsletter_fail(self, mock_post, mock_subscribe):
+        """Test Webmaker Mentor signup form when newsletter is not selected"""
+        self.data.update(interest='education', newsletter=False)
+        self.client.post(self.url_en, self.data)
+
+        assert_false(mock_subscribe.called)
+        assert_false(mock_post.called)
+
+    @patch.object(ReCaptchaField, 'clean', Mock())
+    @patch('bedrock.mozorg.email_contribute.basket.subscribe')
+    @patch('bedrock.mozorg.email_contribute.requests.post')
+    def test_webmaker_mentor_signup_functional_area_fail(self, mock_post, mock_subscribe):
+        """Test Webmaker Mentor signup form when functional area is not education"""
+        self.data.update(interest='coding', newsletter=True)
+        self.client.post(self.url_en, self.data)
+
+        mock_subscribe.assert_called_with(self.contact, 'about-mozilla')
+        assert_false(mock_post.called)
+
+    @patch.object(ReCaptchaField, 'clean', Mock())
+    @patch('bedrock.mozorg.email_contribute.basket.subscribe')
+    @patch('bedrock.mozorg.email_contribute.requests.post')
+    def test_webmaker_mentor_signup_timeout_fail(self, mock_post, mock_subscribe):
+        """Test Webmaker Mentor signup form when request times out"""
+        mock_post.side_effect = Timeout('Timeout')
+        self.data.update(interest='education', newsletter=True)
+        res = self.client.post(self.url_en, self.data)
+
+        assert_false(mock_subscribe.called)
+        eq_(res.status_code, 200)
+
+    @patch.object(ReCaptchaField, 'clean', Mock())
     @patch('bedrock.mozorg.email_contribute.jingo.render_to_string')
     def test_no_autoresponse_locale(self, render_mock):
         """
@@ -212,3 +319,146 @@ class TestContribute(TestCase):
         eq_(m.cc, [])
         eq_(m.extra_headers['Reply-To'], ','.join(['contribute@mozilla.org'] +
                                                   cc))
+
+    @patch.object(ReCaptchaField, 'clean', Mock())
+    def test_emails_not_escaped(self):
+        """
+        Strings in the contribute form should not be HTML escaped
+        when inserted into the email, which is just text.
+
+        E.g. if they entered
+
+            J'adore le ''Renard de feu''
+
+        the email should not contain
+
+            J&#39;adore le &#39;&#39;Renard de feu&#39;&#39;
+
+        Tags are still stripped, though.
+        """
+        STRING = u"J'adore Citröns & <Piñatas> so there"
+        EXPECTED = u"J'adore Citröns &  so there"
+        self.data.update(comments=STRING)
+        self.client.post(self.url_en, self.data)
+        eq_(len(mail.outbox), 1)
+        m = mail.outbox[0]
+        self.assertIn(EXPECTED, m.body)
+
+
+class TestRobots(TestCase):
+    @override_settings(SITE_URL='https://www.mozilla.org')
+    def test_production_disallow_all_is_false(self):
+        self.assertFalse(views.Robots().get_context_data()['disallow_all'])
+
+    @override_settings(SITE_URL='http://mozilla.local')
+    def test_non_production_disallow_all_is_true(self):
+        self.assertTrue(views.Robots().get_context_data()['disallow_all'])
+
+    @override_settings(SITE_URL='https://www.mozilla.org')
+    def test_robots_no_redirect(self):
+        response = Client().get('/robots.txt')
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.context_data['disallow_all'])
+        self.assertEqual(response.get('Content-Type'), 'text/plain')
+
+
+class TestProcessPartnershipForm(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.template = 'mozorg/partnerships.html'
+        self.view = 'mozorg.partnerships'
+        self.post_data = {
+            'first_name': 'The',
+            'last_name': 'Dude',
+            'title': 'Abider of things',
+            'company': 'Urban Achievers',
+            'email': 'thedude@example.com',
+        }
+        self.invalid_post_data = {
+            'first_name': 'The',
+            'last_name': 'Dude',
+            'title': 'Abider of things',
+            'company': 'Urban Achievers',
+            'email': 'thedude',
+        }
+
+        with self.activate('en-US'):
+            self.url = reverse(self.view)
+
+    def test_get(self):
+        """
+        A GET request should simply return a 200.
+        """
+
+        request = self.factory.get(self.url)
+        request.locale = 'en-US'
+        response = views.process_partnership_form(request, self.template,
+                                                  self.view)
+        self.assertEqual(response.status_code, 200)
+
+    def test_post(self):
+        """
+        POSTing without AJAX should redirect to self.url on success and
+        render self.template on error.
+        """
+
+        with self.activate('en-US'):
+            # test non-AJAX POST with valid form data
+            request = self.factory.post(self.url, self.post_data)
+
+            response = views.process_partnership_form(request, self.template,
+                                                      self.view)
+
+            # should redirect to success URL
+            self.assertEqual(response.status_code, 302)
+            self.assertIn(self.url, response._headers['location'][1])
+            self.assertIn('text/html', response._headers['content-type'][1])
+
+            # test non-AJAX POST with invalid form data
+            request = self.factory.post(self.url, self.invalid_post_data)
+
+            # locale is not getting set via self.activate above...?
+            request.locale = 'en-US'
+
+            response = views.process_partnership_form(request, self.template,
+                                                      self.view)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertIn('text/html', response._headers['content-type'][1])
+
+    def test_post_ajax(self):
+        """
+        POSTing with AJAX should return success/error JSON.
+        """
+
+        with self.activate('en-US'):
+            # test AJAX POST with valid form data
+            request = self.factory.post(self.url, self.post_data,
+                HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+            response = views.process_partnership_form(request, self.template,
+                                                      self.view)
+
+            # decode JSON response
+            resp_data = simplejson.loads(response.content)
+
+            self.assertEqual(resp_data['msg'], 'ok')
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response._headers['content-type'][1],
+                             'application/json')
+
+            # test AJAX POST with invalid form data
+            request = self.factory.post(self.url, self.invalid_post_data,
+                HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+            response = views.process_partnership_form(request, self.template,
+                                                      self.view)
+
+            # decode JSON response
+            resp_data = simplejson.loads(response.content)
+
+            self.assertEqual(resp_data['msg'], 'Form invalid')
+            self.assertEqual(response.status_code, 400)
+            self.assertTrue('email' in resp_data['errors'])
+            self.assertEqual(response._headers['content-type'][1],
+                             'application/json')

@@ -91,42 +91,42 @@ body {
     display: none;
   }
 
-  .curr, li:hover, li:focus { 
-    position: relative; 
-    border-top-color: #D3DAE2; 
+  .curr, li:hover, li:focus {
+    position: relative;
+    border-top-color: #D3DAE2;
   }
 
   .scroll {
     .curr {
-      border-top-color: #fff;  
+      border-top-color: #fff;
     }
     .curr:before,
-    .curr:after { 
-      top: 100%; 
-      border: solid transparent; 
-      content: " "; 
-      height: 0; 
-      width: 0; 
-      position: absolute; 
-      pointer-events: none; 
-    } 
-
-    .curr:after { 
-      border: 12px solid transparent;
-      border-color: rgba(211, 218, 226, 0); 
-      border-top-color: inherit; 
-      border-width: 12px; 
-      left: 50%;
-      margin-left: -12px; 
+    .curr:after {
+      top: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
     }
 
-    .curr:before { 
+    .curr:after {
+      border: 12px solid transparent;
+      border-color: rgba(211, 218, 226, 0);
+      border-top-color: inherit;
+      border-width: 12px;
+      left: 50%;
+      margin-left: -12px;
+    }
+
+    .curr:before {
       border: 13px solid transparent;
-      border-color: rgba(221, 221, 221, 0); 
-      border-top-color: #ddd; 
-      border-width: 13px; 
-      left: 50%; 
-      margin-left: -13px; 
+      border-color: rgba(221, 221, 221, 0);
+      border-top-color: #ddd;
+      border-width: 13px;
+      left: 50%;
+      margin-left: -13px;
     }
     ul li {
       a, a:link, a:visited {
@@ -150,7 +150,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-  }  
+  }
 }
 
 h2 {
@@ -168,7 +168,7 @@ section p, header p {
   z-index: 1000;
   top: 50%;
   left: 30px;
-  width: 140px;
+  width: auto;
   margin-top: -77px;
   padding: 0;
 
@@ -220,6 +220,7 @@ section p, header p {
     }
     #share-options {
       margin-top: @baseLine / 2;
+      padding-top: 5px;
     }
     ul li {
       margin: 0;
@@ -237,7 +238,7 @@ section p, header p {
         display: block;
         text-indent: 100%;
         white-space: nowrap;
-        overflow: hidden;        
+        overflow: hidden;
       }
       &:before {
         position: absolute;
@@ -252,7 +253,7 @@ section p, header p {
 }
 
 // general item container class
-// used throughout main sections 
+// used throughout main sections
 // to fit content to grid
 .item {
   position: relative;
@@ -378,7 +379,6 @@ section p, header p {
     position: relative;
     width: 100%;
     height: 1860px;
-    overflow: hidden;
     z-index: 2;
     background: #0f9fdb;
 
@@ -397,10 +397,21 @@ section p, header p {
         left: 0;
         width: 100%;
         height: 620px;
-        opacity: 0;
+        opacity: 1;
         z-index: 1;
+        .transition(opacity 0.3s ease);
+        background-repeat: no-repeat;
+        background-position: center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        &.inactive {
+          opacity: 0;
+        }
         &.top {
           z-index: 2;
+          opacity: 1;
         }
       }
       #adaptive-bg-birthday {
@@ -465,6 +476,11 @@ section p, header p {
       }
       .type, .results, .save, .discover {
         opacity: 0;
+        .transition;
+        &.active {
+          margin-top: 0px;
+          opacity: 1;
+        }
       }
       .results {
         z-index: 3;
@@ -476,7 +492,7 @@ section p, header p {
         z-index: 1;
       }
     }
-    
+
     #fox-tail-tip {
       display: block;
       position: fixed;
@@ -523,6 +539,9 @@ html[lang="en-US"] #get-firefox-os {
     ul {
       .discover {
         margin-top: -66px;
+        &.active {
+          margin-top: 44px;
+        }
       }
     }
     .adapt-feature-sprite {
@@ -535,6 +554,11 @@ html[lang="en-US"] #get-firefox-os {
       width: 26px;
       top: 200px; // animate to 286px
       z-index: 2;
+      .transition(all 0.5s ease);
+      &.active {
+        top: 286px;
+        opacity: 1;
+      }
     }
   }
 }
@@ -554,25 +578,26 @@ html[lang="en-US"] #get-firefox-os {
     left: 100px;
     width: 308px;
     height: 523px;
-    background: url('/media/img/firefox/os/phone/phone-overlay.png') no-repeat top left; 
+    background: url('/media/img/firefox/os/phone/phone-overlay.png') no-repeat top left;
     z-index: 1;
   }
 
   .screen-wrapper {
     position: absolute;
-    top: 141px;
-    left: 144px;
+    top: 140px;
+    left: 143px;
     z-index: 2;
     width: 218px;
-    height: 332px;
-    background-color: #000;
+    height: 334px;
+    background-color: #221F1E;
+    border-left: 1px solid #221F1E;
     overflow: hidden;
   }
 
   .screen {
     width: 218px;
     height: 332px;
-    background-image: url('/media/img/firefox/os/phone/screens-en-us.jpg');
+    background-image: url('/media/img/firefox/os/phone/screens-en-us.jpg?2013-09');
     background-repeat: no-repeat;
   }
 
@@ -602,7 +627,7 @@ html[lang="en-US"] #get-firefox-os {
     left: 50px;
     width: 416px;
     height: 244px;
-    background: url('/media/img/firefox/os/fox.png') no-repeat top left; 
+    background: url('/media/img/firefox/os/fox.png') no-repeat top left;
     z-index: 3;
   }
 
@@ -612,20 +637,44 @@ html[lang="en-US"] #get-firefox-os {
     left: -310px;
     width: 580px;
     height: 267px;
-    background: url('/media/img/firefox/os/fox-tail.png') no-repeat top left; 
-    z-index: 0;  
+    background: url('/media/img/firefox/os/fox-tail.png') no-repeat top left;
+    z-index: 0;
   }
 }
 
-html[lang="es-ES"] {
+html[lang^="es"] {
   .phone-wrapper .screen {
-    background-image: url('/media/img/firefox/os/phone/screens-es-es.jpg');
+    background-image: url('/media/img/firefox/os/phone/screens-es-es.jpg?2013-09');
   }
 }
 
 html[lang="pl"] {
   .phone-wrapper .screen {
-    background-image: url('/media/img/firefox/os/phone/screens-pl-pl.jpg');
+    background-image: url('/media/img/firefox/os/phone/screens-pl-pl.jpg?2013-09');
+  }
+}
+
+html[lang="pt-BR"] {
+  .phone-wrapper .screen {
+    background-image: url('/media/img/firefox/os/phone/screens-pt-br.jpg');
+  }
+}
+
+html[lang="de"] {
+  .phone-wrapper .screen {
+    background-image: url('/media/img/firefox/os/phone/screens-de.jpg');
+  }
+}
+
+html[lang="hu"] {
+  .phone-wrapper .screen {
+    background-image: url('/media/img/firefox/os/phone/screens-hu.jpg');
+  }
+}
+
+html[lang="el"] {
+  .phone-wrapper .screen {
+    background-image: url('/media/img/firefox/os/phone/screens-el.jpg');
   }
 }
 
@@ -635,30 +684,29 @@ html[lang="pl"] {
   left: 0;
   width: 100%;
   height: 620px;
-}
-
-.bg-soccer {
-  background: url('/media/img/firefox/os/bg/1400/soccer.jpg') no-repeat center center; 
+  opacity: 1;
+  .transition(opacity 1s ease);
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  &.inactive {
+    opacity: 0;
+  }
+}
+
+.bg-soccer {
+  background-image: url('/media/img/firefox/os/bg/1400/soccer.jpg');
 }
 
 .bg-cafe {
-  background: url('/media/img/firefox/os/bg/1400/cafe.jpg') no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;  
+  background-image: url('/media/img/firefox/os/bg/1400/cafe.jpg');
 }
 
 .bg-birthday {
-  background: url('/media/img/firefox/os/bg/1400/birthday.jpg') no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;  
+  background-image: url('/media/img/firefox/os/bg/1400/birthday.jpg');
 }
 
 #have-it-all-masthead {
@@ -706,38 +754,38 @@ html[lang="pl"] {
       }
       .icon {
         width: 50px;
-        height: 52px;  
+        height: 52px;
         margin: 0 auto;
         float: left;
         background-color: transparent;
-        background-image: url('/media/img/firefox/os/have-it-all/app-icons.png');     
+        background-image: url('/media/img/firefox/os/have-it-all/app-icons.png');
       }
       .curr {
         .transition(text-shadow 0.2s linear);
         text-shadow: 0 0 10px #fff, 0 0 10px #fff;
       }
       .social {
-        background-position: 0px 0px; 
+        background-position: 0px 0px;
         background-repeat: no-repeat;
       }
       .photos {
-        background-position: -50px 0px; 
+        background-position: -50px 0px;
         background-repeat: no-repeat;
       }
       .music {
         background-position: -100px 0px;
-        background-repeat: no-repeat; 
+        background-repeat: no-repeat;
       }
       .maps {
-        background-position: -150px 0px; 
+        background-position: -150px 0px;
         background-repeat: no-repeat;
       }
       .messages {
-        background-position: -200px 0px; 
+        background-position: -200px 0px;
         background-repeat: no-repeat;
       }
       .marketplace {
-        background-position: -250px 0px; 
+        background-position: -250px 0px;
         background-repeat: no-repeat;
       }
     }
@@ -838,7 +886,7 @@ html[lang="pl"] {
   .app.right {
     position: absolute;
     top: 0;
-    right: 0px;    
+    right: 0px;
   }
   #stage {
     display: none;
@@ -863,68 +911,68 @@ html[lang="pl"] {
   }
   .icon {
     width: 62px;
-    height: 65px;  
-    margin: 0 auto; 
+    height: 65px;
+    margin: 0 auto;
     background: url('/media/img/firefox/os/have-it-all/content-icons.png') no-repeat top left;
   }
   .contacts {
-    background-position: 0 -114px; 
-    width: 62px; 
+    background-position: 0 -114px;
+    width: 62px;
     height: 64px;
   }
   .twitter {
-    background-position: 0 -1141px; 
-    width: 62px; 
+    background-position: 0 -1141px;
+    width: 62px;
     height: 64px;
   }
   .facebook {
-    background-position: 0 -228px; 
-    width: 62px; 
+    background-position: 0 -228px;
+    width: 62px;
     height: 64px;
   }
   .camera {
-    background-position: 0 0; 
-    width: 62px; 
+    background-position: 0 0;
+    width: 62px;
     height: 64px;
   }
   .gallery {
-    background-position: 0 -342px; 
-    width: 62px; 
+    background-position: 0 -342px;
+    width: 62px;
     height: 64px;
   }
   .music {
-    background-position: 0 -913px; 
-    width: 62px; 
+    background-position: 0 -913px;
+    width: 62px;
     height: 64px;
   }
   .radio {
-    background-position: 0 -1027px; 
-    width: 62px; 
+    background-position: 0 -1027px;
+    width: 62px;
     height: 64px;
   }
   .videos {
-    background-position: 0 -1255px; 
-    width: 62px; 
+    background-position: 0 -1255px;
+    width: 62px;
     height: 64px;
   }
   .maps {
-    background-position: 0 -571px; 
-    width: 62px; 
+    background-position: 0 -571px;
+    width: 62px;
     height: 64px;
   }
   .mail {
-    background-position: 0 -456px; 
-    width: 62px; 
+    background-position: 0 -456px;
+    width: 62px;
     height: 65px;
   }
   .messages {
-    background-position: 0 -799px; 
-    width: 62px; 
+    background-position: 0 -799px;
+    width: 62px;
     height: 64px;
   }
   .marketplace {
-    background-position: 0 -685px; 
-    width: 62px; 
+    background-position: 0 -685px;
+    width: 62px;
     height: 64px;
   }
 }
@@ -954,18 +1002,12 @@ html[lang=hu] {
       margin: 0 auto;
       .app {
         padding-top: @baseLine * 4;
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
       }
-      .content.left, .app.left {
-        margin-left: -100%;
-        opacity: 0;
-      }
-      .content.center, .app.center {
-        margin-left: -150%;
-        opacity: 0;
-      }
-      .content.right, .app.right {
-        margin-right: -100%;
-        opacity: 0;
+      .content {
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
       }
     }
     #stage {
@@ -977,13 +1019,14 @@ html[lang=hu] {
         top: 240px;
         left: 0;
         width: 100%;
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
       }
       img {
         position: absolute;
       }
       .app {
         padding-top: 0;
-        opacity: 1;
       }
       #music-app {
         top: -270px;
@@ -995,7 +1038,6 @@ html[lang=hu] {
       }
       #photos-edit-app {
         margin-top: 80px;
-        opacity: 0;
       }
       #mail-app {
         top: -270px;
@@ -1015,7 +1057,6 @@ html[lang=hu] {
       }
       #radio-app, #messages-app {
         margin-top: 80px;
-        opacity: 0;
       }
     }
     #landing {
@@ -1026,26 +1067,26 @@ html[lang=hu] {
     }
   }
   // slider styles for touch / mobile devices
-  .plusslider { 
-    overflow: hidden; 
-    position: relative; 
+  .plusslider {
+    overflow: hidden;
+    position: relative;
   }
-  .plusslider-container { 
-    position: relative; 
+  .plusslider-container {
+    position: relative;
   }
-  .plusslider .child { 
-    float: left; 
-    min-height: 508px; 
-    padding-top: @baseLine; 
+  .plusslider .child {
+    float: left;
+    min-height: 508px;
+    padding-top: @baseLine;
   }
-  .plustype-fader .child { 
-    display: none; 
-    position: absolute; 
-    left: 0; 
-    top: 0; 
+  .plustype-fader .child {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
-  .plustype-fader .current { 
-    z-index: 5; 
+  .plustype-fader .current {
+    z-index: 5;
   }
   .plusslider {
     #social .left .icon-list {
@@ -1082,17 +1123,17 @@ html[lang=hu] {
       float: left;
       margin-left: @baseLine;
       background: #333 url('/media/img/sandstone/buttons/arrow-go-l.png') no-repeat center center;
-      -webkit-background-size: 22px 20px; 
-      -moz-background-size: 22px 20px; 
-      background-size: 22px 20px; 
+      -webkit-background-size: 22px 20px;
+      -moz-background-size: 22px 20px;
+      background-size: 22px 20px;
     }
     .next {
       float: right;
       margin-right: @baseLine;
-      background: #333 url('/media/img/sandstone/buttons/arrow-go-r.png') no-repeat center center; 
-      -webkit-background-size: 22px 20px; 
-      -moz-background-size: 22px 20px;  
-      background-size: 22px 20px; 
+      background: #333 url('/media/img/sandstone/buttons/arrow-go-r.png') no-repeat center center;
+      -webkit-background-size: 22px 20px;
+      -moz-background-size: 22px 20px;
+      background-size: 22px 20px;
     }
   }
 }
@@ -1115,7 +1156,7 @@ html[lang="pl"] {
 
 #transform-the-future {
   padding: (@baseLine * 2) 0;
-  text-align: center;   
+  text-align: center;
   h2, p {
     width: 70%;
     margin: 0 auto;
@@ -1218,9 +1259,9 @@ html[lang="pl"] {
   }
 }
 
-#provider-text-multi, 
-#provider-text-single { 
-  display: none; 
+#provider-text-multi,
+#provider-text-single {
+  display: none;
 }
 
 // email signup form no-JS styles
@@ -1320,7 +1361,7 @@ html[lang="pl"] {
     background: #fff;
     @shadow: 0 1px 22px rgba(0, 0, 0, 0.8);
     .box-shadow(@shadow);
-    
+
     header {
       display: block;
       background: #0095dd;
@@ -1390,12 +1431,12 @@ html[lang="pl"] {
       .movistar {
         width: 177px;
         height: 47px;
-        background: transparent url('/media/img/firefox/os/logo/movistar.jpg') top center no-repeat; 
+        background: transparent url('/media/img/firefox/os/logo/movistar.jpg') top center no-repeat;
       }
       .t-mobile {
         width: 83px;
         height: 47px;
-        background: transparent url('/media/img/firefox/os/logo/t-mobile.jpg') top center no-repeat;         
+        background: transparent url('/media/img/firefox/os/logo/t-mobile.jpg') top center no-repeat;
       }
       .last {
         border-left: 1px dashed #666;
@@ -1421,12 +1462,10 @@ html[lang="pl"] {
     .screen {
       position: absolute;
       top: 0;
-    }
-    #screen-intro-a {
-      left: 0;
-    }
-    #screen-intro-b {
-      left: 218px;
+      z-index: 2;
+      &.inactive {
+        z-index: 1;
+      }
     }
   }
 }
@@ -1436,6 +1475,7 @@ html[lang="en-US"].js {
   #get-firefox-os {
     .adapt-feature-sprite {
       display: block;
+      .transition(all 0.5s ease);
     }
   }
   .adapt-feature-sprite-line {
@@ -1452,6 +1492,12 @@ html[lang="en-US"].js {
     top: 277px;
     height: 12px;
     background-position: left -106px;
+  }
+  #adapt-feature-sprite-blue-line, #adapt-feature-sprite-orange-line {
+    width: 0px;
+    &.active {
+      width: 123px;
+    }
   }
 }
 
@@ -1547,7 +1593,7 @@ body.noscroll {
       .fox-wrapper {
         display: none;
       }
-    }    
+    }
     //#adapt-feature-sprites { display: none; }
   }
   #have-it-all {
@@ -1555,7 +1601,7 @@ body.noscroll {
       #contacts-app, #photos-app, #messages-app {
         left: auto;
         right: 0;
-      } 
+      }
       .content {
         padding-top: @baseLine * 3;
       }
@@ -1567,7 +1613,7 @@ body.noscroll {
         margin-top: 0;
       }
       #social .content.right,
-      #photos-edit-app, 
+      #photos-edit-app,
       #radio-app,
       #mail-app {
         display: none;
@@ -1576,8 +1622,8 @@ body.noscroll {
       #social .left .icon-list {
         display: block;
         visibility: visible;
-      } 
-    } 
+      }
+    }
     .scroller-on {
       #stage {
         //width: @widthTablet - (@gridGutterWidth * 2);
@@ -1592,7 +1638,7 @@ body.noscroll {
         padding-top: @baseLine * 3;
         width: 300px;
       }
-    }  
+    }
   }
   #our-community {
     section {
@@ -1648,13 +1694,13 @@ body.noscroll {
     }
   }
   .bg-soccer {
-    background: url('/media/img/firefox/os/bg/1000/soccer.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/1000/soccer.jpg') no-repeat center center;
   }
   .bg-cafe {
-    background: url('/media/img/firefox/os/bg/1000/cafe.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/1000/cafe.jpg') no-repeat center center;
   }
   .bg-birthday {
-    background: url('/media/img/firefox/os/bg/1000/birthday.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/1000/birthday.jpg') no-repeat center center;
   }
   #get-firefox-os {
     .content {
@@ -1731,7 +1777,7 @@ body.noscroll {
     .inner {
       width: @widthMobileLandscape  - @gridGutterWidth;
     }
-    .curr:before, .curr:after { 
+    .curr:before, .curr:after {
       border: none;
     }
     .wrapper {
@@ -1769,7 +1815,7 @@ body.noscroll {
       }
     }
     #intro-bg-a {
-      background: url('/media/img/firefox/os/bg/760/birthday.jpg') no-repeat center center; 
+      background: url('/media/img/firefox/os/bg/760/birthday.jpg') no-repeat center center;
     }
     .content {
       width: auto;
@@ -1857,7 +1903,7 @@ body.noscroll {
         position: relative;
         width: auto;
         margin: 0 auto @baseLine auto;
-      } 
+      }
       .app.left, .app.right, .app.center {
         position: relative;
         left: auto;
@@ -1879,7 +1925,7 @@ body.noscroll {
       #photos-edit-app, #radio-app, #mail-app {
         display: none;
         visibility: hidden;
-      } 
+      }
       #landing {
         height: auto;
         h2 {
@@ -1887,10 +1933,10 @@ body.noscroll {
           top: auto;
           margin: @baseLine 0 (@baseLine * 2) 0;
         }
-      }    
+      }
     }
-    .plusslider .child {  
-      min-height: 800px; 
+    .plusslider .child {
+      min-height: 800px;
     }
   }
   #have-it-all-masthead {
@@ -1945,13 +1991,13 @@ body.noscroll {
     }
   }
   .bg-soccer {
-    background: url('/media/img/firefox/os/bg/760/soccer.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/760/soccer.jpg') no-repeat center center;
   }
   .bg-cafe {
-    background: url('/media/img/firefox/os/bg/760/cafe.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/760/cafe.jpg') no-repeat center center;
   }
   .bg-birthday {
-    background: url('/media/img/firefox/os/bg/760/birthday.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/760/birthday.jpg') no-repeat center center;
   }
   #get-phone {
     width: @widthMobileLandscape - (@gridGutterWidth * 3);
@@ -1981,8 +2027,8 @@ body.noscroll {
         .last {
           border-left: none;
         }
-      }  
-    } 
+      }
+    }
     #get-phone {
       width: 100%;
     }
@@ -2009,7 +2055,7 @@ body.noscroll {
     .inner {
       width: @widthMobile - @gridGutterWidth;
     }
-    .curr:before, .curr:after { 
+    .curr:before, .curr:after {
       border: none;
     }
     .wrapper {
@@ -2019,7 +2065,7 @@ body.noscroll {
   .js #masthead {
     .wrapper.stuck {
       position: relative; //override fixed position for mobile
-    }  
+    }
   }
   #signup-toggle-icon {
     display: none;
@@ -2081,7 +2127,7 @@ body.noscroll {
         position: relative;
         width: auto;
         margin: 0 auto @baseLine auto;
-      } 
+      }
       .app {
         position: relative;
         left: auto;
@@ -2111,10 +2157,10 @@ body.noscroll {
       #photos-edit-app, #radio-app, #mail-app {
         display: none;
         visibility: hidden;
-      }     
+      }
     }
-    .plusslider .child {  
-      min-height: 725px; 
+    .plusslider .child {
+      min-height: 725px;
     }
   }
   #have-it-all-masthead {
@@ -2135,7 +2181,7 @@ body.noscroll {
           text-indent: 0;
         }
         .icon {
-          float: none;    
+          float: none;
         }
       }
     }
@@ -2194,13 +2240,13 @@ body.noscroll {
     width: @widthMobile - @gridGutterWidth;
   }
   .bg-soccer {
-    background: url('/media/img/firefox/os/bg/480/soccer.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/480/soccer.jpg') no-repeat center center;
   }
   .bg-cafe {
-    background: url('/media/img/firefox/os/bg/480/cafe.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/480/cafe.jpg') no-repeat center center;
   }
   .bg-birthday {
-    background: url('/media/img/firefox/os/bg/480/birthday.jpg') no-repeat center center; 
+    background: url('/media/img/firefox/os/bg/480/birthday.jpg') no-repeat center center;
   }
   .js {
     #get-phone {
@@ -2251,8 +2297,8 @@ body.noscroll {
         .last {
           border-left: none;
         }
-      }  
-    } 
+      }
+    }
     #get-phone {
       width: 100%;
     }

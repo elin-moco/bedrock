@@ -1,21 +1,42 @@
-{% from "macros.html" import email_newsletter_form with context %}
+{% from "macros.html" import email_newsletter_form, mozorg_newsletter_form with context %}
+
 {% set_lang_files "main" %}
 <!doctype html>
 {# Note the "windows" class, without javascript platform-specific
      assets default to windows #}
-<html class="windows no-js" lang="{{ LANG }}" dir="{{ DIR }}">
+<html class="windows no-js" lang="{{ LANG }}" dir="{{ DIR }}"{% block html_attrs %}{% endblock %}>
   <head>
     {% block ga_experiments %}{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block extra_meta %}{% endblock %}
 
-    <title>{% block page_title_prefix %}{% endblock %}{% block page_title %}{% endblock %}{% block page_title_suffix %} － Mozilla Taiwan{% endblock %}</title>
+    {% block shared_meta %}
+    {#- Please sync this block with the base.html template.
+        Because of blocks, we cannot use an include here. -#}
+    <title>{% block page_title_full %}{% block page_title_prefix %}{% endblock %}{% block page_title %}{% endblock %}{% block page_title_suffix %} － Mozilla Taiwan{% endblock %}{% endblock %}</title>
     <meta content="ClhuMhUFrYEw-zfAsWNx5l7JzCyXoFESHZhnirdMcsA" name="google-site-verification">
     <meta content="0DCEE643E9ACDEE9FDC2E8036E0CFB78" name="msvalidate.01">
-    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="description" content="{% block page_desc %}{% endblock %}">
     <meta name="keywords" content="{% block keywords %}firefox, 火狐, 瀏覽器, mozilla firefox, firefox download, 火狐瀏覽器, firefox os, firefox 瀏覽器下載, mozilla, os, mobile os, 火狐下載, aurora, nightly, firfox, 瀏覽器下載, fire fox, 作業系統, firefox 下載, download firefox, 火狐瀏覽器下載, 火湖遊覽器, mozilla tw, firefox tw, mozilla taiwan, firefox android, firefox beta, firefox mac, firefox windows, firefox linux, 下載瀏覽器, 瀏覽器下載, 火狐狸瀏覽器, firefox taiwan, firefoxos, firefox os download, firefoxos download, 火狐手機, firefox phone, firefox 手機, mozilla 社群, mozilla 台灣社群, B2G, HTML5{% endblock %}">
-    {% block og_meta %}{% endblock %}
+    {% block og_meta %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ _('Mozilla') }}">
+    <meta property="og:locale" content="{{ LANG|replace("-", "_") }}">
+    <meta property="og:url" content="{{ settings.CANONICAL_URL + '/' + LANG + canonical_path }}">
+    <meta property="og:image" content="{% block page_image %}{{ media('img/mozorg/mozilla-256.jpg') }}{% endblock %}">
+    <meta property="og:title" content="{{ self.page_title_full() }}">
+    <meta property="og:description" content="{{ self.page_desc() }}">
+    {% endblock %}
+    <meta property="fb:page_id" content="{% block facebook_id %}262134952380{# facebook.com/mozilla #}{% endblock %}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@{% block twitter_id %}mozilla{% endblock %}">
+    <meta name="twitter:domain" content="mozilla.org">
+    <meta name="twitter:app:name:googleplay" content="{% block android_app_name %}{{ _('Firefox') }}{% endblock %}">
+    <meta name="twitter:app:id:googleplay" content="{% block android_app_id %}org.mozilla.firefox{% endblock %}">
+    <link rel="shortcut icon" href="{% block page_favicon %}{{ media('img/favicon.ico') }}{% endblock %}">
+    {% include 'includes/canonical-url.html' %}
+    {% endblock shared_meta %}
 
     {% block tabzilla_css %}
       {{ css('sandstone-tabzilla-nav-footer') }}
@@ -31,11 +52,12 @@
 
     {% block extrahead %}{% endblock %}
 
-    {% block favicon %}<link rel="shortcut icon" href="{{ MEDIA_URL }}img/favicon.ico">{% endblock %}
-
     {{ js('site') }}
 
-    {% include 'includes/google-analytics.html' %}
+    {% block js_pretrack %}{# include JavaScript that must be run pre GA tracking here #}{% endblock %}
+    {% block google_analytics %}
+      {% include 'includes/google-analytics.html' %}
+    {% endblock %}
   </head>
 
   <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} sky lang-{{ LANG }}"{% block body_attrs %}{% endblock %}>
@@ -67,6 +89,16 @@
     {% endblock %}
 
     {% block mosaic %}{% endblock %}
+
+    {% block messages %}
+      {% if messages %}
+        <ul class="messagelist billboard">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endblock messages %}
 
     {% block content %}{% endblock %}
 

@@ -3,7 +3,7 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
 
 {% if not form_submitted or (form_submitted and form_error) %}
-  <form name="contact_privacy" id="contact_privacy" action="#contactus" method="post">
+  <form name="contact_privacy" id="contact_privacy" action="{{ secure_url() }}#contactus" method="post">
     {{ csrf() }}
 
     <fieldset>
@@ -19,22 +19,22 @@
 
       <div class="field">
         {{ form.name.errors }}
-        <label for="id_name">{{ _('Your name') }}:</label>
+        <label for="id_name">{{ _('Your name:') }}</label>
         {{ form.name }}
       </div>
 
       <div class="field">
         {{ form.sender.errors }}
-        <label for="id_sender">{{ _('Your email') }}:</label>
+        <label for="id_sender">{{ _('Your email:') }}</label>
         {{ form.sender }}
       </div>
 
       <div class="field">
         {{ form.comments.errors }}
-        <label for="id_comments">{{ _('Your comments') }}:</label><br />
+        <label for="id_comments">{{ _('Your comments:') }}</label><br />
         {{ form.comments }}
 
-        <input type="submit" class="button" value="{{ _('Send comments') }}&nbsp;»" id="contact_privacy_submit" />
+        <input type="submit" class="button" value="{{ _('Send comments') }}" id="contact_privacy_submit" />
       </div>
 
       {{ form.superpriority }}

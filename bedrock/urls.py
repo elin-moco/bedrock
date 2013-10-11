@@ -4,11 +4,10 @@
 
 from django.conf import settings
 from django.conf.urls.defaults import handler404, include, patterns
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.http import HttpResponse
 from bedrock.base import ViewsSitemap, PathsSitemap
 from bedrock.sandstone.settings import MOCO_URL
-from bedrock.settings import ENGAGE_ROBOTS, DEBUG
+from bedrock.settings import ENGAGE_ROBOTS
 from funfactory.monkeypatches import patch
 patch()
 
@@ -114,4 +113,3 @@ if settings.DEBUG:
         (r'^404/$', handler404),
         (r'^500/$', handler500),
     )
-    from django.contrib.staticfiles.urls import staticfiles_urlpatterns

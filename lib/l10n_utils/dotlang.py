@@ -22,7 +22,8 @@ from django.utils import translation
 from django.utils.functional import lazy
 
 from jinja2 import Markup
-from tower.management.commands.extract import tweak_message
+from tower import tweak_message
+from product_details import product_details
 
 
 FORMAT_IDENTIFIER_RE = re.compile(r"""(%
@@ -30,12 +31,16 @@ FORMAT_IDENTIFIER_RE = re.compile(r"""(%
                                       s)""", re.VERBOSE)
 
 
-def parse(path, skip_untranslated=True):
+TAG_REGEX = re.compile(r"^## (\w+) ##")
+
+
+def parse(path, skip_untranslated=True, extract_comments=False):
     """
     Parse a dotlang file and return a dict of translations.
     :param path: Absolute path to a lang file.
     :param skip_untranslated: Exclude strings for which the ID and translation
                               match.
+    :param extract_comments: Extract one line comments from template if True
     :return: dict
     """
     trans = {}
@@ -45,25 +50,34 @@ def parse(path, skip_untranslated=True):
 
     with codecs.open(path, 'r', 'utf-8', errors='replace') as lines:
         source = None
+        comment = None
 
         for line in lines:
             if u'�' in line:
                 mail_error(path, line)
 
             line = line.strip()
-            if line == '' or line[0] == '#':
+            if not line:
+                continue
+
+            if line[0] == '#':
+                comment = line.lstrip('#').strip()
                 continue
 
             if line[0] == ';':
                 source = line[1:]
             elif source:
                 for tag in ('{ok}', '{l10n-extra}'):
-                    if line.endswith(tag):
+                    if line.lower().endswith(tag):
                         line = line[:-len(tag)]
                 line = line.strip()
                 if skip_untranslated and source == line:
                     continue
-                trans[source] = line
+                if extract_comments:
+                    trans[source] = [comment, line]
+                    comment = None
+                else:
+                    trans[source] = line
 
     return trans
 
@@ -207,22 +221,65 @@ def lang_file_is_active(path, lang):
     :param lang: the language code
     :return: bool
     """
+    return lang_file_has_tag(path, lang, "active")
+
+
+def lang_file_has_tag(path, lang, tag):
+    """
+    Return True if the lang file exists and has a line like "^## tag ##"
+    at the top. Stops looking at the line that doesn't have a tag.
+
+    :param path: the relative lang file name
+    :param lang: the language code
+    @param tag: The string that should appear between ##'s. Can contain
+       alphanumerics and "_".
+    @return: bool
+    """
+
     rel_path = os.path.join('locale', lang, '%s.lang' % path)
-    cache_key = 'active:%s' % rel_path
-    is_active = cache.get(cache_key)
-    if is_active is None:
-        is_active = False
+    cache_key = 'tag:%s' % rel_path
+    tag_set = cache.get(cache_key)
+    if tag_set is None:
+        tag_set = set()
         fpath = os.path.join(settings.ROOT, rel_path)
         try:
             with codecs.open(fpath, 'r', 'utf-8', errors='replace') as lines:
-                firstline = lines.readline()
-                # Filter out Byte order Mark
-                firstline = firstline.replace(u'\ufeff', '')
-                if firstline.startswith('## active ##'):
-                    is_active = True
+                for line in lines:
+                    # Filter out Byte order Mark
+                    line = line.replace(u'\ufeff', '')
+                    m = TAG_REGEX.match(line)
+                    if m:
+                        tag_set.add(m.group(1))
+                    else:
+                        # Stop at the first non-tag line.
+                        break
         except IOError:
             pass
 
-        cache.set(cache_key, is_active, settings.DOTLANG_CACHE)
+        cache.set(cache_key, tag_set, settings.DOTLANG_CACHE)
 
-    return is_active
+    return tag in tag_set
+
+
+def get_translations(langfile):
+    """
+    Return the list of available translations for the current page.
+
+    :param langfile: the path to a lang file, retrieved with get_lang_path()
+    :return: dict, like {'en-US': 'English (US)', 'fr': 'Français'}
+    """
+
+    cache_key = 'translations:%s' % langfile
+    translations = cache.get(cache_key, {})
+
+    if translations:
+        return translations
+
+    for lang in settings.PROD_LANGUAGES:
+        if (lang in product_details.languages and
+                (lang == settings.LANGUAGE_CODE or
+                lang_file_is_active(langfile, lang))):
+            translations[lang] = product_details.languages[lang]['native']
+
+    cache.set(cache_key, translations, settings.DOTLANG_CACHE)
+    return translations
