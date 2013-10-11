@@ -129,39 +129,39 @@ def process_partnership_form(request, template, success_url_name, template_vars=
                 data['retURL'] = ('http://www.mozilla.org/en-US/about/'
                                   'partnerships?success=1')
 
-    if form.is_valid():
+        if form.is_valid():
 
-        data = form.cleaned_data.copy()
+            data = form.cleaned_data.copy()
 
-        subject = 'New partner submission from %s' % data['company']
-        to = ['tw-bd@mozilla.com']
-        cc = ['tw-mktg@mozilla.com']
-        from_ = 'tw-mktg@mozilla.com'
-        reply_to = [data['email']]
-        msg = jingo.render_to_string(request, 'mocotw/emails/notify_bizdev.txt', data)
+            subject = 'New partner submission from %s' % data['company']
+            to = ['tw-bd@mozilla.com']
+            cc = ['tw-mktg@mozilla.com']
+            from_ = 'tw-mktg@mozilla.com'
+            reply_to = [data['email']]
+            msg = jingo.render_to_string(request, 'mocotw/emails/notify_bizdev.txt', data)
 
-        # FIXME Why ?
-        msg = msg.replace('\n', '\r\n')
-        headers = {'Reply-To': ','.join(reply_to)}
+            # FIXME Why ?
+            msg = msg.replace('\n', '\r\n')
+            headers = {'Reply-To': ','.join(reply_to)}
 
-        email = EmailMessage(subject, msg, from_, to, cc=cc, headers=headers)
-        email.send()
+            email = EmailMessage(subject, msg, from_, to, cc=cc, headers=headers)
+            email.send()
 
-        stat = 200
-        success = 1
+            stat = 200
+            success = 1
 
-        if request.is_ajax():
-            return HttpResponse(msg, status=stat)
+    if request.is_ajax():
+        return HttpResponse(msg, status=stat)
 
-        else:
-            # without auto_id set, all id's get prefixed with 'id_'
-            form = WebToLeadForm(auto_id='%s', **form_kwargs)
+    else:
+        # without auto_id set, all id's get prefixed with 'id_'
+        form = WebToLeadForm(auto_id='%s', **form_kwargs)
 
-            template_vars.update(csrf(request))
-            template_vars['form'] = form
-            template_vars['form_success'] = True if ('success' in request.GET) else False
+        template_vars.update(csrf(request))
+        template_vars['form'] = form
+        template_vars['form_success'] = True if ('success' in request.GET) else False
 
-            return l10n_utils.render(request, template, template_vars)
+        return l10n_utils.render(request, template, template_vars)
 
 
 @csrf_protect
