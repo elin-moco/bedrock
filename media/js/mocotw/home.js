@@ -110,8 +110,5 @@ function getLatestEvents() {
         url: json_url,
         dataType: "jsonp",
         success: wpfn_event,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log('errorHI!');
-        }
     });
 }
