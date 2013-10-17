@@ -35,6 +35,10 @@ download_urls = {
                      'nightly/latest-mozilla-aurora-android/en-US/'
                      'fennec-%s.en-US.android-arm.apk' %
                      product_details.mobile_details['alpha_version'],
+    'aurora-mobile-l10n': 'https://ftp.mozilla.org/pub/mozilla.org/mobile/'
+                     'nightly/latest-mozilla-aurora-android-l10n/'
+                     'fennec-%s.zh-TW.android-arm.apk' %
+                     product_details.mobile_details['alpha_version'],
 }
 
 direct_download_urls = {
@@ -200,7 +204,7 @@ def download_firefox(ctx, build='release', small=False, icon=True,
     locale = locale or ctx['request'].locale
     funnelcake_id = ctx.get('funnelcake_id', False)
     dom_id = dom_id or 'download-button-%s-%s' % (platform, build)
-
+    print locale
     def latest(locale):
         if build == 'nightly':
             return latest_nightly_version(locale)
