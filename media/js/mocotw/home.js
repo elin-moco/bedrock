@@ -109,6 +109,6 @@ function getLatestEvents() {
         type: "GET",
         url: json_url,
         dataType: "jsonp",
-        success: wpfn_event,
+        success: wpfn_event
     });
 }
