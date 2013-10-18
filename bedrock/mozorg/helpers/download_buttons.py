@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -292,7 +293,7 @@ def download_firefox(ctx, build='release', small=False, icon=True,
     locale_name = langs[locale]['native'] if locale in langs else locale
 
     data = {
-        'locale_name': locale_name,
+        'locale_name': u'台灣版（繁體中文）',
         'version': version,
         'product': 'firefox-mobile' if mobile else 'firefox',
         'builds': builds,
