@@ -221,6 +221,41 @@ img.right {
 }
 
 
+#screenshot-1 {
+  overflow: hidden;
+  width: 406px;
+  height: 168px;
+  float: right;
+}
+
+.taiwanFlag {
+  content: " ";
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  background: url(/media/img/mocotw/tw_beta/twflag.png);
+}
+
+#myfirefox {
+  h3 {
+    position: relative;
+  }
+  h3:before {
+    .taiwanFlag;
+    left: -15px;
+    top: -15px;
+  }
+}
+nav.menu-bar a {
+  position: relative;
+}
+nav.menu-bar a[href="#myfirefox"]:before {
+  .taiwanFlag;
+  left: -5px;
+  top: -5px;
+}
+
 /* }}} */
 /* {{{ Powerful Personalization */
 
