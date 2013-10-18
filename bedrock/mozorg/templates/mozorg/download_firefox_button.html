@@ -104,7 +104,7 @@
           <a target="_blank" href="http://hg.mozilla.org/mozilla-central/pushloghtml?startdate=48+hours+ago&enddate=now">{{ _('48 小時內的更新') }}</a> |
         {% endif %}
       {% else %}
-        <a target="_blank" class="global-link" href="//{{ MOFO_URL }}/en-US/firefox/all-{{ build }}.html">你也可下載 全球版（繁體中文）</a><br>
+        <a target="_blank" class="global-link" href="{{ url('firefox.all') }}">你也可下載 全球版（繁體中文）</a><br>
 {#        <a target="_blank" href="{{ url('firefox.all') }}">{{ _('Systems &amp; Languages') }}</a> |#}
         <a target="_blank" href="{{ url('firefox.features') }}">台灣版的特色</a> |
         <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/notes">{{ _('What’s New') }}</a> |
