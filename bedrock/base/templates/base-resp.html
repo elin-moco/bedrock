@@ -24,7 +24,7 @@
     <meta property="og:site_name" content="{{ _('Mozilla') }}">
     <meta property="og:locale" content="{{ LANG|replace("-", "_") }}">
     <meta property="og:url" content="{{ settings.CANONICAL_URL + canonical_path }}">
-    <meta property="og:image" content="{% block page_image %}{{ media('img/mozorg/mozilla-256.jpg') }}{% endblock %}">
+    <meta property="og:image" content="{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mozorg/mozilla-256.jpg') }}{% endblock %}">
     <meta property="og:title" content="{{ self.page_title_full() }}">
     <meta property="og:description" content="{{ self.page_desc() }}">
     {% endblock %}
