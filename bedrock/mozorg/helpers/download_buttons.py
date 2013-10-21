@@ -292,8 +292,11 @@ def download_firefox(ctx, build='release', small=False, icon=True,
     langs = product_details.languages
     locale_name = langs[locale]['native'] if locale in langs else locale
 
+    if build not in ('nightly', 'aurora', 'beta'):
+        locale_name = u'台灣版 (繁體中文)'
+
     data = {
-        'locale_name': u'台灣版（繁體中文）',
+        'locale_name': locale_name,
         'version': version,
         'product': 'firefox-mobile' if mobile else 'firefox',
         'builds': builds,
