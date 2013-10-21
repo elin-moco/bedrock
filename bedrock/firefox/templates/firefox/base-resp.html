@@ -22,7 +22,7 @@
 {% endblock %}
 
 {% block extrahead %}
-<meta name="og:image" content="{{ media('img/firefox/firefox-100.jpg?2013-06') }}">
+<meta name="og:image" content="{{ settings.CANONICAL_URL }}{{ media('img/firefox/firefox-100.jpg?2013-06') }}">
 {% endblock %}
 
 {% block body_attrs %}{{ super() }} data-latest-firefox="{{ latest_firefox_version }}" data-esr-versions="{{ esr_firefox_versions }}"{% endblock %}
