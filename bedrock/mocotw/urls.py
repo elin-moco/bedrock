@@ -7,7 +7,7 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form
+from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -128,5 +128,6 @@ urlpatterns = patterns(
 
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
 
+    url('^api/newsletter/subscriptions/count$', subscription_count),
 
 )

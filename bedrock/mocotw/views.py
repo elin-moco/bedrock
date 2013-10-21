@@ -2,13 +2,16 @@
 import base64
 import urllib2
 from BeautifulSoup import BeautifulSoup
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
 from django.views.static import serve
 from bedrock.mocotw.forms import NewsletterForm
+from bedrock.mocotw.models import Newsletter
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe, track_page
 from bedrock.newsletter.forms import NewsletterFooterForm
+from bedrock.settings import API_SECRET
 from lib import l10n_utils
 
 
@@ -109,3 +112,11 @@ def google_form(request, template='mocotw/reg/gform.html', formkey=None):
         'gform': gform,
     }
     return l10n_utils.render(request, template, context)
+
+
+def subscription_count(request):
+    if 'secret' in request.GET and request.GET['secret'] == API_SECRET:
+        count = Newsletter.objects.filter(u_status=1).exclude(u_email__isnull=True).exclude(u_email__exact='').count()
+    else:
+        raise PermissionDenied
+    return HttpResponse(str(count), content_type='application/json')
