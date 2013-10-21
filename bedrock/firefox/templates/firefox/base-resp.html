@@ -11,7 +11,7 @@
 
 {% block page_title_prefix %}Firefox 瀏覽器 － {% endblock %}
 {% block page_desc %}Mozilla Firefox 官方中文版下載，流暢、快速、個性化，提供無與倫比的瀏覽體驗，適用於Windows、Mac、Linux 及 Android 行動系統。{% endblock %}
-{% block page_image %}{{ media('img/firefox/firefox-256.jpg') }}{% endblock %}
+{% block page_image %}{{ settings.CANONICAL_URL + media('img/firefox/firefox-256.jpg') }}{% endblock %}
 {% block page_favicon %}{{ media('img/firefox/favicon.ico?2013-08') }}{% endblock %}
 
 {% block facebook_id %}14696440021{# facebook.com/Firefox #}{% endblock %}
@@ -21,9 +21,6 @@
   {{ css('firefox-resp') }}
 {% endblock %}
 
-{% block extrahead %}
-<meta name="og:image" content="{{ request.build_absolute_uri() + media('img/firefox/firefox-100.jpg?2013-06') }}">
-{% endblock %}
 
 {% block body_attrs %}{{ super() }} data-latest-firefox="{{ latest_firefox_version }}" data-esr-versions="{{ esr_firefox_versions }}"{% endblock %}
 
