@@ -9,6 +9,7 @@ import re
 from django.template.defaultfilters import addslashes
 
 from django.utils.functional import lazy
+from bedrock.sandstone.settings import MOCO_URL
 
 from funfactory.settings_base import *  # noqa
 
@@ -73,7 +74,7 @@ ALLOWED_HOSTS = [
 ]
 
 # The canonical, production URL without a trailing slash
-CANONICAL_URL = 'http://www.mozilla.org'
+CANONICAL_URL = 'http://' + MOCO_URL
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ssssshhhhh'
