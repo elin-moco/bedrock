@@ -69,3 +69,5 @@ GA_ACCOUNT_CODE = ''
 SESSION_COOKIE_SECURE = False
 
 NEWSLETTER_PRESEND_LIST = ('no-reply@mozilla.com')
+
+API_SECRET = 'hush'

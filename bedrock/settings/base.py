@@ -983,3 +983,5 @@ MOBILIZER_LOCALE_LINK = {
     'gr': 'https://wiki.mozilla.org/Mobilizer/MobilizerGreece/',
     'cs': 'https://wiki.mozilla.org/Mobilizer/MobilizerCzechRepublic/'
 }
+
+API_SECRET = 'hush'
