@@ -84,7 +84,7 @@
           </ul>
 
           <div class="desktop download-button-wrapper">
-            {{ download_firefox(force_direct=true) }}
+            {{ download_firefox() }}
           </div>
           <div class="mobile download-button-wrapper">
             {{ download_firefox(mobile=True) }}
@@ -97,7 +97,7 @@
               <li><a href="{{ url('firefox.central') }}">{{_('Learn more about Firefox for desktop')}}</a></li>
               <li><a href="https://support.mozilla.org/products/firefox">{{_('Need help?')}}</a></li>
               <li><a href="{{ url('mozorg.mobile') }}">{{_('Looking for mobile?')}}</a></li>
-              <li><a href="{{ url('firefox.all') }}">{{_('Download a fresh copy')}}</a></li>
+              <li><a href="{{ url('firefox.download') }}">{{_('Download a fresh copy')}}</a></li>
             </ul>
           </div>
           <div class="android-latest-links-wrapper latest-links-wrapper">

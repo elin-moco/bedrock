@@ -134,7 +134,7 @@
         function show_scene_anim(scene) {
             show_scene(scene, true);
         }
-
+/*
         // Pull download link from the download button and add to the
         // 'click here' link.
         // TODO: Remove and generate link in bedrock.
@@ -192,7 +192,7 @@
                 }
             }
         });
-
+*/
         if (hash_change && !no_scene2) {
             $(window).on('hashchange', function() {
                 if (window.location.hash === '#download-fx') {
