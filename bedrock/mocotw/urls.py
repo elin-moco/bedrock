@@ -51,7 +51,8 @@ urlpatterns = patterns(
     redirect(r'^firefox/aurora/$', '//www.mozilla.org/en-US/firefox/aurora/'),
 
     redirect(r'^products/download/$', '/firefox/channel'),
-    redirect(r'^mobile/$', '/firefox/mobile/features'),
+    redirect(r'^firefox/central/$', '/firefox/mobile/features', name='firefox.central'),
+    redirect(r'^mobile/$', '/firefox/mobile/features', name='mozorg.mobile'),
     redirect(r'^mobile/home/$', '/firefox/mobile/features'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
     redirect(r'^join_us/$', '/newsletter/subscribe'),
