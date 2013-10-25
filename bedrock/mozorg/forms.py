@@ -337,6 +337,9 @@ class WebToLeadForm(forms.Form):
             }
         )
     )
+
+    captcha = ReCaptchaField(attrs={'theme': 'blackglass'})
+
     superpriority = forms.BooleanField(widget=HoneyPotWidget, required=False)
     # uncomment below to debug salesforce
     # debug = forms.IntegerField(required=False)
@@ -354,7 +357,7 @@ class WebToLeadForm(forms.Form):
             widget=forms.SelectMultiple(
                 attrs={
                     'title': _lazy(u'Interest'),
-                    'size': 7
+                    'size': 4
                 }
             )
         )
