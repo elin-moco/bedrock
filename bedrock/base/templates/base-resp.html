@@ -14,7 +14,7 @@
     {% block shared_meta %}
     {#- Please sync this block with the base.html template.
         Because of blocks, we cannot use an include here. -#}
-    <title>{% block page_title_full %}{% block page_title_prefix %}{% endblock %}{% block page_title %}{% endblock %}{% block page_title_suffix %} － Mozilla Taiwan{% endblock %}{% endblock %}</title>
+    <title>{% block page_title_full %}{% block page_title_prefix %}{% endblock %}{% block page_title %}{% endblock %}{% endblock page_title_full %}{% block page_title_suffix %} － Mozilla Taiwan{% endblock %}</title>
     <meta content="ClhuMhUFrYEw-zfAsWNx5l7JzCyXoFESHZhnirdMcsA" name="google-site-verification">
     <meta content="0DCEE643E9ACDEE9FDC2E8036E0CFB78" name="msvalidate.01">
     <meta name="description" content="{% block page_desc %}{% endblock %}">

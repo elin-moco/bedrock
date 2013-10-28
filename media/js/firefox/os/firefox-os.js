@@ -22,6 +22,14 @@
         }
       ]
     },
+    "de": {
+      "partner": [
+        {
+          "name": "congstar",
+          "url": "http://aktion.congstar.de/firefox-os"
+        }
+      ]
+    },
     "es": {
       "partner": [
         {
@@ -35,6 +43,14 @@
         {
           "name": "T-Mobile",
           "url": "http://www.t-mobile.pl/pl/firefox"
+        }
+      ]
+    },
+    "br": {
+      "partner": [
+        {
+          "name": "Vivo",
+          "url": "http://www.vivo.com.br/firefox"
         }
       ]
     },

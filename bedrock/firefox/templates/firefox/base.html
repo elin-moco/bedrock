@@ -8,7 +8,6 @@
 
 {% block body_class %}sky{% endblock %}
 
-
 {% block page_title_prefix %}Firefox 瀏覽器 － {% endblock %}
 {% block page_desc %}Mozilla Firefox 官方中文版下載，流暢、快速、個性化，提供無與倫比的瀏覽體驗，適用於Windows、Mac、Linux 及 Android 行動系統。{% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL + media('img/firefox/firefox-256.jpg') }}{% endblock %}
@@ -20,7 +19,6 @@
 {% block site_css %}
   {{ css('firefox') }}
 {% endblock %}
-
 
 {% block site_header_logo %}
 <h2><a href="{{ url('mozorg.home') }}"><img src="{{ media('img/firefox/template/header-logo.png') }}" alt="Mozilla Firefox" width="130" height="49" data-inverse-src="{{media('img/firefox/template/header-logo-inverse.png') }}"></a></h2>
