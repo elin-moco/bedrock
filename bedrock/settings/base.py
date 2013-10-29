@@ -456,10 +456,6 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.ui.datepicker-zh-TW.js',
             'js/mocotw/community-student-workshop.js',
         ),
-        'collusion': (
-            'js/collusion/collusion.js',
-            'js/libs/jquery.validate.js',
-        ),
         'lightbeam': (
             'js/lightbeam/d3.v3.min.js',
             'js/lightbeam/rAF.js',
