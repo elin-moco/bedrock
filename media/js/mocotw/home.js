@@ -13,7 +13,7 @@ $(function () {
 });
 
 function techjson (type,rule,count,words,target){
-  var techUrl='https://tech.mozilla.com.tw/api/get_recent_posts/?&count=1';
+  var techUrl='//tech.mozilla.com.tw/api/get_recent_posts/?&count=1';
   $.when(
     $.ajax({
     type: "GET",
@@ -40,7 +40,7 @@ function techjson (type,rule,count,words,target){
 }
 function wpJson(type,rule,count,words,target,tech_reuslt){
 
-	var blogUrl="https://blog.mozilla.com.tw/api/get_recent_posts/?&count=4";
+	var blogUrl="//blog.mozilla.com.tw/api/get_recent_posts/?&count=4";
 	//var json_url=blogUrl+"api/"+type+"?"+rule+"&count="+count;
 	var items = [];
 	$.ajax({
@@ -103,7 +103,7 @@ function wpfn_event(results) {
 }
 
 function getLatestEvents() {
-    var blogUrl = "https://blog.mozilla.com.tw/";
+    var blogUrl = "//blog.mozilla.com.tw/";
     var json_url = blogUrl + "comm-json?type=eventmulti&icount=5";
     $.ajax({
         type: "GET",
