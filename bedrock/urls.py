@@ -52,7 +52,7 @@ sitemaps = {
          '/newsletter/2012-11/', '/newsletter/2012-10/', '/newsletter/2012-09/', '/newsletter/2012-08/', ],
         0.4, 'monthly'),
     'misc': ViewsSitemap(
-        ['mocotw.news', 'mocotw.sumo', 'newsletter.index'],
+        ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about'],
         0.4, 'monthly'),
 }
 
