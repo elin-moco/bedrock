@@ -60,7 +60,7 @@
     {% endblock %}
   </head>
 
-  <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} sky lang-{{ LANG }}"{% block body_attrs %}{% endblock %}>
+  <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} sky lang-{{ LANG }} {% block body_extra_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
    <div id="body-wrapper" class="body-wrapper-default">
     {% include 'sandstone/tabzilla.html' %}
     <div id="strings" {% block string_data %}{% endblock %}></div>
