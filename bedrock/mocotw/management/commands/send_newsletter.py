@@ -9,6 +9,7 @@ from django.core.management.base import NoArgsCommand, BaseCommand
 from email.header import Header
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+import sys
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars
 import premailer
 from bedrock.settings import NEWSLETTER_PRESEND_LIST
@@ -17,6 +18,18 @@ import commonware.log
 log = commonware.log.getLogger('newsletter')
 
 
+class Unbuffered:
+
+    def __init__(self, stream):
+        self.stream = stream
+
+    def write(self, data):
+        self.stream.write(data)
+        self.stream.flush()
+
+    def __getattr__(self, attr):
+        return getattr(self.stream, attr)
+
 class Command(BaseCommand):
     help = 'Send Newsletter'
     option_list = NoArgsCommand.option_list
@@ -24,7 +37,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.options = options
         testing = True if 1 < len(args) else False
-
+        sys.stdout = Unbuffered(sys.stdout)
         issue_number = args[0]
         context = read_newsletter_context(issue_number)
         # context['imgpath_prefix'] = 'cid:'
@@ -66,12 +79,12 @@ class Command(BaseCommand):
         #     mail.attach(msgImage)
 
         try:
-            mail.send()
-            self.stderr.write('Sent newsletter to %s.\n' % to_mail)
+            # mail.send()
+            print('Sent newsletter to %s.' % to_mail)
         except MessageError as e:
-            self.stderr.write('Failed to send to %s\n' % to_mail, e)
+            print('Failed to send to %s.' % to_mail, e)
         except RuntimeError as e:
-            self.stderr.write('Unexpected error when sending to %s\n' % to_mail, e)
+            print('Unexpected error when sending to %s.' % to_mail, e)
 
     @staticmethod
     def named(email, name):
