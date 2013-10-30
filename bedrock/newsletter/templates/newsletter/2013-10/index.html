@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html xml:lang="zh-TW" lang="zh-TW">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="{{ banner.content }}">
+<title>Firefox 電子報第 {{ params.volume }} 期 － {{ params.title }} － Mozilla Taiwan</title>
+<style>
+* {
+  font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
+  letter-spacing: 0.06em;
+}
+
+body {
+  margin: 0;
+  background-color: #CAE1F4;
+  background: url("http://{{ MOCO_URL }}/media/img/sandstone/bg-gradient-sky.png") repeat-x scroll 0 0px, url("http://{{ MOCO_URL }}/media/img/sandstone/grain.png") repeat scroll 0 0px, none repeat scroll 0 0 rgb(238, 238, 238);
+}
+
+table, thead, tbody, tr, td {
+  border-collapse: collapse;
+  padding: 0;
+}
+
+a, a img {
+  outline: none;
+}
+
+img {
+  border: 0;
+}
+
+a, a p, a p b {
+  text-decoration: none;
+  border-width: 0;
+}
+
+b, p b {
+  color: #000000;
+}
+
+td, p, a {
+  color: #4D4E53;
+}
+
+table.container {
+  width: 700px;
+  margin: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+a.web-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+td.header-tip {
+  text-align: center;
+}
+td.header-tip small{
+  color: #808080;
+  text-decoration: underline;
+}
+table.header {
+  margin: 0 auto 8px auto;
+  width: 653px;
+  font-weight: bold;
+  color: #4D4E53;
+  font-size: 12px;
+}
+
+table.banner, table.content, table.events, table.links, table.quiz {
+  width: 653px;
+  margin: 0 auto 0 auto;
+}
+
+table.banner td.main {
+  padding-right: 11px;
+  font-size: 16px;
+  line-height: 21px;
+}
+table.banner td.main a{
+  display: block;
+}
+table.banner td {
+  vertical-align: top;
+}
+
+table.banner b {
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+table.social-share {
+  background: #ffffff;
+  width: 140px;
+  height: 138px;
+  margin-top: 8px;
+  margin-bottom: 13px;
+}
+
+table.social-share td {
+  font-size: 13px;
+  vertical-align: top;
+  padding-left: 8px;
+  line-height: 25px;
+}
+
+table.social-share td a {
+  display: block;
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+table.social-share td img {
+  vertical-align: middle;
+  padding: 0 6px 0 0;
+  margin: 0;
+}
+
+table.social-share td.head {
+  height: 25px;
+  border-bottom: 1px dotted #4D4E53;
+  font-weight: bold;
+}
+table.social-share td.link {
+  height: 28px;
+}
+
+td.subscribe img{
+  width: 140px;
+  height: 36px;
+}
+
+td.subscribe a {
+  color: #ffffff;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+table.header td.logo {
+  padding-top: 7px;
+}
+
+table.header td.issue {
+  text-align: right;
+  padding-top: 7px;
+}
+
+span.volumn {
+  font-size: 42px;
+  line-height: 24px;
+}
+
+td.section-header {
+  text-align: center;
+}
+td.section-header img{
+  width: 653px;
+  height: 23px;
+  padding-top: 23px;
+  padding-bottom: 12px;
+}
+
+td.article-box,
+td.event-box {
+  width: 194px;
+  vertical-align: top;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+td.article-box p,
+td.event-box p {
+  margin: 0;
+}
+
+td.article-box a.article-link,
+td.event-box a.event-link {
+  display: block;
+  height: 215px;
+}
+
+td.padright {
+  padding-right: 35px;
+}
+
+td.padbottom {
+  padding-bottom: 18px;
+}
+
+td.padright2 {
+  padding-right: 9px;
+}
+
+td.padbottom2 {
+  padding-bottom: 9px;
+}
+
+td.article-box img,
+td.event-box img {
+  width: 194px;
+  height: 128px;
+}
+
+td p.quiz {
+  color: #000000;
+  font-size: 16px;
+  line-height: 21px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+td ol.answer {
+  color: #000000;
+  font-size: 16px;
+  line-height: 21px;
+  list-style-type: upper-alpha;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+td ol.answer a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+td p.deadline {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 23px;
+}
+
+td img.banner-more {
+  display: block;
+  float: right;
+  text-align: right;
+  color: #ffffff;
+  font-size: 10px;
+  margin-top: -21px;
+  margin-bottom: 0;
+  padding-right: 7px;
+  width: 40px;
+  height: 17px;
+  line-height: 17px;
+}
+
+td img.more {
+  display: block;
+  float: right;
+  text-align: right;
+  color: #ffffff;
+  font-size: 8px;
+  margin-top: -6px;
+  margin-bottom: 0;
+  padding-right: 5px;
+  width: 30px;
+  height: 14px;
+  line-height: 13px;
+}
+
+table.footer {
+  background: #ffffff;
+  width: 100%;
+}
+
+table.footer-content {
+  width: 653px;
+  margin: auto;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+td.mozilla-col {
+  padding-right: 20px;
+}
+td.mozilla-col img {
+  width: 80px;
+  height: 20px;
+}
+td.social-col, td.about-col {
+  vertical-align: top;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  text-wrap: none;
+}
+td.social-col {
+  padding-right: 8px;
+}
+table.footer td.friend,
+table.footer table.social-media td,
+table.footer td.official,
+table.footer td.contact,
+table.footer td.license {
+  padding-bottom: 8px;
+  padding-right: 12px;
+}
+table.footer td.license {
+  font-size: 10px;
+}
+</style>
+{% if request %}
+  {% include 'includes/google-analytics.html' %}
+{% endif %}
+</head>
+<body>
+<table class="container">
+  <tr>
+    <td>
+        <table class="header">
+          {% if not request %}
+          <tr>
+            <td class="header-tip" colspan="2">
+              <a class="web-link" href="{{ NEWSLETTER_URL }}{{ params.tracking_code }}">
+                <small>無法正常顥示？請點此開啟網頁版</small>
+              </a>
+            </td>
+          </tr>
+          {% endif %}
+          <tr>
+            <td class="logo">
+              <a class="web-link" href="http://{{ MOCO_URL }}{{ params.tracking_code }}">
+                <img src="{{ NEWSLETTER_URL }}images/header.png{{ '?vol=%d' % params.volume if not request else '' }} ">
+              </a>
+            </td>
+            <td class="issue">
+              <a class="web-link" href="{{ NEWSLETTER_URL }}{{ params.tracking_code }}">
+              Vol. <span class="volumn">{{ params.volume }}</span><br>
+              {{ params.year }}年{{ params.month }}月號
+              </a>
+            </td>
+          </tr>
+        </table>
+      <table class="banner">
+        <tr>
+          <td class="main">
+            <a href="{{ banner.link }}{{ params.tracking_code }}" target="_blank">
+              <img src="{{ NEWSLETTER_URL }}images/mainpic.png"/>
+              <b>
+                {{ banner.content }}
+              </b>
+              <img src="{{ NEWSLETTER_URL }}images/button-mainmore-withtext.png" class="banner-more"/>
+            </a>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  <a href="http://{{ MOCO_URL }}/firefox/download/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-downloadfirefox.png"/></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="social-share">
+                    <tr>
+                      <td class="head">分享電子報至</td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ NEWSLETTER_URL|urlencode }}&p[images][0]={{ (NEWSLETTER_URL + 'images/mainpic.png')|urlencode }}&p[title]={{ params.title|urlencode }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-sharefb.png"/>Facebook</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="https://plus.google.com/share?url={{ NEWSLETTER_URL|urlencode }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-sharegoogle.png"/>Google+</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="http://www.plurk.com/?qualifier=shares&status={{ (NEWSLETTER_URL + ' (' + params.title + ')')|urlencode }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-shareplurk.png"/>Plurk</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="mailto:?subject={{ params.title }}&body=詳見 Firefox 電子報第 {{ params.volume }} 期：{{ NEWSLETTER_URL }}"><img src="{{ NEWSLETTER_URL }}images/button-sharemail.png"/>Email</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="subscribe">
+                  <a href="http://{{ MOCO_URL }}/join_us/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/button-downloadnewsletter-withtext.png"/></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="{{ NEWSLETTER_URL }}images/menu-news.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="content articles">
+        {% for article in articles %}
+          {% if 1 == loop.index % 3 %}
+            <tr>
+          {% endif %}
+        <td class="article-box {{ 'padright' if 0 != loop.index % 3 }} {{ 'padbottom' if loop.index <= 6 }}">
+          <a class="article-link" target="_blank" href="{{ article.link }}{{ params.tracking_code }}">
+            <img src="{{ NEWSLETTER_URL }}images/subpic{{ loop.index }}-tagged.png"/>
+            <p>
+              <b>{{ article.title }} » </b>{{ article.content }}
+            </p>
+          </a>
+          <a target="_blank" href="{{ article.link }}{{ params.tracking_code }}">
+            <img src="{{ NEWSLETTER_URL }}images/button-submore-withtext.png" class="more"/>
+          </a>
+        </td>
+        {% if 0 == loop.index % 3 %}
+          </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="{{ NEWSLETTER_URL }}images/menu-events.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="events">
+        <tr>
+          {% for event in events %}
+            <td class="event-box  {{ 'padright' if 0 != loop.index % 3 }}">
+              <a class="event-link" target="_blank" href="{{ event.link }}{{ params.tracking_code }}">
+                <img src="{{ NEWSLETTER_URL }}images/event{{ loop.index }}.png"/>
+                <p>
+                  <b>{{ event.title }} » </b>{{ event.content }}
+                </p>
+              </a>
+              <a target="_blank" href="{{ event.link }}{{ params.tracking_code }}">
+                <img src="{{ NEWSLETTER_URL }}images/button-submore-withtext.png" class="more"/>
+              </a>
+            </td>
+          {% endfor %}
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="{{ NEWSLETTER_URL }}images/menu-links.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="links">
+        <tr>
+          <td class="padright2 padbottom2"><a href="http://{{ MOCO_URL }}/community/student/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-school.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="http://{{ TECH_URL }}/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-blog.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="http://{{ MOCO_URL }}/community/student/workshop/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-workshop.png"/></a></td>
+          <td class="padbottom2"><a href="http://{{ FFCLUB_URL }}{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-people.png"/></a></td>
+        </tr>
+        <tr>
+          <td class="padright2"><a href="http://{{ MOCO_URL }}/sumo{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-sumo.png"/></a></td>
+{#          <td class="padright2"><a href="http://{{ FFCLUB_URL }}/events/attack-on-web/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-app.png"/></a></td>#}
+          <td class="padright2"><a href="http://{{ MOCO_URL }}/firefoxflicks/{{ params.tracking_code }}" target="_blank"><img src="{{ NEWSLETTER_URL }}images/icon-firefoxflicks.png"/></a></td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="{{ NEWSLETTER_URL }}images/menu-quiz.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="quiz">
+        <tr>
+          <td>
+            <p class="quiz">
+              {{ quiz.content }}
+            </p>
+            <ol class="answer">
+              {% for answer in quiz.answers %}
+                <li><a href="mailto:tw-mktg@mozilla.com?subject=電子報有獎徵答&body={{ 'ABCDE'[loop.index - 1] }}. {{ answer }}">{{ answer }}</a></li>
+              {% endfor %}
+            </ol>
+            <p class="deadline">
+              請<b>點選</b>一個上述的正確答案並將它寄給我們。<br>
+              我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！截止日期 {{ quiz.deadline }}。
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+{% if not request %}
+<img src="{{ NEWSLETTER_URL }}email.gif"/>
+{% endif %}
+<table class="footer">
+  <tr>
+    <td>
+      <table class="footer-content">
+        <tr>
+          <td class="mozilla-col">
+            <a href="http://mozilla.org/en-US/" target="_blank">
+              <img style="border:0px;" alt="mozilla" src="http://{{ MOCO_URL }}/media/img/sandstone/footer-mozilla.png">
+            </a>
+          </td>
+          <td class="social-col">
+            <table>
+              <tr>
+                <td class="friend">與我們為友</td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="social-media">
+                    <tr>
+                      <td><a href="https://www.facebook.com/MozillaTaiwan" target="_blank">Facebook</a></td>
+                      <td><a href="https://plus.google.com/u/0/114653167240123163859/posts" target="_blank">Google+</a></td>
+                      <td><a href="http://plurk.com/MozillaTaiwan" target="_blank">Plurk</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
+                      <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
+                      <td><a href="http://mozilla.com.tw/join_us/{{ params.tracking_code }}" target="_blank">電子報</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="about-col">
+            <table>
+              <tr>
+                <td class="official"><a href="http://{{ MOCO_URL }}{{ params.tracking_code }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="contact">聯繫我們：<a href="mailto:tw-mktg@mozilla.com">tw-mktg@mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="license">除另有註明外，本站內容皆採用<br>
+                  <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">創用 CC 姓名標示—相同方式分享條款 3.0</a> 或更新版本授權大眾使用。
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

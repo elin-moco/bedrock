@@ -44,7 +44,7 @@ class Command(BaseCommand):
         image.save(path + new_image)
 
     def add_category_flag(self, path, article_number, category):
-        background = Image.open(path + 'subpic%s.jpg' % article_number)
+        background = Image.open(path + 'subpic%s.png' % article_number)
         foreground = Image.open(path + 'tag-%s.png' % category)
         background.paste(foreground, (0, 0), foreground)
-        background.save(path + 'subpic%s-tagged.jpg' % article_number)
+        background.save(path + 'subpic%s-tagged.png' % article_number)

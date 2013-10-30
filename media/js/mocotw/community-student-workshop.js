@@ -1,5 +1,6 @@
 $(function () {
-
+    var blogsApiUrl = '//blog.mozilla.com.tw/api/get_tag_posts?tag=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true';
+    var eventsApiUrl = '//blog.mozilla.com.tw/api/get_posts?post_type=event&scope=all&s=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true';
     var events = [
         { Date: new Date("11/30/2013") },
         { Date: new Date("10/26/2013") },

@@ -1,0 +1,97 @@
+[Firefox OS 電子報 Vol. {{params.volume}} - {{params.year}}年{{params.month}}月號]
+({{ NEWSLETTER_URL }}{{ params.tracking_code }})
+
+[{{ banner.content }}]
+({{ banner.link }}{{ params.tracking_code }})
+
+
+[Firefox 免費下載]
+(http://{{ MOCO_URL }}/firefox/download/{{ params.tracking_code }})
+
+
+分享電子報至
+
+[Facebook]
+(http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ NEWSLETTER_URL|urlencode }}&p[images][0]={{ (NEWSLETTER_URL + 'images/mainpic.jpg')|urlencode }}&p[title]={{ params.title|urlencode }})
+[Google+]
+(https://plus.google.com/share?url={{ NEWSLETTER_URL|urlencode }})
+[Plurk]
+(http://www.plurk.com/?qualifier=shares&status={{ (NEWSLETTER_URL + '(' + params.title + ')')|urlencode }})
+[Email]
+(mailto:?subject={{ params.title }}&body=詳見 Firefox 電子報第 {{ params.volume }} 期：{{ NEWSLETTER_URL }})
+
+[訂閱電子報](http://{{ MOCO_URL }}/join_us/{{ params.tracking_code }})
+
+
+最新消息
+
+{% for article in articles %}
+[{{article.title}}]({{article.link}}{{ params.tracking_code }})
+{{article.content}}
+[more]({{article.link}}{{ params.tracking_code }})
+
+{% endfor %}
+
+
+近期活動
+
+{% for event in events %}
+[{{ event.title }}]({{ event.link }}{{ params.tracking_code }})
+{{ event.content }}
+[more]({{ event.link }}{{ params.tracking_code }})
+
+{% endfor %}
+
+
+與我同行
+
+[校園大使](http://{{ MOCO_URL }}/community/student/{{ params.tracking_code }})
+
+[謀智台客](http://{{ TECH_URL }}/{{ params.tracking_code }})
+
+[狐狐工作坊](http://{{ MOCO_URL }}/community/student/workshop/{{ params.tracking_code }})
+
+[活力軍](http://{{ FFCLUB_URL }}{{ params.tracking_code }})
+
+[支援中心](http://{{ MOCO_URL }}/sumo{{ params.tracking_code }})
+
+{# [App校園競賽](http://{{ FFCLUB_URL }}/events/attack-on-web/{{ params.tracking_code }}) #}
+
+[Firefox Flicks 全球微影片競賽](http://{{ MOCO_URL }}/firefoxflicks/{{ params.tracking_code }})
+
+
+有獎徵答
+
+{{ quiz.content|html2text }}{% for answer in quiz.answers %}
+{{ 'ABCDE'[loop.index - 1] }}. {{ answer }}
+{% endfor %}
+
+請將上述正確答案寄給我們，並在標題註明「電子報有獎徵答」。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！
+
+
+[mozilla](http://mozilla.org/en-US/)
+
+
+與我們為友
+
+[Facebook](https://www.facebook.com/MozillaTaiwan)
+
+[Google+](https://plus.google.com/u/0/114653167240123163859/posts)
+
+[Plurk](http://plurk.com/MozillaTaiwan)
+
+[Youtube](http://www.youtube.com/user/MozillaTaiwan)
+
+[Flickr](http://www.flickr.com/photos/mozillataiwan/)
+
+[電子報](http://mozilla.com.tw/join_us/{{ params.tracking_code }})
+
+
+Mozilla Taiwan | 美商謀智 | mozilla.com.tw
+
+[聯繫我們](mailto:tw-mktg@mozilla.com)
+
+除另有註明外，本站內容皆採用
+[創用 CC 姓名標示—相同方式分享條款 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+或更新版本授權大眾使用。
+
