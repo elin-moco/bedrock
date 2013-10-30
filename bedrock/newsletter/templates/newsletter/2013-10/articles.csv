@@ -1,20 +1,19 @@
 "期號","類別
 ","連結文字","href (email)","href (web)","摘要文字","摘要字數"
-1310,"banner","Lightbeam for Firefox 附加元件介紹","","http://blog.mozilla.com.tw/posts/4043","『Lightbeam for Firefox 』以圖像化的方式呈現所有人在 Web 上被追蹤的路徑，提供透明化的互動資訊，協助使用者更了解自身周遭的 Web 環境。",82
+1310,"banner","Lightbeam for Firefox 附加元件介紹","","http://mozilla.com.tw/lightbeam/","『Lightbeam for Firefox 』以圖像化的方式呈現所有人在 Web 上被追蹤的路徑，提供透明化的互動資訊，協助使用者更了解自身周遭的 Web 環境。",82
 1310,"mozilla","讓自己登上舊金山的 Mozillians 榮譽碑吧！","","http://blog.mozilla.com.tw/posts/4016/add-your-name-to-the-monument-to-mozillians-in-san-francisco","不論你之前曾為 Mozilla 做出貢獻，或現在仍在為 Web 的未來盡心盡力，都有機會登上 Mozllians 榮譽碑，成為 Firefox 永恆的一部分。",79
-1310,"firefox","共享 Firefox 時亦能保護個人瀏覽隱私","","http://blog.mozilla.com.tw/posts/4061/","新版 Firefox for Android 提供「訪客瀏覽 (Guest 
-Browsing)」功能。使用者能和親友共享行動裝置上的 Firefox，卻又不需擔心他人看到自己的隱私資訊。",94
+1310,"firefox","共享 Firefox 時亦能保護個人瀏覽隱私","","http://blog.mozilla.com.tw/posts/4061/","新版 Firefox for Android 提供「訪客瀏覽」功能。使用者能和親友共享行動裝置上的 Firefox，卻又不需擔心他人看到自己的隱私資訊。",76
 1310,"firefox os","Telefónica Vivo 於巴西推出 Firefox OS 智慧型手機","","http://blog.mozilla.com.tw/posts/4005/telefonica-vivo-launches-firefox-os-smartphones-in-brazil","Telefónica Vivo 將於巴西銷售全新 LG Fireweb 與 Alcatel One Touch Fire 2 款 Firefox OS 手機。",79
-1310,"firefox os","Mozilla 與合作夥伴將展開第二波 Firefox OS 全球市場上市計畫","","http://blog.mozilla.com.tw/posts/3925/ffos-wave-2-announcement","Mozilla 與合作夥伴即將展開第二波 Firefox OS 
-全球市場上市計劃，此次合作的電信業者有西班牙電信、德國電信與挪威電信！",68
+1310,"firefox os","Mozilla 與合作夥伴將展開第二波 Firefox OS 全球市場上市計畫","","http://blog.mozilla.com.tw/posts/3925/ffos-wave-2-announcement","Mozilla 與合作夥伴將展開第二波 Firefox OS 
+全球市場上市計劃，此次合作的電信業者有西班牙電信、德國電信與挪威電信！",67
 1310,"firefox os","Firefox OS 測試流程大揭秘","","http://tech.mozilla.com.tw/posts/3060/","Firefox OS 從啓動到正式發表只花了約一年的時間，開發效率著實驚人。此文將帶你一窺 Firefox OS 開發/測試流程的奧祕。",68
 1310,"firefox os","Firefox OS 1.1 新增功能、提升效能、支援更多語言","","http://blog.mozilla.com.tw/posts/3932/","新版 Firefox OS 新增多項功能、支援更多語言，並大幅提升了整體效能。",39
 1310,"firefox os","Firefox OS 的亞洲開發者現可自 eBay 訂購 ZTE Open","","http://blog.mozilla.com.tw/posts/3959/3959","Firefox OS 手機 ZTE Open 已擴大販售運送範圍至更多國家，包括台灣。",43
-1310,"firefox","Firefox 開發者工具與 Firebug","","http://blog.mozilla.com.tw/posts/3994/","Firebug 現已具備 console API、DOM 視覺強化功能，並能即時編輯 (Inplace editing) 樣式。",64
+1310,"firefox","Firefox 開發者工具與 Firebug","","http://blog.mozilla.com.tw/posts/3994/","Firebug 現已具備 console API、DOM 視覺強化功能，並能即時編輯 (Inplace editing) 樣式，工作團隊將持續提升系統，讓其功能更趨完備。",85
 1310,"firefox os","Firefox OS App Manager 新增為 Firefox 26 之開發者工具","","http://blog.mozilla.com.tw/posts/3965/","『App Manager』可直接替 Firefox OS App 進行除錯與修正，並立即顯示結果在 Firefox OS 模擬器或裝置上。",69
 1310,"event","『Firefox OS 讓你盡情享受每一刻活動』投票階段火熱進行中！ ","","http://firefox.club.tw/campaign/every-moment/wall/","參與活動投票，就有機會獲得 Firefox 獨家好禮！",27
-1310,"event","活動回顧：2013 Mozilla Summit 活動實況剪影","","http://blog.mozilla.com.tw/posts/3947/2013-mozilla-summit-recap","2013 Mozilla Summit 圓滿落幕。Mozillians 群聚一堂、互相交流、彼此啟發，也對為「開放的網路」貢獻心力更加堅定了意志與信念。",76
-1310,"event","活動回顧：十月狐狐工作坊花絮 – 午後的快意分享 Part II","","http://blog.mozilla.com.tw/posts/4070/sharing_day_part-ii","Firefox 校園大使輪番上陣以五分鐘進行主題式分享，及附加元件開發者 QCL 為大家帶來「快速打造 APP 經驗談」，現場氣氛火熱高潮不斷！",72
+1310,"event","活動回顧：2013 Mozilla Summit 活動實況剪影","","http://blog.mozilla.com.tw/posts/3947/2013-mozilla-summit-recap","Summit 圓滿落幕，Mozillians 群聚一堂、互相交流、彼此啟發，也對為「開放的網路」貢獻心力更加堅定了意志與信念。",63
+1310,"event","活動回顧：十月狐狐工作坊花絮 – 午後的快意分享 Part II","","http://blog.mozilla.com.tw/posts/4070/sharing_day_part-ii","大使輪番上陣以五分鐘進行主題式分享，及附加元件開發者 QCL 為大家帶來「快速打造 APP 經驗談」，現場氣氛火熱高潮不斷！",62
 1310,"quiz","Mozilla 與 Ford 基金會共同推出，以圖像化的方式呈現所有人在 Web 上被追蹤的路徑，協助使用者更了解自身周遭 Web 環境的附加元件為何?","","","",0
 1310,"answer","Firefox OS App Manager ","","","",0
 1310,"answer","Lightbeam for Firefox","","","",0
