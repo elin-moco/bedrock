@@ -102,12 +102,13 @@ urlpatterns = patterns(
     url(r'^about/partnerships/contact-bizdev/$', partnerships, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
 
-    url('^register/student/$', google_form,
-        {
-            'template': 'mocotw/register/student.html',
-            'formkey': 'dDlJaHh6OEtoZzlTZ09WZlloNVdRS3c6MA'
-        },
-        name='google.form'),
+    redirect(r'^register/student/$', '/newsletter/subscribe/student/', permanent=False),
+    # url('^register/student/$', google_form,
+    #     {
+    #         'template': 'mocotw/register/student.html',
+    #         'formkey': 'dDlJaHh6OEtoZzlTZ09WZlloNVdRS3c6MA'
+    #     },
+    #     name='google.form'),
     url('^register/supply/$', google_form,
         {
             'template': 'mocotw/register/supply.html',
