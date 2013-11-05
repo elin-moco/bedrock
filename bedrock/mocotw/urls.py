@@ -49,6 +49,8 @@ urlpatterns = patterns(
     redirect(r'^firefox/beta/features/$', '/firefox/features'),
     redirect(r'^firefox/beta/$', '//www.mozilla.org/en-US/firefox/beta/'),
     redirect(r'^firefox/aurora/$', '//www.mozilla.org/en-US/firefox/aurora/'),
+    redirect(r'^firefox/all-beta.html$', '//www.mozilla.org/en-US/firefox/all-beta.html'),
+    redirect(r'^firefox/all-aurora.html$', '//www.mozilla.org/en-US/firefox/all-aurora.html'),
 
     redirect(r'^products/download/$', '/firefox/channel'),
     redirect(r'^firefox/central/$', '/firefox/mobile/features', name='firefox.central'),
