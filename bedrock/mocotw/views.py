@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import base64
+import json
+from time import strptime
 import urllib2
 from BeautifulSoup import BeautifulSoup
+from datetime import datetime
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -120,3 +123,28 @@ def subscription_count(request):
     else:
         raise PermissionDenied
     return HttpResponse(str(count), content_type='application/json')
+
+
+def workshop(request):
+    blogsApiUrl = 'https://blog.mozilla.com.tw/api/get_tag_posts?tag=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true'
+    eventsApiUrl = 'https://blog.mozilla.com.tw/api/get_posts?post_type=event&scope=all&s=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true'
+    eventsApi2Url = 'https://blog.mozilla.com.tw/api/get_recent_events?search=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A'
+    blogs = json.loads(urllib2.urlopen(blogsApiUrl).read())['posts']
+    events = json.loads(urllib2.urlopen(eventsApiUrl).read())['posts']
+    events2 = json.loads(urllib2.urlopen(eventsApi2Url).read())['posts']
+    for event2 in events2:
+        for event in events:
+            if event2['post_id'] == event['id']:
+                event['content'] = event2['post_content']
+    posts = sorted(blogs + events, key=lambda k: k['date'], reverse=True)
+    dates = []
+    prevMonth = ''
+    for post in posts:
+        post['date'] = datetime.strptime(post['date'], '%Y-%m-%d %H:%M:%S')
+        month = datetime.strftime(post['date'], '%B')
+        if prevMonth != month:
+            post['month'] = month
+        if post['type'] == 'event':
+            dates += [post['date'].date().__str__()]
+    context = {'posts': posts, 'dates': dates}
+    return l10n_utils.render(request, 'mocotw/community/student/workshop.html', context)

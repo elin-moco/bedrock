@@ -79,7 +79,7 @@ class Command(BaseCommand):
         #     mail.attach(msgImage)
 
         try:
-            # mail.send()
+            mail.send()
             print('Sent newsletter to %s.' % to_mail)
         except MessageError as e:
             print('Failed to send to %s.' % to_mail, e)
