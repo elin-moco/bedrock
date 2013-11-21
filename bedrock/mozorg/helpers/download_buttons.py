@@ -39,8 +39,8 @@ download_urls = {
                      'fennec-%s.en-US.android-arm.apk' %
                      product_details.mobile_details['alpha_version'],
     'aurora-mobile-l10n': 'https://ftp.mozilla.org/pub/mozilla.org/mobile/'
-                     'nightly/latest-mozilla-aurora-android-l10n/'
-                     'fennec-%s.zh-TW.android-arm.apk' %
+                     'nightly/latest-mozilla-aurora-android/'
+                     'fennec-%s.multi.android-arm.apk' %
                      product_details.mobile_details['alpha_version'],
 }
 

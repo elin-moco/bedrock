@@ -38,11 +38,13 @@ def latest_nightly_version(locale):
 
 
 def make_nightly_mobile_link(version):
+    #return download_urls['nightly-mobile-l10n']
     return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-central-android/fennec-%s.multi.android-arm.apk' % version
 
 
 def make_aurora_mobile_link(version):
-    return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-aurora-android-l10n/fennec-%s.zh-TW.android-arm.apk' % version
+    #return download_urls['aurora-mobile-l10n']
+    return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-aurora-android/fennec-%s.multi.android-arm.apk' % version
 
 
 def make_nightly_link(product, version, platform, locale):
