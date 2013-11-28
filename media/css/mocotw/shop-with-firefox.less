@@ -1,8 +1,5 @@
 @import "../sandstone/lib";
 
-.sky a {
-  color: #95CFEF;
-}
 
 .download-button small.download-other a:link, .other .download-button-mobile small.download-other a:link, .android .download-button-desktop small.download-other a:link, .download-button small.download-other a:visited, .other .download-button-mobile small.download-other a:visited, .android .download-button-desktop small.download-other a:visited {
   color: rgb(203, 203, 203);
@@ -12,17 +9,21 @@
   color: #95CFEF !important;
 }
 
-h1, h2, h3, h4, h5, h6, legend, .huge, .large, legend, p {
-  color: white;
-  text-shadow: 0 1px 0 rgba(72, 72, 72, 0.75);
-}
-
-p {
-  line-height: 16.8px;
+.sky .main-content {
+  h1, h2, h3, h4, h5, h6, legend, .huge, .large, legend, p {
+    color: white;
+    text-shadow: 0 1px 0 rgba(72, 72, 72, 0.75);
+  }
+  a {
+    color: #95CFEF;
+  }
+  p:not([class]) {
+    line-height: 16.8px;
+  }
 }
 
 .main-content {
-  margin-top: 300px;
+  margin-top: 330px;
   position: relative;
   width: 100%;
 }
@@ -41,16 +42,17 @@ p {
 }
 
 #ribbons {
-  .transition(all .2s ease-in-out);
+  .transition(margin-top .2s ease-in-out);
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
+  margin-top: 30px;
 }
 
 #tabzilla-panel.open ~ #outer-wrapper #ribbons {
-  margin-top: 200px;
+  margin-top: 240px;
 }
 
 .ribbon-large {
@@ -121,7 +123,7 @@ p {
   height: 130px;
   vertical-align: top;
   position: relative;
-  > p:not(.large) {
+  > p:not([class]) {
     position: absolute;
     margin-bottom: 0;
     bottom: 0;
