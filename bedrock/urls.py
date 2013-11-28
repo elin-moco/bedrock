@@ -40,7 +40,7 @@ sitemaps = {
          'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact'],
         0.6, 'monthly'),
     'community': ViewsSitemap(
-        ['mozorg.contribute', 'mocotw.community.student.workshop'],
+        ['mozorg.contribute', 'community.student.workshop'],
         0.5, 'monthly'),
     'community_old': PathsSitemap(
         ['/community/', '/community/contribute/', '/community/student/',
