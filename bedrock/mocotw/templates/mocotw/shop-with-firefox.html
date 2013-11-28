@@ -1,0 +1,82 @@
+{% extends "mocotw/base-resp.html" %}
+
+{% block page_title %}Firefox 瀏覽器 網路購物的好幫手{% endblock %}
+{% block page_desc %}使用 Firefox 上網購物的五大理由。Firefox 始終把使用者放在第一位，高度重視使用者的網路安全與個人隱私，能讓您的網路購物經驗更為安心、容易與輕鬆。{% endblock %}
+
+{% block extrahead %}
+  {{ css('shop-with-firefox') }}
+{% endblock %}
+
+{% block site_header_nav %}
+{% endblock %}
+{% block site_header_logo %}
+{% endblock %}
+
+{% block content %}
+  <div id="ribbons">
+    <div class="ribbon-large">
+      <div class="banner">
+        <h1>Firefox 瀏覽器 網路購物的好幫手</h1>
+      </div>
+    </div>
+    <div id="ribbon1"><h2 class="ribbon-text">選擇 Firefox 來進行網路購物的五大理由</h2></div>
+    <div id="ribbon2">
+      <div id="sale-text"></div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="headings">
+      <h2>使用 Firefox 上網購物的五大理由</h2>
+
+      <p class="sub-heading">年底購物季來到～
+        聖誕節、跨年、歡樂聚會接二連三，各大線上購物中心也開始紛紛推出各式應景的商品折扣促銷方案。隨著你我的線上購物、刷卡付帳的使用頻率變多，瀏覽器的安全、便利性變得更為重要。</p>
+    </div>
+    <section class="backgrounds">
+      <div id="background1">
+        <p class="large">$ 11,111</p>
+        <p>
+        而根據樂天發佈的「2012全球線上購物趨勢調查」，台灣消費者一年在網路上消費金額平均達新台幣11,111元，也顯示消費者網路購物的習慣已逐漸成熟。
+        </p>
+      </div>
+      <div id="background2">
+        <p>
+        Firefox 始終把使用者放在第一位，高度重視使用者的網路安全與個人隱私，能讓您的網路購物經驗更為安心、容易與輕鬆。無論您是屬於買個不停的瘋狂購物者、或是沒有太多時間瀏覽商品的快速買家，Firefox 瀏覽器都能滿足你的需求。
+        </p>
+      </div>
+    </section>
+    <section class="reasons">
+      <div class="reasons-row">
+        <div id="reason1">
+          <h3 class="sub-heading">警覺性高的網路瀏覽器：</h3>
+          <p>
+            Firefox 除了支援反釣魚、反惡意軟體等功能之外，更可保護使用者免於病毒與間諜軟體的危害，Firefox 另針對可能的詐欺網站發出警告，保護使用者不被詐欺網站騙取個人資料。
+          </p>
+        </div>
+        <div id="reason2">
+          <h3 class="sub-heading">高隱私高安全性瀏覽：</h3>
+          <p>Firefox 的<a href="/firefox/security/">隱私性與安全性</a>技術持續領先業界，透過多種工具保護使用者線上購物時的個人資料。Firefox 甚至提供隱私瀏覽模式，讓你的好友、家人不會發現你曾在線上找過哪些禮物。</p>
+        </div>
+        <div id="reason3">
+          <h3 class="sub-heading">同步功能讓商品瀏覽不間斷：</h3>
+          <p><a href="/firefox/mobile/sync/">Firefox Sync 同步功能</a>，讓你能跨多款裝置輕鬆同步自己的密碼、瀏覽記錄、已開啟的分頁等等。不論在家或外出，都能輕鬆銜接剛剛找到的私房食譜、禮物最低報價、他人分享的送禮橋段，甚至擬定休假計畫。</p>
+        </div>
+      </div>
+      <div class="reasons-row">
+        <div id="reason4">
+          <h3 class="sub-heading">瀏覽商品時與親友即時討論：</h3>
+          <p>Firefox 是唯一<a href="http://blog.mozilla.com.tw/posts/2633/">整合 Facebook</a> 與其他社交功能的瀏覽器。讓使用者能同時與親友即時互動討論，尋找最合適的禮物，或為下次的假期做好準備。</p>
+        </div>
+        <div id="reason5">
+          <h3 class="sub-heading">比價、整理購物清單同時搞定：</h3>
+          <p>Firefox 提供<a href="https://addons.mozilla.org/en-US/firefox/">數千種附加元件</a>。如 <a href="https://addons.mozilla.org/en-US/firefox/collections/mozilla/happyholidays/">Holiday Collection</a> 附加元件就具備多種工具，可協助你找到最優惠的價格、整理你的購物清單、規劃狂歡派對。為了更增添節日氣氛，還可用<a href="https://addons.mozilla.org/en-US/firefox/themes/holiday">假日佈景主題</a>裝扮你的 Firefox，還有更多特色。</p>
+        </div>
+      </div>
+    </section>
+    <div class="caution">
+      <p>
+        上網購物提供十足的便利性，於此同時也應注意個人的網路安全，不論是線上購物、刷卡付賬，或只是登入社群網站，都應謹慎使用個人資訊以免遭有心人士利用。Firefox 具備高階的<a href="/firefox/security/">安全功能</a>，可時時確保個人資料的安全。
+      </p>
+      {{ download_firefox(small=True) }}
+    </div>
+  </div>
+{% endblock %}

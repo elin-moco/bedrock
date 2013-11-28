@@ -32,6 +32,7 @@ urlpatterns = patterns(
     page('sumo', 'mocotw/sumo.html'),
     page('products', 'mozorg/products.html'),
     page('about/mozilla-based', 'mozorg/projects/mozilla-based.html'),
+    page('shop-with-firefox', 'mocotw/shop-with-firefox.html'),
     redirect(r'^community$', '/community/'),
     redirect(r'^community/student$', '/community/student/'),
     redirect(r'^press/$', 'http://' + BLOG_URL + '/press'),

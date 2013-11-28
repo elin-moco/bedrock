@@ -427,6 +427,9 @@ MINIFY_BUNDLES = {
             'css/libs/h5bp_main.css',
             'css/facebookapps/downloadtab.less',
         ),
+        'shop-with-firefox': (
+            'css/mocotw/shop-with-firefox.less',
+        ),
         'gform': (
             'css/mocotw/gform.less',
         ),
