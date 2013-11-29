@@ -2,5 +2,5 @@
 
 params = {
     'volume': 13,
-    'title': u'Firefox 瀏覽器，讓你網路購物簡單輕鬆又安全',
+    'title': u'Mozilla 年度報表大公開、Firefox 網路購物輕鬆又安全、歡慶 9 歲生日',
 }
