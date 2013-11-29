@@ -1,6 +1,5 @@
 @import "../sandstone/lib";
 
-
 .download-button small.download-other a:link, .other .download-button-mobile small.download-other a:link, .android .download-button-desktop small.download-other a:link, .download-button small.download-other a:visited, .other .download-button-mobile small.download-other a:visited, .android .download-button-desktop small.download-other a:visited {
   color: rgb(203, 203, 203);
 }
@@ -36,6 +35,8 @@
 
 .headings {
   margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .sub-heading {
@@ -50,7 +51,6 @@
 .sky #outer-wrapper {
   background: url(/media/img/mocotw/shop-with-firefox/bg.png) repeat scroll 0 0 #C13832;
 }
-
 
 .ribbon-large {
   display: block;
@@ -103,15 +103,19 @@
   margin-top: 25px;
   margin-bottom: 28px;
   height: 130px;
+  text-align: center;
 }
 
 .background {
   display: inline-block;
   padding-left: 140px;
-  width: 340px;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 320px;
   height: 130px;
   vertical-align: top;
   position: relative;
+  text-align: left;
   > p:not([class]) {
     position: absolute;
     margin-bottom: 0;
@@ -144,22 +148,24 @@
 
 .caution {
   background: url(/media/img/mocotw/shop-with-firefox/warn.png) no-repeat scroll 0 0;
-  height: 60px;
   padding-left: 70px;
+  margin: auto;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  text-align: right;
+  width: 930px;
   p {
     display: inline-block;
     width: 560px;
     margin-right: 68px;
     vertical-align: top;
+    text-align: left;
   }
 }
 
 #background1 {
   .background;
   background: url(/media/img/mocotw/shop-with-firefox/story1.png) no-repeat scroll 0 0;
-  margin-right: 20px;
 }
 
 #background2 {
@@ -190,4 +196,78 @@
 #reason5 {
   .reason;
   background: url(/media/img/mocotw/shop-with-firefox/reason5.png) no-repeat scroll 48px 0;
+}
+
+@media only screen and (max-width: @breakDesktop) {
+  .banner {
+    background-size: 100%;
+    height: 178px;
+    width: 640px;
+  }
+
+  .ribbon-large {
+    background-position: 0 35px;
+    background-size: 3px 97px;
+    height: 178px;
+  }
+
+  .reasons-row {
+    height: auto;
+  }
+
+  .backgrounds {
+    height: auto;
+  }
+  .background {
+    padding-left: 0;
+    padding-top: 140px;
+    width: 280px;
+    background-position: 72px 0;
+  }
+  #background1 {
+    .background;
+    margin-bottom: 20px;
+  }
+  #background2 {
+    .background;
+  }
+
+  #sale-text {
+    width: 640px;
+  }
+
+  .caution {
+    width: 640px;
+  }
+}
+
+@media only screen and (max-width: @breakTablet) {
+  .banner {
+    height: 89px;
+    width: 320px;
+  }
+
+  .ribbon-large {
+    background-position: 0 17px;
+    background-size: 2px 49px;
+    height: 89px;
+  }
+
+  .sky .main-content .ribbon-text {
+    font-size: 16px;
+  }
+  #sale-text {
+    width: 320px;
+  }
+  .caution {
+    width: 320px;
+    text-align: left;
+    p {
+      width: 250px;
+    }
+    #download-button-desktop-release {
+      margin-left: -35px;
+    }
+  }
+
 }
