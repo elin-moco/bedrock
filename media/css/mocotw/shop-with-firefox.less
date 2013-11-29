@@ -20,12 +20,22 @@
   p:not([class]) {
     line-height: 16.8px;
   }
+  .ribbon-text {
+    text-align: center;
+    font-size: 24px;
+    color: #4d4e53;
+    line-height: 54px;
+  }
 }
 
 .main-content {
-  margin-top: 330px;
+  margin-top: 30px;
   position: relative;
   width: 100%;
+}
+
+.headings {
+  margin-top: 30px;
 }
 
 .sub-heading {
@@ -41,29 +51,15 @@
   background: url(/media/img/mocotw/shop-with-firefox/bg.png) repeat scroll 0 0 #C13832;
 }
 
-#ribbons {
-  .transition(margin-top .2s ease-in-out);
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  margin-top: 30px;
-}
-
-#tabzilla-panel.open ~ #outer-wrapper #ribbons {
-  margin-top: 240px;
-}
 
 .ribbon-large {
   display: block;
-  position: absolute;
   background: url(/media/img/mocotw/shop-with-firefox/bar-b.png) repeat-x scroll 0 58px;
   height: 278px;
-  width: 100%;
+  width: 300%;
+  margin-left: -100%;
   top: 18px;
   left: 0;
-  //  pointer-events: none;
 }
 
 .banner {
@@ -78,29 +74,21 @@
 
 .ribbon {
   display: block;
-  position: absolute;
   background: url(/media/img/mocotw/shop-with-firefox/bar.png) repeat-x scroll 0 0;
   height: 60px;
-  width: 100%;
+  width: 300%;
+  margin-left: -100%;
   top: 0;
   left: 0;
 }
 
 #ribbon1 {
   .ribbon;
-  top: 640px;
 }
 
 #ribbon2 {
   .ribbon;
-  top: 1480px;
-}
-
-.ribbon-text {
-  text-align: center;
-  font-size: 24px;
-  color: #4d4e53;
-  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 #sale-text {
@@ -113,6 +101,7 @@
 
 .backgrounds {
   margin-top: 25px;
+  margin-bottom: 28px;
   height: 130px;
 }
 
@@ -131,14 +120,16 @@
 }
 
 .reasons {
-  margin-top: 120px;
+  margin-top: 30px;
 }
 
 .reason {
   display: inline-block;
   width: 249px;
-  height: 320px;
+  height: 153px;
   margin: auto;
+  margin-left: 36px;
+  margin-right: 36px;
   padding-top: 167px;
   vertical-align: top;
   p {
@@ -156,7 +147,7 @@
   height: 60px;
   padding-left: 70px;
   margin-top: 20px;
-  margin-bottom: 135px;
+  margin-bottom: 50px;
   p {
     display: inline-block;
     width: 560px;
@@ -179,13 +170,11 @@
 #reason1 {
   .reason;
   background: url(/media/img/mocotw/shop-with-firefox/reason1.png) no-repeat scroll 48px 0;
-  margin-right: 72px;
 }
 
 #reason2 {
   .reason;
   background: url(/media/img/mocotw/shop-with-firefox/reason2.png) no-repeat scroll 48px 0;
-  margin-right: 72px;
 }
 
 #reason3 {
@@ -196,7 +185,6 @@
 #reason4 {
   .reason;
   background: url(/media/img/mocotw/shop-with-firefox/reason4.png) no-repeat scroll 48px 0;
-  margin-right: 72px;
 }
 
 #reason5 {

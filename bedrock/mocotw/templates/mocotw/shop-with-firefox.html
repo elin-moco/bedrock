@@ -13,18 +13,12 @@
 {% endblock %}
 
 {% block content %}
-  <div id="ribbons">
+  <div class="main-content">
     <div class="ribbon-large">
       <div class="banner">
         <h1>Firefox 瀏覽器 網路購物的好幫手</h1>
       </div>
     </div>
-    <div id="ribbon1"><h2 class="ribbon-text">選擇 Firefox 來進行網路購物的五大理由</h2></div>
-    <div id="ribbon2">
-      <div id="sale-text"></div>
-    </div>
-  </div>
-  <div class="main-content">
     <div class="headings">
       <h2>使用 Firefox 上網購物的五大理由</h2>
 
@@ -44,6 +38,7 @@
         </p>
       </div>
     </section>
+    <div id="ribbon1"><h2 class="ribbon-text">選擇 Firefox 來進行網路購物的五大理由</h2></div>
     <section class="reasons">
       <div class="reasons-row">
         <div id="reason1">
@@ -77,6 +72,9 @@
         上網購物提供十足的便利性，於此同時也應注意個人的網路安全，不論是線上購物、刷卡付賬，或只是登入社群網站，都應謹慎使用個人資訊以免遭有心人士利用。Firefox 具備高階的<a href="/firefox/security/">安全功能</a>，可時時確保個人資料的安全。
       </p>
       {{ download_firefox(small=True) }}
+    </div>
+    <div id="ribbon2">
+      <div id="sale-text"></div>
     </div>
   </div>
 {% endblock %}
