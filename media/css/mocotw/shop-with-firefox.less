@@ -67,8 +67,10 @@
   height: 278px;
   width: 1000px;
   margin: auto;
+    text-align: center;
   h1 {
     text-indent: -9999999px;
+    word-break: keep-all;
   }
 }
 
@@ -200,15 +202,20 @@
 
 @media only screen and (max-width: @breakDesktop) {
   .banner {
-    background-size: 100%;
-    height: 178px;
-    width: 640px;
+    width: 420px;
+    h1 {
+      position: absolute;
+      top: -100px;
+//      left: -1000px;
+//      right: -1000px;
+      display: block;
+      width: 420px;
+      text-indent: 0;
+    }
   }
 
   .ribbon-large {
-    background-position: 0 35px;
-    background-size: 3px 97px;
-    height: 178px;
+    margin-top: 100px;
   }
 
   .reasons-row {
@@ -243,14 +250,18 @@
 
 @media only screen and (max-width: @breakTablet) {
   .banner {
-    height: 89px;
+    background-size: auto 100%;
     width: 320px;
+    height: 212px;
+    h1 {
+      width: 320px;
+    }
   }
 
   .ribbon-large {
     background-position: 0 17px;
-    background-size: 2px 49px;
-    height: 89px;
+    background-size: 3px 116px;
+    height: 212px;
   }
 
   .sky .main-content .ribbon-text {
