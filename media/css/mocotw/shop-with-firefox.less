@@ -206,8 +206,6 @@
     h1 {
       position: absolute;
       top: -100px;
-//      left: -1000px;
-//      right: -1000px;
       display: block;
       width: 420px;
       text-indent: 0;
@@ -249,20 +247,6 @@
 }
 
 @media only screen and (max-width: @breakTablet) {
-  .banner {
-    background-size: auto 100%;
-    width: 320px;
-    height: 212px;
-    h1 {
-      width: 320px;
-    }
-  }
-
-  .ribbon-large {
-    background-position: 0 17px;
-    background-size: 3px 116px;
-    height: 212px;
-  }
 
   .sky .main-content .ribbon-text {
     font-size: 16px;
@@ -281,4 +265,21 @@
     }
   }
 
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  .banner {
+    background-size: auto 100%;
+    width: 320px;
+    height: 212px;
+    h1 {
+      width: 320px;
+    }
+  }
+
+  .ribbon-large {
+    background-position: 0 44px;
+    background-size: 3px 116px;
+    height: 212px;
+  }
 }
