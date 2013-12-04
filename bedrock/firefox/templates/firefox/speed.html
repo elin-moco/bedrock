@@ -4,7 +4,7 @@
 
 {% extends "/firefox/base.html" %}
 
-{% block page_title %}How fast is your Firefox?{% endblock %}
+{% block page_title %}你的 Firefox 有多快？{% endblock %}
 {% block body_id %}firefox-speed{% endblock %}
 
 {% block site_header_nav %}
@@ -17,15 +17,15 @@
 {% block content %}
 <div id="main-feature">
 {% block heading_primary %}
-  <h1 class="">How fast is your Firefox?</h1>
+  <h1 class="">你的 Firefox 有多快？</h1>
 {% endblock %}
   <div class="row">
 {% block heading_secondary %}
-    <h4 class="">New Firefox is up to 7 times faster. (That’s a lot!) Check the speedometer to see if yours can keep up.</h4>
+    <h4 class="">新版 Firefox 最高可達七倍速度 (真的很快)！快透過時速表看看你的 Firefox 跟上沒。</h4>
 {% endblock %}
     <div id="download_area">
       {{ download_firefox(small=True) }}
-      <p><a href="/firefox/central/">Learn more »</a></p>
+      <p><a href="/firefox/central/">了解更多 »</a></p>
     </div>
   </div>
 </div>
@@ -35,29 +35,29 @@
     <div id="gauge">
         <img src="{{ media('img/firefox/speed/needle.png') }}" alt="" id="needle" />
         <div id="gauge-slow">
-            Old Firefox = <em>Sadface</em>
+            舊版 Firefox = <em>悲劇！</em>
         </div>
         <div id="gauge-fast">
-            New Firefox = <em>Yay!</em>
+            新版 Firefox = <em>哇耶！</em>
         </div>
         <div id="gauge-slow-note">
             <div class="content">
-            <p>That just isn’t going to cut it. Stop browsing in the past and <a href="{{ url('firefox.update') }}">upgrade now!</a></p>
+            <p>你怎麼能忍受開網頁還要這麼久？別再留戀以前的瀏覽速度了，<a href="{{ url('firefox.update') }}">立刻升級！</a></p>
             </div>
         </div>
         <div id="gauge-fast-note">
             <div class="content">
-            <h4>Now we’re talking!</h4>
-            <p>Feels better, doesn’t it? Welcome to the future of the Web. It’s nice here.</p>
+            <h4>就是這樣！</h4>
+            <p>不是爽快多了嗎？歡迎加入 Web 的美好未來。</p>
             </div>
         </div>
     </div>
     <div id="non-fx">
-        <p id="detected">Hey, looks like you’re using %BROWSER%. Why not grab Firefox and get up to speed.</p>
-        <p id="notdetected">Hey, looks like you’re not using Firefox as your browser. Why not grab Firefox and get up to speed.</p>
+        <p id="detected">耶？看來你在使用 %BROWSER% 喔？ 快下載 Firefox 提升自己的上網速度吧！</p>
+        <p id="notdetected">耶？看來你還沒用 Firefox 瀏覽網頁喔！ 快下載 Firefox 提升自己的上網速度吧！</p>
     </div>
 
-    <p id="followup"><em>New Firefox is faster, free (as always), crashes less and protects your privacy more.</em> <a href="{{ url('firefox.update') }}">Upgrading</a> takes less than a minute and you won’t lose your history or bookmarks. Hooray!</p>
+    <p id="followup"><em>新版 Firefox 速度更快、免費提供 (一直如此)、幾乎不當機、更懂得保護你的隱私安全。</em> <a href="{{ url('firefox.update') }}">升級</a>花不了你多少時間，而且還為你保留書籤或歷史紀錄。快給個讚！</p>
 
 </div>
 
