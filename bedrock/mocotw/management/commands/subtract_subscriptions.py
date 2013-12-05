@@ -5,6 +5,7 @@ from django.core.management.base import NoArgsCommand, BaseCommand
 
 # log = commonware.log.getLogger('bedrock')
 
+
 class Command(BaseCommand):
     help = 'Subtract subscriptions from two files'
     option_list = NoArgsCommand.option_list
