@@ -398,25 +398,20 @@ class ContributeUniversityAmbassadorForm(forms.Form):
                             choices=FORMATS, initial='H')
     age_confirmation = forms.BooleanField(
         widget=widgets.CheckboxInput(),
-        label=_lazy(u'I’m 18 years old and eligible to participate in '
-                    'the program'))
+        label=_lazy(u'I’m 18 years old and eligible to participate in the program'))
     share_information = forms.BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),
-        label=_lazy(u'Please share my contact information and interests with '
-                    'related Mozilla contributors for the purpose of '
-                    'collaborating on Mozilla projects'))
+        label=_lazy(u'Please share my contact information and interests with related Mozilla contributors for the purpose of collaborating on Mozilla projects'))
     privacy = forms.BooleanField(widget=PrivacyWidget)
     nl_mozilla_and_you = forms.BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),
-        label=_lazy(u'Firefox & You: A monthly newsletter packed with tips to'
-                    ' improve your browsing experience'))
+        label=_lazy(u'Firefox & You: A monthly newsletter packed with tips to improve your browsing experience'))
     nl_mobile = forms.BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),
-        label=_lazy(u'Firefox for Android: Get the power of Firefox in the'
-                    ' palm of your hand'))
+        label=_lazy(u'Firefox for Android: Get the power of Firefox in the palm of your hand'))
     nl_firefox_flicks = forms.BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),

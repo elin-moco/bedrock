@@ -5,7 +5,7 @@
 from django.conf.urls import *
 from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
-from bedrock.mozorg.views import contribute, partnerships
+from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
 from bedrock.mocotw.views import issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop
 from bedrock.redirects.util import redirect
@@ -129,6 +129,9 @@ urlpatterns = patterns(
             'formkey': 'dFZ3Vy1OUjBHSXZJLTRvaF9FYXRWcHc6MQ'
         },
         name='google.form'),
+    url('^contribute/universityambassadors/$',
+        contribute_university_ambassadors,
+        name='mocotw.contribute_university_ambassadors'),
 
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
 
