@@ -132,6 +132,8 @@ urlpatterns = patterns(
     url('^contribute/universityambassadors/$',
         contribute_university_ambassadors,
         name='mocotw.contribute_university_ambassadors'),
+    page('contribute/universityambassadors/thanks',
+         'mozorg/contribute_university_ambassadors_thanks.html'),
 
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
 
