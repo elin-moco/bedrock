@@ -430,6 +430,9 @@ MINIFY_BUNDLES = {
         'shop-with-firefox': (
             'css/mocotw/shop-with-firefox.less',
         ),
+        'eoy2013': (
+            'css/mocotw/eoy2013.less',
+        ),
         'gform': (
             'css/mocotw/gform.less',
         ),
@@ -724,6 +727,9 @@ MINIFY_BUNDLES = {
             'js/facebookapps/Slider.js',
             'js/facebookapps/App.js',
             'js/facebookapps/downloadtab.js',
+        ),
+        'eoy2013': (
+            'js/mocotw/eoy2013.js',
         ),
         'gform': (
             'js/mocotw/gform.js',

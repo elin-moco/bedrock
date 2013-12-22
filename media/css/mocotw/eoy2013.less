@@ -1,0 +1,416 @@
+#masthead {
+  z-index: 1000;
+  position: relative;
+  margin-top: -2px;
+}
+
+#tabzilla-panel {
+  z-index: 1000;
+}
+
+#outer-wrapper {
+  background: rgb(68, 69, 73) !important;
+}
+
+html, body {
+  height: 8000px;
+}
+#body-wrapper, #outer-wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+.main-content {
+  height: 100%;
+  position: relative;
+}
+
+.curtain1 {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: 0;
+  background-color: rgb(179, 37, 38);
+  width: 100%;
+  height: 1000px;
+}
+.curtain2 {
+  position: absolute;
+  display: block;
+  background-color: rgb(207, 203, 188);
+  top: 900px;
+  left: 0;
+  width: 100%;
+  height: 2500px;
+}
+
+.bubble {
+  display: block;
+//  position: absolute;
+  position: relative;
+  margin-top: -100px;
+  background-repeat: no-repeat;
+  color: white;
+  h2 {
+    display: block;
+    color: white;
+    font-size: 55px;
+    font-weight: bolder;
+  }
+  h3 {
+    display: block;
+    color: white;
+    font-size: 31px;
+  }
+  em {
+    font-size: 74px;
+    font-weight: bolder;
+    font-style: normal;
+    line-height: 80px;
+    display: inline-block;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+  em.block {
+    display: block;
+  }
+  p {
+    display: inline-block;
+    line-height: 38px;
+    margin-bottom: 0;
+  }
+  p.block {
+    display: block;
+  }
+  small {
+    display: inline-block;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 28px;
+  }
+  ul {
+    display: block;
+  }
+  ul li {
+    list-style-type: none;
+    margin-left: 0;
+    font-size: 31px;
+  }
+}
+
+#firefox {
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/firefox.png);
+  width: 371px;
+  height: 385px;
+  right: 165px;
+  top: -165px;
+}
+#android {
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/andriod-robot.png);
+  width: 234px;
+  height: 311px;
+  right: 5px;
+  top: 200px;
+}
+#android-stars {
+  position: absolute;
+  display: block;
+  background-image: url(/media/img/mocotw/eoy2013/andriod-star.png);
+  width: 216px;
+  height: 33px;
+  top: 231px;
+  left: 102px;
+}
+#fxos {
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/firefoxos-fox.png);
+  width: 619px;
+  height: 552px;
+  left: 50px;
+  top: 165px;
+}
+#anti-eye {
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/privacy-eye.png);
+  width: 189px;
+  height: 190px;
+  right: 20px;
+  top: 35px;
+}
+
+#bubble0 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/gray-up.png);
+  width: 549px;
+  height: 246px;
+  right: -300px;
+  top: -45px;
+}
+#bubble1 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/firefox-orange.png);
+  width: 876px;
+  height: 927px;
+  right: -300px;
+  top: -45px;
+  h2 {
+    width: 448px;
+    padding-top: 96px;
+    margin-left: 200px;
+  }
+  ul {
+    width: 448px;
+    margin-left: 200px;
+  }
+  em {
+    color: #FFCC02;
+  }
+  p.block {
+    text-align: right;
+  }
+  em.asm-js {
+    vertical-align: top;
+  }
+  p.asm-js {
+    margin-top: 24px;
+    width: 240px;
+  }
+}
+#bubble2 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/android-yellow.png);
+  width: 651px;
+  height: 729px;
+  right: -300px;
+  top: -45px;
+  h2 {
+    width: 342px;
+    padding-top: 280px;
+    margin-left: 102px;
+    color: #E36124;
+  }
+  ul {
+    width: 342px;
+    margin-left: 102px;
+  }
+  em {
+    color: #4E4F53;
+    letter-spacing: -3px;
+  }
+  p {
+    color: #E36124;
+  }
+  p.block {
+    text-align: right;
+  }
+}
+#bubble3 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/firefoxos-blue.png);
+  width: 1044px;
+  height: 822px;
+  right: -300px;
+  top: -45px;
+  h2 {
+    width: 320px;
+    padding-top: 302px;
+    margin-left: 536px;
+  }
+  ul {
+    width: 320px;
+    margin-left: 536px;
+  }
+  em {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    color: #00408E;
+  }
+}
+#bubble4 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/privacy-main.png);
+  width: 799px;
+  height: 798px;
+  top: 17px;
+  h2 {
+    width: 420px;
+    padding-top: 72px;
+    margin-left: 194px;
+  }
+  h3 {
+    width: 420px;
+    margin-left: 194px;
+  }
+  ul {
+    width: 420px;
+    margin-left: 194px;
+  }
+  em {
+    display: inline-block;
+    text-align: center;
+    color: rgb(51, 139, 222);
+    letter-spacing: -3px !important;
+    &#lightbeam-download {
+      font-size: 60px;
+    }
+    &#trust-worthy {
+      font-size: 58px;
+    }
+  }
+}
+#bubble4-back {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/privacy-gray.png);
+  background-position: 40px 0;
+  width: 839px;
+  height: 815px;
+  right: -300px;
+  top: -45px;
+}
+#bubble5 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/openbadges.png);
+  width: 641px;
+  height: 824px;
+  right: -300px;
+  top: -45px;
+  text-align: right;
+  h2 {
+    width: 300px;
+    padding-top: 194px;
+    margin-left: 160px;
+    color: #C13831;
+  }
+  ul {
+    width: 300px;
+    margin-left: 160px;
+  }
+  p {
+    color: #C13831;
+  }
+}
+#bubble6 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/webmaker.png);
+  width: 720px;
+  height: 1065px;
+  right: -300px;
+  top: -45px;
+  h2 {
+    width: 320px;
+    padding-top: 318px;
+    margin-left: 186px;
+    color: #FFCD03;
+  }
+  ul {
+    width: 320px;
+    margin-left: 186px;
+  }
+  em {
+    letter-spacing: -3px;
+  }
+  p {
+    color: #FFCD03;
+  }
+}
+#bubble7 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/mdn.png);
+  width: 831px;
+  height: 878px;
+  right: -300px;
+  top: -45px;
+  h2 {
+    width: 400px;
+    padding-top: 378px;
+    margin-left: 312px;
+  }
+  ul {
+    width: 400px;
+    margin-left: 312px;
+  }
+  em {
+    letter-spacing: -4px;
+    color: #00549F;
+  }
+}
+#bubble8 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/community.png);
+  width: 918px;
+  height: 1082px;
+  right: -300px;
+  top: -45px;
+  h2 {
+    width: 400px;
+    padding-top: 368px;
+    margin-left: 312px;
+    color: #555559;
+  }
+  ul {
+    width: 400px;
+    margin-left: 312px;
+  }
+  p {
+    color: #555559;
+  }
+  em {
+    color: #C13831;
+    letter-spacing: -2px;
+  }
+}
+#bubble9 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/red.png);
+  width: 894px;
+  height: 893px;
+  right: -300px;
+  top: -45px;
+  ul {
+    width: 520px;
+    padding-top: 322px;
+    margin-left: 140px;
+  }
+  img {
+    margin-top: 64px;
+    margin-left: 140px;
+  }
+}
+#bubble10 {
+  .bubble;
+  background-image: url(/media/img/mocotw/eoy2013/gray-down.png);
+  width: 657px;
+  height: 861px;
+  right: -300px;
+  top: -45px;
+}
+
+#mozilla {
+  display: block;
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/mozilla.png);
+  width: 678px;
+  height: 454px;
+  top: -7px;
+  left: -114px;
+}
+#year-2013 {
+  display: block;
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/2013.png);
+  width: 823px;
+  height: 789px;
+  top: 147px;
+  left: 276px;
+}
+#year-review {
+  display: block;
+  position: absolute;
+  background-image: url(/media/img/mocotw/eoy2013/review.png);
+  width: 452px;
+  height: 151px;
+  top: 396px;
+  left: 276px;
+}
