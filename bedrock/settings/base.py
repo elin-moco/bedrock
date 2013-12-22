@@ -729,6 +729,13 @@ MINIFY_BUNDLES = {
             'js/facebookapps/downloadtab.js',
         ),
         'eoy2013': (
+            #'js/libs/jquery.scrollTo.js',
+            #'js/libs/jquery.localScroll.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/libs/tweenmax.1.9.7.min.js',
+            'js/libs/superscrollorama-1.0.1.js',
+            'js/libs/jquery.color.js',
             'js/mocotw/eoy2013.js',
         ),
         'gform': (

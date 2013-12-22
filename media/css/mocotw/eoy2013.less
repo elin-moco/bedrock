@@ -9,57 +9,70 @@
 }
 
 #outer-wrapper {
-  background: rgb(68, 69, 73) !important;
+  background: #555559 !important;
 }
 
 html, body {
-  height: 8000px;
+  height: 11000px;
 }
+
+#body-wrapper {
+  position: relative;
+}
+
 #body-wrapper, #outer-wrapper {
   overflow: hidden;
   height: 100%;
 }
+
 .main-content {
   height: 100%;
   position: relative;
 }
 
 .curtain1 {
-  position: absolute;
+  position: fixed;
   display: block;
-  top: -1px;
+  z-index: 1;
+  top: -1%;
   left: 0;
-  background-color: rgb(179, 37, 38);
+  background-color: #C13831;
   width: 100%;
-  height: 1000px;
+  height: 2000px;
 }
+
 .curtain2 {
-  position: absolute;
+  position: fixed;
   display: block;
-  background-color: rgb(207, 203, 188);
-  top: 900px;
+  z-index: 250;
+  background-color: #D7D3C8;
+  top: 100%;
   left: 0;
   width: 100%;
-  height: 2500px;
+  height: 2000px;
 }
 
 .bubble {
   display: block;
-//  position: absolute;
-  position: relative;
-  margin-top: -100px;
+  position: fixed;
+  //  position: relative;
+  //  margin-top: -200px;
+  top: 100%;
   background-repeat: no-repeat;
+  background-size: 100% auto;
   color: white;
   h2 {
     display: block;
     color: white;
     font-size: 55px;
     font-weight: bolder;
+    opacity: 0;
   }
   h3 {
     display: block;
     color: white;
     font-size: 31px;
+    opacity: 0;
   }
   em {
     font-size: 74px;
@@ -89,6 +102,7 @@ html, body {
   }
   ul {
     display: block;
+    opacity: 0;
   }
   ul li {
     list-style-type: none;
@@ -98,13 +112,15 @@ html, body {
 }
 
 #firefox {
-  position: absolute;
+  position: fixed;
   background-image: url(/media/img/mocotw/eoy2013/firefox.png);
+  z-index: 800;
   width: 371px;
   height: 385px;
-  right: 165px;
-  top: -165px;
+  left: 50%;
+  top: 100%;
 }
+
 #android {
   position: absolute;
   background-image: url(/media/img/mocotw/eoy2013/andriod-robot.png);
@@ -113,6 +129,7 @@ html, body {
   right: 5px;
   top: 200px;
 }
+
 #android-stars {
   position: absolute;
   display: block;
@@ -122,14 +139,18 @@ html, body {
   top: 231px;
   left: 102px;
 }
+
 #fxos {
-  position: absolute;
+  position: fixed;
   background-image: url(/media/img/mocotw/eoy2013/firefoxos-fox.png);
+  z-index: 800;
   width: 619px;
   height: 552px;
-  left: 50px;
-  top: 165px;
+  right: 50%;
+  margin-right: -132px;
+  top: 100%;
 }
+
 #anti-eye {
   position: absolute;
   background-image: url(/media/img/mocotw/eoy2013/privacy-eye.png);
@@ -142,22 +163,27 @@ html, body {
 #bubble0 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/gray-up.png);
+  z-index: 100;
   width: 549px;
   height: 246px;
-  right: -300px;
-  top: -45px;
+  margin-left: 250px;
+  left: 50%;
+  top: 0px;
 }
+
 #bubble1 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/firefox-orange.png);
+  z-index: 600;
   width: 876px;
   height: 927px;
-  right: -300px;
-  top: -45px;
+  right: 50%;
+  margin-right: -176px;
+  //  top: 200px;
   h2 {
     width: 448px;
     padding-top: 96px;
-    margin-left: 200px;
+    margin-left: 300px;
   }
   ul {
     width: 448px;
@@ -177,13 +203,16 @@ html, body {
     width: 240px;
   }
 }
+
 #bubble2 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/android-yellow.png);
+  z-index: 700;
   width: 651px;
   height: 729px;
-  right: -300px;
-  top: -45px;
+  left: 50%;
+  margin-left: -54px;
+  //  top: 300px;
   h2 {
     width: 342px;
     padding-top: 280px;
@@ -205,13 +234,16 @@ html, body {
     text-align: right;
   }
 }
+
 #bubble3 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/firefoxos-blue.png);
+  z-index: 400;
   width: 1044px;
   height: 822px;
-  right: -300px;
-  top: -45px;
+  right: 50%;
+  margin-right: -500px;
+  //  top: 100px;
   h2 {
     width: 320px;
     padding-top: 302px;
@@ -228,12 +260,16 @@ html, body {
     color: #00408E;
   }
 }
+
 #bubble4 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/privacy-main.png);
+  z-index: 600;
   width: 799px;
   height: 798px;
-  top: 17px;
+  right: 50%;
+  margin-right: -171px;
+  //  top: 17px;
   h2 {
     width: 420px;
     padding-top: 72px;
@@ -260,22 +296,28 @@ html, body {
     }
   }
 }
+
 #bubble4-back {
   .bubble;
+  z-index: 300;
   background-image: url(/media/img/mocotw/eoy2013/privacy-gray.png);
   background-position: 40px 0;
-  width: 839px;
-  height: 815px;
-  right: -300px;
-  top: -45px;
+  width: 358px;
+  height: 357px;
+  right: 50%;
+  margin-right: 270px;
+  //  top: 0px;
 }
+
 #bubble5 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/openbadges.png);
+  z-index: 500;
   width: 641px;
   height: 824px;
-  right: -300px;
-  top: -45px;
+  left: 50%;
+  margin-left: 41px;
+  //  top: -40px;
   text-align: right;
   h2 {
     width: 300px;
@@ -291,13 +333,16 @@ html, body {
     color: #C13831;
   }
 }
+
 #bubble6 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/webmaker.png);
+  z-index: 400;
   width: 720px;
   height: 1065px;
-  right: -300px;
-  top: -45px;
+  left: 50%;
+  margin-left: -100px;
+  //  top: -150px;
   h2 {
     width: 320px;
     padding-top: 318px;
@@ -315,13 +360,16 @@ html, body {
     color: #FFCD03;
   }
 }
+
 #bubble7 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/mdn.png);
+  z-index: 300;
   width: 831px;
   height: 878px;
-  right: -300px;
-  top: -45px;
+  right: 50%;
+  margin-right: -81px;
+  //  top: 0px;
   h2 {
     width: 400px;
     padding-top: 378px;
@@ -336,13 +384,16 @@ html, body {
     color: #00549F;
   }
 }
+
 #bubble8 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/community.png);
+  z-index: 200;
   width: 918px;
   height: 1082px;
-  right: -300px;
-  top: -45px;
+  left: 50%;
+  margin-left: -522px;
+  //  top: 0px;
   h2 {
     width: 400px;
     padding-top: 368px;
@@ -361,13 +412,16 @@ html, body {
     letter-spacing: -2px;
   }
 }
+
 #bubble9 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/red.png);
+  z-index: 100;
   width: 894px;
   height: 893px;
-  right: -300px;
-  top: -45px;
+  right: 50%;
+  margin-right: -318px;
+  //  top: 0px;
   ul {
     width: 520px;
     padding-top: 322px;
@@ -378,39 +432,61 @@ html, body {
     margin-left: 140px;
   }
 }
+
 #bubble10 {
   .bubble;
   background-image: url(/media/img/mocotw/eoy2013/gray-down.png);
+  z-index: 200;
   width: 657px;
   height: 861px;
-  right: -300px;
-  top: -45px;
+  left: 50%;
+  margin-left: 186px;
+  //  top: 0px;
 }
 
 #mozilla {
   display: block;
   position: absolute;
   background-image: url(/media/img/mocotw/eoy2013/mozilla.png);
+  z-index: 200;
   width: 678px;
   height: 454px;
   top: -7px;
   left: -114px;
 }
+
 #year-2013 {
   display: block;
   position: absolute;
+  z-index: 200;
   background-image: url(/media/img/mocotw/eoy2013/2013.png);
   width: 823px;
   height: 789px;
   top: 147px;
   left: 276px;
 }
+
 #year-review {
   display: block;
   position: absolute;
+  z-index: 200;
   background-image: url(/media/img/mocotw/eoy2013/review.png);
   width: 452px;
   height: 151px;
   top: 396px;
   left: 276px;
+}
+
+#footer-email-form, #newsletter-form {
+  bottom: 0;
+  margin-bottom: 222px;
+  position: absolute;
+  z-index: 1000;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
