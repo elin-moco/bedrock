@@ -290,10 +290,15 @@ html, body {
   position: absolute;
   display: block;
   background-image: url(/media/img/mocotw/eoy2013/andriod-star.png);
-  width: 216px;
+  background-size: 216px auto;
+  width: 0px;
   height: 33px;
   top: 231px;
   left: 102px;
+  .transition(width 1s ease-in);
+  &.appear {
+    width: 216px;
+  }
 }
 
 #fxos {

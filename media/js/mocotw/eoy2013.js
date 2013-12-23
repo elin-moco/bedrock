@@ -246,6 +246,12 @@
                 }
             }
         });
+        $('#android-stars').waypoint(function(direction) {
+            var $this = $(this);
+            if (!$this.hasClass('appear')) {
+                $this.addClass('appear')
+            }
+        });
     }
     /**
      * Handle page load
