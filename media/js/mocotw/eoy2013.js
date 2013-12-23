@@ -97,13 +97,14 @@
 
         var curtain2Out = TweenMax.to($curtain2, 1, {css: {top: '-2000px'}});
         var bubble4Up2 = TweenMax.to($bubble4, 1, {css: {marginTop: '-1020px'}});
-        var bubble4BackUp2 = TweenMax.to($bubble4Back, 1, {css: {marginTop: '-966px'}});
+        var bubble4BackUp2 = TweenMax.to($bubble4Back, 1, {css: {marginTop: '-1006px'}});
         var bubble5Up = TweenMax.to($bubble5, 1, {css: {marginTop: '-1080px'}});
         var bubble6In = TweenMax.to($bubble6, 1, {css: {top: '50%', marginTop: '-537px', width: '720px'}});
         var bubble6TxtIn = TweenMax.to($bubble6Txt, 1, {css: {opacity: '1.0'}});
         var bubble5TxtOut = TweenMax.to($bubble5Txt, 1, {css: {opacity: '0.0'}});
 
         var bubble7In = TweenMax.to($bubble7, 1, {css: {top: '50%', marginTop: '-439px', width: '831px'}});
+        var bubble4BackOut = TweenMax.to($bubble4Back, 1, {css: {marginTop: '-1966px'}});
         var bubble4Up3 = TweenMax.to($bubble4, 1, {css: {marginTop: '-1080px'}});
         var bubble5Up2= TweenMax.to($bubble5, 1, {css: {marginTop: '-1140px'}});
         var bubble6Up= TweenMax.to($bubble6, 1, {css: {marginTop: '-597px'}});
@@ -175,6 +176,7 @@
         controller.addTween(bubblesHook, bubble5TxtOut, bubbleTxtInterval, adjCurrentPos(-bubbleTxtInterval/2));
 
         controller.addTween(bubblesHook, bubble7In, bubbleUpDur, custNextPos(1000));
+        controller.addTween(bubblesHook, bubble4BackOut, bubbleUpDur, currentPos());
         controller.addTween(bubblesHook, bubble4Up3, bubbleUpDur, currentPos());
         controller.addTween(bubblesHook, bubble5Up2, bubbleUpDur, currentPos());
         controller.addTween(bubblesHook, bubble6Up, bubbleUpDur, currentPos());
