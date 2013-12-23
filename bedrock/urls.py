@@ -47,12 +47,13 @@ sitemaps = {
          '/community/student_rules/', '/community/student_details/', '/community/package/'],
         0.5, 'monthly'),
     'newsletter': PathsSitemap(
-        ['/newsletter/2013-08/', '/newsletter/2013-07/', '/newsletter/2013-06/', '/newsletter/2013-05/',
-         '/newsletter/2013-04/', '/newsletter/2013-03/',
+        ['/newsletter/2013-12/', '/newsletter/2013-11/',
+         '/newsletter/2013-10/', '/newsletter/2013-09/', '/newsletter/2013-08/', '/newsletter/2013-07/',
+         '/newsletter/2013-06/', '/newsletter/2013-05/', '/newsletter/2013-04/', '/newsletter/2013-03/',
          '/newsletter/2012-11/', '/newsletter/2012-10/', '/newsletter/2012-09/', '/newsletter/2012-08/', ],
         0.4, 'monthly'),
     'misc': ViewsSitemap(
-        ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about',
+        ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about', 'mocotw.eoy2013',
          'mocotw.shop-with-firefox', 'firefox.speed'],
         0.4, 'monthly'),
 }
