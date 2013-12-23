@@ -97,7 +97,7 @@
 
         var curtain2Out = TweenMax.to($curtain2, 1, {css: {top: '-2000px'}});
         var bubble4Up2 = TweenMax.to($bubble4, 1, {css: {marginTop: '-1020px'}});
-        var bubble4BackUp2 = TweenMax.to($bubble4Back, 1, {css: {marginTop: '-1006px'}});
+        var bubble4BackUp2 = TweenMax.to($bubble4Back, 1, {css: {marginTop: '-1066px'}});
         var bubble5Up = TweenMax.to($bubble5, 1, {css: {marginTop: '-1080px'}});
         var bubble6In = TweenMax.to($bubble6, 1, {css: {top: '50%', marginTop: '-537px', width: '720px'}});
         var bubble6TxtIn = TweenMax.to($bubble6Txt, 1, {css: {opacity: '1.0'}});
