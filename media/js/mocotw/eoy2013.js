@@ -82,7 +82,7 @@
         var fxosOut = TweenMax.to($fxos, 1, {css: {marginBottom: '2000px'}});
         var bubble3Up = TweenMax.to($bubble3, 1, {css: {marginTop: '-1100px'}});
         var bubble4In = TweenMax.to($bubble4, 1, {css: {top: '50%', marginTop: '-399px', width: '799px'}});
-        var bubble4BackIn = TweenMax.to($bubble4Back, 1, {css: {top: '50%', marginTop: '-416px', marginRight: '270px', width: '358px'}});
+        var bubble4BackIn = TweenMax.to($bubble4Back, 1, {css: {top: '50%', marginTop: '-416px', marginRight: '230px', width: '358px'}});
         var bubble4TxtIn = TweenMax.to($bubble4Txt, 1, {css: {opacity: '1.0'}});
         var bubble3TxtOut = TweenMax.to($bubble3Txt, 1, {css: {opacity: '0.0'}});
 

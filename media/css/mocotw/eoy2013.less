@@ -112,6 +112,35 @@
 }
 
 
+.floatKeyFrames() {
+  0% {
+    background-position: 0 10px;
+  }
+  50% {
+    background-position: 0 0px;
+  }
+  100% {
+    background-position: 0 10px;
+  }
+}
+
+@keyframes float {
+  .floatKeyFrames();
+}
+@-moz-keyframes float {
+  .floatKeyFrames();
+}
+@-webkit-keyframes float {
+  .floatKeyFrames();
+}
+@-o-keyframes float {
+  .floatKeyFrames();
+}
+@-ms-keyframes float {
+  .floatKeyFrames();
+}
+
+
 #masthead {
   z-index: 1000;
   position: relative;
@@ -337,10 +366,11 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/gray-up.png);
   z-index: 100;
   width: 549px;
-  height: 246px;
+  height: 256px;
   margin-left: 250px;
   left: 50%;
-  top: 0px;
+  top: -11px;
+  .animate(float 3s infinite);
 }
 
 #bubble1 {
@@ -348,7 +378,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/firefox-orange.png);
   z-index: 600;
   width: 876px;
-  height: 927px;
+  height: 937px;
   right: 50%;
   margin-right: -176px;
   top: 50%;
@@ -375,6 +405,7 @@ html, body {
     margin-top: 24px;
     width: 240px;
   }
+  .animate(float 3s infinite 1s);
 }
 
 #bubble2 {
@@ -383,7 +414,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/android-yellow.png);
   z-index: 700;
   width: 651/2px;
-  height: 729px;
+  height: 739px;
   left: 50%;
   margin-left: -54px;
   //  top: 300px;
@@ -407,6 +438,7 @@ html, body {
   p.block {
     text-align: right;
   }
+  .animate(float 3s infinite 2s);
 }
 
 #bubble3 {
@@ -415,7 +447,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/firefoxos-blue.png);
   z-index: 400;
   width: 1044/2px;
-  height: 822px;
+  height: 832px;
   right: 50%;
   margin-right: -500px;
   //  top: 100px;
@@ -434,6 +466,7 @@ html, body {
     text-align: center;
     color: #00408E;
   }
+  .animate(float 3s infinite);
 }
 
 #bubble4 {
@@ -442,7 +475,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/privacy-main.png);
   z-index: 600;
   width: 799/2px;
-  height: 798px;
+  height: 808px;
   right: 50%;
   margin-right: -171px;
   //  top: 17px;
@@ -471,6 +504,7 @@ html, body {
       font-size: 58px;
     }
   }
+  .animate(float 3s infinite 1s);
 }
 
 #bubble4-back {
@@ -478,12 +512,12 @@ html, body {
   .behindScene;
   z-index: 300;
   background-image: url(/media/img/mocotw/eoy2013/privacy-gray.png);
-  background-position: 40px 0;
   width: 358/2px;
-  height: 357px;
+  height: 367px;
   right: 50%;
-  margin-right: 72px;
+  margin-right: 32px;
   //  top: 0px;
+  .animate(float 3s infinite 1s);
 }
 
 #bubble5 {
@@ -492,7 +526,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/openbadges.png);
   z-index: 500;
   width: 641/2px;
-  height: 824px;
+  height: 834px;
   left: 50%;
   margin-left: 41px;
   //  top: -40px;
@@ -510,6 +544,7 @@ html, body {
   p {
     color: #C13831;
   }
+  .animate(float 3s infinite 2s);
 }
 
 #bubble6 {
@@ -518,7 +553,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/webmaker.png);
   z-index: 400;
   width: 720/2px;
-  height: 1065px;
+  height: 1075px;
   left: 50%;
   margin-left: -100px;
   //  top: -150px;
@@ -538,6 +573,7 @@ html, body {
   p {
     color: #FFCD03;
   }
+  .animate(float 3s infinite);
 }
 
 #bubble7 {
@@ -546,7 +582,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/mdn.png);
   z-index: 300;
   width: 831/2px;
-  height: 878px;
+  height: 888px;
   right: 50%;
   margin-right: -81px;
   //  top: 0px;
@@ -563,6 +599,7 @@ html, body {
     letter-spacing: -4px;
     color: #00549F;
   }
+  .animate(float 3s infinite 1s);
 }
 
 #bubble8 {
@@ -571,7 +608,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/community.png);
   z-index: 200;
   width: 918/2px;
-  height: 1082px;
+  height: 1092px;
   left: 50%;
   margin-left: -522px;
   //  top: 0px;
@@ -595,6 +632,7 @@ html, body {
   a {
     color: #555559;
   }
+  .animate(float 3s infinite 2s);
 }
 
 #bubble9 {
@@ -603,7 +641,7 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/red.png);
   z-index: 100;
   width: 894/2px;
-  height: 893px;
+  height: 903px;
   right: 50%;
   margin-right: -318px;
   //  top: 0px;
@@ -619,6 +657,7 @@ html, body {
     margin-top: 20px;
     margin-left: 140px;
   }
+  .animate(float 3s infinite);
 }
 
 #bubble10 {
@@ -627,10 +666,11 @@ html, body {
   background-image: url(/media/img/mocotw/eoy2013/gray-down.png);
   z-index: 200;
   width: 657/2px;
-  height: 861px;
+  height: 871px;
   left: 50%;
   margin-left: 186px;
   //  top: 0px;
+  .animate(float 3s infinite 1s);
 }
 
 #mozilla {
