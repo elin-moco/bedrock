@@ -1,3 +1,5 @@
+@import "../sandstone/lib";
+
 #masthead {
   z-index: 1000;
   position: relative;
@@ -30,6 +32,41 @@ html, body {
   position: relative;
 }
 
+#mozilla-2013 {
+  margin-top: -44px;
+  height: 1000px;
+}
+#firefox-desktop {
+  height: 1000px;
+}
+#firefox-android {
+  height: 1000px;
+}
+#firefox-os {
+  height: 1000px;
+}
+#privacy {
+  height: 1000px;
+}
+#open-badges {
+  height: 1000px;
+}
+#webmaker {
+  height: 1000px;
+}
+#mdn {
+  height: 1000px;
+}
+#community {
+  height: 1000px;
+}
+#mozilla-future {
+  height: 1200px;
+}
+#subscription {
+  height: 100px;
+}
+
 .curtain1 {
   position: fixed;
   display: block;
@@ -52,12 +89,13 @@ html, body {
   height: 2000px;
 }
 
+.behindScene {
+  top: 100%;
+}
+
 .bubble {
   display: block;
   position: fixed;
-  //  position: relative;
-  //  margin-top: -200px;
-  top: 100%;
   background-repeat: no-repeat;
   background-size: 100% auto;
   color: white;
@@ -118,7 +156,8 @@ html, body {
   width: 371px;
   height: 385px;
   left: 50%;
-  top: 100%;
+  top: 50%;
+  margin-top: 60px;
 }
 
 #android {
@@ -148,7 +187,7 @@ html, body {
   height: 552px;
   right: 50%;
   margin-right: -132px;
-  top: 100%;
+  bottom: 100%;
 }
 
 #anti-eye {
@@ -179,7 +218,8 @@ html, body {
   height: 927px;
   right: 50%;
   margin-right: -176px;
-  //  top: 200px;
+  top: 50%;
+  margin-top: 40px;
   h2 {
     width: 448px;
     padding-top: 96px;
@@ -206,9 +246,10 @@ html, body {
 
 #bubble2 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/android-yellow.png);
   z-index: 700;
-  width: 651px;
+  width: 651/2px;
   height: 729px;
   left: 50%;
   margin-left: -54px;
@@ -237,9 +278,10 @@ html, body {
 
 #bubble3 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/firefoxos-blue.png);
   z-index: 400;
-  width: 1044px;
+  width: 1044/2px;
   height: 822px;
   right: 50%;
   margin-right: -500px;
@@ -263,9 +305,10 @@ html, body {
 
 #bubble4 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/privacy-main.png);
   z-index: 600;
-  width: 799px;
+  width: 799/2px;
   height: 798px;
   right: 50%;
   margin-right: -171px;
@@ -299,21 +342,23 @@ html, body {
 
 #bubble4-back {
   .bubble;
+  .behindScene;
   z-index: 300;
   background-image: url(/media/img/mocotw/eoy2013/privacy-gray.png);
   background-position: 40px 0;
-  width: 358px;
+  width: 358/2px;
   height: 357px;
   right: 50%;
-  margin-right: 270px;
+  margin-right: 72px;
   //  top: 0px;
 }
 
 #bubble5 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/openbadges.png);
   z-index: 500;
-  width: 641px;
+  width: 641/2px;
   height: 824px;
   left: 50%;
   margin-left: 41px;
@@ -336,9 +381,10 @@ html, body {
 
 #bubble6 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/webmaker.png);
   z-index: 400;
-  width: 720px;
+  width: 720/2px;
   height: 1065px;
   left: 50%;
   margin-left: -100px;
@@ -363,9 +409,10 @@ html, body {
 
 #bubble7 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/mdn.png);
   z-index: 300;
-  width: 831px;
+  width: 831/2px;
   height: 878px;
   right: 50%;
   margin-right: -81px;
@@ -387,9 +434,10 @@ html, body {
 
 #bubble8 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/community.png);
   z-index: 200;
-  width: 918px;
+  width: 918/2px;
   height: 1082px;
   left: 50%;
   margin-left: -522px;
@@ -415,9 +463,10 @@ html, body {
 
 #bubble9 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/red.png);
   z-index: 100;
-  width: 894px;
+  width: 894/2px;
   height: 893px;
   right: 50%;
   margin-right: -318px;
@@ -435,9 +484,10 @@ html, body {
 
 #bubble10 {
   .bubble;
+  .behindScene;
   background-image: url(/media/img/mocotw/eoy2013/gray-down.png);
   z-index: 200;
-  width: 657px;
+  width: 657/2px;
   height: 861px;
   left: 50%;
   margin-left: 186px;
@@ -448,10 +498,12 @@ html, body {
   display: block;
   position: absolute;
   background-image: url(/media/img/mocotw/eoy2013/mozilla.png);
+  background-repeat: no-repeat;
+  background-position: 0 37px;
   z-index: 200;
   width: 678px;
   height: 454px;
-  top: -7px;
+  top: -44px;
   left: -114px;
 }
 
@@ -460,6 +512,7 @@ html, body {
   position: absolute;
   z-index: 200;
   background-image: url(/media/img/mocotw/eoy2013/2013.png);
+  background-repeat: no-repeat;
   width: 823px;
   height: 789px;
   top: 147px;
@@ -471,9 +524,10 @@ html, body {
   position: absolute;
   z-index: 200;
   background-image: url(/media/img/mocotw/eoy2013/review.png);
+  background-repeat: no-repeat;
   width: 452px;
   height: 151px;
-  top: 396px;
+  top: 350px;
   left: 276px;
 }
 
@@ -489,4 +543,86 @@ html, body {
   bottom: 0;
   width: 100%;
   z-index: 1000;
+}
+
+#side-nav {
+  position: fixed;
+  z-index: 500;
+  top: 50%;
+  right: 30px;
+  width: 20px;
+  margin-top: -154px;
+  padding: 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 8px 0;
+    }
+    li a {
+      display: block;
+      width: 12px;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      opacity: 0.5;
+      .transition();
+      &:hover, &:focus, &.curr {
+        opacity: 1;
+      }
+    }
+    li a.nav {
+      height: 12px;
+      padding: 0;
+      background: #fff;
+      .border-radius(7px);
+    }
+  }
+
+  #share-pane {
+    position: relative;
+    display: none;
+    width: auto;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
+    padding: @baseLine / 2;
+    margin: -(@baseLine * 2) 0 0 @baseLine;
+    .border-radius(@baseLine / 4);
+    .share-button {
+      visibility: hidden;
+      display: none;
+    }
+    #share-options {
+      margin-top: @baseLine / 2;
+    }
+    ul li {
+      margin: 0;
+      padding: 0;
+    }
+    a.close {
+      position: absolute;
+      top: 0;
+      right: @baseLine / 2;
+      height: 20px;
+      width: 20px;
+      font-size: 20px;
+      color: #484848;
+      span {
+        display: block;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        content: "\00D7";
+        font-weight: bold;
+      }
+    }
+
+  }
 }
