@@ -1,14 +1,28 @@
 @import "../sandstone/lib";
 
+.animate(@settings) {
+  animation: @settings;
+  -moz-animation: @settings;
+  -webkit-animation: @settings;
+  -o-animation: @settings;
+  -ms-animation: @settings;
+}
+
 .winkKeyFrames() {
   0% {
     height: 190px;
   }
-  50% {
+  3% {
+    height: 0px;
+  }
+  6% {
+    height: 190px;
+  }
+  9% {
     height: 0px;
   }
   100% {
-    height: 190px;
+    height: 0px;
   }
 }
 
@@ -27,6 +41,76 @@
 @-ms-keyframes wink {
   .winkKeyFrames();
 }
+
+.shakeKeyFrames() {
+  0% {
+    transform: rotate(25deg);
+  }
+  3% {
+    transform: rotate(0deg);
+  }
+  6% {
+    transform: rotate(25deg);
+  }
+  9% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  .shakeKeyFrames();
+}
+@-moz-keyframes shake {
+  .shakeKeyFrames();
+}
+@-webkit-keyframes shake {
+  .shakeKeyFrames();
+}
+@-o-keyframes shake {
+  .shakeKeyFrames();
+}
+@-ms-keyframes shake {
+  .shakeKeyFrames();
+}
+
+
+.blinkKeyFrames() {
+  0% {
+    opacity: 1.0;
+  }
+  20% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes blink {
+  .blinkKeyFrames();
+}
+@-moz-keyframes blink {
+  .blinkKeyFrames();
+}
+@-webkit-keyframes blink {
+  .blinkKeyFrames();
+}
+@-o-keyframes blink {
+  .blinkKeyFrames();
+}
+@-ms-keyframes wink {
+  .blinkKeyFrames();
+}
+
 
 #masthead {
   z-index: 1000;
@@ -198,6 +282,8 @@ html, body {
   height: 311px;
   right: 5px;
   top: 200px;
+  transform-origin: 50% 100%;
+  .animate(shake 5s infinite);
 }
 
 #android-stars {
@@ -229,6 +315,7 @@ html, body {
   background: url(/media/img/mocotw/eoy2013/eye-cover.svg);
   right: 20px;
   top: 35px;
+  .animate(wink 5s infinite);
 }
 
 #anti-eye {
@@ -672,4 +759,17 @@ html, body {
     }
 
   }
+}
+
+#scroll-tip {
+  position: fixed;
+  background-image: url(/media/img/mocotw/eoy2013/scroll.png);
+  width: 28px;
+  height: 32px;
+  left: 50%;
+  margin-left: -14px;
+  bottom: 20px;
+  z-index: 999;
+  pointer-events: none;
+  .animate(blink 1.5s infinite)
 }
