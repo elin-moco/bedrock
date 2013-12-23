@@ -149,6 +149,8 @@
 
 #tabzilla-panel {
   z-index: 1000;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  margin-bottom: -2px;
 }
 
 #outer-wrapper {
@@ -175,7 +177,7 @@ html, body {
 
 #mozilla-2013 {
   margin-top: -44px;
-  height: 850px;
+  height: 1000px;
 }
 #firefox-desktop {
   height: 1000px;
@@ -808,6 +810,7 @@ html, body {
 
 #scroll-tip {
   position: fixed;
+  display: block;
   background-image: url(/media/img/mocotw/eoy2013/scroll.png);
   width: 28px;
   height: 32px;
@@ -815,6 +818,7 @@ html, body {
   margin-left: -14px;
   bottom: 20px;
   z-index: 999;
-  pointer-events: none;
+  cursor: pointer;
+//  pointer-events: none;
   .animate(blink 1.5s infinite)
 }

@@ -198,8 +198,8 @@
         controller.addTween(bubblesHook, bubble9Up, bubbleUpDur, currentPos());
         controller.addTween(bubblesHook, bubble10In, bubbleUpDur, currentPos());
 
-        $('body').keyup(function (e) {
-            if (13 == e.keyCode) {
+        var autoScrollHandler = function (e) {
+            if (e.type == 'click' || 13 == e.keyCode) {
                 if (!autoScrolling) {
                     $.scrollTo($(document).height(), 2 * ($(document).height() - $(document).scrollTop()),
                         {onAfter: function() {autoScrolling = false;}});
@@ -210,7 +210,9 @@
                     autoScrolling = false;
                 }
             }
-        });
+        };
+        $('body').keyup(autoScrollHandler);
+        $('#scroll-tip').click(autoScrollHandler);
         $.localScroll({
             target: 'body', // could be a selector or a jQuery object too.
             queue: true,
