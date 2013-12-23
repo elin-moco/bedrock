@@ -4,6 +4,8 @@
     var autoScrolling = false;
 
     function initAnimations() {
+        TweenMax.defaultEase = Elastic.easeInOut
+
         var controller = $.superscrollorama({playoutAnimations: false});
         var bubblesHook = $('.main-content');
         var $bubble0 = $('#bubble0');
