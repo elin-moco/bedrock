@@ -62,7 +62,7 @@
         var bubble0Out = TweenMax.to($bubble0, 1, {css: {top: '-500px', width: '1000px', height: '500px'}});
 
         var firefoxIn = TweenMax.to($firefox, 1, {css: {marginTop: '-350px'}});
-        var bubble1In = TweenMax.to($bubble1, 1, {css: {marginTop: '-463px'}});
+        var bubble1In = TweenMax.to($bubble1, 1, {css: {marginTop: '-483px'}});
         var bubble1TxtIn = TweenMax.to($bubble1Txt, 1, {css: {opacity: '1.0'}});
 
         var firefoxUp = TweenMax.to($firefox, 1, {css: {marginTop: '-500px'}});
