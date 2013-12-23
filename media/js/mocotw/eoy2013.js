@@ -127,10 +127,10 @@
         var bubble9Up= TweenMax.to($bubble9, 1, {css: {marginTop: '-646px'}});
         var bubble10In = TweenMax.to($bubble10, 1, {css: {top: '50%', marginTop: '-430px', width: '657px'}});
 
-        controller.addTween(bubblesHook, bubble0Out, 300, custNextPos(350));
-        controller.addTween(bubblesHook, firefoxIn, 300, currentPos());
-        controller.addTween(bubblesHook, bubble1In, 300, currentPos());
-        controller.addTween(bubblesHook, bubble1TxtIn, bubbleTxtInterval, adjCurrentPos(300-bubbleTxtInterval/2));
+        controller.addTween(bubblesHook, bubble0Out, bubbleUpDur, custNextPos(bubbleUpDur));
+        controller.addTween(bubblesHook, firefoxIn, bubbleUpDur, currentPos());
+        controller.addTween(bubblesHook, bubble1In, bubbleUpDur, currentPos());
+        controller.addTween(bubblesHook, bubble1TxtIn, bubbleTxtInterval, adjCurrentPos(bubbleUpDur-bubbleTxtInterval/2));
 
         controller.addTween(bubblesHook, firefoxUp, bubbleUpDur, custNextPos(1000));
         controller.addTween(bubblesHook, bubble1Up, bubbleUpDur, currentPos());
