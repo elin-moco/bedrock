@@ -55,9 +55,9 @@
 
 [支援中心](http://{{ MOCO_URL }}/sumo{{ params.tracking_code }})
 
-{# [App校園競賽](http://{{ FFCLUB_URL }}/events/attack-on-web/{{ params.tracking_code }}) #}
+[MyFirefox](http://myfirefox.com.tw)
 
-[Firefox Flicks 全球微影片競賽](http://{{ MOCO_URL }}/firefoxflicks/{{ params.tracking_code }})
+[火狐商城](http://tw.mall.yahoo.com/store/firefox)
 
 
 有獎徵答
