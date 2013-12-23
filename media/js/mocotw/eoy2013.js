@@ -205,7 +205,8 @@
         $('body').keyup(function (e) {
             if (13 == e.keyCode) {
                 if (!autoScrolling) {
-                    $.scrollTo($(document).height(), 23000);
+                    $.scrollTo($(document).height(), 2 * ($(document).height() - $(document).scrollTop()),
+                        {onAfter: function() {autoScrolling = false;}});
                     autoScrolling = true;
                 }
                 else {
@@ -220,10 +221,10 @@
             duration: 1500,
             hash: true,
             onBefore: function(anchor, settings) {
-
+                autoScrolling = false;
             },
             onAfter: function (anchor, settings) {
-                // The 'this' contains the scrolled element (#content)
+                autoScrolling = false;
             }
         });
 
