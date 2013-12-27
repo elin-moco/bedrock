@@ -729,6 +729,7 @@ MINIFY_BUNDLES = {
             'js/facebookapps/downloadtab.js',
         ),
         'eoy2013': (
+            'js/libs/enquire.min.js',
             'js/libs/jquery.scrollTo.js',
             'js/libs/jquery.localScroll.js',
             'js/libs/jquery.waypoints.min.js',
