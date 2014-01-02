@@ -430,6 +430,9 @@ MINIFY_BUNDLES = {
         'shop-with-firefox': (
             'css/mocotw/shop-with-firefox.less',
         ),
+        'fsa-base': (
+            'css/mocotw/fsa-base.less',
+        ),
         'eoy2013': (
             'css/mocotw/eoy2013.less',
         ),

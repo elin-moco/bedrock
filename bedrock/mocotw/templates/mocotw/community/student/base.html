@@ -1,0 +1,67 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "mocotw/base-resp.html" %}
+
+{% set navigation_bar = [
+    (url('mocotw.community.student.index'), 'Firefox 校園大使介紹'),
+    (url('mocotw.community.student.rules'),  '招募辦法'),
+    (url('mocotw.community.student.mission'),  '推廣任務及證書'),
+    (url('mocotw.contribute_university_ambassadors'),  '線上申請單'),
+    (url('mocotw.community.student.package'),  '酷炫工具包'),
+    (url('mocotw.community.student.workshop'),  '狐狐工作坊'),
+    ('http://fsa-tw.tumblr.com/',  '部落格'),
+] -%}
+
+{% block extrahead %}
+    {{ css('fsa-base') }}
+{% endblock %}
+
+{% block content %}
+
+<div id="main-content">
+<div class="row">
+
+<article class="main-column">
+<h1 class="title-banner">Firefox 校園大使</h1>
+{% block article %}{% endblock %}
+</article>
+
+<aside class="sidebar">
+  <nav>
+    <ul>
+    {% for href, caption in navigation_bar %}
+      <li>
+      {% if href == request.path %}
+        <b>{{ caption|e }}</b>
+      {% else %}
+        <a href="{{ href|e }}">{{ caption|e }}</a>
+      {% endif %}
+      </li>
+    {% endfor %}
+    <ul>
+  </nav>
+
+  <div class="reference">
+    <h4>Firefox Student Ambassador Wiki</h4>
+    <p></p>
+    <a class="more" href="https://wiki.mozilla.org/StudentAmbassadors">了解更多 »</a>
+  </div>
+  <div class="reference">
+    <h4>Student App of the Month</h4>
+    <p></p>
+    <a class="more" href="https://wiki.mozilla.org/StudentAmbassadors/Activities#Student_.27App_of_the_Month.27">了解更多 »</a>
+  </div>
+  <div class="reference">
+    <h4>Firefox Club</h4>
+    <p></p>
+    <a class="more" href="https://wiki.mozilla.org/StudentAmbassadors/FirefoxClubs">了解更多 »</a>
+  </div>
+
+</aside>
+
+</div>
+</div>
+
+{% endblock %}

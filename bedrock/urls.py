@@ -36,11 +36,11 @@ sitemaps = {
          ],
         0.7, 'monthly'),
     'about': ViewsSitemap(
-        ['mozorg.about', 'mozorg.about.manifesto', 'mocotw.about.space',
+        ['mozorg.products', 'mozorg.about', 'mozorg.about.manifesto', 'mocotw.about.space',
          'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact'],
         0.6, 'monthly'),
     'community': ViewsSitemap(
-        ['mozorg.contribute', 'community.student.workshop'],
+        ['mozorg.contribute', 'mocotw.community.student.workshop'],
         0.5, 'monthly'),
     'community_old': PathsSitemap(
         ['/community/', '/community/contribute/', '/community/student/',

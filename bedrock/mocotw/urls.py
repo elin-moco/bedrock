@@ -23,6 +23,10 @@ urlpatterns = patterns(
     page('about/careers', 'mocotw/about/careers.html'),
     page('about/intern', 'mocotw/about/intern.html'),
     page('about/contact', 'mocotw/about/contact.html'),
+    page('community/student', 'mocotw/community/student/index.html'),
+    page('community/student/rules', 'mocotw/community/student/rules.html'),
+    page('community/student/mission', 'mocotw/community/student/mission.html'),
+    page('community/student/package', 'mocotw/community/student/package.html'),
     page('firefoxflicks', 'firefoxflicks/list.html'),
     page('firefox/download', 'firefox/download.html'),
     page('firefox/ueip', 'firefox/ueip.html'),
@@ -139,6 +143,6 @@ urlpatterns = patterns(
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
 
     url('^api/newsletter/subscriptions/count$', subscription_count),
-    url('^community/student/workshop/$', workshop, name='community.student.workshop'),
+    url('^community/student/workshop/$', workshop, name='mocotw.community.student.workshop'),
 
 )
