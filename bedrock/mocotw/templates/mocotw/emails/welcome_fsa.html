@@ -1,0 +1,464 @@
+{% set link_style='color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;' %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="NOINDEX, NOFOLLOW" name="ROBOTS">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <title>Newsletter</title>
+  <style type="text/css">
+    @media only screen and (max-device-width: 450px) {
+      div[class="mobiledevicesupport"] .hide_on_mobile {
+        display: none !important;
+      }
+
+      div[class="mobiledevicesupport"] table.container,
+      div[class="mobiledevicesupport"] table.compressed_on_mobile {
+        width: 320px !important;
+      }
+
+      div[class="mobiledevicesupport"] table td.compressed_on_mobile {
+        width: 318px !important;
+      }
+
+      div[class="mobiledevicesupport"] td.stack_on_mobile {
+        display: block !important;
+      }
+
+      div[class="mobiledevicesupport"] body,
+      div[class="mobiledevicesupport"] div {
+        font-size: 14px !important;
+        line-height: 1.2 !important;
+      }
+
+      div[class="mobiledevicesupport"] .menu-title,
+      div[class="mobiledevicesupport"] .menu-item a {
+        padding: 5px 10px !important;
+      }
+
+      div[class="mobiledevicesupport"] .title {
+        font-size: 18px !important;
+      }
+
+      div[class="mobiledevicesupport"] img.title-image {
+        width: 200px !important;
+        height: auto !important;
+      }
+
+      div[class="mobiledevicesupport"] img.header-image {
+        width: 320px !important;
+        height: auto !important;
+      }
+
+      div[class="mobiledevicesupport"] img.firefox-logo,
+      div[class="mobiledevicesupport"] img.dnt-logo {
+        width: 75px !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="mobiledevicesupport">
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center"
+       style="border-top: 1px solid #ffffff;border-collapse: collapse; background: #f6f2e7;font-family: Georgia, serif;font-size: 16px;color: #655e4c;">
+<tbody>
+<tr>
+<td valign="top" bgcolor="f6f2e7">
+
+<table width="600" cellspacing="0" cellpadding="0" border="0" align="center" class="container">
+<tbody>
+<tr>
+<td width="100%">
+
+
+<!--Start header info -->
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+  <tbody>
+  <tr>
+    <td style="font-family: georgia, serif;font-size: 12px;color: #655e4c;" class="small red-links" colspan="3">
+      {% trans link='//' + MOCO_URL + url('mocotw.emails.welcome_fsa') %}
+        <a style="color: #b30406;text-decoration: none;font-family: georgia, serif;font-size: 12px" href="{{ link }}">
+          Read this</a> in your browser »
+      {% endtrans %}
+
+    </td>
+    <td valign="top">
+      <a style="color: #447bc4;text-decoration: none;display: block;font-family: sans-serif;font-size: 12px;"
+         target="_blank"
+         href="//{{ MOCO_URL }}">
+        <img width="146" height="44" border="0" align="right" style="display:block" alt="Mozilla"
+             src="http://image.e.mozilla.org/lib/fe9915707361037e75/m/1/SA_mozilla.jpg"></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+  <tbody>
+
+  <tr>
+    <td height="5" colspan="3"></td>
+  </tr>
+  <tr>
+    <td class="stack_on_mobile"><img width="325" height="90" border="0" class="title-image stack_on_mobile"
+                                     src="http://image.e.mozilla.org/lib/fe9915707361037e75/m/1/SA_title.png"
+                                     alt="Student Ambassadors"></td>
+    <td width="20">&nbsp;</td>
+
+    <td valign="middle"
+        style="font-family: georgia, serif;font-style: italic;font-size: 14px;line-height: 1;padding: 10px 0;color: #7d7d7d;"
+        class="tagline stack_on_mobile">{{ _('From Mozilla, a non-profit organization and developer of Firefox') }}
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+<!--End header info -->
+
+
+<!--start Article, no image -->
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" class="hide_on_mobile">
+  <tbody>
+  <tr>
+    <td height="10" colspan="2"></td>
+  </tr>
+  </tbody>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+  <tbody>
+  <tr>
+    <td width="100%">
+      <table width="598" cellspacing="0" cellpadding="0" border="0"
+             style="background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
+             class="white-box compressed_on_mobile">
+        <tbody>
+        <tr>
+          <td width="20" rowspan="4">&nbsp;</td>
+          <td height="20">&nbsp;</td>
+          <td width="20" rowspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="20"><h2
+                  style="font-family: sans-serif;font-size: 26px;font-weight: normal;font-style: normal;color: #d04b00;margin-top: 0;margin-bottom: 15px;"
+                  class="title">{{ _('Welcome to Firefox Student Ambassadors!') }} </h2></td>
+        </tr>
+        <tr>
+          <td>
+            <div style="line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;font-size: 16px;">
+              {% trans %}
+                This email confirms that you are now officially registered as a member of the Firefox Student Ambassador
+                program. Here are a few easy ways in which you can get started spreading the word about Mozilla right
+                away:
+              {% endtrans %}
+              <br><br>
+
+              <strong><a style="{{ link_style }}"
+                         href="http://click.e.mozilla.org/?qs=6c54be4301d6de681c994181b4f6943afac5b4de76bc6f3e24292c818f95ba2a3d7f96ab7dd233a3">
+                {{ _('1) Join Team Mobilizer for Firefox OS.') }}</a></strong>
+              <br>
+              {% trans %}
+                Do you want to be the first to know about Firefox OS in your region? Want to have fun with people like
+                you and help make history?
+              {% endtrans %}
+              <br> <br>
+
+              {% trans %}
+                Team Mobilizer is a group of tech/geek enthusiasts that are committed to spreading FirefoxOS, Mozilla's
+                new mobile product. Mobilizers receive periodic missions asking them to do a simple action to teach
+                others about the new Firefox OS. Mobilizers will also attend, assist or host events in their market
+                about once a month.
+              {% endtrans %}
+              <a style="{{ link_style }}"
+                 href="http://click.e.mozilla.org/?qs=6c54be4301d6de689cfe888843825cbdbe00862e8b11b7c2579eeef5f154a213755a102e5571d50b">
+                {{ _('Learn about Team Mobilizer in your region!') }}</a>
+
+              <br><br>
+
+
+              <strong><a style="{{ link_style }}"
+                         href="http://click.e.mozilla.org/?qs=6c54be4301d6de6841318fbeeb6030f89554e520e8995aed688ebd7637f81ea910cc3f0a08e236d2">
+                {{ _('2) Read the wiki.') }}</a></strong>
+              <br>
+              {% trans link1='http://click.e.mozilla.org/?qs=6c54be4301d6de68d86d29b13b2403a8144c2428de5ca9ac5d84fb11fd93b63b0bb70b7e9a9a514e',
+              link2='http://click.e.mozilla.org/?qs=6c54be4301d6de68ab07eadeba9b73ddd13ddf8a64b763776ef5b4940c709b798e0cd7a8c6728c78',
+              link3='http://click.e.mozilla.org/?qs=6c54be4301d6de681b93d138e9a6cf23f00766709d55cb6f784c5259315fdd32102150fbebb25703' %}
+                Further familiarize yourself with the program's mission, tools, and activities on our
+                <a style="{{ link_style }}"
+                   href="{{ link1 }}">
+                  wiki page</a>.
+                Here you can also find out more information about what
+                <a style="{{ link_style }}"
+                   href="{{ link2 }}">
+                  activities</a>
+                you can do on campus to promote Mozilla (
+                <a alias="wiki rewards"
+                   style="{{ link_style }}"
+                   href="{{ link3 }}">
+                  and earn rewards!</a>)
+              {% endtrans %}
+              <br><br>
+
+              {% trans link1='http://click.e.mozilla.org/?qs=6c54be4301d6de68ece37d69bda6d86f571b034ae08a6311b14e52bb96c28d13ffff98bcb4047de7',
+              link2='http://click.e.mozilla.org/?qs=6c54be4301d6de683f16fe197f7eae14bff92366848bcb4ab56f22b22431ec4da54dd793a2675c61' %}
+                <strong>3) Join us on <a
+                        style="{{ link_style }}"
+                        href="{{ link1 }}">Facebook</a>
+                  and <a style="{{ link_style }}"
+                         href="{{ link2 }}">Twitter</a>!</strong><br>
+                Explore our social pages for regular updates and to connect with your fellow Student Ambassadors.
+              {% endtrans %}
+
+
+              <br><br>
+              <strong><a style="{{ link_style }}"
+                         href="http://click.e.mozilla.org/?qs=6c54be4301d6de68d2c99e68abcecb3a6af1d75d449d6cde06e4ab488ac48a9c278bf14d9b08029f">
+                {{ _('4) Find or start a Firefox Club at your university.') }}</a></strong>
+              <br>
+              {{ _('Find fellow Ambassadors at your school or be the first Firefox Club founder at your university.') }}
+              <br><br>
+
+
+              {% trans %}
+                As part of the Student Ambassadors program, you'll receive an email newsletter from us every month with
+                updates, achievements, Firefox news, and more. We look forward to staying in-touch!
+              {% endtrans %}
+              <br><br>
+
+              {% trans link='mailto:firefoxstudents@mozilla.com' %}
+                In the meantime, if you have any questions, please do not hesitate to <a
+                      style="{{ link_style }}"
+                      href="{{ link }}">let us know</a>.
+              {% endtrans %}
+
+              <br><br>
+
+              {% trans %}
+                Thank you again for all of your hard work in helping Mozilla with our mission of building a brighter
+                future for the Web.
+              {% endtrans %}
+              <br><br>
+              Kate <br>
+              {{ _('Mozilla Student Community Manager') }}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td height="20">&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<!--end Article, no image -->
+
+<!--Start last table, 2 col -->
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" class="hide_on_mobile">
+  <tbody>
+  <tr>
+    <td height="20" colspan="2"></td>
+  </tr>
+  </tbody>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+  <tbody>
+  <tr>
+    <td style="vertical-align: top;" class="stack_on_mobile">
+      <table width="290" cellspacing="0" cellpadding="0" border="0"
+             style="background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
+             class="white-box compressed_on_mobile">
+        <tbody>
+        <tr>
+          <td width="20" rowspan="4">&nbsp;</td>
+          <td height="20">&nbsp;</td>
+          <td width="20" rowspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <h2 style="font-family: sans-serif;font-size: 26px;font-weight: normal;font-style: normal;color: #d04b00;margin-top: 0;margin-bottom: 15px;"
+                class="title">{{ _('Any questions?') }}</h2></td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <div style="line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;font-size: 16px;">
+              {% trans link='http://click.e.mozilla.org/?qs=6c54be4301d6de68405b9bee53ac3650a93fa13910ac5e50b363f518a7412c90d643b407f38116a5' %}
+                Please 'raise your hand' on either IRC (#firefoxstudents) or take a look at our
+                <a style="line-height: 1.4; {{ link_style }}" href="{{ link }}">FAQ page</a>.
+              {% endtrans %}
+
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td height="20">&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td width="20" valign="top" class="hide_on_mobile">&nbsp;</td>
+    <td style="vertical-align: top;" class="stack_on_mobile">
+      <table width="290" cellspacing="0" cellpadding="0" border="0"
+             style="background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
+             class="white-box compressed_on_mobile">
+        <tbody>
+        <tr>
+          <td width="20" rowspan="4">&nbsp;</td>
+          <td height="20">&nbsp;</td>
+          <td width="20" rowspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="20"><h2
+                  style="font-family: sans-serif;font-size: 26px;font-weight: normal;font-style: normal;color: #d04b00;margin-top: 0;margin-bottom: 15px;"
+                  class="title">{{ _('Connect with us') }}</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+
+            <table>
+              <tbody>
+              <tr>
+                <td>
+                  <a style="color: #0096dd;text-decoration: none; line-height: 1.4;font-family: Georgia, serif;font-size: 16px;"
+                     href="http://click.e.mozilla.org/?qs=6c54be4301d6de6877a441e12915084fd84983ad6b4caeabd2d22db91df119ea515a910273e609f3">
+                    <img width="35" height="35" border="0" style="vertical-align: middle;"
+                         src="http://image.e.mozilla.org/lib/fe9915707361037e75/m/1/SA_facebook.png">
+                  </a>
+
+                </td>
+                <td width="5">&nbsp;</td>
+                <td>
+                  <a style="color: #0096dd;text-decoration: none; line-height: 1.4;font-family: Georgia, serif;font-size: 16px;"
+                     href="http://click.e.mozilla.org/?qs=6c54be4301d6de685b6eff878bef26cae8983e8d3bcb0c0391d601630b6c1769f2459cdea56d219e">
+                    {{ _('Join us on Facebook') }}
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td style="line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;font-size: 10px;"
+                    colspan="3">
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a style="color: #0096dd;text-decoration: none; line-height: 1.4;font-family: Georgia, serif;font-size: 16px;"
+                     href="http://click.e.mozilla.org/?qs=6c54be4301d6de682a85b0488056ec555b69c052e2490bce49da28180e659c9bcc4533b673fb067d">
+                    <img width="35" height="35" border="0" style="vertical-align: middle;"
+                         src="http://image.e.mozilla.org/lib/fe9915707361037e75/m/1/SA_twitter.png"></a>
+                </td>
+                <td width="5">&nbsp;</td>
+
+                <td>
+                  <a style="color: #0096dd;text-decoration: none; line-height: 1.4;font-family: Georgia, serif;font-size: 16px;"
+                     href="http://click.e.mozilla.org/?qs=6c54be4301d6de684687561505495de27064d2a6e6b99837aea3c7c6f4281b9f79915b6dce1b6fa8">
+                    {{ _('Follow us on Twitter') }}</a>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+
+          </td>
+        </tr>
+        <tr>
+          <td height="20">&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!--End last table, 2 col -->
+
+<!--Start footer -->
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center"
+       style="font-size: 12px;font-style: italic;color: #898378; background: #f6f2e7;"
+       class="footer compressed_on_mobile">
+  <tbody>
+  <tr>
+    <td width="10" rowspan="3">&nbsp;</td>
+    <td height="20"></td>
+  </tr>
+  <tr>
+    <td valign="top"><strong style="font-style: normal;color: #736a5e;font-family: Georgia, serif;font-size: 12px;">
+      {{ _('Thanks for reading!') }}</strong></td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  </tbody>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center"
+       style="font-size: 12px;font-style: italic;color: #898378; background: #f6f2e7"
+       class="footer compressed_on_mobile">
+  <tbody>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td valign="top" class="stack_on_mobile">
+      <p style="margin: 0 0 10px 0;line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;">
+        {% trans %}
+          You're receiving this email because you subscribed to receive email newsletters and information from Mozilla.
+          If you do not wish to receive these newsletters, please click the Unsubscribe link below.
+        {% endtrans %}
+      </p>
+
+      <p style="line-height: 1.4;color: #655e4c;margin-top: 0;"><a
+              style="color: #0096dd;text-decoration: none;font-size: 12px;font-family: Georgia, serif;" target="_blank"
+              href="http://click.e.mozilla.org/?qs=6c54be4301d6de68d92fce1093e7963c3da2834ca77de03b5bd5ee97d124dbee161df93dba302015">
+        {{ _('Unsubscribe') }}</a>
+        | <a style="color: #0096dd;text-decoration: none;font-size: 12px;font-family: Georgia, serif;" target="_blank"
+             href="http://click.e.mozilla.org/?qs=6c54be4301d6de68109b4a21cdff6da6c5117518afc3ea783a766360f6ee545710dcade5feebbbc9">
+          {{ _('Modify your preferences') }}</a></p>
+    </td>
+    <td width="40" class="hide_on_mobile">&nbsp;</td>
+    <td width="170" valign="top" class="address stack_on_mobile">
+      <p style="margin: 0 0 10px 0;line-height: 1.4;color: #655e4c;margin-top: 0;"><strong
+              style="font-style: normal;color: #736a5e;font-family: Georgia, serif;">Mozilla</strong><br>
+        {{ _('650 Castro St., Ste 300<br>Mountain View CA 94041-2021') }}</p>
+
+      <p style="margin: 0 0 10px 0;line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;"><a
+              style="color: #0096dd;text-decoration: none;font-size: 12px;font-family: Georgia, serif;" target="_blank"
+              href="http://click.e.mozilla.org/?qs=6c54be4301d6de68d0d79aa3e105dbf232bfd3ad738469858438779e17196b3b438e5cbbb3a47a5f">
+        {{ _('Mozilla Privacy Policy') }}</a></p>
+    </td>
+    <td width="10">&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!--End footer -->
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<img width="1" height="1"
+     src="http://click.e.mozilla.org/open.aspx?ffcb10-fec8167473660575-fe3610777664057f741675-fe9915707361037e75-ff6d157074-fe551d73756d027c7d12-ff291774736d&amp;d=40026">
+
+
+</body>
+</html>
