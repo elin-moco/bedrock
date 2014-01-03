@@ -15,6 +15,7 @@ from django.utils.safestring import mark_safe
 
 import basket
 from basket.base import request
+from bedrock.mocotw.utils import newsletter_subscribe
 from bedrock.newsletter import utils
 
 from captcha.fields import ReCaptchaField
@@ -27,6 +28,7 @@ from .email_contribute import INTEREST_CHOICES
 
 
 FORMATS = (('H', _lazy('HTML')), ('T', _lazy('Text')))
+LANGS = (('ZH', '中文'), ('E', 'English'))
 LANGS_TO_STRIP = ['en-US', 'es']
 PARENTHETIC_RE = re.compile(r' \([^)]+\)$')
 LANG_FILES = ['mozorg/contribute', 'firefox/partners/index']
@@ -392,10 +394,13 @@ class ContributeUniversityAmbassadorForm(forms.Form):
                  ('other', _lazy('Other'))])
     area_free_text = forms.CharField(max_length=100, required=False)
     city = forms.CharField(max_length=100)
-    country = forms.ChoiceField()
+    country = forms.ChoiceField(initial='tw')
     fmt = forms.ChoiceField(widget=forms.RadioSelect(renderer=SideRadios),
                             label=_lazy('Email format preference:'),
                             choices=FORMATS, initial='H')
+    lang = forms.ChoiceField(widget=forms.RadioSelect(renderer=SideRadios),
+                            label=_lazy('Language preference:'),
+                            choices=LANGS, initial='ZH')
     age_confirmation = forms.BooleanField(
         widget=widgets.CheckboxInput(),
         label=_lazy(u'I’m 18 years old and eligible to participate in the program'))
@@ -404,6 +409,11 @@ class ContributeUniversityAmbassadorForm(forms.Form):
         widget=widgets.CheckboxInput(),
         label=_lazy(u'Please share my contact information and interests with related Mozilla contributors for the purpose of collaborating on Mozilla projects'))
     privacy = forms.BooleanField(widget=PrivacyWidget)
+    nl_mozilla_taiwan = forms.BooleanField(
+        required=False,
+        initial=True,
+        widget=widgets.CheckboxInput(),
+        label=_lazy(u'Firefox Newsletter (in Chinese): News from Mozilla Taiwan'))
     nl_mozilla_and_you = forms.BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),
@@ -461,6 +471,8 @@ class ContributeUniversityAmbassadorForm(forms.Form):
 
     def save(self):
         data = self.cleaned_data
+        if data.get('nl_mozilla_taiwan', False):
+            newsletter_subscribe(data['email'])
         result = basket.subscribe(data['email'], self.newsletters(),
                                   format=data['fmt'], country=data['country'],
                                   welcome_message='Student_Ambassadors_Welcome',

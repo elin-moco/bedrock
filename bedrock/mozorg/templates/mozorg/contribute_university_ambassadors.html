@@ -100,6 +100,9 @@
           <div class="field field-format">
             {{ form.fmt.label }} {{ form.fmt }}
           </div>
+          <div class="field field-language">
+            {{ form.lang.label }} {{ form.lang }}
+          </div>
         </section>
       </div>
       <div class="form-column">
@@ -115,6 +118,12 @@
               Would you also like to hear about other things that are happening at Mozilla? You can sign-up to receive additional newsletters:
             {% endtrans %}
           </p>
+          <div class="field field-newsletter">
+            <label for="id_nl_mozilla_taiwan">
+              {{ form.nl_mozilla_taiwan }}
+              <span class="title">{{ form.nl_mozilla_taiwan.label }}</span>
+            </label>
+          </div>
           <div class="field field-newsletter">
             <label for="id_nl_mozilla_and_you">
               {{ form.nl_mozilla_and_you }}
