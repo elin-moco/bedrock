@@ -473,23 +473,23 @@ class ContributeUniversityAmbassadorForm(forms.Form):
         data = self.cleaned_data
         send_fsa_form(data)
 
-        # if data.get('nl_mozilla_taiwan', False):
-        #     newsletter_subscribe(data['email'])
-        # result = basket.subscribe(data['email'], self.newsletters(),
-        #                           format=data['fmt'], country=data['country'],
-        #                           welcome_message='Student_Ambassadors_Welcome',
-        #                           source_url=data['source_url'])
-        #
-        # data = {
-        #     'FIRST_NAME': data['first_name'],
-        #     'LAST_NAME': data['last_name'],
-        #     'STUDENTS_CURRENT_STATUS': data['current_status'],
-        #     'STUDENTS_SCHOOL': data['school'],
-        #     'STUDENTS_GRAD_YEAR': data['expected_graduation_year'],
-        #     'STUDENTS_MAJOR': data['area'],
-        #     'COUNTRY_': data['country'],
-        #     'STUDENTS_CITY': data['city'],
-        #     'STUDENTS_ALLOW_SHARE': data['share_information'],
-        # }
-        # request('post', 'custom_update_student_ambassadors',
-        #         token=result['token'], data=data)
+        if data.get('nl_mozilla_taiwan', False):
+            newsletter_subscribe(data['email'])
+        result = basket.subscribe(data['email'], self.newsletters(),
+                                  format=data['fmt'], country=data['country'],
+                                  welcome_message='Student_Ambassadors_Welcome',
+                                  source_url=data['source_url'])
+
+        data = {
+            'FIRST_NAME': data['first_name'],
+            'LAST_NAME': data['last_name'],
+            'STUDENTS_CURRENT_STATUS': data['current_status'],
+            'STUDENTS_SCHOOL': data['school'],
+            'STUDENTS_GRAD_YEAR': data['expected_graduation_year'],
+            'STUDENTS_MAJOR': data['area'],
+            'COUNTRY_': data['country'],
+            'STUDENTS_CITY': data['city'],
+            'STUDENTS_ALLOW_SHARE': data['share_information'],
+        }
+        request('post', 'custom_update_student_ambassadors',
+                token=result['token'], data=data)
