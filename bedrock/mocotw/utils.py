@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
 import csv
 import logging
 import re
 import imp
+import urllib
+import urllib2
 from pyga.requests import Tracker
 from pyga.entities import Visitor, Session, Page
 from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG
@@ -175,6 +178,36 @@ def newsletter_context_vars(context, issue_number):
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL
     context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
+
+
+def send_fsa_form(data):
+    formkey = '1Jf-35AIvc_k_HDYCxb7atwpRvN3HgqWNpFM9o1Qj_hc'
+    post_data = {
+        'entry.678291564': data['first_name'],
+        'entry.609995622': data['last_name'],
+        'entry.399849269': data['email'],
+        'entry.1721452105': data['school'],
+        'entry.1558574073': data['city'],
+        'entry.498340777': data['country'],
+        'entry.2021193149': data['current_status'],
+        'entry.1084806558': data['expected_graduation_year'],
+        'entry.1130352781': data['area'],
+        'entry.197281933': data['area_free_text'],
+        'entry.689416110': 'TEXT' if data['fmt'] == 'T' else 'HTML',
+        'entry.231672082': 'English' if data['lang'] == 'EN' else 'Chinese',
+        'entry.910433691': 'OK' if data['share_information'] else '',
+        'entry.760711799': 'OK' if data['age_confirmation'] else '',
+        'entry.2111690093': 'OK' if data['privacy'] else '',
+        'entry.2110423571': 'OK' if data['nl_mozilla_taiwan'] else '',
+        'entry.286954631': 'OK' if data['nl_mozilla_and_you'] else '',
+        'entry.1313043270': 'OK' if data['nl_mobile'] else '',
+        'entry.1079795528': 'OK' if data['nl_firefox_flicks'] else '',
+        'entry.1200388266': 'OK' if data['nl_about_mozilla'] else '',
+    }
+    result = urllib2.urlopen('https://docs.google.com/a/mozilla.com/forms/d/%s/formResponse' % formkey, urllib.urlencode(post_data))
+    content = result.read()
+    #TODO: check for error.
+
 
 def track_page(path):
     tracker = Tracker(GA_ACCOUNT_CODE.replace('UA-', 'MO-'), MOCO_URL)

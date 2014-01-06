@@ -13,7 +13,7 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import redirect
 
 import basket
-from bedrock.mocotw.utils import newsletter_subscribe
+from bedrock.mocotw.utils import newsletter_subscribe, send_fsa_form
 from lib import l10n_utils
 from commonware.decorators import xframe_allow
 from funfactory.urlresolvers import reverse
@@ -194,8 +194,8 @@ def contribute_university_ambassadors(request):
     form = ContributeUniversityAmbassadorForm(request.POST or None)
     if form.is_valid():
         try:
-            pass
-            #form.save()
+            # pass
+            form.save()
         except basket.BasketException:
             msg = form.error_class(
                 [_('We apologize, but an error occurred in our system. '
