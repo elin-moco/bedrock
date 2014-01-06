@@ -95,8 +95,19 @@
     </video>
   </div>
   </div>
-
 {% endif %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=135467439980355";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-fans-page">
+    <div class="fb-like-box" data-href="http://www.facebook.com/MozillaTaiwan" data-width="400" data-height="200" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+    <div class="fb-facepile" data-href="http://facebook.com/MozillaTaiwan" data-width="400" data-height="200" data-max-rows="3" data-colorscheme="light" data-size="large" data-show-count="true"></div>
+  </div>
 </article>
 {% endblock %}
 
