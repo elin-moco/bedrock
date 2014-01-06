@@ -194,8 +194,7 @@ def contribute_university_ambassadors(request):
     form = ContributeUniversityAmbassadorForm(request.POST or None)
     if form.is_valid():
         try:
-            pass
-            # form.save()
+            form.save()
         except basket.BasketException:
             msg = form.error_class(
                 [_('We apologize, but an error occurred in our system. '
