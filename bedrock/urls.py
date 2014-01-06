@@ -40,9 +40,10 @@ sitemaps = {
          'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact'],
         0.6, 'monthly'),
     'community': ViewsSitemap(
-        ['mozorg.contribute', 'mocotw.community.student.index', 'mocotw.community.student.rules',
-         'mocotw.community.student.mission', 'mocotw.community.student.package', 'mocotw.community.student.workshop',
-         'mocotw.contribute_university_ambassadors'],
+        ['mozorg.contribute', 'mocotw.community.student.workshop'],
+        # ['mozorg.contribute', 'mocotw.community.student.index', 'mocotw.community.student.rules',
+        #  'mocotw.community.student.mission', 'mocotw.community.student.package', 'mocotw.community.student.workshop',
+        #  'mocotw.contribute_university_ambassadors'],
         0.5, 'monthly'),
     'community_old': PathsSitemap(
         ['/community/', '/community/contribute/', '/community/student/',
