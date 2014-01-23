@@ -365,8 +365,11 @@
   position: relative;
   width: 215px;
   height: 245px;
-  margin-left: 15px;
-  margin-right: 15px;
+  padding: 10px 15px;
+  background-position: 15px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  .transition(background-color ease-in-out 0.2s);
   .button {
     .transition(opacity ease-in-out 0.2s);
     display: block;
@@ -374,16 +377,21 @@
     bottom: 0;
     opacity: 0;
   }
-  &:hover .button {
-    opacity: 1;
+  &:hover{
+    background-color: #CAE1F4;
+    .button {
+      opacity: 1;
+    }
   }
   .download-button {
-    left: 0;
+    left: 10px;
+    bottom: 10px;
     width: 80px;
     text-align: right;
   }
   .share-button {
-    right: 30px;
+    right: 40px;
+    bottom: 10px;
     min-width: 50px;
     text-align: right;
   }
