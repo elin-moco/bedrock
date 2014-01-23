@@ -3,7 +3,8 @@
 {% from 'macros.html' import facebook_share_url, gplus_share_url, plurk_share_url %}
 
 {% block page_title %}Mozilla Taiwan 2013 精彩紀事{% endblock %}
-{% block page_desc %}回顧全球性非營利組織 Mozilla 在 2013 年的努力成果。{% endblock %}
+{% block page_desc %}Mozilla Taiwan 2013 年的精彩活動回顧{% endblock %}
+{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/2013review/video.png') }}{% endblock %}
 
 {% block extrahead %}
   {{ css('2013review') }}
@@ -27,9 +28,9 @@
     <div class="play"></div>
   </div>
   <div class="socialButtons">
-    <a class="facebook" href="{{ facebook_share_url('https://'+MOCO_URL+url('mocotw.2013review')) }}"></a>
-    <a class="gplus" href="{{ gplus_share_url('https://'+MOCO_URL+url('mocotw.2013review')) }}"></a>
-    <a class="plurk" href="{{ plurk_share_url('https://'+MOCO_URL+url('mocotw.2013review')) }}"></a>
+    <a class="facebook" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+url('mocotw.2013review')) }}"></a>
+    <a class="gplus" target="_blank" href="{{ gplus_share_url(settings.CANONICAL_URL+url('mocotw.2013review')) }}"></a>
+    <a class="plurk" target="_blank" href="{{ plurk_share_url(settings.CANONICAL_URL+url('mocotw.2013review')) }}"></a>
   </div>
   <h1>Mozilla Taiwan 2013 精彩紀事</h1>
   <div class="separator"></div>
@@ -151,25 +152,25 @@
   <div class="separator"></div>
   <div id="spring-couplets">
     <div id="spring1">
-      <a id="download-spring" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">下載 PNG</a>
-      <a id="share-spring" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+ media('docs/mocotw/spring-fest/firefox-spring.png')) }}">分享</a>
+      <a id="download-spring" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">下載 PNG</a>
+      <a id="share-spring" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+ media('docs/mocotw/spring-fest/firefox-spring.png')) }}">分享</a>
     </div>
     <div id="spring2">
-      <a id="download-happiness" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-happiness.png') }}">下載 PNG</a>
-      <a id="share-happiness" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-happiness.png')) }}">分享</a>
+      <a id="download-happiness" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-happiness.png') }}">下載 PNG</a>
+      <a id="share-happiness" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-happiness.png')) }}">分享</a>
     </div>
     <br>
     <div id="spring3">
-      <a id="download-spring-arrive" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">下載 PNG</a>
-      <a id="share-spring-arrive" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png')) }}">分享</a>
+      <a id="download-spring-arrive" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">下載 PNG</a>
+      <a id="share-spring-arrive" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png')) }}">分享</a>
     </div>
     <div id="spring4">
-      <a id="download-horse" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-horse.png') }}">下載 PNG</a>
-      <a id="share-horse" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-horse.png')) }}">分享</a>
+      <a id="download-horse" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-horse.png') }}">下載 PNG</a>
+      <a id="share-horse" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-horse.png')) }}">分享</a>
     </div>
     <div id="spring5">
-      <a id="download-lucky" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-lucky.png') }}">下載 PNG</a>
-      <a id="share-lucky" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-lucky.png')) }}">分享</a>
+      <a id="download-lucky" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-lucky.png') }}">下載 PNG</a>
+      <a id="share-lucky" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-lucky.png')) }}">分享</a>
     </div>
   </div>
   <div class="separator"></div>
