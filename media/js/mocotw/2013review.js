@@ -13,4 +13,18 @@
             window.location.href = $(this).attr('data-href');
         }
     });
+    $('#spring-couplets .share-button').click(function(e) {
+        e.preventDefault();
+        var $spring = $(this).parent();
+        if (FB) {
+            FB.ui({
+              method: 'feed',
+              link: $spring.attr('data-href'),
+              'name': $spring.attr('data-name'),
+              'description': '請加入 Mozilla Taiwan 粉絲團！',
+              caption: 'Firefox 春聯 - 祝您馬年行大運'
+            }, function(response){
+            });
+        }
+    });
 })();

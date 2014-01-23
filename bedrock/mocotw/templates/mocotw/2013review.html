@@ -3,7 +3,7 @@
 {% from 'macros.html' import facebook_share_url, gplus_share_url, plurk_share_url %}
 
 {% block page_title %}Mozilla Taiwan 2013 精彩紀事{% endblock %}
-{% block page_desc %}Mozilla Taiwan 2013 年的精彩活動回顧{% endblock %}
+{% block page_desc %}Mozilla Taiwan 2013 年的精彩活動回顧，還有 Firefox 春聯可以下載喔！ - 祝您馬年行大運{% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/2013review/video.png') }}{% endblock %}
 
 {% block extrahead %}
@@ -35,6 +35,7 @@
   <h1>Mozilla Taiwan 2013 精彩紀事</h1>
   <div class="separator"></div>
   <div id="timeline">
+    <div id="month1" class="month"></div>
     <div id="event1" class="event">
       <h2>1/26 Firefox OS App Days</h2>
       <ul>
@@ -44,12 +45,14 @@
         <li>3 個 App 上架 Marketplace</li>
       </ul>
     </div>
+    <div id="month5" class="month"></div>
     <div id="event2" class="event">
       <h2>5/18 - 19 JSDC</h2>
       <ul>
         <li>與 JavaScript、HTML5 & CSS3、Node.js 社群相見歡，成功展示 Firefox OS</li>
       </ul>
     </div>
+    <div id="month6" class="month"></div>
     <div id="event3" class="event">
       <h2>6/3 謀智鴻海聯合記者會</h2>
       <ul>
@@ -72,12 +75,14 @@
         <li>政大校園演講</li>
       </ul>
     </div>
+    <div id="month7" class="month"></div>
     <div id="event6" class="event">
       <h2>7/22 第二屆校園大使訓練營</h2>
       <ul>
         <li>77 位學生參與，來自全台灣 39 所大專院校</li>
       </ul>
     </div>
+    <div id="month8" class="month"></div>
     <div id="event7" class="event">
       <h2>8/3 - 4 COSCUP 開源人年會</h2>
       <ul>
@@ -92,12 +97,14 @@
         <li>8 月微電影技巧</li>
       </ul>
     </div>
+    <div id="month9" class="month"></div>
     <div id="event9" class="event">
       <h2>狐狐工作坊</h2>
       <ul>
         <li>9 月 Firefox OS APP 撰寫技巧</li>
       </ul>
     </div>
+    <div id="month10" class="month"></div>
     <div id="event10" class="event">
       <h2>10/4 - 6 Mozilla Summit 全球 Mozillians 聚會</h2>
       <ul>
@@ -110,6 +117,7 @@
         <li>10、11月快閃分享會</li>
       </ul>
     </div>
+    <div id="month11" class="month"></div>
     <div id="event12" class="event">
       <h2>11/1 Mozilla Taiwan 首次研發替代役說明會</h2>
       <ul>
@@ -125,6 +133,7 @@
         <li>台灣大學 12/20</li>
       </ul>
     </div>
+    <div id="month12" class="month"></div>
     <div id="event14" class="event">
       <h2>狐狐工作坊</h2>
       <ul>
@@ -134,15 +143,6 @@
     <div id="event15" class="event">
       <h2>本地 Firefox LEGO 開源專案正式啟動</h2>
     </div>
-    <div id="month1" class="month"></div>
-    <div id="month5" class="month"></div>
-    <div id="month6" class="month"></div>
-    <div id="month7" class="month"></div>
-    <div id="month8" class="month"></div>
-    <div id="month9" class="month"></div>
-    <div id="month10" class="month"></div>
-    <div id="month11" class="month"></div>
-    <div id="month12" class="month"></div>
     <div id="month-end" class="month"></div>
     <h2 id="continue">2014 未完待續......</h2>
   </div>
@@ -150,25 +150,25 @@
 <div id="spring-content">
   <h2>點選喜愛的春聯下載</h2>
   <div class="separator"></div>
-  <div id="spring-couplets" data-href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">
-    <div id="spring1" class="spring" data-href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">
+  <div id="spring-couplets">
+    <div id="spring1" class="spring" data-name="春" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring.png') }}">
       <a id="download-spring" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">下載 PNG</a>
       <a id="share-spring" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+ media('docs/mocotw/spring-fest/firefox-spring.png')) }}">分享</a>
     </div>
-    <div id="spring2" class="spring" data-href="{{ media('docs/mocotw/spring-fest/firefox-happiness.png') }}">
+    <div id="spring2" class="spring" data-name="福" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-happiness.png') }}">
       <a id="download-happiness" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-happiness.png') }}">下載 PNG</a>
       <a id="share-happiness" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-happiness.png')) }}">分享</a>
     </div>
     <br>
-    <div id="spring3" class="spring" data-href="{{ media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">
+    <div id="spring3" class="spring" data-name="春到" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">
       <a id="download-spring-arrive" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">下載 PNG</a>
       <a id="share-spring-arrive" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png')) }}">分享</a>
     </div>
-    <div id="spring4" class="spring" data-href="{{ media('docs/mocotw/spring-fest/firefox-horse.png') }}">
+    <div id="spring4" class="spring" data-name="馬年" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-horse.png') }}">
       <a id="download-horse" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-horse.png') }}">下載 PNG</a>
       <a id="share-horse" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-horse.png')) }}">分享</a>
     </div>
-    <div id="spring5" class="spring" data-href="{{ media('docs/mocotw/spring-fest/firefox-lucky.png') }}">
+    <div id="spring5" class="spring" data-name="大吉大利" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-lucky.png') }}">
       <a id="download-lucky" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-lucky.png') }}">下載 PNG</a>
       <a id="share-lucky" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-lucky.png')) }}">分享</a>
     </div>
@@ -176,4 +176,22 @@
   <div class="separator"></div>
   <a id="download-package" class="button" href="{{ media('docs/mocotw/spring-fest/firefox-spring-fest.zip') }}">一起打包下載（含 PDF）</a>
 </div>
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '135467439980355',
+          status     : true,
+          xfbml      : true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 {% endblock %}
