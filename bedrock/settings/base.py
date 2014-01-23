@@ -436,6 +436,9 @@ MINIFY_BUNDLES = {
         'eoy2013': (
             'css/mocotw/eoy2013.less',
         ),
+        '2013review': (
+            'css/mocotw/2013review.less',
+        ),
         'gform': (
             'css/mocotw/gform.less',
         ),
@@ -741,6 +744,9 @@ MINIFY_BUNDLES = {
             'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.color.js',
             'js/mocotw/eoy2013.js',
+        ),
+        '2013review': (
+            'js/mocotw/2013review.js',
         ),
         'gform': (
             'js/mocotw/gform.js',

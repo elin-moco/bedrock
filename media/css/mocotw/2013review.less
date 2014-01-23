@@ -1,0 +1,420 @@
+@import "../sandstone/lib";
+
+
+.sky #outer-wrapper {
+  background: #C13831;
+}
+
+#masthead > nav > ul > li > a {
+  color: white !important;
+  + ul {
+    .box-shadow(5px 5px 3px rgba(0,0,0,0.5));
+    > li > ul {
+      .box-shadow(5px 5px 3px rgba(0,0,0,0.5));
+    }
+  }
+}
+
+#main-content {
+  background: white;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  width: 920px;
+  h1 {
+    display: block;
+    width: 500px;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 28px;
+  }
+}
+
+#spring-content {
+  background: white;
+  padding: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 920px;
+  h2 {
+    text-align: center;
+    font-size: 28px;
+  }
+  .button {
+    padding: 10px;
+    color: #ffffff;
+    &:before {
+      content: " ";
+      display: block;
+      position: absolute;
+    }
+  }
+  .download-button:before {
+    background: url(/media/img/mocotw/2013review/download.png);
+    width: 17px;
+    height: 16px;
+    top: 9px;
+  }
+  .share-button:before {
+    background: url(/media/img/mocotw/2013review/share.png);
+    width: 22px;
+    height: 18px;
+    top: 8px;
+  }
+  #download-package {
+    position: relative;
+    display: block;
+    width: 200px;
+    margin: 20px auto auto auto;
+    text-indent: 20px;
+    &:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      background: url(/media/img/mocotw/2013review/download.png);
+      width: 17px;
+      height: 16px;
+      top: 9px;
+
+    }
+  }
+}
+
+#couplet-up {
+  display: block;
+  background: url(/media/img/mocotw/2013review/up.png);
+  width: 745px;
+  height: 85px;
+  margin: auto;
+}
+
+#couplet-left {
+  display: block;
+  background: url(/media/img/mocotw/2013review/left.png);
+  width: 86px;
+  height: 425px;
+  float: left;
+}
+
+#couplet-right {
+  display: block;
+  background: url(/media/img/mocotw/2013review/right.png);
+  width: 86px;
+  height: 425px;
+  float: right;
+}
+
+#review-video {
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 40px;
+  img {
+    display: block;
+    margin: auto;
+    cursor: pointer;
+  }
+  iframe {
+    display: none;
+    margin: auto;
+    margin-left: 9px;
+    width: 731px;
+    height: 410px;
+  }
+  .play {
+    display: block;
+    background: url(/media/img/mocotw/2013review/play.png) no-repeat;
+    position: absolute;
+    margin: auto;
+    top: 134px;
+    left: 0;
+    right: 0;
+    width: 140px;
+    height: 140px;
+    pointer-events: none;
+  }
+}
+
+.socialButton {
+  display: inline-block;
+  width: 35px;
+  height: 34px;
+}
+.socialButtons {
+  float: right;
+  margin-right: 100px;
+  .facebook {
+    background: url(/media/img/mocotw/2013review/fb.png) no-repeat;
+    .socialButton;
+  }
+  .gplus {
+    background: url(/media/img/mocotw/2013review/google.png) no-repeat;
+    .socialButton;
+  }
+  .plurk {
+    background: url(/media/img/mocotw/2013review/plurk.png) no-repeat;
+    .socialButton;
+  }
+}
+
+.separator {
+  display: block;
+  background: url(/media/img/mocotw/2013review/line-1.png);
+  width: 732px;
+  height: 7px;
+  margin: auto;
+}
+
+#timeline {
+  position: relative;
+  width: 735px;
+  margin: auto;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    display: block;
+    background: url(/media/img/mocotw/2013review/line-3.png);
+    width: 8px;
+    height: 842px;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+  .clearfix;
+  ul li {
+    list-style-image: url(/media/img/mocotw/2013review/list-dot.png);
+  }
+  h2 {
+    font-size: 18px;
+    text-align: left;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .event {
+    display: block;
+    width: 45%;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  #event1 {
+    float: right;
+    margin-top: 26px;
+  }
+  #event2 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -10px;
+  }
+  #event3 {
+    float: right;
+    margin-top: -12px;
+  }
+  #event4 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -40px;
+  }
+  #event5 {
+    float: right;
+    margin-top: -60px;
+  }
+  #event6 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -10px;
+  }
+  #event7 {
+    float: right;
+    margin-top: -5px;
+  }
+  #event8 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -100px;
+  }
+  #event9 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -10px;
+  }
+  #event10 {
+    float: right;
+    margin-top: -14px;
+  }
+  #event11 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -68px;
+  }
+  #event12 {
+    float: right;
+    margin-top: -10px;
+  }
+  #event13 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -74px;
+  }
+  #event14 {
+    float: left;
+    margin-right: 50%;
+    margin-top: -10px;
+  }
+  #event15 {
+    float: right;
+    margin-top: -110px;
+    margin-bottom: 110px;
+  }
+
+  .month {
+    display: block;
+    width: 731px;
+    height: 40px;
+    background: url(/media/img/mocotw/2013review/line-2.png) no-repeat;
+    background-position: 0 20px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    &:before {
+      content: "";
+      background: url(/media/img/mocotw/2013review/dot.png) no-repeat;
+      display: block;
+      padding-top: 8px;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      margin: auto;
+      text-align: center;
+    }
+  }
+  #month1 {
+    &:before {
+      content: "壹";
+    }
+  }
+  #month5 {
+    top: 120px;
+    &:before {
+      content: "伍";
+    }
+  }
+  #month6 {
+    top: 194px;
+    &:before {
+      content: "陸";
+    }
+  }
+  #month7 {
+    top: 380px;
+    &:before {
+      content: "柒";
+    }
+  }
+  #month8 {
+    top: 440px;
+    &:before {
+      content: "捌";
+    }
+  }
+  #month9 {
+    top: 560px;
+    &:before {
+      content: "玖";
+    }
+  }
+  #month10 {
+    top: 610px;
+    &:before {
+      content: "拾";
+    }
+  }
+  #month11 {
+    top: 660px;
+    &:before {
+      content: "拾壹";
+    }
+  }
+  #month12 {
+    top: 726px;
+    &:before {
+      content: "拾貳";
+    }
+  }
+  #month-end {
+    top: 830px;
+    &:before {
+      content: "";
+      display: none;
+    }
+  }
+
+  #continue {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+
+.springCouplet {
+  display: inline-block;
+  position: relative;
+  width: 215px;
+  height: 245px;
+  margin-left: 15px;
+  margin-right: 15px;
+  .button {
+    .transition(opacity ease-in-out 0.2s);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+  }
+  &:hover .button {
+    opacity: 1;
+  }
+  .download-button {
+    left: 0;
+    width: 80px;
+    text-align: right;
+  }
+  .share-button {
+    right: 30px;
+    min-width: 50px;
+    text-align: right;
+  }
+}
+
+#spring-couplets {
+  text-align: center;
+  margin: 20px auto 6px auto;
+}
+
+#spring1 {
+  background: url(/media/img/mocotw/2013review/spring1.png) no-repeat;
+  .springCouplet;
+}
+#spring2 {
+  background: url(/media/img/mocotw/2013review/spring2.png) no-repeat;
+  .springCouplet;
+}
+#spring3 {
+  background: url(/media/img/mocotw/2013review/spring3.png) no-repeat;
+  .springCouplet;
+}
+#spring4 {
+  background: url(/media/img/mocotw/2013review/spring4.png) no-repeat;
+  .springCouplet;
+}
+#spring5 {
+  background: url(/media/img/mocotw/2013review/spring5.png) no-repeat;
+  .springCouplet;
+}
+
+#footer-email-form {
+  width: 920px;
+}

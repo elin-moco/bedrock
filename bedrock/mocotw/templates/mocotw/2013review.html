@@ -1,0 +1,178 @@
+{% extends "mocotw/base-resp.html" %}
+
+{% from 'macros.html' import facebook_share_url, gplus_share_url, plurk_share_url %}
+
+{% block page_title %}Mozilla Taiwan 2013 精彩紀事{% endblock %}
+{% block page_desc %}回顧全球性非營利組織 Mozilla 在 2013 年的努力成果。{% endblock %}
+
+{% block extrahead %}
+  {{ css('2013review') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('2013review') }}
+{% endblock %}
+
+{% block site_header_logo %}
+{% endblock %}
+
+{% block content %}
+<div id="main-content">
+  <div id="couplet-up"></div>
+  <div id="couplet-left"></div>
+  <div id="couplet-right"></div>
+  <div id="review-video">
+    <img src="/media/img/mocotw/2013review/video.png"/>
+    <iframe frameborder="0" allowfullscreen></iframe>
+    <div class="play"></div>
+  </div>
+  <div class="socialButtons">
+    <a class="facebook" href="{{ facebook_share_url('https://'+MOCO_URL+url('mocotw.2013review')) }}"></a>
+    <a class="gplus" href="{{ gplus_share_url('https://'+MOCO_URL+url('mocotw.2013review')) }}"></a>
+    <a class="plurk" href="{{ plurk_share_url('https://'+MOCO_URL+url('mocotw.2013review')) }}"></a>
+  </div>
+  <h1>Mozilla Taiwan 2013 精彩紀事</h1>
+  <div class="separator"></div>
+  <div id="timeline">
+    <div id="event1" class="event">
+      <h2>1/26 Firefox OS App Days</h2>
+      <ul>
+        <li>全球 24 個國家同步舉行</li>
+        <li>當天 43 位開發者參加，吸引日本開發者現場觀摩</li>
+        <li>當天產出 15 個 Firefox OS App</li>
+        <li>3 個 App 上架 Marketplace</li>
+      </ul>
+    </div>
+    <div id="event2" class="event">
+      <h2>5/18 - 19 JSDC</h2>
+      <ul>
+        <li>與 JavaScript、HTML5 & CSS3、Node.js 社群相見歡，成功展示 Firefox OS</li>
+      </ul>
+    </div>
+    <div id="event3" class="event">
+      <h2>6/3 謀智鴻海聯合記者會</h2>
+      <ul>
+        <li>111 位記者出席，電視、報紙、網路盛大報導</li>
+        <li>Firefox OS 平板電腦首度亮相</li>
+      </ul>
+    </div>
+    <div id="event4" class="event">
+      <h2>6/11 - 13 Mobile Asia Expo<br>亞洲移動通信博覽會</h2>
+      <ul>
+        <li>Firefox OS 盛大展出，2,100 多名位與會者</li>
+        <li>Mozilla Taiwan 工程師全力演出</li>
+      </ul>
+    </div>
+    <div id="event5" class="event">
+      <h2>2013 Mozilla 足跡遍及校園</h2>
+      <ul>
+        <li>成大軟體創作達人暑期成長營</li>
+        <li>輔大資工週</li>
+        <li>政大校園演講</li>
+      </ul>
+    </div>
+    <div id="event6" class="event">
+      <h2>7/22 第二屆校園大使訓練營</h2>
+      <ul>
+        <li>77 位學生參與，來自全台灣 39 所大專院校</li>
+      </ul>
+    </div>
+    <div id="event7" class="event">
+      <h2>8/3 - 4 COSCUP 開源人年會</h2>
+      <ul>
+        <li>二場 hands-out 教學</li>
+        <li>現場和 1,500 位港台開源人相見歡，與 MozTW 社群齊心協力推廣 Open Web</li>
+        <li>首次推廣 MyFirefox：FB推文分享達 590 則＋</li>
+      </ul>
+    </div>
+    <div id="event8" class="event">
+      <h2>狐狐工作坊</h2>
+      <ul>
+        <li>8 月微電影技巧</li>
+      </ul>
+    </div>
+    <div id="event9" class="event">
+      <h2>狐狐工作坊</h2>
+      <ul>
+        <li>9 月 Firefox OS APP 撰寫技巧</li>
+      </ul>
+    </div>
+    <div id="event10" class="event">
+      <h2>10/4 - 6 Mozilla Summit 全球 Mozillians 聚會</h2>
+      <ul>
+        <li>美加歐三地大集合, 超過 2,000 位參與者</li>
+      </ul>
+    </div>
+    <div id="event11" class="event">
+      <h2>狐狐工作坊</h2>
+      <ul>
+        <li>10、11月快閃分享會</li>
+      </ul>
+    </div>
+    <div id="event12" class="event">
+      <h2>11/1 Mozilla Taiwan 首次研發替代役說明會</h2>
+      <ul>
+        <li>尋找對 Open Web 充滿熱情的新血</li>
+      </ul>
+    </div>
+    <div id="event13" class="event">
+      <h2>Mozilla Taiwan 正式開放企業參訪</h2>
+      <ul>
+        <li>政治大學 11/8</li>
+        <li>中原大學 11/15</li>
+        <li>台灣科技大學 12/13</li>
+        <li>台灣大學 12/20</li>
+      </ul>
+    </div>
+    <div id="event14" class="event">
+      <h2>狐狐工作坊</h2>
+      <ul>
+        <li>12 月 Firefox OS APP 創意競賽 Demo Day</li>
+      </ul>
+    </div>
+    <div id="event15" class="event">
+      <h2>本地 Firefox LEGO 開源專案正式啟動</h2>
+    </div>
+    <div id="month1" class="month"></div>
+    <div id="month5" class="month"></div>
+    <div id="month6" class="month"></div>
+    <div id="month7" class="month"></div>
+    <div id="month8" class="month"></div>
+    <div id="month9" class="month"></div>
+    <div id="month10" class="month"></div>
+    <div id="month11" class="month"></div>
+    <div id="month12" class="month"></div>
+    <div id="month-end" class="month"></div>
+    <h2 id="continue">2014 未完待續......</h2>
+  </div>
+</div>
+<div id="spring-content">
+  <h2>點選喜愛的春聯下載</h2>
+  <div class="separator"></div>
+  <div id="spring-couplets">
+    <div id="spring1">
+      <a id="download-spring" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">下載 PNG</a>
+      <a id="share-spring" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+ media('docs/mocotw/spring-fest/firefox-spring.png')) }}">分享</a>
+    </div>
+    <div id="spring2">
+      <a id="download-happiness" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-happiness.png') }}">下載 PNG</a>
+      <a id="share-happiness" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-happiness.png')) }}">分享</a>
+    </div>
+    <br>
+    <div id="spring3">
+      <a id="download-spring-arrive" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">下載 PNG</a>
+      <a id="share-spring-arrive" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png')) }}">分享</a>
+    </div>
+    <div id="spring4">
+      <a id="download-horse" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-horse.png') }}">下載 PNG</a>
+      <a id="share-horse" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-horse.png')) }}">分享</a>
+    </div>
+    <div id="spring5">
+      <a id="download-lucky" class="button download-button" href="{{ media('docs/mocotw/spring-fest/firefox-lucky.png') }}">下載 PNG</a>
+      <a id="share-lucky" class="button share-button" href="{{ facebook_share_url('https://'+MOCO_URL+media('docs/mocotw/spring-fest/firefox-lucky.png')) }}">分享</a>
+    </div>
+  </div>
+  <div class="separator"></div>
+  <a id="download-package" class="button" href="{{ media('docs/mocotw/spring-fest/firefox-spring-fest.zip') }}">一起打包下載（含 PDF）</a>
+</div>
+{% endblock %}

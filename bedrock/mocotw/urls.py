@@ -39,6 +39,7 @@ urlpatterns = patterns(
     page('about/mozilla-based', 'mozorg/projects/mozilla-based.html'),
     page('shop-with-firefox', 'mocotw/shop-with-firefox.html'),
     page('mozilla-eoy-2013', 'mocotw/eoy2013.html'),
+    page('2013-review', 'mocotw/2013review.html'),
     redirect(r'^community$', '/community/'),
     # redirect(r'^community/student$', '/community/student/'),
     redirect(r'^community/student_rules', '/community/student/rules/'),
