@@ -57,7 +57,7 @@ sitemaps = {
         0.4, 'monthly'),
     'misc': ViewsSitemap(
         ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about', 'mocotw.eoy2013',
-         'mocotw.shop-with-firefox', 'firefox.speed'],
+         'mocotw.shop-with-firefox', 'firefox.speed', 'mocotw.2013review'],
         0.4, 'monthly'),
 }
 
