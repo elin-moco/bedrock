@@ -148,3 +148,6 @@ def workshop(request):
             dates += [post['date'].date().__str__()]
     context = {'posts': posts, 'dates': dates}
     return l10n_utils.render(request, 'mocotw/community/student/workshop.html', context)
+
+def year_review_2013(request, spring):
+    return l10n_utils.render(request, 'mocotw/2013review.html', {'canonical_path': '/2013-review/'})

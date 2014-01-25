@@ -404,27 +404,78 @@
   margin: 20px auto 6px auto;
 }
 
-#spring1 {
+#spring {
   background: url(/media/img/mocotw/2013review/spring1.png) no-repeat;
   .springCouplet;
 }
-#spring2 {
+#happiness {
   background: url(/media/img/mocotw/2013review/spring2.png) no-repeat;
   .springCouplet;
 }
-#spring3 {
+#spring-arrive {
   background: url(/media/img/mocotw/2013review/spring3.png) no-repeat;
   .springCouplet;
 }
-#spring4 {
+#horse {
   background: url(/media/img/mocotw/2013review/spring4.png) no-repeat;
   .springCouplet;
 }
-#spring5 {
+#lucky {
   background: url(/media/img/mocotw/2013review/spring5.png) no-repeat;
   .springCouplet;
 }
 
 #footer-email-form {
   width: 920px;
+}
+
+#popup {
+  z-index: 10000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  #spring-full {
+    display: block;
+    margin: auto;
+    max-height: 600px;
+    max-width: 600px;
+    height: 90%;
+  }
+  .button {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    text-align: right;
+  }
+  .download-button {
+    left: 50%;
+    margin: 10px 20px 10px 40px;
+  }
+  .share-button {
+    left: 50%;
+    margin: 10px 20px 10px 160px;
+    min-width: 60px;
+  }
+  #fan-page-box {
+    display: block;
+    position: absolute;
+    width: 220px;
+    height: 100px;
+    bottom: 10px;
+    right: 50%;
+    margin-right: 100px;
+    background: #ffffff;
+    .border-radius(5px);
+    h4 {
+      text-indent: 10px;
+      font-size: 18px;
+      margin: 10px 0 0 0;
+    }
+    .fb_iframe_widget {
+    }
+  }
 }

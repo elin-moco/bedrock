@@ -63,7 +63,7 @@
     <div id="event4" class="event">
       <h2>6/11 - 13 Mobile Asia Expo<br>亞洲移動通信博覽會</h2>
       <ul>
-        <li>Firefox OS 盛大展出，2,100 多名位與會者</li>
+        <li>Firefox OS 盛大展出，2,100 多名與會者</li>
         <li>Mozilla Taiwan 工程師全力演出</li>
       </ul>
     </div>
@@ -151,32 +151,41 @@
   <h2>點選喜愛的春聯下載</h2>
   <div class="separator"></div>
   <div id="spring-couplets">
-    <div id="spring1" class="spring" data-name="春" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring.png') }}">
+    <div id="spring" class="spring" data-name="春">
       <a id="download-spring" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-spring.png') }}">下載 PNG</a>
       <a id="share-spring" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+ media('docs/mocotw/spring-fest/firefox-spring.png')) }}">分享</a>
     </div>
-    <div id="spring2" class="spring" data-name="福" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-happiness.png') }}">
+    <div id="happiness" class="spring" data-name="福" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-happiness.png') }}">
       <a id="download-happiness" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-happiness.png') }}">下載 PNG</a>
       <a id="share-happiness" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-happiness.png')) }}">分享</a>
     </div>
     <br>
-    <div id="spring3" class="spring" data-name="春到" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">
+    <div id="spring-arrive" class="spring" data-name="春到" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">
       <a id="download-spring-arrive" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-spring-arrive.png') }}">下載 PNG</a>
       <a id="share-spring-arrive" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-spring-arrive.png')) }}">分享</a>
     </div>
-    <div id="spring4" class="spring" data-name="馬年" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-horse.png') }}">
+    <div id="horse" class="spring" data-name="馬年" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-horse.png') }}">
       <a id="download-horse" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-horse.png') }}">下載 PNG</a>
       <a id="share-horse" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-horse.png')) }}">分享</a>
     </div>
-    <div id="spring5" class="spring" data-name="大吉大利" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-lucky.png') }}">
+    <div id="lucky" class="spring" data-name="大吉大利" data-href="{{ settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-lucky.png') }}">
       <a id="download-lucky" class="button download-button" target="_blank" href="{{ media('docs/mocotw/spring-fest/firefox-lucky.png') }}">下載 PNG</a>
       <a id="share-lucky" class="button share-button" target="_blank" href="{{ facebook_share_url(settings.CANONICAL_URL+media('docs/mocotw/spring-fest/firefox-lucky.png')) }}">分享</a>
     </div>
   </div>
   <div class="separator"></div>
   <a id="download-package" class="button" href="{{ media('docs/mocotw/spring-fest/firefox-spring-fest.zip') }}">一起打包下載（含 PDF）</a>
+  <div id="popup">
+    <img id="spring-full"/>
+    <a id="download-full" class="button download-button" target="_blank" href="javascript:void(0)">下載 PNG</a>
+    <a id="share-full" class="button share-button" target="_blank" href="javascript:void(0)">分享</a>
+    <div id="fan-page-box">
+      <h4>加入粉絲團：</h4>
+      <div class="fb-like-box" data-href="http://www.facebook.com/MozillaTaiwan" data-width="220" data-height="70" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="true"></div>
+    </div>
+  </div>
 </div>
-    <div id="fb-root"></div>
+  <div id="fb-root"></div>
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -190,7 +199,7 @@
          var js, fjs = d.getElementsByTagName(s)[0];
          if (d.getElementById(id)) {return;}
          js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/all.js";
+         js.src = "//connect.facebook.net/zh_TW/all.js";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
