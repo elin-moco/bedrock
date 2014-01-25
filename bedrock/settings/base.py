@@ -746,7 +746,9 @@ MINIFY_BUNDLES = {
             'js/mocotw/eoy2013.js',
         ),
         '2013review': (
+            'js/libs/enquire.min.js',
             'js/libs/index.js',
+            'js/libs/jquery.scrollTo.js',
             'js/mocotw/2013review.js',
         ),
         'gform': (

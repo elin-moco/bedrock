@@ -1,6 +1,7 @@
 "use strict";
 
 (function () {
+    var usePopup = false;
     $('#review-video img').click(function() {
         $(this).hide();
         $(this).find('~ .play').hide();
@@ -10,7 +11,12 @@
     });
     $('#spring-couplets .spring').click(function(e) {
         if (e.target==this) {
-            page('/2013-review/'+this.id+'/');
+            if (usePopup) {
+              page('/2013-review/'+this.id+'/');
+            }
+            else {
+              window.location.href=$(this).find('.download-button').attr('href');
+            }
         }
     });
     $('#spring-content .share-button').click(function(e) {
@@ -38,27 +44,54 @@
         }
     });
     var hidePopup = function(ctx, next) {
-        $('#popup').hide();
-    };
-    var showPopup = function(ctx, next) {
-        var $download = $('#download-'+ctx.params.spring);
-        var file = $download.attr('download');
-        var src = $download.attr('href');
-        if (src) {
-            var $popup = $('#popup');
-            var $spring = $popup.find('#spring-full').attr('src', '');
-            $spring.attr('src', src);
-            var $downloadFull = $popup.find('#download-full');
-            $downloadFull.attr('href', src);
-            $downloadFull.attr('download', file);
-            $popup.find('#share-full').attr('name', ctx.params.spring);
-            $popup.show();
+        if (usePopup) {
+          $('#popup').hide();
         }
         else {
-            window.location.href = '/2013-review/';
+          $(document).scrollTo(0);
         }
     };
+    var showPopup = function(ctx, next) {
+        if (usePopup) {
+          var $download = $('#download-'+ctx.params.spring);
+          var file = $download.attr('download');
+          var src = $download.attr('href');
+          if (src) {
+              var $popup = $('#popup');
+              var $spring = $popup.find('#spring-full').attr('src', '');
+              $spring.attr('src', src);
+              var $downloadFull = $popup.find('#download-full');
+              $downloadFull.attr('href', src);
+              $downloadFull.attr('download', file);
+              $popup.find('#share-full').attr('name', ctx.params.spring);
+              $popup.show();
+          }
+          else {
+              window.location.href = '/2013-review/';
+          }
+        }
+        else {
+          $(document).scrollTo('#'+ctx.params.spring);
+        }
+    };
+    enquire.register("screen and (min-width: 999px)", {
+        setup: function () {
+        },
+        match: function () {
+            // handler must exist
+            // desktop hooks are added when desktop.js is loaded (in setup above)
+          usePopup=true;
+        },
+        unmatch: function () {
+            // rather difficult to unbind all the fancy desktop js. in the interest
+            // of time, just reload the page when we get to mobile size.
+            // (should be a rare use case)
+          usePopup=false;
+        }
+    }).listen();
+
     page('/2013-review/', hidePopup);
     page('/2013-review/:spring/', showPopup);
     page();
+
 })();
