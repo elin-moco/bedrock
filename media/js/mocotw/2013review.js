@@ -41,12 +41,16 @@
         $('#popup').hide();
     };
     var showPopup = function(ctx, next) {
-        var src = $('#download-'+ctx.params.spring).attr('href');
+        var $download = $('#download-'+ctx.params.spring);
+        var file = $download.attr('download');
+        var src = $download.attr('href');
         if (src) {
             var $popup = $('#popup');
             var $spring = $popup.find('#spring-full').attr('src', '');
             $spring.attr('src', src);
-            $popup.find('#download-full').attr('href', src);
+            var $downloadFull = $popup.find('#download-full');
+            $downloadFull.attr('href', src);
+            $downloadFull.attr('download', file);
             $popup.find('#share-full').attr('name', ctx.params.spring);
             $popup.show();
         }
