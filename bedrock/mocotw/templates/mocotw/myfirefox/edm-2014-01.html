@@ -4,11 +4,12 @@
   <title>MyFirefox 新年換新裝，帶給你更便利的瀏覽體驗！</title>
   <style>
     body {
-      background-color: rgb(173,138,119);
+      margin: 0;
     }
     h2 {
       font-size: 18px;
       color: #DC5B26;
+      margin-top: 10px;
     }
     h2 span {
       display: inline-block;
@@ -29,25 +30,28 @@
     table, tr, td {
       border-collapse: collapse;
     }
-    .button {
+    #submit-button {
+      display: inline-block;
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.1;
+      min-width: 80px;
       background-color: rgb(39, 122, 193);
       background-image: linear-gradient(rgb(67, 166, 226), rgb(39, 122, 193));
       background-repeat: repeat-x;
       border: 0 none;
       border-radius: 0.25em;
       box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2), 0 -1px 0 0 rgba(0, 0, 0, 0.3) inset;
-      color: rgb(255, 255, 255);
-      display: inline-block;
-      font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 1.1;
-      min-width: 80px;
-      padding: 10px;
-      text-align: center;
-      text-decoration: none;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
       transition: all 0.25s linear 0s;
+    }
+    .padtop {
+      padding-top: 10px;
     }
     .padleft {
       padding-left: 20px;
@@ -75,7 +79,7 @@
       background: white;
       margin-top: 10px;
     }
-    #main-features > tbody > tr > td > table {
+    table.feature {
       margin-top: 10px;
       margin-bottom: 10px;
     }
@@ -122,7 +126,9 @@
     }
   </style>
 </head>
-<body background="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/bg-pattern.png') }}">
+<body>
+<table id="body-wrapper" bgcolor="#AD8A77" background="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/bg-pattern.png') }}" width="100%">
+<tr><td>
 <table id="main-content">
   <tr>
     <td id="open-in-browser">
@@ -139,10 +145,12 @@
   <tr>
     <td>
        <table id="main-features"><tr><td>
-    <table>
+    <table class="feature">
       <tr>
         <td class="padleft" colspan="3">
-          <h2>MyFirefox 更新首頁並提供熱門功能，<span>為你提供更好的網站瀏覽經驗</span></h2>
+          <a href="http://myfirefox.com.tw">
+            <h2>MyFirefox 更新首頁並提供熱門功能，<span>為你提供更好的網站瀏覽經驗</span></h2>
+          </a>
         </td>
       </tr>
       <tr>
@@ -159,12 +167,12 @@
       </tr>
     </table>
     <hr/>
-    <table>
+    <table class="feature">
       <tr>
         <td class="padleft medal">
           <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
         </td>
-        <td class="padright content">
+        <td class="padtop padright content">
           <h3>貼心搜尋欄位</h3>
           <p>只要輕鬆點選搜尋欄位前方的小圖示，即可選擇偏好的搜尋引擎，讓使用者在搜尋操作上更直覺、更順手！</p>
         </td>
@@ -176,7 +184,7 @@
       </tr>
     </table>
     <hr/>
-    <table>
+    <table class="feature">
       <tr>
         <td class="padleft">
           <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic3.png') }}"/>
@@ -200,7 +208,7 @@
         <td class="padleft">
           <h3>訂閱 Firefox 電子報</h3>
           <p>歡迎訂閱 Firefox 電子報！任何最新最熱門資訊都可以在電子報中完整取得。</p>
-          <a class="button" href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}">我要訂閱 »</a>
+          <a id="submit-button" href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}">我要訂閱 »</a>
           <a class="past-issues" href="http://{{ MOCO_URL }}{{ url('newsletter.index') }}">看看過去發行的電子報 »</a>
           <p>也逛逛我們的社群頻道：</p>
           <a href="https://www.facebook.com/MozillaTaiwan">
@@ -226,6 +234,8 @@
     </table>
     </td>
   </tr>
+</table>
+</td></tr>
 </table>
 </body>
 </html>

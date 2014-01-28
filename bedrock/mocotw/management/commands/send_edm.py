@@ -42,23 +42,19 @@ class Command(BaseCommand):
         template = args[0]
         to_mail = args[1]
         from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
-        with open('%s.txt' % template) as file:
-            text_content = file.read().decode('utf-8')
-            file.close()
-        with open('%s.html' % template) as file:
-            html_content = file.read().decode('utf-8')
-            attachment = MIMEText(html_content, _subtype='text/html', _charset='utf-8')
-            attachment.add_header('Content-Disposition', 'attachment', filename='%s.html' % template)
-            file.close()
+        context = {}
+        newsletter_context_vars(context)
+        text_content = render_to_string('%s.txt' % template, context)
+        html_content = render_to_string('%s.html' % template, context)
         soup = BeautifulSoup(html_content)
         subject = Header(soup.title.string.encode('utf8'), 'utf-8')
         mail_content = premailer.transform(html_content)
         # headers = {'Reply-To': 'tw-mktg@mozilla.com'}
         headers = {}
         # charset = 'utf-8'
-        self.send_mail(subject, headers, from_email, (to_mail, ), text_content, mail_content, (attachment, ))
+        self.send_mail(subject, headers, from_email, (to_mail, ), text_content, mail_content)
 
-    def send_mail(self, subject, headers, from_email, to_mail, text_content, mail_content, attachments):
+    def send_mail(self, subject, headers, from_email, to_mail, text_content, mail_content, attachments=()):
         mail = EmailMultiAlternatives(subject=subject, body=text_content, headers=headers,
                                       from_email=from_email, to=to_mail)
         mail.attach_alternative(mail_content, 'text/html')

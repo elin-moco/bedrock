@@ -1,0 +1,50 @@
+在瀏覽器中開啟這封信 » 
+http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-01') }}
+
+******************************  
+MyFirefox 更新首頁並提供熱門功能，為你提供更好的網站瀏覽經驗
+http://myfirefox.com.tw/
+******************************  
+全新封面故事設計
+
+新的版位能於使用者螢 幕上同時顯示熱門文章與封面故事，使用者瀏覽時將能更快速、更清楚 地檢視 MyFirefox 全站最新焦點文章。
+  
+******************************  
+貼心搜尋欄位
+
+只要輕鬆點選搜尋欄位前方的小圖示，即可選擇偏好的搜尋引擎，讓使用者在搜尋操作上更直覺、更順手！
+
+******************************  
+熱門功能 My Shelf
+
+點選 MyFirefox 個別文章旁的「加入 MyShelf 」按鈕，即可將喜愛的文章儲存至個人的「文章收藏」。若偏好閱讀特定網誌，也可以透過「文章總覽」的功能瀏覽該網誌的文章清單。
+
+******************************  
+訂閱 Firefox 電子報
+
+歡迎訂閱 Firefox 電子報！任何最新最熱門資訊都可以在電子報中完整取得。
+
+訂閱連結 » 
+http://{{ MOCO_URL }}/newsletter/subscribe/
+
+過去發行的電子報 »
+http://{{ MOCO_URL }}/newsletter/
+
+******************************  
+也逛逛我們的社群頻道：
+
+Facebook
+https://www.facebook.com/MozillaTaiwan
+
+Google+
+https://plus.google.com/+MozillaTw
+
+Plurk
+http://plurk.com/MozillaTaiwan
+
+Youtube
+http://www.youtube.com/user/MozillaTaiwan
+
+Flickr
+http://www.flickr.com/photos/mozillataiwan/
+
