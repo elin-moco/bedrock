@@ -2,8 +2,51 @@
 <html>
 <head>
   <title></title>
+  <style>
+    body {
+      background-color: rgb(173,138,119);
+    }
+    #main-content {
+      width: 600px;
+      margin: auto;
+    }
+    #main-features {
+      background: white;
+    }
+    #footer-subscribe {
+      background: white;
+    }
+  </style>
 </head>
-<body>
-
+<body background="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/bg-pattern.png') }}">
+<div id="main-content">
+  <div id="main-banner">
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/banner.png') }}"/>
+  </div>
+  <div id="main-features">
+    <h2>MyFirefox 更新首頁並提供熱門功能，為你提供更好的網站瀏覽經驗</h2>
+    <h3>全新封面故事設計</h3>
+    <p>新的版位能於使用者螢 幕上同時顯示熱門文章與封面故事，使用者瀏覽時將能更快速、更清楚 地檢視 MyFirefox 全站最新焦點文章。</p>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic1.png') }}"/>
+    <hr/>
+    <h3>貼心搜尋欄位</h3>
+    <p>只要輕鬆點選搜尋欄位前方的小圖示，即可選擇偏好的搜尋引擎，讓使用者在搜尋操作上更直覺、更順手！</p>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic2.png') }}"/>
+    <hr/>
+    <h3>熱門功能 My Shelf</h3>
+    <p>點選 MyFirefox 個別文章旁的「加入 MyShelf 」按鈕，即可將喜愛的文章儲存至個人的「文章收藏」。若偏好閱讀特定網誌，也可以透過「文章總覽」的功能瀏覽該網誌的文章清單。</p>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/hot.png') }}"/>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic3.png') }}"/>
+  </div>
+  <div id="footer-subscribe">
+    <h3>訂閱 Firefox 電子報</h3>
+    <p>歡迎訂閱 Firefox 電子報！任何最新最熱門資訊都可以在電子報中完整取得。</p>
+    <a href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}">我要訂閱 »</a>
+    <a href="http://{{ MOCO_URL }}{{ url('newsletter.index') }}">看看過去發行的電子報 »</a>
+    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/letterpic.png') }}"/>
+  </div>
+</div>
 </body>
 </html>

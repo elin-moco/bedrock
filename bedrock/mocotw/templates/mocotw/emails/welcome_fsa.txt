@@ -1,4 +1,4 @@
-在瀏覽器中開啟這封信
+在瀏覽器中開啟這封信 »
 http://{{MOCO_URL}}/community/student/welcome-letter/
 
 
