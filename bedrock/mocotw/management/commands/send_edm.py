@@ -38,9 +38,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.options = options
+        testing = True if 1 < len(args) else False
         sys.stdout = Unbuffered(sys.stdout)
         template = args[0]
-        to_mail = args[1]
         from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
         context = {}
         newsletter_context_vars(context)
@@ -52,7 +52,23 @@ class Command(BaseCommand):
         # headers = {'Reply-To': 'tw-mktg@mozilla.com'}
         headers = {}
         # charset = 'utf-8'
-        self.send_mail(subject, headers, from_email, (to_mail, ), text_content, mail_content)
+        
+        if not testing:
+            with open('subscriptions.txt') as file:
+                subscriptions = file.readlines()
+                for subscription in subscriptions:
+                    self.send_mail(subject, headers, from_email, (subscription.rstrip(), ),
+                                   text_content, mail_content)
+                    sleep(10)
+        elif '@' in args[1]:
+            self.send_mail(subject, headers, from_email, (args[1], ), text_content, mail_content)
+        else:
+            with open(args[1]) as file:
+                subscriptions = file.readlines()
+                for subscription in subscriptions:
+                    self.send_mail(subject, headers, from_email, (subscription.rstrip(), ),
+                                   text_content, mail_content)
+                    sleep(10)
 
     def send_mail(self, subject, headers, from_email, to_mail, text_content, mail_content, attachments=()):
         mail = EmailMultiAlternatives(subject=subject, body=text_content, headers=headers,

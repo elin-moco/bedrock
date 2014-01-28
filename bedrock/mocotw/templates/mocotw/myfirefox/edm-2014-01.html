@@ -86,6 +86,7 @@
     #footer-subscribe {
       background: white;
       margin-top: 10px;
+      margin-bottom: 20px;
     }
     #footer-subscribe .letter {
       margin-top: 30px;
@@ -124,6 +125,50 @@
       border: 0;
       border-top: 1px solid #ccc;
     }
+table.footer {
+  background: #ffffff;
+  width: 100%;
+  color: rgb(77, 78, 83);
+}
+
+table.footer a {
+  color: rgb(77, 78, 83);
+}
+
+table.footer-content {
+  width: 653px;
+  margin: auto;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+td.mozilla-col {
+  padding-right: 20px;
+}
+td.mozilla-col img {
+  width: 80px;
+  height: 20px;
+}
+td.social-col, td.about-col {
+  vertical-align: top;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  text-wrap: none;
+}
+td.social-col {
+  padding-right: 8px;
+}
+table.footer td.friend,
+table.footer table.social-media td,
+table.footer td.official,
+table.footer td.contact,
+table.footer td.license {
+  padding-bottom: 8px;
+  padding-right: 12px;
+}
+table.footer td.license {
+  font-size: 10px;
+}
   </style>
 </head>
 <body>
@@ -236,6 +281,59 @@
   </tr>
 </table>
 </td></tr>
+</table>
+<table class="footer">
+  <tr>
+    <td>
+      <table class="footer-content">
+        <tr>
+          <td class="mozilla-col">
+            <a href="http://mozilla.org/en-US/" target="_blank">
+              <img style="border:0px;" alt="mozilla" src="http://{{ MOCO_URL }}/media/img/sandstone/footer-mozilla.png">
+            </a>
+          </td>
+          <td class="social-col">
+            <table>
+              <tr>
+                <td class="friend">與我們為友</td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="social-media">
+                    <tr>
+                      <td><a href="https://www.facebook.com/MozillaTaiwan" target="_blank">Facebook</a></td>
+                      <td><a href="https://plus.google.com/u/0/114653167240123163859/posts" target="_blank">Google+</a></td>
+                      <td><a href="http://plurk.com/MozillaTaiwan" target="_blank">Plurk</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
+                      <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
+                      <td><a href="http://mozilla.com.tw/join_us/" target="_blank">電子報</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="about-col">
+            <table>
+              <tr>
+                <td class="official"><a href="http://{{ MOCO_URL }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="contact">聯繫我們：<a href="mailto:tw-mktg@mozilla.com">tw-mktg@mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="license">除另有註明外，本站內容皆採用<br>
+                  <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">創用 CC 姓名標示—相同方式分享條款 3.0</a> 或更新版本授權大眾使用。
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
 </body>
 </html>
