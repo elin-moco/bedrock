@@ -426,6 +426,7 @@ table.footer td.license {
         <tr>
           {% for event in events %}
             <td class="event-box  {{ 'padright' if 0 != loop.index % 3 }}">
+              {% if event.link %}
               <a class="event-link" target="_blank" href="{{ event.link }}{{ params.tracking_code }}">
                 <img src="{{ NEWSLETTER_URL }}images/event{{ loop.index }}.png"/>
                 <p>
@@ -435,6 +436,7 @@ table.footer td.license {
               <a target="_blank" href="{{ event.link }}{{ params.tracking_code }}">
                 <img src="{{ NEWSLETTER_URL }}images/button-submore-withtext.png" class="more"/>
               </a>
+              {% endif %}
             </td>
           {% endfor %}
         </tr>

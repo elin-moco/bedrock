@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>MyFirefox 新年換新裝，帶給你更便利的瀏覽體驗！</title>
   <style>
     body {
       background-color: rgb(173,138,119);
     }
+    h2 {
+      font-size: 18px;
+      color: #DC5B26;
+    }
+    h2 span {
+      display: inline-block;
+    }
+    h3 {
+      font-size: 16px;
+      color: #DC5B26;
+    }
+    p {
+      font-size: 13px;
+      color: #4E4E54;
+    }
     #main-content {
       width: 600px;
-      margin: auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
     }
     #main-features {
       background: white;
+      padding: 20px;
+      margin-top: 10px;
     }
     #footer-subscribe {
       background: white;
+      padding: 20px;
+      margin-top: 10px;
+    }
+    hr {
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #ccc;
+      width: 90%;
     }
   </style>
 </head>
 <body background="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/bg-pattern.png') }}">
 <div id="main-content">
   <div id="main-banner">
-    <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/banner.png') }}"/>
+    <a href="http://myfirefox.com.tw">
+      <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/banner.png') }}"/>
+    </a>
   </div>
   <div id="main-features">
-    <h2>MyFirefox 更新首頁並提供熱門功能，為你提供更好的網站瀏覽經驗</h2>
+    <h2>MyFirefox 更新首頁並提供熱門功能，<span>為你提供更好的網站瀏覽經驗</span></h2>
     <h3>全新封面故事設計</h3>
     <p>新的版位能於使用者螢 幕上同時顯示熱門文章與封面故事，使用者瀏覽時將能更快速、更清楚 地檢視 MyFirefox 全站最新焦點文章。</p>
     <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>

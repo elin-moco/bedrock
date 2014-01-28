@@ -40,24 +40,22 @@ sitemaps = {
          'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact'],
         0.6, 'monthly'),
     'community': ViewsSitemap(
-        ['mozorg.contribute', 'mocotw.community.student.workshop'],
-        # ['mozorg.contribute', 'mocotw.community.student.index', 'mocotw.community.student.rules',
-        #  'mocotw.community.student.mission', 'mocotw.community.student.package', 'mocotw.community.student.workshop',
-        #  'mocotw.contribute_university_ambassadors'],
+        ['mozorg.contribute', 'mocotw.community.student.index', 'mocotw.community.student.rules',
+         'mocotw.community.student.mission', 'mocotw.community.student.package', 'mocotw.community.student.workshop',
+         'mocotw.community.student.intro', 'mocotw.contribute_university_ambassadors'],
         0.5, 'monthly'),
     'community_old': PathsSitemap(
-        ['/community/', '/community/contribute/', '/community/student/',
-         '/community/student_rules/', '/community/student_details/', '/community/package/'],
+        ['/community/'],
         0.5, 'monthly'),
     'newsletter': PathsSitemap(
-        ['/newsletter/2013-12/', '/newsletter/2013-11/',
+        ['/newsletter/2014-01/', '/newsletter/2013-12/', '/newsletter/2013-11/',
          '/newsletter/2013-10/', '/newsletter/2013-09/', '/newsletter/2013-08/', '/newsletter/2013-07/',
          '/newsletter/2013-06/', '/newsletter/2013-05/', '/newsletter/2013-04/', '/newsletter/2013-03/',
          '/newsletter/2012-11/', '/newsletter/2012-10/', '/newsletter/2012-09/', '/newsletter/2012-08/', ],
         0.4, 'monthly'),
     'misc': ViewsSitemap(
         ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about', 'mocotw.eoy2013',
-         'mocotw.shop-with-firefox', 'firefox.speed', 'mocotw.2013review'],
+         'mocotw.2013review', 'mocotw.shop-with-firefox', 'firefox.speed', 'mocotw.2013review'],
         0.4, 'monthly'),
 }
 
