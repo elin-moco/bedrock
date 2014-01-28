@@ -231,13 +231,14 @@ def send_fsa_welcome_letter(to_mail, format='H'):
     text_content = render_to_string('mocotw/emails/welcome_fsa.txt', context)
     html_content = render_to_string('mocotw/emails/welcome_fsa.html', context)
     headers = {}
-    send_mail(subject, headers, from_email, (to_mail, ), text_content, html_content)
+    send_mail(subject, headers, from_email, (to_mail, ), text_content, html_content, format)
 
 
-def send_mail(subject, headers, from_email, to_mail, text_content, mail_content, attachments=()):
+def send_mail(subject, headers, from_email, to_mail, text_content, mail_content, format='H', attachments=()):
     mail = EmailMultiAlternatives(subject=subject, body=text_content, headers=headers,
                                   from_email=from_email, to=to_mail)
-    mail.attach_alternative(mail_content, 'text/html')
+    if format == 'H':
+        mail.attach_alternative(mail_content, 'text/html')
     for attachment in attachments:
         mail.attach(attachment)
     try:
