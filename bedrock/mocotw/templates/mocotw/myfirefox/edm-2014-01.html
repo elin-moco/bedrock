@@ -24,6 +24,7 @@
     }
     a, a:link {
       color: rgb(103, 167, 208);
+      text-decoration: none;
     }
     table, tr, td {
       border-collapse: collapse;
@@ -58,7 +59,17 @@
       width: 600px;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 50px;
+    }
+    #open-in-browser {
+      height: 50px;
+      font-size: 11px;
+      vertical-align: top;
+      color: #FFFFFF;
+    }
+    #open-in-browser a,
+    #open-in-browser a:link{
+      color: white;
+      text-decoration: underline;
     }
     #main-features {
       background: white;
@@ -73,12 +84,21 @@
       margin-top: 10px;
     }
     #footer-subscribe .letter {
+      margin-top: 30px;
       vertical-align: bottom;
       border: 0;
+      margin-right: -1px;
+      margin-bottom: -1px;
     }
     #footer-subscribe .past-issues {
       margin-top: 10px;
       display: block;
+    }
+    #footer-subscribe .social {
+      margin-right: 10px;
+    }
+    #footer-subscribe h3 {
+      font-size: 18px;
     }
     #search-bar-img {
       padding-left: 10px;
@@ -104,6 +124,11 @@
 </head>
 <body background="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/bg-pattern.png') }}">
 <table id="main-content">
+  <tr>
+    <td id="open-in-browser">
+      在瀏覽器中<a href="http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-01') }}">開啟這封信 »</a>
+    </td>
+  </tr>
   <tr>
     <td id="main-banner">
       <a href="http://myfirefox.com.tw">
@@ -178,11 +203,21 @@
           <a class="button" href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}">我要訂閱 »</a>
           <a class="past-issues" href="http://{{ MOCO_URL }}{{ url('newsletter.index') }}">看看過去發行的電子報 »</a>
           <p>也逛逛我們的社群頻道：</p>
-          <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/facebook.png') }}"/>
-          <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/gplus.png') }}"/>
-          <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/plurk.png') }}"/>
-          <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/youtube.png') }}"/>
-          <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/flickr.png') }}"/>
+          <a href="https://www.facebook.com/MozillaTaiwan">
+            <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/facebook.png') }}"/>
+          </a>
+          <a href="https://plus.google.com/+MozillaTw">
+            <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/gplus.png') }}"/>
+          </a>
+          <a href="http://plurk.com/MozillaTaiwan">
+            <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/plurk.png') }}"/>
+          </a>
+          <a href="http://www.youtube.com/user/MozillaTaiwan">
+            <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/youtube.png') }}"/>
+          </a>
+          <a href="http://www.flickr.com/photos/mozillataiwan/">
+            <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/flickr.png') }}"/>
+          </a>
         </td>
         <td>
           <img class="letter" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/letterpic.png') }}"/>
