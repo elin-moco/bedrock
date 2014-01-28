@@ -15,7 +15,7 @@ from django.utils.safestring import mark_safe
 
 import basket
 from basket.base import request
-from bedrock.mocotw.utils import newsletter_subscribe, send_fsa_form
+from bedrock.mocotw.utils import newsletter_subscribe, send_fsa_form, send_fsa_welcome_letter
 from bedrock.newsletter import utils
 
 from captcha.fields import ReCaptchaField
@@ -398,9 +398,9 @@ class ContributeUniversityAmbassadorForm(forms.Form):
     fmt = forms.ChoiceField(widget=forms.RadioSelect(renderer=SideRadios),
                             label=_lazy('Email format preference:'),
                             choices=FORMATS, initial='H')
-    lang = forms.ChoiceField(widget=forms.RadioSelect(renderer=SideRadios),
-                            label=_lazy('Language preference:'),
-                            choices=LANGS, initial='ZH')
+    #lang = forms.ChoiceField(widget=forms.RadioSelect(renderer=SideRadios),
+    #                        label=_lazy('Language preference:'),
+    #                        choices=LANGS, initial='ZH')
     age_confirmation = forms.BooleanField(
         widget=widgets.CheckboxInput(),
         label=_lazy(u'I’m 18 years old and eligible to participate in the program'))
@@ -472,24 +472,23 @@ class ContributeUniversityAmbassadorForm(forms.Form):
     def save(self):
         data = self.cleaned_data
         send_fsa_form(data)
-
-        if data.get('nl_mozilla_taiwan', False):
-            newsletter_subscribe(data['email'])
-        result = basket.subscribe(data['email'], self.newsletters(),
-                                  format=data['fmt'], country=data['country'],
-                                  welcome_message='Student_Ambassadors_Welcome',
-                                  source_url=data['source_url'])
-
-        data = {
-            'FIRST_NAME': data['first_name'],
-            'LAST_NAME': data['last_name'],
-            'STUDENTS_CURRENT_STATUS': data['current_status'],
-            'STUDENTS_SCHOOL': data['school'],
-            'STUDENTS_GRAD_YEAR': data['expected_graduation_year'],
-            'STUDENTS_MAJOR': data['area'],
-            'COUNTRY_': data['country'],
-            'STUDENTS_CITY': data['city'],
-            'STUDENTS_ALLOW_SHARE': data['share_information'],
-        }
-        request('post', 'custom_update_student_ambassadors',
-                token=result['token'], data=data)
+        send_fsa_welcome_letter(data['email'], data['fmt'])
+        #if data.get('nl_mozilla_taiwan', False):
+        #    newsletter_subscribe(data['email'])
+        #result = basket.subscribe(data['email'], self.newsletters(),
+        #                          format=data['fmt'], country=data['country'],
+        #                          welcome_message='Student_Ambassadors_Welcome',
+        #                          source_url=data['source_url'])
+        #data = {
+        #    'FIRST_NAME': data['first_name'],
+        #    'LAST_NAME': data['last_name'],
+        #    'STUDENTS_CURRENT_STATUS': data['current_status'],
+        #    'STUDENTS_SCHOOL': data['school'],
+        #    'STUDENTS_GRAD_YEAR': data['expected_graduation_year'],
+        #    'STUDENTS_MAJOR': data['area'],
+        #    'COUNTRY_': data['country'],
+        #    'STUDENTS_CITY': data['city'],
+        #    'STUDENTS_ALLOW_SHARE': data['share_information'],
+        #}
+        #request('post', 'custom_update_student_ambassadors',
+        #        token=result['token'], data=data)

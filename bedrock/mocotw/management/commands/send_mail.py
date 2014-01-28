@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.mail import EmailMultiAlternatives
 from email.errors import MessageError
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
@@ -8,7 +9,6 @@ from os.path import join
 from time import sleep
 from django.core.management.base import NoArgsCommand, BaseCommand
 from email.header import Header
-from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 import sys
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars

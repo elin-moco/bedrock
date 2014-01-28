@@ -11,6 +11,10 @@ from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOC
 from bedrock.settings import GA_ACCOUNT_CODE
 from product_details import settings_fallback, product_details
 from bedrock.mocotw.models import Newsletter
+from django.core.mail import EmailMultiAlternatives
+from email.errors import MessageError
+from email.header import Header
+from django.template.loader import render_to_string
 
 
 log = logging.getLogger('prod_details')
@@ -172,12 +176,13 @@ def read_newsletter_context(issue_number, is_mail=True):
         return {}
 
 
-def newsletter_context_vars(context, issue_number):
+def newsletter_context_vars(context, issue_number=None):
     context['GA_ACCOUNT_CODE'] = GA_ACCOUNT_CODE
     context['MOCO_URL'] = LOCAL_MOCO_URL if DEBUG else MOCO_URL
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL
-    context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
+    if issue_number:
+        context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
 
 
 def send_fsa_form(data):
@@ -194,7 +199,7 @@ def send_fsa_form(data):
         'entry.1130352781': data['area'],
         'entry.197281933': data['area_free_text'],
         'entry.689416110': 'TEXT' if data['fmt'] == 'T' else 'HTML',
-        'entry.231672082': 'English' if data['lang'] == 'EN' else 'Chinese',
+        #'entry.231672082': 'English' if data['lang'] == 'EN' else 'Chinese',
         'entry.910433691': 'OK' if data['share_information'] else '',
         'entry.760711799': 'OK' if data['age_confirmation'] else '',
         'entry.2111690093': 'OK' if data['privacy'] else '',
@@ -216,3 +221,29 @@ def track_page(path):
     session = Session()
     page = Page(path)
     tracker.track_pageview(page, session, visitor)
+
+
+def send_fsa_welcome_letter(to_mail, format='H'):
+    context = {}
+    newsletter_context_vars(context)
+    subject = Header(u'歡迎加入 Firefox 校園大使！', 'utf-8')
+    from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
+    text_content = render_to_string('mocotw/emails/welcome_fsa.txt', context)
+    html_content = render_to_string('mocotw/emails/welcome_fsa.html', context)
+    headers = {}
+    send_mail(subject, headers, from_email, (to_mail, ), text_content, html_content)
+
+
+def send_mail(subject, headers, from_email, to_mail, text_content, mail_content, attachments=()):
+    mail = EmailMultiAlternatives(subject=subject, body=text_content, headers=headers,
+                                  from_email=from_email, to=to_mail)
+    mail.attach_alternative(mail_content, 'text/html')
+    for attachment in attachments:
+        mail.attach(attachment)
+    try:
+        mail.send()
+        log.error('Sent mail to %s.' % to_mail)
+    except MessageError as e:
+        log.error('Failed to send to %s.' % to_mail, e)
+    except RuntimeError as e:
+        log.error('Unexpected error when sending to %s.' % to_mail, e)

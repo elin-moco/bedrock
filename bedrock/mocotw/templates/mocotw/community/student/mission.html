@@ -4,15 +4,16 @@
 
 {% extends "mocotw/community/student/base.html" %}
 
-{% block page_title %}{{ _('The Mozilla Manifesto') }}{% endblock %}
+{% block page_title %}Firefox 校園大使任務包{% endblock %}
 {% block page_desc %}Mozilla 專案為全球性社群，成員們信奉開放、創新及機會是網際網路健全發展的關鍵因素。我們自 1998 年起為確保網際網路的發展裨益全民而生，以創作 Mozilla Firefox
   網頁瀏覽器聞名。{% endblock %}
 {% block body_id %}about-manifesto{% endblock %}
 
 {% block article %}
-  <h2>Firefox 校園大使<br>推廣任務及證書</h2>
-  報名加入校園大使專案後，接下來該做什麼呢？Mozilla 早已針對校園大使和 Firefox
-  社團，設計了一系列有趣又簡單的活動，讓你能迅速動手執行專案任務。如果你想認識世界各地的朋友，並和全世界最酷的社群一起累積工作經驗，這就是最好的機會！立刻開始吧！
+  <h2>Firefox 校園大使任務包</h2>
+  <h3>必修熱身任務與每月選修任務</h3>
+  <p>申請成為校園大使後，每月會有一至多項的任務需要完成並撰寫報告發表。請先閱讀下方的必修熱身任務說明，請在加入校園大使後的前三個月內，於下方 1~5 活動中各完成至少一項任務 (亦即須完成至少五項任務)，將過程與結果發表在自己的部落格上，並在 mailing list 上與大家分享你的成果！</p>
+  <h4>必修熱身任務</h4>
   <ol>
     <li><b>介紹 Mozilla</b><br>
       在成為校園大使之後，第一步就是單人任務：讓自己熟悉 Mozilla 與社群。
@@ -23,6 +24,11 @@
         <li><a href="{{ url('mozorg.products') }}" target="_blank">Mozilla 的產品</a></li>
         <li><a href="https://webmaker.org/" target="_blank">Webmaker</a> 全球性社群，將創造、傳授、重新整合大家的 Web</li>
         <li><a href="https://support.mozilla.org/zh-TW/get-involved" target="_blank">Mozilla Support (SuMo)</a> 是由熱心的志工與員工所打造，為全世界的使用者提供技術支援</li>
+      </ul>
+      <ul class="mission-detail">任務內容 (擇一)：
+        <li><a href="https://estela.makes.org/thimble/fsa-activities-learning-webmaker" target="_blank">學習 Webmaker 工具</a></li>
+        <li><a href="https://estela.makes.org/thimble/fsa-activities-mozilla-manifesto" target="_blank">了解 Mozilla 宣言</a></li>
+        <li><a href="https://estela.makes.org/thimble/fsa-activities-projects-at-mozilla" target="_blank">認識 Mozilla 專案</a></li>
       </ul>
     </li>
     <li><b>對外分享你最愛的 Mozilla 專案/產品</b>
@@ -35,6 +41,9 @@
           </ul>
         </li>
         <li>活動主旨就是要動手實作，讓自己更熟悉 Mozilla 專案或產品</li>
+      </ul>
+      <ul class="mission-detail">
+        任務內容：<a href="https://estela.makes.org/thimble/fsa-activities-your-favorite-project-product-at-mozilla" target="_blank">你最有興趣的 Mozilla 專案或產品是哪些？</a>
       </ul>
     </li>
     <li><b>向外交流</b>
@@ -72,6 +81,9 @@
           </ul>
         </li>
       </ul>
+      <ul class="mission-detail">
+        任務內容：<a href="https://estela.makes.org/thimble/fsa-activities-get-social-and-share-your-thoughts" target="_blank">參與及融入 Mozilla</a>
+      </ul>
     </li>
     <li><b>辦活動！</b>
       <ul>
@@ -101,16 +113,27 @@
           你不需自己舉辦多盛大的活動，可規劃大約五到十人的團體活動即可。用力邀請你的朋友、同學，甚至附近學校的學生。
         </li>
       </ul>
+      <ul class="mission-detail">
+        任務內容：<a href="https://estela.makes.org/thimble/fsa-activities-holding-events" target="_blank">在校園舉辦活動</a>
+      </ul>
     </li>
     <li><b>加入或創辦 Firefox Club！</b>
       <ul>
         <li>若你注意到自己的朋友/同學展現出興趣，或遇見有類似企圖心的人，你就可以創辦 <a href="https://wiki.mozilla.org/Category:FirefoxClubs" target="_blank">Firefox Club</a> 並舉行下一階段的活動</li>
         <li>檢查 <a href="https://wiki.mozilla.org/Category:FirefoxClubs" target="_blank">Firefox Club 名錄</a>，看看自己的學校是不是已經有 Firefox Club 了。如果還沒有，就立刻創辦社團吧</li>
       </ul>
+      <ul class="mission-detail">
+        任務內容：<a href="https://estela.makes.org/thimble/fsa-activities-join-a-form-a-firefox-club" target="_blank">屬於你的 Firefox Club</a>
+      </ul>
     </li>
   </ol>
 
-  <p>除了上述熱身任務，Mozilla 每月也會訂定團體任務，大使們將依照自己被分配的組別與組員一同完成當月任務。</p>
+  <h4>每月選修任務</h4>
+  <p>完成必修熱身任務後，Firefox 校園大使須於每月完成一個選修任務，將任務執行過程與結果發表在自己的部落格上，並在 <a href="https://mail.mozilla.org/listinfo/community-taiwan-campus/" target="_blank">mailing list</a> 上與大家分享你的成果！。有更酷更棒的任務規劃? 你也可以自己決定及設計每月想進行的選修任務或活動，並同樣將結果發表在部落格與 <a href="https://mail.mozilla.org/listinfo/community-taiwan-campus/" target="_blank">mailing list</a> 上。</p>
+  <ul class="mission-detail">每月選修任務內容 (每月擇一)：
+    <li><a href="https://estela.makes.org/thimble/optional-fsa-activities-amara" target="_blank">編譯 Mozilla 影片字幕</a></li>
+    <li><a href="https://irvinfly.makes.org/thimble/optional-fsa-activities-mozilla-location-services" target="_blank">Mozilla Location Service</a></li>
+    <li><a href="https://estela.makes.org/thimble/optional-fsa-activities-facebook-fanpage" target="_blank">Facebook 粉絲團經營</a></li>
+  </ul>
 
-  <p>申請證書：於任期最後一個月由大使自行提出申請，需含申請書及任期成果展示(內容自訂)。待台灣方審核確認符合資格後，協助向美國提出證書申請。</p>
 {% endblock %}

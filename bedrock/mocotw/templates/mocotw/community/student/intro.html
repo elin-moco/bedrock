@@ -1,0 +1,42 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "mocotw/community/student/base.html" %}
+
+{% block page_title_prefix %}Firefox 校園大使 － {% endblock %}
+{% block page_title %}推廣任務及證書{% endblock %}
+{% block page_desc %}Mozilla 專案為全球性社群，成員們信奉開放、創新及機會是網際網路健全發展的關鍵因素。我們自 1998 年起為確保網際網路的發展裨益全民而生，以創作 Mozilla Firefox
+  網頁瀏覽器聞名。{% endblock %}
+{% block body_id %}about-manifesto{% endblock %}
+
+{% block article %}
+  <h2>Firefox 校園大使<br>推廣任務及證書</h2>
+  <p>報名加入校園大使專案後，接下來該做什麼呢？Mozilla 早已針對校園大使和 Firefox Club，設計了一系列有趣又簡單的活動，讓你能迅速動手執行專案任務。任務內容如：</p>
+  <ol>
+    <li>
+      <b>介紹 Mozilla</b><br>
+      在成為校園大使之後，第一步就是讓自己熟悉 Mozilla 與社群。
+    </li>
+    <li>
+      <b>對外分享你最愛的 Mozilla 專案/產品</b><br>
+      透過 <a href="https://thimble.webmaker.org/" target="_blank">Thimble</a> 或 <a href="https://popcorn.webmaker.org/" target="_blank">Popcorn</a>，對外分享你最感興趣的 Mozilla 專案
+    </li>
+    <li>
+      <b>向外交流</b><br>
+      透過各種管道與其他校園大使或社群朋友互動交流
+    </li>
+    <li>
+      <b>辦活動！</b><br>
+      <a href="https://wiki.mozilla.org/ReMo/SOPs/Attending_an_Event" target="_blank">參加</a>或<a href="https://wiki.mozilla.org/ReMo/SOPs/Event_hosting"target="_blank">自行舉辦</a>各種 Mozilla 相關活動，推廣 Mozilla 的宗旨及產品
+    </li>
+    <li>
+      <b>加入或創辦 Firefox Club！</b><br>
+      參加或自行舉辦各種 Mozilla 相關活動，推廣 Mozilla 的宗旨及產品
+    </li>
+  </ol>
+
+  <p>詳細任務說明，請參考 <a href="{{ url('mocotw.community.student.mission') }}" target="_blank">Firefox 校園大使任務包</a>。</p>
+
+  <p>申請證書：由大使自行提出申請，需含申請書及任期成果展示(內容自訂)。待台灣方審核確認符合資格後，協助向美國提出證書申請。</p>
+{% endblock %}

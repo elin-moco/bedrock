@@ -100,9 +100,9 @@
           <div class="field field-format">
             {{ form.fmt.label }} {{ form.fmt }}
           </div>
-          <div class="field field-language">
-            {{ form.lang.label }} {{ form.lang }}
-          </div>
+{#          <div class="field field-language">#}
+{#            {{ form.lang.label }} {{ form.lang }}#}
+{#          </div>#}
         </section>
       </div>
       <div class="form-column">
@@ -156,6 +156,7 @@
         <div class="form-submit">
           <input type="submit" class="button" id="form-submit" value="{{_('Sign me up!')}}">
         </div>
+        <p>提出申請後，你將會收到中英文兩封申請確認信。若你是在台灣的學生，請以中文確認信的資訊為主。</p>
       </div>
   </form>
 {% endblock %}

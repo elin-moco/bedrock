@@ -1,8 +1,9 @@
+{% set link_style='color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;' %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta content="NOINDEX, NOFOLLOW" name="ROBOTS">
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <title>歡迎加入 Firefox 校園大使！</title>
+  <title>{{ _('Welcome to Firefox Student Ambassadors!') }}</title>
   <style type="text/css">
     @media only screen and (max-device-width: 450px) {
       div[class="mobiledevicesupport"] .hide_on_mobile {
@@ -78,14 +79,18 @@
   <tbody>
   <tr>
     <td style="font-family: georgia, serif;font-size: 12px;color: #655e4c;" class="small red-links" colspan="3">
-      在瀏覽器中<a style="color: #b30406;text-decoration: none;font-family: georgia, serif;font-size: 12px" href="http://mozilla.com.tw/community/student/welcome-letter/">開啟這封信</a> »
+      {% trans link='http://' + MOCO_URL + url('mocotw.emails.welcome_fsa') %}
+        <a style="color: #b30406;text-decoration: none;font-family: georgia, serif;font-size: 12px" href="{{ link }}">
+          Read this</a> in your browser »
+      {% endtrans %}
+
     </td>
     <td valign="top">
       <a style="color: #447bc4;text-decoration: none;display: block;font-family: sans-serif;font-size: 12px;"
          target="_blank"
-         href="http://mozilla.com.tw">
+         href="http://{{ MOCO_URL }}">
         <img width="146" height="44" border="0" align="right" style="display:block" alt="Mozilla"
-             src="http://mozilla.com.tw/media/img/tabzilla/tab-static.png"></a>
+             src="http://{{ MOCO_URL }}/media/img/tabzilla/tab-static.png"></a>
     </td>
   </tr>
   </tbody>
@@ -99,13 +104,13 @@
   </tr>
   <tr>
     <td class="stack_on_mobile"><img width="324" height="90" border="0" class="title-image stack_on_mobile"
-                                     src="http://{{MOCO_URL}}/media/img/contribute/university-ambassadors/logo.png"
+                                     src="http://{{ MOCO_URL }}/media/img/contribute/university-ambassadors/logo.png"
                                      alt="Student Ambassadors"></td>
     <td width="20">&nbsp;</td>
 
     <td valign="middle"
         style="font-family: georgia, serif;font-style: italic;font-size: 14px;line-height: 1;padding: 10px 0;color: #7d7d7d;"
-        class="tagline stack_on_mobile">這封信來自非營利組織 Mozilla<br>－ Firefox 的開發者
+        class="tagline stack_on_mobile">{{ _('From Mozilla, a non-profit organization and developer of Firefox') }}
     </td>
   </tr>
 
@@ -141,54 +146,111 @@
         <tr>
           <td height="20"><h2
                   style="font-family: sans-serif;font-size: 26px;font-weight: normal;font-style: normal;color: #d04b00;margin-top: 0;margin-bottom: 15px;"
-                  class="title">歡迎加入 Firefox 校園大使！ </h2></td>
+                  class="title">{{ _('Welcome to Firefox Student Ambassadors!') }} </h2></td>
         </tr>
         <tr>
           <td>
             <div style="line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;font-size: 16px;">
-              此封電子郵件用以確認你已正式報名 Firefox 校園大使。接下來你可透過幾個方式向周遭的人宣揚 Mozilla 的理念：              <br><br>
+              {% trans %}
+                This email confirms that you are now officially registered as a member of the Firefox Student Ambassador
+                program. Here are a few easy ways in which you can get started spreading the word about Mozilla right
+                away:
+              {% endtrans %}
+              <br><br>
 
-              <strong><a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+              <strong><a style="{{ link_style }}"
                          href="https://wiki.mozilla.org/StudentAmbassadors/Activities#Become_a_Mobilizer.21">
-                1) 加入 Firefox OS 的 Team Mobilizer</a></strong>
+                {{ _('1) Join Team Mobilizer for Firefox OS.') }}</a></strong>
               <br>
-              你想搶先知道 Firefox OS 的最新消息嗎？也想和其他大使互動，協助創造 Mozilla 的歷史嗎？              <br> <br>
+              {% trans %}
+                Do you want to be the first to know about Firefox OS in your region? Want to have fun with people like
+                you and help make history?
+              {% endtrans %}
+              <br> <br>
 
-              Team Mobilizer 是由一群熱血的科技高手所組成，致力發揚 Mozilla 行動新產品 ─ Firefox OS。Mobilizer 將定期接到任務，以簡單方法向外宣達 Firefox OS 的理念。另外根據自己的所在地，Mobilizer 每個月均需於當地市場參加、協助、舉辦活動一次。              <a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+              {% trans %}
+                Team Mobilizer is a group of tech/geek enthusiasts that are committed to spreading FirefoxOS, Mozilla's
+                new mobile product. Mobilizers receive periodic missions asking them to do a simple action to teach
+                others about the new Firefox OS. Mobilizers will also attend, assist or host events in their market
+                about once a month.
+              {% endtrans %}
+              <a style="{{ link_style }}"
                  href="https://wiki.mozilla.org/Mobilizers">
-                進一步了解自己所在地的 Team Mobilizer！</a>
+                {{ _('Learn about Team Mobilizer in your region!') }}</a>
 
               <br><br>
 
 
-              <strong><a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+              <strong><a style="{{ link_style }}"
                          href="https://wiki.mozilla.org/StudentAmbassadors">
-                2) 看 Wiki 上的簡介</a></strong>
+                {{ _('2) Read the wiki.') }}</a></strong>
               <br>
-              透過我們的 <a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://wiki.mozilla.org/StudentAmbassadors"> Wiki 頁面</a>了解校園大使所應完成的任務、可利用的工具、相關活動等資訊。也可以在裡面找到你能參與的<a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://wiki.mozilla.org/StudentAmbassadors/Activities">活動</a> (中文版說明<a href="link2_tw" style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;">請參考 Firefox 校園大使任務包</a>)，以在校園中推廣 Mozilla 以及 Firefox (<a alias="wiki rewards" style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://wiki.mozilla.org/StudentAmbassadors/Recognition">還能贏得獎品</a>)。              <br><br>
+              {% trans link1='https://wiki.mozilla.org/StudentAmbassadors',
+              link2='https://wiki.mozilla.org/StudentAmbassadors/Activities',
+              link2_tw=url('mocotw.community.student.mission'),
+              link3='https://wiki.mozilla.org/StudentAmbassadors/Recognition' %}
+                Further familiarize yourself with the program's mission, tools, and activities on our
+                <a style="{{ link_style }}"
+                   href="{{ link1 }}">
+                  wiki page</a>.
+                Here you can also find out more information about what
+                <a style="{{ link_style }}"
+                   href="{{ link2 }}">
+                  activities</a>
+                you can do on campus to promote Mozilla (
+                <a alias="wiki rewards"
+                   style="{{ link_style }}"
+                   href="{{ link3 }}">
+                  and earn rewards!</a>)
+              {% endtrans %}
+              <br><br>
 
-              <strong>3) 加入 <a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://www.facebook.com/Firefox.Student.Ambassadors">Facebook</a> 與 <a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://twitter.com/mozstudents">Twitter</a> 的校園大使粉絲團！</strong><br> 到社交網站查看定期更新的資訊，並聯絡其他校園大使。
+              {% trans link1='https://www.facebook.com/Firefox.Student.Ambassadors',
+              link2='https://twitter.com/mozstudents' %}
+                <strong>3) Join us on <a
+                        style="{{ link_style }}"
+                        href="{{ link1 }}">Facebook</a>
+                  and <a style="{{ link_style }}"
+                         href="{{ link2 }}">Twitter</a>!</strong><br>
+                Explore our social pages for regular updates and to connect with your fellow Student Ambassadors.
+              {% endtrans %}
+
 
               <br><br>
-              <strong><a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+              <strong><a style="{{ link_style }}"
                          href="https://wiki.mozilla.org/StudentAmbassadors/FirefoxClubs">
-                4) 找到自己學校的 Firefox 社團，還沒有社團的話就自己創社吧！</a></strong>
+                {{ _('4) Find or start a Firefox Club at your university.') }}</a></strong>
               <br>
-              找到自己校內的大使，或者創社擔任校內第一位 Firefox 社長。
+              {{ _('Find fellow Ambassadors at your school or be the first Firefox Club founder at your university.') }}
               <br><br>
 
 
-              加入校園大使之後，每個月都會收到 Mozilla 所寄發的電子報，內含更新訊息、達成成就、Firefox 新聞，還有更多資訊。我們要和你隨時保持聯絡！              <br><br>
+              {% trans %}
+                As part of the Student Ambassadors program, you'll receive an email newsletter from us every month with
+                updates, achievements, Firefox news, and more. We look forward to staying in-touch!
+              {% endtrans %}
+              <br><br>
 
-              當然，只要你有任何疑問，也請你隨時<a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="mailto:firefoxstudents@mozilla.com">反應給我們</a>。                            <br><br>
-              <strong><a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
-                         href="https://mail.mozilla.org/listinfo/community-taiwan-campus/">
-                5) 與本地的 Firefox 校園大使交流互動</a></strong>
+              {% trans link='mailto:firefoxstudents@mozilla.com' %}
+                In the meantime, if you have any questions, please do not hesitate to <a
+                      style="{{ link_style }}"
+                      href="{{ link }}">let us know</a>.
+              {% endtrans %}
+              {% if LANG == 'zh-TW' %}
+              <br><br>
+              <strong>
+                <a style="{{ link_style }}"
+                         href="https://mail.mozilla.org/listinfo/community-taiwan-campus/">5) 與本地的 Firefox 校園大使交流互動</a></strong>
               <br>
-              在台灣，已經有一群充滿熱忱的 Firefox 校園大使在為網路的開放與自由貢獻心力。想要認識他們嗎？歡迎加入校園大使 <a style="color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://mail.mozilla.org/listinfo/community-taiwan-campus/">mailing list</a>。
-                            <br><br>
-              再次感謝你熱情參與 Mozilla 的行動，並努力協助我們打造更美好 Web 的終極使命。              <br><br>
-              Mozilla 校園大使專案
+              在台灣，已經有一群充滿熱忱的 Firefox 校園大使在為網路的開放與自由貢獻心力。想要認識他們嗎？歡迎加入校園大使 <a style="{{ link_style }}" href="https://mail.mozilla.org/listinfo/community-taiwan-campus/">mailing list</a>。
+              {% endif %}
+              <br><br>
+              {% trans %}
+                Thank you again for all of your hard work in helping Mozilla with our mission of building a brighter
+                future for the Web.
+              {% endtrans %}
+              <br><br>
+              {{ _('Mozilla Student Community Manager') }}
             </div>
           </td>
         </tr>
@@ -218,7 +280,7 @@
   <tr>
     <td style="vertical-align: top;" class="stack_on_mobile">
       <table width="290" height="182" cellspacing="0" cellpadding="0" border="0"
-             style="height: 182px; background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
+             style="background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
              class="white-box compressed_on_mobile">
         <tbody>
         <tr>
@@ -229,12 +291,16 @@
         <tr>
           <td>
             <h2 style="font-family: sans-serif;font-size: 26px;font-weight: normal;font-style: normal;color: #d04b00;margin-top: 0;margin-bottom: 15px;"
-                class="title">有任何問題嗎?</h2></td>
+                class="title">{{ _('Any questions?') }}</h2></td>
         </tr>
         <tr>
           <td valign="top">
             <div style="line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;font-size: 16px;">
-              你可以在 IRC (#firefoxstudents) 上面「舉手發問」，或者參閱我們的 <a style="line-height: 1.4; color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;" href="https://wiki.mozilla.org/StudentAmbassadors/FAQ">FAQ 頁面</a>。
+              {% trans link='https://wiki.mozilla.org/StudentAmbassadors/FAQ' %}
+                Please 'raise your hand' on either IRC (#firefoxstudents) or take a look at our
+                <a style="line-height: 1.4; {{ link_style }}" href="{{ link }}">FAQ page</a>.
+              {% endtrans %}
+
             </div>
           </td>
         </tr>
@@ -247,7 +313,7 @@
     <td width="20" valign="top" class="hide_on_mobile">&nbsp;</td>
     <td style="vertical-align: top;" class="stack_on_mobile">
       <table width="290" height="182" cellspacing="0" cellpadding="0" border="0"
-             style="height: 182px; background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
+             style="background: #fff;border-bottom: 1px solid #777;border-left: 1px solid #ccc;border-right: 1px solid #ccc;border-collapse: collapse;"
              class="white-box compressed_on_mobile">
         <tbody>
         <tr>
@@ -258,7 +324,7 @@
         <tr>
           <td height="20"><h2
                   style="font-family: sans-serif;font-size: 26px;font-weight: normal;font-style: normal;color: #d04b00;margin-top: 0;margin-bottom: 15px;"
-                  class="title">聯繫 Mozilla Taiwan</h2>
+                  class="title">{{ _('Connect with Mozilla Taiwan') }}</h2>
           </td>
         </tr>
         <tr>
@@ -268,18 +334,18 @@
               <tbody>
               <tr>
                 <td>
-                  <a style="line-height: 1.4; color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+                  <a style="line-height: 1.4; {{ link_style }}"
                      href="https://www.facebook.com/MozillaTaiwan">
                     <img width="32" height="32" border="0" style="vertical-align: middle;"
-                         src="http://mozilla.com.tw/media/img/firefox/firstrun/facebook.png">
+                         src="http://{{ MOCO_URL }}/media/img/firefox/firstrun/facebook.png">
                   </a>
 
                 </td>
                 <td width="5">&nbsp;</td>
                 <td>
-                  <a style="line-height: 1.4;  color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+                  <a style="line-height: 1.4;  {{ link_style }}"
                      href="https://www.facebook.com/MozillaTaiwan">
-                    在 Facebook 上幫我們按讚
+                    {{ _('Join us on Facebook') }}
                   </a>
                 </td>
               </tr>
@@ -291,17 +357,17 @@
               </tr>
               <tr>
                 <td>
-                  <a style="line-height: 1.4; color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+                  <a style="line-height: 1.4; {{ link_style }}"
                      href="https://plus.google.com/+MozillaTw/">
                     <img width="32" height="32" border="0" style="vertical-align: middle;"
-                         src="http://mozilla.com.tw/media/img/firefox/firstrun/gplus-32.png"></a>
+                         src="http://{{ MOCO_URL }}/media/img/firefox/firstrun/gplus-32.png"></a>
                 </td>
                 <td width="5">&nbsp;</td>
 
                 <td>
-                  <a style="line-height: 1.4;  color: #0096dd;text-decoration: none;font-family: Georgia, serif;font-size: 16px;"
+                  <a style="line-height: 1.4;  {{ link_style }}"
                      href="https://plus.google.com/+MozillaTw/">
-                    到 Google+ 追蹤我們的頻道</a>
+                    {{ _('Follow us on Google+') }}</a>
 
                 </td>
               </tr>
@@ -356,12 +422,12 @@
     <td width="170" valign="top" class="address stack_on_mobile">
       <p style="margin: 0 0 10px 0;line-height: 1.4;color: #655e4c;margin-top: 0;"><strong
               style="font-style: normal;color: #736a5e;font-family: Georgia, serif;">Mozilla</strong><br>
-        110 台北市信義區信義路五段 106 號 4 樓 A-1</p>
+        {{ _('650 Castro St., Ste 300<br>Mountain View CA 94041-2021') }}</p>
 
       <p style="margin: 0 0 10px 0;line-height: 1.4;color: #655e4c;margin-top: 0;font-family: Georgia, serif;"><a
               style="color: #0096dd;text-decoration: none;font-size: 12px;font-family: Georgia, serif;" target="_blank"
               href="http://www.mozilla.org/en-US/privacy/policies/websites/">
-        Mozilla 隱私政策</a></p>
+        {{ _('Mozilla Privacy Policy') }}</a></p>
     </td>
     <td width="10">&nbsp;</td>
   </tr>
@@ -382,6 +448,7 @@
 </table>
 
 </div>
+{#<img width="1" height="1" src="http://{{ MOCO_URL }}/">#}
 
 </body>
 </html>
