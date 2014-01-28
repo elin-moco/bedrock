@@ -1,49 +1,60 @@
-在瀏覽器中[開啟這封信](http://{{MOCO_URL}}/community/student/welcome-letter/) »
+在瀏覽器中開啟這封信
+http://{{MOCO_URL}}/community/student/welcome-letter/
 
 
 這封信來自非營利組織 Mozilla
-
 － Firefox 的開發者
 
-
-## 歡迎加入 Firefox 校園大使！
+*****************************
+歡迎加入 Firefox 校園大使！
+*****************************
 
 此封電子郵件用以確認你已正式報名 Firefox 校園大使。接下來你可透過幾個方式向周遭的人宣揚 Mozilla 的理念：
 
   
-**[ 1) 加入 Firefox OS 的 Team Mobilizer](https://wiki.mozilla.org/StudentAmbassadors/Activities#Become_a_Mobilizer.21)**   
+1) 加入 Firefox OS 的 Team Mobilizer](https://wiki.mozilla.org/StudentAmbassadors/Activities#Become_a_Mobilizer.21
 你想搶先知道 Firefox OS 的最新消息嗎？也想和其他大使互動，協助創造 Mozilla 的歷史嗎？
 
   
 Team Mobilizer 是由一群熱血的科技高手所組成，致力發揚 Mozilla 行動新產品 ─ Firefox OS。Mobilizer
 將定期接到任務，以簡單方法向外宣達 Firefox OS 的理念。另外根據自己的所在地，Mobilizer 每個月均需於當地市場參加、協助、舉辦活動一次。
-[ 進一步了解自己所在地的 Team Mobilizer！](https://wiki.mozilla.org/Mobilizers)
+進一步了解自己所在地的 Team Mobilizer！
+https://wiki.mozilla.org/Mobilizers
 
   
-**[ 2) 看 Wiki 上的簡介](https://wiki.mozilla.org/StudentAmbassadors)**   
-透過我們的 [ Wiki 頁面](https://wiki.mozilla.org/StudentAmbassadors)了解校園大使所應完成的任務、可利用
-的工具、相關活動等資訊。也可以在裡面找到你能參與的[活動](https://wiki.mozilla.org/StudentAmbassadors/Acti
-vities) (中文版說明[請參考 Firefox 校園大使任務包](link2_tw))，以在校園中推廣 Mozilla 以及 Firefox
-([還能贏得獎品](https://wiki.mozilla.org/StudentAmbassadors/Recognition))。
+2) 看 Wiki 上的簡介
+https://wiki.mozilla.org/StudentAmbassadors
+
+透過我們的 Wiki 頁面了解校園大使所應完成的任務、可利用
+的工具、相關活動等資訊。也可以在裡面找到你能參與的活動，以在校園中推廣 Mozilla 以及 Firefox
+https://wiki.mozilla.org/StudentAmbassadors/Activities
+
+(中文版說明請參考 Firefox 校園大使任務包)
+http://{{MOCO_URL}}{{url('mocotw.community.student.mission')}}
+
+(還能贏得獎品)
+https://wiki.mozilla.org/StudentAmbassadors/Recognition
 
   
-**3) 加入 [Facebook](https://www.facebook.com/Firefox.Student.Ambassadors) 與 [Twitter](https://twitter.com/mozstudents) 的校園大使粉絲團！**  
+3) 加入 Facebook(https://www.facebook.com/Firefox.Student.Ambassadors) 與 Twitter(https://twitter.com/mozstudents) 的校園大使粉絲團！
 到社交網站查看定期更新的資訊，並聯絡其他校園大使。
 
   
-**[ 4) 找到自己學校的 Firefox 社團，還沒有社團的話就自己創社吧！](https://wiki.mozilla.org/StudentAmbassadors/FirefoxClubs)**   
+4) 找到自己學校的 Firefox 社團，還沒有社團的話就自己創社吧！
+https://wiki.mozilla.org/StudentAmbassadors/FirefoxClubs
+
 找到自己校內的大使，或者創社擔任校內第一位 Firefox 社長。
 
-  
 加入校園大使之後，每個月都會收到 Mozilla 所寄發的電子報，內含更新訊息、達成成就、Firefox 新聞，還有更多資訊。我們要和你隨時保持聯絡！
 
   
-當然，只要你有任何疑問，也請你隨時[反應給我們](mailto:firefoxstudents@mozilla.com)。
+當然，只要你有任何疑問，也請你隨時反應給我們：firefoxstudents@mozilla.com。
 
   
 ** 5) 與本地的 Firefox 校園大使交流互動**   
-在台灣，已經有一群充滿熱忱的 Firefox 校園大使在為網路的開放與自由貢獻心力。想要認識他們嗎？歡迎加入校園大使 [mailing
-list](https://mail.mozilla.org/listinfo/community-taiwan-campus/)。
+在台灣，已經有一群充滿熱忱的 Firefox 校園大使在為網路的開放與自由貢獻心力。想要認識他們嗎？歡迎加入校園大使 mailing
+list。
+https://mail.mozilla.org/listinfo/community-taiwan-campus/
 
   
 再次感謝你熱情參與 Mozilla 的行動，並努力協助我們打造更美好 Web 的終極使命。
@@ -51,19 +62,27 @@ list](https://mail.mozilla.org/listinfo/community-taiwan-campus/)。
   
 Mozilla 校園大使專案
 
-## 有任何問題嗎?
+*****************************
+有任何問題嗎?
+*****************************
 
-你可以在 IRC (#firefoxstudents) 上面「舉手發問」，或者參閱我們的 [FAQ
-頁面](https://wiki.mozilla.org/StudentAmbassadors/FAQ)。
+你可以在 IRC (#firefoxstudents) 上面「舉手發問」，或者參閱我們的 FAQ頁面
+https://wiki.mozilla.org/StudentAmbassadors/FAQ
 
-## 聯繫 Mozilla Taiwan
+*****************************
+聯繫 Mozilla Taiwan
+*****************************
 
-[ 在 Facebook 上幫我們按讚 ](https://www.facebook.com/MozillaTaiwan)
+在 Facebook 上幫我們按讚
+https://www.facebook.com/MozillaTaiwan
 
-[ 到 Google+ 追蹤我們的頻道](https://plus.google.com/+MozillaTw/)
+到 Google+ 追蹤我們的頻道
+https://plus.google.com/+MozillaTw/
 
-**Mozilla**  
+*****************************
+Mozilla
 110 台北市信義區信義路五段 106 號 4 樓 A-1
 
-[ Mozilla 隱私政策](http://www.mozilla.org/en-US/privacy/policies/websites/)
+Mozilla 隱私政策
+http://www.mozilla.org/en-US/privacy/policies/websites/
 
