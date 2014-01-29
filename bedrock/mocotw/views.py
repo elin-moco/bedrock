@@ -18,6 +18,15 @@ from bedrock.settings import API_SECRET
 from lib import l10n_utils
 
 
+def campaign_tracker(request, campaign=None):
+    track_page('/edm/%s/email' % campaign)
+    response = HttpResponse('', content_type='image/gif')
+    response['Pragma'] = 'no-cache'
+    response['Cache-Control'] = 'private, no-cache, no-cache=Set-Cookie, proxy-revalidate'
+    response['Expires'] = 'Wed, 17 Sep 1975 21:32:10 GMT'
+    response.write('R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs='.decode('base64'))
+    return response
+
 def issue(request, issue_number=None, path=None):
     if not path or path == 'index.html':
         context = read_newsletter_context(issue_number, False)

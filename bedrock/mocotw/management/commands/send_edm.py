@@ -41,8 +41,9 @@ class Command(BaseCommand):
         testing = True if 1 < len(args) else False
         sys.stdout = Unbuffered(sys.stdout)
         template = args[0]
+        campaign = template.split('/')[-1].replace('-', '')
         from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
-        context = {}
+        context = {'tracking_code': ('?utm_source=edm&utm_medium=email&utm_campaign=%s&utm_content=myfirefox' % campaign)}
         newsletter_context_vars(context)
         text_content = render_to_string('%s.txt' % template, context)
         html_content = render_to_string('%s.html' % template, context)

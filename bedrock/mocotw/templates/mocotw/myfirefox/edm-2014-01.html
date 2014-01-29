@@ -25,6 +25,7 @@
     }
     a, a:link {
       color: rgb(103, 167, 208);
+      display: inline-block;
       text-decoration: none;
     }
     table, tr, td {
@@ -80,6 +81,7 @@
       margin-top: 10px;
     }
     table.feature {
+      display: block;
       margin-top: 10px;
       margin-bottom: 10px;
     }
@@ -170,6 +172,9 @@ table.footer td.license {
   font-size: 10px;
 }
   </style>
+{% if request %}
+  {% include 'includes/google-analytics.html' %}
+{% endif %}
 </head>
 <body>
 <table id="body-wrapper" bgcolor="#AD8A77" background="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/bg-pattern.png') }}" width="100%">
@@ -177,12 +182,12 @@ table.footer td.license {
 <table id="main-content">
   <tr>
     <td id="open-in-browser">
-      在瀏覽器中<a href="http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-01') }}">開啟這封信 »</a>
+      在瀏覽器中<a href="http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-01') }}{{ tracking_code }}">開啟這封信 »</a>
     </td>
   </tr>
   <tr>
     <td id="main-banner">
-      <a href="http://myfirefox.com.tw">
+      <a href="http://myfirefox.com.tw{{ tracking_code }}">
         <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/banner.png') }}"/>
       </a>
     </td>
@@ -193,21 +198,29 @@ table.footer td.license {
     <table class="feature">
       <tr>
         <td class="padleft" colspan="3">
-          <a href="http://myfirefox.com.tw">
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
             <h2>MyFirefox 更新首頁並提供熱門功能，<span>為你提供更好的網站瀏覽經驗</span></h2>
           </a>
         </td>
       </tr>
+    </table>
+    <table class="feature">
       <tr>
         <td class="padleft medal">
-          <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
+            <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
+          </a>
         </td>
         <td class="content">
-          <h3>全新封面故事設計</h3>
-          <p>新的版位能於使用者螢 幕上同時顯示熱門文章與封面故事，使用者瀏覽時將能更快速、更清楚 地檢視 MyFirefox 全站最新焦點文章。</p>
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
+            <h3>全新封面故事設計</h3>
+            <p>新的版位能於使用者螢 幕上同時顯示熱門文章與封面故事，使用者瀏覽時將能更快速、更清楚 地檢視 MyFirefox 全站最新焦點文章。</p>
+          </a>
         </td>
         <td class="padright">
-          <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic1.png') }}"/>
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
+            <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic1.png') }}"/>
+          </a>
         </td>
       </tr>
     </table>
@@ -215,16 +228,22 @@ table.footer td.license {
     <table class="feature">
       <tr>
         <td class="padleft medal">
-          <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
+            <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/new.png') }}"/>
+          </a>
         </td>
         <td class="padtop padright content">
-          <h3>貼心搜尋欄位</h3>
-          <p>只要輕鬆點選搜尋欄位前方的小圖示，即可選擇偏好的搜尋引擎，讓使用者在搜尋操作上更直覺、更順手！</p>
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
+            <h3>貼心搜尋欄位</h3>
+            <p>只要輕鬆點選搜尋欄位前方的小圖示，即可選擇偏好的搜尋引擎，讓使用者在搜尋操作上更直覺、更順手！</p>
+          </a>
         </td>
       </tr>
       <tr>
         <td colspan="2">
-          <img id="search-bar-img" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic2.png') }}"/>
+          <a href="http://myfirefox.com.tw{{ tracking_code }}">
+            <img id="search-bar-img" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic2.png') }}"/>
+          </a>
         </td>
       </tr>
     </table>
@@ -232,14 +251,20 @@ table.footer td.license {
     <table class="feature">
       <tr>
         <td class="padleft">
-          <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic3.png') }}"/>
+          <a href="http://myfirefox.com.tw/user/myshelf{{ tracking_code }}">
+            <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/myfirefoxpic3.png') }}"/>
+          </a>
         </td>
         <td class="medal">
-          <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/hot.png') }}"/>
+          <a href="http://myfirefox.com.tw/user/myshelf{{ tracking_code }}">
+            <img src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/hot.png') }}"/>
+          </a>
         </td>
         <td class="padright content">
-          <h3>熱門功能 My Shelf</h3>
-          <p>點選 MyFirefox 個別文章旁的「加入 MyShelf 」按鈕，即可將喜愛的文章儲存至個人的「文章收藏」。若偏好閱讀特定網誌，也可以透過「文章總覽」的功能瀏覽該網誌的文章清單。</p>
+          <a href="http://myfirefox.com.tw/user/myshelf{{ tracking_code }}">
+            <h3>熱門功能 My Shelf</h3>
+            <p>點選 MyFirefox 個別文章旁的「加入 MyShelf 」按鈕，即可將喜愛的文章儲存至個人的「文章收藏」。若偏好閱讀特定網誌，也可以透過「文章總覽」的功能瀏覽該網誌的文章清單。</p>
+          </a>
         </td>
       </tr>
     </table>
@@ -251,10 +276,12 @@ table.footer td.license {
     <table id="footer-subscribe">
       <tr>
         <td class="padleft">
-          <h3>訂閱 Firefox 電子報</h3>
-          <p>歡迎訂閱 Firefox 電子報！任何最新最熱門資訊都可以在電子報中完整取得。</p>
-          <a id="submit-button" href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}">我要訂閱 »</a>
-          <a class="past-issues" href="http://{{ MOCO_URL }}{{ url('newsletter.index') }}">看看過去發行的電子報 »</a>
+          <a href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}{{ tracking_code }}">
+            <h3>訂閱 Firefox 電子報</h3>
+            <p>歡迎訂閱 Firefox 電子報！任何最新最熱門資訊都可以在電子報中完整取得。</p>
+          </a>
+          <a id="submit-button" href="http://{{ MOCO_URL }}{{ url('newsletter.mozilla-and-you', '') }}{{ tracking_code }}">我要訂閱 »</a>
+          <a class="past-issues" href="http://{{ MOCO_URL }}{{ url('newsletter.index') }}{{ tracking_code }}">看看過去發行的電子報 »</a>
           <p>也逛逛我們的社群頻道：</p>
           <a href="https://www.facebook.com/MozillaTaiwan">
             <img class="social" src="http://{{ MOCO_URL }}{{ media('img/mocotw/myfirefox/edm-2014-01/facebook.png') }}"/>
@@ -282,6 +309,9 @@ table.footer td.license {
 </table>
 </td></tr>
 </table>
+{% if not request %}
+<img src="http://{{ MOCO_URL }}{{ url('edm.campaign.tracker', 'edm201401') }}"/>
+{% endif %}
 <table class="footer">
   <tr>
     <td>
@@ -308,7 +338,7 @@ table.footer td.license {
                     <tr>
                       <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
                       <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
-                      <td><a href="http://mozilla.com.tw/join_us/" target="_blank">電子報</a></td>
+                      <td><a href="http://{{ MOCO_URL }}/newsletter/subscribe/{{ tracking_code }}" target="_blank">電子報</a></td>
                     </tr>
                   </table>
                 </td>
@@ -318,7 +348,7 @@ table.footer td.license {
           <td class="about-col">
             <table>
               <tr>
-                <td class="official"><a href="http://{{ MOCO_URL }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
+                <td class="official"><a href="http://{{ MOCO_URL }}{{ tracking_code }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
               </tr>
               <tr>
                 <td class="contact">聯繫我們：<a href="mailto:tw-mktg@mozilla.com">tw-mktg@mozilla.com.tw</a></td>
