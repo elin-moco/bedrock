@@ -47,9 +47,9 @@ def secure_url(ctx, viewname=None):
 
     # only force https if current page was requested via SSL
     # otherwise, CSRF/AJAX errors will occur (submitting to https from http)
-    if ctx['request'].is_secure():
-        return _url.replace('http://', 'https://')
-    return _url
+    # if ctx['request'].is_secure():
+    return _url.replace('http://', 'https://')
+    # return _url
 
 
 @jingo.register.function
