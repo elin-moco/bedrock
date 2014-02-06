@@ -7,7 +7,7 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013
+from bedrock.mocotw.views import campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -96,6 +96,10 @@ urlpatterns = patterns(
     ('^eDM/(?P<path>.*)$', redirect_to, {'url': '/media/docs/mocotw/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
 
+    url('^newsletter/subscribe/embed/$$',
+        subscribe_embed,
+        {'template': 'newsletter/subscribe-embed.html'},
+        name='newsletter.subscribe_embed'),
     url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)(/)?$',
         one_newsletter_subscribe,
         name='newsletter.mozilla-and-you',

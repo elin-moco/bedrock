@@ -5,10 +5,12 @@ from time import strptime
 import urllib2
 from BeautifulSoup import BeautifulSoup
 from datetime import datetime
+from commonware.response.decorators import xframe_allow
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_exempt
 from django.views.static import serve
 from bedrock.mocotw.forms import NewsletterForm
 from bedrock.mocotw.models import Newsletter
@@ -158,5 +160,13 @@ def workshop(request):
     context = {'posts': posts, 'dates': dates}
     return l10n_utils.render(request, 'mocotw/community/student/workshop.html', context)
 
+
 def year_review_2013(request, spring):
     return l10n_utils.render(request, 'mocotw/2013review.html', {'canonical_path': '/2013-review/'})
+
+
+@xframe_allow
+@csrf_exempt
+def subscribe_embed(request, template):
+    print 'subscribe'
+    return l10n_utils.render(request, template)
