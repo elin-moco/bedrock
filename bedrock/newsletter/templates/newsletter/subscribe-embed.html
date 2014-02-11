@@ -41,6 +41,11 @@
     <script>
       {# set target without invalidating already translated strings. #}
       $('.field-privacy a').attr('target', '_top');
+      {% if request.newsletter_subscriber %}
+        if (parent) {
+          parent.postMessage('subscriber={{ request.newsletter_subscriber }}', '*');
+        }
+      {% endif %}
     </script>
   </body>
 </html>
