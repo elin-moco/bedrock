@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from optparse import make_option
 from django.core.mail import EmailMultiAlternatives
 from email.errors import MessageError
 from email.mime.image import MIMEImage
@@ -34,10 +35,14 @@ class Unbuffered:
 
 class Command(BaseCommand):
     help = 'Send Mail'
-    option_list = NoArgsCommand.option_list
+    option_list = BaseCommand.option_list + (
+        make_option('--attach-markup-file', action='store_true', dest='attach-markup-file', default=False,
+                    help='Attach the HTML Markup as a downloadable file.'),
+    )
 
     def handle(self, *args, **options):
         self.options = options
+        attachments = []
         testing = True if 1 < len(args) else False
         sys.stdout = Unbuffered(sys.stdout)
         template = args[0]
@@ -47,8 +52,9 @@ class Command(BaseCommand):
             file.close()
         with open('%s.html' % template) as file:
             html_content = file.read().decode('utf-8')
-            attachment = MIMEText(html_content, _subtype='text/html', _charset='utf-8')
-            attachment.add_header('Content-Disposition', 'attachment', filename='%s.html' % template)
+            if options['attach-markup-file']:
+                attachments[0] = MIMEText(html_content, _subtype='text/html', _charset='utf-8')
+                attachments[0].add_header('Content-Disposition', 'attachment', filename='%s.html' % template)
             file.close()
         soup = BeautifulSoup(html_content)
         subject = Header(soup.title.string.encode('utf8'), 'utf-8')
@@ -61,16 +67,16 @@ class Command(BaseCommand):
                 subscriptions = file.readlines()
                 for subscription in subscriptions:
                     self.send_mail(subject, headers, from_email, (subscription.rstrip(), ),
-                                   text_content, mail_content, (attachment, ))
+                                   text_content, mail_content, attachments)
                     sleep(10)
         elif '@' in args[1]:
-            self.send_mail(subject, headers, from_email, (args[1], ), text_content, mail_content, (attachment, ))
+            self.send_mail(subject, headers, from_email, (args[1], ), text_content, mail_content, attachments)
         else:
             with open(args[1]) as file:
                 subscriptions = file.readlines()
                 for subscription in subscriptions:
                     self.send_mail(subject, headers, from_email, (subscription.rstrip(), ),
-                                   text_content, mail_content, (attachment, ))
+                                   text_content, mail_content, attachments)
                     sleep(10)
 
     def send_mail(self, subject, headers, from_email, to_mail, text_content, mail_content, attachments):
