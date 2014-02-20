@@ -47,7 +47,7 @@ class Command(BaseCommand):
         text_content = render_to_string('newsletter/%s/mail.txt' % issue_number, context)
         html_content = render_to_string('newsletter/%s/index.html' % issue_number, context)
         mail_content = premailer.transform(html_content)
-        # headers = {'Reply-To': 'tw-mktg@mozilla.com'}
+        # headers = {'Reply-To': 'mozilla-tw@mozilla.com'}
         headers = {}
         # charset = 'utf-8'
         # image_path = 'bedrock/newsletter/templates/newsletter/%s/images/' % issue_number

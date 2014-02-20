@@ -59,7 +59,7 @@ class Command(BaseCommand):
         soup = BeautifulSoup(html_content)
         subject = Header(soup.title.string.encode('utf8'), 'utf-8')
         mail_content = premailer.transform(html_content)
-        # headers = {'Reply-To': 'tw-mktg@mozilla.com'}
+        # headers = {'Reply-To': 'mozilla-tw@mozilla.com'}
         headers = {}
         # charset = 'utf-8'
         if not testing:

@@ -148,7 +148,7 @@ def send(request, data):
     headers = {'Reply-To': data['email']}
 
     # to = ['contribute@mozilla.org']
-    to = ['tw-mktg@mozilla.com']
+    to = ['mozilla-tw@mozilla.com']
 
     cc = None
     if request.locale in LOCALE_CONTACTS:

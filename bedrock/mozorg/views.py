@@ -135,8 +135,8 @@ def process_partnership_form(request, template, success_url_name, template_vars=
 
             subject = 'New partner submission from %s' % data['company']
             to = ['tw-bd@mozilla.com']
-            cc = ['tw-mktg@mozilla.com']
-            from_ = 'tw-mktg@mozilla.com'
+            cc = ['mozilla-tw@mozilla.com']
+            from_ = 'mozilla-tw@mozilla.com'
             reply_to = [data['email']]
             msg = jingo.render_to_string(request, 'mocotw/emails/notify_bizdev.txt', data)
 

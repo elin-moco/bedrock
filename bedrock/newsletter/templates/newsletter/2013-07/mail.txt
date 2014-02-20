@@ -73,7 +73,7 @@ C.( 6 個月 )
   
 
 
-請將上述正確答案 [寄給我們](mailto:tw-mktg@mozilla.com)，並在標題註明「電子報有獎徵答」。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！截止日期 2013/8/11。
+請將上述正確答案 [寄給我們](mailto:mozilla-tw@mozilla.com)，並在標題註明「電子報有獎徵答」。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！截止日期 2013/8/11。
 
   * ### 與我們為友
 
@@ -85,7 +85,7 @@ C.( 6 個月 )
 
 ### 聯繫我們
 
-[tw-mktg@mozilla.com](mailto:tw-mktg@mozilla.com)
+[mozilla-tw@mozilla.com](mailto:mozilla-tw@mozilla.com)
 
 Mozilla Taiwan   
 美商謀智股份有限公司台灣分公司  
