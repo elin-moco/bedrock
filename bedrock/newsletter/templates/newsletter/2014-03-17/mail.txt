@@ -1,4 +1,4 @@
-[Firefox OS 電子報 Vol. {{params.volume}} - {{params.year}}年{{params.month}}月號]
+[Firefox OS 電子報 Vol. {{params.volume}} - {{params.year}}年{{params.month}}月{{params.day}}號]
 ({{ NEWSLETTER_URL }}{{ params.tracking_code }})
 
 [{{ banner.content }}]
@@ -28,19 +28,13 @@
 {% for article in articles %}
 [{{article.title}}]({{article.link}}{{ params.tracking_code }})
 {{article.content}}
-[more]({{article.link}}{{ params.tracking_code }})
 
 {% endfor %}
 
 
-近期活動
-
-{% for event in events %}
-[{{ event.title }}]({{ event.link }}{{ params.tracking_code }})
-{{ event.content }}
-[more]({{ event.link }}{{ params.tracking_code }})
-
-{% endfor %}
+好康下載
+[{{ downloads[0].content }}]
+({{ downloads[0].link }}{{ params.tracking_code }})
 
 
 與我同行
@@ -49,7 +43,7 @@
 
 [謀智台客](http://{{ TECH_URL }}/{{ params.tracking_code }})
 
-[狐狐工作坊](http://{{ MOCO_URL }}/community/student/workshop/{{ params.tracking_code }})
+[MDN](http://developer.mozilla.org/)
 
 [活力軍](http://{{ FFCLUB_URL }}{{ params.tracking_code }})
 
@@ -59,14 +53,6 @@
 
 [火狐商城](http://tw.mall.yahoo.com/store/firefox)
 
-
-有獎徵答
-
-{{ quiz.content|html2text }}{% for answer in quiz.answers %}
-{{ 'ABCDE'[loop.index - 1] }}. {{ answer }}
-{% endfor %}
-
-請將上述正確答案寄給我們，並在標題註明「電子報有獎徵答」。我們會抽出 3 位得獎者，贈送 Firefox 貼心好禮一份！
 
 
 [mozilla](http://mozilla.org/en-US/)
