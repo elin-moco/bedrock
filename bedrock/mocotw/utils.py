@@ -139,8 +139,11 @@ def read_newsletter_context(issue_number, is_mail=True):
                                  'bedrock/newsletter/templates/newsletter/%s/config.py' % issue_number)
         config.params['issue_number'] = issue_number
         config.params['year'] = issue_number[:4]
-        config.params['month'] = issue_number[5:]
+        config.params['month'] = issue_number[5:7]
         config.params['yearmonth'] = config.params['year'][2:] + config.params['month']
+        if len(issue_number) > 7:
+            config.params['day'] = issue_number[8:10]
+            config.params['yearmonth'] += config.params['day']
         if is_mail:
             config.params['tracking_code'] = '?utm_source=epaper&utm_medium=email&utm_campaign=epaper' + \
                                              config.params['yearmonth'] + '&utm_content=mozilla'
@@ -148,6 +151,7 @@ def read_newsletter_context(issue_number, is_mail=True):
             config.params['tracking_code'] = ''
         articles = []
         events = []
+        downloads = []
         quiz = {'answers': []}
         with open('bedrock/newsletter/templates/newsletter/%s/articles.csv' % issue_number, 'rb') as articles_file:
             reader = csv.reader(articles_file)
@@ -163,6 +167,8 @@ def read_newsletter_context(issue_number, is_mail=True):
                         events.append(article)
                     elif 'quiz' == article['category']:
                         quiz['content'] = article['title']
+                    elif 'download' == article['category']:
+                        downloads.append(article)
                     elif 'answer' == article['category']:
                         quiz['answers'].append(article['title'])
                     elif 'deadline' == article['category']:
@@ -171,7 +177,7 @@ def read_newsletter_context(issue_number, is_mail=True):
                         banner = article
                     else:
                         articles.append(article)
-        return {'params': config.params, 'banner': banner, 'articles': articles, 'events': events, 'quiz': quiz}
+        return {'params': config.params, 'banner': banner, 'articles': articles, 'events': events, 'downloads': downloads, 'quiz': quiz}
     else:
         return {}
 
@@ -182,7 +188,7 @@ def newsletter_context_vars(context, issue_number=None):
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL
     if issue_number:
-        context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (MOCO_URL, issue_number)
+        context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (context['MOCO_URL'], issue_number)
 
 
 def send_fsa_form(data):
