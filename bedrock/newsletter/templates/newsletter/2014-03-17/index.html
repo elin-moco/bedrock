@@ -432,10 +432,12 @@ table.footer td.license {
       <table class="downloads">
         <tr>
           <td>
-            <img id="download-thumb" class="download-thumb" width="652" height="128" src="{{ NEWSLETTER_URL }}images/download.png"/>
-            <p>
-              <b><span id="download-title" title="下載標題">{{ downloads[0].content }}</span> » </b>
-            </p>
+            <a class="download-link" target="_blank" href="{{ downloads[0].link }}{{ params.tracking_code }}">
+              <img id="download-thumb" class="download-thumb" width="652" height="128" src="{{ NEWSLETTER_URL }}images/download.png"/>
+              <p>
+                <b><span id="download-title" title="下載標題">{{ downloads[0].content }}</span> » </b>
+              </p>
+            </a>
           </td>
         </tr>
       </table>
