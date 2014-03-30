@@ -28,6 +28,10 @@
       }
       .billboard {
         border: 0;
+        {% if request.GET.opaque %}
+        background: transparent;
+        box-shadow: none;
+        {% endif %}
       }
     </style>
     {% include 'includes/google-analytics.html' %}
@@ -35,7 +39,7 @@
 
   <body id="contribute" class="embed html-{{ DIR }}">
     <div id="wrapper">
-      {{ email_newsletter_form(include_country=False, include_language=False, default_email=request.GET.email) }}
+      {{ email_newsletter_form(title=request.GET.title, include_country=False, include_language=False, default_email=request.GET.email) }}
     </div>
     {{ js('common') }}
     <script>
