@@ -636,6 +636,8 @@ MINIFY_BUNDLES = {
         'moco_home': (
             'js/base/mozilla-pager.js',
             'js/mocotw/home.js',
+            'js/libs/jquery.cycle2.min.js',
+            'js/libs/jquery.cycle2.carousel.min.js',
         ),
         'home': (
             'js/base/mozilla-pager.js',
