@@ -10,7 +10,50 @@ $(function () {
 	techjson("get_tag_post",rule,5,words,target);
 
     getLatestEvents();
+
+    getLatestVideos();
+
+    controlButtons();
+
 });
+
+function getLatestVideos() {
+    var videosUrl='//myfirefox.com.tw/api/videos/cover';
+    $.ajax({
+        type: "GET",
+        url: videosUrl,
+        dataType: "jsonp",
+        success: function(result) {
+            if (result && result.videos) {
+                var videos = result.videos;
+                for (var i in videos) {
+                    $('<li class="hentry"><h3 class="entry-title">'+
+                        '<a class="url go" rel="bookmark external" href="'+videos[i].post_link+'">'+
+                        videos[i].post_title+'</a></h3></li>').prependTo('.extra-news .hfeed');
+                }
+                $('.extra-news .hfeed').cycle();
+            }
+        }
+    });
+}
+
+// Add the next and previous control buttons
+function controlButtons() {
+    var $buttonNext = $('<button type="button" class="btn-next">下一則</button>');
+    var $buttonPrev = $('<button type="button" class="btn-prev">上一則</button>');
+    var $buttons = $('<span class="news-buttons"></span>');
+
+    $buttonNext.prependTo($buttons);
+    $buttonPrev.prependTo($buttons);
+    $buttons.prependTo('.extra-news > .control');
+
+    $('.news-buttons .btn-next').bind('click', function() {
+        gaTrack(['_trackEvent', 'Mozilla in the News Interactions', 'Next', 'News Navigation Arrows']);
+    });
+    $('.news-buttons .btn-prev').bind('click', function() {
+        gaTrack(['_trackEvent', 'Mozilla in the News Interactions', 'Previous', 'News Navigation Arrows']);
+    });
+}
 
 function techjson (type,rule,count,words,target){
   var techUrl='//tech.mozilla.com.tw/api/get_recent_posts/?count=1';

@@ -2,6 +2,26 @@
 
 /* Current banners */
 
+#wrapper {
+  padding-bottom: 0;
+  #main-content {
+    padding-bottom: 0;
+  }
+}
+
+
+#newsletter-subscription {
+  display: block;
+  background: #FFFFFF;
+  width: 300%;
+  margin-left: -100%;
+}
+
+#page-promo-fox-comedy > a {
+  background: url(/media/img/mocotw/mozcomtw/banner/banner-fox-comedy.png) no-repeat;
+  background-position: 0 -2px;
+}
+
 #page-promo-fox-say > a {
   background: url(/media/img/mocotw/mozcomtw/banner/banner-fox-say.png) no-repeat;
   background-position: 0 -2px;
@@ -311,6 +331,140 @@ html[lang="zh-TW"] #home-about h4 {
 #page-promo-firefoxos a {
   background: url(/media/img/mocotw/mozcomtw/banner/banner5.jpg) no-repeat;
   background-position: -2px -2px;
+}
+
+// @Extra content - The lower section of the page
+.extra {
+    background: #c1423d;
+    padding: 40px 0;
+    margin-bottom: 0;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    width: 300%;
+    margin-left: -100%;
+
+    h2 {
+      background: url(/media/img/mocotw/myfirefox/extra/vision.png) no-repeat;
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      vertical-align: middle;
+      font-size: 24px;
+      padding-left: 60px;
+      margin: 0 0 .75em;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+      &:after {
+        content: " »";
+      }
+    }
+    .container {
+      display: block;
+      width: 1000px;
+      margin: auto;
+    }
+    .go:after {
+        content: ' »';
+        white-space: nowrap;
+    }
+}
+.extra-news {
+    .span(7);
+    width: 570px;
+    margin: 0 50px;
+    .hfeed {
+        list-style: none;
+        margin: 0 0 .5em;
+    }
+
+    .hentry {
+        margin: 0 0 1em;
+    }
+
+    .entry-title {
+        margin: 0;
+        height: 3.8em;
+        font-size: 18px;
+        line-height: 1.2;
+        .open-sans;
+    }
+}
+.extra-news a:link,
+.extra-news a:visited,
+.extra-links a:link,
+.extra-links a:visited,
+.extra-links a h4 {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+}
+
+.extra-links {
+  float: left;
+  width: 285px;
+  ul {
+    margin-bottom: 0;
+  }
+  li {
+    list-style-type: none;
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  a {
+    &.myfx {
+      background: url(/media/img/mocotw/myfirefox/extra/myfx.png) 0 12px no-repeat;
+    }
+    &.shop {
+      background: url(/media/img/mocotw/myfirefox/extra/shop.png) 0 2px no-repeat;
+    }
+    display: block;
+    height: 63px;
+    padding-bottom: 10px;
+    padding-left: 60px;
+    h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      &:after {
+        content: " »";
+      }
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.news-buttons {
+    border-right: 1px solid #ccc;
+    margin-right: 10px;
+
+    button {
+        background: transparent url(/media/img/home/control-arrows-lt.png) no-repeat;
+        border: 0;
+        cursor: pointer;
+        display: inline-block;
+        height: 25px;
+        margin: 0 10px 0 0;
+        overflow: hidden;
+        padding: 0;
+        text-indent: -99em;
+        width: 25px;
+    }
+
+    .btn-next {
+        background-position: -30px 0;
+    }
+
+    .btn-prev {
+        background-position: 0 0;
+    }
+
+    .disabled {
+        opacity: .5;
+        &:hover,
+        &:focus {
+            opacity: .8;
+        }
+    }
 }
 
 @media only screen and (max-width: @breakDesktop) {

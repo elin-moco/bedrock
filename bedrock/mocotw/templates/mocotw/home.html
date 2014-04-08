@@ -69,12 +69,12 @@
 
     <div class="pager-content">
 
-    <div class="pager-page default-page" id="promo-fox-say">
-      <a href="//myfirefox.com.tw/videos/" class="container">
+    <div class="pager-page default-page" id="promo-fox-comedy">
+      <a href="//myfirefox.com.tw/videos/fox-comedy/" class="container">
         <div class="content">
-          <h3>狐視說…</h3>
-          <h4>新影音運動</h4>
-          <p class="go">瞭解更多</p>
+          <h3>狐視先生的內心戲...</h3>
+          <h4>致力於推廣新影音運動的狐視先生, 年輕時曾罹患眼翳病, 請為狐視先生挑選治病良方。</h4>
+          <p class="go">我要玩！</p>
         </div>
       </a>
     </div>
@@ -171,7 +171,7 @@
       <a class="more-link" href="//blog.mozilla.com.tw/events-list">更多活動</a>
     </section>
 
-    <section id="home-about">
+    <aside id="home-about">
       <ul>
           <li>
             <a href='/community/student/' id="reps">
@@ -203,21 +203,42 @@
               <p>歡迎有共同理念與熱情的伙伴加入我們</p>
             </a>
           </li>
-          <li>
-            <a href='http://myfirefox.com.tw/' id="myfirefox" target="_blank" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'index_icon', '']);">
-              <h4>MyFirefox</h4>
-              <p>台灣版Firefox全新正體中文首頁，讓您每天都能享受最新科技新知</p>
-            </a>
-          </li>
       </ul>
-    </section>
+    </aside>
+  </div>
 
-  <div id="firefox_store">
-    <a href="http://tw.mall.yahoo.com/store/firefox" target="Firefox Online 火狐商城" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'store_banner', '']);" target="_blank">
-      Firefox Online 火狐商城
-    </a>
+  <div id="newsletter-subscription">
+    {{ email_newsletter_form(include_country=False, include_language=False) }}
   </div>
-  </div>
+
+  <section class="extra">
+    <div class="container">
+    <section class="extra-news">
+      <a href="http://myfirefox.com.tw/videos/"><h2>狐電視</h2></a>
+      <ul class="hfeed" data-cycle-timeout="6000" data-cycle-slides="> .hentry" data-cycle-fx="carousel" data-cycle-carousel-fluid="true" data-cycle-carousel-vertical="true" data-cycle-next=".news-buttons .btn-next" data-cycle-prev=".news-buttons .btn-prev" data-cycle-carousel-visible="1" data-cycle-pause-on-hover="true">
+      </ul>
+      <p class="control"><a href="http://myfirefox.com.tw/videos/" class="go">更多影片</a></p>
+    </section>
+    <aside class="extra-links">
+      <ul>
+        <li>
+          <a href='http://myfirefox.com.tw/' class="myfx" target="_blank" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'index_icon', '']);">
+            <h4>MyFirefox</h4>
+            <p>台灣版Firefox全新正體中文首頁，<br>讓您每天都能享受最新科技新知</p>
+          </a>
+        </li>
+        <li>
+          <a href='http://tw.mall.yahoo.com/store/firefox' class="shop" target="_blank" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'store_icon', '']);">
+            <h4>火狐商城</h4>
+            <p>Mozilla Taiwan 官方唯一網路商店。<br>每季推出酷 Firefox 周邊商品！</p>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    </div>
+  </section>
 
 
 {% endblock %}
+
+{% block email_form %}{% endblock %}
