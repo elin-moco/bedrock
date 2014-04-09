@@ -50,7 +50,9 @@
   <a href="http://{{ MOCO_URL }}{{ tracking_code }}" target="_blank">
     <img src="http://{{ MOCO_URL }}/media/img/mocotw/myfirefox/edm-2014-04/edm-logo.png">
   </a>
+  {% if not request %}
   在瀏覽器中<a href="http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-04') }}{{ tracking_code }}">開啟這封信 »</a>
+  {% endif %}
 </td></tr>
 <tr class="content"><td>
   <a href="http://{{ MYFF_URL }}/videos/fox-comedy/{{ tracking_code }}" target="_blank">

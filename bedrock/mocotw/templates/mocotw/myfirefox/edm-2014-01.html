@@ -182,7 +182,9 @@ table.footer td.license {
 <table id="main-content">
   <tr>
     <td id="open-in-browser">
+    {% if not request %}
       在瀏覽器中<a href="http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-01') }}{{ tracking_code }}">開啟這封信 »</a>
+    {% endif %}
     </td>
   </tr>
   <tr>
