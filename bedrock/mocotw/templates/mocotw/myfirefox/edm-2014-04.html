@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>狐電視開播！年度大戲 - 狐視先生的內心戲</title>
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+    }
+    table, tr, td {
+      border: none;
+      border-collapse: collapse;
+    }
+    tr.header,
+    tr.header td {
+      display: block;
+      height: 60px;
+      background: #4D4E53;
+      text-align: center;
+      color: grey;
+      font-size: 12px;
+    }
+    tr.header td a:link {
+      color: grey;
+    }
+    tr.header td img {
+      margin-top: 6px;
+      margin-right: 432px;
+    }
+    tr.footer,
+    tr.footer td {
+      display: block;
+      height: 16px;
+      background: #191918;
+      text-align: center;
+    }
+  </style>
+{% if request %}
+  {% include 'includes/google-analytics.html' %}
+{% endif %}
+</head>
+<body>
+<table id="body-wrapper" bgcolor="#D7D2C7" width="100%">
+<tr class="header"><td>
+  <a href="http://{{ MOCO_URL }}{{ tracking_code }}" target="_blank">
+    <img src="http://{{ MOCO_URL }}/media/img/mocotw/myfirefox/edm-2014-04/edm-logo.png">
+  </a>
+  在瀏覽器中<a href="http://{{ MOCO_URL }}{{ url('mocotw.myfirefox.edm-2014-04') }}{{ tracking_code }}">開啟這封信 »</a>
+</td></tr>
+<tr class="content"><td>
+  <a href="http://{{ MYFF_URL }}/videos/fox-comedy/{{ tracking_code }}" target="_blank">
+    <img src="http://{{ MOCO_URL }}/media/img/mocotw/myfirefox/edm-2014-04/edm.png">
+  </a>
+</td></tr>
+<tr class="footer"><td>
+
+</td></tr>
+</table>
+{% if not request %}
+<img src="http://{{ MOCO_URL }}{{ url('edm.campaign.tracker', 'edm201401') }}"/>
+{% endif %}
+</body>
+</html>

@@ -30,6 +30,7 @@ urlpatterns = patterns(
     page('community/student/package', 'mocotw/community/student/package.html'),
     page('community/student/welcome-letter', 'mocotw/emails/welcome_fsa.html'),
     page('myfirefox/edm-2014-01', 'mocotw/myfirefox/edm-2014-01.html'),
+    page('myfirefox/edm-2014-04', 'mocotw/myfirefox/edm-2014-04.html'),
     page('firefoxflicks', 'firefoxflicks/list.html'),
     page('firefox/download', 'firefox/download.html'),
     page('firefox/ueip', 'firefox/ueip.html'),
