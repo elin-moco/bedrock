@@ -786,7 +786,8 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mozorg.middleware.MozorgRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
     'commonware.middleware.FrameOptionsHeader',
-    'bedrock.mozorg.middleware.CacheMiddleware',
+    'bedrock.mocotw.middleware.NoCacheMiddleware',
+    # 'bedrock.mozorg.middleware.CacheMiddleware',
 ) + get_middleware(exclude=(
     'funfactory.middleware.LocaleURLMiddleware',
     'multidb.middleware.PinningRouterMiddleware',

@@ -1,7 +1,14 @@
 import tower
 from bedrock.mocotw.utils import newsletter_subscribe
 from bedrock.newsletter.forms import NewsletterFooterForm
+from django.utils.cache import add_never_cache_headers
 
+
+class NoCacheMiddleware(object):
+
+    def process_response(self, request, response):
+        add_never_cache_headers(response)
+        return response
 
 class DefaultLocaleMiddleware(object):
     """
