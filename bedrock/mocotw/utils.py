@@ -7,7 +7,7 @@ import urllib
 import urllib2
 from pyga.requests import Tracker
 from pyga.entities import Visitor, Session, Page
-from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG
+from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG, MYFF_URL
 from bedrock.settings import GA_ACCOUNT_CODE
 from product_details import settings_fallback, product_details
 from bedrock.mocotw.models import Newsletter
@@ -187,6 +187,7 @@ def newsletter_context_vars(context, issue_number=None):
     context['MOCO_URL'] = LOCAL_MOCO_URL if DEBUG else MOCO_URL
     context['TECH_URL'] = TECH_URL
     context['FFCLUB_URL'] = FFCLUB_URL
+    context['MYFF_URL'] = MYFF_URL
     if issue_number:
         context['NEWSLETTER_URL'] = 'http://%s/newsletter/%s/' % (context['MOCO_URL'], issue_number)
 
