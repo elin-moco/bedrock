@@ -6,6 +6,7 @@ import urllib2
 from BeautifulSoup import BeautifulSoup
 from datetime import datetime
 from commonware.response.decorators import xframe_allow
+from django.core.cache import cache
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -16,6 +17,7 @@ from bedrock.mocotw.forms import NewsletterForm
 from bedrock.mocotw.models import Newsletter
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe, track_page
 from bedrock.newsletter.forms import NewsletterFooterForm
+from bedrock.sandstone.settings import BLOG_URL, TECH_URL, MYFF_URL
 from bedrock.settings import API_SECRET
 from lib import l10n_utils
 
@@ -137,26 +139,31 @@ def subscription_count(request):
 
 
 def workshop(request):
-    blogsApiUrl = 'https://blog.mozilla.com.tw/api/get_tag_posts?tag=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true'
-    eventsApiUrl = 'https://blog.mozilla.com.tw/api/get_posts?post_type=event&scope=all&s=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true'
-    eventsApi2Url = 'https://blog.mozilla.com.tw/api/get_recent_events?search=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A'
-    blogs = json.loads(urllib2.urlopen(blogsApiUrl).read())['posts']
-    events = json.loads(urllib2.urlopen(eventsApiUrl).read())['posts']
-    events2 = json.loads(urllib2.urlopen(eventsApi2Url).read())['posts']
-    for event2 in events2:
-        for event in events:
-            if event2['post_id'] == event['id']:
-                event['content'] = event2['post_content']
-    posts = sorted(blogs + events, key=lambda k: k['date'], reverse=True)
-    dates = []
-    prevMonth = ''
-    for post in posts:
-        post['date'] = datetime.strptime(post['date'], '%Y-%m-%d %H:%M:%S')
-        month = datetime.strftime(post['date'], '%B')
-        if prevMonth != month:
-            post['month'] = month
-        if post['type'] == 'event':
-            dates += [post['date'].date().__str__()]
+    posts = cache.get('fsa-workshop-posts')
+    dates = cache.get('fsa-workshop-dates')
+    if posts is None or dates is None:
+        blogsApiUrl = 'https://blog.mozilla.com.tw/api/get_tag_posts?tag=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true'
+        eventsApiUrl = 'https://blog.mozilla.com.tw/api/get_posts?post_type=event&scope=all&s=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A&nopaging=true'
+        eventsApi2Url = 'https://blog.mozilla.com.tw/api/get_recent_events?search=%E7%8B%90%E7%8B%90%E5%B7%A5%E4%BD%9C%E5%9D%8A'
+        blogs = json.loads(urllib2.urlopen(blogsApiUrl).read())['posts']
+        events = json.loads(urllib2.urlopen(eventsApiUrl).read())['posts']
+        events2 = json.loads(urllib2.urlopen(eventsApi2Url).read())['posts']
+        for event2 in events2:
+            for event in events:
+                if event2['post_id'] == event['id']:
+                    event['content'] = event2['post_content']
+        posts = sorted(blogs + events, key=lambda k: k['date'], reverse=True)
+        dates = []
+        prevMonth = ''
+        for post in posts:
+            post['date'] = datetime.strptime(post['date'], '%Y-%m-%d %H:%M:%S')
+            month = datetime.strftime(post['date'], '%B')
+            if prevMonth != month:
+                post['month'] = month
+            if post['type'] == 'event':
+                dates += [post['date'].date().__str__()]
+        cache.set('fsa-workshop-posts', posts, 60*60*24)
+        cache.set('fsa-workshop-dates', dates, 60*60*24)
     context = {'posts': posts, 'dates': dates}
     return l10n_utils.render(request, 'mocotw/community/student/workshop.html', context)
 
@@ -168,5 +175,45 @@ def year_review_2013(request, spring):
 @xframe_allow
 @csrf_exempt
 def subscribe_embed(request, template):
-    print 'subscribe'
     return l10n_utils.render(request, template)
+
+
+def home(request, template):
+    posts = cache.get('home-posts')
+    if posts is None:
+        try:
+            blogApiUrl = 'https://%s/api/get_recent_posts?count=4' % BLOG_URL
+            blogData = json.loads(urllib2.urlopen(blogApiUrl).read())['posts'][:4]
+            techApiUrl = 'https://%s/api/get_recent_posts/?count=1' % TECH_URL
+            techData = json.loads(urllib2.urlopen(techApiUrl).read())['posts']
+            posts = sorted(blogData+techData, key=lambda k: k['date'], reverse=True)
+            for post in posts:
+                post['date'] = datetime.strptime(post['date'], '%Y-%m-%d %H:%M:%S').strftime('%Y/%m/%d')
+            cache.set('home-posts', posts, 60*60*24)
+        except Exception as e:
+            print e
+
+    events = cache.get('home-events')
+    if events is None:
+        try:
+            eventApiUrl = 'https://%s/api/get_recent_events?count=5' % BLOG_URL
+            events = json.loads(urllib2.urlopen(eventApiUrl).read())['posts'][:5]
+            for event in events:
+                event['title'] = event['post_title']
+                event['date'] = datetime.strptime(event['post_date'], '%Y-%m-%d %H:%M:%S').strftime('%Y/%m/%d')
+                event['url'] = 'http://%s/events/%s' % (BLOG_URL, event['event_slug'])
+            cache.set('home-events', events, 60*60*24)
+        except Exception as e:
+            print e
+
+    videos = cache.get('home-videos')
+    if videos is None:
+        try:
+            videoApiUrl = 'https://%s/api/videos/cover' % MYFF_URL
+            videos = json.loads(urllib2.urlopen(videoApiUrl).read())['videos']
+            cache.set('home-videos', videos, 60*60*24)
+        except Exception as e:
+            print e
+
+    data = {'posts': posts, 'events': events, 'videos': videos}
+    return l10n_utils.render(request, template, data)

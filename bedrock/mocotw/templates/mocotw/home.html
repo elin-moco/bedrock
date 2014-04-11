@@ -160,6 +160,12 @@
     <section id="home-news">
       <h3>發燒部落文</h3>
       <ul>
+        {% for post in posts %}
+        <li>
+          <p>{{ post['date'] }}</p>
+          <h4><a href="{{ post['url'] }}">{{ post['title'] }}</a></h4>
+        </li>
+        {% endfor %}
       </ul>
       <a class="more-link" href="//blog.mozilla.com.tw/main">更多文章</a>
     </section>
@@ -167,6 +173,12 @@
     <section id="home-promos">
       <h3>最新活動</h3>
       <ul>
+        {% for event in events %}
+        <li>
+          <p>{{ event['date'] }}</p>
+          <h4><a href="{{ event['url'] }}">{{ event['title'] }}</a></h4>
+        </li>
+        {% endfor %}
       </ul>
       <a class="more-link" href="//blog.mozilla.com.tw/events-list">更多活動</a>
     </section>
@@ -215,7 +227,14 @@
     <div class="container">
     <section class="extra-news">
       <a href="http://myfirefox.com.tw/videos/"><h2>狐電視</h2></a>
-      <ul class="hfeed" data-cycle-timeout="6000" data-cycle-slides="> .hentry" data-cycle-fx="carousel" data-cycle-carousel-fluid="true" data-cycle-carousel-vertical="true" data-cycle-next=".news-buttons .btn-next" data-cycle-prev=".news-buttons .btn-prev" data-cycle-carousel-visible="1" data-cycle-pause-on-hover="true">
+      <ul class="hfeed cycle-slideshow" data-cycle-timeout="6000" data-cycle-slides="> .hentry" data-cycle-fx="carousel" data-cycle-carousel-fluid="true" data-cycle-carousel-vertical="true" data-cycle-next=".news-buttons .btn-next" data-cycle-prev=".news-buttons .btn-prev" data-cycle-carousel-visible="1" data-cycle-pause-on-hover="true">
+        {% for video in videos %}
+        <li class="hentry">
+          <h3 class="entry-title">
+            <a class="url go" rel="bookmark external" href="{{ video['post_link'] }}">{{ video['post_title'] }}</a>
+          </h3>
+        </li>
+        {% endfor %}
       </ul>
       <p class="control"><a href="http://myfirefox.com.tw/videos/" class="go">更多影片</a></p>
     </section>

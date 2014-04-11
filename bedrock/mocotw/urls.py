@@ -7,7 +7,7 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed
+from bedrock.mocotw.views import home, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -109,7 +109,7 @@ urlpatterns = patterns(
     url('^newsletter/unsubscribe/$',
         one_newsletter_unsubscribe,
         name='newsletter.unsubscribe'),
-    url(r'^$', direct_to_template, {'template': 'mocotw/home.html'}, name='mozorg.home'),
+    url(r'^$', home, {'template': 'mocotw/home.html'}, name='mozorg.home'),
     url(r'^a/$', direct_to_template, {'template': 'mozorg/home-b1.html'}),
     url(r'^b/$', direct_to_template, {'template': 'mozorg/home-b2.html'}),
     url('^about/$', direct_to_template, {'template': 'mocotw/about/index.html'}, name='mozorg.about'),
