@@ -7,7 +7,7 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import home, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed
+from bedrock.mocotw.views import home, subscribe, subscribed, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -156,6 +156,9 @@ urlpatterns = patterns(
     url('^edm/(?P<campaign>[-_A-z0-9]+)/email.gif$', campaign_tracker, name='edm.campaign.tracker'),
 
     url('^api/newsletter/subscriptions/count$', subscription_count),
+    url('^api/newsletter/subscribed$', subscribed),
+    url('^api/newsletter/subscribe$', subscribe),
+
     url('^community/student/workshop/$', workshop, name='mocotw.community.student.workshop'),
 
 )

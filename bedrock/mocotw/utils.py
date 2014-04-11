@@ -107,7 +107,7 @@ def download_nightly_details():
 
 def newsletter_subscribe(email):
     if not email:
-        return
+        return False
     existingEmails = Newsletter.objects.filter(u_email=email)
     if not existingEmails.exists():
         subscription = Newsletter(u_email=email.lower())
@@ -120,6 +120,7 @@ def newsletter_subscribe(email):
             if 0 == existingEmail.u_status:
                 existingEmail.u_status = 1
                 existingEmail.save()
+    return False
 
 
 def newsletter_unsubscribe(emailAddress):

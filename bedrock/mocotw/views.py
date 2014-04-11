@@ -31,6 +31,7 @@ def campaign_tracker(request, campaign=None):
     response.write('R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs='.decode('base64'))
     return response
 
+
 def issue(request, issue_number=None, path=None):
     if not path or path == 'index.html':
         context = read_newsletter_context(issue_number, False)
@@ -137,6 +138,19 @@ def subscription_count(request):
         raise PermissionDenied
     return HttpResponse(str(count), content_type='application/json')
 
+def subscribed(request):
+    if 'secret' in request.GET and request.GET['secret'] == API_SECRET and 'email' in request.GET:
+        exists = Newsletter.objects.filter(u_status=1, u_email=request.GET['email']).exists()
+    else:
+        raise PermissionDenied
+    return HttpResponse(str(exists), content_type='application/json')
+
+def subscribe(request):
+    if request.method == 'POST' and 'secret' in request.POST and request.POST['secret'] == API_SECRET and 'email' in request.POST:
+        result = newsletter_subscribe(request.POST['email'])
+    else:
+        raise PermissionDenied
+    return HttpResponse(str(result), content_type='application/json')
 
 def workshop(request):
     posts = cache.get('fsa-workshop-posts')
