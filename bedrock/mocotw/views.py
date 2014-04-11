@@ -149,10 +149,15 @@ def subscribed(request):
 
 def subscribe(request):
     if request.method == 'POST' and 'secret' in request.POST and request.POST['secret'] == API_SECRET and 'email' in request.POST:
-        if 'subscribe' in request.POST and request.POST['subscribe'] == 'false':
-            result = newsletter_unsubscribe(request.POST['email'])
-        else:
-            result = newsletter_subscribe(request.POST['email'])
+        result = newsletter_subscribe(request.POST['email'])
+    else:
+        raise PermissionDenied
+    return HttpResponse(str(result), content_type='application/json')
+
+
+def unsubscribe(request):
+    if request.method == 'POST' and 'secret' in request.POST and request.POST['secret'] == API_SECRET and 'email' in request.POST:
+        result = newsletter_unsubscribe(request.POST['email'])
     else:
         raise PermissionDenied
     return HttpResponse(str(result), content_type='application/json')
