@@ -138,6 +138,7 @@ def subscription_count(request):
         raise PermissionDenied
     return HttpResponse(str(count), content_type='application/json')
 
+
 def subscribed(request):
     if 'secret' in request.GET and request.GET['secret'] == API_SECRET and 'email' in request.GET:
         exists = Newsletter.objects.filter(u_status=1, u_email=request.GET['email']).exists()
@@ -145,12 +146,17 @@ def subscribed(request):
         raise PermissionDenied
     return HttpResponse(str(exists), content_type='application/json')
 
+
 def subscribe(request):
     if request.method == 'POST' and 'secret' in request.POST and request.POST['secret'] == API_SECRET and 'email' in request.POST:
-        result = newsletter_subscribe(request.POST['email'])
+        if 'subscribe' in request.POST and request.POST['subscribe'] == 'false':
+            result = newsletter_unsubscribe(request.POST['email'])
+        else:
+            result = newsletter_subscribe(request.POST['email'])
     else:
         raise PermissionDenied
     return HttpResponse(str(result), content_type='application/json')
+
 
 def workshop(request):
     posts = cache.get('fsa-workshop-posts')
