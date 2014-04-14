@@ -130,9 +130,10 @@ def newsletter_unsubscribe(emailAddress):
             email.u_status = 0
             email.save()
             log.info(emailAddress + ' unsubscribed!')
-            return True
-    log.warn(emailAddress + ' does not exists!')
-    return False
+        return True
+    else:
+        log.warn(emailAddress + ' does not exists!')
+        return False
 
 
 def read_newsletter_context(issue_number, is_mail=True):
