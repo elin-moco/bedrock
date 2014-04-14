@@ -48,7 +48,7 @@ sitemaps = {
         ['/community/'],
         0.5, 'monthly'),
     'newsletter': PathsSitemap(
-        ['/newsletter/2014-03-31/', '/newsletter/2014-03-17/',
+        ['/newsletter/2014-04-14/', '/newsletter/2014-03-31/', '/newsletter/2014-03-17/',
          '/newsletter/2014-02/', '/newsletter/2014-01/', '/newsletter/2013-12/', '/newsletter/2013-11/',
          '/newsletter/2013-10/', '/newsletter/2013-09/', '/newsletter/2013-08/', '/newsletter/2013-07/',
          '/newsletter/2013-06/', '/newsletter/2013-05/', '/newsletter/2013-04/', '/newsletter/2013-03/',
