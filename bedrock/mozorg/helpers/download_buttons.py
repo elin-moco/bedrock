@@ -207,7 +207,7 @@ def download_firefox(ctx, build='release', small=False, icon=True,
     locale = locale or get_locale(ctx['request'])
     funnelcake_id = ctx.get('funnelcake_id', False)
     dom_id = dom_id or 'download-button-%s-%s' % (platform, build)
-    print locale
+
     def latest(locale):
         if build == 'nightly':
             return latest_nightly_version(locale)
