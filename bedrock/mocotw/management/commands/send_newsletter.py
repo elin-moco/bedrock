@@ -5,6 +5,7 @@ from genericpath import isfile
 from os import listdir
 from os.path import join
 from time import sleep
+from BeautifulSoup import BeautifulSoup
 from django.core.management.base import NoArgsCommand, BaseCommand
 from email.header import Header
 from django.core.mail import EmailMultiAlternatives
@@ -31,7 +32,7 @@ class Unbuffered:
         return getattr(self.stream, attr)
 
 class Command(BaseCommand):
-    help = 'Send Newsletter'
+    help = '(Deprecated) Send Newsletter'
     option_list = NoArgsCommand.option_list
 
     def handle(self, *args, **options):
@@ -42,11 +43,13 @@ class Command(BaseCommand):
         context = read_newsletter_context(issue_number)
         # context['imgpath_prefix'] = 'cid:'
         newsletter_context_vars(context, issue_number)
-        subject = Header((u'[試寄] ' if testing else '') + context['params']['title'], 'utf-8')
+        # subject = Header((u'[試寄] ' if testing else '') + context['params']['title'], 'utf-8')
         from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
         text_content = render_to_string('newsletter/%s/mail.txt' % issue_number, context)
         html_content = render_to_string('newsletter/%s/index.html' % issue_number, context)
         mail_content = premailer.transform(html_content)
+        soup = BeautifulSoup(html_content)
+        subject = Header((u'[測試] ' if testing else '') + soup.title.string, 'utf-8')
         # headers = {'Reply-To': 'mozilla-tw@mozilla.com'}
         headers = {}
         # charset = 'utf-8'

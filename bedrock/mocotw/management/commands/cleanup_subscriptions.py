@@ -8,7 +8,7 @@ from bedrock.mocotw.models import Newsletter
 
 
 class Command(BaseCommand):
-    help = 'Cleanup subscriptions from Database.'
+    help = '(Deprecated) Cleanup subscriptions from Database.'
     option_list = NoArgsCommand.option_list
 
     def handle(self, *args, **options):

@@ -8,7 +8,7 @@ from bedrock.mocotw.models import Newsletter
 
 
 class Command(BaseCommand):
-    help = 'Dump subscriptions from Database.'
+    help = '(Deprecated) Dump subscriptions from Database.'
     option_list = BaseCommand.option_list + (
         make_option('--all',
                     action='store_true',

@@ -27,3 +27,4 @@ Desktop.ini
 media/js/sandstone/replace_urls.js
 venv
 .vagrant
+media/img/mocotw/newsletter/upload/*.(png|jpg)

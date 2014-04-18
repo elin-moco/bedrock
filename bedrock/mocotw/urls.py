@@ -7,7 +7,7 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed
+from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed, newsletter
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -36,7 +36,6 @@ urlpatterns = patterns(
     page('firefox/ueip', 'firefox/ueip.html'),
     page('firefox/mobile/sync', 'firefox/mobile/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
-    page('newsletter', 'newsletter/index.html'),
     page('sumo', 'mocotw/sumo.html'),
     page('products', 'mozorg/products.html'),
     page('about/mozilla-based', 'mozorg/projects/mozilla-based.html'),
@@ -152,6 +151,9 @@ urlpatterns = patterns(
     page('contribute/universityambassadors/thanks',
          'mozorg/contribute_university_ambassadors_thanks.html'),
 
+    redirect(r'^newsletter/page/1$', '/newsletter/'),
+    url('^newsletter/$', newsletter, name='newsletter.index'),
+    url('^newsletter/page/(?P<page_number>[\d]+)$', newsletter, name='newsletter.index.page'),
     url('^newsletter/(?P<issue_number>[\d\-]+)/(?P<path>.*)$', issue, name='newsletter.issue'),
     url('^edm/(?P<campaign>[-_A-z0-9]+)/email.gif$', campaign_tracker, name='edm.campaign.tracker'),
 

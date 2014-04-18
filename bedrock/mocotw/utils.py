@@ -7,8 +7,8 @@ import urllib
 import urllib2
 from pyga.requests import Tracker
 from pyga.entities import Visitor, Session, Page
-from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG, MYFF_URL
-from bedrock.settings import GA_ACCOUNT_CODE
+from bedrock.sandstone.settings import TECH_URL, FFCLUB_URL, MOCO_URL, LOCAL_MOCO_URL, DEBUG, MYFF_URL, LOCAL_FFCLUB_URL
+from bedrock.settings import GA_ACCOUNT_CODE, FFCLUB_API_SECRET
 from product_details import settings_fallback, product_details
 from bedrock.mocotw.models import Newsletter
 from django.core.mail import EmailMultiAlternatives
@@ -106,38 +106,19 @@ def download_nightly_details():
 
 
 def newsletter_subscribe(email):
-    if not email:
-        return False
-    existingEmails = Newsletter.objects.filter(u_email=email)
-    if not existingEmails.exists():
-        subscription = Newsletter(u_email=email.lower())
-        subscription.save()
-        log.info(email + ' subscribed!')
-        return True
-    else:
-        log.warn(email + ' already exists!')
-        for existingEmail in existingEmails:
-            if 0 == existingEmail.u_status:
-                existingEmail.u_status = 1
-                existingEmail.save()
-    return False
+    data = urllib.urlencode({'secret': FFCLUB_API_SECRET, 'email': email})
+    req = urllib2.Request('https://%s/api/newsletter/subscribe' % LOCAL_FFCLUB_URL, data)
+    return bool(urllib2.urlopen(req).read())
 
 
-def newsletter_unsubscribe(emailAddress):
-    emails = Newsletter.objects.filter(u_email=emailAddress)
-    if emails.exists():
-        for email in emails:
-            email.u_status = 0
-            email.save()
-            log.info(emailAddress + ' unsubscribed!')
-        return True
-    else:
-        log.warn(emailAddress + ' does not exists!')
-        return False
+def newsletter_unsubscribe(email):
+    data = urllib.urlencode({'secret': FFCLUB_API_SECRET, 'email': email})
+    req = urllib2.Request('https://%s/api/newsletter/unsubscribe' % LOCAL_FFCLUB_URL, data)
+    return bool(urllib2.urlopen(req).read())
 
 
 def read_newsletter_context(issue_number, is_mail=True):
-    if issue_number > '2013-07':
+    if '2013-07' < issue_number <= '2014-02':
         config = imp.load_source('bedrock.newsletter.%s' % issue_number.replace('-', ''),
                                  'bedrock/newsletter/templates/newsletter/%s/config.py' % issue_number)
         config.params['issue_number'] = issue_number

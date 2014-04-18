@@ -17,8 +17,8 @@ from bedrock.mocotw.forms import NewsletterForm
 from bedrock.mocotw.models import Newsletter
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe, track_page
 from bedrock.newsletter.forms import NewsletterFooterForm
-from bedrock.sandstone.settings import BLOG_URL, TECH_URL, MYFF_URL
-from bedrock.settings import API_SECRET
+from bedrock.sandstone.settings import BLOG_URL, TECH_URL, MYFF_URL, FFCLUB_URL, LOCAL_FFCLUB_URL
+from bedrock.settings import API_SECRET, FFCLUB_API_SECRET
 from lib import l10n_utils
 
 
@@ -133,7 +133,7 @@ def google_form(request, template='mocotw/reg/gform.html', formkey=None):
 
 def subscription_count(request):
     if 'secret' in request.GET and request.GET['secret'] == API_SECRET:
-        count = Newsletter.objects.filter(u_status=1).exclude(u_email__isnull=True).exclude(u_email__exact='').count()
+        count = urllib2.urlopen('https://%s/api/newsletter/subscriptions/count?secret=%s' % (LOCAL_FFCLUB_URL, FFCLUB_API_SECRET)).read()
     else:
         raise PermissionDenied
     return HttpResponse(str(count), content_type='application/json')
@@ -141,7 +141,7 @@ def subscription_count(request):
 
 def subscribed(request):
     if 'secret' in request.GET and request.GET['secret'] == API_SECRET and 'email' in request.GET:
-        exists = Newsletter.objects.filter(u_status=1, u_email=request.GET['email']).exists()
+        exists = urllib2.urlopen('https://%s/api/newsletter/subscribed?secret=%s&email=%s' % (LOCAL_FFCLUB_URL, FFCLUB_API_SECRET, request.GET['email'])).read()
     else:
         raise PermissionDenied
     return HttpResponse(str(exists), content_type='application/json')
@@ -161,6 +161,25 @@ def unsubscribe(request):
     else:
         raise PermissionDenied
     return HttpResponse(str(result), content_type='application/json')
+
+
+def newsletter(request, page_number='1'):
+    result = cache.get('newsletter-feed-%s' % page_number)
+    if result is None:
+        try:
+            newsletterApiUrl = 'https://%s/api/newsletter/%s?secret=%s' % (LOCAL_FFCLUB_URL, page_number, FFCLUB_API_SECRET)
+            result = json.loads(urllib2.urlopen(newsletterApiUrl).read())
+            for newsletter in result['newsletters']:
+                if 'main-thumb' in newsletter and newsletter['main-thumb']:
+                    newsletter['main-thumb'] = '/media/img/mocotw/newsletter/upload/%s' % newsletter['main-thumb']
+                else:
+                    newsletter['main-thumb'] = '/newsletter/%s/thumbnail.jpg' % newsletter['issue']
+            cache.set('newsletter-feed-%s' % page_number, result, 60*60*24)
+        except Exception as e:
+            print e
+    context = {'newsletters': result['newsletters'],
+               'total': result['total'], 'count': result['count'], 'page': result['page']}
+    return l10n_utils.render(request, 'newsletter/index.html', context)
 
 
 def workshop(request):

@@ -17,270 +17,31 @@
     </hgroup>
   </div>
 </div>
-<article class="2014-04-14 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2014-04-14">
+
+{% for newsletter in newsletters %}
+<article class="{{ newsletter.issue }} post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="{{ newsletter.issue }}">
   <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="全新影音平台「Firefox Vision 狐電視」正式上線、Firefox OS App 開發入門系列影片 (中文字幕)" href="2014-04-14">全新影音平台「Firefox Vision 狐電視」正式上線、Firefox OS App 開發入門系列影片 (中文字幕)</a></h2>
+    <h2 class="entry-title"><a rel="bookmark" title="{{ newsletter.title }}" href="{{ newsletter.issue }}">{{ newsletter.title }} »</a></h2>
 
     <p class="entry-posted">
-    <time datetime="2014-04-14T21:45:50+00:00" title="2014-04-14T21:45:50+00:00" class="published">
-        <span class="posted-year">2014年</span>
-        <span class="posted-month">4月14</span>
-        <span class="posted-date">Vol.19</span>
+    <time datetime="{{ newsletter.issue }}T21:45:50+00:00" title="{{ newsletter.issue }}T21:45:50+00:00" class="published">
+        <span class="posted-year">{{ newsletter.issue[:4] }}年</span>
+        <span class="posted-month">{{ newsletter.issue[5:7] }}月{{ newsletter.issue[8:10] }}</span>
+        <span class="posted-date">Vol.{{ newsletter.volume }}</span>
       </time>
     </p>
-    <div class="entry-thumbnail thumbnail-19"></div>
+    <img class="entry-thumbnail" src="{{ newsletter['main-thumb'] }}"/>
   </header>
 </article>
-<article class="2014-03-31 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2014-03-31">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="網路新影音運動即將席捲全台、Mozilla 任命 JavaScript 發明人 Brendan Eich 為新任執行長" href="2014-03-31">網路新影音運動即將席捲全台、Mozilla 任命 JavaScript 發明人 Brendan Eich 為新任執行長</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2014-03-17T21:45:50+00:00" title="2014-03-17T21:45:50+00:00" class="published">
-        <span class="posted-year">2014年</span>
-        <span class="posted-month">3月31</span>
-        <span class="posted-date">Vol.18</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-18"></div>
-  </header>
-</article>
-<article class="2014-03-17 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2014-03-17">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Mozilla MWC 2014 後續報導、Firefox Marketplace App 發佈方式與常見問題" href="2014-03-17">Mozilla MWC 2014 後續報導、Firefox Marketplace App 發佈方式與常見問題</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2014-03-17T21:45:50+00:00" title="2014-03-17T21:45:50+00:00" class="published">
-        <span class="posted-year">2014年</span>
-        <span class="posted-month">3月17</span>
-        <span class="posted-date">Vol.17</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-17"></div>
-  </header>
-</article>
-<article class="2014-02 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2014-02">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox 校園大使招募中， Firefox OS 於 MWC 發表首年成果、改寫入門級智慧型手機定義" href="2014-02">Firefox 校園大使招募中， Firefox OS 於 MWC 發表首年成果、改寫入門級智慧型手機定義</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2014-02-28T21:45:50+00:00" title="2014-02-28T21:45:50+00:00" class="published">
-        <span class="posted-year">2014年</span>
-        <span class="posted-month">2月</span>
-        <span class="posted-date">Vol.16</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-16"></div>
-  </header>
-</article>
-<article class="2014-01 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2014-01">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Panasonic 與 Mozilla 為新一代 Smart TV 協力開發新的 Firefox OS 開放平台" href="2014-01">Panasonic 與 Mozilla 為新一代 Smart TV 協力開發新的 Firefox OS 開放平台</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2014-01-30T21:45:50+00:00" title="2014-01-30T21:45:50+00:00" class="published">
-        <span class="posted-year">2014年</span>
-        <span class="posted-month">1月</span>
-        <span class="posted-date">Vol.15</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-15"></div>
-  </header>
-</article>
-<article class="2013-12 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-12">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Mozilla 2013 年回顧、Firefox for Android 全新開始畫面讓瀏覽更方便" href="2013-12">Mozilla 2013 年回顧、Firefox for Android 全新開始畫面讓瀏覽更方便</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-12-30T21:45:50+00:00" title="2013-12-30T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">12月</span>
-        <span class="posted-date">Vol.14</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-14"></div>
-  </header>
-</article>
-<article class="2013-11 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-11">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Mozilla 年度報表大公開、Firefox 網路購物輕鬆又安全、歡慶 9 歲生日" href="2013-11">Mozilla 年度報表大公開、Firefox 網路購物輕鬆又安全、歡慶 9 歲生日</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-11-30T21:45:50+00:00" title="2013-11-30T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">11月</span>
-        <span class="posted-date">Vol.13</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-13"></div>
-  </header>
-</article>
-<article class="2013-10 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-10">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox OS 最新 1.1 版釋出，Lightbeam 讓網路追蹤完全透明！" href="2013-10">Firefox OS 最新 1.1 版釋出，Lightbeam 讓網路追蹤完全透明！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-10-30T21:45:50+00:00" title="2013-10-30T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">10月</span>
-        <span class="posted-date">Vol.12</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-12"></div>
-  </header>
-</article>
-<article class="2013-09 post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-09">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox OS 大步向前，邁向全球市場，再次掀起 Web 浪潮" href="2013-09">Firefox OS 讓你盡情享受每一刻活動，邀你上傳照片得大獎！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-09-30T21:45:50+00:00" title="2013-09-30T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">09月</span>
-        <span class="posted-date">Vol.11</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-11"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-08">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox OS 大步向前，邁向全球市場，再次掀起 Web 浪潮" href="2013-08">Firefox OS 大步向前，邁向全球市場，再次掀起 Web 浪潮</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-08-13T21:45:50+00:00" title="2013-08-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">08月</span>
-        <span class="posted-date">Vol.10</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-10"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-07">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="第二屆 Firefox 校園大使正式開跑，Firefox 與你打造精彩每一天！" href="2013-07">第二屆 Firefox 校園大使正式開跑，Firefox 與你打造精彩每一天！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-07-13T21:45:50+00:00" title="2013-07-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">07月</span>
-        <span class="posted-date">Vol.09</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-09"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-06">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="慶祝全球首支 Firefox OS 手機上市，Mozilla 邀你一同為網路的平等、自由、開放發聲！" href="2013-06">慶祝全球首支 Firefox OS 手機上市，Mozilla 邀你一同為網路的平等、自由、開放發聲！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-06-13T21:45:50+00:00" title="2013-06-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">06月</span>
-        <span class="posted-date">Vol.08</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-08"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-05">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Mozilla 攜手鴻海合作 Firefox OS 開放平台！校園大使招募倒數中！" href="2013-05">Mozilla 攜手鴻海合作 Firefox OS 開放平台！校園大使招募倒數中！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-05-13T21:45:50+00:00" title="2013-05-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">05月</span>
-        <span class="posted-date">Vol.07</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-07"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-04">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox 慶祝 15 年的美好 Web！校園大使熱烈招募中！" href="2013-04">Firefox 慶祝 15 年的美好 Web！校園大使熱烈招募中！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-04-13T21:45:50+00:00" title="2013-04-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">04月</span>
-        <span class="posted-date">Vol.06</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-06"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2013-03">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox OS 歡迎二十億上網新用戶！校園大使招募開跑！" href="2013-03">Firefox OS 歡迎二十億上網新用戶！校園大使招募開跑！</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2013-03-13T21:45:50+00:00" title="2013-03-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2013年</span>
-        <span class="posted-month">03月</span>
-        <span class="posted-date">Vol.05</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-05"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2012-11">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="Firefox 正式整合 Facebook Messenger、HTML5 流言終結" href="2012-11">Firefox 正式整合 Facebook Messenger、HTML5 流言終結</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2012-11-13T21:45:50+00:00" title="2012-11-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2012年</span>
-        <span class="posted-month">11月</span>
-        <span class="posted-date">Vol.04</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-04"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2012-10">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="校園活動結果揭曉、Firefox整合社交功能" href="2012-10">校園活動結果揭曉、Firefox整合社交功能</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2012-10-13T21:45:50+00:00" title="2012-10-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2012年</span>
-        <span class="posted-month">10月</span>
-        <span class="posted-date">Vol.03</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-03"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2012-09">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="第2期 Firefox 電子報" href="2012-09">第2期 Firefox 電子報</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2012-09-13T21:45:50+00:00" title="2012-09-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2012年</span>
-        <span class="posted-month">09月</span>
-        <span class="posted-date">Vol.02</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-02"></div>
-  </header>
-</article>
-<article class="post type-post status-publish format-standard hentry category-uncategorized no-author no-comments" id="2012-08">
-  <header class="entry-header">
-    <h2 class="entry-title"><a rel="bookmark" title="第1期 Firefox 電子報" href="2012-08">第1期 Firefox 電子報</a></h2>
-
-    <p class="entry-posted">
-    <time datetime="2012-08-13T21:45:50+00:00" title="2012-08-13T21:45:50+00:00" class="published">
-        <span class="posted-year">2012年</span>
-        <span class="posted-month">08月</span>
-        <span class="posted-date">Vol.01</span>
-      </time>
-    </p>
-    <div class="entry-thumbnail thumbnail-01"></div>
-  </header>
-</article>
+{% endfor %}
+<nav class="nav-paging">
+  <ul role="navigation">
+    {% if page > 1 %}
+    <li class="prev"><a href="/newsletter/page/{{ page - 1 }}">較新的電子報</a></li>
+    {% endif %}
+    {% if page <= (total - 1)/count %}
+    <li class="next"><a href="/newsletter/page/{{ page + 1 }}">較舊的電子報</a></li>
+    {% endif %}
+  </ul>
+</nav>
 {% endblock %}
