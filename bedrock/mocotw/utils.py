@@ -107,13 +107,13 @@ def download_nightly_details():
 
 def newsletter_subscribe(email):
     data = urllib.urlencode({'secret': FFCLUB_API_SECRET, 'email': email})
-    req = urllib2.Request('https://%s/api/newsletter/subscribe' % LOCAL_FFCLUB_URL, data)
+    req = urllib2.Request('https://%s/api/newsletter/subscribe' % FFCLUB_URL, data)
     return bool(urllib2.urlopen(req).read())
 
 
 def newsletter_unsubscribe(email):
     data = urllib.urlencode({'secret': FFCLUB_API_SECRET, 'email': email})
-    req = urllib2.Request('https://%s/api/newsletter/unsubscribe' % LOCAL_FFCLUB_URL, data)
+    req = urllib2.Request('https://%s/api/newsletter/unsubscribe' % FFCLUB_URL, data)
     return bool(urllib2.urlopen(req).read())
 
 

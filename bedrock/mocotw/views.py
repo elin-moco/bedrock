@@ -133,7 +133,7 @@ def google_form(request, template='mocotw/reg/gform.html', formkey=None):
 
 def subscription_count(request):
     if 'secret' in request.GET and request.GET['secret'] == API_SECRET:
-        count = urllib2.urlopen('https://%s/api/newsletter/subscriptions/count?secret=%s' % (LOCAL_FFCLUB_URL, FFCLUB_API_SECRET)).read()
+        count = urllib2.urlopen('https://%s/api/newsletter/subscriptions/count?secret=%s' % (FFCLUB_URL, FFCLUB_API_SECRET)).read()
     else:
         raise PermissionDenied
     return HttpResponse(str(count), content_type='application/json')
@@ -141,7 +141,7 @@ def subscription_count(request):
 
 def subscribed(request):
     if 'secret' in request.GET and request.GET['secret'] == API_SECRET and 'email' in request.GET:
-        exists = urllib2.urlopen('https://%s/api/newsletter/subscribed?secret=%s&email=%s' % (LOCAL_FFCLUB_URL, FFCLUB_API_SECRET, request.GET['email'])).read()
+        exists = urllib2.urlopen('https://%s/api/newsletter/subscribed?secret=%s&email=%s' % (FFCLUB_URL, FFCLUB_API_SECRET, request.GET['email'])).read()
     else:
         raise PermissionDenied
     return HttpResponse(str(exists), content_type='application/json')
@@ -167,7 +167,7 @@ def newsletter(request, page_number='1'):
     result = cache.get('newsletter-feed-%s' % page_number)
     if result is None:
         try:
-            newsletterApiUrl = 'https://%s/api/newsletter/%s?secret=%s' % (LOCAL_FFCLUB_URL, page_number, FFCLUB_API_SECRET)
+            newsletterApiUrl = 'https://%s/api/newsletter/%s?secret=%s' % (FFCLUB_URL, page_number, FFCLUB_API_SECRET)
             result = json.loads(urllib2.urlopen(newsletterApiUrl).read())
             for newsletter in result['newsletters']:
                 if 'main-thumb' in newsletter and newsletter['main-thumb']:
