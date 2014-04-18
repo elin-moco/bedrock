@@ -118,7 +118,7 @@ def newsletter_unsubscribe(email):
 
 
 def read_newsletter_context(issue_number, is_mail=True):
-    if '2013-07' < issue_number <= '2014-02':
+    if '2013-07' < issue_number <= '2014-04-14':
         config = imp.load_source('bedrock.newsletter.%s' % issue_number.replace('-', ''),
                                  'bedrock/newsletter/templates/newsletter/%s/config.py' % issue_number)
         config.params['issue_number'] = issue_number
