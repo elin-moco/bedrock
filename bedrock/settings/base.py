@@ -94,7 +94,7 @@ def JINJA_CONFIG():
         'extensions': [
             'lib.l10n_utils.template.i18n', 'jinja2.ext.do', 'jinja2.ext.with_',
             'jinja2.ext.loopcontrols', 'lib.l10n_utils.template.l10n_blocks',
-            'lib.l10n_utils.template.lang_blocks'
+            'lib.l10n_utils.template.lang_blocks',
         ],
         # Make None in templates render as ''
         'finalize': lambda x: x if x is not None else '',
@@ -317,6 +317,26 @@ MINIFY_BUNDLES = {
         'firefox_flicks': (
             'css/firefoxflicks/main.css',
             'css/firefoxflicks/videos.css',
+        ),
+        'firefox_australis_tour': (
+            'css/firefox/australis/australis-ui-tour.less',
+            'css/firefox/australis/australis-tour-page.less',
+        ),
+        'firefox_desktop': (
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/desktop/index.less',
+        ),
+        'firefox_desktop_fast': (
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/desktop/fast.less',
+        ),
+        'firefox_desktop_customize': (
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/desktop/customize.less',
+        ),
+        'firefox_desktop_trust': (
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/desktop/trust.less',
         ),
         'installer_help': (
             'css/firefox/template-resp.less',
@@ -631,6 +651,45 @@ MINIFY_BUNDLES = {
         ),
         'firefox_whatsnew_fxos': (
             'js/firefox/whatsnew-fxos.js',
+        ),
+        'firefox_australis_tour_whatsnew': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/australis/australis-uitour.js',
+            'js/firefox/australis/browser-tour.js',
+            'js/firefox/australis/common.js',
+            'js/firefox/australis/whatsnew.js',
+        ),
+        'firefox_australis_tour_whatsnew_b': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/australis/australis-uitour.js',
+            'js/firefox/australis/browser-tour.js',
+            'js/firefox/australis/common.js',
+            'js/firefox/australis/whatsnew-b.js',
+        ),
+        'firefox_australis_tour_firstrun': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/australis/australis-uitour.js',
+            'js/firefox/australis/browser-tour.js',
+            'js/firefox/australis/common.js',
+            'js/firefox/australis/firstrun.js',
+        ),
+        'firefox_desktop_common': (
+            'js/firefox/desktop/common.js',
+        ),
+        'firefox_desktop_customize': (
+            'js/firefox/desktop/common.js',
+            'js/firefox/desktop/customize.js',
+        ),
+        'firefox_desktop_fast': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/desktop/common.js',
+            'js/firefox/desktop/speed-graph.js',
+            'js/firefox/desktop/fast.js',
+        ),
+        'firefox_desktop_index': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/desktop/common.js',
+            'js/firefox/desktop/speed-graph.js'
         ),
         'geolocation': (
             'js/libs/jquery.nyroModal.pack.js',
