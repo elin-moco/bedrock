@@ -114,6 +114,7 @@
 }
 
 #masthead-download-firefox {
+    display: none;
     float: right;
     margin-top: 10px;
     font-weight: normal;
@@ -151,6 +152,10 @@ section .container {
     padding: (@baseLine * 3) 0 (@baseLine * 2) 0;
     min-height: (680px - (@baseLine * 5));
     overflow: hidden;
+
+    h1 {
+        margin-bottom: @baseLine * 2;
+    }
 
     h2 {
         font-size: 48px;
@@ -303,6 +308,7 @@ html[lang="en-US"], html[lang="en-UK"] {
         line-height: 40px;
         background: url(/media/img/firefox/desktop/sprite-browser-logos.png) right top no-repeat;
         padding-right: 70px;
+        letter-spacing: 0;
     }
 
     #speed-opera-next {
@@ -339,7 +345,7 @@ html[lang="en-US"], html[lang="en-UK"] {
         height: 40px;
         padding-right: 10px;
         border-right: 1px solid #000;
-        border-right: 1px solid rgba(0, 0, 0, .3);
+        border-right: 1px solid rgba(0, 0, 0, .2);
         line-height: 40px;
         color: #fff;
         font-size: 16px;
@@ -523,6 +529,10 @@ html[lang="en-US"], html[lang="en-UK"] {
     }
 }
 
+#download-wrapper {
+    display: none;
+}
+
 /* }}} */
 
 @media (max-width: @breakDesktop) and (min-width: @breakTablet) {
@@ -633,7 +643,9 @@ html[lang="en-US"], html[lang="en-UK"] {
     }
 
     #masthead-download-firefox, #download-wrapper {
-        display: none;
+        // js displays the buttons for non fx browsers, so this needs to be
+        // important to override the generated inline style
+        display: none !important;
     }
 
     #main-content .container {

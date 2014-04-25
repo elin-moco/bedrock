@@ -276,25 +276,39 @@ class LatestFxView(TemplateView):
 
 
 class FirstrunView(LatestFxView):
-    funnelcake_campaign = '25'
+
+    def get(self, request, *args, **kwargs):
+        if not settings.DEV and not request.is_secure():
+            uri = 'https://{host}{path}'.format(
+                host=request.get_host(),
+                path=request.get_full_path(),
+            )
+            return HttpResponsePermanentRedirect(uri)
+        return super(FirstrunView, self).get(request, *args, **kwargs)
 
     def get_template_names(self):
+        version = self.kwargs.get('fx_version')
         locale = l10n_utils.get_locale(self.request)
         fc_ctx = funnelcake_param(self.request)
+        f = fc_ctx.get('funnelcake_id', 0)
 
-        if (locale == 'en-US' and
-                fc_ctx.get('funnelcake_id', 0) == self.funnelcake_campaign):
-
-            template = 'firefox/firstrun-a.html'
+        if (version == '29.0' and locale == 'en-US'):
+            if f == '30':
+                template = 'firefox/australis/firstrun-no-tour.html'
+            elif f == '31':
+                template = 'firefox/australis/firstrun-tour.html'
+            else:
+                template = 'firefox/australis/firstrun-tour.html'
         else:
-            template = 'firefox/firstrun.html'
+            template = 'firefox/australis/firstrun-tour.html'
 
-        return template
+        # return a list to conform with original intention
+        return [template]
 
 
 class WhatsnewView(LatestFxView):
     # Locales targeted for FxOS
-    fxos_locales = ['pl']
+    fxos_locales = []
 
     locales_with_video = {
         'en-US': 'american',
@@ -308,20 +322,63 @@ class WhatsnewView(LatestFxView):
         'es-MX': 'spanish_final',
     }
 
+    def get(self, request, *args, **kwargs):
+        version = kwargs.get('fx_version')
+        if version == '29.0' and not settings.DEV and not request.is_secure():
+            uri = 'https://{host}{path}'.format(
+                host=request.get_host(),
+                path=request.get_full_path(),
+            )
+            return HttpResponsePermanentRedirect(uri)
+        return super(WhatsnewView, self).get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         ctx = super(WhatsnewView, self).get_context_data(**kwargs)
 
         locale = l10n_utils.get_locale(self.request)
 
-        if (locale not in self.fxos_locales):
+        if locale not in self.fxos_locales:
             ctx['locales_with_video'] = self.locales_with_video
 
         return ctx
 
     def get_template_names(self):
+        version = self.kwargs.get('fx_version')
         locale = l10n_utils.get_locale(self.request)
-        if locale in self.fxos_locales:
+        fc_ctx = funnelcake_param(self.request)
+        f = fc_ctx.get('funnelcake_id', 0)
+
+        if (version == '29.0' and locale == 'en-US'):
+            if f == '30':
+                template = 'firefox/australis/whatsnew-no-tour.html'
+            elif f == '31':
+                template = 'firefox/australis/whatsnew-tour.html'
+            else:
+                template = 'firefox/australis/whatsnew-tour.html'
+        elif version == '29.0':
+            # non en-US locales always get the tour
+            template = 'firefox/australis/whatsnew-tour.html'
+        elif version == '29.0a1':
+            template = 'firefox/whatsnew-nightly-29.html'
+        elif locale in self.fxos_locales:
             template = 'firefox/whatsnew-fxos.html'
         else:
             template = 'firefox/whatsnew.html'
-        return template
+
+        # return a list to conform with original intention
+        return [template]
+
+
+class TourView(LatestFxView):
+    template_name = 'firefox/australis/firstrun-tour.html'
+
+    def get(self, request, *args, **kwargs):
+        if not settings.DEV and not request.is_secure():
+            uri = 'https://{host}{path}'.format(
+                host=request.get_host(),
+                path=request.get_full_path(),
+            )
+            return HttpResponsePermanentRedirect(uri)
+        return super(TourView, self).get(request, *args, **kwargs)
+
+

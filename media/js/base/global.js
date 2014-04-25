@@ -115,7 +115,12 @@ function getFirefoxMasterVersion(userAgent) {
 function isFirefox(userAgent) {
     var ua = userAgent || navigator.userAgent;
     // camino UA string contains 'like Firefox'
-    return ((/\sFirefox/).test(ua) && !(/like Firefox/i).test(ua));
+    return (
+        (/\sFirefox/).test(ua) &&
+        !(/like Firefox/i).test(ua) &&
+        !(/Iceweasel/i).test(ua) &&
+        !(/SeaMonkey/i).test(ua)
+    );
 }
 
 function isFirefoxUpToDate(latest, esr) {
@@ -134,6 +139,13 @@ function isFirefoxUpToDate(latest, esr) {
 
     return ($.inArray(fx_version, esrFirefoxVersions) !== -1 ||
             latestFirefoxVersion <= fx_version);
+}
+
+// used in bedrock for desktop specific checks like `isFirefox() && !isFirefoxMobile()`
+// reference https://developer.mozilla.org/en-US/docs/Gecko_user_agent_string_reference
+function isFirefoxMobile(userAgent) {
+    var ua = userAgent || navigator.userAgent;
+    return /Mobile|Tablet|Fennec/.test(ua);
 }
 
 function isMobile() {

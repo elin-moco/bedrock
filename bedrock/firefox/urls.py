@@ -14,6 +14,7 @@ import views
 latest_re = r'^firefox(?:/(%s))?/%s/$'
 firstrun_re = latest_re % (version_re, 'firstrun')
 whatsnew_re = latest_re % (version_re, 'whatsnew')
+tour_re = latest_re % (version_re, 'tour')
 
 
 urlpatterns = patterns('',
@@ -75,7 +76,7 @@ urlpatterns = patterns('',
     #url('^firefox/23.0/firstrun/(?P<view>[a|b])/$', views.firstrun_new, name='firefox.firstrun.new'),
     url(firstrun_re, views.FirstrunView.as_view(), name='firefox.firstrun'),
     url(whatsnew_re, views.WhatsnewView.as_view(), name='firefox.whatsnew'),
-    url(r'^firefox/partners/$', views.firefox_partners,
+    url(tour_re, views.TourView.as_view(), name='firefox.tour'),    url(r'^firefox/partners/$', views.firefox_partners,
         name='firefox.partners.index'),
 
     # This dummy page definition makes it possible to link to /firefox/ (Bug 878068)

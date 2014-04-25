@@ -72,7 +72,7 @@ if (typeof Mozilla == 'undefined') {
         var $p = this.$maskInner.find('p');
         var $main = this.$maskInner.find('.main');
         var words = $p.text().split(' ');
-        var delay = $('body').hasClass('html-ltr') ? 110 : 0;
+        var delay = $('body').hasClass('html-ltr') ? 100 : 0;
         var $tempEl = $('<div>');
 
         // wrap each word in a <span> with an incremental
@@ -87,15 +87,17 @@ if (typeof Mozilla == 'undefined') {
         });
         $p.html($tempEl.html());
 
-        // show the menu buttons for /firstrun once the main
-        // title animates in.
-        $main.one('animationend', function () {
-            $p.addClass('in');
+        $('#ui-tour-go').click(function() {
+            that.startTour();
+            that.expandTour();
         });
-
         setTimeout(function () {
             // animate the mask welcome message
             that.$maskInner.addClass('in');
+
+            setTimeout(function () {
+                $p.addClass('in');
+            }, 1000);
 
             // show the door hanger if the tab is visible
             if (!document.hidden) {
@@ -250,7 +252,7 @@ if (typeof Mozilla == 'undefined') {
     BrowserTour.prototype.postponeTour = function () {
         this.tourIsPostponed = true;
         var $cta = $('<button class="floating-cta"></button>');
-        $cta.text(window.trans('laterCta'));
+        $cta.html(window.trans('laterCta'));
         this.$body.append($cta);
         $('.floating-cta').one('click', $.proxy(function (e) {
             e.preventDefault();
@@ -345,9 +347,6 @@ if (typeof Mozilla == 'undefined') {
             var tipText;
 
             this.tourIsAnimating = false;
-            Mozilla.UITour.hideInfo();
-            Mozilla.UITour.hideHighlight();
-
             this.showHighlight();
 
             this.$progressStep.html(window.trans('step' + step));

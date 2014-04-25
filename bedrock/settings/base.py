@@ -318,12 +318,15 @@ MINIFY_BUNDLES = {
             'css/firefoxflicks/main.css',
             'css/firefoxflicks/videos.css',
         ),
-        'firefox_australis_tour': (
+        'firefox_tour': (
             'css/firefox/australis/australis-ui-tour.less',
-            'css/firefox/australis/australis-tour-page.less',
+            'css/firefox/australis/australis-page-common.less',
+            'css/firefox/sync-animation.less',
+            'css/firefox/australis/australis-page-parallel.less',
         ),
         'firefox_desktop': (
             'css/sandstone/sandstone-resp.less',
+            'css/firefox/desktop/intro-anim.less',
             'css/firefox/desktop/index.less',
         ),
         'firefox_desktop_fast': (
@@ -652,31 +655,31 @@ MINIFY_BUNDLES = {
         'firefox_whatsnew_fxos': (
             'js/firefox/whatsnew-fxos.js',
         ),
-        'firefox_australis_tour_whatsnew': (
+        'firefox_tour_whatsnew': (
             'js/libs/jquery.waypoints.min.js',
             'js/firefox/australis/australis-uitour.js',
             'js/firefox/australis/browser-tour.js',
             'js/firefox/australis/common.js',
             'js/firefox/australis/whatsnew.js',
         ),
-        'firefox_australis_tour_whatsnew_b': (
-            'js/libs/jquery.waypoints.min.js',
-            'js/firefox/australis/australis-uitour.js',
-            'js/firefox/australis/browser-tour.js',
-            'js/firefox/australis/common.js',
-            'js/firefox/australis/whatsnew-b.js',
-        ),
-        'firefox_australis_tour_firstrun': (
+        'firefox_tour_firstrun': (
             'js/libs/jquery.waypoints.min.js',
             'js/firefox/australis/australis-uitour.js',
             'js/firefox/australis/browser-tour.js',
             'js/firefox/australis/common.js',
             'js/firefox/australis/firstrun.js',
         ),
+        'firefox_tour_none': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/australis/australis-uitour.js',
+            'js/firefox/australis/common.js',
+            'js/firefox/australis/no-tour.js',
+        ),
         'firefox_desktop_common': (
             'js/firefox/desktop/common.js',
         ),
         'firefox_desktop_customize': (
+            'js/libs/jquery.waypoints.min.js',
             'js/firefox/desktop/common.js',
             'js/firefox/desktop/customize.js',
         ),
@@ -689,7 +692,9 @@ MINIFY_BUNDLES = {
         'firefox_desktop_index': (
             'js/libs/jquery.waypoints.min.js',
             'js/firefox/desktop/common.js',
-            'js/firefox/desktop/speed-graph.js'
+            'js/firefox/desktop/speed-graph.js',
+            'js/firefox/desktop/intro-anim.js',
+            'js/firefox/desktop/index.js',
         ),
         'geolocation': (
             'js/libs/jquery.nyroModal.pack.js',
