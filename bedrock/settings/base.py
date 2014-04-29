@@ -965,7 +965,6 @@ INSTALLED_APPS = get_apps(exclude=(
     # libs
     'lib.l10n_utils',
     'captcha',
-    'rna',
 
     # web server
     'gunicorn',
