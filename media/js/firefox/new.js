@@ -134,7 +134,6 @@
         function show_scene_anim(scene) {
             show_scene(scene, true);
         }
-/*
         // Pull download link from the download button and add to the
         // 'click here' link.
         // TODO: Remove and generate link in bedrock.
@@ -142,6 +141,7 @@
             'href', $('.download-list li:visible .download-link').attr('href')
         );
 
+/*
         $stage.on('click', '#direct-download-link, .download-link', function(e) {
             e.preventDefault();
             var url = $(e.currentTarget).attr('href');

@@ -85,13 +85,13 @@
           </ul>
 
           <div class="desktop download-button-wrapper">
-            {{ download_firefox() }}
+            {{ download_firefox(direct_download=True) }}
           </div>
           <div class="mobile download-button-wrapper">
-            {{ download_firefox(mobile=True) }}
+            {{ download_firefox(mobile=True, direct_download=True) }}
           </div>
           <div class="android download-button-wrapper" data-upgrade-subtitle="{{_('Get it free on Google Play')}}">
-            {{ download_firefox(mobile=True, small=True, icon=False, dom_id='download-button-android') }}
+            {{ download_firefox(mobile=True, small=True, icon=False, direct_download=True, dom_id='download-button-android') }}
           </div>
           <div class="desktop-latest-links-wrapper latest-links-wrapper">
             <ul>
@@ -127,7 +127,7 @@
 
       <div class="scene" id="scene2">
         <div class="thankyou" tabindex="0">
-          {{_("Thanks for downloading Firefox!")}}
+          {{_("Thanks for downloading Firefox!")}}（若要下載全球版請<a href="{{ url('firefox.all') }}">點擊此連結</a>）
           {{_("As a non-profit, we’re free to innovate on your behalf without any pressure to compromise. You’re going to love the difference.")}}
           <div class="share-wrapper">
             {% include 'firefox/includes/social-share.html' %}
