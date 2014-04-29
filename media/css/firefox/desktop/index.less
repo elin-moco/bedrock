@@ -5,6 +5,19 @@
 @import '../../sandstone/lib.less';
 @import 'common.less';
 
+@-webkit-keyframes operate {
+    0% { .transform(rotate(0deg) scale(1.0)); }
+    50% { .transform(rotate(180deg) scale(1.2)); }
+    100% { .transform(rotate(360deg) scale(1.0)); }
+}
+
+@keyframes operate {
+    0% { .transform(rotate(0deg) scale(1.0)); }
+    50% { .transform(rotate(180deg) scale(1.2)); }
+    100% { .transform(rotate(360deg) scale(1.0)); }
+}
+
+
 #taiwan {
   height: 700px;
   background: #5d7489;
@@ -16,9 +29,45 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
     &.more {
       line-height: 130px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   &.animate {
+    #tw-circle {
+      .animation(operate 2.2s ease-in-out 0s);
+    }
+    #tw-emblem-1 {
+      .animation(operate .5s ease-out 0s);
+    }
+    #tw-emblem-2 {
+      .animation(operate .5s ease-out .2s);
+    }
+    #tw-emblem-3 {
+      .animation(operate .5s ease-out .4s);
+    }
+    #tw-emblem-4 {
+      .animation(operate .5s ease-out .6s);
+    }
+    #tw-emblem-5 {
+      .animation(operate .5s ease-out .8s);
+    }
+    #tw-emblem-6 {
+      .animation(operate .5s ease-out 1s);
+    }
+    #tw-emblem-7 {
+      .animation(operate .5s ease-out 1.2s);
+    }
+    #tw-emblem-8 {
+      .animation(operate .5s ease-out 1.4s);
+    }
+    #tw-emblem-9 {
+      .animation(operate .5s ease-out 1.6s);
+    }
+    #tw-emblem-10 {
+      .animation(operate .5s ease-out 1.8s);
+    }
     #tw-emblem-1:before {
       opacity: 0;
     }
@@ -59,9 +108,10 @@
   height: 533px;
   margin: auto;
   h2 {
+    font-size: 60px;
     color: #FFFFFF;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
-    line-height: 533px;
+    padding-top: 200px;
   }
 }
 
