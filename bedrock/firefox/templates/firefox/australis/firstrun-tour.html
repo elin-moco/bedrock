@@ -141,7 +141,7 @@
 {% endblock %}
 
 {% block aside_content %}
-  {{ email_newsletter_form() }}
+  {{ email_newsletter_form(include_country=False, include_language=False) }}
 {% endblock %}
 
 {% block site_footer %}

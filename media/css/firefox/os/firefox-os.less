@@ -2,19 +2,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import "../../sandstone/sandstone-resp.less";
 
-html {
-  overflow: auto;
-}
+@import "../../sandstone/sandstone-resp.less";
+@import "get_device.less";
+
 
 html, body {
   height: 100%;
   min-width: @widthDesktop;
-}
-
-body {
-  overflow-x: visible;
+  overflow-x: inherit;
 }
 
 #outer-wrapper {
@@ -27,13 +23,18 @@ body {
   padding-bottom: 0;
 }
 
+#footer {
+  position: relative;
+  z-index: 10;
+}
+
 #masthead {
+  position: relative;
   width: 100%;
   height: 80px;
   z-index: 1000;
   padding: 0;
   background: #fff;
-  position: relative;
 
   .wrapper {
     position: relative;
@@ -56,18 +57,20 @@ body {
   }
 
   ul {
-    margin: 0 0 0 45px;
+    margin: 30px 0 0 45px;
     li {
       margin: 0;
-      padding-right: 40px;
-      line-height: 80px;
+      padding-right: @baseLine * 2;
+      line-height: @baseLine;
       a, a:link, a:visited {
         text-transform: none;
         padding: 0;
       }
     }
     li.last {
+      padding-left: @baseLine * 2;
       padding-right: 0;
+      border-left: 1px dotted #000;
     }
   }
 
@@ -102,7 +105,7 @@ body {
     }
     .curr:before,
     .curr:after {
-      top: 100%;
+      top: 50px;
       border: solid transparent;
       content: " ";
       height: 0;
@@ -137,12 +140,6 @@ body {
       }
     }
   }
-}
-
-#footer {
-  margin-top: 0;
-  position: relative;
-  z-index: 300;
 }
 
 .js #masthead {
@@ -182,7 +179,7 @@ section p, header p {
     li a {
       display: block;
       width: 12px;
-      text-indent: 100%;
+      text-indent: 105%;
       white-space: nowrap;
       overflow: hidden;
       opacity: 0.5;
@@ -236,7 +233,7 @@ section p, header p {
       color: #484848;
       span {
         display: block;
-        text-indent: 100%;
+        text-indent: 105%;
         white-space: nowrap;
         overflow: hidden;
       }
@@ -263,6 +260,40 @@ section p, header p {
 
 .content {
   height: 100%;
+}
+
+#modal {
+  .window .inner {
+    header {
+      padding: 20px 20px 20px 30px;
+    }
+
+    #modal-close {
+      top: 21px;
+      right: 28px;
+
+      a {
+        font-family: 'Open Sans Light', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      button {
+        box-shadow: none;
+        background: url(/media/img/firefox/os/closex-purchase.png) right top no-repeat;
+        text-indent: 105%;
+        overflow: hidden;
+        white-space: nowrap;
+        height: 32px;
+        width: 32px;
+        .transition(none);
+      }
+
+      &:hover button {
+        background-position-y: 100%;
+      }
+    }
+  }
 }
 
 //get phone modals are JS dependent, so hide by default
@@ -1114,7 +1145,7 @@ html[lang=hu] {
       height: 34px;
       padding: 0;
       cursor: pointer;
-      text-indent: 100%;
+      text-indent: 105%;
       white-space: nowrap;
       overflow: hidden;
       .border-radius(11px);
@@ -1201,12 +1232,11 @@ html[lang="pl"] {
   overflow: visible;
   padding: (@baseLine * 4) 0;
   .column {
-    width: (@widthDesktop - (@gridGutterWidth * 2));
+    width: (@widthDesktop - (@gridGutterWidth * 2))/2;
     float: left;
-    margin-bottom: 30px;
   }
   .column-first {
-    width: ((@widthDesktop - (@gridGutterWidth * 2)));
+    width: ((@widthDesktop - (@gridGutterWidth * 2))/2) - @baseLine;
     margin-right: @baseLine;
   }
   h3 {
@@ -1239,29 +1269,6 @@ html[lang="pl"] {
       }
     }
   }
-}
-
-// get phone default no-JS styles
-#get-phone {
-  width: @widthDesktop - (@gridGutterWidth * 4);
-  padding: @baseLine;
-  margin: 0 auto @baseLine auto;
-  background: #fff;
-  header {
-    display: none;
-  }
-  h2 {
-    font-size: 26px;
-    color: #666;
-    letter-spacing: -1px;
-    padding-bottom: (@baseLine * 2);
-    margin-bottom: @baseLine;
-  }
-}
-
-#provider-text-multi,
-#provider-text-single {
-  display: none;
 }
 
 // email signup form no-JS styles
@@ -1307,7 +1314,7 @@ html[lang="pl"] {
     width: 28px;
     height: 28px;
     background: url(/media/img/firefox/os/signup-slide-toggle.png) left top no-repeat;
-    text-indent: 100%;
+    text-indent: 105%;
     white-space: nowrap;
     overflow: hidden;
     @transition: right, box-shadow linear 0.25s;
@@ -1350,107 +1357,14 @@ html[lang="pl"] {
     }
   }
 
-  // modal to show via CTA button
-  #get-phone-wrapper {
-    display: none;
-  }
-
   .modal-content {
-    width: 990px;
-    margin: 0 auto;
-    background: #fff;
-    @shadow: 0 1px 22px rgba(0, 0, 0, 0.8);
-    .box-shadow(@shadow);
-
-    header {
-      display: block;
-      background: #0095dd;
-      padding: @baseLine (@baseLine * 1.5) (@baseLine * 0.5);
-      img {
-        float: left;
-      }
-    }
-
     h2 {
       background: url('/media/img/firefox/os/purchase-hr.png') center bottom no-repeat;
     }
 
     .content {
-      padding: (@baseLine * 1.5) (@baseLine * 1.5);
       color: #666;
       .open-sans-light;
-    }
-
-    #provider-text-nojs { display: none; }
-
-    #provider-text-single { display: block; }
-
-    .close {
-      float: right;
-      background: url(/media/img/firefox/os/closex-purchase.png) right top no-repeat;
-      height: 32px;
-      padding-right: 39px;
-      margin-top: 4px;
-      overflow: hidden;
-      border: 0;
-      cursor: pointer;
-      .close-text {
-        color: #fff;
-        font-size: 16px;
-        .open-sans-light;
-        line-height: 14px;
-      }
-
-      &:hover {
-        background-position: right -32px;
-      }
-    }
-  }
-
-  #get-phone {
-    padding: 0;
-    .content {
-      text-align: center;
-      font-size: 20px;
-      letter-spacing: -1px;
-    }
-    header {
-      display: block;
-    }
-    #provider-links {
-      vertical-align: middle;
-      a {
-        display: inline-block;
-        vertical-align: middle;
-        padding: 60px (@baseLine * 2) 0 (@baseLine * 2);
-        font-size: 17px;
-        &:after {
-          content: " \00BB";
-        }
-      }
-      .movistar {
-        width: 177px;
-        height: 47px;
-        background: transparent url('/media/img/firefox/os/logo/movistar.jpg') top center no-repeat;
-      }
-      .t-mobile {
-        width: 83px;
-        height: 47px;
-        background: transparent url('/media/img/firefox/os/logo/t-mobile.jpg') top center no-repeat;
-      }
-      .congstar {
-        width: 100px; // image is 50px wide, 100px set here for better visual consistency.
-        height: 49px;
-        background: transparent url('/media/img/firefox/os/logo/congstar.jpg') top center no-repeat;
-      }
-      .vivo {
-        width: 95px;
-        height: 47px;
-        background: transparent url('/media/img/firefox/os/logo/vivo.jpg') top center no-repeat;
-      }
-      .last {
-        border-left: 1px dashed #666;
-      }
     }
   }
 
@@ -1516,41 +1430,6 @@ html[lang="en-US"].js {
   z-index: 101;
 }
 
-// modal
-body.noscroll {
-  overflow: hidden;
-}
-
-#modal {
-  background: #354b5d;
-  background: rgba(53, 75, 93, 0.8);
-  width: 100%;
-  height: 101%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9999999;
-  overflow: auto;
-  display: none;
-
-  header {
-    height: 48px;
-  }
-}
-
-#modal .inner {
-  margin: 40px auto;
-  padding: 0 20px;
-  color: #f3f3f3;
-}
-
-#modal-close {
-  display: none;
-}
-// end generic modal
-
 /* Tablet Layout: 760px */
 @media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
   html, body {
@@ -1561,9 +1440,12 @@ body.noscroll {
       margin-right: 0;
     }
     ul {
-      margin: 0;
+      margin: 30px 0 0;
       li {
         padding: 0 5px;
+        &.last {
+          padding-left: 20px;
+        }
       }
     }
     h2 {
@@ -1717,16 +1599,13 @@ body.noscroll {
       width: 400px;
     }
   }
-  #footer-email-form, #get-phone {
+  #footer-email-form {
     width: @widthTablet - (@gridGutterWidth * 4);
   }
   #footer-email-errors {
     width: @widthTablet;
   }
   .js {
-    .modal-content {
-      width: @widthTablet - (@gridGutterWidth * 2);
-    }
     #get-firefox-os.scroller-on {
       #adaptive-app-search {
         ul {
@@ -1741,7 +1620,10 @@ body.noscroll {
   html[lang="en-US"] {
     #masthead {
       ul li {
-        margin: 0 20px;
+        margin: 0 10px;
+        &.last {
+          padding-left: 25px;
+        }
       }
     }
     #get-firefox-os {
@@ -1783,6 +1665,10 @@ body.noscroll {
     ul li {
       line-height: 1.5em;
       padding: 0;
+      &.last {
+        padding-left: 0;
+        border-left: 0;
+      }
     }
     .inner {
       width: @widthMobileLandscape  - @gridGutterWidth;
@@ -2009,9 +1895,6 @@ body.noscroll {
   .bg-birthday {
     background: url('/media/img/firefox/os/bg/760/birthday.jpg') no-repeat center center;
   }
-  #get-phone {
-    width: @widthMobileLandscape - (@gridGutterWidth * 3);
-  }
   #footer-email-form {
     width: @widthMobileLandscape - (@gridGutterWidth * 2);
   }
@@ -2019,28 +1902,12 @@ body.noscroll {
     width: @widthMobileLandscape - @gridGutterWidth;
   }
   .js {
-    #modal {
-      width: 100%;
-      bottom: auto;
-      right: auto;
-      .inner {
-        margin: 5px auto;
-        padding: 0 10px;
-      }
-    }
     .modal-content {
-      width: 100%;
-      .content {
-        padding: 10px;
-      }
       #provider-links {
         .last {
           border-left: none;
         }
       }
-    }
-    #get-phone {
-      width: 100%;
     }
   }
 }
@@ -2240,9 +2107,6 @@ body.noscroll {
       margin: 5px 0;
     }
   }
-  #get-phone {
-    width: @widthMobile - (@gridGutterWidth * 3);
-  }
   #footer-email-form {
     width: @widthMobile - (@gridGutterWidth * 2);
   }
@@ -2258,66 +2122,4 @@ body.noscroll {
   .bg-birthday {
     background: url('/media/img/firefox/os/bg/480/birthday.jpg') no-repeat center center;
   }
-  .js {
-    #get-phone {
-      .content {
-        font-size: 16px;
-        letter-spacing: 0;
-      }
-    }
-    #modal {
-      width: 100%;
-      bottom: auto;
-      right: auto;
-      .inner {
-        margin: 5px auto;
-        padding: 0 10px;
-      }
-      header {
-        height: 28px;
-      }
-    }
-    .modal-content {
-      width: 100%;
-      .content {
-        padding: 10px;
-      }
-      header {
-        padding: 10px;
-        img {
-          display: none;
-        }
-        button {
-          span {
-            font-size: 14px;
-          }
-        }
-      }
-      .close {
-        margin-top: 0;
-      }
-      h2 {
-        font-size: 22px;
-        line-height: 26px;
-        margin: 10px;
-        padding-bottom: 30px;
-      }
-      #provider-links {
-        margin-bottom: 0px;
-        .last {
-          border-left: none;
-        }
-      }
-    }
-    #get-phone {
-      width: 100%;
-    }
-  }
-}
-
-/* Menu fix */
-#nav-main-menu {
-  bottom: auto;
-//  left: -301px;
-  height: auto;
 }

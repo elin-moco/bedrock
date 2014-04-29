@@ -16,6 +16,10 @@ firstrun_re = latest_re % (version_re, 'firstrun')
 whatsnew_re = latest_re % (version_re, 'whatsnew')
 tour_re = latest_re % (version_re, 'tour')
 
+releasenotes_re = latest_re % (version_re, r'(aurora|release)notes')
+mobile_releasenotes_re = releasenotes_re.replace('firefox', 'mobile')
+sysreq_re = latest_re % (version_re, 'system-requirements')
+
 
 urlpatterns = patterns('',
     #redirect(r'^firefox/$', 'firefox.new', name='firefox'),
@@ -23,9 +27,6 @@ urlpatterns = patterns('',
     # page('firefox/central', 'firefox/central.html'),
     page('firefox/channel', 'firefox/channel.html'),
     redirect('^firefox/channel/android/$', 'firefox.channel'),
-    page('firefox/customize', 'firefox/customize.html'),
-    page('firefox/features', 'firefox/features.html'),
-    page('firefox', 'firefox/fx.html'),
     page('firefox/geolocation', 'firefox/geolocation.html',
          gmap_api_key=settings.GMAP_API_KEY),
     page('firefox/happy', 'firefox/happy.html'),
@@ -51,11 +52,9 @@ urlpatterns = patterns('',
     page('firefox/new', 'firefox/new.html'),
     page('firefox/organizations/faq', 'firefox/organizations/faq.html'),
     page('firefox/organizations', 'firefox/organizations/organizations.html'),
-    page('firefox/performance', 'firefox/performance.html'),
     page('firefox/nightly/firstrun', 'firefox/nightly_firstrun.html'),
     url('^firefox/releases/$', views.releases_index,
         name='firefox.releases.index'),
-    page('firefox/security', 'firefox/security.html'),
     url(r'^firefox/installer-help/$', views.installer_help,
         name='firefox.installer-help'),
     page('firefox/speed', 'firefox/speed.html'),
@@ -82,9 +81,21 @@ urlpatterns = patterns('',
     # This dummy page definition makes it possible to link to /firefox/ (Bug 878068)
     url('^firefox/$', views.fx_home_redirect, name='firefox'),
 
+
     page('firefox/os', 'firefox/os/index.html'),
+    page('firefox/os/releases', 'firefox/os/releases.html'),
 
     # firefox/os/notes/ should redirect to the latest version; update this in /redirects/urls.py
-    page('firefox/os/notes/1.0.1', 'firefox/os/notes-1.0.1.html'),
-    page('firefox/os/notes/1.1', 'firefox/os/notes-1.1.html'),
+    url('^firefox/os/notes/(?P<fx_version>%s)/$' % version_re,
+        views.release_notes, {'product': 'Firefox OS'},
+        name='firefox.os.releasenotes'),
+
+    page('mwc', 'firefox/os/mwc-2014-preview.html'),
+    page('firefox/os/devices', 'firefox/os/devices.html'),
+
+    url(releasenotes_re, views.release_notes, name='firefox.releasenotes'),
+    url(mobile_releasenotes_re, views.release_notes,
+        {'product': 'Firefox for Android'}, name='mobile.releasenotes'),
+    url(sysreq_re, views.system_requirements,
+        name='firefox.system_requirements'),
 )

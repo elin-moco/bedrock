@@ -242,6 +242,12 @@ MINIFY_BUNDLES = {
             'css/firefox/template-resp.less',
             'css/base/mozilla-expanders.less',
         ),
+        'firefox_sync': (
+            'css/firefox/sync.less',
+        ),
+        'firefox_sync_anim': (
+            'css/firefox/sync-animation.less',
+        ),
         'firefox_firstrun': (
             'css/sandstone/video.less',
             'css/firefox/firstrun.less',
@@ -278,10 +284,27 @@ MINIFY_BUNDLES = {
             'css/firefox/organizations.less',
         ),
         'firefox_os': (
+            'css/base/mozilla-modal.less',
+            'css/libs/jquery.pageslide.css',
             'css/firefox/os/firefox-os.less',
         ),
         'firefox_os_ie': (
             'css/firefox/os/firefox-os-ie.less',
+        ),
+        'firefox_os_devices': (
+            'css/libs/tipsy.css',
+            'css/base/mozilla-modal.less',
+            'css/firefox/os/devices.less',
+        ),
+        'firefox_os_devices_ie': (
+            'css/firefox/os/devices-ie.less',
+        ),
+        'firefox_os_mwc_2014_preview': (
+            'css/base/mozilla-modal.less',
+            'css/firefox/os/mwc-2014-preview.less',
+        ),
+        'firefox_os_mwc_2014_preview_ie7': (
+            'css/firefox/os/mwc-2014-preview-ie7.less',
         ),
         'firefox_releases_index': (
             'css/firefox/releases-index.less',
@@ -449,6 +472,7 @@ MINIFY_BUNDLES = {
             'css/foundation/annual2011.less',
         ),
         'partners': (
+            'css/base/mozilla-modal.less',
             'css/libs/jquery.pageslide.css',
             'css/firefox/partners.less',
         ),
@@ -566,7 +590,7 @@ MINIFY_BUNDLES = {
             'js/libs/jquery-1.7.1.min.js',
             'js/base/global.js',
             # 'js/sandstone/nav.js',
-            #'js/base/nav-main-resp.js',
+            # 'js/base/nav-main-resp.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
             'js/base/mozilla-image-helper.js',
@@ -587,6 +611,10 @@ MINIFY_BUNDLES = {
         'firefox_features': (
             'js/base/mozilla-video-tools.js',
             'js/firefox/features.js',
+        ),
+        'firefox_sync': (
+            'js/firefox/sync-animation.js',
+            'js/firefox/sync.js',
         ),
         'firefox_firstrun': (
             'js/firefox/firstrun/firstrun.js',
@@ -616,7 +644,6 @@ MINIFY_BUNDLES = {
             'js/firefox/new.js',
         ),
         'firefox_os': (
-            'js/base/mozilla-input-placeholder.js',
             'js/base/mozilla-modal.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.waypoints-sticky.min.js',
@@ -626,12 +653,27 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.color.js',
             'js/libs/script.js',
             'js/libs/socialshare.min.js',
+            'js/firefox/os/partner_data.js',
             'js/firefox/os/firefox-os.js',
             'js/firefox/os/desktop.js',
             'js/firefox/os/have-it.js',
         ),
         'firefox_os_ie9': (
             'js/libs/matchMedia.addListener.js',
+        ),
+        'firefox_os_devices': (
+            'js/libs/jquery.tipsy.js',
+            'js/base/mozilla-pager.js',
+            'js/base/mozilla-modal.js',
+            'js/libs/matchMedia.js',
+            'js/libs/matchMedia.addListener.js',
+            'js/firefox/os/partner_data.js',
+            'js/firefox/os/devices.js',
+        ),
+        'firefox_os_mwc_2014_preview': (
+            'js/base/mozilla-modal.js',
+            'js/firefox/mwc-2014-map.js',
+            'js/firefox/os/mwc-2014-preview.js',
         ),
         'firefox_faq': (
             'js/base/mozilla-expanders.js',
@@ -785,6 +827,7 @@ MINIFY_BUNDLES = {
             'js/libs/modernizr.custom.shiv-load.js',
             'js/base/mozilla-input-placeholder.js',
             'js/base/mozilla-pager.js',
+            'js/base/mozilla-modal.js',
             'js/firefox/partners.js',
         ),
         'partners_common': (
@@ -797,8 +840,8 @@ MINIFY_BUNDLES = {
         ),
         'partners_desktop': (
             'js/libs/jquery.pageslide.min.js',
+            'js/libs/jquery.waypoints.min.js',
             'js/libs/tweenmax.1.9.7.min.js',
-            'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.spritely-0.6.1.js',
             'js/firefox/partners/desktop.js',
         ),
@@ -922,6 +965,7 @@ INSTALLED_APPS = get_apps(exclude=(
     # libs
     'lib.l10n_utils',
     'captcha',
+    'rna',
 
     # web server
     'gunicorn',

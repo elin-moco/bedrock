@@ -13,84 +13,34 @@
 
   var COUNTRY_CODE = '';
 
-  var PARTNER_DATA = {
-    "co": {
-      "partner": [
-        {
-          "name": "Movistar",
-          "url": "http://www.movistar.co"
-        }
-      ]
-    },
-    "de": {
-      "partner": [
-        {
-          "name": "congstar",
-          "url": "http://aktion.congstar.de/firefox-os"
-        }
-      ]
-    },
-    "es": {
-      "partner": [
-        {
-          "name": "Movistar",
-          "url": "http://www.movistar.es/firefoxos?aff=aff-firefoxOS1"
-        }
-      ]
-    },
-    "pl": {
-      "partner": [
-        {
-          "name": "T-Mobile",
-          "url": "http://www.t-mobile.pl/pl/firefox"
-        }
-      ]
-    },
-    "br": {
-      "partner": [
-        {
-          "name": "Vivo",
-          "url": "http://www.vivo.com.br/firefox"
-        }
-      ]
-    },
-    "ve": {
-      "partner": [
-        {
-          "name": "Movistar",
-          "url": "http://www.movistar.com.ve/movistar_firefox/index.html"
-        }
-      ]
-    }
-  };
-
   /*
    * Set page specific content relating to geo for partner data etc
    */
   function setPartnerContent () {
-    var $getPhoneContent = $('#get-phone-wrapper .content');
+    var $getPhoneContent = $('#get-device-wrapper .content');
     var $providerLinks = $('#provider-links');
     var links = '';
 
-    if(PARTNER_DATA[COUNTRY_CODE]) {
+    if (Mozilla.FxOs.Countries.hasOwnProperty(COUNTRY_CODE)) {
 
-      // show get phone call to actions
+      // show get phone calls to action
       $('#primary-cta-phone').fadeIn();
       $('#primary-cta-signup').addClass('visibility', 'hidden');
       $('#secondary-cta-phone').css('display', 'inline-block');
 
       // if country has more than one provider, show the multi intro text
-      if (PARTNER_DATA[COUNTRY_CODE].partner.length > 1) {
+      if (Mozilla.FxOs.Countries[COUNTRY_CODE].partner.length > 1) {
         $('#provider-text-single').hide();
         $('#provider-text-multi').show();
       }
       // show partner specific links on modal etc
-      $.each(PARTNER_DATA[COUNTRY_CODE].partner, function(i, data) {
+      $.each(Mozilla.FxOs.Countries[COUNTRY_CODE].partner, function(i, data) {
         //set data.name, data.url etc
         var index = i === 1 ? 'last' : '';
         links += '<a class="' + data.name.toLowerCase() + ' ' + index + '" href="' + data.url + '">' + data.name + '</a>';
       });
-      $('#provider-links').html(links);
+      // add country class as an extra style hook and inject the links
+      $('#provider-links').addClass(COUNTRY_CODE).html(links);
 
       // setup GA event tracking on telecom provider exit links
       $('#provider-links a').on('click', trackProviderExit);
@@ -171,10 +121,7 @@
 
         if (hasCallback) {
           timer = setTimeout(gaCallback, 500);
-          window._gaq.push(
-            ['_set', 'hitCallback', gaCallback],
-            eventsArray
-          );
+          window._gaq.push(eventsArray, gaCallback);
         } else {
           window._gaq.push(eventsArray);
         }
@@ -199,12 +146,5 @@
     setNewsletterDefaults();
     setPartnerContent();
   });
-
-$('#nav-main-menu').click(function() {
-    if($('.slided-it').size()!=0){
-      $('.slide-x').removeClass('slided-it');
-      $('#body-wrapper').removeClass('body-wrapper-lock').addClass('body-wrapper-default');
-    }
-});
 
 })(jQuery);

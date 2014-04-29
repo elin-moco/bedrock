@@ -5,6 +5,212 @@
 @import '../../sandstone/lib.less';
 @import 'common.less';
 
+#taiwan {
+  height: 700px;
+  background: #5d7489;
+  position: relative;
+  padding-top: 40px;
+  a, a:link {
+    text-decoration: none;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
+    &.more {
+      line-height: 130px;
+    }
+  }
+  &.animate {
+    #tw-emblem-1:before {
+      opacity: 0;
+    }
+    #tw-emblem-2:before {
+      opacity: 0;
+    }
+    #tw-emblem-3:before {
+      opacity: 0;
+    }
+    #tw-emblem-4:before {
+      opacity: 0;
+    }
+    #tw-emblem-5:before {
+      opacity: 0;
+    }
+    #tw-emblem-6:before {
+      opacity: 0;
+    }
+    #tw-emblem-7:before {
+      opacity: 0;
+    }
+    #tw-emblem-8:before {
+      opacity: 0;
+    }
+    #tw-emblem-9:before {
+      opacity: 0;
+    }
+    #tw-emblem-10:before {
+      opacity: 0;
+    }
+  }
+}
+
+#tw-circle {
+  background: url(/media/img/mocotw/firefox/desktop/bg.png);
+  display: block;
+  width: 533px;
+  height: 533px;
+  margin: auto;
+  h2 {
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
+    line-height: 533px;
+  }
+}
+
+.emblem {
+  position: absolute;
+  display: block;
+  width: 133px;
+  height: 133px;
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 1.0;
+  }
+}
+
+#tw-emblem-1 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-1-1-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 10px;
+  left: 50%;
+  margin-left: -66px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-1-1.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out 0s);
+  }
+}
+#tw-emblem-2 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-1-2-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 50px;
+  left: 50%;
+  margin-left: 80px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-1-2.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out .2s);
+  }
+}
+#tw-emblem-3 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-1-3-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 170px;
+  left: 50%;
+  margin-left: 170px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-1-3.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out .4s);
+  }
+}
+#tw-emblem-4 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-2-1-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 320px;
+  left: 50%;
+  margin-left: 170px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-2-1.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out .6s);
+  }
+}
+#tw-emblem-5 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-2-2-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 450px;
+  left: 50%;
+  margin-left: 80px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-2-2.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out .8s);
+  }
+}
+#tw-emblem-6 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-2-3-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 500px;
+  left: 50%;
+  margin-left: -66px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-2-3.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out 1s);
+  }
+}
+#tw-emblem-7 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-3-1-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 450px;
+  right: 50%;
+  margin-right: 80px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-3-1.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out 1.2s);
+  }
+}
+#tw-emblem-8 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-3-2-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 320px;
+  right: 50%;
+  margin-right: 170px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-3-2.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out 1.4s);
+  }
+}
+#tw-emblem-9 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-3-3-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 170px;
+  right: 50%;
+  margin-right: 170px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-3-3.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out 1.6s);
+  }
+}
+#tw-emblem-10 {
+  .emblem;
+  background: url("/media/img/mocotw/firefox/desktop/btn-3-4-clicked.png") no-repeat;
+  background-size: 100% auto;
+  top: 50px;
+  right: 50%;
+  margin-right: 80px;
+  &:before {
+    background: url("/media/img/mocotw/firefox/desktop/btn-3-4.png") no-repeat;
+    background-size: 100% auto;
+    .transition(opacity .2s ease-out 1.8s);
+  }
+}
+
 // set nav pointer
 #site-header-logo {
     .nav-pointer();
@@ -30,7 +236,7 @@
     }
 
     h1 {
-        font-size: 64px;
+        font-size: 52px;
     }
 
     .lead {

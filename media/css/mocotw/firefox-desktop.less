@@ -59,6 +59,7 @@
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
     }
 }
+
 #util-content {
     background: #d0cbbd;
 
@@ -110,10 +111,54 @@
 }
 
 .emblem {
-  display: block;
-  width: 164px;
-  height: 164px;
-  margin: auto;
+    display: block;
+    width: 164px;
+    height: 164px;
+    margin: auto;
+}
+
+#myfx, #myshelf, #videos {
+    .content-copy {
+        width: 360px;
+    }
+}
+
+#newtab {
+    .content-visual {
+        position: static;
+        margin: auto;
+    }
+}
+
+#screenshot {
+    .content-copy {
+        width: 430px;
+    }
+}
+#tabconf {
+    .content-copy {
+        width: 320px;
+    }
+}
+#feedback {
+    .content-copy {
+        width: 480px;
+    }
+}
+#safety {
+    .content-copy {
+        width: 460px;
+    }
+}
+#theme {
+    .content-copy {
+        width: 440px;
+    }
+}
+#font {
+    .content-copy {
+        width: 420px;
+    }
 }
 
 .feature-list li {
@@ -249,9 +294,14 @@
     }
 }
 
+.content-copy {
+    margin-top: 40px;
+}
+
 .content-visual {
     position: absolute;
-    bottom: 0;
+    top: 100px;
+    right: 0;
 
     img {
         display: block;

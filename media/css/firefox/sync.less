@@ -1,0 +1,134 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../sandstone/lib.less";
+
+#wrapper:before {
+    content: " ";
+    position: absolute;
+    top: 80px;
+    right: 85px;
+    height: 250px;
+    width: 250px;
+    z-index: 2;
+}
+
+.intro {
+    float: left;
+    width: 500px;
+    margin: @baseLine 0 0 10px;
+    h1 {
+        line-height: 1.2;
+    }
+    p {
+        font-size: @largeFontSize;
+    }
+}
+
+.sync-anim {
+    position: relative;
+    float: right;
+    height: 190px;
+    width: 390px;
+    margin: (@baseLine * 2) @baseLine -40px 0;
+    background-image: url('/media/img/firefox/sync/composite.png?04-2014');
+    z-index: 1;
+}
+
+.main-content {
+    clear: both;
+    h4 {
+        font-size: 20px;
+    }
+    .contents {
+        .span-all();
+    }
+}
+
+.android-link {
+    .trailing-arrow();
+}
+
+.newsletter-form {
+    clear: both;
+}
+
+/* RTL support */
+html[dir="rtl"] {
+    #wrapper:before {
+        left: 85px;
+        right: auto;
+    }
+
+    .intro {
+        float: right;
+    }
+}
+
+/* Tablet Layout: 760px */
+@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+
+    #wrapper:before {
+        top: 120px;
+        right: 20px;
+        height: 175px;
+        width: 175px;
+        z-index: 2;
+    }
+
+    .intro {
+        width: 280px;
+        margin-bottom: @baseLine;
+        h1 {
+            font-size: 42px;
+        }
+        p {
+            font-size: @baseFontSize;
+        }
+    }
+
+}
+
+/* Mobile layout: 480px */
+@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+
+    #wrapper:before {
+        content: "";
+        background: none;
+    }
+
+    .intro {
+        .span-all();
+        p {
+            font-size: @baseFontSize;
+        }
+    }
+
+    .sync-anim {
+        float: none;
+        margin: 0 auto @baseLine auto;
+    }
+
+}
+
+/* Mobile layout: 320px */
+@media only screen and (max-width: @breakMobileLandscape) {
+
+    #wrapper:before {
+        content: "";
+        background: none;
+    }
+
+    .intro {
+        .span-all();
+        p {
+            font-size: @baseFontSize;
+        }
+    }
+
+    .sync-anim {
+        display: none;
+    }
+
+}

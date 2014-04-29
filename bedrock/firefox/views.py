@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -7,12 +8,17 @@ import re
 
 from django.conf import settings
 from django.http import (HttpResponsePermanentRedirect,
-                         HttpResponseRedirect)
+                         HttpResponseRedirect, Http404)
+from django.shortcuts import get_object_or_404
+from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.views.decorators.vary import vary_on_headers
 from django.views.generic.base import TemplateView
+from django.db.models import Q
+from rna.models import Release
 
 import basket
+from bedrock.mozorg.helpers.misc import releasenotes_url
 from lib import l10n_utils
 from jingo_minify.helpers import BUILD_ID_JS, BUNDLE_HASHES
 from funfactory.urlresolvers import reverse
@@ -52,6 +58,14 @@ LOCALE_OS_RELEASE_URLS = {
           'mozilla-e-i-suoi-partner-si-preparano-al-lancio-dei-primi-smartphone-con-firefox-os/',
     'pl': 'https://blog.mozilla.org/press-pl/2013/07/01/'
           'mozilla-wraz-z-partnerami-przygotowuje-sie-do-wprowadzenia-na-rynek-pierwszych-smartfonow-z-firefox-os/',
+}
+
+
+LOCALE_FXOS_HEADLINES = {
+    'zh-TW': {
+        'title': u'多家合作夥伴全力支援 Firefox OS 陣營，攜手釋放行動產業未來',
+        'url': 'http://blog.mozilla.com.tw/posts/5003/firefox-os-unleashes-the-future-of-mobile',
+    }
 }
 
 INSTALLER_CHANNElS = [
@@ -170,9 +184,8 @@ def firefox_partners(request):
     locale_os_release_url = LOCALE_OS_RELEASE_URLS.get(request.locale, LOCALE_OS_RELEASE_URLS['en-US'])
 
     template_vars = {
-        'locale_os_url': locale_os_url,
-        'locale_os_release_url': locale_os_release_url,
-        'locale_os_release_active': LOCALE_OS_RELEASE_URLS,
+        'locale_headline_url': LOCALE_FXOS_HEADLINES['zh-TW']['url'],
+        'locale_headline_title': LOCALE_FXOS_HEADLINES['zh-TW']['title'],
         'js_common': JS_COMMON,
         'js_mobile': JS_MOBILE,
         'js_desktop': JS_DESKTOP,
@@ -382,3 +395,69 @@ class TourView(LatestFxView):
         return super(TourView, self).get(request, *args, **kwargs)
 
 
+def release_notes_template(channel, product):
+    if product == 'Firefox OS':
+        return 'firefox/releases/os-notes.html'
+    prefix = dict((c, c.lower()) for c in Release.CHANNELS)
+    return 'firefox/releases/%s-notes.html' % prefix.get(channel, 'release')
+
+
+def equivalent_release_url(release):
+    equivalent_release = (release.equivalent_android_release() or
+                          release.equivalent_desktop_release())
+    if equivalent_release:
+        return releasenotes_url(equivalent_release)
+
+
+def get_release_or_404(version, product):
+    if product == 'Firefox' and len(version.split('.')) == 3:
+        product_query = Q(product='Firefox') | Q(
+            product='Firefox Extended Support Release')
+    else:
+        product_query = Q(product=product)
+    release = get_object_or_404(Release, product_query, version=version)
+    if not release.is_public and not settings.DEV:
+        raise Http404
+    return release
+
+
+def get_download_url(channel='Release'):
+    if channel == 'Aurora':
+        # TODO: use reverse once bug 987517 is resolved
+        return '/firefox/aurora/'
+    elif channel == 'Beta':
+        # TODO: use reverse once bug 752644 is resolved
+        return '/firefox/beta/'
+    else:
+        return reverse('firefox')
+
+
+@cache_page(15 * 60)
+def release_notes(request, fx_version, product='Firefox'):
+    if product == 'Firefox OS' and fx_version in ('1.0.1', '1.1', '1.2'):
+        return l10n_utils.render(
+            request, 'firefox/os/notes-%s.html' % fx_version)
+
+    try:
+        release = get_release_or_404(fx_version, product)
+    except Http404:
+        release = get_release_or_404(fx_version + 'beta', product)
+        return HttpResponseRedirect(releasenotes_url(release))
+
+    new_features, known_issues = release.notes()
+    return l10n_utils.render(
+        request, release_notes_template(release.channel, product), {
+            'version': fx_version,
+            'download_url': get_download_url(release.channel),
+            'release': release,
+            'equivalent_release_url': equivalent_release_url(release),
+            'new_features': new_features,
+            'known_issues': known_issues})
+
+
+@cache_page(15 * 60)
+def system_requirements(request, fx_version, product='Firefox'):
+    release = get_release_or_404(fx_version, product)
+    return l10n_utils.render(
+        request, 'firefox/releases/system_requirements.html',
+        {'release': release, 'version': fx_version})

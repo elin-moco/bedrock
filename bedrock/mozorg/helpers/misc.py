@@ -7,7 +7,6 @@ import jingo
 import jinja2
 from funfactory.settings_base import path as base_path
 from funfactory.urlresolvers import reverse
-from bedrock.sandstone.settings import MOFO_URL
 
 
 L10N_IMG_PATH = base_path('media', 'img', 'l10n')
@@ -22,7 +21,12 @@ def _l10n_media_exists(locale, url):
 @jinja2.contextfunction
 def php_url(ctx, url):
     """Process a URL on the PHP site and prefix the locale to it."""
-    return '//' + MOFO_URL + url
+    locale = getattr(ctx['request'], 'locale', None)
+
+    # Do this only if we have a locale and the URL is absolute
+    if locale and url[0] == '/':
+        return path.join('/', locale, url.lstrip('/'))
+    return url
 
 
 @jingo.register.function
@@ -47,9 +51,9 @@ def secure_url(ctx, viewname=None):
 
     # only force https if current page was requested via SSL
     # otherwise, CSRF/AJAX errors will occur (submitting to https from http)
-    # if ctx['request'].is_secure():
-    return _url.replace('http://', 'https://')
-    # return _url
+    if ctx['request'].is_secure():
+        return _url.replace('http://', 'https://')
+    return _url
 
 
 @jingo.register.function
@@ -59,7 +63,7 @@ def media(url):
 
 @jingo.register.function
 @jinja2.contextfunction
-def img_l10n(ctx, url):
+def l10n_img(ctx, url):
     """Output the url to a localized image.
 
     Uses the locale from the current request. Checks to see if the localized
@@ -71,7 +75,7 @@ def img_l10n(ctx, url):
     In Template
     -----------
 
-        {{ img_l10n('firefoxos/screenshot.png') }}
+        {{ l10n_img('firefoxos/screenshot.png') }}
 
     For en-US this would output:
 
@@ -106,7 +110,7 @@ def img_l10n(ctx, url):
         if not _l10n_media_exists(locale, url):
             locale = settings.LANGUAGE_CODE
 
-    return path.join(settings.MEDIA_URL, 'img', 'l10n', locale, url)
+    return media(path.join('img', 'l10n', locale, url))
 
 
 @jingo.register.function
@@ -118,8 +122,13 @@ def field_with_attrs(bfield, **kwargs):
 
 
 @jingo.register.function
-def platform_img(url, optional_attributes=None):
-    url = path.join(settings.MEDIA_URL, url.lstrip('/'))
+@jinja2.contextfunction
+def platform_img(ctx, url, optional_attributes=None):
+    if (optional_attributes and optional_attributes.pop('l10n', False) is True):
+        url = l10n_img(ctx, url)
+    else:
+        url = media(url)
+
     if optional_attributes:
         attrs = ' '.join('%s="%s"' % (attr, val)
                          for attr, val in optional_attributes.items())
@@ -137,14 +146,18 @@ def platform_img(url, optional_attributes=None):
 
 
 @jingo.register.function
-def high_res_img(url, optional_attributes=None):
+@jinja2.contextfunction
+def high_res_img(ctx, url, optional_attributes=None):
+    if (optional_attributes and optional_attributes.pop('l10n', False) is True):
+        url = l10n_img(ctx, url)
+    else:
+        url = media(url)
+
     if optional_attributes:
         attrs = ' '.join(('%s="%s"' % (attr, val)
                           for attr, val in optional_attributes.items()))
     else:
         attrs = ''
-
-    url = media(url)
 
     # Don't download any image until the javascript sets it based on
     # data-src so we can do high-dpi detection. If no js, show the
@@ -162,10 +175,10 @@ def video(*args, **kwargs):
     HTML5 Video tag helper.
 
     Accepted kwargs:
-    prefix, w, h, autoplay, poster
+    prefix, w, h, autoplay, poster, preload, id
 
     Use like this:
-    {{ video('http://example.com/myvid.mp4', http://example.com/myvid.webm',
+    {{ video('http://example.com/myvid.mp4', 'http://example.com/myvid.webm',
              poster='http://example.com/myvid.jpg',
              w=640, h=360) }}
 
@@ -203,6 +216,8 @@ def video(*args, **kwargs):
         'w': 640,
         'h': 360,
         'autoplay': False,
+        'preload': False,
+        'id': 'htmlPlayer'
     }
 
     # Flash fallback, if mp4 file on Mozilla Videos CDN.
@@ -210,7 +225,7 @@ def video(*args, **kwargs):
     if 'mp4' in videos:
         mp4_url = urlparse.urlparse(videos['mp4'])
         if mp4_url.netloc.lower() in ('videos.mozilla.org',
-                                      'videos-cdn.mozilla.net'):
+                                      'videos.cdn.mozilla.net'):
             data['flash_fallback'] = mp4_url.path
 
     data.update(**kwargs)
@@ -257,6 +272,84 @@ def press_blog_url(ctx):
     return settings.PRESS_BLOG_ROOT + settings.PRESS_BLOGS[locale]
 
 
+@jingo.register.function
+@jinja2.contextfunction
+def donate_url(ctx):
+    """Output a link to the donation page taking locales into account.
+
+    Uses the locale from the current request. Checks to see if we have
+    a donation page that match this locale, returns the localized page
+    url or falls back to the US page url if not.
+
+    Examples
+    ========
+
+    In Template
+    -----------
+
+        {{ donate_url() }}
+
+    For en-US this would output:
+
+        https://sendto.mozilla.org/page/contribute/EOYFR2013-tabzilla
+
+    For de this would output:
+
+        https://sendto.mozilla.org/page/contribute/EOYFR2013-webDE
+
+    For fr this would output:
+
+        https://sendto.mozilla.org/page/contribute/EOYFR2013-webFR
+
+    For pt-BR this would output:
+
+        https://sendto.mozilla.org/page/contribute/EOYFR2013-webPTBR
+
+    """
+    locale = getattr(ctx['request'], 'locale', 'en-US')
+    if locale not in settings.DONATE_LOCALE_LINK:
+        locale = 'en-US'
+
+    return settings.DONATE_LOCALE_LINK[locale]
+
+
+@jingo.register.function
+@jinja2.contextfunction
+def firefox_twitter_url(ctx):
+    """Output a link to Twitter taking locales into account.
+
+    Uses the locale from the current request. Checks to see if we have
+    a Twitter account that match this locale, returns the localized account
+    url or falls back to the US account url if not.
+
+    Examples
+    ========
+
+    In Template
+    -----------
+
+        {{ firefox_twitter_url() }}
+
+    For en-US this would output:
+
+        https://twitter.com/firefox
+
+    For es-ES this would output:
+
+        https://twitter.com/firefox_es
+
+    For pt-BR this would output:
+
+        https://twitter.com/firefoxbrasil
+
+    """
+    locale = getattr(ctx['request'], 'locale', 'en-US')
+    if locale not in settings.FIREFOX_TWITTER_ACCOUNTS:
+        locale = 'en-US'
+
+    return settings.FIREFOX_TWITTER_ACCOUNTS[locale]
+
+
 @jingo.register.filter
 def absolute_url(url):
     """
@@ -285,3 +378,72 @@ def absolute_url(url):
         prefix = settings.CANONICAL_URL
 
     return prefix + url
+
+
+@jingo.register.function
+def product_url(product, page, channel=None):
+    """
+    Return a product-related URL like /firefox/all/ or /mobile/beta/notes/.
+
+    Examples
+    ========
+
+    In Template
+    -----------
+
+        {{ product_url('firefox', 'all', 'organizations') }}
+        {{ product_url('firefox', 'sysreq', channel) }}
+        {{ product_url('mobile', 'notes') }}
+    """
+
+    app = product
+    kwargs = {}
+
+    if product == 'mobile':
+        app = 'firefox'
+
+    # Tweak the channel name for the naming URL pattern in urls.py
+    if channel == 'release':
+        channel = None
+    if channel == 'esr':
+        channel = 'organizations'
+
+    if channel:
+        kwargs['channel'] = channel
+    if page == 'notes':
+        kwargs['product'] = product
+
+    return reverse('%s.%s' % (app, page), kwargs=kwargs)
+
+
+@jingo.register.function
+def releasenotes_url(release):
+    prefix = 'aurora' if release.channel == 'Aurora' else 'release'
+    if release.product == 'Firefox for Android':
+        return reverse('mobile.releasenotes', args=(release.version, prefix))
+    elif release.product == 'Firefox OS':
+        return reverse('firefox.os.releasenotes', args=[release.version])
+    else:
+        return reverse('firefox.releasenotes', args=(release.version, prefix))
+
+
+@jingo.register.filter
+def htmlattr(_list, **kwargs):
+    """
+    Assign an attribute to elements, like jQuery's attr function. The _list
+    argument is a BeautifulSoup iterable object. Note that such a code doesn't
+    work in a Jinja2 template:
+
+        {% set body.p['id'] = 'great' %}
+        {% set body.p['class'] = 'awesome' %}
+
+    Instead, use this htmlattr function like
+
+        {{ body.p|htmlattr(id='great', class='awesome') }}
+
+    """
+    for tag in _list:
+        for attr, value in kwargs.iteritems():
+            tag[attr] = value
+
+    return _list

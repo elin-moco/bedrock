@@ -39,5 +39,12 @@
                 }, 200);
             }, 200);
         });
+
+        $('#taiwan').waypoint(function() {
+            $(this).addClass('animate');
+        }, {
+            triggerOnce: true,
+            offset: 50
+        });
     }
 })(window.jQuery);

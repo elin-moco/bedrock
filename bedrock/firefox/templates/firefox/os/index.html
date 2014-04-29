@@ -1,27 +1,23 @@
 {# This Source Code Form is subject to the terms of the Mozilla Public
  # License, v. 2.0. If a copy of the MPL was not distributed with this
- # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
 {% extends "firefox/base-resp.html" %}
 
-{% block page_title_prefix %}Firefox OS － {% endblock %}
-{% block page_title %}開放網路行動作業系統{% endblock %}
-{% block page_desc %}Firefox OS  是由 HTML5, CSS, JavaScript 等網路技術所打造，搭配 WebAPI 網路標準，將行動網路的潛力完全釋放，打破現有封閉的行動平台架構，提供無縫的 Web Apps 體驗。Firefox OS 可依不同使用情境自訂需求，除了透過 Marketplace 提供全球知名的 Apps 應用程式之外，也提供最貼近使用者生活的在地化程式與服務內容。{% endblock %}
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}{{_('Firefox OS — The Adaptive Phone — Great Smartphone Features, Apps and More')}}{% endblock %}
+{% block page_desc %}{{_('Firefox OS smartphones give you great adaptive features and apps that let you live every moment to its fullest and build a brighter future for the Web.')}}{% endblock %}
 
 {% block body_id %}firefox-os{% endblock %}
 {% block body_class %}firefox-os{% endblock %}
 
 {% block string_data %}
-  {# L10n: This is the label for a button that closes a modal dialog #}
-  data-close="{{ _('Close') }}"
-{% endblock %}
-
-{% block site_css %}
-  {{ css('firefox_os') }}
+data-global-close="{{ _('Close') }}"
 {% endblock %}
 
 {% block extrahead %}
-{{ super() }}
+  {{ super() }}
+  {{ css('firefox_os') }}
 <!--[if lt IE 9]>
   {{ css('firefox_os_ie') }}
 <![endif]-->
@@ -31,24 +27,25 @@
   <header id="masthead">
     <div class="wrapper stuck">
       <div class="inner">
-        <a href="{{ url('mozorg.home') }}" id="tabzilla">Mozilla</a>
+        <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">{{ _('Mozilla') }}</a>
 
         {% block site_header_logo %}
-        <h2 id="ffos-main-logo"><a href="//{{ MOCO_URL }}" class="nav"><img src="{{ MEDIA_URL }}img/firefox/os/logo/firefox-os.png" alt="Firefox OS"></a></h2>
+        <h2 id="ffos-main-logo"><a href="#masthead" class="nav"><img src="{{ MEDIA_URL }}img/firefox/os/logo/firefox-os.png" alt="Firefox OS"></a></h2>
         {% endblock %}
         {% block site_header_nav %}
-            <span class="toggle" role="button" aria-controls="nav-main-menu" tabindex="0">{{_('Menu')}}</span>
             <nav id="nav-main" role="navigation">
+            <span class="toggle" role="button" aria-controls="nav-main-menu" tabindex="0">{{_('Menu')}}</span>
               <ul id="nav-main-menu">
                 <li class="first"><a class="nav" href="#adaptive-wrapper">{{_('The Adaptive Phone')}}</a></li>
                 <li><a class="nav" href="#have-it-all">{{_('The Features')}}</a></li>
-                <li class="last"><a class="nav" href="#mission">{{_('The Mission')}}</a></li>
+                <li><a class="nav" href="#mission">{{_('The Mission')}}</a></li>
+                <li class="last"><a href="{{ url('firefox.os.devices') }}">{{ _('The Devices') }}</a></li>
               </ul>
             </nav>
         {% endblock %}
         <div class="cta-button">
           <a id="secondary-cta-signup" href="#email-form-wrapper" class="button newsletter-signup-toggle">{{_('Sign me up')}}</a>
-          <a id="secondary-cta-phone" href="#get-phone" class="button-green">{{_('Get a phone')}}</a>
+          <a id="secondary-cta-phone" href="#get-device" class="button-green">{{_('Get a phone')}}</a>
         </div>
       </div>
     </div>
@@ -100,7 +97,7 @@
         <h2>{{_('Make every <br>moment count')}}</h2>
         <p>{{_('Your needs change from one moment to the next. That’s why Firefox OS does the same. It gives you the power to live every moment to its fullest and participate in a better world.')}}</p>
         <div id="primary-cta-phone">
-          <p><a class="button-green" href="#get-phone">{{_('Get a Firefox OS smartphone today')}}</a></p>
+          <p><a class="button-green" href="#get-device">{{_('Get a Firefox OS smartphone today')}}</a></p>
           <p class="small">{{_('Sign up for our monthly newsletter and get the latest on Firefox OS')}}</p>
           <a class="button newsletter-signup-toggle" href="#email-form-wrapper">{{_('Sign me up')}}</a>
         </div>
@@ -161,7 +158,7 @@
                 <li class="type" id="adapt-feature-type">{{_('Type a word or subject you’re interested in')}}</li>
                 <li class="results" id="adapt-feature-results">{{_('Find exactly what you want — and more')}}</li>
                 <li class="save" id="adapt-feature-save">{{_('Get instant access or save apps to your phone')}}</li>
-                <li class="discover" id="adapt-feature-discover">{{_('Discover more apps on the Firefox Marketplace')}}</li>
+                <li class="discover" id="adapt-feature-discover">{{_('Discover more apps on Firefox Marketplace')}}</li>
               </ul>
 
               <div class="adapt-feature-sprite" id="adapt-feature-sprite-plus"></div>
@@ -253,7 +250,7 @@
           <h2>{{_('Moments with friends')}}</h2>
           <p>{{_('Import your contacts directly from Facebook and share updates instantly.')}}</p>
         </div>
-        <img class="app center" id="contacts-app" src="{{ img_l10n('firefox/os/have-it-all/contacts.jpg') }}?2013-09" alt="{{_('Contacts app')}}">
+        <img class="app center" id="contacts-app" src="{{ l10n_img('firefox/os/have-it-all/contacts.jpg') }}?2013-09" alt="{{_('Contacts app')}}">
         <div class="content right">
           <ul class="icon-list">
             <li class="icon contacts"></li>
@@ -274,8 +271,8 @@
             <li class="icon gallery"></li>
           </ul>
         </div>
-        <img class="app center" id="photos-app" src="{{ img_l10n('firefox/os/have-it-all/photos.jpg') }}" alt="{{_('Photos app')}}">
-        <img class="app right" id="photos-edit-app" src="{{ img_l10n('firefox/os/have-it-all/photos-edit.jpg') }}" alt="{{_('Photos app')}}">
+        <img class="app center" id="photos-app" src="{{ l10n_img('firefox/os/have-it-all/photos.jpg') }}" alt="{{_('Photos app')}}">
+        <img class="app right" id="photos-edit-app" src="{{ l10n_img('firefox/os/have-it-all/photos-edit.jpg') }}" alt="{{_('Photos app')}}">
       </section>
     </div>
 
@@ -290,8 +287,8 @@
             <li class="icon videos"></li>
           </ul>
         </div>
-        <img class="app left" id="music-app" src="{{ img_l10n('firefox/os/have-it-all/music.jpg') }}?2013-09" alt="{{_('Music app')}}">
-        <img class="app center" id="radio-app" src="{{ img_l10n('firefox/os/have-it-all/radio.jpg') }}" alt="{{_('Radio app')}}">
+        <img class="app left" id="music-app" src="{{ l10n_img('firefox/os/have-it-all/music.jpg') }}?2013-09" alt="{{_('Music app')}}">
+        <img class="app center" id="radio-app" src="{{ l10n_img('firefox/os/have-it-all/radio.jpg') }}" alt="{{_('Radio app')}}">
       </section>
     </div>
 
@@ -304,7 +301,7 @@
             <li class="icon maps"></li>
           </ul>
         </div>
-        <img class="app right" id="maps-app" src="{{ img_l10n('firefox/os/have-it-all/maps.jpg') }}?2013-09" alt="{{_('Maps app')}}">
+        <img class="app right" id="maps-app" src="{{ l10n_img('firefox/os/have-it-all/maps.jpg') }}?2013-09" alt="{{_('Maps app')}}">
       </section>
     </div>
 
@@ -318,8 +315,8 @@
             <li class="icon messages"></li>
           </ul>
         </div>
-        <img class="app center" id="messages-app" src="{{ img_l10n('firefox/os/have-it-all/messages.jpg') }}" alt="{{_('Messages app')}}">
-        <img class="app right" id="mail-app" src="{{ img_l10n('firefox/os/have-it-all/mail.jpg') }}?2013-09" alt="{{_('Email app')}}">
+        <img class="app center" id="messages-app" src="{{ l10n_img('firefox/os/have-it-all/messages.jpg') }}" alt="{{_('Messages app')}}">
+        <img class="app right" id="mail-app" src="{{ l10n_img('firefox/os/have-it-all/mail.jpg') }}?2013-09" alt="{{_('Email app')}}">
       </section>
     </div>
 
@@ -332,7 +329,7 @@
             <li class="icon marketplace"></li>
           </ul>
         </div>
-        <img class="app left" id="marketplace-app" src="{{ img_l10n('firefox/os/have-it-all/marketplace.jpg') }}?2013-09" alt="{{_('Marketplace app')}}">
+        <img class="app left" id="marketplace-app" src="{{ l10n_img('firefox/os/have-it-all/marketplace.jpg') }}?2013-09" alt="{{_('Marketplace app')}}">
       </section>
     </div>
 
@@ -357,7 +354,7 @@
   </div>
 
   <section class="item container" id="best-of-the-web">
-    <img src="{{ img_l10n('firefox/os/foxy-splash.png') }}" alt="Firefox OS">
+    <img src="{{ l10n_img('firefox/os/foxy-splash.png') }}" alt="Firefox OS">
     <div class="content">
       <h2>{{_('The best of the Web')}}</h2>
       <p>{{_('Firefox changed browsing forever by putting users first and offering a new level of choice and innovation online. Now we’re doing it all over again with Firefox OS, while bringing the same superior browsing experience to your smartphone. So you can take control of your life online and get the best the Web has to offer no matter where you go.')}}</p>
@@ -366,6 +363,27 @@
 
   <div id="useful-links">
     <section class="item container">
+      <div class="column column-first">
+        <h3>{{_('For partners &amp; developers:')}}</h3>
+        <ul>
+          <li>
+            {% trans link=url('firefox.partners.index') %}
+            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="https://developer.mozilla.org/docs/Web/Apps/Publishing/Submitting_an_app" %}
+            Get your app on Firefox OS <a href="{{link}}">Submit it to Firefox Marketplace</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="/firefox/os/notes/" %}
+            View the version notes <a href="{{link}}">Read about features, changes and more</a>
+            {% endtrans %}
+          </li>
+        </ul>
+      </div>
+
       <div class="column">
         <h3>{{_('For users:')}}</h3>
         <ul>
@@ -379,77 +397,20 @@
             All your questions will be answered <a href="{{link}}">Read our extra helpful FAQ</a>
             {% endtrans %}
           </li>
-          <li>
-            {% trans link="/firefox/os/notes/" %}
-            View the version notes <a href="{{link}}">Read about features, changes and more</a>
-            {% endtrans %}
-          </li>
         </ul>
       </div>
-
-      <div class="column column-first">
-        <h3>{{_('For partners &amp; developers:')}}</h3>
-        <ul>
-          <li>
-            {% trans link=url('firefox.partners.index') %}
-            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
-            {% endtrans %}
-          </li>
-          <li>
-            {% trans link="https://developer.mozilla.org/zh-TW/docs/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F-840092-dup/Publishing/Submitting_an_app" %}
-            Get your app on Firefox OS <a href="{{link}}">Submit it to the Firefox Marketplace</a>
-            {% endtrans %}
-          </li>
-          <li>
-            免費下載 Firefox OS 模擬器
-            <a href="https://addons.mozilla.org/zh-TW/firefox/addon/firefox-os-simulator/?src=search">Firefox OS Simulator</a>
-          </li>
-          <li>
-            Firefox OS 研發部落格 <a href="//{{ TECH_URL }}">謀智台客</a>
-          </li>
-          <li>
-            下載 Firefox OS 相關文件
-            <a href="{{ media('docs/mocotw/WebAPIs.pdf') }}">Web APIs</a>
-            <a href="{{ media('docs/mocotw/business.pdf') }}">營運模式</a>
-          </li>
-        </ul>
-      </div>
-
     </section>
   </div>
 </div>
 
-<div id="get-phone-wrapper">
-  <div id="get-phone" class="modal-content">
-    <header>
-      <img src="{{ MEDIA_URL }}img/firefox/os/logo/firefox-os-white.png" alt="mozilla">
-      <button type="button" class="close"><span class="close-text">{{ _('Close') }}</span></button>
-    </header>
+{% include '/firefox/os/_get_device.html' %}
 
-    <div class="content">
-      <h2>{{_('We work with a number of providers to offer Firefox OS on a variety of devices.')}}</h2>
-
-      <p id="provider-text-nojs">
-        {% trans link="//support.mozilla.org/kb/firefox-os-faq"|safe %}
-        All your questions will be answered <a href="{{link}}">Read our extra helpful FAQ</a>
-        {% endtrans %}
-      </p>
-      <p id="provider-text-multi">{{_('Choose one from the list below to get a Firefox OS smartphone in your country.')}}</p>
-      <p id="provider-text-single">{{_('Click on the provider below to get a Firefox OS smartphone in your country.')}}</p>
-      <p id="provider-links"></p>
-    </div>
-  </div>
-</div>
 <div id="fb-root"></div>
 {% endblock %}
 
 {% block email_form %}
   <div id="email-form-wrapper">
     <div id="email-form-content" class="modal-content">
-      <header>
-        <img src="{{ MEDIA_URL }}img/firefox/os/logo/firefox-os-white.png" alt="mozilla">
-        <button type="button" class="close"><span class="close-text">{{ _('Close') }}</span></button>
-      </header>
       <div class="content">
         <div id="footer-email-thanks">
           <h3>{{ _('Thanks! Please check your inbox to confirm your subscription.') }}</h3>
@@ -461,14 +422,14 @@
           </p>
         </div>
 
-        {{ email_newsletter_form('mozilla-and-you,os', '訂閱 Firefox 電子報', include_country=False, include_language=False) }}
+        {{ email_newsletter_form(include_country=False, include_language=False) }}
       </div>
     </div>
   </div>
 {% endblock %}
 
 {% block site_js %}
-  {{ js('mozorg-resp') }}
+  {{ js('firefox-resp') }}
 {% endblock %}
 
 {% block js %}
