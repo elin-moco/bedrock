@@ -69,7 +69,27 @@
 
     <div class="pager-content">
 
-    <div class="pager-page default-page" id="promo-fox-comedy">
+    <div class="pager-page default-page" id="promo-glow2014">
+      <a href="https://webwewant.mozilla.org/zh-tw/" class="container">
+        <div class="content">
+          <h3>你想要什麼樣的網路？</h3>
+          <h4>在你使用 Firefox 時，就已經在協助我們塑造網路的未來。</h4>
+          <p class="go">分享你的觀點</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="pager-page" id="promo-fx29">
+      <a href="/firefox/desktop/" class="container">
+        <div class="content">
+          <h3>你想要什麼樣的網路？</h3>
+          <h4>Firefox 29 全新設計，提供更好的使用者體驗。</h4>
+          <p class="go">立即體驗</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="pager-page" id="promo-fox-comedy">
       <a href="//myfirefox.com.tw/videos/fox-comedy/" class="container">
         <div class="content">
           <h3>狐視先生的內心戲...</h3>
@@ -78,7 +98,7 @@
         </div>
       </a>
     </div>
-
+{#
     <div class="pager-page" id="promo-fsa">
       <a href="{{ url('mocotw.community.student.index') }}" class="container">
         <div class="content">
@@ -88,27 +108,7 @@
         </div>
       </a>
     </div>
-
-    <!--div class="pager-page" id="promo-lantern-festival">
-      <a href="https://firefox.club.tw/campaign/lantern-festival/" class="container">
-        <div class="content">
-          <h3>Firefox 元宵點燈</h3>
-          <h4>在充滿活力朝氣的馬年，Mozilla 為了感謝使用者的支持，邀請您進一步用行動加入打造網路光明未來的行列。</h4>
-          <p class="go">瞭解更多</p>
-        </div>
-      </a>
-    </div-->
-
-    <!--div class="pager-page" id="promo-2013review">
-      <a href="/2013-review/" class="container">
-        <div class="content">
-          <h3>Mozilla Taiwan 2013 精彩紀事</h3>
-          <h4>2013 年的精彩活動回顧，還有 Firefox 春聯可以下載喔！</h4>
-          <p class="go">瞭解更多</p>
-        </div>
-      </a>
-    </div-->
-
+#}
     <div class="pager-page" id="promo-firefoxos-lookahead">
       <a href="{{ url('firefox.os.index') }}" class="container">
         <div class="content">
@@ -116,17 +116,6 @@
           <h4>Firefox OS 讓你活在當下、盡情分享、共同打造 Web 的美好未來！</h4>
           <p class="go">瞭解更多</p>
         </div>
-      </a>
-    </div>
-
-    <div class="pager-page" id="promo-firefoxpage">
-      <a href="{{ url('firefox.download') }}" class="container">
-        <div class="content">
-          <h3>全新 Firefox</h3>
-          <h4>更快速、更流暢、全方位瀏覽器。</h4>
-          <p class="go">馬上下載</p>
-        </div>
-        {{ download_firefox(icon=False, small=True, force_full_installer=False, force_direct=True) }}
       </a>
     </div>
 
