@@ -160,14 +160,14 @@
     });
 
     // re-arrange news, partner button, & links if #overview
-    var $overview_news = $('#overview-news').detach();
-    $('#more-partners').after($overview_news);
-    $overview_news.fadeIn('fast');
-
-    var $overview_actions= $('#overview .overview-actions').detach();
-    $('#overview-news').after($overview_actions);
-    $overview_actions.fadeIn('fast');
-
+//    var $overview_news = $('#overview-news').detach();
+//    $('#more-partners').after($overview_news);
+//    $overview_news.fadeIn('fast');
+//
+//    var $overview_actions= $('#overview .overview-actions').detach();
+//    $('#overview-news').after($overview_actions);
+//    $overview_actions.fadeIn('fast');
+//
     var $overview_partner= $('#overview .partner-button').detach();
     $('#overview .partner-logos').after($overview_partner);
     $overview_partner.fadeIn('fast');

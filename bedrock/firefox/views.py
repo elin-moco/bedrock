@@ -14,8 +14,6 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.views.decorators.vary import vary_on_headers
 from django.views.generic.base import TemplateView
-from django.db.models import Q
-from rna.models import Release
 
 import basket
 from bedrock.mozorg.helpers.misc import releasenotes_url
@@ -395,30 +393,12 @@ class TourView(LatestFxView):
         return super(TourView, self).get(request, *args, **kwargs)
 
 
-def release_notes_template(channel, product):
-    if product == 'Firefox OS':
-        return 'firefox/releases/os-notes.html'
-    prefix = dict((c, c.lower()) for c in Release.CHANNELS)
-    return 'firefox/releases/%s-notes.html' % prefix.get(channel, 'release')
-
-
 def equivalent_release_url(release):
     equivalent_release = (release.equivalent_android_release() or
                           release.equivalent_desktop_release())
     if equivalent_release:
         return releasenotes_url(equivalent_release)
 
-
-def get_release_or_404(version, product):
-    if product == 'Firefox' and len(version.split('.')) == 3:
-        product_query = Q(product='Firefox') | Q(
-            product='Firefox Extended Support Release')
-    else:
-        product_query = Q(product=product)
-    release = get_object_or_404(Release, product_query, version=version)
-    if not release.is_public and not settings.DEV:
-        raise Http404
-    return release
 
 
 def get_download_url(channel='Release'):
@@ -434,30 +414,9 @@ def get_download_url(channel='Release'):
 
 @cache_page(15 * 60)
 def release_notes(request, fx_version, product='Firefox'):
-    if product == 'Firefox OS' and fx_version in ('1.0.1', '1.1', '1.2'):
-        return l10n_utils.render(
-            request, 'firefox/os/notes-%s.html' % fx_version)
-
-    try:
-        release = get_release_or_404(fx_version, product)
-    except Http404:
-        release = get_release_or_404(fx_version + 'beta', product)
-        return HttpResponseRedirect(releasenotes_url(release))
-
-    new_features, known_issues = release.notes()
-    return l10n_utils.render(
-        request, release_notes_template(release.channel, product), {
-            'version': fx_version,
-            'download_url': get_download_url(release.channel),
-            'release': release,
-            'equivalent_release_url': equivalent_release_url(release),
-            'new_features': new_features,
-            'known_issues': known_issues})
+    return HttpResponseRedirect('https://www.mozilla.org/en-US/%s' % request.path)
 
 
 @cache_page(15 * 60)
 def system_requirements(request, fx_version, product='Firefox'):
-    release = get_release_or_404(fx_version, product)
-    return l10n_utils.render(
-        request, 'firefox/releases/system_requirements.html',
-        {'release': release, 'version': fx_version})
+    return HttpResponseRedirect('https://www.mozilla.org/en-US/%s' % request.path)

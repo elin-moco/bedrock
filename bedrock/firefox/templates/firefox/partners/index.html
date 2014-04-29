@@ -99,22 +99,6 @@
 
           <p class="partner-button"><a href="https://mobilepartners.mozilla.org/" class="button">{{ _('Partner with us') }}</a></p>
 
-          <div id="overview-news-links">
-            <div id="overview-news-wrapper">
-              <img src="{{ media('img/firefox/partners/mwc-2014-banner.png') }}" alt="{{ _('Mobile World Congress 2014') }}">
-              <div id="overview-news">
-                <h3>{{ _('Recent news') }}</h3>
-                <ul>
-                  <li><a href="{{ locale_headline_url }}">{{ locale_headline_title }}</a></li>
-                </ul>
-              </div> <!--/#overview-news-->
-            </div> <!--/#overview-news-wrapper-->
-
-            <div id="overview-links">
-              <a class="fxos-devices-link" href="{{ url('firefox.os.devices') }}">{{ _('View available Firefox OS devices') }}</a>
-            </div> <!--/#overview-links-->
-          </div> <!--/#overview-news-links-->
-
           <div class="partner-logos">
             <div class="pager pager-with-tabs pager-no-history pager-auto-rotate">
               <div class="pager-content">
@@ -172,6 +156,23 @@
           </div><!--/partner-logos-->
 
           <p id="more-partners">{{_('See more partners') }}</p>
+
+          <div id="overview-news-links">
+            <div id="overview-news-wrapper">
+              <img src="{{ media('img/firefox/partners/mwc-2014-banner.png') }}" alt="{{ _('Mobile World Congress 2014') }}">
+              <div id="overview-news">
+                <h3>{{ _('Recent news') }}</h3>
+                <ul>
+                  <li><a href="{{ locale_headline_url }}">{{ locale_headline_title }}</a></li>
+                </ul>
+              </div> <!--/#overview-news-->
+            </div> <!--/#overview-news-wrapper-->
+
+            <div id="overview-links">
+              <a class="fxos-devices-link" href="{{ url('firefox.os.devices') }}">{{ _('View available Firefox OS devices') }}</a>
+            </div> <!--/#overview-links-->
+          </div> <!--/#overview-news-links-->
+
         </div>
       </div>
     </section>
