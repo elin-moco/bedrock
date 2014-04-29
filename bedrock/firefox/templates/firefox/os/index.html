@@ -363,26 +363,6 @@ data-global-close="{{ _('Close') }}"
 
   <div id="useful-links">
     <section class="item container">
-      <div class="column column-first">
-        <h3>{{_('For partners &amp; developers:')}}</h3>
-        <ul>
-          <li>
-            {% trans link=url('firefox.partners.index') %}
-            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
-            {% endtrans %}
-          </li>
-          <li>
-            {% trans link="https://developer.mozilla.org/docs/Web/Apps/Publishing/Submitting_an_app" %}
-            Get your app on Firefox OS <a href="{{link}}">Submit it to Firefox Marketplace</a>
-            {% endtrans %}
-          </li>
-          <li>
-            {% trans link="/firefox/os/notes/" %}
-            View the version notes <a href="{{link}}">Read about features, changes and more</a>
-            {% endtrans %}
-          </li>
-        </ul>
-      </div>
 
       <div class="column">
         <h3>{{_('For users:')}}</h3>
@@ -396,6 +376,39 @@ data-global-close="{{ _('Close') }}"
             {% trans link=url('firefox.os.faq') %}
             All your questions will be answered <a href="{{link}}">Read our extra helpful FAQ</a>
             {% endtrans %}
+          </li>
+        </ul>
+      </div>
+
+      <div class="column column-first">
+        <h3>{{_('For partners &amp; developers:')}}</h3>
+        <ul>
+          <li>
+            {% trans link=url('firefox.partners.index') %}
+            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="https://developer.mozilla.org/zh-TW/docs/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F-840092-dup/Publishing/Submitting_an_app" %}
+            Get your app on Firefox OS <a href="{{link}}">Submit it to Firefox Marketplace</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="/firefox/os/notes/" %}
+            View the version notes <a href="{{link}}">Read about features, changes and more</a>
+            {% endtrans %}
+          </li>
+          <li>
+            免費下載 Firefox OS 模擬器
+            <a href="https://addons.mozilla.org/zh-TW/firefox/addon/firefox-os-simulator/?src=search">Firefox OS Simulator</a>
+          </li>
+          <li>
+            Firefox OS 研發部落格 <a href="//tech.mozilla.com.tw">謀智台客</a>
+          </li>
+          <li>
+            下載 Firefox OS 相關文件
+            <a href="/media/docs/mocotw/WebAPIs.pdf">Web APIs</a>
+            <a href="/media/docs/mocotw/business.pdf">營運模式</a>
           </li>
         </ul>
       </div>

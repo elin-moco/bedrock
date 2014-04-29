@@ -1232,12 +1232,13 @@ html[lang="pl"] {
   overflow: visible;
   padding: (@baseLine * 4) 0;
   .column {
-    width: (@widthDesktop - (@gridGutterWidth * 2))/2;
+    width: (@widthDesktop - (@gridGutterWidth * 2));
     float: left;
   }
   .column-first {
-    width: ((@widthDesktop - (@gridGutterWidth * 2))/2) - @baseLine;
+    width: ((@widthDesktop - @gridGutterWidth * 2));
     margin-right: @baseLine;
+    margin-top: 40px;
   }
   h3 {
     font-size: 32px;
