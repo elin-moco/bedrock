@@ -342,6 +342,10 @@ MINIFY_BUNDLES = {
             'css/sandstone/sandstone-resp.less',
             'css/firefox/desktop/trust.less',
         ),
+        'firefox_desktop_taiwan': (
+            'css/sandstone/sandstone-resp.less',
+            'css/mocotw/firefox-desktop.less',
+        ),
         'installer_help': (
             'css/firefox/template-resp.less',
             'css/firefox/installer-help.less',
@@ -697,6 +701,11 @@ MINIFY_BUNDLES = {
             'js/firefox/desktop/speed-graph.js',
             'js/firefox/desktop/intro-anim.js',
             'js/firefox/desktop/index.js',
+        ),
+        'firefox_desktop_taiwan': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/firefox/desktop/common.js',
+            'js/mocotw/firefox-desktop.js',
         ),
         'geolocation': (
             'js/libs/jquery.nyroModal.pack.js',

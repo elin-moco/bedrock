@@ -16,6 +16,7 @@ sysreq_re = r'^firefox/(?P<version>%s)/system-requirements/$' % version_re
 
 urlpatterns = patterns(
     '',
+    page('firefox/desktop/taiwan', 'mocotw/firefox-desktop.html'),
     page('news', 'mocotw/news.html'),
     # page('about', 'mocotw/about/index.html'),
     page('about/manifesto', 'mocotw/about/manifesto.html'),
