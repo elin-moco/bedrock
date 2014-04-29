@@ -286,6 +286,13 @@ class LatestFxView(TemplateView):
                                      **response_kwargs)
 
 
+def isAustralis(version):
+    if version:
+        v = version.split('.')[0]
+        return v.isdigit() and int(v) >= 29
+    return False
+
+
 class FirstrunView(LatestFxView):
 
     def get(self, request, *args, **kwargs):
@@ -298,12 +305,12 @@ class FirstrunView(LatestFxView):
         return super(FirstrunView, self).get(request, *args, **kwargs)
 
     def get_template_names(self):
-        version = self.kwargs.get('fx_version')
+        version = self.args[0]
         locale = l10n_utils.get_locale(self.request)
         fc_ctx = funnelcake_param(self.request)
         f = fc_ctx.get('funnelcake_id', 0)
 
-        if (version == '29.0' and locale == 'en-US'):
+        if isAustralis(version):
             if f == '30':
                 template = 'firefox/australis/firstrun-no-tour.html'
             elif f == '31':
@@ -311,7 +318,7 @@ class FirstrunView(LatestFxView):
             else:
                 template = 'firefox/australis/firstrun-tour.html'
         else:
-            template = 'firefox/australis/firstrun-tour.html'
+            template = 'firefox/australis/firstrun-no-tour.html'
 
         # return a list to conform with original intention
         return [template]
@@ -354,23 +361,18 @@ class WhatsnewView(LatestFxView):
         return ctx
 
     def get_template_names(self):
-        version = self.kwargs.get('fx_version')
+        version = self.args[0]
         locale = l10n_utils.get_locale(self.request)
         fc_ctx = funnelcake_param(self.request)
         f = fc_ctx.get('funnelcake_id', 0)
 
-        if (version == '29.0' and locale == 'en-US'):
+        if isAustralis(version):
             if f == '30':
                 template = 'firefox/australis/whatsnew-no-tour.html'
             elif f == '31':
                 template = 'firefox/australis/whatsnew-tour.html'
             else:
                 template = 'firefox/australis/whatsnew-tour.html'
-        elif version == '29.0':
-            # non en-US locales always get the tour
-            template = 'firefox/australis/whatsnew-tour.html'
-        elif version == '29.0a1':
-            template = 'firefox/whatsnew-nightly-29.html'
         elif locale in self.fxos_locales:
             template = 'firefox/whatsnew-fxos.html'
         else:
