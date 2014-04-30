@@ -198,7 +198,6 @@
                 }
             }
         });
-*/
         if (hash_change && !no_scene2) {
             $(window).on('hashchange', function() {
                 if (window.location.hash === '#download-fx') {
@@ -209,6 +208,7 @@
                 }
             });
         }
+*/
 
         $(window).on('load', function() {
             // Add CSS class that allows scene2 images to load. Done on ready()
@@ -216,6 +216,7 @@
             $('body').addClass('ready-for-scene2');
 
             // initiate download/scene2 if coming directly to #download-fx
+            /*
             if (window.location.hash === '#download-fx') {
                 if (no_scene2) {
                     // if using latest Firefox or an unsupported platform just
@@ -237,6 +238,7 @@
                     }, 1500);
                 }
             }
+            */
         });
     });
 
