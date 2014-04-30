@@ -6,7 +6,7 @@
 
 {% block page_title_prefix %}{% endblock %}
 {% block page_title %}{{ _("Firefox Web browser — Trusted, Flexible, Fast — There's never been a better time") }}{% endblock %}
-
+{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/firefox/desktop/fb-overview.png') }}{% endblock %}
 {% block site_css %}
   {{ css('firefox_desktop') }}
 {% endblock %}
