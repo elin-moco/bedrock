@@ -16,6 +16,17 @@ html, body {
     min-width: @widthDesktop;
 }
 
+
+#tabzilla {
+  z-index: 1000;
+  margin-top: -2px;
+  .transition(all 0.2s ease-in-out);
+}
+
+#tabzilla.tabzilla-opened {
+  margin-top: 208px;
+}
+
 #outer-wrapper {
     background: #fff;
 }
