@@ -927,6 +927,78 @@
 
 @media (max-width: @breakDesktop) and (min-width: @breakTablet) {
 
+    #myfx, #myshelf, #videos {
+        .content-visual {
+            width: 360px;
+        }
+    }
+
+    #screenshot {
+        .content-visual {
+            width: 290px;
+        }
+    }
+    #tabconf {
+        .content-visual {
+            width: 400px;
+        }
+    }
+    #feedback {
+        .content-visual {
+            width: 240px;
+        }
+    }
+    #safety {
+        .content-visual {
+            width: 260px;
+        }
+    }
+    #theme {
+        .content-visual {
+            width: 280px;
+        }
+    }
+    #font {
+        .content-visual {
+            width: 300px;
+        }
+    }
+
+    .js .feature-list {
+        &.myshelf:after, &.screenshot:after {
+            left: 331px;
+        }
+
+        &.videos:after, &.tabconf:after {
+            left: 577px;
+        }
+    }
+
+    #tool-content .feature-list {
+        li {
+            width: 160px;
+        }
+        &:after {
+            left: 52px;
+        }
+        &.feedback:after {
+            left: 52px;
+        }
+
+        &.safety:after {
+            left: 232px;
+        }
+
+        &.theme:after {
+            left: 412px;
+        }
+
+        &.font:after {
+            left: 592px;
+        }
+
+    }
+
     .feature-list li a {
         background-position: -328px top;
 
@@ -1018,13 +1090,124 @@
         }
 
         .feature-list li a {
-            padding-top: 180px;
+//            padding-top: 180px;
             background-image: url(/media/img/firefox/desktop/customize/sprite-contents.png);
         }
     }
 }
 
 @media (max-width: @breakTablet) {
+
+    #myfx-content {
+      display: none;
+    }
+    #util-content {
+      display: none;
+    }
+    #tool-content {
+      display: none;
+    }
+
+    #main-content {
+        .content {
+            padding-top: 30px;
+        }
+        #myfx {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-1-1-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+
+        #myshelf {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-1-2-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+
+        #videos {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-1-3-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+
+        #newtab {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-2-1-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+
+        #screenshot {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-2-2-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+        #tabconf {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-2-3-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+        #feedback {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-3-1-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+        #safety {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-3-2-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+        #theme {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-3-3-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+        #font {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-3-4-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+    }
+
     // unset nav pointer
     #nav-main-customize:after {
         display: none;

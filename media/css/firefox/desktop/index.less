@@ -102,7 +102,8 @@
 }
 
 #tw-circle {
-  background: url(/media/img/mocotw/firefox/desktop/bg.png);
+  background: url(/media/img/mocotw/firefox/desktop/bg.png) no-repeat;
+  background-size: 100% auto;
   display: block;
   width: 533px;
   height: 533px;
@@ -1233,6 +1234,84 @@
             bottom: auto;
             left: auto;
             width: auto;
+        }
+    }
+
+    #taiwan {
+        .container {
+            width: 640px;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    #taiwan {
+        height: 400px;
+
+        .container {
+            width: 320px;
+            padding-top: 30px;
+        }
+        #tw-circle {
+            width: 260px;
+            height: 260px;
+            h2 {
+              padding-top: 100px;
+            }
+        }
+        .emblemSmall {
+            width: 60px;
+            height: 60px;
+        }
+        #tw-emblem-1 {
+          .emblemSmall;
+          top: 5px;
+          margin-left: -33px;
+        }
+        #tw-emblem-2 {
+          .emblemSmall;
+          top: 25px;
+          margin-left: 40px;
+        }
+        #tw-emblem-3 {
+          .emblemSmall;
+          top: 85px;
+          margin-left: 85px;
+        }
+        #tw-emblem-4 {
+          .emblemSmall;
+          top: 160px;
+          margin-left: 85px;
+        }
+        #tw-emblem-5 {
+          .emblemSmall;
+          top: 225px;
+          margin-left: 40px;
+        }
+        #tw-emblem-6 {
+          .emblemSmall;
+          top: 250px;
+          margin-left: -33px;
+        }
+        #tw-emblem-7 {
+          .emblemSmall;
+          top: 225px;
+          margin-right: 40px;
+        }
+        #tw-emblem-8 {
+          .emblemSmall;
+          top: 160px;
+          margin-right: 85px;
+        }
+        #tw-emblem-9 {
+          .emblemSmall;
+          top: 85px;
+          margin-right: 85px;
+        }
+        #tw-emblem-10 {
+          .emblemSmall;
+          top: 25px;
+          margin-right: 40px;
         }
     }
 }
