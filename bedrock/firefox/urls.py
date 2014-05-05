@@ -22,7 +22,7 @@ sysreq_re = latest_re % (version_re, 'system-requirements')
 
 
 urlpatterns = patterns('',
-    #redirect(r'^firefox/$', 'firefox.new', name='firefox'),
+    redirect(r'^firefox/$', 'firefox.new', name='firefox'),
     url(r'^firefox/all/$', views.all_downloads, name='firefox.all'),
     # page('firefox/central', 'firefox/central.html'),
     page('firefox/channel', 'firefox/channel.html'),

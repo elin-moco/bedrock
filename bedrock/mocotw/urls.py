@@ -63,7 +63,7 @@ urlpatterns = patterns(
     redirect(r'^firefox/help/$', 'https://support.mozilla.org/zh-TW/products/firefox'),
 
     page('firefox/mobile', 'firefox/fx.html'),
-    redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
+    # redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
     redirect(r'^firefox/features/$', '/firefox/desktop/', name='firefox.features'),
     redirect(r'^firefox/customize/$', '/firefox/desktop/customize/', name='firefox.customize'),
     redirect(r'^firefox/security/$', '/firefox/desktop/trust/', name='firefox.security'),
