@@ -240,7 +240,7 @@ MINIFY_BUNDLES = {
         'firefox_faq': (
             'css/firefox/faq.less',
             'css/firefox/template-resp.less',
-            'css/base/mozilla-expanders.less',
+            'css/base/mozilla-accordion.less',
         ),
         'firefox_sync': (
             'css/firefox/sync.less',
@@ -676,7 +676,7 @@ MINIFY_BUNDLES = {
             'js/firefox/os/mwc-2014-preview.js',
         ),
         'firefox_faq': (
-            'js/base/mozilla-expanders.js',
+            'js/base/mozilla-accordion.js',
         ),
         'firefox_speed': (
             'js/firefox/speed.js',
