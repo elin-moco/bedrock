@@ -232,6 +232,8 @@ def home(request, template):
             techData = json.loads(urllib2.urlopen(techApiUrl).read())['posts']
             posts = sorted(blogData+techData, key=lambda k: k['date'], reverse=True)
             for post in posts:
+                if post['url'].startswith('https'):
+                    post['url'] = 'http%s' % post['url'][5:]
                 post['date'] = datetime.strptime(post['date'], '%Y-%m-%d %H:%M:%S').strftime('%Y/%m/%d')
             cache.set('home-posts', posts, 60*60*24)
         except Exception as e:
