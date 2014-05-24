@@ -24,11 +24,13 @@ sitemaps = {
         ['mozorg.home'],
         0.9, 'weekly'),
     'firefox': ViewsSitemap(
-        ['firefox.fx', 'firefox.features', 'firefox.mobile.features', 'firefox.download', 'firefox.os.index'],
+        ['firefox.desktop.index', 'firefox.desktop.fast', 'firefox.desktop.customize', 'firefox.desktop.trust',
+         'mocotw.firefox-desktop',
+         'firefox.fx', 'firefox.features', 'firefox.mobile.features', 'firefox.download', 'firefox.os.index'],
         0.8, 'monthly'),
     'firefox_details': ViewsSitemap(
         ['firefox.customize', 'firefox.performance', 'firefox.technology', 'firefox.security',
-         'firefox.faq', 'firefox.ueip', 'firefox.mobile.faq', 'firefox.mobile.sync',
+         'firefox.faq', 'firefox.ueip', 'firefox.mobile.faq',
          'firefox.partners.index', 'firefox.os.faq',
          'firefox.all', 'firefox.channel',
          'firefox.dnt', 'firefox.phishing-protection', 'firefoxflicks.list', 'mozorg.plugincheck',
@@ -47,7 +49,8 @@ sitemaps = {
         ['/community/'],
         0.5, 'monthly'),
     'newsletter': PathsSitemap(
-        ['/newsletter/2014-04-14/', '/newsletter/2014-03-31/', '/newsletter/2014-03-17/',
+        ['/newsletter/2014-05-14/',
+         '/newsletter/2014-04-30/', '/newsletter/2014-04-14/', '/newsletter/2014-03-31/', '/newsletter/2014-03-17/',
          '/newsletter/2014-02/', '/newsletter/2014-01/', '/newsletter/2013-12/', '/newsletter/2013-11/',
          '/newsletter/2013-10/', '/newsletter/2013-09/', '/newsletter/2013-08/', '/newsletter/2013-07/',
          '/newsletter/2013-06/', '/newsletter/2013-05/', '/newsletter/2013-04/', '/newsletter/2013-03/',
