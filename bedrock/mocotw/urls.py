@@ -12,7 +12,7 @@ from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
 
-sysreq_re = r'^firefox/(?P<version>%s)/system-requirements/$' % version_re
+sysreq_re = r'^firefox/(?P<version>(%s|[a-z]+))/system-requirements/$' % version_re
 
 urlpatterns = patterns(
     '',
@@ -63,7 +63,9 @@ urlpatterns = patterns(
     redirect(r'^firefox/all-aurora.html$', '//www.mozilla.org/en-US/firefox/all-aurora.html'),
     redirect(r'^firefox/help/$', 'https://support.mozilla.org/zh-TW/products/firefox'),
     redirect(r'^privacy/$', '//www.mozilla.org/en-US/privacy/'),
+    redirect(r'^privacy-policy.html$', '//www.mozilla.org/en-US/privacy/websites/'),
     redirect(r'^about/legal.html$', '//www.mozilla.org/en-US/about/legal.html'),
+    redirect(r'^thunderbird/$', '//www.mozilla.org/en-US/thunderbird/'),
 
     page('firefox/mobile', 'firefox/fx.html'),
     # redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
