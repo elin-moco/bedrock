@@ -1,0 +1,91 @@
+[Firefox OS 電子報 Vol. 21 - 年月號]
+(http://mozilla.com.tw/newsletter/2014-05-14/)
+
+[最新版 Firefox OS 已可支援廣受使用者期待的雙卡雙待功能，同時也加入更多如連續自動對焦等相機功能，並可直接存取音樂。此外，新版本也進一步支援更多 3D 繪圖與遊戲功能。]
+(http://blog.mozilla.com.tw/posts/5533/firefox-os-update-adds-new-features-including-dual-sim-support-and-enhancements-for-music-lovers-and-gamers)
+
+
+[Firefox 免費下載]
+(http://mozilla.com.tw/firefox/download/)
+
+
+分享電子報至
+
+[Facebook]
+(http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-05-14%2F&p[images][0]=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-05-14%2Fimages%2Fmainpic.png&p[title]=%E6%9C%80%E6%96%B0%E7%89%88+Firefox+OS+%E5%8F%AF%E6%94%AF%E6%8F%B4%E9%9B%99+SIM+%E5%8D%A1%E5%BE%85%E6%A9%9F%E3%80%81%E6%96%B0+Firefox+Sync+%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD%E7%B0%A1%E5%96%AE%E5%8F%88%E5%AE%89%E5%85%A8)
+[Google+]
+(https://plus.google.com/share?url=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-05-14%2F)
+[Plurk]
+(http://www.plurk.com/?qualifier=shares&status=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-05-14%2F%28%E6%9C%80%E6%96%B0%E7%89%88+Firefox+OS+%E5%8F%AF%E6%94%AF%E6%8F%B4%E9%9B%99+SIM+%E5%8D%A1%E5%BE%85%E6%A9%9F%E3%80%81%E6%96%B0+Firefox+Sync+%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD%E7%B0%A1%E5%96%AE%E5%8F%88%E5%AE%89%E5%85%A8%29)
+[Email]
+(mailto:?subject=最新版 Firefox OS 可支援雙 SIM 卡待機、新 Firefox Sync 同步功能簡單又安全&body=詳見 Firefox 電子報第 21 期：http://mozilla.com.tw/newsletter/2014-05-14/)
+
+[訂閱電子報](http://mozilla.com.tw/join_us/)
+
+
+最新消息
+
+[來量量手機的耗電量](http://blog.mozilla.com.tw/posts/5432/measuring-power-consumption-on-phones)
+在了解並測量手機的相關運作參數時，會接觸到許多有關耗電量的資訊。FxOS Powertool! 可協助針對耗電量的部份，進行 App 的最佳化。
+[最新版 Firefox 提升的 asm.js 效能讓遊戲飛也似的執行！](http://blog.mozilla.com.tw/posts/5519/asm-js-performance-improvements)
+新版 Firefox 提升的 asm.js 效能，讓遊戲飛也似的執行! 現在可體驗用它執行 Unity 最新展示遊戲的超快速神奇效果! 
+[Firefox Marketplace：App 測試與疑難排解](http://blog.mozilla.com.tw/posts/5529/app-testing-and-troubleshooting)
+在完成自己的 App 作品之後，接下來要進行某些測試並解決各種疑難雜症。本文將說明 App 測試與疑難排解時的注意事項。
+[Firefox 大改版 - 隱私瀏覽](http://myfirefox.com.tw/videos/22756)
+新版 Firefox 是自 Firefox 4 三年以來最大幅度的改版! 使用隱私瀏覽視窗瀏覽網頁，個人的瀏覽記錄將不會被保留，與人共用電腦時不用擔心瀏覽­記錄外洩。
+[Mozilla UX Team大解密](http://tech.mozilla.com.tw/posts/4559/mozilla-ux-team%E5%A4%A7%E8%A7%A3%E5%AF%86)
+想了解 UX (User Experience) 是什麼嗎? 你聽過 UX 但對他一知半解嗎? 你是 UX 設計師但你想知道跨國型的 UX 團隊怎麼玩? 台客 Harly 為你帶來趣味性十足又具知識性的文章!
+[Firefox Sync 的新安全模式](http://blog.mozilla.com.tw/posts/5565/firefox-syncs-new-security-model)
+Firefox 29 提供全新的 Firefox Sync 同步功能經驗。除了更簡單易用之外，更保留了 Mozilla 既有的高標準安全性與開放性。
+
+
+好康下載
+[二十四節氣 - 小滿 / 24 Solar Term - Grain Full ]
+(https://addons.mozilla.org/zh-tw/firefox/addon/24-solar-term-grain-full/)
+
+
+與我同行
+
+[校園大使](http://mozilla.com.tw/community/student/)
+
+[謀智台客](http://tech.mozilla.com.tw/)
+
+[MDN](http://developer.mozilla.org/)
+
+[活力軍](http://firefox.club.tw)
+
+[支援中心](http://mozilla.com.tw/sumo)
+
+[狐電視](http://myfirefox.com.tw/videos/)
+
+[MyFirefox](http://myfirefox.com.tw)
+
+[火狐商城](http://tw.mall.yahoo.com/store/firefox)
+
+
+
+[mozilla](http://mozilla.org/en-US/)
+
+
+與我們為友
+
+[Facebook](https://www.facebook.com/MozillaTaiwan)
+
+[Google+](https://plus.google.com/u/0/114653167240123163859/posts)
+
+[Plurk](http://plurk.com/MozillaTaiwan)
+
+[Youtube](http://www.youtube.com/user/MozillaTaiwan)
+
+[Flickr](http://www.flickr.com/photos/mozillataiwan/)
+
+[電子報](http://mozilla.com.tw/join_us/)
+
+
+Mozilla Taiwan | 美商謀智 | mozilla.com.tw
+
+[聯繫我們](mailto:mozilla-tw@mozilla.com)
+
+除另有註明外，本站內容皆採用
+[創用 CC 姓名標示—相同方式分享條款 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+或更新版本授權大眾使用。

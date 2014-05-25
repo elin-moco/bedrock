@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html xml:lang="zh-TW" lang="zh-TW">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="新版本介面全面更新，使用者將能更迅速完成瀏覽作業；新自訂功能讓使用者創造自我風格 Firefox。
+
+首度內建的 Firefox Accounts 功能，大幅簡化登入方式，使用者能跨越不同行動裝置界限，輕鬆獲取 Mozilla 各項產品的內建服務。">
+<title>Firefox 電子報第 20 期 － 更好的 Firefox 全新設計隆重登場，Firefox OS App 系列影片教你如何測試你的 App (中文字幕) － Mozilla Taiwan</title>
+<style>
+* {
+  font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
+  letter-spacing: 0.06em;
+}
+
+body {
+  margin: 0;
+  background-color: #CAE1F4;
+    background: url("http://mozilla.com.tw/media/img/sandstone/bg-gradient-sky.png") repeat-x scroll 0 0px, url("http://mozilla.com.tw/media/img/sandstone/grain.png") repeat scroll 0 0px, none repeat scroll 0 0 rgb(238, 238, 238);
+  }
+
+table, thead, tbody, tr, td {
+  border-collapse: collapse;
+  padding: 0;
+}
+
+a, a img {
+  outline: none;
+}
+
+img {
+  border: 0;
+}
+
+a, a p, a p b {
+  text-decoration: none;
+  border-width: 0;
+}
+
+b, p b {
+  color: #000000;
+}
+
+td, p, a {
+  color: #4D4E53;
+}
+
+table.container {
+  width: 700px;
+  margin: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+a.web-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+td.header-tip {
+  text-align: center;
+}
+td.header-tip small{
+  color: #808080;
+  text-decoration: underline;
+}
+table.header {
+  margin: 0 auto 8px auto;
+  width: 653px;
+  font-weight: bold;
+  color: #4D4E53;
+  font-size: 12px;
+}
+
+table.banner, table.content, table.downloads, table.links, table.quiz {
+  width: 653px;
+  margin: 0 auto 0 auto;
+}
+
+table.downloads {
+  font-size: 12px;
+}
+
+table.downloads p {
+  margin: 0;
+}
+
+table.banner td.main {
+  padding-right: 11px;
+  font-size: 16px;
+  line-height: 21px;
+}
+table.banner td.main a{
+  display: block;
+}
+table.banner td {
+  vertical-align: top;
+}
+
+table.banner b {
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+table.social-share {
+  background: #ffffff;
+  width: 140px;
+  height: 138px;
+  margin-top: 8px;
+  margin-bottom: 13px;
+}
+
+table.social-share td {
+  font-size: 13px;
+  vertical-align: top;
+  padding-left: 8px;
+  line-height: 25px;
+}
+
+table.social-share td a {
+  display: block;
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+table.social-share td img {
+  vertical-align: middle;
+  padding: 0 6px 0 0;
+  margin: 0;
+}
+
+table.social-share td.head {
+  height: 25px;
+  border-bottom: 1px dotted #4D4E53;
+  font-weight: bold;
+}
+table.social-share td.link {
+  height: 28px;
+}
+
+td.subscribe img{
+  width: 140px;
+  height: 36px;
+}
+
+td.subscribe a {
+  color: #ffffff;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+table.header td.logo {
+  padding-top: 7px;
+}
+
+table.header td.issue {
+  text-align: right;
+  padding-top: 7px;
+}
+
+span.volume {
+  font-size: 42px;
+  line-height: 24px;
+}
+
+td.section-header {
+  text-align: center;
+}
+td.section-header img{
+  width: 653px;
+  height: 23px;
+  padding-top: 23px;
+  padding-bottom: 12px;
+}
+
+td.article-box {
+  display: inline-block;
+  width: 194px;
+  vertical-align: top;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+td.article-box p {
+  margin: 0;
+}
+
+td.article-box a.article-link {
+  display: block;
+  height: 215px;
+}
+
+td.padright {
+}
+
+td.padbottom {
+  padding-bottom: 18px;
+}
+
+td.padleft2 {
+  padding-left: 9px;
+}
+
+td.padright2 {
+  padding-right: 9px;
+}
+
+td.padbottom2 {
+  padding-bottom: 9px;
+}
+
+td.article-box img {
+  width: 194px;
+  height: 128px;
+}
+
+td p.quiz {
+  color: #000000;
+  font-size: 16px;
+  line-height: 21px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+td ol.answer {
+  color: #000000;
+  font-size: 16px;
+  line-height: 21px;
+  list-style-type: upper-alpha;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+td ol.answer a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+td p.deadline {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 23px;
+}
+td p.deadline #quiz-deadline{
+  font-weight: bold;
+}
+table.footer {
+  background: #ffffff;
+  width: 100%;
+}
+
+table.footer-content {
+  width: 653px;
+  margin: auto;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+td.mozilla-col {
+  padding-right: 20px;
+}
+td.mozilla-col img {
+  width: 80px;
+  height: 20px;
+}
+td.social-col, td.about-col {
+  vertical-align: top;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  text-wrap: none;
+}
+td.social-col {
+  padding-right: 8px;
+}
+table.footer td.friend,
+table.footer table.social-media td,
+table.footer td.official,
+table.footer td.contact,
+table.footer td.license {
+  padding-bottom: 8px;
+  padding-right: 12px;
+}
+table.footer td.license {
+  font-size: 10px;
+}
+
+.articles > tbody > tr {
+  display: inline;
+}
+.articles .article-box {
+  padding-left: 17px;
+  padding-right: 17px;
+  text-align: left;
+}
+table.content {
+  width: 700px;
+  font-size: 0;
+  text-align: center;
+}
+table.links {
+  margin-bottom: 20px;
+}
+</style>
+<script>
+var _gaq = _gaq || [];
+var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+_gaq.push(['_setAccount', 'UA-28913145-1']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_setAllowAnchor', true]);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+
+    var prefix = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www');
+    ga.src = prefix + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body>
+<table class="container">
+  <tr>
+    <td>
+        <table class="header">
+                              <tr>
+            <td class="logo">
+              <a class="web-link" href="http://mozilla.com.tw">
+                <img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/header.png ">
+              </a>
+            </td>
+            <td class="issue">
+              <a class="web-link" href="http://mozilla.com.tw/newsletter/2014-04-30/">
+              Vol. <span id="volume" class="volume" title="期號" data-for="id_volume">20</span><br>
+              <span id="issue" class="date" title="日期" data-for="id_issue">2014年04月30號</span>
+              </a>
+            </td>
+          </tr>
+        </table>
+      <table class="banner">
+        <tr>
+          <td class="main">
+            <a href="http://mozilla.com.tw/firefox/desktop/" target="_blank">
+              <img id="banner" width="502" height="203" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/0430-mainpic_3.png"/>
+              <b id="banner-title" title="看板說明">
+                新版本介面全面更新，使用者將能更迅速完成瀏覽作業；新自訂功能讓使用者創造自我風格 Firefox。
+
+首度內建的 Firefox Accounts 功能，大幅簡化登入方式，使用者能跨越不同行動裝置界限，輕鬆獲取 Mozilla 各項產品的內建服務。
+              </b>
+                          </a>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  <a href="http://mozilla.com.tw/firefox/download/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/button-downloadfirefox.png"/></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="social-share">
+                    <tr>
+                      <td class="head">分享電子報至</td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2F&p[images][0]=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2Fimages%2Fmainpic.png&p[title]=%E6%9B%B4%E5%A5%BD%E7%9A%84+Firefox+%E5%85%A8%E6%96%B0%E8%A8%AD%E8%A8%88%E9%9A%86%E9%87%8D%E7%99%BB%E5%A0%B4%EF%BC%8CFirefox+OS+App+%E7%B3%BB%E5%88%97%E5%BD%B1%E7%89%87%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E6%B8%AC%E8%A9%A6%E4%BD%A0%E7%9A%84+App+%28%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95%29" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/button-sharefb.png"/>Facebook</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="https://plus.google.com/share?url=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2F" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/button-sharegoogle.png"/>Google+</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="http://www.plurk.com/?qualifier=shares&status=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2F(%E6%9B%B4%E5%A5%BD%E7%9A%84+Firefox+%E5%85%A8%E6%96%B0%E8%A8%AD%E8%A8%88%E9%9A%86%E9%87%8D%E7%99%BB%E5%A0%B4%EF%BC%8CFirefox+OS+App+%E7%B3%BB%E5%88%97%E5%BD%B1%E7%89%87%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E6%B8%AC%E8%A9%A6%E4%BD%A0%E7%9A%84+App+%28%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95%29)" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/button-shareplurk.png"/>Plurk</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="link"><a href="mailto:?subject=更好的 Firefox 全新設計隆重登場，Firefox OS App 系列影片教你如何測試你的 App (中文字幕)&body=詳見 Firefox 電子報第 20 期：http://mozilla.com.tw/newsletter/2014-04-30/"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/button-sharemail.png"/>Email</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="subscribe">
+                  <a href="http://mozilla.com.tw/join_us/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/button-downloadnewsletter-withtext.png"/></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/menu-news.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="content articles">
+                              <tr>
+                  <td class="article-box padright padbottom" data-index="1">
+          <a class="article-link" target="_blank" href="http://blog.mozilla.com.tw/posts/5424/powerful-tools-for-developing-web-apps">
+                        <img id="article-thumb-1" class="article-thumb" width="194" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/tagged/0430-subpic1-194x128.png"/>
+            <p>
+              <b><span id="article-title-1" class="article-title" title="文章標題">募集強大的 Web App 開發工具</span> » </b>
+              <span id="article-desc-1" class="article-desc" title="文章說明">Mozilla 正集結核心工具，要推薦給 Web App 開發者，協助大家能順利的開發出作品。其工具將囊括目前 Web App 核心所用的工具鏈，詳細內容將公告於 MDN 上。</span>
+            </p>
+          </a>
+                  </td>
+                                  <td class="article-box padright padbottom" data-index="2">
+          <a class="article-link" target="_blank" href="http://tech.mozilla.com.tw/posts/4243/">
+                        <img id="article-thumb-2" class="article-thumb" width="194" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/tagged/0430-subpic2-194x128.png"/>
+            <p>
+              <b><span id="article-title-2" class="article-title" title="文章標題">我也想成為 mozillian！ Part 2 – 你也來Try Try 看</span> » </b>
+              <span id="article-desc-2" class="article-desc" title="文章說明">Try server 是跑自動測試的地方，TBPL 則是用來顯示測試結果的工具，透過台客 jwwang 的介紹，你將對軟體開發的自動測試有進一步了解。</span>
+            </p>
+          </a>
+                  </td>
+                                  <td class="article-box  padbottom" data-index="3">
+          <a class="article-link" target="_blank" href="http://blog.mozilla.com.tw/posts/5395/rormix">
+                        <img id="article-thumb-3" class="article-thumb" width="194" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/tagged/0430-subpic3-194x128.png"/>
+            <p>
+              <b><span id="article-title-3" class="article-title" title="文章標題">Rormix – 透過 Firefox OS 找到正夯的音樂影片</span> » </b>
+              <span id="article-desc-3" class="article-desc" title="文章說明">Rormix 耗時一個月完成 iOS 與 Android 版本，並僅用「一天」的時間移植到 Firefox OS 上!快來看看這有趣的開發過程。</span>
+            </p>
+          </a>
+                  </td>
+                  </tr>
+                                      <tr>
+                  <td class="article-box padright padbottom" data-index="4">
+          <a class="article-link" target="_blank" href="http://myfirefox.com.tw/videos/21764">
+                        <img id="article-thumb-4" class="article-thumb" width="194" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/tagged/0430-subpic4-194x128.png"/>
+            <p>
+              <b><span id="article-title-4" class="article-title" title="文章標題">懷抱未來的希望</span> » </b>
+              <span id="article-desc-4" class="article-desc" title="文章說明">Mozilla 投入行動事業，期望讓行動網路普及於民，世界上有更多人得以接觸到 web 的好。一同來看看 Mozilla 對未來的想像。</span>
+            </p>
+          </a>
+                  </td>
+                                  <td class="article-box padright padbottom" data-index="5">
+          <a class="article-link" target="_blank" href="http://blog.mozilla.com.tw/posts/5290/testing-in-the-simulator">
+                        <img id="article-thumb-5" class="article-thumb" width="194" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/tagged/0430-subpic5-194x128.png"/>
+            <p>
+              <b><span id="article-title-5" class="article-title" title="文章標題">Firefox OS App 系列影片 (3)：在模擬器中測試</span> » </b>
+              <span id="article-desc-5" class="article-desc" title="文章說明">入門 Firefox OS 最簡單的方法為使用「應用程式管理員」，它能協助你安裝並測試開發中的 App，並即時觀看修改之後的結果。</span>
+            </p>
+          </a>
+                  </td>
+                                  <td class="article-box  padbottom" data-index="6">
+          <a class="article-link" target="_blank" href="http://blog.mozilla.com.tw/posts/5328/testing-on-the-device">
+                        <img id="article-thumb-6" class="article-thumb" width="194" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/tagged/0430-subpic6-194x128.png"/>
+            <p>
+              <b><span id="article-title-6" class="article-title" title="文章標題">Firefox OS App 系列影片 (4)：在實機中測試</span> » </b>
+              <span id="article-desc-6" class="article-desc" title="文章說明">實機測試可透過 Firefox 瀏覽器內建的「開發者工具」和「應用程式管理員」進行 App 即時編修，讓 App 測試更有效率。</span>
+            </p>
+          </a>
+                  </td>
+                  </tr>
+                      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/menu-download.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="downloads">
+        <tr>
+          <td>
+            <a class="download-link" target="_blank" href="https://addons.mozilla.org/zh-tw/firefox/addon/24-solar-term-start-of-summer/">
+              <img id="download-thumb" class="download-thumb" width="652" height="128" src="http://mozilla.com.tw/media/img/mocotw/newsletter/upload/begin-of-summer-newsletter.png"/>
+              <p>
+                <b><span id="download-title" title="下載標題">二十四節氣 - 立夏 / 24 Solar Term - Start of Summer</span> » </b>
+              </p>
+            </a>
+                      </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="section-header"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/menu-links.png"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table class="links">
+        <tr>
+          <td class="padleft2 padright2 padbottom2"><a href="http://mozilla.com.tw/community/student/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-fsa.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="http://tech.mozilla.com.tw/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-blog.png"/></a></td>
+          <td class="padright2 padbottom2"><a href="https://developer.mozilla.org/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-mdn.png"/></a></td>
+          <td class="padbottom2"><a href="http://firefox.club.tw" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-ffclub.png"/></a></td>
+        </tr>
+        <tr>
+          <td class="padleft2 padright2"><a href="http://mozilla.com.tw/sumo" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-sumo.png"/></a></td>
+          <td class="padright2"><a href="http://myfirefox.com.tw/videos/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-vision.png"/></a></td>
+          <td class="padright2"><a href="http://myfirefox.com.tw/" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-myfx.png"/></a></td>
+          <td class="padright2"><a href="http://tw.mall.yahoo.com/store/firefox" target="_blank"><img src="http://mozilla.com.tw/media/img/mocotw/newsletter/2013/icon-store.png"/></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table class="footer">
+  <tr>
+    <td>
+      <table class="footer-content">
+        <tr>
+          <td class="mozilla-col">
+            <a href="http://mozilla.org/en-US/" target="_blank">
+              <img style="border:0px;" alt="mozilla" src="http://mozilla.com.tw/media/img/sandstone/footer-mozilla.png">
+            </a>
+          </td>
+          <td class="social-col">
+            <table>
+              <tr>
+                <td class="friend">與我們為友</td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="social-media">
+                    <tr>
+                      <td><a href="https://www.facebook.com/MozillaTaiwan" target="_blank">Facebook</a></td>
+                      <td><a href="https://plus.google.com/u/0/114653167240123163859/posts" target="_blank">Google+</a></td>
+                      <td><a href="http://plurk.com/MozillaTaiwan" target="_blank">Plurk</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
+                      <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
+                      <td><a href="http://mozilla.com.tw/join_us/" target="_blank">電子報</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="about-col">
+            <table>
+              <tr>
+                <td class="official"><a href="http://mozilla.com.tw">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="contact">聯繫我們：<a href="mailto:mozilla-tw@mozilla.com">mozilla-tw@mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="license">除另有註明外，本站內容皆採用<br>
+                  <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">創用 CC 姓名標示—相同方式分享條款 3.0</a> 或更新版本授權大眾使用。
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

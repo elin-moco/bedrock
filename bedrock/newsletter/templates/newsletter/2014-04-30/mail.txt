@@ -1,0 +1,93 @@
+[Firefox OS 電子報 Vol. 20 - 年月號]
+(http://mozilla.com.tw/newsletter/2014-04-30/)
+
+[新版本介面全面更新，使用者將能更迅速完成瀏覽作業；新自訂功能讓使用者創造自我風格 Firefox。
+
+首度內建的 Firefox Accounts 功能，大幅簡化登入方式，使用者能跨越不同行動裝置界限，輕鬆獲取 Mozilla 各項產品的內建服務。]
+(http://mozilla.com.tw/firefox/desktop/)
+
+
+[Firefox 免費下載]
+(http://mozilla.com.tw/firefox/download/)
+
+
+分享電子報至
+
+[Facebook]
+(http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2F&p[images][0]=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2Fimages%2Fmainpic.png&p[title]=%E6%9B%B4%E5%A5%BD%E7%9A%84+Firefox+%E5%85%A8%E6%96%B0%E8%A8%AD%E8%A8%88%E9%9A%86%E9%87%8D%E7%99%BB%E5%A0%B4%EF%BC%8CFirefox+OS+App+%E7%B3%BB%E5%88%97%E5%BD%B1%E7%89%87%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E6%B8%AC%E8%A9%A6%E4%BD%A0%E7%9A%84+App+%28%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95%29)
+[Google+]
+(https://plus.google.com/share?url=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2F)
+[Plurk]
+(http://www.plurk.com/?qualifier=shares&status=http%3A%2F%2Fmozilla.com.tw%2Fnewsletter%2F2014-04-30%2F%28%E6%9B%B4%E5%A5%BD%E7%9A%84+Firefox+%E5%85%A8%E6%96%B0%E8%A8%AD%E8%A8%88%E9%9A%86%E9%87%8D%E7%99%BB%E5%A0%B4%EF%BC%8CFirefox+OS+App+%E7%B3%BB%E5%88%97%E5%BD%B1%E7%89%87%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E6%B8%AC%E8%A9%A6%E4%BD%A0%E7%9A%84+App+%28%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95%29%29)
+[Email]
+(mailto:?subject=更好的 Firefox 全新設計隆重登場，Firefox OS App 系列影片教你如何測試你的 App (中文字幕)&body=詳見 Firefox 電子報第 20 期：http://mozilla.com.tw/newsletter/2014-04-30/)
+
+[訂閱電子報](http://mozilla.com.tw/join_us/)
+
+
+最新消息
+
+[募集強大的 Web App 開發工具](http://blog.mozilla.com.tw/posts/5424/powerful-tools-for-developing-web-apps)
+Mozilla 正集結核心工具，要推薦給 Web App 開發者，協助大家能順利的開發出作品。其工具將囊括目前 Web App 核心所用的工具鏈，詳細內容將公告於 MDN 上。
+[我也想成為 mozillian！ Part 2 – 你也來Try Try 看](http://tech.mozilla.com.tw/posts/4243/)
+Try server 是跑自動測試的地方，TBPL 則是用來顯示測試結果的工具，透過台客 jwwang 的介紹，你將對軟體開發的自動測試有進一步了解。
+[Rormix – 透過 Firefox OS 找到正夯的音樂影片](http://blog.mozilla.com.tw/posts/5395/rormix)
+Rormix 耗時一個月完成 iOS 與 Android 版本，並僅用「一天」的時間移植到 Firefox OS 上!快來看看這有趣的開發過程。
+[懷抱未來的希望](http://myfirefox.com.tw/videos/21764)
+Mozilla 投入行動事業，期望讓行動網路普及於民，世界上有更多人得以接觸到 web 的好。一同來看看 Mozilla 對未來的想像。
+[Firefox OS App 系列影片 (3)：在模擬器中測試](http://blog.mozilla.com.tw/posts/5290/testing-in-the-simulator)
+入門 Firefox OS 最簡單的方法為使用「應用程式管理員」，它能協助你安裝並測試開發中的 App，並即時觀看修改之後的結果。
+[Firefox OS App 系列影片 (4)：在實機中測試](http://blog.mozilla.com.tw/posts/5328/testing-on-the-device)
+實機測試可透過 Firefox 瀏覽器內建的「開發者工具」和「應用程式管理員」進行 App 即時編修，讓 App 測試更有效率。
+
+
+好康下載
+[二十四節氣 - 立夏 / 24 Solar Term - Start of Summer]
+(https://addons.mozilla.org/zh-tw/firefox/addon/24-solar-term-start-of-summer/)
+
+
+與我同行
+
+[校園大使](http://mozilla.com.tw/community/student/)
+
+[謀智台客](http://tech.mozilla.com.tw/)
+
+[MDN](http://developer.mozilla.org/)
+
+[活力軍](http://firefox.club.tw)
+
+[支援中心](http://mozilla.com.tw/sumo)
+
+[狐電視](http://myfirefox.com.tw/videos/)
+
+[MyFirefox](http://myfirefox.com.tw)
+
+[火狐商城](http://tw.mall.yahoo.com/store/firefox)
+
+
+
+[mozilla](http://mozilla.org/en-US/)
+
+
+與我們為友
+
+[Facebook](https://www.facebook.com/MozillaTaiwan)
+
+[Google+](https://plus.google.com/u/0/114653167240123163859/posts)
+
+[Plurk](http://plurk.com/MozillaTaiwan)
+
+[Youtube](http://www.youtube.com/user/MozillaTaiwan)
+
+[Flickr](http://www.flickr.com/photos/mozillataiwan/)
+
+[電子報](http://mozilla.com.tw/join_us/)
+
+
+Mozilla Taiwan | 美商謀智 | mozilla.com.tw
+
+[聯繫我們](mailto:mozilla-tw@mozilla.com)
+
+除另有註明外，本站內容皆採用
+[創用 CC 姓名標示—相同方式分享條款 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+或更新版本授權大眾使用。
