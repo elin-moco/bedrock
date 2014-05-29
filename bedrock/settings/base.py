@@ -132,6 +132,9 @@ MINIFY_BUNDLES = {
         'sumo': (
             'css/mocotw/sumo.less',
         ),
+        'community-index': (
+            'css/mocotw/community-index.less',
+        ),
         'community-student-workshop': (
             'css/mocotw/community-student-workshop.less',
             'css/libs/jquery.eventCalendar.css',
@@ -517,6 +520,13 @@ MINIFY_BUNDLES = {
         'about-space': (
             'js/libs/jquery.prettyPhoto.js',
             'js/mocotw/about-space.js',
+        ),
+        'community-index': (
+            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.cycle2.min.js',
+            'js/libs/jquery.cycle2.carousel.min.js',
+            'js/mocotw/community-index.js',
         ),
         'community-student-workshop': (
             'js/libs/jquery-1.7.1.min.js',
