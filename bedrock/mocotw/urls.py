@@ -64,7 +64,7 @@ urlpatterns = patterns(
     redirect(r'^firefox/all-aurora.html$', '//www.mozilla.org/en-US/firefox/all-aurora.html'),
     redirect(r'^firefox/help/$', 'https://support.mozilla.org/zh-TW/products/firefox'),
     redirect(r'^privacy/$', '//www.mozilla.org/en-US/privacy/'),
-    redirect(r'^privacy/firefox.html$', '//www.mozilla.org/en-US/privacy/firefox/'),
+    redirect(r'^legal/privacy/firefox.html$', '//www.mozilla.org/en-US/privacy/firefox/'),
     redirect(r'^privacy-policy.html$', '//www.mozilla.org/en-US/privacy/websites/'),
     redirect(r'^about/legal.html$', '//www.mozilla.org/en-US/about/legal.html'),
     redirect(r'^thunderbird/$', '//www.mozilla.org/en-US/thunderbird/'),
