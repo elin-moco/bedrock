@@ -526,6 +526,7 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.cycle2.min.js',
             'js/libs/jquery.cycle2.carousel.min.js',
+            'js/libs/enquire.min.js',
             'js/mocotw/community-index.js',
         ),
         'community-student-workshop': (

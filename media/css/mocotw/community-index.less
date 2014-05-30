@@ -13,7 +13,7 @@
 }
 
 #masthead {
-  width: 1000px;
+  width: 980px;
   padding: 0 20px;
 }
 
@@ -23,8 +23,14 @@
   h1, h2, h3, h4, h5, h6, legend, .huge, .large, legend {
     color: #FFFFFF;
   }
+  h1 {
+    text-align: center;
+  }
   h2 {
     font-size: 36px;
+  }
+  p {
+      text-align: justify;
   }
   .button {
     color: #FFFFFF;
@@ -97,7 +103,7 @@
         font-size: 24px;
         text-shadow: 0 1px #000;
       }
-      width: 236px;
+      width: 216px;
       height: 92px;
       .border-radius(0);
     }
@@ -106,7 +112,7 @@
     height: 244px;
     text-align: center;
     p {
-      text-align: left;
+      text-align: justify;
       padding-top: 52px;
       padding-bottom: 10px;
     }
@@ -228,7 +234,7 @@
     a.back {
       position: absolute;
       display: block;
-      background: url(/media/img/mocotw/community/prev.png) no-repeat;
+      background: url(/media/img/mocotw/community/back.png) no-repeat;
       width: 62px;
       height: 71px;
       left: 170px;
@@ -415,7 +421,7 @@
       }
     }
     p {
-      text-align: left;
+      text-align: justify;
       padding-bottom: 16px;
     }
   }
@@ -453,7 +459,7 @@
   background-size: 120% auto;
   text-align: center;
   height: 503px;
-  min-width: 1000px;
+//  min-width: 1000px;
   h2 {
     font-size: 48px;
     padding: 155px 0 120px 0;
@@ -463,20 +469,207 @@
 #footer-email-form {
   width: 920px;
   margin: auto;
+  text-align: left;
   h3 {
     color: @textColorPrimary;
   }
-    color: @textColorPrimary;
+  color: @textColorPrimary;
 }
 
 @media only screen and (max-width: @breakDesktop) {
-
+  #masthead {
+    padding: 0 10px;
+    width: 740px;
+  }
+  #main-content {
+    width: inherit;
+    font-size: 14px;
+    color: #FFFFFF;
+    h1 {
+      font-size: 36px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+  }
+  .container {
+    width: 566px;
+  }
+  #contribute {
+    .intro {
+      height: 376px;
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  #community {
+    height: auto;
+    padding-bottom: 60px;
+    .container {
+      display: block;
+      h2 {
+        padding: 41px 0 20px;
+      }
+      h2, p {
+        opacity: 1;
+      }
+      a.cell {
+        .transform(rotateY(0deg));
+      }
+    }
+    .intros {
+      display: block;
+      position: relative;
+      left: auto;
+      margin: auto;
+      .intro {
+        display: block;
+        position: relative;
+        padding-top: 0;
+        padding-bottom: 30px;
+        pointer-events: all;
+        h3 {
+          font-size: 18px;
+          margin-bottom: 0;
+          padding: 20px 0 10px;
+        }
+        h3, p, .more {
+          opacity: 1;
+        }
+        img {
+          position: relative;
+          left: 0;
+          right: auto;
+          .transform(rotateY(0deg));
+        }
+      }
+    }
+  }
+  #love {
+    .gallery {
+      height: 260px;
+      img {
+        height: 260px;
+      }
+      #gallery-prev {
+        top: 96px;
+      }
+      #gallery-next {
+        top: 96px;
+      }
+    }
+  }
+  #join {
+    height: 376px;
+    h2 {
+      padding: 100px 0 80px;
+    }
+  }
+  #footer-email-form {
+    width: 720px;
+  }
 }
 
 @media only screen and (max-width: @breakTablet) {
-
+  #masthead {
+    width: 460px;
+  }
+  .container {
+    width: 376px;
+  }
+  #contribute {
+    .intro {
+      background-position: 50% 0;
+      background-size: auto 100%;
+      h1 {
+        padding: 75px 0 42px;
+      }
+    }
+    .join-buttons {
+      height: 62px;
+      .button {
+        width: 120px;
+        height: 52px;
+        h2 {
+          margin-top: 15px;
+          font-size: 16px;
+        }
+      }
+      .separator {
+        height: 64px;
+      }
+    }
+  }
+  #community {
+    .intros {
+      width: 376px;
+    }
+  }
+  #love {
+    .container {
+      h2 {
+        padding: 36px 0 18px;
+      }
+    }
+    .gallery {
+      height: 160px;
+      img {
+        height: 160px;
+      }
+      #gallery-prev {
+        top: 46px;
+      }
+      #gallery-next {
+        top: 46px;
+      }
+    }
+  }
+  #join {
+    background-position: 50% 0;
+    background-size: auto 110%;
+    height: 306px;
+    h2 {
+      padding: 60px 0 40px;
+    }
+  }
+  #footer-email-form {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: @breakMobileLandscape) {
-
+  #masthead {
+    padding: 0;
+    width: 320px;
+  }
+  .container {
+    width: 286px;
+  }
+  #contribute {
+    .join-buttons {
+      .button {
+        width: 80px;
+        padding: 5px;
+        &.sumo h2 {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  #community {
+    .intros {
+      width: 286px;
+    }
+  }
+  #love {
+    .gallery {
+      #gallery-prev {
+        left: 0px;
+      }
+      #gallery-next {
+        right: 0px;
+      }
+    }
+  }
 }

@@ -15,13 +15,21 @@ $(function () {
         triggerOnce: true
     });
     var mozClassPattern = /moz[a-z]+/;
-    $communityBlock.find('a.cell').on('click', function(e) {
-        e.preventDefault();
-        var mozClass = mozClassPattern.exec($(this).attr('class'));
-        if (mozClass && mozClass.length==1) {
-            showCommunity(mozClass[0]);
-        }
-    });
+
+    enquire.register("screen and (max-width: 1001px)", function() {
+        $communityBlock.find('a.cell').off('click');
+    }).listen();
+
+    enquire.register("screen and (min-width: 1000px)", function() {
+        $communityBlock.find('a.cell').on('click', function(e) {
+            e.preventDefault();
+            var mozClass = mozClassPattern.exec($(this).attr('class'));
+            if (mozClass && mozClass.length==1) {
+                showCommunity(mozClass[0]);
+            }
+        });
+    }).listen();
+
     $communityBlock.find('a.back').on('click', function(e) {
         showCommunity('intro');
     });
