@@ -572,6 +572,19 @@ html[lang="zh-TW"] #home-about h4 {
     width: 720px;
   }
 }
+@media only screen and (max-width: @breakDesktop) {
+  .extra {
+    .container {
+      width: 760px;
+      .extra-news {
+        width: 340px;
+      }
+      .extra-links {
+        margin: 0 50px;
+      }
+    }
+  }
+}
 
 @media only screen and (max-width: @breakTablet) {
   html[lang="zh-TW"] #main-feature h1 {
@@ -585,7 +598,7 @@ html[lang="zh-TW"] #home-about h4 {
   }
   #firefox-promo {
     width: 420px;
-    height: 180px;
+    height: 200px;
     padding-bottom: 10px;
     #firefox-promo-link {
       height: auto;
@@ -647,18 +660,29 @@ html[lang="zh-TW"] #home-about h4 {
   #footer-email-form {
     width: 400px;
   }
+  #newsletter-subscription {
+    margin: auto;
+    width: 100%;
+  }
+  .extra {
+    margin: auto;
+    width: 100%;
+    .container {
+      width: 460px;
+    }
+  }
 }
 
 @media only screen and (max-width: @breakMobileLandscape) {
   #firefox-promo {
     width: 300px;
-    height: 160px;
+    height: 180px;
     h3 {
       margin-top: 10px;
     }
   }
   .pager-page, #main-content {
-    width: 320px;
+    width: 300px;
   }
   .pager-page {
     div.content {
@@ -683,6 +707,18 @@ html[lang="zh-TW"] #home-about h4 {
     background-size: auto 64px;
   }
   #footer-email-form {
-    width: 320px;
+    width: 300px;
+  }
+  .extra {
+    .container {
+      width: 300px;
+      .extra-news {
+        margin: 0;
+        width: 300px;
+      }
+      .extra-links {
+        margin: 0;
+      }
+    }
   }
 }
