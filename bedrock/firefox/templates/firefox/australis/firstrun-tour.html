@@ -12,6 +12,16 @@
 
 {% block body_id %}firstrun{% endblock %}
 
+{% block doorhanger_title %}
+{#  {% if l10n_has_tag('new_doorhanger') or settings.DEV %}#}
+    {# L10n: This is the title for a door-hanger menu that shows in the browser chrome #}
+    data-title="{{ _('Take a quick tour') }}"
+{#  {% else %}#}
+    {# L10n: This is the title for a door-hanger menu that shows in the browser chrome #}
+{#    data-title="{{ _('See what’s new') }}"#}
+{#  {% endif %}#}
+{% endblock %}
+
 {% block site_css %}
   {{ css('firefox_tour') }}
 {% endblock %}
@@ -121,38 +131,39 @@
         <h1>{{ _('Welcome to Firefox') }}</h1>
         <p>{{ _('Committed to you, your privacy and an open Web.') }}</p>
       </div>
-      <a href="javascript:void(0)" id="ui-tour-go" class="button button-next more">開始導覽</a>
     </div>
   </div>
 {% endblock %}
 
 {% block sync_content %}
+  <div class="sync-content">
     <header>
       <h2>{{ _('Have Firefox on another device?') }}</h2>
       <p>{{ _('You don’t have to start over. Access your history, bookmarks and more.')}}</p>
     </header>
-    {% include 'firefox/includes/sync-animation.html' %}
-    <div class="sync-content">
-      <div class="sync-cta">
-        <button class="button">{{ _('Get started with Sync') }}</button>
-        <small>{{ _('Create an account from the menu panel') }}</small>
-      </div>
+    <div class="sync-cta">
+      <button class="button">{{ _('Get started with Sync') }}</button>
+      <small>{{ _('Create an account from the menu panel') }}</small>
     </div>
+  </div>
+  <div class="sync-anim-wrapper">
+    {% include 'firefox/includes/sync-animation.html' %}
+  </div>
 {% endblock %}
 
 {% block aside_content %}
-  {{ email_newsletter_form(include_country=False, include_language=False) }}
+    {{ email_newsletter_form(include_country=False, include_language=False) }}
 {% endblock %}
 
 {% block site_footer %}
   <footer role="contentinfo">
     <ul>
-      <li><a href="{{ url('firefox.features') }}" class="more">{{ _('Firefox Features') }}</a></li>
-      <li><a href="https://support.mozilla.org/" class="more">{{ _('Firefox Help') }}</a></li>
+      <li><a href="{{ url('firefox.desktop.index') }}" class="more">{{ _('Firefox Features') }}</a></li>
+      <li><a href="https://support.mozilla.org/products/firefox" class="more">{{ _('Firefox Help') }}</a></li>
     </ul>
     <ul>
       <li><a href="{{ php_url('/about/legal.html') }}">{{ _('Legal Notices') }}</a></li>
-      <li><a href="{{ php_url('/privacy-policy.html') }}">{{ _('Privacy Policy') }}</a></li>
+      <li><a href="{{ php_url('/privacy') }}">{{ _('Privacy Policy') }}</a></li>
     </ul>
   </footer>
 {% endblock %}

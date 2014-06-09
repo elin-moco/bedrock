@@ -87,10 +87,6 @@ if (typeof Mozilla == 'undefined') {
         });
         $p.html($tempEl.html());
 
-        $('#ui-tour-go').click(function() {
-            that.startTour();
-            that.expandTour();
-        });
         setTimeout(function () {
             // animate the mask welcome message
             that.$maskInner.addClass('in');
@@ -347,6 +343,8 @@ if (typeof Mozilla == 'undefined') {
             var tipText;
 
             this.tourIsAnimating = false;
+            Mozilla.UITour.hideHighlight();
+
             this.showHighlight();
 
             this.$progressStep.html(window.trans('step' + step));
@@ -504,11 +502,10 @@ if (typeof Mozilla == 'undefined') {
         this.tourHasStarted = false;
         this.tourHasFinished = true;
 
-        this.$mask.one('transitionend', this.onCloseTour.bind(this));
-
         this.$cta.fadeOut('fast', $.proxy(function () {
             this.$tour.removeClass('in');
             this.$mask.addClass('out');
+            setTimeout(this.onCloseTour.bind(this), 600);
         }, this));
     };
 
