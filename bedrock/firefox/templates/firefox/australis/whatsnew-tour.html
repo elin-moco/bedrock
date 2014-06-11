@@ -12,6 +12,11 @@
 
 {% block body_id %}whatsnew{% endblock %}
 
+{% block doorhanger_title %}
+  {# L10n: This is the title for a door-hanger menu that shows in the browser chrome #}
+  data-title="{{ _('See what’s new') }}"
+{% endblock %}
+
 {% block site_css %}
   {{ css('firefox_tour') }}
 {% endblock %}
@@ -131,37 +136,34 @@
           {%- endif -%}
         </h1>
       </div>
-      <a href="javascript:void(0)" id="ui-tour-go" class="button button-next more">開始導覽</a>
     </div>
   </div>
 {% endblock %}
 
 {% block sync_content %}
+  <div class="sync-content">
     <header>
       <h2>{{ _('Keep your Firefox in Sync') }}</h2>
       <p>{{ _('Access your bookmarks, passwords and more from any device.')}}</p>
     </header>
-    {% include 'firefox/includes/sync-animation.html' %}
-    <div class="sync-content">
-      <div class="sync-cta">
-        <button class="button">{{ _('Get started with Sync') }}</button>
-        <small>{{ _('Create an account from the menu panel') }}</small>
-      </div>
+    <div class="sync-cta">
+      <button class="button">{{ _('Get started with Sync') }}</button>
+      <small>{{ _('Create an account from the menu panel') }}</small>
     </div>
+  </div>
+  <div class="sync-anim-wrapper">
+    {% include 'firefox/includes/sync-animation.html' %}
+  </div>
 {% endblock %}
 
 {% block aside_content %}
   <section class="learn-more billboard">
     <ul>
       <li><a href="https://support.mozilla.org/products/firefox" target="_blank" title="{{ _('Opens new window') }}">{{ _('Need help?') }}</a></li>
-      <li><a href="http://www.mozilla.org/privacy/you/">{{ _('Putting your privacy first') }}</a></li>
-    </ul>
-    <ul>
       <li><a href="https://support.mozilla.org/kb/learn-more-about-the-design-of-new-firefox" target="_blank" title="{{ _('Opens new window') }}">{{ _('Learn about the new design') }}</a></li>
-      <li><a href="https://support.mozilla.org/kb/common-questions-after-updating-to-new-firefox" target="_blank" title="{{ _('Opens new window') }}">{{ _('Frequently asked questions') }}</a></li>
-    </ul>
-    <ul>
       <li><a href="https://support.mozilla.org/kb/what-happened-to-the-add-on-bar" target="_blank" title="{{ _('Opens new window') }}">{{ _('Where did my add-on bar go?') }}</a></li>
+      <li><a href="http://www.mozilla.org/privacy/you/">{{ _('Putting your privacy first') }}</a></li>
+      <li><a href="https://support.mozilla.org/kb/common-questions-after-updating-to-new-firefox" target="_blank" title="{{ _('Opens new window') }}">{{ _('Frequently asked questions') }}</a></li>
     </ul>
   </section>
 {% endblock %}
