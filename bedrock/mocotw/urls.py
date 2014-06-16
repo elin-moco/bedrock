@@ -42,7 +42,7 @@ urlpatterns = patterns(
     page('shop-with-firefox', 'mocotw/shop-with-firefox.html'),
     page('mozilla-eoy-2013', 'mocotw/eoy2013.html'),
     page('community', 'mocotw/community/index.html'),
-    redirect(r'^contribute', '/community/contribute/'),
+    redirect(r'^contribute/$', '/community/contribute/'),
     redirect(r'^community/student_rules', '/community/student/rules/'),
     redirect(r'^community/student_details', '/community/student/mission/'),
     redirect(r'^community/student_reps_list', '/community/student/'),
