@@ -22,6 +22,7 @@ class Command(BaseCommand):
         self.add_text(image_path, 'menu.png', 'menu-events.png', u'近期活動', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-links.png', u'與我同行', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-download.png', u'好康下載', 16, (12, 3))
+        self.add_text(image_path, 'menu.png', 'menu-videos.png', u'精選影片', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-quiz.png', u'有獎徵答', 16, (12, 3))
         with open('bedrock/newsletter/templates/newsletter/%s/articles.csv' % issue_number, 'rb') as articles_file:
             reader = csv.reader(articles_file)
