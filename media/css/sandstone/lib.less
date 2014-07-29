@@ -165,6 +165,23 @@
   transition: @transition;
 }
 
+.transition-vararg(...) {
+  @transition: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  -ms-transition: @transition;
+  transition: @transition;
+}
+.transition-vararg-transform(...) {
+  @transition: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+  -webkit-transition: -webkit-transform @transition;
+  -moz-transition: -moz-transform @transition;
+  -o-transition: -o-transform @transition;
+  -ms-transition: -ms-transform @transition;
+  transition: transform @transition;
+}
+
 .transform(@transform: inherit) {
   -webkit-transform: @transform;
   -moz-transform: @transform;
