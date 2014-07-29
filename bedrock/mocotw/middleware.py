@@ -41,8 +41,9 @@ class NewsletterMiddleware(object):
                                                           'lang',
                                                           'source_url']
                                    if data[k]))
-                newsletter_subscribe(data['email'])
+                result = newsletter_subscribe(data['email'])
                 request.newsletter_subscriber = data['email']
+                request.new_subscription = result
                 success = True
 
         request.newsletter_form = form

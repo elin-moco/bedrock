@@ -51,7 +51,7 @@
       $('.field-privacy a').attr('target', '_top');
       {% if request.newsletter_subscriber %}
         if (parent) {
-          parent.postMessage('subscriber={{ request.newsletter_subscriber }}', '*');
+          parent.postMessage('subscriber={{ request.newsletter_subscriber }}&new={{ request.new_subscription }}', '*');
         }
       {% endif %}
     </script>
