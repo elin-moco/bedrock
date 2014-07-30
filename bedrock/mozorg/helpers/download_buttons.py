@@ -22,7 +22,7 @@ import jingo
 import jinja2
 from product_details import product_details
 from bedrock.mocotw.utils import latest_aurora_version, latest_nightly_version, make_nightly_link, make_aurora_mobile_link, make_nightly_mobile_link
-
+from bedrock.firefox.firefox_details import firefox_details, mobile_details
 from lib.l10n_utils import get_locale
 
 
@@ -62,11 +62,32 @@ def _latest_pre_version(locale, version):
     if locale in builds and vers in builds[locale]:
         return vers, builds[locale][vers]
 
+
 def latest_beta_version(locale):
     return _latest_pre_version(locale, 'LATEST_FIREFOX_DEVEL_VERSION')
 
 
-def latest_version(locale):
+def latest_version(locale, channel='release'):
+    """Return build info for a locale and channel.
+
+:param locale: locale string of the build
+:param channel: channel of the build: release, beta, or aurora
+:return: dict or None
+"""
+    all_builds = (firefox_details.firefox_primary_builds,
+                  firefox_details.firefox_beta_builds)
+    version = firefox_details.latest_version(channel)
+
+    for builds in all_builds:
+        if locale in builds and version in builds[locale]:
+            _builds = builds[locale][version]
+            # Append Linux 64-bit build
+            if 'Linux' in _builds:
+                _builds['Linux 64'] = _builds['Linux']
+            return version, _builds
+
+
+def _backup_latest_version(locale):
     fx_versions = product_details.firefox_versions
     beta_vers = fx_versions['FIREFOX_AURORA']
     aurora_vers = fx_versions['LATEST_FIREFOX_DEVEL_VERSION']
