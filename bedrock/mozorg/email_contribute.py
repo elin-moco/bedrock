@@ -123,11 +123,13 @@ LOCALE_CONTACTS = {
 def handle_form(request, form):
     if form.is_valid():
         data = form.cleaned_data
-        send(request, data)
-        autorespond(request, data)
+        print request.locale
+        print data
+        # send(request, data)
+        # autorespond(request, data)
 
-        if data.get('newsletter', False):
-            newsletter_subscribe(data['email'])
+        # if data.get('newsletter', False):
+        #     newsletter_subscribe(data['email'])
         return True
     return False
 
