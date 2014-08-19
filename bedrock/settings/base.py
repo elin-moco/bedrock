@@ -527,6 +527,7 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.cycle2.carousel.min.js',
             'js/libs/enquire.min.js',
             'js/mocotw/community-index.js',
+            'js/mozorg/contribute-form.js',
         ),
         'community-student-workshop': (
             'js/libs/jquery-1.7.1.min.js',

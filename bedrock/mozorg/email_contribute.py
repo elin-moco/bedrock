@@ -116,20 +116,18 @@ LOCALE_CONTACTS = {
     'sr': ['prikljucise@mozilla-srbija.org'],
     'ta': ['vallavan2valluvan@gmail.com'],
     'zh-CN': ['contributor-zh-cn@mozilla.org'],
-    'zh-TW': ['contribute@mail.moztw.org'],
+    'zh-TW': ['mozevent-tw@mozilla.com', 'contribute@mail.moztw.org'],
 }
 
 
 def handle_form(request, form):
     if form.is_valid():
         data = form.cleaned_data
-        print request.locale
-        print data
-        # send(request, data)
-        # autorespond(request, data)
+        send(request, data)
+        autorespond(request, data)
 
-        # if data.get('newsletter', False):
-        #     newsletter_subscribe(data['email'])
+        if data.get('newsletter', False):
+            newsletter_subscribe(data['email'])
         return True
     return False
 

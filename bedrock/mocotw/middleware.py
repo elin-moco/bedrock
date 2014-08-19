@@ -26,11 +26,11 @@ class NewsletterMiddleware(object):
     """Processes newsletter subscriptions"""
     def process_request(self, request):
         success = False
-        form = NewsletterFooterForm(request.locale, request.POST or None)
 
         is_footer_form = (request.method == 'POST' and
                           'newsletter-footer' in request.POST)
         if is_footer_form:
+            form = NewsletterFooterForm(request.locale, request.POST or None)
             if form.is_valid():
                 data = form.cleaned_data
                 kwargs = {
@@ -45,6 +45,7 @@ class NewsletterMiddleware(object):
                 request.newsletter_subscriber = data['email']
                 request.new_subscription = result
                 success = True
-
-        request.newsletter_form = form
+            request.newsletter_form = form
+        else:
+            request.newsletter_form = NewsletterFooterForm(request.locale, None)
         request.newsletter_success = success

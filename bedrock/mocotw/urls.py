@@ -7,7 +7,7 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed, newsletter
+from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed, newsletter, community
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -41,7 +41,7 @@ urlpatterns = patterns(
     page('about/mozilla-based', 'mozorg/projects/mozilla-based.html'),
     page('shop-with-firefox', 'mocotw/shop-with-firefox.html'),
     page('mozilla-eoy-2013', 'mocotw/eoy2013.html'),
-    page('community', 'mocotw/community/index.html'),
+    # page('community', 'mocotw/community/index.html'),
     redirect(r'^contribute/$', '/community/contribute/'),
     redirect(r'^community/student_rules', '/community/student/rules/'),
     redirect(r'^community/student_details', '/community/student/mission/'),
@@ -126,8 +126,10 @@ urlpatterns = patterns(
     url('^about/$', direct_to_template, {'template': 'mocotw/about/index.html'}, name='mozorg.about'),
     url('^about/$', direct_to_template, {'template': 'mocotw/about/index.html'}, name='mozorg.mission'),
     url('^about/manifesto/$', direct_to_template, {'template': 'mocotw/about/manifesto.html'}, name='mozorg.about.manifesto'),
+    url('^community/$', community, name='mocotw.community.index',
+        kwargs={'template': 'mocotw/community/index.html', 'return_to_form': True}),
     url('^community/contribute/$', contribute, name='mozorg.contribute',
-        kwargs={'template': 'mozorg/contribute.html', 'return_to_form': False}),
+        kwargs={'template': 'mozorg/contribute.html', 'return_to_form': True}),
     url(r'^about/partnerships/contact-bizdev/$', partnerships, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
     url(r'^2013-review/(?P<spring>[-A-z]+/)?$', year_review_2013, name='mocotw.2013review'),

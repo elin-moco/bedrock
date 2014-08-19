@@ -71,15 +71,13 @@ def contribute(request, template, return_to_form):
         form = ContributeForm()
 
     if has_newsletter_form:
-        newsletter_form = NewsletterFooterForm(locale,
-                                         request.POST,
-                                         prefix='newsletter')
+        newsletter_form = NewsletterFooterForm(locale, request.POST)
         if newsletter_form.is_valid():
             data = newsletter_form.cleaned_data
-
-        newsletter_subscribe(data['email'])
+            newsletter_subscribe(data['email'])
+            newsletter_success = True
     else:
-        newsletter_form = NewsletterFooterForm(locale, prefix='newsletter')
+        newsletter_form = NewsletterFooterForm(locale, None)
 
     return l10n_utils.render(request,
                              template,

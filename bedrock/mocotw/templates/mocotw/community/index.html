@@ -1,5 +1,7 @@
 {% extends "base-resp.html" %}
 
+{% add_lang_files "mozorg/contribute" %}
+
 {% block page_title_prefix %}Mozilla 社群 － {% endblock %}
 {% block page_title %}參與社群{% endblock %}
 {% block page_desc %}Mozilla 是一個全球化的非營利組織，我們的願景是打造一個更開放自由的網路未來，提升人們的網路經驗，並支持開放源碼的資源共享精神。參與我們，打造更美好的網路未來！{% endblock %}
@@ -105,6 +107,7 @@
 
   <section id="join">
       <h2>Are YOU ready to join？</h2>
+      {% include "mozorg/contribute-form.html" %}
       {{ email_newsletter_form(include_country=False, include_language=False) }}
   </section>
 </main>

@@ -456,14 +456,29 @@
 
 #join {
   background: url(/media/img/mocotw/community/join-banner.png) no-repeat;
-  background-size: 120% auto;
+  background-position: 50% 0;
+  background-size: auto 110%;
   text-align: center;
-  height: 503px;
+//  height: 503px;
 //  min-width: 1000px;
   h2 {
     font-size: 48px;
-    padding: 155px 0 120px 0;
+    padding: 40px 0 20px 0;
   }
+  padding-bottom: 40px;
+}
+
+#help-form {
+  width: 280px;
+  text-align: left;
+  box-sizing: padding-box;
+  h3, h4 {
+    color: @textColorPrimary;
+  }
+  p, span, a {
+    font-size: 12px;
+  }
+  color: @textColorPrimary;
 }
 
 #footer-email-form {
@@ -474,6 +489,12 @@
     color: @textColorPrimary;
   }
   color: @textColorPrimary;
+}
+
+@media only screen and (min-width: 1300px) {
+  #join {
+    background-size: 133% auto;
+  }
 }
 
 @media only screen and (max-width: @breakDesktop) {
@@ -568,12 +589,6 @@
       }
     }
   }
-  #join {
-    height: 376px;
-    h2 {
-      padding: 100px 0 80px;
-    }
-  }
   #footer-email-form {
     width: 720px;
   }
@@ -631,14 +646,6 @@
       #gallery-next {
         top: 46px;
       }
-    }
-  }
-  #join {
-    background-position: 50% 0;
-    background-size: auto 110%;
-    height: 306px;
-    h2 {
-      padding: 40px 0 30px;
     }
   }
   #footer-email-form {

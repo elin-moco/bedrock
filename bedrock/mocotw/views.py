@@ -16,10 +16,41 @@ from django.views.static import serve
 from bedrock.mocotw.forms import NewsletterForm
 from bedrock.mocotw.models import Newsletter
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe, track_page
+from bedrock.mozorg import email_contribute
+from bedrock.mozorg.forms import ContributeForm
 from bedrock.newsletter.forms import NewsletterFooterForm
 from bedrock.sandstone.settings import BLOG_URL, TECH_URL, MYFF_URL, FFCLUB_URL, LOCAL_FFCLUB_URL
 from bedrock.settings import API_SECRET, FFCLUB_API_SECRET
 from lib import l10n_utils
+
+
+@csrf_exempt
+def community(request, template, return_to_form):
+
+    has_contribute_form = (request.method == 'POST' and
+                           'contribute-form' in request.POST)
+
+    contribute_success = False
+
+    # This is ugly, but we need to handle two forms. I would love if
+    # these forms could post to separate pages and get redirected
+    # back, but we're forced to keep the error/success workflow on the
+    # same page. Please change this.
+    if has_contribute_form:
+        form = ContributeForm(request.POST)
+        contribute_success = email_contribute.handle_form(request, form)
+        if contribute_success:
+            # If form was submitted successfully, return a new, empty
+            # one.
+            form = ContributeForm()
+    else:
+        form = ContributeForm()
+
+    return l10n_utils.render(request,
+                             template,
+                             {'form': form,
+                              'return_to_form': return_to_form,
+                              'contribute_success': contribute_success})
 
 
 def campaign_tracker(request, campaign=None):

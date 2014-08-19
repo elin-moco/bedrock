@@ -126,7 +126,6 @@
 
     // Track interest form submissions
     $('#help-form').on('submit', function(e) {
-        console.log('submit!!!!!!');
         e.preventDefault();
         var $form = $(this);
         $form.unbind('submit');
