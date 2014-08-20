@@ -147,8 +147,7 @@ def send(request, data):
     msg = jingo.render_to_string(request, 'mozorg/emails/infos.txt', data)
     headers = {'Reply-To': data['email']}
 
-    # to = ['contribute@mozilla.org']
-    to = ['mozilla-tw@mozilla.com']
+    to = ['contribute@mozilla.org']
 
     cc = None
     if request.locale in LOCALE_CONTACTS:
