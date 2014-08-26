@@ -12,8 +12,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.options = options
-        issue_number = args[0]
-        image_path = 'bedrock/newsletter/templates/newsletter/%s/images/' % issue_number
+        # issue_number = args[0]
+        # image_path = 'bedrock/newsletter/templates/newsletter/%s/images/' % issue_number
+        image_path = 'media/img/mocotw/newsletter/2013/'
         self.add_text(image_path, 'button-mainmore.png', 'button-mainmore-withtext.png', 'more', 10, (7, 1))
         self.add_text(image_path, 'button-submore.png', 'button-submore-withtext.png', 'more', 8, (4, 1))
         self.add_text(image_path, 'button-downloadnewsletter.png', 'button-downloadnewsletter-withtext.png',
@@ -22,18 +23,19 @@ class Command(BaseCommand):
         self.add_text(image_path, 'menu.png', 'menu-events.png', u'近期活動', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-links.png', u'與我同行', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-download.png', u'好康下載', 16, (12, 3))
+        self.add_text(image_path, 'menu.png', 'menu-cool-website.png', u'好站推薦', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-videos.png', u'精選影片', 16, (12, 3))
         self.add_text(image_path, 'menu.png', 'menu-quiz.png', u'有獎徵答', 16, (12, 3))
-        with open('bedrock/newsletter/templates/newsletter/%s/articles.csv' % issue_number, 'rb') as articles_file:
-            reader = csv.reader(articles_file)
-            article_number = 0
-            for row in reader:
-                if row[0].isdigit():
-                    category = row[1].replace(' ', '')
-                    if category in ('firefox', 'firefoxos', 'firefoxforandroid', 'identity', 'privacy',
-                                               'news', 'mozilla', 'webapp', 'studentambassador'):
-                        article_number += 1
-                        self.add_category_flag(image_path, article_number, category)
+        # with open('bedrock/newsletter/templates/newsletter/%s/articles.csv' % issue_number, 'rb') as articles_file:
+        #     reader = csv.reader(articles_file)
+        #     article_number = 0
+        #     for row in reader:
+        #         if row[0].isdigit():
+        #             category = row[1].replace(' ', '')
+        #             if category in ('firefox', 'firefoxos', 'firefoxforandroid', 'identity', 'privacy',
+        #                                        'news', 'mozilla', 'webapp', 'studentambassador'):
+        #                 article_number += 1
+        #                 self.add_category_flag(image_path, article_number, category)
 
     def add_text(self, path, image, new_image, text, size, position):
         image = Image.open(path + image)
