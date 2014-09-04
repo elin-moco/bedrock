@@ -68,6 +68,33 @@
         padding-bottom: 0;
         overflow: visible;
     }
+
+    .feature-list {
+        li {
+            width: 220px;
+            a, a:link {
+                color: #FFFFFF;
+            }
+        }
+        &:after {
+            left: 82px;
+        }
+        &.newtab:after {
+            left: 82px;
+        }
+
+        &.screenshot:after {
+            left: 322px;
+        }
+
+        &.tabconf:after {
+            left: 562px;
+        }
+
+        &.social-service:after {
+            left: 802px;
+        }
+    }
 }
 #tool-content {
     background: #5D7489;
@@ -136,6 +163,11 @@
     }
 }
 #tabconf {
+    .content-copy {
+        width: 320px;
+    }
+}
+#social-service {
     .content-copy {
         width: 320px;
     }
@@ -234,6 +266,16 @@
           &:hover, &.selected {
               .emblem {
                   background: url(/media/img/mocotw/firefox/desktop/btn-2-3-clicked.png) no-repeat;
+              }
+          }
+        }
+        &#util-content-social-service {
+          .emblem {
+              background: url(/media/img/mocotw/firefox/desktop/btn-2-4.png) no-repeat;
+          }
+          &:hover, &.selected {
+              .emblem {
+                  background: url(/media/img/mocotw/firefox/desktop/btn-2-4-clicked.png) no-repeat;
               }
           }
         }
@@ -376,11 +418,11 @@
             .transition();
         }
 
-        &.myshelf:after, &.screenshot:after {
+        &.myshelf:after {
             left: 445px;
         }
 
-        &.videos:after, &.tabconf:after {
+        &.videos:after {
             left: 765px;
         }
     }
@@ -937,6 +979,11 @@
             width: 400px;
         }
     }
+    #social-service {
+        .content-visual {
+            width: 400px;
+        }
+    }
     #feedback {
         .content-visual {
             width: 240px;
@@ -959,13 +1006,37 @@
     }
 
     .js .feature-list {
-        &.myshelf:after, &.screenshot:after {
+        &.myshelf:after {
             left: 331px;
         }
 
-        &.videos:after, &.tabconf:after {
+        &.videos:after {
             left: 577px;
         }
+    }
+    #util-content .feature-list {
+        li {
+            width: 160px;
+        }
+        &:after {
+            left: 52px;
+        }
+        &.newtab:after {
+            left: 52px;
+        }
+
+        &.screenshot:after {
+            left: 232px;
+        }
+
+        &.tabconf:after {
+            left: 412px;
+        }
+
+        &.social-service:after {
+            left: 592px;
+        }
+
     }
 
     #tool-content .feature-list {
@@ -1157,6 +1228,15 @@
         #tabconf {
             .container {
                 background: url(/media/img/mocotw/firefox/desktop/btn-2-3-clicked.png) no-repeat;
+                background-position: 50% 0;
+            }
+            .content-copy {
+                width: 100%;
+            }
+        }
+        #social-service {
+            .container {
+                background: url(/media/img/mocotw/firefox/desktop/btn-2-4-clicked.png) no-repeat;
                 background-position: 50% 0;
             }
             .content-copy {

@@ -141,11 +141,18 @@
               網頁截圖
             </a>
           </li>
-          <li class="last">
+          <li>
             <a class="show-content" id="util-content-tabconf" href="#tabconf">
               <div class="emblem">
               </div>
               開關分頁設定
+            </a>
+          </li>
+          <li class="last">
+            <a class="show-content" id="util-content-social-service" href="#social-service">
+              <div class="emblem">
+              </div>
+              社群分享
             </a>
           </li>
         </ul>
@@ -195,7 +202,7 @@
           <div class="content-copy">
             <h3>開關分頁設定</h3>
 
-            <a class="next show-content" href="#newtab" role="button">{{ _('Next') }}</a>
+            <a class="next show-content" href="#social-service" role="button">{{ _('Next') }}</a>
 
             <p class="lead">
               對分頁做最精準的管理。使用者可以根據自己的使用習慣設定分頁的開啟關閉方式。
@@ -207,6 +214,26 @@
 
           <div class="content-visual">
             <img id="tabconf-demo" src="{{ media('/img/mocotw/firefox/desktop/pic-2-3.png') }}">
+          </div>
+        </div>
+      </section>
+      <section class="content" id="social-service" role="tabpanel" aria-labelledby="util-content-social-service">
+        <div class="container">
+          <div class="content-copy">
+            <h3>社群分享</h3>
+
+            <a class="next show-content" href="#newtab" role="button">{{ _('Next') }}</a>
+
+            <p class="lead">
+              分享網頁到你的社交圈變得更容易了。無論正在瀏覽什麼網頁，只要按下分享鍵，
+              就可以輕鬆的分享出去。想要在 Facebook 動態時報上分享，或是分享網站到
+              Google+ 的社交圈，一切就是這麼簡單。
+            </p>
+
+          </div><!--/.content-copy-->
+
+          <div class="content-visual">
+            <img id="tabconf-demo" src="{{ media('/img/mocotw/firefox/desktop/pic-2-4.png') }}">
           </div>
         </div>
       </section>
