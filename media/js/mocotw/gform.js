@@ -16,6 +16,7 @@ $(function(){
         //alert('send!!!');
         $('.ss-form-container').html('');
         $('.hidden-back').css('display','inline-block');
+        $('.survey-container').html('');
       });
     });
     
