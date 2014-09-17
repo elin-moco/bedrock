@@ -1,0 +1,41 @@
+{% extends "mocotw/10years/base.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}Firefox 十週年問卷{% endblock %}
+
+
+{% block extrahead %}
+  {{ css('gform') }}
+  {{ css('10years-base') }}
+  {{ css('10years-browser-survey') }}
+{% endblock %}
+
+{% block content %}
+
+  <div id="main-content">
+    <div class="hidden-back">
+      {% block complete %}
+        <img src="{{ media('img/mocotw/mozcomtw/community_Rule_03.png') }}">
+        <div id="show_result">
+          <h2>感謝你的熱心參與！</h2>
+          <a href="{{ url('mocotw.10years.index') }}">回首頁</a>
+        </div>
+      {% endblock %}
+    </div>
+    <div class="survey-container">
+      {{ gform|safe }}
+      您於 Mozilla 進行之問卷調查中所提供的資料、市場資訊以及個人隱私等所有活動都受到 <a href="https://www.mozilla.org/en-US/privacy/websites/">Mozilla 隱私權政策</a>的保護。
+    </div>
+  </div>
+  <div id="hidden_frame">
+    <iframe name="google_form"></iframe>
+  </div>
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+
+{% block js %}
+  {{ js('gform') }}
+  {{ js('10years-browser-survey') }}
+{% endblock %}

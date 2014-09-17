@@ -500,6 +500,17 @@ MINIFY_BUNDLES = {
         'gform': (
             'css/mocotw/gform.less',
         ),
+        '10years-base': (
+            'css/mocotw/10years-base.less',
+        ),
+        '10years-index': (
+            'css/mocotw/10years-index.less',
+            'css/libs/owl.carousel.css',
+            'css/libs/owl.theme.css',
+        ),
+        '10years-browser-survey': (
+            'css/mocotw/10years-browser-survey.less',
+        ),
     },
     'js': {
         'site': (
@@ -884,6 +895,13 @@ MINIFY_BUNDLES = {
         ),
         'gform': (
             'js/mocotw/gform.js',
+        ),
+        '10years-index': (
+            'js/libs/owl.carousel.min.js',
+            'js/mocotw/10years-index.js',
+        ),
+        '10years-browser-survey': (
+            'js/mocotw/10years-browser-survey.js',
         ),
     }
 }

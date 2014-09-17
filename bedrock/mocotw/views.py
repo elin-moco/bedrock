@@ -147,7 +147,7 @@ def one_newsletter_unsubscribe(request):
                              context)
 
 
-def google_form(request, template='mocotw/reg/gform.html', formkey=None):
+def google_form(request, template='mocotw/register/gform.html', formkey=None):
     gform = ''
 
     if formkey:
@@ -251,6 +251,21 @@ def year_review_2013(request, spring):
 @csrf_exempt
 def subscribe_embed(request, template):
     return l10n_utils.render(request, template)
+
+
+def google_form_2014(request, template='mocotw/register/gform.html', formkey=None):
+    gform = ''
+
+    if formkey:
+        soup = BeautifulSoup(urllib2.urlopen('https://docs.google.com/forms/d/%s/viewform' % formkey).read())
+        formResult = soup('div', {'class': 'ss-form-container'})
+        for div in formResult:
+            gform += div.prettify('utf-8').decode('utf-8')
+
+    context = {
+        'gform': gform,
+    }
+    return l10n_utils.render(request, template, context)
 
 
 def home(request, template):

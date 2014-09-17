@@ -1,0 +1,170 @@
+#masthead {
+  width: 980px;
+}
+
+#wrapper {
+  width: auto;
+}
+
+#banners {
+  .banner {
+    width: 100%;
+    height: 300px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    .content {
+      width: auto;
+      height: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+  }
+  #firefox-10years {
+    background-image: url(/media/img/mocotw/10years/banner-1-b.png);
+    .content {
+      background-image: url(/media/img/mocotw/10years/banner-1-f.png);
+    }
+  }
+  #firefox-users {
+    background-image: url(/media/img/mocotw/10years/banner-2-b.png);
+    .content {
+      background-image: url(/media/img/mocotw/10years/banner-2-f.png);
+    }
+  }
+  #firefox-dnt {
+    background-image: url(/media/img/mocotw/10years/banner-3-b.png);
+    .content {
+      background-image: url(/media/img/mocotw/10years/banner-3-f.png);
+    }
+  }
+  #firefox-addons {
+    background-repeat: repeat;
+    background-size: auto 100%;
+    background-image: url(/media/img/mocotw/10years/banner-4-b.png);
+    .content {
+      background-image: url(/media/img/mocotw/10years/banner-4-f.png);
+    }
+  }
+  #firefox-open-source {
+    background-image: url(/media/img/mocotw/10years/banner-5-b.png);
+    .content {
+      background-image: url(/media/img/mocotw/10years/banner-5-f.png);
+    }
+  }
+  .owl-controls {
+    position: absolute;
+    margin: auto;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    .owl-page span {
+      background: none;
+      border: 2px solid #FFF;
+      box-sizing: border-box;
+    }
+    .owl-page.active span {
+      background: #FFF;
+    }
+  }
+}
+
+#events {
+  background: #1F91CF;
+//  height: 360px;
+  text-align: center;
+  a:hover, a:active, a:active, a:link {
+    text-decoration: none;
+  }
+
+  .event {
+    display: inline-block;
+    width: 308px;
+    vertical-align: top;
+    margin-top: 38px;
+    color: #FFFFFF;
+    text-shadow: none;
+    h3 {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #FFFFFF;
+      text-shadow: none;
+    }
+
+    .emblem {
+      display: inline-block;
+      width: 164px;
+      height: 164px;
+    }
+    &#browser-survey {
+      &.running > .emblem {
+        background: url(/media/img/mocotw/10years/survey-c.png) no-repeat;
+      }
+      &.preparing > .emblem {
+        background: url(/media/img/mocotw/10years/survey.png) no-repeat;
+      }
+    }
+    &#firefox-family {
+      &.running > .emblem {
+        background: url(/media/img/mocotw/10years/online-c.png) no-repeat;
+      }
+      &.preparing > .emblem {
+        background: url(/media/img/mocotw/10years/online.png) no-repeat;
+      }
+    }
+    &#firefox-day {
+      &.running > .emblem {
+        background: url(/media/img/mocotw/10years/offline-c.png) no-repeat;
+      }
+      &.preparing > .emblem {
+        background: url(/media/img/mocotw/10years/offline.png) no-repeat;
+      }
+    }
+  }
+}
+
+.billboard {
+  width: 980px;
+  margin: 40px auto 0 auto;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+
+@media only screen and (max-width: 1300px) {
+  #banners {
+    .banner {
+      background-size: auto 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #masthead {
+    width: 90%;
+  }
+  .billboard {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  #banners {
+    .banner {
+      height: 180px;
+    }
+    .owl-controls {
+      bottom: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #banners {
+    .banner {
+      height: 120px;
+    }
+  }
+}

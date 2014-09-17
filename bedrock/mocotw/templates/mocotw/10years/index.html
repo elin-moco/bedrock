@@ -1,0 +1,62 @@
+{% extends "mocotw/10years/base.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}Firefox 十週年{% endblock %}
+
+
+{% block extrahead %}
+  {{ css('10years-base') }}
+  {{ css('10years-index') }}
+{% endblock %}
+
+{% block site_header_nav %}
+  <nav role="navigation" id="nav-main">
+    <ul id="nav-main-menu">
+      <li><a href="{{ url('mocotw.10years.index') }}" id="nav-index">十週年首頁</a></li>
+      <li><a href="{{ url('mocotw.10years.browser-survey') }}" id="nav-main-customize">問卷調查</a></li>
+      <li><a class="preparing" id="nav-firefox-family">線上活動</a></li>
+      <li><a class="preparing" id="nav-firefox-day">網路自由日</a></li>
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div id="banners">
+    <div id="firefox-10years" class="banner">
+      <div class="content"></div>
+    </div>
+    <div id="firefox-users" class="banner">
+      <div class="content"></div>
+    </div>
+    <div id="firefox-dnt" class="banner">
+      <div class="content"></div>
+    </div>
+    <div id="firefox-addons" class="banner">
+      <div class="content"></div>
+    </div>
+    <div id="firefox-open-source" class="banner">
+      <div class="content"></div>
+    </div>
+  </div>
+  <div id="events">
+    <a href="{{ url('mocotw.10years.browser-survey') }}" id="browser-survey" class="event running">
+      <div class="emblem"></div>
+      <h3>問卷調查</h3>
+      <p>The Web We Want<br>透過 Firefox 的問卷調查<br>大聲說出你想要什麼樣的瀏覽器</p>
+    </a>
+    <a id="firefox-family" class="event preparing">
+      <div class="emblem"></div>
+      <h3>線上活動</h3>
+      <p>A Day With Firefox<br>看看令人羨慕的胡家大小<br>如何因為 Firefox 附加元件讓人生發光</p>
+    </a>
+    <a id="firefox-day" class="event preparing">
+      <div class="emblem"></div>
+      <h3>網路自由日</h3>
+      <p>華山 1914 舉辦慶祝活動<br>透過時光走廊、闖關活動<br>與 Firefox 歡度十週年的生日</p>
+    </a>
+  </div>
+{% endblock %}
+
+{% block js %}
+  {{ js('10years-index') }}
+{% endblock %}
