@@ -69,7 +69,17 @@
 
     <div class="pager-content">
 
-      <div class="pager-page default-page" id="promo-fsa">
+      <div class="pager-page default-page" id="promo-10years-browser-survey">
+        <a href="{{ url('mocotw.10years.browser-survey') }}" class="container">
+          <div class="content">
+            <h3>Firefox 十週年問卷調查</h3>
+            <h4>你想要什麼樣的瀏覽器？</h4>
+            <p class="go">馬上填寫</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="pager-page" id="promo-fsa">
         <a href="{{ url('mocotw.community.student.index') }}" class="container">
           <div class="content">
             <h3>Firefox 校園大使，熱烈招募中！</h3>
@@ -110,17 +120,6 @@
           {{ download_firefox(icon=False, mobile=True, small=True) }}
         </div>
       </div>
-
-      <div class="pager-page" id="promo-glow2014">
-        <a href="https://webwewant.mozilla.org/zh-tw/" class="container">
-          <div class="content">
-            <h3>你想要什麼樣的網路？</h3>
-            <h4>在你使用 Firefox 時，就已經在協助我們塑造網路的未來。</h4>
-            <p class="go">分享你的觀點</p>
-          </div>
-        </a>
-      </div>
-
     </div>
 
     <ul class="pager-tabs">
