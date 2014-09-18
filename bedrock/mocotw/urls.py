@@ -178,7 +178,7 @@ urlpatterns = patterns(
     url('^api/newsletter/unsubscribe$', unsubscribe),
 
     url('^community/student/workshop/$', workshop, name='mocotw.community.student.workshop'),
-    page('10years/edm/browser-survey', '10years/edm/browser-survey.html'),
+    page('10years/edm/browser-survey', 'mocotw/10years/edm/browser-survey-web.html'),
     page('10years', 'mocotw/10years/index.html'),
     url('^10years/browser-survey/$', google_form_2014,
         {

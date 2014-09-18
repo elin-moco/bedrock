@@ -41,6 +41,8 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('--attach-images', action='store_true', dest='attach-images', default=False,
                     help='Attach Images in HTML.'),
+        make_option('--export-markup', action='store_true', dest='export-markup', default=False,
+                    help='Export HTML file.'),
     )
     image_prefix = ''
     mail_images = []
@@ -66,10 +68,20 @@ class Command(BaseCommand):
 
         campaign = template.split('/')[-1].replace('-', '')
         from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
-        context = {'tracking_code': ('?utm_source=edm&utm_medium=email&utm_campaign=%s&utm_content=mozilla' % campaign)}
+        context = {
+            'tracking_code': ('?utm_source=edm&utm_medium=email&utm_campaign=%s&utm_content=mozilla' % campaign),
+            'is_web': options['export-markup']
+        }
         newsletter_context_vars(context)
         text_content = render_to_string('%s.txt' % template, context)
         html_content = render_to_string('%s.html' % template, context)
+
+        if options['export-markup']:
+            import codecs
+            with codecs.open(args[1], 'w', 'utf-8') as f:
+                f.write(html_content)
+            return
+
         soup = BeautifulSoup(html_content)
         subject = Header(soup.title.string.encode('utf8'), 'utf-8')
         mail_content = premailer.transform(html_content)

@@ -111,58 +111,35 @@
       color: gray;
     }
 
-    {% if not is_web %}
-    .header-tip {
-      text-align: center;
-    }
-    .header-tip small {
-      color: #CCCCCC;
-      text-decoration: underline;
-    }
-    .header-tip a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-    {% endif %}
-
+    
   </style>
 </head>
 <body>
 <table class="container" border="0" cellpadding="0" cellspacing="0">
-  {% if not is_web %}
-  <tr>
-    <td class="header-tip">
-      <a class="web-link" href="http://mozilla.com.tw/10years/edm/browser-survey/{{ tracking_code }}">
-        <small>無法正常顥示？請點此開啟網頁版</small>
-      </a>
-    </td>
-  </tr>
-  {% endif %}
-  <tr>
+    <tr>
     <td>
       <table class="header">
         <tr>
-          <td><a href="http://mozilla.com.tw/{{ tracking_code }}"><img id="logo" src="{{ 'header-logo-inverse.png'|load_image }}"/></a></td>
+          <td><a href="http://mozilla.com.tw/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla"><img id="logo" src="http://mozilla.com.tw/media/img/mocotw/10years/edm/header-logo-inverse.png"/></a></td>
           <td class="navigator">
             <a href="https://www.facebook.com/MozillaTaiwan">FB 粉絲團</a>&nbsp;|&nbsp;
-            <a href="http://mozilla.com.tw{{ tracking_code }}">Mozilla</a>&nbsp;|&nbsp;
-            <a href="http://myfirefox.com.tw{{ tracking_code }}">MyFirefox</a>&nbsp;|&nbsp;
-            <a href="http://mozilla.com.tw/join_us/{{ tracking_code }}">訂閱電子報</a>&nbsp;|&nbsp;
-            <a href="http://mozilla.com.tw/firefox/download/{{ tracking_code }}">下載 Firefox</a>
+            <a href="http://mozilla.com.tw?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla">Mozilla</a>&nbsp;|&nbsp;
+            <a href="http://myfirefox.com.tw?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla">MyFirefox</a>&nbsp;|&nbsp;
+            <a href="http://mozilla.com.tw/join_us/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla">訂閱電子報</a>&nbsp;|&nbsp;
+            <a href="http://mozilla.com.tw/firefox/download/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla">下載 Firefox</a>
           </td>
         </tr>
       </table>
     </td>
   </tr>
   <tr class="content">
-    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-1.png'|load_image }}"/></a></td>
+    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla"><img align="left" src="http://mozilla.com.tw/media/img/mocotw/10years/edm/edm-survey-1.png"/></a></td>
   </tr>
   <tr class="content">
-    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-2.png'|load_image }}"/></a><a href="http://mozilla.com.tw/10years/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-3.png'|load_image }}"/></a></td>
+    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla"><img align="left" src="http://mozilla.com.tw/media/img/mocotw/10years/edm/edm-survey-2.png"/></a><a href="http://mozilla.com.tw/10years/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla"><img align="left" src="http://mozilla.com.tw/media/img/mocotw/10years/edm/edm-survey-3.png"/></a></td>
   </tr>
   <tr class="content">
-    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-4.png'|load_image }}"/></a></td>
+    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla"><img align="left" src="http://mozilla.com.tw/media/img/mocotw/10years/edm/edm-survey-4.png"/></a></td>
   </tr>
 </table>
 <table id="footer" class="footer" border="0" cellpadding="0" cellspacing="0">
@@ -172,7 +149,7 @@
         <tr>
           <td class="mozilla-col">
             <a href="http://mozilla.org/en-US/" target="_blank">
-              <img style="border:0px;" alt="mozilla" src="{{ 'footer-mozilla.png'|load_image }}">
+              <img style="border:0px;" alt="mozilla" src="http://mozilla.com.tw/media/img/mocotw/10years/edm/footer-mozilla.png">
             </a>
           </td>
           <td class="social-col">
@@ -191,7 +168,7 @@
                     <tr>
                       <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
                       <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
-                      <td><a href="http://mozilla.com.tw/join_us/{{ tracking_code }}" target="_blank">電子報</a></td>
+                      <td><a href="http://mozilla.com.tw/join_us/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla" target="_blank">電子報</a></td>
                     </tr>
                   </table>
                 </td>
@@ -201,7 +178,7 @@
           <td class="about-col">
             <table>
               <tr>
-                <td class="official"><a href="http://mozilla.com.tw/{{ tracking_code }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
+                <td class="official"><a href="http://mozilla.com.tw/?utm_source=edm&amp;utm_medium=email&amp;utm_campaign=browsersurvey&amp;utm_content=mozilla">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
               </tr>
               <tr>
                 <td class="contact">聯繫我們：<a href="mailto:mozilla-tw@mozilla.com">mozilla-tw@mozilla.com.tw</a></td>
