@@ -18,9 +18,11 @@
     }
     table td a {
       display: inline-block;
+      vertical-align: top;
     }
     a, a img {
       outline: none;
+      margin: 0;
     }
 
     img {
@@ -45,12 +47,26 @@
       margin: auto;
       margin-top: 16px;
     }
-    .content td {
+    .content, .content td, .content td a {
       font-size: 0;
+      line-height: 0;
+      mso-line-height-rule: exactly;
     }
     #logo {
       width: 130px;
       height: auto;
+    }
+    .header-tip {
+      text-align: center;
+    }
+    .header-tip small{
+      color: #888888;
+      text-decoration: underline;
+    }
+    .header-tip a {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
     .header {
       width: 100%;
@@ -112,6 +128,13 @@
 <body>
 <table class="container" border="0" cellpadding="0" cellspacing="0">
   <tr>
+    <td class="header-tip">
+      <a class="web-link" href="http://mozilla.com.tw/10years/edm/browser-survey/{{ tracking_code }}">
+        <small>無法正常顥示？請點此開啟網頁版</small>
+      </a>
+    </td>
+  </tr>
+  <tr>
     <td>
       <table class="header">
         <tr>
@@ -128,13 +151,13 @@
     </td>
   </tr>
   <tr class="content">
-    <td><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img src="{{ 'edm-survey-1.png'|load_image }}"/></a></td>
+    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-1.png'|load_image }}"/></a></td>
   </tr>
   <tr class="content">
-    <td><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img src="{{ 'edm-survey-2.png'|load_image }}"/></a><a href="http://mozilla.com.tw/10years/{{ tracking_code }}"><img src="{{ 'edm-survey-3.png'|load_image }}"/></a></td>
+    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-2.png'|load_image }}"/></a><a href="http://mozilla.com.tw/10years/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-3.png'|load_image }}"/></a></td>
   </tr>
   <tr class="content">
-    <td><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img src="{{ 'edm-survey-4.png'|load_image }}"/></a></td>
+    <td valign="top"><a href="http://mozilla.com.tw/10years/browser-survey/{{ tracking_code }}"><img align="left" src="{{ 'edm-survey-4.png'|load_image }}"/></a></td>
   </tr>
 </table>
 <table id="footer" class="footer" border="0" cellpadding="0" cellspacing="0">

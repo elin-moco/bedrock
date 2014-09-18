@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 import sys
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars
 import premailer
+from bedrock.sandstone.settings import MOCO_URL
 from bedrock.settings import NEWSLETTER_PRESEND_LIST
 import commonware.log
 from BeautifulSoup import BeautifulSoup
@@ -52,12 +53,17 @@ class Command(BaseCommand):
         self.options = options
         testing = True if 1 < len(args) else False
         sys.stdout = Unbuffered(sys.stdout)
-        if options['attach-images']:
-            self.image_prefix = 'cid:'
 
         DEFAULT_FILTERS['load_image'] = self.load_image
 
         template = args[0]
+        image_path = 'media/img/%s/' % template[:template.rfind('/')]
+
+        if options['attach-images']:
+            self.image_prefix = 'cid:'
+        else:
+            self.image_prefix = 'http://%s/%s' % (MOCO_URL, image_path)
+
         campaign = template.split('/')[-1].replace('-', '')
         from_email = '"Mozilla Taiwan" <no-reply@mozilla.com.tw>'
         context = {'tracking_code': ('?utm_source=edm&utm_medium=email&utm_campaign=%s&utm_content=mozilla' % campaign)}
@@ -70,7 +76,6 @@ class Command(BaseCommand):
         # headers = {'Reply-To': 'mozilla-tw@mozilla.com'}
         headers = {}
         # charset = 'utf-8'
-        image_path = 'bedrock/mocotw/templates/%s/' % template[:template.rfind('/')]
         if options['attach-images']:
             images = [f for f in self.mail_images if isfile(join(image_path, f))]
         else:
