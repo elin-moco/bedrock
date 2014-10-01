@@ -512,10 +512,10 @@ MINIFY_BUNDLES = {
             'css/mocotw/10years-browser-survey.less',
         ),
         '10years-firefox-family': (
+            'css/libs/jquery.kwicks.min.css',
             'css/mocotw/10years-firefox-family.less',
         ),
         '10years-firefox-day': (
-            'css/libs/jquery.kwicks.min.css',
             'css/mocotw/10years-firefox-day.less',
         ),
     },
