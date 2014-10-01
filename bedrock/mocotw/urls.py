@@ -180,11 +180,8 @@ urlpatterns = patterns(
     url('^community/student/workshop/$', workshop, name='mocotw.community.student.workshop'),
     page('10years/edm/browser-survey', 'mocotw/10years/edm/browser-survey-web.html'),
     page('10years', 'mocotw/10years/index.html'),
-    url('^10years/browser-survey/$', google_form_2014,
-        {
-            'template': 'mocotw/10years/browser-survey.html',
-            'formkey': '12DdDwuLz_fs4-u_caHhhIg1C1Y2SOAXKV7xxHkdOE8k'
-        },
-        name='mocotw.10years.browser-survey'),
+    # page('10years/firefox-day', 'mocotw/10years/firefox-day.html'),
+    page('10years/firefox-family', 'mocotw/10years/firefox-family-intro.html'),
+    page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 
 )

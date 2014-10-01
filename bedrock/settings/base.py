@@ -511,6 +511,13 @@ MINIFY_BUNDLES = {
         '10years-browser-survey': (
             'css/mocotw/10years-browser-survey.less',
         ),
+        '10years-firefox-family': (
+            'css/mocotw/10years-firefox-family.less',
+        ),
+        '10years-firefox-day': (
+            'css/libs/jquery.kwicks.min.css',
+            'css/mocotw/10years-firefox-day.less',
+        ),
     },
     'js': {
         'site': (
@@ -902,6 +909,13 @@ MINIFY_BUNDLES = {
         ),
         '10years-browser-survey': (
             'js/mocotw/10years-browser-survey.js',
+        ),
+        '10years-firefox-family': (
+            'js/libs/jquery.kwicks.min.js',
+            'js/mocotw/10years-firefox-family.js',
+        ),
+        '10years-firefox-day': (
+            'js/mocotw/10years-firefox-day.js',
         ),
     }
 }

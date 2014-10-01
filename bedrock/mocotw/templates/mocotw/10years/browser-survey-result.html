@@ -1,0 +1,38 @@
+{% extends "mocotw/10years/base.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}Firefox 十週年問卷{% endblock %}
+{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/survey-fb.jpg') }}{% endblock %}
+
+{% block extrahead %}
+  {{ css('gform') }}
+  {{ css('10years-base') }}
+  {{ css('10years-browser-survey') }}
+{% endblock %}
+
+{% block content %}
+
+  <div id="main-content">
+    <p>調查已結束，資料分析中...</p>
+    <p>訂閱電子報或加入粉絲團，追蹤最新活動消息。</p>
+  </div>
+  <div class="fb-fans-page">
+    <div class="fb-like-box" data-href="http://www.facebook.com/MozillaTaiwan" data-width="320" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+  </div>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=135467439980355";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+{% endblock %}
+
+{% block js %}
+  {{ js('gform') }}
+  {{ js('10years-browser-survey') }}
+{% endblock %}

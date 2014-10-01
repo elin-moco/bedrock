@@ -1,0 +1,61 @@
+@import "../sandstone/lib";
+
+html, body {
+  background-color: #98DCDC;
+}
+
+.sky #outer-wrapper{
+  background: none;
+}
+
+#tabzilla-panel {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+
+#tabzilla {
+  margin-top: -2px;
+}
+
+#masthead {
+  position: relative;
+  z-index: 999;
+}
+
+#firefox-family-intro {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+}
+
+#coming-soon {
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 320px;
+  height: 320px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFF;
+  .border-radius(5px);
+  .box-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+  .transition(opacity .5s ease-in);
+  h3 {
+    font-size: 24px;
+  }
+  &.appear {
+    pointer-events: all;
+    opacity: 1.0;
+  }
+}

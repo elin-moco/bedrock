@@ -1,3 +1,5 @@
+@import "../sandstone/lib";
+
 #masthead {
   width: 980px;
 }
@@ -91,7 +93,14 @@
       color: #FFFFFF;
       text-shadow: none;
     }
-
+    a {
+      display: inline-block;
+      color: #FFF;
+      text-decoration: underline;
+      font-weight: bolder;
+      font-size: 17px;
+      .animation(blink 0.5s infinite ease-in-out);
+    }
     .emblem {
       display: inline-block;
       width: 164px;
@@ -167,4 +176,32 @@
       height: 120px;
     }
   }
+}
+
+.blinkKeyframes {
+  0% {
+    color: #FFF;
+  }
+  50% {
+    color: #ffff00;
+  }
+  100% {
+    color: #FFF;
+  }
+}
+
+@keyframes blink {
+  .blinkKeyframes();
+}
+@-moz-keyframes blink {
+  .blinkKeyframes();
+}
+@-webkit-keyframes blink {
+  .blinkKeyframes();
+}
+@-o-keyframes blink {
+  .blinkKeyframes();
+}
+@-ms-keyframes blink {
+  .blinkKeyframes();
 }
