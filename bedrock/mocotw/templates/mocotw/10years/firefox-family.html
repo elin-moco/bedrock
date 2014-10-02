@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-  <video id="firefox-family-intro" autoplay>
+  <video id="firefox-family-intro" autoplay controls>
     <source src="{{ media('img/mocotw/10years/firefox-family.mp4') }}" type="video/mp4">
     <source src="{{ media('img/mocotw/10years/firefox-family.webm') }}" type="video/webm">
     <source src="{{ media('img/mocotw/10years/firefox-family.ogg') }}" type="video/ogg">
@@ -34,6 +34,7 @@
     }(document, 'script', 'facebook-jssdk'));
     </script>
   </div>
+  <div id="play-button"></div>
 {% endblock %}
 
 {% block email_form %}{% endblock %}
