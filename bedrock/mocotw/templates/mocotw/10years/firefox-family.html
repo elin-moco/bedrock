@@ -11,12 +11,145 @@
 {% endblock %}
 
 {% block content %}
-  <video id="firefox-family-intro" autoplay controls>
-    <source src="{{ media('img/mocotw/10years/firefox-family.mp4') }}" type="video/mp4">
-    <source src="{{ media('img/mocotw/10years/firefox-family.webm') }}" type="video/webm">
-    <source src="{{ media('img/mocotw/10years/firefox-family.ogg') }}" type="video/ogg">
-    Your browser does not support the <code>video</code> element.
-  </video>
+  <div id="intro">
+    <video id="firefox-family-intro">
+      <source src="{{ media('img/mocotw/10years/firefox-family.mp4') }}" type="video/mp4">
+      <source src="{{ media('img/mocotw/10years/firefox-family.webm') }}" type="video/webm">
+      <source src="{{ media('img/mocotw/10years/firefox-family.ogg') }}" type="video/ogg">
+      Your browser does not support the <code>video</code> element.
+    </video>
+    <span id="scroll-tip">
+      <span class="text1">向下滾動</span>
+      <span class="text2">（或按 Enter 自動播放）</span>
+      <span class="arrow1">﹀</span>
+      <span class="arrow2">﹀</span>
+    </span>
+  </div>
+
+  <div id="fathers-room" class="room">
+    <div class="floor"></div>
+    <div class="stage">
+      <div class="chair"></div>
+      <div class="actor"></div>
+      <div class="cup"></div>
+      <div class="folder"></div>
+      <div class="phone"></div>
+      <div class="desk"></div>
+      <div class="notebook"></div>
+      <div class="bonsai"></div>
+    </div>
+    <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/quick-translator/" target="_blank">
+      <div class="addon-logo"></div>
+      <div class="addon-desc">
+        <h2>爸爸（上班族）<br>Quick Translator</h2>
+        <p>善於使用 Firefox 語言支援 類附加元件閱讀國內外文章，隨時充實自己，與公司的國外同事、主管溝通良好，職場表現相當出色。</p>
+      </div>
+    </a>
+  </div>
+  <div id="mothers-room" class="room">
+    <div class="floor"></div>
+    <div class="stage">
+      <div class="blackboard"></div>
+      <div class="chair"></div>
+      <div class="actor"></div>
+      <div class="book1"></div>
+      <div class="book2"></div>
+      <div class="desk"></div>
+      <div class="notebook"></div>
+      <div class="bonsai"></div>
+    </div>
+    <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/evernote-web-clipper/" target="_blank">
+      <div class="addon-logo"></div>
+      <div class="addon-desc">
+        <h2>媽媽（主婦、老師）<span>Evernote Web Clipper</span></h2>
+        <p>身為老師及主婦的職業婦女，對於時間管理非常有一套。在準備課程教材的時候，會使用 Firefox 書籤管理 類附加元件將有用的資訊儲存下來方便日後隨時使用。</p>
+      </div>
+    </a>
+  </div>
+  <div id="grandpas-room" class="room">
+    <div class="floor"></div>
+    <div class="stage">
+      <div class="frame"></div>
+      <div class="chair"></div>
+      <div class="actor"></div>
+      <div class="crutch"></div>
+      <div class="tea"></div>
+      <div class="teapot"></div>
+      <div class="light"></div>
+      <div class="desk"></div>
+      <div class="notebook"></div>
+    </div>
+    <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/nosquint/" target="_blank">
+      <div class="addon-logo"></div>
+      <div class="addon-desc">
+        <h2>爺爺（長青族）<span>NoSquint</span></h2>
+        <p>利用退休時間投資及從事喜愛的興趣，Firefox 上安裝了許多佈景外觀 類附加元件，讓自己不因身體、體力上的限制侷限生活領域。</p>
+      </div>
+    </a>
+  </div>
+  <div id="daughters-room" class="room">
+    <div class="floor"></div>
+    <div class="stage">
+      <div class="bookshelf"></div>
+      <div class="chair"></div>
+      <div class="actor"></div>
+      <div class="book0"></div>
+      <div class="book1"></div>
+      <div class="book2"></div>
+      <div class="book3"></div>
+      <div class="book4"></div>
+      <div class="book5"></div>
+      <div class="desk"></div>
+      <div class="notebook"></div>
+    </div>
+    <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/media-downloader/" target="_blank">
+      <div class="addon-logo"></div>
+      <div class="addon-desc">
+        <h2>女兒（大學生）<span>Youtube Downloader</span></h2>
+        <p>資訊萬事通，善於使用 Firefox下載管理 類附加元件蒐集運用各種來源資訊，豐富自己的課業參考資料與提升生活品質。</p>
+      </div>
+    </a>
+  </div>
+  <div id="sons-room" class="room">
+    <div class="floor"></div>
+    <div class="stage">
+      <div class="poster"></div>
+      <div class="chair"></div>
+      <div class="actor"></div>
+      <div class="gundam"></div>
+      <div class="plane"></div>
+      <div class="desk"></div>
+      <div class="notebook"></div>
+    </div>
+    <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/" target="_blank">
+      <div class="addon-logo"></div>
+      <div class="addon-desc">
+        <h2>兒子（科技宅）<span>GreaseMonkey</span></h2>
+        <p>技術愛好者，對於各種技術瞭如指掌，隨時掌握 Firefox 各類附加元件資訊並善加利用，尤其擅長改善網頁操作與瀏覽便利性。</p>
+      </div>
+    </a>
+  </div>
+  <div id="boyfriends-room" class="room">
+    <div class="floor"></div>
+    <div class="stage">
+      <div class="map"></div>
+      <div class="chair"></div>
+      <div class="actor"></div>
+      <div class="cup"></div>
+      <div class="coffee-grinder"></div>
+      <div class="coffee-machine"></div>
+      <div class="desk"></div>
+      <div class="notebook"></div>
+    </div>
+    <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/firebug/" target="_blank">
+      <div class="addon-logo"></div>
+      <div class="addon-desc">
+        <h2>女兒的男朋友 (開發者）<span>Firebug</span></h2>
+        <p>資訊萬事通，善於使用 Firefox下載管理 類附加元件蒐集運用各種來源資訊，豐富自己的課業參考資料與提升生活品質。</p>
+      </div>
+    </a>
+  </div>
+
   <div id="coming-soon">
     <h3>活動即將開幕，敬請期待！</h3>
     <a target="_blank" href="https://www.facebook.com/MozillaTaiwan">加入粉絲團以追蹤最新消息 »</a>

@@ -180,7 +180,7 @@ urlpatterns = patterns(
     url('^community/student/workshop/$', workshop, name='mocotw.community.student.workshop'),
     page('10years/edm/browser-survey', 'mocotw/10years/edm/browser-survey-web.html'),
     page('10years', 'mocotw/10years/index.html'),
-    # page('10years/firefox-day', 'mocotw/10years/firefox-day.html'),
+    page('10years/firefox-day', 'mocotw/10years/firefox-day.html'),
     page('10years/firefox-family', 'mocotw/10years/firefox-family.html'),
     page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 

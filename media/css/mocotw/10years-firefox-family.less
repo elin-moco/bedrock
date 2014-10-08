@@ -4,9 +4,13 @@ html, body {
   background-color: #98DCDC;
 }
 
-html, body, #body-wrapper {
+html, body, #body-wrapper, #wrapper {
   width: 100%;
   height: 100%;
+}
+
+#wrapper {
+  padding-bottom: 0;
 }
 
 .sky #outer-wrapper{
@@ -29,7 +33,7 @@ html, body, #body-wrapper {
 }
 
 #firefox-family-intro {
-  position: absolute;
+//  position: absolute;
   margin: auto;
   top: 0;
   bottom: 0;
@@ -37,6 +41,552 @@ html, body, #body-wrapper {
   right: 0;
   width: 100%;
   height: auto;
+}
+
+.stuffOnDesk(@deskHeight) {
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: @deskHeight;
+}
+
+.stuffOnFloor() {
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+}
+
+.stuffOnWall() {
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.room {
+  position: relative;
+  text-align: center;
+  .stage {
+    position: relative;
+    display: inline-block;
+    width: 640px;
+    height: 600px;
+    vertical-align: middle;
+  }
+  .addon {
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    text-align: center;
+    text-decoration: none;
+    h2 {
+      font-size: 28px;
+      span {
+        display: block;
+      }
+    }
+    p {
+      color: @textColorPrimary;
+      text-align: left;
+    }
+  }
+  .actor {
+    .stuffOnFloor;
+  }
+  .chair {
+    .stuffOnFloor;
+  }
+  .desk {
+    .stuffOnFloor;
+  }
+  .floor {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    width: 100%;
+    height: 118px;
+  }
+}
+
+
+#fathers-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/1-father/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/1-father/floor.png) repeat-x;
+  }
+  .chair {
+    width: 170px;
+    height: 309px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/chair.png) no-repeat;
+  }
+  .desk {
+    width: 818px;
+    height: 165px;
+    right: 113px;
+    left: auto;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/desk.png) no-repeat;
+  }
+  .actor {
+    width: 155px;
+    height: 372px;
+    bottom: 70px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/father-set.png) no-repeat;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/computer.png) no-repeat;
+  }
+  .folder {
+    .stuffOnDesk(@deskHeight);
+    width: 67px;
+    height: 24px;
+    padding-left: 320px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/folder.png) top right no-repeat;
+  }
+  .cup {
+    .stuffOnDesk(@deskHeight);
+    width: 42px;
+    height: 37px;
+    padding-left: 200px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/cup.png) top right no-repeat;
+  }
+  .phone {
+    .stuffOnDesk(@deskHeight);
+    width: 87px;
+    height: 28px;
+    padding-right: 270px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/phone.png) no-repeat;
+  }
+  .bonsai {
+    .stuffOnFloor;
+    width: 137px;
+    height: 165px;
+    left: auto;
+    right: 0;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/plant.png) no-repeat;
+  }
+  .addon-logo {
+    display: inline-block;
+    width: 112px;
+    height: 113px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/addon.png) no-repeat;
+  }
+}
+
+#mothers-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/2-mother/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/floor.png) repeat-x;
+    height: 78px;
+  }
+  .desk {
+    width: 398px;
+    height: 165px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/desk.png) no-repeat;
+  }
+  .actor {
+    width: 189px;
+    height: 397px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/mother-talk.png) no-repeat;
+  }
+  .blackboard {
+    .stuffOnWall;
+    top: 100px;
+    width: 527px;
+    height: 231px;
+    padding-left: 20px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/blackboard.png) top right no-repeat;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    padding-right: 90px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/computer.png) no-repeat;
+  }
+  .book1 {
+    .stuffOnDesk(@deskHeight + 19);
+    width: 70px;
+    height: 21px;
+    padding-right: 290px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/book-1.png) no-repeat;
+  }
+  .book2 {
+    .stuffOnDesk(@deskHeight);
+    width: 70px;
+    height: 21px;
+    padding-right: 280px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/book-2.png) no-repeat;
+  }
+  .addon-logo {
+    display: inline-block;
+    width: 115px;
+    height: 115px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/addon.png) no-repeat;
+  }
+}
+
+#grandpas-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/3-grandpa/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/floor.png) repeat-x;
+  }
+  .chair {
+    width: 140px;
+    height: 286px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 165px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/desk.png) no-repeat;
+  }
+  .actor {
+    width: 154px;
+    height: 392px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/grandpa-set.png) no-repeat;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/computer.png) no-repeat;
+  }
+  .teapot {
+    .stuffOnDesk(@deskHeight);
+    width: 57px;
+    height: 53px;
+    padding-left: 300px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/teapot.png) top right no-repeat;
+  }
+  .tea {
+    .stuffOnDesk(@deskHeight);
+    width: 22px;
+    height: 15px;
+    padding-left: 200px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/tea.png) top right no-repeat;
+  }
+  .light {
+    .stuffOnDesk(@deskHeight);
+    width: 85px;
+    height: 99px;
+    padding-right: 260px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/light.png) no-repeat;
+  }
+  .crutch {
+    .stuffOnFloor;
+    width: 29px;
+    height: 130px;
+    left: 110px;
+    right: auto;
+    bottom: 100px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/crutch.png) no-repeat;
+  }
+  .frame {
+    .stuffOnWall;
+    width: 103px;
+    height: 125px;
+    top: 120px;
+    left: auto;
+    right: 113px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/frame.png) no-repeat;
+  }
+  .addon-logo {
+    display: inline-block;
+    width: 118px;
+    height: 118px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/addon.png) no-repeat;
+  }
+}
+
+#daughters-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/4-daughter/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/floor.png) repeat-x;
+  }
+  .chair {
+    width: 139px;
+    height: 219px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 166px;
+    padding-right: 40px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/desk.png) no-repeat;
+  }
+  .actor {
+    width: 171px;
+    height: 384px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/daughter-set.png) no-repeat;
+    bottom: 70px;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/computer.png) no-repeat;
+  }
+  .book0 {
+    .stuffOnDesk(@deskHeight + 76);
+    width: 70px;
+    height: 21px;
+    padding-right: 350px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-1.png) no-repeat;
+  }
+  .book1 {
+    .stuffOnDesk(@deskHeight + 57);
+    width: 70px;
+    height: 21px;
+    padding-right: 340px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-2.png) no-repeat;
+  }
+  .book2 {
+    .stuffOnDesk(@deskHeight + 38);
+    width: 70px;
+    height: 21px;
+    padding-right: 350px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-1.png) no-repeat;
+  }
+  .book3 {
+    .stuffOnDesk(@deskHeight + 19);
+    width: 70px;
+    height: 21px;
+    padding-right: 330px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-3.png) no-repeat;
+  }
+  .book4 {
+    .stuffOnDesk(@deskHeight);
+    width: 70px;
+    height: 21px;
+    padding-right: 340px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-4.png) no-repeat;
+  }
+  .book5 {
+    .stuffOnDesk(@deskHeight);
+    width: 23px;
+    height: 71px;
+    padding-right: 230px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-5.png) no-repeat;
+  }
+  .bookshelf {
+    .stuffOnFloor;
+    width: 359px;
+    height: 385px;
+    top: 120px;
+    left: auto;
+    right: 80px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/bookshelf.png) no-repeat;
+  }
+  .addon-logo {
+    display: inline-block;
+    width: 96px;
+    height: 113px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/addon.png) no-repeat;
+  }
+}
+
+#sons-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/5-son/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/5-son/floor.png) repeat-x;
+  }
+  .chair {
+    width: 139px;
+    height: 219px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 165px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/desk.png) no-repeat;
+  }
+  .actor {
+    width: 154px;
+    height: 404px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/son-set.png) no-repeat;
+    bottom: 70px;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/computer.png) no-repeat;
+  }
+  .plane {
+    .stuffOnDesk(@deskHeight);
+    width: 73px;
+    height: 53px;
+    padding-left: 300px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/plane.png) top right no-repeat;
+  }
+  .gundam {
+    .stuffOnDesk(@deskHeight);
+    width: 72px;
+    height: 144px;
+    padding-right: 260px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/gundam.png) no-repeat;
+  }
+  .poster {
+    .stuffOnWall;
+    width: 174px;
+    height: 243px;
+    top: 80px;
+    left: auto;
+    right: 40px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/poster.png) no-repeat;
+  }
+  .addon-logo {
+    display: inline-block;
+    width: 113px;
+    height: 109px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/addon.png) no-repeat;
+  }
+}
+
+#boyfriends-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/floor.png) repeat-x;
+  }
+  .chair {
+    width: 139px;
+    height: 219px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 166px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/desk.png) no-repeat;
+  }
+  .actor {
+    width: 185px;
+    height: 370px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/boyfriend-set.png) no-repeat;
+    bottom: 70px;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/computer.png) no-repeat;
+  }
+  .cup {
+    .stuffOnDesk(@deskHeight);
+    width: 42px;
+    height: 36px;
+    padding-left: 220px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/cup.png) top right no-repeat;
+  }
+  .coffee-grinder {
+    .stuffOnDesk(@deskHeight);
+    width: 52px;
+    height: 56px;
+    padding-left: 320px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/coffee-grinder.png) top right no-repeat;
+  }
+  .coffee-machine {
+    .stuffOnDesk(@deskHeight);
+    width: 48px;
+    height: 118px;
+    padding-right: 260px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/coffee-machine.png) no-repeat;
+  }
+  .map {
+    .stuffOnWall;
+    width: 208px;
+    height: 147px;
+    top: 80px;
+    left: auto;
+    right: 40px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/map.png) no-repeat;
+  }
+  .addon-logo {
+    display: inline-block;
+    width: 116px;
+    height: 99px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/addon.png) no-repeat;
+  }
+}
+
+#scroll-tip {
+  display: block;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  z-index: 100;
+  color: @textColorPrimary;
+  text-align: center;
+  text-shadow: 0 0 5px #ffffff;
+  .arrow {
+    display: block;
+    height: 6px;
+  }
+  .text1 {
+    display: block;
+    .animation(spotText 1.5s infinite);
+  }
+  .text2 {
+    display: block;
+    font-size: 9px;
+    .animation(spotText 1.5s infinite 0.2s);
+  }
+  .arrow1 {
+    .arrow;
+    .animation(spotText 1.5s infinite 0.4s);
+  }
+  .arrow2 {
+    .arrow;
+    .animation(spotText 1.5s infinite 0.6s);
+  }
+}
+
+.spotTextKeyFrames() {
+  0% {
+    color: @textColorPrimary;
+  }
+  30% {
+    color: #999999;
+  }
+  60% {
+    color: @textColorPrimary;
+  }
+  100% {
+    color: @textColorPrimary;
+  }
+}
+
+@keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-moz-keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-webkit-keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-o-keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-ms-keyframes spotText {
+  .spotTextKeyFrames();
 }
 
 #coming-soon {
