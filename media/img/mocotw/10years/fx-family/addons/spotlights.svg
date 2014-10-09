@@ -1,0 +1,9 @@
+<svg id="smokes" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <g>
+        <polygon fill="#FFFFFF" points="0,300 150,0 170,20"/>
+        <polygon fill="#FFFFFF" points="0,310 150,76 170,96"/>
+        <polygon fill="#FFFFFF" points="0,320 150,152 170,172"/>
+        <polygon fill="#FFFFFF" points="0,328 150,228 170,248"/>
+        <polygon fill="#FFFFFF" points="0,334 150,300 170,320"/>
+    </g>
+</svg>

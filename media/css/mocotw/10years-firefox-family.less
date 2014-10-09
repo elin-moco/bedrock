@@ -524,6 +524,192 @@ html, body, #body-wrapper, #wrapper {
   }
 }
 
+#all-addons {
+
+  .addon(@order, @actor) {
+    position: relative;
+    height: 72px;
+    padding-left: 54px;
+    a:before {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 46px;
+      height: 46px;
+      left: 0;
+      background: url("/media/img/mocotw/10years/fx-family/addons/@{actor}/addon-@{order}.png") center no-repeat;
+      background-color: #fff;
+      border: 2px solid @textColorPrimary;
+      .border-radius(23px);
+    }
+  }
+  .addons(@actor) {
+    .addon1 {
+      .addon(1, @actor);
+    }
+    .addon2 {
+      .addon(2, @actor);
+    }
+    .addon3 {
+      .addon(3, @actor);
+    }
+    .addon4 {
+      .addon(4, @actor);
+    }
+    .addon5 {
+      .addon(5, @actor);
+    }
+  }
+
+  height: 640px;
+  .kwicks {
+    height: 100%;
+    > li {
+      height: 100%;
+      > .addons {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 240px;
+        width: 320px;
+        height: 360px;
+        opacity: 0;
+        .transition(opacity .5s linear);
+        > li {
+          display: block;
+          h4 {
+            display: inline-block;
+            font-size: 18px;
+            margin-bottom: 6px;
+          }
+          p {
+            color: @textColorTertiary;
+          }
+          a, a:link {
+            text-decoration: none;
+            p {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      h3 {
+        display: block;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        width: 116px;
+        padding-bottom: 80px;
+        padding-right: 0;
+        text-align: center;
+        font-size: 22px;
+        .transition(padding-right .5s ease-in-out);
+      }
+      > .actor {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 116px;
+        height: 284px;
+        padding-top: 240px;
+        padding-right: 0;
+        .transition(padding-right .5s ease-in-out);
+      }
+      > .spotlights {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 120px;
+        width: 180px;
+        height: 360px;
+        background: url(/media/img/mocotw/10years/fx-family/addons/spotlights.svg) 9px bottom no-repeat;
+        opacity: 0;
+        .transition(opacity .5s linear);
+      }
+      &.kwicks-expanded, &.kwicks-selected {
+        .actor, h3 {
+          padding-right: 360px;
+        }
+        .addons {
+          opacity: 1;
+        }
+        .spotlights {
+          opacity: 0.5;
+        }
+      }
+    }
+    .father {
+      background: url(/media/img/mocotw/10years/fx-family/1-father/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/1-father/father-front.png) 9px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/1-father/father-back.png) 9px bottom no-repeat;
+      }
+      .addons("1-father");
+    }
+    .mother {
+      background: url(/media/img/mocotw/10years/fx-family/2-mother/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/2-mother/mother-front.png) 12px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/2-mother/mother-back.png) 12px bottom no-repeat;
+      }
+      .addons("2-mother");
+    }
+    .grandpa {
+      background: url(/media/img/mocotw/10years/fx-family/3-grandpa/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/3-grandpa/grandpa-front.png) 10px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/3-grandpa/grandpa-back.png) 10px bottom no-repeat;
+      }
+      .addons("3-grandpa");
+    }
+    .daughter {
+      background: url(/media/img/mocotw/10years/fx-family/4-daughter/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/4-daughter/daughter-front.png) 10px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/4-daughter/daughter-back.png) 10px bottom no-repeat;
+      }
+      .addons("4-daughter");
+    }
+    .son {
+      background: url(/media/img/mocotw/10years/fx-family/5-son/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/5-son/son-front.png) 11px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/5-son/son-back.png) 11px bottom no-repeat;
+      }
+      .addons("5-son");
+    }
+    .boyfriend {
+      background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/6-boyfriend/boyfriend-front.png) left bottom no-repeat;
+      }
+      &.kwicks-expanded .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/6-boyfriend/boyfriend-back.png) left bottom no-repeat;
+      }
+      .addons("6-boyfriend");
+    }
+  }
+}
+
 #scroll-tip {
   display: block;
   position: fixed;
