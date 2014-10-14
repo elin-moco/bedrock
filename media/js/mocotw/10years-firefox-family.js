@@ -47,6 +47,8 @@ $(function(){
         };
         controller.addTween(fatherIn, TweenMax.to('#intro', 1, {css: {top: '-100%'}}), 1000);
         controller.addTween(fatherIn, TweenMax.to('#firefox-family-intro', 1, {volume: 0}), 800);
+        controller.addTween(fatherIn, TweenMax.to('#scene > .clock .hour', 1, {rotation: 90}), 24000);
+        controller.addTween(fatherIn, TweenMax.to('#scene > .clock .minute', 1, {rotation: 360*6}), 24000);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room .floor', 1, {css: {height: '0'}}), 500);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
@@ -151,6 +153,7 @@ $(function(){
         controller.addTween(boyfriendIn, TweenMax.from('#boyfriends-room .addon-desc p', 1, {css: {marginTop: '40px', marginBottom: '-100px', opacity: '0'}}), 400, 2000);
 
         controller.addTween(addonsIn, TweenMax.to('#boyfriends-room', 1, {css: {top: '-101%'}}), 1000);
+        controller.addTween(addonsIn, TweenMax.to('#scene .clock', 1, {css: {top: '-100%'}}), 1000);
         controller.addTween(addonsIn, TweenMax.from('#all-addons', 1, {css: {top: '50%', height: '1200px'}}), 1000);
     }
 
