@@ -111,7 +111,7 @@ $(function(){
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .book1', 1, {css: {bottom: '150%'}}), 500, 1800);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .book0', 1, {css: {bottom: '150%'}}), 500, 1900);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .book5', 1, {css: {bottom: '150%'}}), 500, 2000);
-        controller.addTween(daughterIn, TweenMax.from('#daughters-room .bookshelf', 1, {css: {top: '-200%'}}), 800, 2100);
+        controller.addTween(daughterIn, TweenMax.from('#daughters-room .bookshelf', 1, {css: {bottom: '150%'}}), 800, 2100);
         controller.addTween(daughterIn, TweenMax.to('#daughters-room .logo-outline path', 1, {attr: {'stroke-dashoffset': '0'}}), 800, 800);
         controller.addTween(daughterIn, TweenMax.to('#daughters-room .logo-outline', 1, {css: {opacity: '0'}}), 800, 1600);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .logo-filled', 1, {css: {opacity: '0'}}), 800, 1600);
