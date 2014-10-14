@@ -22,6 +22,14 @@ $(function(){
     function initScrollAnimations() {
         $('html').addClass('desktop');
         $('.room .actor').addClass('stand');
+        $('#firefox-family-intro').waypoint(function(direction) {
+            if (direction === 'down') {
+                this.pause();
+            }
+            else {
+                this.play();
+            }
+        }, {offset: -800});
         TweenMax.selector = jQuery;
         var controller = $.superscrollorama({ playoutAnimations: false });
         var fatherIn = 0;
@@ -38,6 +46,7 @@ $(function(){
             $(this.target).siblings('.actor').addClass('stand');
         };
         controller.addTween(fatherIn, TweenMax.to('#intro', 1, {css: {top: '-100%'}}), 1000);
+        controller.addTween(fatherIn, TweenMax.to('#firefox-family-intro', 1, {volume: 0}), 800);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room .floor', 1, {css: {height: '0'}}), 500);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
