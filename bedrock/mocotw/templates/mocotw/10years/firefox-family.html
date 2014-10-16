@@ -1,40 +1,652 @@
 {% extends "mocotw/10years/base.html" %}
 
-{% block page_title_prefix %}{% endblock %}
-{% block page_title %}Firefox 十週年 - 幸福的狐家元件{% endblock %}
+{% block page_title_prefix %}{% if addon_name %}{{ addon_name }} - {% else %}{{ super() }}{% endif %}{% endblock %}
+{% block page_title %}幸福的狐家元件，帶你一窺幸福的秘訣{% endblock %}
+{% block page_desc %}歡慶 Firefox 十週年，超強附加元件大揭密，教你成為人生勝利組！還有幸運輪盤超多好禮等你試手氣，Firefox 十週年特展「網路自由日」入場券搶先拿！{% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/firefox-family-fb.png') }}{% endblock %}
 
-
 {% block extrahead %}
+  {% if addon %}
+    <meta name="robots" content="noindex">
+  {% endif %}
   {{ css('10years-base') }}
   {{ css('10years-firefox-family') }}
 {% endblock %}
 
 {% block content %}
-  <video id="firefox-family-intro" autoplay controls>
-    <source src="{{ media('img/mocotw/10years/firefox-family.mp4') }}" type="video/mp4">
-    <source src="{{ media('img/mocotw/10years/firefox-family.webm') }}" type="video/webm">
-    <source src="{{ media('img/mocotw/10years/firefox-family.ogg') }}" type="video/ogg">
-    Your browser does not support the <code>video</code> element.
-  </video>
-  <div id="coming-soon">
-    <h3>活動即將開幕，敬請期待！</h3>
-    <a target="_blank" href="https://www.facebook.com/MozillaTaiwan">加入粉絲團以追蹤最新消息 »</a>
-    <div class="fb-fans-page">
-      <div class="fb-like-box" data-href="http://www.facebook.com/MozillaTaiwan" data-width="300" data-height="240" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-    </div>
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=135467439980355";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
+  <div id="scene">
+
+    <div id="intro">
+      <video id="firefox-family-intro" autoplay loop>
+        <source src="{{ media('img/mocotw/10years/firefox-family.mp4') }}" type="video/mp4">
+        <source src="{{ media('img/mocotw/10years/firefox-family.webm') }}" type="video/webm">
+        <source src="{{ media('img/mocotw/10years/firefox-family.ogg') }}" type="video/ogg">
+        Your browser does not support the <code>video</code> element.
+      </video>
+      <a id="music-button" class="on" href="javascript:void(0);"></a>
+      <span id="scroll-tip">
+        <span class="text1">向下滾動</span>
+        <span class="text2">（或按 Enter 自動播放）</span>
+        <span class="arrow1">﹀</span>
+        <span class="arrow2">﹀</span>
+      </span>
+    </div>
+    <div class="clock">
+      <div class="hour"></div>
+      <div class="minute"></div>
+    </div>
+    <div id="fathers-room" class="room" data-actor="father">
+      <div class="floor"></div>
+      <div class="stuff">
+        <div class="stage">
+          <div class="chair"></div>
+          <div class="actor"></div>
+          <div class="smoke"></div>
+          <div class="cup"></div>
+          <div class="folder"></div>
+          <div class="phone"></div>
+          <div class="desk"></div>
+          <div class="notebook"></div>
+          <div class="bonsai"></div>
+        </div>
+        <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/quick-translator/" target="_blank">
+          <div class="addon-logo">
+            <svg class="logo-outline" version="1.1" xmlns="http://www.w3.org/2000/svg" width="113px" height="113px" viewBox="0 0 113 113">
+            <g>
+              <path stroke-dasharray="346" stroke-dashoffset="346" d="M112,56.498c0,30.378-24.625,55.002-54.998,55.002   C26.625,111.5,2,86.876,2,56.498C2,26.125,26.625,1.5,57.002,1.5C87.375,1.5,112,26.125,112,56.498z"></path>
+              <path stroke-dasharray="302" stroke-dashoffset="302" d="M72.046,46.007   c23.278-1.677,30.386,8.508,30.386,18.844c0,10.34-11.731,18.717-26.201,18.717c-3.019,0-2.495,1.66-16.842,6.234   c0,0,3.039-8.918,0.82-10.143c-6.192-3.421-10.18-8.78-10.18-14.809c0-9.199,9.141-17.078,21.388-18.65l-0.13-0.528   c-2.462-10.265-14.445-16.709-29.539-16.709c-16.768,0-30.478,9.707-30.359,21.682C11.56,67.97,30.076,75.562,46.704,80.862   c0,0-3.156-9.056-2.834-11.979c0.402-3.622,4.093-4.561,4.964-4.763"></path>
+            </g>
+            </svg>
+            <div class="logo-filled"></div>
+          </div>
+          <div class="addon-desc">
+            <h2>Quick Translator<span>爸爸（上班族）</span></h2>
+            <p>善於使用 Firefox 語言支援類的附加元件閱讀國內外文章，隨時充實自己，並與公司的國外同事、主管溝通良好，職場表現相當出色。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="mothers-room" class="room" data-actor="mother">
+      <div class="floor"></div>
+      <div class="stuff">
+        <div class="stage">
+          <div class="blackboard"></div>
+          <div class="chair"></div>
+          <div class="actor"></div>
+          <div class="book1"></div>
+          <div class="book2"></div>
+          <div class="desk"></div>
+          <div class="notebook"></div>
+        </div>
+        <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/evernote-web-clipper/" target="_blank">
+          <div class="addon-logo">
+            <svg class="logo-outline" version="1.1" xmlns="http://www.w3.org/2000/svg" width="113px" height="113px" viewBox="0 0 113 113">
+              <g>
+                <path stroke-dasharray="380" stroke-dashoffset="380" d="   M67.834,12.179c0,0,23.28-1.002,26.534,5.005c3.255,6.007,5.003,47.558,0.499,60.575c-4.503,13.016-11.014,21.025-21.275,21.025   c-10.261,0-16.269-5.508-16.269-13.017c0-7.508,5.506-11.264,12.765-11.264c7.26,0,5.259,7.01,0.502,7.01   c-4.758,0-9.264,7.758-0.252,7.758s12.015-2.254,12.015-8.511S79.35,67.495,70.839,67.495s-9.763-2.25-9.763-5.756   s-2.753-5.508-2.753-1.504c0,4.006-1.249,10.766-8.259,10.766s-27.033-6.257-27.033-17.271c0-11.014-1.753-28.035,8.259-28.035   c10.013,0,11.765-0.748,11.765-6.257c0-5.508-1.752-12.017,10.763-12.017C68.587,7.421,60.575,12.179,67.834,12.179z"></path>
+                <path stroke-dasharray="26" stroke-dashoffset="26" d="   M85.857,47.596c0,1.783-2.642,3.13-5.007,3.13s-5.005-1.342-5.005-3.13s2.499-3.127,5.005-3.127S85.857,45.812,85.857,47.596z"></path>
+                <path stroke-dasharray="34" stroke-dashoffset="34" d="   M28.628,20.5c1.015,0,5.872,0,6.872,0s1-12.233,0-12.233S27.612,20.5,28.628,20.5z"></path>
+                <path stroke-dasharray="414" stroke-dashoffset="414" d="   M111.5,96.579c0,8.24-6.68,14.921-14.92,14.921H16.42c-8.24,0-14.92-6.681-14.92-14.921V16.421C1.5,8.18,8.18,1.5,16.42,1.5h80.16   c8.24,0,14.92,6.68,14.92,14.921V96.579z"></path>
+              </g>
+            </svg>
+            <div class="logo-filled"></div>
+          </div>
+          <div class="addon-desc">
+            <h2>Evernote Web Clipper<span>媽媽（主婦、老師）</span></h2>
+            <p>身為老師及主婦的職業婦女，對於時間管理非常有一套。在準備課程教材的時候，會使用 Firefox 書籤管理類的附加元件，儲存有用的資訊方便日後隨時使用。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="grandpas-room" class="room" data-actor="grandpa">
+      <div class="floor"></div>
+      <div class="stuff">
+        <div class="stage">
+          <div class="frame"></div>
+          <div class="chair"></div>
+          <div class="actor"></div>
+          <div class="crutch"></div>
+          <div class="smoke"></div>
+          <div class="tea"></div>
+          <div class="teapot"></div>
+          <div class="light"></div>
+          <div class="desk"></div>
+          <div class="notebook"></div>
+        </div>
+        <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/nosquint/" target="_blank">
+          <div class="addon-logo">
+            <svg class="logo-outline" version="1.1" xmlns="http://www.w3.org/2000/svg" width="115px" height="115px" viewBox="0 0 115 115">
+              <g>
+                <path stroke-dasharray="264" stroke-dashoffset="264" d="   M67.173,60.664l19.903,33.312l-10.71,6.402L55.979,66.251c-3.204,1.303-6.088,1.596-9.759,1.596   c-15.263,0-27.64-12.372-27.64-27.643c0-15.263,12.377-27.636,27.64-27.636c15.266,0,27.642,12.373,27.642,27.636   c0,11.599-6.621,21.314-16.748,25.418"></path>
+                <path stroke-dasharray="453" stroke-dashoffset="453" d="   M78.325,7.002C99.618,16.365,111.5,33.887,111.5,57.498c0,30.377-24.625,55.002-54.998,55.002C26.125,112.5,1.5,87.875,1.5,57.498   C1.5,27.124,26.125,2.5,56.502,2.5c6.763,0,13.239,1.22,19.224,3.452L35.576,108.378"></path>
+              </g>
+            </svg>
+            <div class="logo-filled"></div>
+          </div>
+          <div class="addon-desc">
+            <h2>NoSquint<span>爺爺（長青族）</span></h2>
+            <p>利用退休時間投資及從事喜愛的興趣，Firefox 上安裝了許多輔助類附加元件，讓自己的線上生活不受視力、體力影響。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="daughters-room" class="room" data-actor="daughter">
+      <div class="floor"></div>
+      <div class="stuff">
+        <div class="stage">
+          <div class="bookshelf"></div>
+          <div class="chair"></div>
+          <div class="actor"></div>
+          <div class="book0"></div>
+          <div class="book1"></div>
+          <div class="book2"></div>
+          <div class="book3"></div>
+          <div class="book4"></div>
+          <div class="book5"></div>
+          <div class="desk"></div>
+          <div class="notebook"></div>
+        </div>
+        <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/media-downloader/" target="_blank">
+          <div class="addon-logo">
+            <svg class="logo-outline" version="1.1" xmlns="http://www.w3.org/2000/svg" width="96.357px" height="112.473px" viewBox="0 0 96.357 112.473">
+              <g>
+                <path stroke-dasharray="789" stroke-dashoffset="789" d="  M67.748,1.5c0,0-18.224,14.064-20.081,14.064S30,1.5,30,1.5s-0.674,5.503-0.923,6.758s17.296,16.852,18.53,16.852  S68.595,8.403,68.703,9.152c0.203,1.401,2.307,18.719,2.619,20.29S48.797,50.959,47.667,50.959s-21.229-24-21.53-22.281  s-1.832,9.326-1.832,10.716s21.704,21.109,23.303,21.109s24.84-22.702,25.14-21.034c0.29,1.611,2.087,15.646,2.373,16.983  S49.039,81.296,47.667,81.296s-26.184-26.579-26.269-24.97S21.187,62.641,19,62.471c-1.712-0.133-4.727-0.35-4.727-0.35  s31.856,28.72,33.334,28.72s33.834-28.018,33.834-28.018s13.237-2.162,13.237-0.323s-43.693,48.473-45.614,48.473  S1.321,63.814,1.321,62.5s16.888,0,18.446,0S30,1.5,30,1.5H67.748c0,0,7.549,61.375,8.877,61.375s4.816-0.052,4.816-0.052"></path>
+              </g>
+            </svg>
+            <div class="logo-filled"></div>
+          </div>
+          <div class="addon-desc">
+            <h2>Youtube Downloader<span>女兒（大學生）</span></h2>
+            <p>資訊萬事通，善於使用 Firefox 下載管理類附加元件蒐集各種來源資訊，豐富自己的課業參考資料並提升生活品質。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="sons-room" class="room" data-actor="son">
+      <div class="floor"></div>
+      <div class="stuff">
+        <div class="stage">
+          <div class="poster"></div>
+          <div class="chair"></div>
+          <div class="actor"></div>
+          <div class="gundam"></div>
+          <div class="plane"></div>
+          <div class="desk"></div>
+          <div class="notebook"></div>
+        </div>
+        <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/" target="_blank">
+          <div class="addon-logo">
+            <svg class="logo-outline" version="1.1" xmlns="http://www.w3.org/2000/svg" width="112.999px" height="109.242px" viewBox="0 0 112.999 109.242" >
+            <g>
+              <path stroke-dasharray="414" stroke-dashoffset="414" d="   M83.703,1.5c0,0-41.403,13.363-53.232,25.629c-11.83,12.269-12.705,12.488-12.705,12.488S7.25,36.986,2.65,46.624   c-4.6,9.642,5.913,29.138,8.324,30.671s4.161,30.447,22.782,30.447c18.62,0,39.865-0.114,49.291-0.147   c21.684-0.068,20.59-32.931,22.781-34.684c4.672-3.738,7.446-26.942,4.38-32.2c-3.065-5.258-8.979-6.791-16.429-6.791   c-7.45,0-8.764-3.506-7.45-7.011c1.317-3.505,7.889-12.046,7.889-12.046S67.493,26.689,61.796,28.006   C56.103,29.32,79.978,5.222,83.703,1.5z"></path>
+              <path stroke-dasharray="243" stroke-dashoffset="243" d="   M88.361,53.685c-0.187-8.688-7.054-15.745-15.744-15.745c-8.03,0-14.585,3.172-15.549,10.942   c-0.799-7.745-7.275-10.942-15.229-10.942c-8.495,0-15.116,6.896-15.388,15.388c-0.224,6.945-6.487,20.324-6.487,26.546   c0,12.754,17.107,23.103,38.199,23.103c21.081,0,38.188-10.349,38.188-23.103C96.352,73.422,88.535,61.835,88.361,53.685z"></path>
+              <path stroke-dasharray="55" stroke-dashoffset="55" d="   M54.86,66.362c0,2.358-0.48,4.536-1.294,6.296c-1.204,2.604-2.079,4.292-5.311,4.292c-2.638,0-3.252-1.03-4.423-2.725   c-1.34-1.938-2.182-4.743-2.182-7.863c0-5.848,2.959-10.588,6.604-10.588C51.902,55.774,54.86,60.515,54.86,66.362z"></path>
+              <path stroke-dasharray="55" stroke-dashoffset="55" d="   M74.988,66.362c0,2.744-0.651,5.244-1.719,7.126c-1.208,2.127-2.95,3.462-4.886,3.462c-2.139,0-4.04-1.631-5.246-4.158   c-0.852-1.782-1.358-4.011-1.358-6.43c0-5.848,2.959-10.588,6.604-10.588C72.03,55.774,74.988,60.515,74.988,66.362z"></path>
+              <path stroke-dasharray="67" stroke-dashoffset="67" d="   M87.644,81.377c0,3.938-5.036,7.415-12.717,9.488c-4.705,1.27-10.402,2.014-16.541,2.014c-7.487,0-14.317-1.106-19.492-2.926   c-5.992-2.105-9.764-5.168-9.763-8.576"></path>
+              <path stroke-dasharray="58" stroke-dashoffset="58" d="   M105.062,53.124c0.571,2.797,0.532,5.546,0.009,7.825c-0.684,2.982-2.197,5.158-4.251,5.577c-3.623,0.74-3.371-4.269-4.691-10.723   c-1.32-6.447-5.933-11.531-2.312-12.269c1.81-0.372,4.291,0.414,6.485,2.098C102.495,47.317,104.402,49.9,105.062,53.124z"></path>
+              <path stroke-dasharray="59" stroke-dashoffset="59" d="   M8.81,54.415c0.812-2.953,2.285-4.96,3.987-6.163c1.96-1.385,4.222-1.705,6.129-1.179c3.567,0.979,1.074,5.333-0.675,11.683   c-1.74,6.346,0.068,12.97-3.492,11.983c-1.828-0.499-3.803-3.108-5.06-6.389C8.505,61.232,7.96,57.509,8.81,54.415z"></path>
+              <path stroke-dasharray="14" stroke-dashoffset="14" d="   M73.27,73.488c-1.208,2.127-1.627,3.462-4.886,3.462c-3.497,0-4.04-1.631-5.246-4.158"></path>
+            </g>
+            </svg>
+            <div class="logo-filled"></div>
+          </div>
+          <div class="addon-desc">
+            <h2>GreaseMonkey<span>兒子（科技宅）</span></h2>
+            <p>技術愛好者，對於各種最新科技瞭如指掌，隨時掌握 Firefox 各類附加元件資訊並善加利用，尤其擅於強化網頁操作與瀏覽便利性。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="boyfriends-room" class="room" data-actor="boyfriend">
+      <div class="floor"></div>
+      <div class="stuff">
+        <div class="stage">
+          <div class="map"></div>
+          <div class="chair"></div>
+          <div class="actor"></div>
+          <div class="smoke"></div>
+          <div class="cup"></div>
+          <div class="coffee-grinder"></div>
+          <div class="coffee-machine"></div>
+          <div class="desk"></div>
+          <div class="notebook"></div>
+        </div>
+        <a class="addon" href="https://addons.mozilla.org/zh-tw/firefox/addon/firebug/" target="_blank">
+          <div class="addon-logo">
+            <svg class="logo-outline" version="1.1" xmlns="http://www.w3.org/2000/svg" width="113px" height="95.768px" viewBox="0 0 113 95.768">
+            <g>
+              <path stroke-dasharray="20" stroke-dashoffset="20" d="   M27.405,36.6c0,0-6.12,0.074-10.421-1.217c-4.3-1.289-6.45-6.449-6.45-6.449"></path>
+              <path stroke-dasharray="34" stroke-dashoffset="34" d="   M20.781,54.908c0,0-8.433,2.043-13.485,0.618c-5.053-1.424-4.794-5.053-4.794-5.053"></path>
+              <path stroke-dasharray="31" stroke-dashoffset="31" d="   M51.244,70.65c0,0-11.557,6.518-13.76,10.791c-2.204,4.273-2.46,11.274-2.332,12.826"></path>
+              <path stroke-dasharray="18" stroke-dashoffset="18" d="   M73.215,63.744c0,0,3.138,4.484,7.932,5.13c4.794,0.645,6.994,0.517,6.994,0.517"></path>
+              <path stroke-dasharray="24" stroke-dashoffset="24" d="   M89.797,53.652c0,0,1.714,2.522,7.414,2.781c5.701,0.259,15.289-0.39,15.289-0.39"></path>
+              <path stroke-dasharray="13" stroke-dashoffset="13" d="   M55.84,15.465c0,0-3.128-0.628-1.831-5.291c1.297-4.662,3.686-4.659,3.686-4.659"></path>
+              <path stroke-dasharray="13" stroke-dashoffset="13" d="   M77.276,10.174c0,0-2.247-1.673-1.082-4.652C77.36,2.541,79.719,1.5,79.719,1.5"></path>
+              <path stroke-dasharray="18" stroke-dashoffset="18" d="   M28.249,67.016c0,0-4.814,10.078,1.206,16.099"></path>
+              <path stroke-dasharray="399" stroke-dashoffset="399" d="   M39.184,70.482c10.122,1.784,21.86-0.87,35.062-7.31c22.572-11.02,35.879-30.185,29.718-42.8   C97.806,7.759,74.515,6.455,51.943,17.475c-6.756,3.295-17.436,11.674-17.436,11.674c6.154,5.237,17.277,15.658,19.32,22.592   c0,0,8.495-9.584,15.937-16.229c14.046-12.54,28.777-19.928,30.772-7.108c0.891,5.718-3.231,13.183-18.026,21.205   C74.377,54.015,54.5,53.875,54.5,53.875c0.39,4.019-9.83,16.947-16.929,16.164c-3.672-0.403-12.786-4.531-15.343-9.77   c-4.316-8.842,0.31-20.334,11.597-30.547"></path>
+            </g>
+            </svg>
+            <div class="logo-filled"></div>
+          </div>
+          <div class="addon-desc">
+            <h2>Firebug<span>女兒的男朋友（開發者）</span></h2>
+            <p>妥善運用 Firefox 網頁開發類附加元件，開發效率快、品質高，對於資料的控管也很有一套。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="all-addons" class="stand">
+      <h2>請為狐家人常用的附加元件投票按讚</h2>
+      <ul class="kwicks">
+        <li class="father">
+          <h3>上班族</h3>
+          <div class="actor"></div>
+          <div class="spotlights"></div>
+          <ul class="addons">
+            <li class="backpack">
+              <h4>爸爸的附加元件隨身包</h4>
+            </li>
+            <li id="addon-quick-translator" class="addon1">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/quick-translator/" target="_blank">
+                <h4>Quick Translator</h4>
+                <p>輕量易用的即時翻譯機</p>
+              </a>
+              <div class="fb-vote" data-addon="quick-translator"></div>
+            </li>
+            <li id="addon-adblock-plus" class="addon2">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/adblock-plus/" target="_blank">
+                <h4>ADBlocker</h4>
+                <p>移除網頁線上廣告與封鎖惡意網域</p>
+              </a>
+              <div class="fb-vote" data-addon="adblock-plus"></div>
+            </li>
+            <li id="addon-measureit" class="addon3">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/measureit/" target="_blank">
+                <h4>MeasureIt</h4>
+                <p>直覺式測量網頁長寬距離</p>
+              </a>
+              <div class="fb-vote" data-addon="measureit"></div>
+            </li>
+            <li id="addon-lastpass-password-manager" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/lastpass-password-manager/" target="_blank">
+                <h4>LastPass Password Manager</h4>
+                <p>密碼管理服務</p>
+              </a>
+              <div class="fb-vote" data-addon="lastpass-password-manager"></div>
+            </li>
+            <li id="addon-foxclocks" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/foxclocks/" target="_blank">
+                <h4>FoxClocks</h4>
+                <p>跨地區時鐘</p>
+              </a>
+              <div class="fb-vote" data-addon="foxclocks"></div>
+            </li>
+            <li class="more">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
+            </li>
+          </ul>
+        </li>
+        <li class="mother">
+          <h3>主婦、老師</h3>
+          <div class="actor"></div>
+          <div class="spotlights"></div>
+          <ul class="addons">
+            <li class="backpack">
+              <h4>媽媽的附加元件隨身包</h4>
+            </li>
+            <li id="addon-evernote-web-clipper" class="addon1">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/evernote-web-clipper/" target="_blank">
+                <h4>Evernote Web Clipper</h4>
+                <p>儲存網頁內文、連結、影像</p>
+              </a>
+              <div class="fb-vote" data-addon="evernote-web-clipper"></div>
+            </li>
+            <li id="addon-clearly" class="addon2">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/clearly/" target="_blank">
+                <h4>Evernote Clearly</h4>
+                <p>使網頁乾淨易於閱讀</p>
+              </a>
+              <div class="fb-vote" data-addon="clearly"></div>
+            </li>
+            <li id="addon-savebar" class="addon3">
+              <a href="http://www.savebar.com.tw/Page_Download.aspx" target="_blank">
+                <h4>SaveBar</h4>
+                <p>網路購物即時比價</p>
+              </a>
+              <div class="fb-vote" data-addon="savebar"></div>
+            </li>
+            <li id="addon-turn-off-the-lights" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/turn-off-the-lights/" target="_blank">
+                <h4>關燈看影片</h4>
+                <p>便於觀賞網頁影片</p>
+              </a>
+              <div class="fb-vote" data-addon="turn-off-the-lights"></div>
+            </li>
+            <li id="addon-scrapbook" class="addon5">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/scrapbook/" target="_blank">
+                <h4>ScrapBook</h4>
+                <p>方便擷取網頁與整理擷取後的資料</p>
+              </a>
+              <div class="fb-vote" data-addon="scrapbook"></div>
+            </li>
+            <li class="more">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
+            </li>
+          </ul>
+        </li>
+        <li class="grandpa">
+          <h3>長青族</h3>
+          <div class="actor"></div>
+          <div class="spotlights"></div>
+          <ul class="addons">
+            <li class="backpack">
+              <h4>爺爺的附加元件隨身包</h4>
+            </li>
+            <li id="addon-nosquint" class="addon1">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/nosquint/" target="_blank">
+                <h4>NoSquint</h4>
+                <p>放大網頁文字與圖片</p>
+              </a>
+              <div class="fb-vote" data-addon="nosquint"></div>
+            </li>
+            <li id="addon-stock-market-quotes" class="addon2">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/stock-market-quotes/" target="_blank">
+                <h4>Stock Market Quotes</h4>
+                <p>即時股票交易追蹤</p>
+              </a>
+              <div class="fb-vote" data-addon="stock-market-quotes"></div>
+            </li>
+            <li id="addon-auto-reload" class="addon3">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/auto-reload/" target="_blank">
+                <h4>Auto Reload</h4>
+                <p>網頁內容有變動時將自動更新頁面</p>
+              </a>
+              <div class="fb-vote" data-addon="auto-reload"></div>
+            </li>
+            <li id="addon-reminderfox" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/reminderfox/" target="_blank">
+                <h4>ReminderFox</h4>
+                <p>管理提醒計畫列表</p>
+              </a>
+              <div class="fb-vote" data-addon="reminderfox"></div>
+            </li>
+            <li id="addon-healthpage" class="addon5">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/healthpage/" target="_blank">
+                <h4>健康頁 Health Page App</h4>
+                <p>紀錄如運動、健康筆記、健康目標、飲食狀況等資料</p>
+              </a>
+              <div class="fb-vote" data-addon="healthpage"></div>
+            </li>
+            <li class="more">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
+            </li>
+          </ul>
+        </li>
+        <li class="daughter">
+          <h3>大學生</h3>
+          <div class="actor"></div>
+          <div class="spotlights"></div>
+          <ul class="addons">
+            <li class="backpack">
+              <h4>女兒的附加元件隨身包</h4>
+            </li>
+            <li id="addon-media-downloader" class="addon1">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/media-downloader/" target="_blank">
+                <h4>Youtube Downloader</h4>
+                <p>方便下載網頁影片</p>
+              </a>
+              <div class="fb-vote" data-addon="media-downloader"></div>
+            </li>
+            <li id="addon-bbsfox" class="addon2">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/bbsfox/" target="_blank">
+                <h4>BBSFox</h4>
+                <p>使用 Firefox 瀏覽 BBS</p>
+              </a>
+              <div class="fb-vote" data-addon="bbsfox"></div>
+            </li>
+            <li id="addon-personas-rotator" class="addon3">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/personas-rotator/" target="_blank">
+                <h4>Personas Rotator</h4>
+                <p>定時自動更換 Firefox 佈景主題</p>
+              </a>
+              <div class="fb-vote" data-addon="personas-rotator"></div>
+            </li>
+            <li id="addon-ie-tab" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/ie-tab/" target="_blank">
+                <h4>IE Tab</h4>
+                <p>直接在 Firefox 分頁中以內嵌的 IE 引擎，瀏覽 IE Only 的網頁</p>
+              </a>
+              <div class="fb-vote" data-addon="ie-tab"></div>
+            </li>
+            <li id="addon-easyscreenshot" class="addon5">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/easyscreenshot/" target="_blank">
+                <h4>網頁截圖</h4>
+                <p>將網頁以圖片方式擷取保存</p>
+              </a>
+              <div class="fb-vote" data-addon="easyscreenshot"></div>
+            </li>
+            <li class="more">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
+            </li>
+          </ul>
+        </li>
+        <li class="son">
+          <h3>科技宅</h3>
+          <div class="actor"></div>
+          <div class="spotlights"></div>
+          <ul class="addons">
+            <li class="backpack">
+              <h4>兒子的附加元件隨身包</h4>
+            </li>
+            <li id="addon-greasemonkey" class="addon1">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/" target="_blank">
+                <h4>GreaseMonkey</h4>
+                <p>使大部分 HTML 為主的網頁於使用者端更方便易用</p>
+              </a>
+              <div class="fb-vote" data-addon="greasemonkey"></div>
+            </li>
+            <li id="addon-firegestures" class="addon2">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/firegestures/" target="_blank">
+                <h4>FireGestures</h4>
+                <p>自訂滑鼠手勢套件執行各種瀏覽命令</p>
+              </a>
+              <div class="fb-vote" data-addon="firegestures"></div>
+            </li>
+            <li id="addon-snaplinksplus" class="addon3">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/snaplinksplus/" target="_blank">
+                <h4>Snap Links Plus</h4>
+                <p>可一次選取大量連結並個別開啟新分頁</p>
+              </a>
+              <div class="fb-vote" data-addon="snaplinksplus"></div>
+            </li>
+            <li id="addon-tile-tabs" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/tile-tabs/" target="_blank">
+                <h4>Tile Tabs</h4>
+                <p>透過縮圖快速檢視各分頁內容</p>
+              </a>
+              <div class="fb-vote" data-addon="tile-tabs"></div>
+            </li>
+            <li id="addon-panorama-tab-group-name" class="addon5">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/panorama-tab-group-name/" target="_blank">
+                <h4>Panorama Tab Group Name</h4>
+                <p>可簡易直覺地將各分頁分組整理</p>
+              </a>
+              <div class="fb-vote" data-addon="panorama-tab-group-name"></div>
+            </li>
+            <li class="more">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
+            </li>
+          </ul>
+        </li>
+        <li class="boyfriend">
+          <h3>開發者</h3>
+          <div class="actor"></div>
+          <div class="spotlights"></div>
+          <ul class="addons">
+            <li class="backpack">
+              <h4>開發者的附加元件隨身包</h4>
+            </li>
+            <li id="addon-firebug" class="addon1">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/firebug/" target="_blank">
+                <h4>Firebug</h4>
+                <p>協助快速及方便的修改除錯網頁元素</p>
+              </a>
+              <div class="fb-vote" data-addon="firebug"></div>
+            </li>
+            <li id="addon-jsonview" class="addon2">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/jsonview/" target="_blank">
+                <h4>JSONView</h4>
+                <p>使用瀏覽器瀏覽 JSON 格式的資料</p>
+              </a>
+              <div class="fb-vote" data-addon="jsonview"></div>
+            </li>
+            <li id="addon-sqlite-manager" class="addon3">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/sqlite-manager/" target="_blank">
+                <h4>SQLite Manager</h4>
+                <p>圖形化 SQLite 管理工具</p>
+              </a>
+              <div class="fb-vote" data-addon="sqlite-manager"></div>
+            </li>
+            <li id="addon-copy-plain-text-2" class="addon4">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/copy-plain-text-2/" target="_blank">
+                <h4>Copy Plain Text 2</h4>
+                <p>複製選取的內容為無格式文字</p>
+              </a>
+              <div class="fb-vote" data-addon="copy-plain-text-2"></div>
+            </li>
+            <li id="addon-font-finder" class="addon5">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/addon/font-finder/" target="_blank">
+                <h4>Font Finder</h4>
+                <p>方便檢視選取文字的 CSS 屬性</p>
+              </a>
+              <div class="fb-vote" data-addon="font-finder"></div>
+            </li>
+            <li class="more">
+              <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="wheel-of-fortune">
+      <div class="middle">
+        <div id="wheel">
+          <div class="plate"></div>
+          <div class="pointer"></div>
+        </div>
+        <div id="reward">
+          <div class="bingo">
+            <h4>中獎</h4>
+            <hr>
+            恭喜你獲得「<span class="price"></span>」乙份，我們將於 11 月份統一寄出得獎獎項。
+          </div>
+          <div class="try-again">
+            <h4>未中獎</h4>
+            <hr>
+            別氣餒，你還有「Firefox 十週年 - 網路自由日」活動入場券，現場備有精彩的活動及精美的獎品，歡迎攜家帶眷一起來參加！
+            <div class="postscript">還沒領取「Firefox 十週年 - 網路自由日」活動入場券嗎? <a class="back-to-ticket" href="javascript:void(0);">馬上領取 »</a></div>
+          </div>
+
+          <div class="action">
+            <h3>請轉動幸運輪盤以進行大抽獎！</h3>
+            <a class="go button" href="javascript:void(0);">轉動幸運輪盤</a>
+            <a class="better-chance" href="javascript:void(0);">想增加中獎機會嗎？</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="play-button"></div>
+  <div class="announcements">
+      <div class="woodboard">
+        <div class="rules">
+          <h3>你也可以成為人生勝利組！</h3>
+
+          <p>
+          這裡為各族群精選了幾款超實用附加元件，為你創造更科技、更便利的理想生活！<br>
+          只要在下列你喜歡的附加元件上<b>按讚投票</b>，即可優先取得 <b>11/22~11/23</b> 於<b>華山1914文化創意產業園區</b>舉辦的<br>
+          「<b>Firefox 十週年 - 網路自由日</b>」活動入場券，並參加<b>幸運輪盤大抽獎</b>！
+          </p>
+
+          <p>
+          11/22~11/23 活動現場設有讓人大開眼界的 Firefox 時光走廊展示區、輕鬆有趣的互動體驗區，<br>
+          還有搶手的 Firefox 獨家紀念品要送給你，千萬別錯過！
+          </p>
+
+        </div>
+        <div class="ticket">
+          <div class="get-ticket">
+            <h3>領取 「Firefox十週年 - 網路自由日」入場券</h3>
+            <div class="stub"></div>
+            <div class="actions">
+              <a class="day1 button" href="javascript:void(0);">11 月 22 日</a>
+              <a class="day2 button" href="javascript:void(0);">11 月 23 日</a>
+              <div>
+                請選取活動日期並登入，另由系統建議場次。
+              </div>
+              <a class="skip" href="javascript:void(0);">略過領票開始抽獎 »</a>
+            </div>
+          </div>
+          <div class="show-ticket">
+            <h3>成功取得「Firefox十週年 - 網路自由日」活動入場券！</h3>
+            <div class="stub"><span class="code"></span></div>
+            <div class="actions">
+              建議你於「<span class="session"></span>」場次開場前 10 分鐘到場，以確保優先進場的權益。<br>
+              凡於 11/10 (一) 前早鳥報名，活動當天憑此<b>入場序號</b>除了可<b>優先入場</b>之外，<br>
+              還可獲得 <b>2014 Firefox OS 限量海報</b>乙張，並額外享有 <b>Firefox OS 手機</b>抽獎機會，<br>
+              千萬別錯過了專屬於你的優惠權益喔！
+              <div class="buttons">
+                <a class="download button" href="javascript:void(0);" target="_blank">下載</a>
+                <a class="go-lottery button" href="javascript:void(0);">開始抽獎</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="shareBox">
+      <div class="luckyChance">
+        <div class="rules">
+        <span class="optional">謝謝你參與投票，</span>分享活動或按讚加入<br>Mozilla Taiwan 粉絲團將可增加抽獎獎項喔！
+        </div>
+        <div class="share button"><div class="text">分享此活動</div></div>
+        <div class="or">或者</div>
+        <div class="fans button">
+          <div class="text">加入粉絲團</div>
+          <div class="fb-like-box" data-href="https://www.facebook.com/MozillaTaiwan" data-width="220" data-colorscheme="dark" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+        </div>
+        <a class="no-thanks" href="javascript:void(0);">不了，謝謝！ »</a>
+      </div>
+  </div>
+
+  <div class="loginBox">
+    <iframe src="about:blank"></iframe>
+  </div>
+
+  <div class="addonBox">
+    <div class="addon-intro">
+      <div class="actor"></div>
+      <a class="addon button" href="" target="_blank">
+        <div class="icon"></div>
+        <h4></h4>
+        <p></p>
+      </a>
+      <div class="intro">
+        <span class="what"></span> 是<span class="who"></span>最喜歡的附加元件之一，趕快參加活動發堀更多幸福的附加元件並抽出大獎吧！
+      </div>
+      <a class="more" href="javascript:void(0);">我等不及了，馬上開始吧</a>
+    </div>
+  </div>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=135467439980355";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 {% endblock %}
 
 {% block email_form %}{% endblock %}

@@ -1,12 +1,27 @@
 @import "../sandstone/lib";
 
-html, body {
-  background-color: #98DCDC;
+@sceneHeight: 800px;
+
+html, body, #body-wrapper, #wrapper {
+  width: 100%;
+//  height: 100%;
 }
 
-html, body, #body-wrapper {
-  width: 100%;
-  height: 100%;
+body {
+  background: #f5f1e8 url(/media/img/sandstone/bg-sand.png) repeat;
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 100%;
+    height: 800px;
+    background: #98DCDC;
+  }
+}
+
+#wrapper {
+  padding-bottom: 0;
 }
 
 .sky #outer-wrapper{
@@ -28,39 +43,1593 @@ html, body, #body-wrapper {
   z-index: 999;
 }
 
+#intro {
+  .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+  overflow: hidden;
+  height: 800px;
+  background-color: #98DCDC;
+  #music-button {
+    position: fixed;
+    z-index: 200;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+    width: 41px;
+    height: 32px;
+    &.on {
+      background: url(/media/img/mocotw/10years/fx-family/music-on.png) 0 0 no-repeat;
+    }
+    &.off {
+      background: url(/media/img/mocotw/10years/fx-family/music-off.png) 0 0 no-repeat;
+    }
+  }
+}
+
 #firefox-family-intro {
   position: absolute;
   margin: auto;
-  top: 0;
-  bottom: 0;
+  top: -1000px;
+  bottom: -1000px;
   left: 0;
   right: 0;
   width: 100%;
   height: auto;
 }
 
-#coming-soon {
-  pointer-events: none;
-  opacity: 0;
+.stuffOnDesk(@deskHeight) {
   position: absolute;
+  display: block;
   margin: auto;
-  box-sizing: border-box;
-  padding: 10px;
-  width: 320px;
-  height: 320px;
-  top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
-  background-color: #FFF;
-  .border-radius(5px);
-  .box-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
-  .transition(opacity .5s ease-in);
-  h3 {
-    font-size: 24px;
+  bottom: @deskHeight;
+}
+
+.stuffOnFloor() {
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+}
+
+.stuffOnWall() {
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.room {
+  position: relative;
+  text-align: center;
+  height: 800px;
+  overflow: hidden;
+  .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+
+  .stage {
+    position: relative;
+    display: inline-block;
+    width: 640px;
+    height: 100%;
+    vertical-align: middle;
   }
-  &.appear {
-    pointer-events: all;
-    opacity: 1.0;
+  .addon {
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    text-align: center;
+    text-decoration: none;
+    h2 {
+      font-size: 28px;
+      span {
+        display: block;
+        margin-top: 12px;
+      }
+    }
+    p {
+      color: @textColorPrimary;
+      text-align: left;
+    }
+    .logo-filled:before {
+      content: "下載";
+      position: absolute;
+      display: block;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 54px;
+      height: 24px;
+      background: url(/media/img/mocotw/10years/fx-family/download.png) 0 0 no-repeat;
+      background-size: auto 100%;
+      opacity: 0;
+      vertical-align: middle;
+      line-height: 24px;
+      text-align: right;
+      color: rgba(0, 0, 0, 0.5);
+      .transition(opacity .2s linear);
+    }
+    .addon-logo:hover .logo-filled:before {
+      opacity: 0.8;
+    }
+  }
+  .actor {
+    .stuffOnFloor;
+  }
+  .chair {
+    .stuffOnFloor;
+  }
+  .desk {
+    .stuffOnFloor;
+    left: auto;
+    right: 121px;
+  }
+  .floor {
+    position: absolute;
+    display: block;
+    margin: auto;
+    bottom: 0;
+    width: 100%;
+    height: 218px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/floor.png) repeat-x #CCCCCC;
+  }
+  .stuff {
+    position: absolute;
+    display: block;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 600px;
+  }
+  .addon-logo {
+    position: relative;
+    display: inline-block;
+    width: 118px;
+    height: 118px;
+    .logo-outline {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      path {
+        fill: none;
+        stroke: @textColorPrimary;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+      }
+    }
+    .logo-filled {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+#fathers-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/1-father/bg.png);
+  .chair {
+    width: 170px;
+    height: 309px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/chair.png) no-repeat;
+  }
+  .desk {
+    width: 818px;
+    height: 165px;
+    right: 113px;
+    left: auto;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/desk.png) no-repeat;
+  }
+  .actor {
+    width: 155px;
+    height: 372px;
+    bottom: 70px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/father-set.png) bottom right no-repeat;
+    &.stand {
+      width: 178px;
+      height: 424px;
+      background: url(/media/img/mocotw/10years/fx-family/1-father/father.png) bottom right no-repeat;
+    }
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/computer.png) no-repeat;
+  }
+  .folder {
+    .stuffOnDesk(@deskHeight);
+    width: 67px;
+    height: 24px;
+    padding-left: 320px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/folder.png) top right no-repeat;
+  }
+  .cup {
+    .stuffOnDesk(@deskHeight);
+    width: 42px;
+    height: 37px;
+    padding-left: 200px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/cup.png) top right no-repeat;
+  }
+  .smoke {
+    .stuffOnDesk(@deskHeight + 40);
+    width: 24px;
+    height: 24px;
+    padding-left: 190px;
+    background: url(/media/img/mocotw/10years/fx-family/smokes.svg) top right no-repeat;
+    background-size: 24px 24px;
+  }
+  .phone {
+    .stuffOnDesk(@deskHeight);
+    width: 87px;
+    height: 28px;
+    padding-right: 270px;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/phone.png) no-repeat;
+  }
+  .bonsai {
+    .stuffOnFloor;
+    width: 137px;
+    height: 165px;
+    left: auto;
+    right: 0;
+    background: url(/media/img/mocotw/10years/fx-family/1-father/plant.png) no-repeat;
+  }
+  .addon-logo .logo-filled {
+    background: url(/media/img/mocotw/10years/fx-family/1-father/addon.png) center no-repeat;
+  }
+}
+
+#mothers-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/2-mother/bg.png);
+  .floor {
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/floor.png) repeat-x #CCCCCC;
+    height: 178px;
+  }
+  .desk {
+    width: 398px;
+    height: 165px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/desk.png) no-repeat;
+  }
+  .actor {
+    width: 189px;
+    height: 397px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/mother-talk.png) bottom right no-repeat;
+    &.stand {
+      width: 159px;
+      height: 391px;
+      background: url(/media/img/mocotw/10years/fx-family/2-mother/mother.png) bottom right no-repeat;
+    }
+  }
+  .blackboard {
+    .stuffOnWall;
+    top: 100px;
+    width: 527px;
+    height: 231px;
+    padding-left: 20px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/blackboard.png) top right no-repeat;
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    padding-right: 90px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/computer.png) no-repeat;
+  }
+  .book1 {
+    .stuffOnDesk(@deskHeight + 19);
+    width: 70px;
+    height: 21px;
+    padding-right: 290px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/book-1.png) no-repeat;
+  }
+  .book2 {
+    .stuffOnDesk(@deskHeight);
+    width: 70px;
+    height: 21px;
+    padding-right: 280px;
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/book-2.png) no-repeat;
+  }
+  .addon-logo .logo-filled {
+    background: url(/media/img/mocotw/10years/fx-family/2-mother/addon.png) center no-repeat;
+  }
+}
+
+#grandpas-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/3-grandpa/bg.png);
+  .chair {
+    width: 140px;
+    height: 286px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 165px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/desk.png) no-repeat;
+  }
+  .actor {
+    width: 154px;
+    height: 392px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/grandpa-set.png) bottom right no-repeat;
+    &.stand {
+      width: 177px;
+      height: 402px;
+      background: url(/media/img/mocotw/10years/fx-family/3-grandpa/grandpa.png) bottom right no-repeat;
+    }
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/computer.png) no-repeat;
+  }
+  .teapot {
+    .stuffOnDesk(@deskHeight);
+    width: 57px;
+    height: 53px;
+    padding-left: 300px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/teapot.png) top right no-repeat;
+  }
+  .smoke {
+    .stuffOnDesk(@deskHeight + 20);
+    width: 20px;
+    height: 20px;
+    padding-left: 200px;
+    background: url(/media/img/mocotw/10years/fx-family/smokes.svg) top right no-repeat;
+    background-size: 20px 20px;
+  }
+  .tea {
+    .stuffOnDesk(@deskHeight);
+    width: 22px;
+    height: 15px;
+    padding-left: 200px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/tea.png) top right no-repeat;
+  }
+  .light {
+    .stuffOnDesk(@deskHeight);
+    width: 85px;
+    height: 99px;
+    padding-right: 260px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/light.png) no-repeat;
+  }
+  .crutch {
+    .stuffOnFloor;
+    width: 29px;
+    height: 130px;
+    left: 110px;
+    right: auto;
+    bottom: 100px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/crutch.png) no-repeat;
+  }
+  .frame {
+    .stuffOnWall;
+    width: 103px;
+    height: 125px;
+    top: 120px;
+    left: auto;
+    right: 113px;
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/frame.png) no-repeat;
+  }
+  .addon-logo .logo-filled {
+    background: url(/media/img/mocotw/10years/fx-family/3-grandpa/addon.png) center no-repeat;
+  }
+}
+
+#daughters-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/4-daughter/bg.png);
+  .chair {
+    width: 139px;
+    height: 219px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 166px;
+    padding-right: 40px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/desk.png) no-repeat;
+  }
+  .actor {
+    width: 171px;
+    height: 384px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/daughter-set.png) bottom right no-repeat;
+    bottom: 70px;
+    &.stand {
+      width: 177px;
+      height: 430px;
+      background: url(/media/img/mocotw/10years/fx-family/4-daughter/daughter.png) bottom right no-repeat;
+    }
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/computer.png) no-repeat;
+  }
+  .book0 {
+    .stuffOnDesk(@deskHeight + 76);
+    width: 70px;
+    height: 21px;
+    padding-right: 350px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-1.png) no-repeat;
+  }
+  .book1 {
+    .stuffOnDesk(@deskHeight + 57);
+    width: 70px;
+    height: 21px;
+    padding-right: 340px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-2.png) no-repeat;
+  }
+  .book2 {
+    .stuffOnDesk(@deskHeight + 38);
+    width: 70px;
+    height: 21px;
+    padding-right: 350px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-1.png) no-repeat;
+  }
+  .book3 {
+    .stuffOnDesk(@deskHeight + 19);
+    width: 70px;
+    height: 21px;
+    padding-right: 330px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-3.png) no-repeat;
+  }
+  .book4 {
+    .stuffOnDesk(@deskHeight);
+    width: 70px;
+    height: 21px;
+    padding-right: 340px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-4.png) no-repeat;
+  }
+  .book5 {
+    .stuffOnDesk(@deskHeight);
+    width: 23px;
+    height: 71px;
+    padding-right: 230px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/book-5.png) no-repeat;
+  }
+  .bookshelf {
+    .stuffOnFloor;
+    width: 359px;
+    height: 385px;
+    bottom: 70px;
+    left: auto;
+    right: 80px;
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/bookshelf.png) no-repeat;
+  }
+  .addon-logo .logo-filled {
+    background: url(/media/img/mocotw/10years/fx-family/4-daughter/addon.png) center no-repeat;
+  }
+}
+
+#sons-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/5-son/bg.png);
+  .chair {
+    width: 139px;
+    height: 219px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 165px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/desk.png) no-repeat;
+  }
+  .actor {
+    width: 154px;
+    height: 404px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/son-set.png) bottom right no-repeat;
+    bottom: 70px;
+    &.stand {
+      width: 177px;
+      height: 437px;
+      background: url(/media/img/mocotw/10years/fx-family/5-son/son.png) bottom right no-repeat;
+    }
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/computer.png) no-repeat;
+  }
+  .plane {
+    .stuffOnDesk(@deskHeight);
+    width: 73px;
+    height: 53px;
+    padding-left: 300px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/plane.png) top right no-repeat;
+  }
+  .gundam {
+    .stuffOnDesk(@deskHeight);
+    width: 72px;
+    height: 144px;
+    padding-right: 260px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/gundam.png) no-repeat;
+  }
+  .poster {
+    .stuffOnWall;
+    width: 174px;
+    height: 243px;
+    top: 80px;
+    left: auto;
+    right: 40px;
+    background: url(/media/img/mocotw/10years/fx-family/5-son/poster.png) no-repeat;
+  }
+  .addon-logo .logo-filled {
+    background: url(/media/img/mocotw/10years/fx-family/5-son/addon.png) center no-repeat;
+  }
+}
+
+#boyfriends-room {
+  @deskHeight: 213px;
+  background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/bg.png);
+  .chair {
+    width: 139px;
+    height: 219px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/chair.png) no-repeat;
+  }
+  .desk {
+    width: 398px;
+    height: 166px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/desk.png) top right no-repeat;
+  }
+  .actor {
+    width: 185px;
+    height: 370px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/boyfriend-set.png) bottom right no-repeat;
+    bottom: 70px;
+    &.stand {
+      width: 178px;
+      height: 419px;
+      background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/boyfriend.png) bottom right no-repeat;
+    }
+  }
+  .notebook {
+    .stuffOnDesk(@deskHeight - 3);
+    width: 102px;
+    height: 78px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/computer.png) no-repeat;
+  }
+  .smoke {
+    .stuffOnDesk(@deskHeight + 40);
+    width: 24px;
+    height: 24px;
+    padding-left: 230px;
+    background: url(/media/img/mocotw/10years/fx-family/smokes.svg) top right no-repeat;
+    background-size: 24px 24px;
+  }
+  .cup {
+    .stuffOnDesk(@deskHeight);
+    width: 42px;
+    height: 36px;
+    padding-left: 220px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/cup.png) top right no-repeat;
+  }
+  .coffee-grinder {
+    .stuffOnDesk(@deskHeight);
+    width: 52px;
+    height: 56px;
+    padding-left: 320px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/coffee-grinder.png) top right no-repeat;
+  }
+  .coffee-machine {
+    .stuffOnDesk(@deskHeight);
+    width: 48px;
+    height: 118px;
+    padding-right: 260px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/coffee-machine.png) no-repeat;
+  }
+  .map {
+    .stuffOnWall;
+    width: 208px;
+    height: 147px;
+    top: 80px;
+    left: auto;
+    right: 40px;
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/map.png) no-repeat;
+  }
+  .addon-logo .logo-filled {
+    background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/addon.png) center no-repeat;
+  }
+}
+
+#all-addons {
+  display: block;
+  width: 100%;
+  height: 800px;
+  .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+
+  .addon(@order, @actor) {
+    position: relative;
+    height: 72px;
+    padding-left: 54px;
+    a:before {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 46px;
+      height: 46px;
+      left: 0;
+      background: url("/media/img/mocotw/10years/fx-family/addons/@{actor}/addon-@{order}.png") center no-repeat;
+      background-color: #fff;
+      .box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+//      border: 2px solid rgba(0, 0, 0, 0.5);
+      .border-radius(23px);
+    }
+  }
+  .addons(@actor) {
+    .addon1 {
+      .addon(1, @actor);
+    }
+    .addon2 {
+      .addon(2, @actor);
+    }
+    .addon3 {
+      .addon(3, @actor);
+    }
+    .addon4 {
+      .addon(4, @actor);
+    }
+    .addon5 {
+      .addon(5, @actor);
+    }
+    .more {
+      text-align: right;
+      a {
+        color: #0095DD;
+      }
+    }
+  }
+
+  h2 {
+
+  }
+
+  .kwicks {
+    height: 100%;
+    > li {
+      height: 100%;
+      > .addons {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 240px;
+        width: 320px;
+        height: 450px;
+        opacity: 0;
+        .transition(opacity .2s linear);
+        > li {
+          display: block;
+          h4 {
+            display: inline-block;
+            font-size: 18px;
+            margin-bottom: 6px;
+          }
+          p {
+            color: @textColorTertiary;
+          }
+          a, a:link {
+            text-decoration: none;
+            p {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      h3 {
+        display: block;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        width: 116px;
+        padding-bottom: 80px;
+        padding-right: 0;
+        text-align: center;
+        font-size: 22px;
+        .transition(padding-right .5s ease-in-out);
+      }
+      .backpack h4 {
+        padding-bottom: 20px;
+      }
+      > .actor {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 116px;
+        height: 284px;
+        padding-top: 240px;
+        padding-right: 0;
+        .transition(padding-right .5s ease-in-out);
+      }
+      > .spotlights {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 120px;
+        width: 180px;
+        height: 360px;
+        background: url(/media/img/mocotw/10years/fx-family/addons/spotlights.svg) 9px bottom no-repeat;
+        opacity: 0;
+        .transition(opacity .2s linear);
+      }
+      &.kwicks-expanded, &.kwicks-selected {
+        .actor, h3 {
+          padding-right: 360px;
+        }
+        .addons {
+          opacity: 1;
+          .transition-delay(.5s);
+        }
+        .spotlights {
+          opacity: 0.5;
+          .transition-delay(.5s);
+        }
+      }
+    }
+    .father {
+      background: url(/media/img/mocotw/10years/fx-family/1-father/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/1-father/father-front.png) 9px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/1-father/father-back.png) 9px bottom no-repeat;
+      }
+      .addons("1-father");
+    }
+    .mother {
+      background: url(/media/img/mocotw/10years/fx-family/2-mother/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/2-mother/mother-front.png) 12px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/2-mother/mother-back.png) 12px bottom no-repeat;
+      }
+      .addons("2-mother");
+    }
+    .grandpa {
+      background: url(/media/img/mocotw/10years/fx-family/3-grandpa/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/3-grandpa/grandpa-front.png) 10px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/3-grandpa/grandpa-back.png) 10px bottom no-repeat;
+      }
+      .addons("3-grandpa");
+    }
+    .daughter {
+      background: url(/media/img/mocotw/10years/fx-family/4-daughter/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/4-daughter/daughter-front.png) 10px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor, &.kwicks-selected .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/4-daughter/daughter-back.png) 10px bottom no-repeat;
+      }
+      .addons("4-daughter");
+    }
+    .son {
+      background: url(/media/img/mocotw/10years/fx-family/5-son/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/5-son/son-front.png) 11px bottom no-repeat;
+      }
+      &.kwicks-expanded .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/5-son/son-back.png) 11px bottom no-repeat;
+      }
+      .addons("5-son");
+    }
+    .boyfriend {
+      background: url(/media/img/mocotw/10years/fx-family/6-boyfriend/bg.png) center;
+      .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/6-boyfriend/boyfriend-front.png) left bottom no-repeat;
+      }
+      &.kwicks-expanded .actor {
+        background: url(/media/img/mocotw/10years/fx-family/addons/6-boyfriend/boyfriend-back.png) left bottom no-repeat;
+      }
+      .addons("6-boyfriend");
+    }
+  }
+
+  &.letsgo {
+    pointer-events: none;
+    h3 {
+      opacity: 0;
+    }
+    .father .actor {
+      width: 165px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/father-go.png) bottom no-repeat;
+    }
+    .mother .actor {
+      width: 130px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/mother-go.png) bottom no-repeat;
+    }
+    .grandpa .actor {
+      width: 146px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/grandpa-go.png) bottom no-repeat;
+    }
+    .daughter .actor {
+      width: 150px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/daughter-go.png) bottom no-repeat;
+    }
+    .son .actor {
+      width: 141px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/son-go.png) bottom no-repeat;
+    }
+    .boyfriend .actor {
+      width: 167px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/boyfriend-go.png) bottom no-repeat;
+    }
+  }
+  .fb_iframe_widget {
+      display: inline-block;
+      position: absolute;
+      right: -60px;
+      text-align: right;
+      top: 0;
+      width: 100px;
+      height: 20px;
+      overflow: hidden;
+  }
+}
+
+#wheel-of-fortune {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 800px;
+  background: url(/media/img/mocotw/10years/fx-family/lottery/bg-raffle.png) center no-repeat;
+  background-size: auto 100%;
+  text-align: center;
+  .middle {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+  }
+  #reward {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 100%;
+    vertical-align: top;
+  }
+  #wheel {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 100%;
+    padding-right: 50px;
+    vertical-align: top;
+    opacity: 0;
+    .transition(opacity .2s ease-in);
+    @baseRotateDegree: 360deg * 6;
+    &.level0 {
+      .plate {
+        background: url(/media/img/mocotw/10years/fx-family/lottery/roulette-6.png) center no-repeat;
+          &.sorry {
+            .transform(rotate(@baseRotateDegree + 180));
+          }
+          &.notebook {
+            .transform(rotate(@baseRotateDegree + 240));
+          }
+          &.totebag {
+            .transform(rotate(@baseRotateDegree + 60));
+          }
+          &.carsticker {
+            .transform(rotate(@baseRotateDegree + 120));
+          }
+          &.nbsticker {
+            .transform(rotate(@baseRotateDegree + 300));
+          }
+      }
+      opacity: 1;
+    }
+    &.level1 {
+      .plate {
+        background: url(/media/img/mocotw/10years/fx-family/lottery/roulette-12.png) center no-repeat;
+          &.sorry {
+            .transform(rotate(@baseRotateDegree + 180));
+          }
+          &.fxosphone {
+            .transform(rotate(@baseRotateDegree + 300));
+          }
+          &.backpack {
+            .transform(rotate(@baseRotateDegree + 240));
+          }
+          &.taipeipass {
+            .transform(rotate(@baseRotateDegree + 60));
+          }
+          &.mug {
+            .transform(rotate(@baseRotateDegree + 120));
+          }
+          &.notebook {
+            .transform(rotate(@baseRotateDegree + 330));
+          }
+          &.totebag {
+            .transform(rotate(@baseRotateDegree + 30));
+          }
+          &.carsticker {
+            .transform(rotate(@baseRotateDegree + 150));
+          }
+          &.nbsticker {
+            .transform(rotate(@baseRotateDegree + 210));
+          }
+      }
+      opacity: 1;
+    }
+  }
+  .plate {
+    position: absolute;
+    margin: auto;
+    width: 436px;
+    height: 436px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .transition(transform 10s ease-in-out);
+    .transform-origin(50% 50%);
+  }
+  .pointer {
+    position: absolute;
+    margin: auto;
+    width: 59px;
+    height: 85px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 25px;
+    background: url(/media/img/mocotw/10years/fx-family/lottery/roulette-center.png) top center no-repeat;
+  }
+  hr {
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+  }
+  .result {
+    display: none;
+    position: absolute;
+    margin: auto;
+    padding: 20px 40px;
+    width: 400px;
+    height: 140px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 18px;
+    .border-radius(5px);
+    .box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    h4 {
+      font-size: 30px;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 3px #000000;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 8px;
+      border: 5px dotted #FFFFFF;
+      .border-radius(5px);
+    }
+  }
+  .bingo {
+    .result;
+    background: #E5600D;
+  }
+  .try-again {
+    .result;
+    background: #4D4E53;
+  }
+  .postscript {
+    position: absolute;
+    bottom: -40px;
+    font-size: 13px;
+    color: @textColorPrimary;
+    text-shadow: none;
+  }
+  .action {
+//    display: none;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    .transition(opacity 0.5s ease-in-out);
+    .button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 8px;
+        background: url(/media/img/mocotw/10years/fx-family/ticket/icon-raffle.png) center no-repeat;
+        background-size: 100% auto;
+      }
+    }
+  }
+  .better-chance {
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    .transition(opacity 0.5s ease-in-out);
+  }
+}
+
+.announcements {
+  position: fixed;
+  display: none;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  perspective: 1000px;
+  perspective-origin: 50% 0;
+  .woodboard {
+    display: inline-block;
+    width: 855px;
+    height: 224px;
+    left: 0;
+    right: 0;
+    background: url(/media/img/mocotw/10years/fx-family/addons/board.png) 0 50% no-repeat;
+    .transform(rotateX(90deg));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 0);
+  }
+  &.fall {
+    .woodboard {
+      .animation(falls 1s ease-in forwards);
+    }
+  }
+  .rules {
+    color: #FFFFFF;
+    margin-top: 56px;
+    padding: 0 80px;
+    text-align: left;
+    h3 {
+      text-shadow: 1px 1px 3px #000000;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+    }
+    p {
+      margin-bottom: 6px;
+    }
+    b {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+  }
+  .ticket {
+    display: none;
+    margin-top: 54px;
+    padding: 0 80px;
+    text-align: left;
+    color: #FFFFFF;
+    h3 {
+      color: #FFFFFF;
+      text-shadow: 1px 1px 3px #000000;
+      margin-bottom: 20px;
+    }
+    .button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+    b {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+  }
+  .stub {
+    display: inline-block;
+    width: 160px;
+    height: 120px;
+    vertical-align: top;
+    margin-right: 10px;
+  }
+  .actions {
+    position: relative;
+    display: inline-block;
+    width: 520px;
+    height: 120px;
+    vertical-align: top;
+  }
+  .get-ticket {
+    text-align: center;
+    .stub {
+      background: url(/media/img/mocotw/10years/fx-family/ticket/ticket-1.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .skip {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+  .show-ticket {
+    display: none;
+    .stub {
+      position: relative;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/ticket-2.png) center no-repeat;
+      background-size: 100% auto;
+      .code {
+        position: absolute;
+        display: block;
+        color: #000;
+        width: 100%;
+        bottom: 24px;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px #FFFFFF;
+        font-size: 13px;
+      }
+    }
+    .session {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+    .download:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/icon-download.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .go-lottery:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/icon-raffle.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .buttons {
+      position: absolute;
+      text-align: right;
+      right: -60px;
+      bottom: 0;
+      .button {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+#scroll-tip {
+  display: block;
+  position: fixed;
+  pointer-events: none;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  z-index: 100;
+  color: @textColorPrimary;
+  opacity: 0;
+  text-align: center;
+  text-shadow: 0 0 5px #ffffff;
+  .transition(opacity .2s ease-in);
+  .arrow {
+    display: block;
+    height: 6px;
+  }
+  .text1 {
+    display: block;
+    .animation(spotText 1.5s infinite);
+  }
+  .text2 {
+    display: block;
+    font-size: 9px;
+    .animation(spotText 1.5s infinite 0.2s);
+  }
+  .arrow1 {
+    .arrow;
+    .animation(spotText 1.5s infinite 0.4s);
+  }
+  .arrow2 {
+    .arrow;
+    .animation(spotText 1.5s infinite 0.6s);
+  }
+}
+
+.spotTextKeyFrames() {
+  0% {
+    color: @textColorPrimary;
+  }
+  30% {
+    color: #999999;
+  }
+  60% {
+    color: @textColorPrimary;
+  }
+  100% {
+    color: @textColorPrimary;
+  }
+}
+
+@keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-moz-keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-webkit-keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-o-keyframes spotText {
+  .spotTextKeyFrames();
+}
+@-ms-keyframes spotText {
+  .spotTextKeyFrames();
+}
+
+.fallsFrames {
+  0% {
+    .transform(rotateX(-90deg));
+  }
+  60% {
+    .transform(rotateX(30deg));
+  }
+  90% {
+    .transform(rotateX(-15deg));
+  }
+  100% {
+    .transform(rotateX(0deg));
+  }
+}
+
+@keyframes falls {
+  .fallsFrames();
+}
+@-moz-keyframes falls {
+  .fallsFrames();
+}
+@-webkit-keyframes falls {
+  .fallsFrames();
+}
+@-o-keyframes falls {
+  .fallsFrames();
+}
+@-ms-keyframes falls {
+  .fallsFrames();
+}
+
+.shareBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  .luckyChance {
+    position: absolute;
+    display: block;
+    width: 320px;
+    height: 300px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #FFFFFF;
+    padding: 10px;
+    box-sizing: border-box;
+    .border-radius(5px);
+    .box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    .rules {
+      padding-bottom: 10px;
+    }
+    .fans {
+      cursor: default;
+      .text:before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        background: url(/media/img/mocotw/10years/fx-family/addons/like.png) no-repeat;
+        background-size: 100% auto;
+        margin-right: 8px;
+      }
+    }
+    .share .text:before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/addons/share.png) no-repeat;
+      background-size: 100% auto;
+      margin-right: 8px;
+    }
+    .button {
+      display: block;
+      margin: auto;
+      width: 220px;
+      padding: 10px;
+      .text {
+        padding: 5px 0;
+      }
+      .fb_iframe_widget {
+        background: rgba(0, 0, 0, 0.5);
+        .border-radius(3px);
+      }
+    }
+    .or {
+      text-align: center;
+      margin: 6px 0;
+    }
+    .no-thanks {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+}
+.loginBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  iframe {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.addonBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  .addon-intro {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 260px;
+    background: #FFFFFF;
+    padding: 10px;
+    .border-radius(5px);
+    .box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+  }
+  .addon {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    width: 240px;
+    padding-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: left;
+    h4 {
+      font-size: 18px;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    p {
+      font-size: 16px;
+      color: #FFFFFF;
+      text-shadow: none;
+      margin: 0;
+    }
+    &:hover .icon:before {
+      opacity: 1;
+    }
+  }
+  .icon {
+    position: absolute;
+    margin: auto;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+//    .box-shadow(inset 1px 1px 1px 1px rgba(0, 0, 0, 0.5));
+    .box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+    .border-radius(20px);
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background: url(/media/img/mocotw/10years/fx-family/download.png) center no-repeat;
+      background-size: 100% auto;
+      .transition(opacity .2s linear);
+    }
+  }
+  .actor {
+    width: 60px;
+    height: 150px;
+    background-size: 100% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+  .intro {
+    margin-top: 20px;
+  }
+  .more {
+    display: block;
+    margin-top: 20px;
+    text-align: right;
+  }
+}
+
+.desktop {
+  #wrapper {
+    height: 28000px;
+    &.ticket {
+      height: 30000px;
+      &.lottery {
+        height: 32000px;
+      }
+    }
+  }
+  #scene {
+    position: fixed;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 800px;
+    top: -800px;
+    bottom: -800px;
+    > .clock {
+      position: absolute;
+      z-index: 66;
+      left: 10%;
+      top: 10%;
+      width: 101px;
+      height: 101px;
+      background: url(/media/img/mocotw/10years/fx-family/clock.png) center no-repeat;
+      .hour {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        .transform(rotate(270deg));
+        .transform-origin(50% 50%);
+        background: url(/media/img/mocotw/10years/fx-family/hour-hand.png) 50% 25px no-repeat;
+      }
+      .minute {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        .transform(rotate(0deg));
+        .transform-origin(50% 50%);
+        background: url(/media/img/mocotw/10years/fx-family/minute-hand.png) 50% 15px no-repeat;
+      }
+    }
+  }
+
+  #intro {
+    position: absolute;
+    display: block;
+    z-index: 70;
+    top: 0;
+    width: 100%;
+    height: 800px;
+  }
+  .room {
+    position: absolute;
+    display: block;
+    margin: auto;
+    top: 0;
+    width: 100%;
+    .desk {
+      padding-right: 0;
+    }
+  }
+  #fathers-room {
+    z-index: 60;
+  }
+  #mothers-room {
+    z-index: 50;
+  }
+  #grandpas-room {
+    z-index: 40;
+  }
+  #daughters-room {
+    z-index: 30;
+  }
+  #sons-room {
+    z-index: 20;
+  }
+  #boyfriends-room {
+    z-index: 10;
+  }
+  #all-addons {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    &.stand {
+      pointer-events: none;
+    }
+    h2 {
+      position: fixed;
+      z-index: 8;
+      bottom: 20px;
+      text-align: center;
+      width: 100%;
+      text-shadow: 2px 2px 5px #FFFFFF;
+    }
+  }
+  #wheel-of-fortune {
+    position: absolute;
+    top: 0;
+  }
+  .announcements {
+    display: block;
+    z-index: 100;
   }
 }

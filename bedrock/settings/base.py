@@ -911,7 +911,14 @@ MINIFY_BUNDLES = {
             'js/mocotw/10years-browser-survey.js',
         ),
         '10years-firefox-family': (
+            'js/libs/jquery.scrollTo.js',
+            'js/libs/jquery.localScroll.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/libs/tweenmax.1.9.7.min.js',
+            'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.kwicks.min.js',
+            'js/libs/index.js',
             'js/mocotw/10years-firefox-family.js',
         ),
         '10years-firefox-day': (

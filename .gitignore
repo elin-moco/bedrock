@@ -10,6 +10,8 @@ docs/_gh-pages
 build.py
 build
 .DS_Store
+.AppleDouble
+:2e*
 *-min.css
 *-all.css
 *-min.js
