@@ -5,12 +5,14 @@
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/firefox-family-fb.png') }}{% endblock %}
 
 {% block extrahead %}
+  {% if addon %}
+    <meta name="robots" content="noindex">
+  {% endif %}
   {{ css('10years-base') }}
   {{ css('10years-firefox-family') }}
 {% endblock %}
 
 {% block content %}
-
 
   <div id="scene">
 
@@ -271,7 +273,7 @@
               </a>
               <div class="fb-vote" data-addon="lastpass-password-manager"></div>
             </li>
-            <li id="addon-firebug" class="foxclocks">
+            <li id="addon-foxclocks" class="addon4">
               <a href="https://addons.mozilla.org/zh-tw/firefox/addon/foxclocks/" target="_blank">
                 <h4>FoxClocks</h4>
                 <p>跨地區時鐘</p>
@@ -470,7 +472,7 @@
               </a>
               <div class="fb-vote" data-addon="panorama-tab-group-name"></div>
             </li>
-            <li id="addon-firebug" class="more">
+            <li class="more">
               <a href="https://addons.mozilla.org/zh-tw/firefox/" target="_blank">還有更多好用附加元件 »</a>
             </li>
           </ul>
@@ -541,7 +543,9 @@
             <h4>未中獎</h4>
             <hr>
             別氣餒，你還有「Firefox 十週年 - 網路自由日」活動入場券，現場備有精彩的活動及精美的獎品，歡迎攜家帶眷一起來參加！
+            <div class="postscript">還沒領取「Firefox 十週年 - 網路自由日」活動入場券嗎? <a class="back-to-ticket" href="javascript:void(0);">馬上領取 »</a></div>
           </div>
+
           <div class="action">
             <h3>請轉動幸運輪盤以進行大抽獎！</h3>
             <a class="go button" href="javascript:void(0);">轉動幸運輪盤</a>
@@ -598,6 +602,7 @@
         </div>
       </div>
   </div>
+
   <div class="shareBox">
       <div class="luckyChance">
         <div class="rules">
@@ -612,8 +617,22 @@
         <a class="no-thanks" href="javascript:void(0);">不了，謝謝！ »</a>
       </div>
   </div>
+
   <div class="loginBox">
     <iframe src="about:blank"></iframe>
+  </div>
+
+  <div class="addonBox">
+    <div class="addon-intro">
+      <div class="actor"></div>
+      <a href="" target="_blank">
+        <div class="icon"></div>
+        <h4></h4>
+        <p></p>
+      </a>
+      <span class="addon"></span>是<span class="who"></span>最喜歡的附加元件之一，趕快參加活動發堀更多幸福的附加元件並抽出大獎吧！
+      <a class="more" href="javascript:void(0);">我等不及了，馬上開始吧 »</a>
+    </div>
   </div>
 
   <div id="fb-root"></div>

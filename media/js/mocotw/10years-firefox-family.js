@@ -14,148 +14,20 @@ $(function(){
     var day;
     var winningPrice;
     var $introVideo = $('#firefox-family-intro');
-    $introVideo.on('pause', showScrollTip).on('timeupdate', function() {
-        if (this.currentTime > 66) {
-            showScrollTip();
-        }
-    });
-
-    $('#music-button').click(function () {
-        var $this = $(this);
-        if ($this.hasClass('on')) {
-            $this.removeClass('on');
-            $this.addClass('off');
-            $introVideo.prop('muted', true);
-        }
-        else {
-            $this.addClass('on');
-            $this.removeClass('off');
-            $introVideo.prop('muted', false);
-        }
-    });
 
     if (!isSmallViewport && !isTouch) {
+        $('html').addClass('desktop');
+        $('.room .actor').addClass('stand');
+        initPages();
+        initIntroVideo();
+        initScrollHandlers();
         initScrollAnimations();
+        initAddosHandlers();
+        initBonusHandlers();
+        initTicketHandlers();
+        initLotteryHandlers();
     }
 
-    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-    var eventer = window[eventMethod];
-    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
-    // Listen to message from child window
-    eventer(messageEvent,function(e) {
-        //run function//
-        if (e.data == 'login=success') {
-            $('.loginBox').hide();
-            if (day) {
-                getTicket();
-            }
-            else {
-                goPlayLottery();
-            }
-        }
-    },false);
-
-    $.fn.loadLikeButtons = function() {
-        var $this = $(this);
-        if ($this.find('.fb-like').size() == 0) {
-            $this.find('.fb-vote').each(function() {
-                var $vote = $(this);
-                var addon = $vote.attr('data-addon');
-                $vote.append('<div class="fb-like" data-href="' + BASE_URL + addon + '/" ' +
-                    'data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>');
-            }).promise().done(function() {
-                FB.XFBML.parse($this.find('.addons').get(0));
-            });
-        }
-    };
-
-    $('#all-addons').find('.kwicks').kwicks({
-        spacing: 0,
-        maxSize: 640,
-        behavior: 'menu',
-        selectOnClick: false,
-        easing: 'easeInOut'
-    }).on('expand.kwicks', function(e, data) {
-        $(data.expanded).loadLikeButtons();
-    });
-
-    window.fbAsyncInit = function () {
-        FB.Event.subscribe('edge.create', function (response) {
-            if ('https://facebook.com/MozillaTaiwan' == response) {
-                level = 1;
-                if (!playing) {
-                    goGetTicket();
-                }
-                else {
-                    updatePlate();
-                }
-            }
-            else if (0 == response.indexOf(BASE_URL)) {
-                if (!voted) {
-                    voted = true;
-                    $('.shareBox').show();
-                }
-            }
-        });
-    };
-
-    $('.luckyChance .share').click(function() {
-        FB.ui({method: 'feed', link: BASE_URL},
-            function (response) {
-                if (response && response.post_id) {
-                    level = 1;
-                    if (!playing) {
-                        goGetTicket();
-                    }
-                    else {
-                        updatePlate();
-                    }
-                }
-            }
-        );
-    });
-    $('.luckyChance .no-thanks').click(function() {
-        if (!playing) {
-            goGetTicket();
-        }
-        else {
-            updatePlate();
-        }
-    });
-
-    $('.get-ticket .day1').click(function() {
-        day = 1;
-        showLoginBox();
-    });
-    $('.get-ticket .day2').click(function() {
-        day = 2;
-        showLoginBox();
-    });
-    $('.get-ticket .skip').click(function() {
-        day = undefined;
-        showLoginBox();
-    });
-
-    $('.show-ticket .go-lottery').click(function() {
-       goPlayLottery();
-    });
-
-    $('.loginBox').click(function(e) {
-        if (e.target == this) {
-            $(this).hide();
-        }
-    });
-
-    $('#reward .go').click(function() {
-        getPrice();
-    });
-
-    $('#wheel-of-fortune .plate').bind('transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd', function (e) {
-        if (winningPrice) {
-            showPrice(winningPrice);
-        }
-    });
 
     function updatePlate() {
         $('.shareBox').hide();
@@ -258,7 +130,166 @@ $(function(){
         $('#scroll-tip').css('opacity', 1);
     }
 
-    function initScrollAnimations() {
+    function initAddosHandlers() {
+        $.fn.loadLikeButtons = function() {
+            var $this = $(this);
+            if ($this.find('.fb-like').size() == 0) {
+                $this.find('.fb-vote').each(function() {
+                    var $vote = $(this);
+                    var addon = $vote.attr('data-addon');
+                    $vote.append('<div class="fb-like" data-href="' + BASE_URL + addon + '/" ' +
+                        'data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>');
+                }).promise().done(function() {
+                    FB.XFBML.parse($this.find('.addons').get(0));
+                });
+            }
+        };
+
+        $('#all-addons').find('.kwicks').kwicks({
+            spacing: 0,
+            maxSize: 640,
+            behavior: 'menu',
+            selectOnClick: false,
+            easing: 'easeInOut'
+        }).on('expand.kwicks', function(e, data) {
+            $(data.expanded).loadLikeButtons();
+        });
+    }
+
+    function initBonusHandlers() {
+        window.fbAsyncInit = function () {
+            FB.Event.subscribe('edge.create', function (response) {
+                if ('https://facebook.com/MozillaTaiwan' == response) {
+                    level = 1;
+                    if (!playing) {
+                        goGetTicket();
+                    }
+                    else {
+                        updatePlate();
+                    }
+                }
+                else if (0 == response.indexOf(BASE_URL)) {
+                    if (!voted) {
+                        voted = true;
+                        $('.shareBox').show();
+                    }
+                }
+            });
+        };
+
+        $('.luckyChance .share').click(function() {
+            FB.ui({method: 'feed', link: BASE_URL},
+                function (response) {
+                    if (response && response.post_id) {
+                        level = 1;
+                        if (!playing) {
+                            goGetTicket();
+                        }
+                        else {
+                            updatePlate();
+                        }
+                    }
+                }
+            );
+        });
+        $('.luckyChance .no-thanks').click(function() {
+            if (!playing) {
+                goGetTicket();
+            }
+            else {
+                updatePlate();
+            }
+        });
+    }
+
+    function initLotteryHandlers() {
+        $('#reward .go').click(function() {
+            getPrice();
+        });
+
+        $('#wheel-of-fortune .plate').bind('transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd', function (e) {
+            if (winningPrice) {
+                showPrice(winningPrice);
+            }
+        });
+
+        $('.postscript .back-to-ticket').click(function() {
+            $.scrollTo(30000, 1000);
+        });
+    }
+
+    function initTicketHandlers() {
+        $('.get-ticket .day1').click(function() {
+            day = 1;
+            showLoginBox();
+        });
+        $('.get-ticket .day2').click(function() {
+            day = 2;
+            showLoginBox();
+        });
+        $('.get-ticket .skip').click(function() {
+            day = undefined;
+            showLoginBox();
+        });
+
+        $('.show-ticket .go-lottery').click(function() {
+            goPlayLottery();
+        });
+
+        $('.loginBox').click(function(e) {
+            if (e.target == this) {
+                $(this).hide();
+            }
+        });
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        // Listen to message from child window
+        eventer(messageEvent,function(e) {
+            //run function//
+            if (e.data == 'login=success') {
+                $('.loginBox').hide();
+                if (day) {
+                    getTicket();
+                }
+                else {
+                    goPlayLottery();
+                }
+            }
+        },false);
+    }
+
+    function initIntroVideo() {
+        $introVideo.on('pause', showScrollTip).on('timeupdate', function() {
+            if (this.currentTime > 66) {
+                showScrollTip();
+            }
+        }).waypoint(function(direction) {
+            if (direction === 'down') {
+                this.pause();
+            }
+            else {
+                this.play();
+            }
+        }, {offset: -800});
+
+        $('#music-button').click(function () {
+            var $this = $(this);
+            if ($this.hasClass('on')) {
+                $this.removeClass('on');
+                $this.addClass('off');
+                $introVideo.prop('muted', true);
+            }
+            else {
+                $this.addClass('on');
+                $this.removeClass('off');
+                $introVideo.prop('muted', false);
+            }
+        });
+    }
+
+    function initScrollHandlers() {
         var autoScrolling = false;
         $('body').keyup(function (e) {
             if (13 == e.keyCode) {
@@ -278,17 +309,10 @@ $(function(){
             duration: 1500,
             hash: true
         });
+    }
 
-        $('html').addClass('desktop');
-        $('.room .actor').addClass('stand');
-        $('#firefox-family-intro').waypoint(function(direction) {
-            if (direction === 'down') {
-                this.pause();
-            }
-            else {
-                this.play();
-            }
-        }, {offset: -800});
+    function initScrollAnimations() {
+
         TweenMax.selector = jQuery;
         var controller = $.superscrollorama({ playoutAnimations: false });
         var fatherIn = 0;
@@ -434,6 +458,7 @@ $(function(){
                 $('#all-addons').addClass('stand');
             }}), 500, 2000);
         controller.addTween(addonsIn, TweenMax.from('#all-addons > h2', 1, {css: {opacity: 0}}), 500, 2000);
+        controller.addTween(addonsIn, TweenMax.to('#scroll-tip', 1, {css: {opacity: 0}}), 500, 2000);
 
         //go get ticket
         controller.addTween(addonsIn, TweenMax.to('.announcements', 1, {css: {top: '0'},
@@ -462,4 +487,40 @@ $(function(){
             }}), 1000);
     }
 
+    function initPages() {
+        var hidePopup = function(ctx, next) {
+            $('.addonBox').hide();
+        };
+
+        var showPopup = function(ctx, next) {
+            var $addonBox = $('.addonBox');
+            var $addon = $('#addon-'+ctx.params.addon);
+            var $addons = $addon.closest('.addons');
+            var $link = $addon.find('a');
+            var actor_name = $addons.siblings('h3').text();
+            var actor_img = $addons.siblings('.actor').css('background-image');
+            var icon = window.getComputedStyle($link.get(0), ':before').backgroundImage;
+            var href = $link.attr('href');
+            var title = $addon.find('h4').text();
+            var desc = $addon.find('p').text();
+
+            $addonBox.find('.actor').css('background-image', actor_img);
+            $addonBox.find('.icon').css('background-image', icon);
+            $addonBox.find('a').attr('href', href);
+            $addonBox.find('h4').text(title);
+            $addonBox.find('p').text(desc);
+            $addonBox.find('.addon').text(title);
+            $addonBox.find('.who').text(actor_name);
+            $addonBox.show();
+        };
+        $('.addonBox, .addonBox .more').click(function(e) {
+            if (e.target == this) {
+                page('/10years/firefox-family/');
+            }
+        });
+
+        page('/10years/firefox-family/', hidePopup);
+        page('/10years/firefox-family/:addon/', showPopup);
+        page();
+    }
 });

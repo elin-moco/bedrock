@@ -918,6 +918,7 @@ MINIFY_BUNDLES = {
             'js/libs/tweenmax.1.9.7.min.js',
             'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.kwicks.min.js',
+            'js/libs/index.js',
             'js/mocotw/10years-firefox-family.js',
         ),
         '10years-firefox-day': (

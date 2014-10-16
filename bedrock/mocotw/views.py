@@ -309,3 +309,10 @@ def home(request, template):
 
     data = {'posts': posts, 'events': events, 'videos': videos}
     return l10n_utils.render(request, template, data)
+
+
+def firefox_family(request, addon):
+    data = {
+        'addon': addon,
+    }
+    return l10n_utils.render(request, 'mocotw/10years/firefox-family.html', data)

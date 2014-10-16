@@ -7,8 +7,9 @@ from bedrock.firefox import version_re
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
-from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, year_review_2013, subscribe_embed, newsletter, community, \
-    google_form_2014
+from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, \
+    one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, \
+    year_review_2013, subscribe_embed, newsletter, community, google_form_2014, firefox_family
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
@@ -181,7 +182,8 @@ urlpatterns = patterns(
     page('10years/edm/browser-survey', 'mocotw/10years/edm/browser-survey-web.html'),
     page('10years', 'mocotw/10years/index.html'),
     page('10years/firefox-day', 'mocotw/10years/firefox-day.html'),
-    page('10years/firefox-family', 'mocotw/10years/firefox-family.html'),
+    url(r'^10years/firefox-family/(?P<addon>[-A-z0-9]+/)?$', firefox_family, name='mocotw.10years.firefox-family'),
+    # page('10years/firefox-family', 'mocotw/10years/firefox-family.html'),
     page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 
 )
