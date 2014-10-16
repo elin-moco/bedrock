@@ -1,25 +1,235 @@
 "use strict";
 
 $(function(){
-    $('#firefox-family-intro').on('ended', function() {
-        $('#coming-soon').addClass('appear');
-    });
-    $('#all-addons .kwicks').kwicks({
-        spacing: 0,
-        maxSize: 640,
-        behavior: 'menu',
-        easing: 'easeInOut'
-    });
 
     var $w = $(window);
     var isSmallViewport = $w.width() < 1000;
     var isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints || navigator.maxTouchPoints || isSmallViewport;
 
+    var BASE_URL = 'http://' + window.location.hostname + '/10years/firefox-family/';
+    var API_URL = 'https://ffclub.fancy.mozilla.com.tw/campaign/10years/firefox-family-award/';
+    var voted = false;
+    var level = 0;
+    var day;
+    var winningPrice;
+
+    $('#firefox-family-intro').on('pause', showScrollTip).on('timeupdate', function() {
+        if (this.currentTime > 66) {
+            showScrollTip();
+        }
+    });
+
+
     if (!isSmallViewport && !isTouch) {
         initScrollAnimations();
     }
 
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+    // Listen to message from child window
+    eventer(messageEvent,function(e) {
+        //run function//
+        if (e.data == 'login=success') {
+            $('.loginBox').hide();
+            if (day) {
+                getTicket();
+            }
+            else {
+                goPlayLottery();
+            }
+        }
+    },false);
+
+    $.fn.loadLikeButtons = function() {
+        var $this = $(this);
+        if ($this.find('.fb-like').size() == 0) {
+            $this.find('.fb-vote').each(function() {
+                var $vote = $(this);
+                var addon = $vote.attr('data-addon');
+                $vote.append('<div class="fb-like" data-href="' + BASE_URL + addon + '/" ' +
+                    'data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>');
+            }).promise().done(function() {
+                FB.XFBML.parse($this.find('.addons').get(0));
+            });
+        }
+    };
+
+    $('#all-addons').find('.kwicks').kwicks({
+        spacing: 0,
+        maxSize: 640,
+        behavior: 'menu',
+        selectOnClick: false,
+        easing: 'easeInOut'
+    }).on('expand.kwicks', function(e, data) {
+        $(data.expanded).loadLikeButtons();
+    });
+
+    window.fbAsyncInit = function () {
+        FB.Event.subscribe('edge.create', function (response) {
+            console.log(response);
+            if ('https://facebook.com/MozillaTaiwan' == response) {
+                level = 1;
+                    goGetTicket();
+            }
+            else if (0 == response.indexOf(BASE_URL)) {
+                if (!voted) {
+                    voted = true;
+                    $('.shareBox').show();
+                }
+            }
+        });
+    };
+
+    $('.luckyChance .share').click(function() {
+        FB.ui({method: 'feed', link: BASE_URL},
+            function (response) {
+                if (response && response.post_id) {
+                    level = 1;
+                    goGetTicket();
+                }
+            }
+        );
+    });
+    $('.luckyChance .no-thanks').click(function() {
+        goGetTicket();
+    });
+
+    $('.get-ticket .day1').click(function() {
+        day = 1;
+        showLoginBox();
+    });
+    $('.get-ticket .day2').click(function() {
+        day = 2;
+        showLoginBox();
+    });
+    $('.get-ticket .skip').click(function() {
+        day = undefined;
+        showLoginBox();
+    });
+
+    $('.show-ticket .go-lottery').click(function() {
+       goPlayLottery();
+    });
+
+    $('.loginBox').click(function(e) {
+        if (e.target == this) {
+            $(this).hide();
+        }
+    });
+
+    $('#reward .go').click(function() {
+        getPrice();
+    });
+
+    $('#wheel-of-fortune .plate').bind('transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd', function (e) {
+        if (winningPrice) {
+            showPrice(winningPrice);
+        }
+    });
+
+    function showPrice(price) {
+        $('#reward .action').hide();
+        if (price.slug == 'sorry') {
+            $('#reward .try-again').show();
+        }
+        else {
+            $('#reward .bingo .price').text(price.name);
+            $('#reward .bingo').show();
+        }
+    }
+
+    function getPrice() {
+        $.ajax({
+            url: API_URL + 'lottery/',
+            data: {level: level},
+            dataType: 'jsonp',
+            success: function(price) {
+                if (price.result == 'success') {
+                    if (price.existing) {
+                        alert('你已經抽過獎囉！');
+                        showPrice(price);
+                    }
+                    else {
+                        winningPrice = price;
+                        $('#wheel-of-fortune .plate').attr('class', 'plate ' + price.slug);
+                    }
+                }
+                else {
+                    alert('抱歉，抽獎時發生錯誤。');
+                }
+            }
+        });
+    }
+
+    function showLoginBox() {
+        $('.loginBox').show();
+        $('.loginBox iframe').attr('src', API_URL);
+    }
+
+    function getTicket() {
+        $.ajax({
+            url: API_URL + 'ticket/',
+            data: {day: day},
+            dataType: 'jsonp',
+            success: function(ticket) {
+                if (ticket.result == 'success') {
+                    if (ticket.existing) {
+                        alert('你已經領過票囉！');
+                    }
+                    $('.show-ticket .code').text(ticket.code);
+                    $('.show-ticket .session').text(ticket.session);
+                    $('.get-ticket').hide();
+                    $('.show-ticket').show();
+                }
+                else {
+                    alert('抱歉，取票時發生錯誤。');
+                }
+            }
+        });
+    }
+
+    function goPlayLottery() {
+        $('#wrapper').addClass('lottery');
+        setTimeout(function() {
+            $.scrollTo($(document).height(), 1000);
+        }, 200);
+    }
+
+    function goGetTicket() {
+        $('#wrapper').addClass('ticket');
+        $('.shareBox').hide();
+        setTimeout(function() {
+            $.scrollTo($(document).height(), 1000);
+        }, 200);
+    }
+
+    function showScrollTip() {
+        $('#scroll-tip').css('opacity', 1);
+    }
+
     function initScrollAnimations() {
+        var autoScrolling = false;
+        $('body').keyup(function (e) {
+            if (13 == e.keyCode) {
+                if (!autoScrolling) {
+                    $.scrollTo($(document).height(), $(document).height(), {easing: 'linear'});
+                    autoScrolling = true;
+                }
+                else {
+                    $.scrollTo.window().stop(true);
+                    autoScrolling = false;
+                }
+            }
+        });
+        $.localScroll({
+            target: 'body', // could be a selector or a jQuery object too.
+            queue: true,
+            duration: 1500,
+            hash: true
+        });
+
         $('html').addClass('desktop');
         $('.room .actor').addClass('stand');
         $('#firefox-family-intro').waypoint(function(direction) {
@@ -39,6 +249,7 @@ $(function(){
         var sonIn = 16000;
         var boyfriendIn = 20000;
         var addonsIn = 24000;
+        var lotteryIn = 30000;
         var sitDown = function() {
             $(this.target).siblings('.actor').removeClass('stand');
         };
@@ -155,6 +366,41 @@ $(function(){
         controller.addTween(addonsIn, TweenMax.to('#boyfriends-room', 1, {css: {top: '-101%'}}), 1000);
         controller.addTween(addonsIn, TweenMax.to('#scene .clock', 1, {css: {top: '-100%'}}), 1000);
         controller.addTween(addonsIn, TweenMax.from('#all-addons', 1, {css: {top: '50%', height: '1200px'}}), 1000);
+        controller.addTween(addonsIn, TweenMax.from('.announcements', 1, {css: {top: '-50%'},
+            onComplete: function() {
+                $('.announcements').addClass('fall');
+            },
+            onReverseComplete: function() {
+                $('.announcements').removeClass('fall');
+            }}), 500);
+        controller.addTween(addonsIn, TweenMax.to('.announcements', 1, {css: {top: '-50%'},
+            onStart: function() {
+                $('#all-addons').removeClass('stand');
+            },
+            onReverseComplete: function() {
+                $('#all-addons').addClass('stand');
+            }}), 500, 2000);
+        //go get ticket
+        controller.addTween(addonsIn, TweenMax.to('.announcements', 1, {css: {top: '0'},
+            onStart: function() {
+                $('.announcements .rules').hide();
+                $('.announcements .ticket').show();
+                $('#all-addons').addClass('letsgo');
+            },
+            onReverseComplete: function() {
+                $('.announcements .rules').show();
+                $('.announcements .ticket').hide();
+                $('#all-addons').removeClass('letsgo');
+            }}), 500, 4000);
+
+
+        controller.addTween(lotteryIn, TweenMax.to('.announcements', 1, {css: {top: '-50%'}}), 500);
+        controller.addTween(lotteryIn, TweenMax.to('#all-addons', 1, {css: {top: '-100%'}}), 1000);
+        controller.addTween(lotteryIn, TweenMax.from('#wheel-of-fortune', 1, {css: {top: '50%'},
+            onStart: function() {
+                $('#wheel').attr('class', 'level'+level);
+                $('#reward .action').css('opacity', 1);
+            }}), 1000);
     }
 
 });

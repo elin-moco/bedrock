@@ -2,13 +2,22 @@
 
 @sceneHeight: 800px;
 
-html, body {
-  background-color: #98DCDC;
-}
-
 html, body, #body-wrapper, #wrapper {
   width: 100%;
 //  height: 100%;
+}
+
+body {
+  background: #f5f1e8 url(/media/img/sandstone/bg-sand.png) repeat;
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 100%;
+    height: 800px;
+    background: #98DCDC;
+  }
 }
 
 #wrapper {
@@ -604,6 +613,7 @@ html, body, #body-wrapper, #wrapper {
   display: block;
   width: 100%;
   height: 800px;
+  .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
 
   .addon(@order, @actor) {
     position: relative;
@@ -795,6 +805,378 @@ html, body, #body-wrapper, #wrapper {
       .addons("6-boyfriend");
     }
   }
+
+  &.letsgo {
+    pointer-events: none;
+    h3 {
+      opacity: 0;
+    }
+    .father .actor {
+      width: 165px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/father-go.png) bottom no-repeat;
+    }
+    .mother .actor {
+      width: 130px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/mother-go.png) bottom no-repeat;
+    }
+    .grandpa .actor {
+      width: 146px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/grandpa-go.png) bottom no-repeat;
+    }
+    .daughter .actor {
+      width: 150px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/daughter-go.png) bottom no-repeat;
+    }
+    .son .actor {
+      width: 141px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/son-go.png) bottom no-repeat;
+    }
+    .boyfriend .actor {
+      width: 167px;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/boyfriend-go.png) bottom no-repeat;
+    }
+  }
+  .fb_iframe_widget {
+      display: inline-block;
+      position: absolute;
+      right: -60px;
+      text-align: right;
+      top: 0;
+      width: 100px;
+      height: 20px;
+      overflow: hidden;
+  }
+}
+
+#wheel-of-fortune {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 800px;
+  background: url(/media/img/mocotw/10years/fx-family/lottery/bg-raffle.png) center no-repeat;
+  background-size: auto 100%;
+  text-align: center;
+  .middle {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+  }
+  #reward {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 100%;
+    vertical-align: top;
+  }
+  #wheel {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 100%;
+    padding-right: 50px;
+    vertical-align: top;
+    opacity: 0;
+    .transition(opacity .2s ease-in);
+    @baseRotateDegree: 360deg * 6;
+    &.level0 {
+      .plate {
+        background: url(/media/img/mocotw/10years/fx-family/lottery/roulette-6.png) center no-repeat;
+          &.sorry {
+            .transform(rotate(@baseRotateDegree + 180));
+          }
+          &.notebook {
+            .transform(rotate(@baseRotateDegree + 240));
+          }
+          &.totebag {
+            .transform(rotate(@baseRotateDegree + 60));
+          }
+          &.carsticker {
+            .transform(rotate(@baseRotateDegree + 120));
+          }
+          &.nbsticker {
+            .transform(rotate(@baseRotateDegree + 300));
+          }
+      }
+      opacity: 1;
+    }
+    &.level1 {
+      .plate {
+        background: url(/media/img/mocotw/10years/fx-family/lottery/roulette-12.png) center no-repeat;
+          &.sorry {
+            .transform(rotate(@baseRotateDegree + 180));
+          }
+          &.fxosphone {
+            .transform(rotate(@baseRotateDegree + 300));
+          }
+          &.backpack {
+            .transform(rotate(@baseRotateDegree + 240));
+          }
+          &.taipeipass {
+            .transform(rotate(@baseRotateDegree + 60));
+          }
+          &.mug {
+            .transform(rotate(@baseRotateDegree + 120));
+          }
+          &.notebook {
+            .transform(rotate(@baseRotateDegree + 330));
+          }
+          &.totebag {
+            .transform(rotate(@baseRotateDegree + 30));
+          }
+          &.carsticker {
+            .transform(rotate(@baseRotateDegree + 150));
+          }
+          &.nbsticker {
+            .transform(rotate(@baseRotateDegree + 210));
+          }
+      }
+      opacity: 1;
+    }
+  }
+  .plate {
+    position: absolute;
+    margin: auto;
+    width: 436px;
+    height: 436px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .transition(transform 10s ease-in-out);
+    .transform-origin(50% 50%);
+  }
+  .pointer {
+    position: absolute;
+    margin: auto;
+    width: 59px;
+    height: 85px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 25px;
+    background: url(/media/img/mocotw/10years/fx-family/lottery/roulette-center.png) top center no-repeat;
+  }
+  hr {
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+  }
+  .result {
+    display: none;
+    position: absolute;
+    margin: auto;
+    padding: 20px 40px;
+    width: 400px;
+    height: 140px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 18px;
+    .border-radius(5px);
+    .box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    h4 {
+      font-size: 30px;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 3px #000000;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 8px;
+      border: 5px dotted #FFFFFF;
+      .border-radius(5px);
+    }
+  }
+  .bingo {
+    .result;
+    background: #E5600D;
+  }
+  .try-again {
+    .result;
+    background: #4D4E53;
+  }
+  .action {
+//    display: none;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    .transition(opacity 0.5s ease-in-out);
+    .button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 8px;
+        background: url(/media/img/mocotw/10years/fx-family/ticket/icon-raffle.png) center no-repeat;
+        background-size: 100% auto;
+      }
+    }
+  }
+}
+
+.announcements {
+  position: fixed;
+  display: none;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  perspective: 1000px;
+  perspective-origin: 50% 0;
+  .woodboard {
+    display: inline-block;
+    width: 855px;
+    height: 224px;
+    left: 0;
+    right: 0;
+    background: url(/media/img/mocotw/10years/fx-family/addons/board.png) 0 50% no-repeat;
+    .transform(rotateX(90deg));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 0);
+  }
+  &.fall {
+    .woodboard {
+      .animation(falls 1s ease-in forwards);
+    }
+  }
+  .rules {
+    color: #FFFFFF;
+    margin-top: 56px;
+    padding: 0 80px;
+    text-align: left;
+    h3 {
+      text-shadow: 1px 1px 3px #000000;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+    }
+    p {
+      margin-bottom: 6px;
+    }
+    b {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+  }
+  .ticket {
+    display: none;
+    margin-top: 54px;
+    padding: 0 80px;
+    text-align: left;
+    color: #FFFFFF;
+    h3 {
+      color: #FFFFFF;
+      text-shadow: 1px 1px 3px #000000;
+      margin-bottom: 20px;
+    }
+    .button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+    b {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+  }
+  .stub {
+    display: inline-block;
+    width: 160px;
+    height: 120px;
+    vertical-align: top;
+    margin-right: 10px;
+  }
+  .actions {
+    position: relative;
+    display: inline-block;
+    width: 520px;
+    height: 120px;
+    vertical-align: top;
+  }
+  .get-ticket {
+    text-align: center;
+    .stub {
+      background: url(/media/img/mocotw/10years/fx-family/ticket/ticket-1.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .skip {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+  .show-ticket {
+    display: none;
+    .stub {
+      position: relative;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/ticket-2.png) center no-repeat;
+      background-size: 100% auto;
+      .code {
+        position: absolute;
+        display: block;
+        color: #000;
+        width: 100%;
+        bottom: 24px;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px #FFFFFF;
+      }
+    }
+    .session {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+    .download:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/icon-download.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .go-lottery:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/icon-raffle.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .buttons {
+      position: absolute;
+      text-align: right;
+      right: -60px;
+      bottom: 0;
+      .button {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 #scroll-tip {
@@ -806,8 +1188,10 @@ html, body, #body-wrapper, #wrapper {
   bottom: 40px;
   z-index: 100;
   color: @textColorPrimary;
+  opacity: 0;
   text-align: center;
   text-shadow: 0 0 5px #ffffff;
+  .transition(opacity .2s ease-in);
   .arrow {
     display: block;
     height: 6px;
@@ -862,35 +1246,141 @@ html, body, #body-wrapper, #wrapper {
   .spotTextKeyFrames();
 }
 
-#coming-soon {
-  pointer-events: none;
-  opacity: 0;
-  position: absolute;
-  margin: auto;
-  box-sizing: border-box;
-  padding: 10px;
-  width: 320px;
-  height: 320px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #FFF;
-  .border-radius(5px);
-  .box-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
-  .transition(opacity .5s ease-in);
-  h3 {
-    font-size: 24px;
+.fallsFrames {
+  0% {
+    .transform(rotateX(-90deg));
   }
-  &.appear {
-    pointer-events: all;
-    opacity: 1.0;
+  60% {
+    .transform(rotateX(30deg));
+  }
+  90% {
+    .transform(rotateX(-15deg));
+  }
+  100% {
+    .transform(rotateX(0deg));
+  }
+}
+
+@keyframes falls {
+  .fallsFrames();
+}
+@-moz-keyframes falls {
+  .fallsFrames();
+}
+@-webkit-keyframes falls {
+  .fallsFrames();
+}
+@-o-keyframes falls {
+  .fallsFrames();
+}
+@-ms-keyframes falls {
+  .fallsFrames();
+}
+
+.shareBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  .luckyChance {
+    position: absolute;
+    display: block;
+    width: 320px;
+    height: 300px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #FFFFFF;
+    padding: 10px;
+    box-sizing: border-box;
+    .border-radius(5px);
+    .box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    .rules {
+      padding-bottom: 10px;
+    }
+    .fans {
+      cursor: default;
+      .text:before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        background: url(/media/img/mocotw/10years/fx-family/addons/share.png) no-repeat;
+        background-size: 100% auto;
+        margin-right: 8px;
+      }
+    }
+    .share .text:before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/addons/share.png) no-repeat;
+      background-size: 100% auto;
+      margin-right: 8px;
+    }
+    .button {
+      display: block;
+      margin: auto;
+      width: 220px;
+      padding: 10px;
+      .text {
+        padding: 5px 0;
+      }
+      .fb_iframe_widget {
+        background: rgba(0, 0, 0, 0.5);
+        .border-radius(3px);
+      }
+    }
+    .or {
+      text-align: center;
+      margin: 6px 0;
+    }
+    .no-thanks {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+}
+.loginBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  iframe {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
   }
 }
 
 .desktop {
   #wrapper {
-    height: 30000px;
+    height: 28000px;
+    &.ticket {
+      height: 30000px;
+      &.lottery {
+        height: 32000px;
+      }
+    }
   }
   #scene {
     position: fixed;
@@ -964,7 +1454,19 @@ html, body, #body-wrapper, #wrapper {
     z-index: 10;
   }
   #all-addons {
+    z-index: 5;
     position: absolute;
     top: 0;
+    &.stand {
+      pointer-events: none;
+    }
+  }
+  #wheel-of-fortune {
+    position: absolute;
+    top: 0;
+  }
+  .announcements {
+    display: block;
+    z-index: 100;
   }
 }
