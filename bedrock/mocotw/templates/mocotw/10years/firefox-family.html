@@ -1,6 +1,7 @@
 {% extends "mocotw/10years/base.html" %}
 
-{% block page_title %}幸福的狐家元件 帶你一窺幸福的秘訣{% endblock %}
+{% block page_title_prefix %}{% if addon_name %}{{ addon_name }} - {% else %}{{ super() }}{% endif %}{% endblock %}
+{% block page_title %}幸福的狐家元件，帶你一窺幸福的秘訣{% endblock %}
 {% block page_desc %}歡慶 Firefox 十週年，超強附加元件大揭密，教你成為人生勝利組！還有幸運輪盤超多好禮等你試手氣，Firefox 十週年特展「網路自由日」入場券搶先拿！{% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/firefox-family-fb.png') }}{% endblock %}
 
@@ -625,13 +626,15 @@
   <div class="addonBox">
     <div class="addon-intro">
       <div class="actor"></div>
-      <a href="" target="_blank">
+      <a class="addon button" href="" target="_blank">
         <div class="icon"></div>
         <h4></h4>
         <p></p>
       </a>
-      <span class="addon"></span>是<span class="who"></span>最喜歡的附加元件之一，趕快參加活動發堀更多幸福的附加元件並抽出大獎吧！
-      <a class="more" href="javascript:void(0);">我等不及了，馬上開始吧 »</a>
+      <div class="intro">
+        <span class="what"></span> 是<span class="who"></span>最喜歡的附加元件之一，趕快參加活動發堀更多幸福的附加元件並抽出大獎吧！
+      </div>
+      <a class="more" href="javascript:void(0);">我等不及了，馬上開始吧</a>
     </div>
   </div>
 

@@ -493,28 +493,32 @@ $(function(){
         };
 
         var showPopup = function(ctx, next) {
-            var $addonBox = $('.addonBox');
             var $addon = $('#addon-'+ctx.params.addon);
-            var $addons = $addon.closest('.addons');
-            var $link = $addon.find('a');
-            var actor_name = $addons.siblings('h3').text();
-            var actor_img = $addons.siblings('.actor').css('background-image');
-            var icon = window.getComputedStyle($link.get(0), ':before').backgroundImage;
-            var href = $link.attr('href');
-            var title = $addon.find('h4').text();
-            var desc = $addon.find('p').text();
+            if ($addon.size() > 0) {
+                $introVideo.get(0).pause();
+                var $addonBox = $('.addonBox');
+                var $addons = $addon.closest('.addons');
+                var $link = $addon.find('a');
+                var actor_name = $addons.siblings('h3').text();
+                var actor_img = $addons.siblings('.actor').css('background-image');
+                var icon = window.getComputedStyle($link.get(0), ':before').backgroundImage;
+                var href = $link.attr('href');
+                var title = $addon.find('h4').text();
+                var desc = $addon.find('p').text();
 
-            $addonBox.find('.actor').css('background-image', actor_img);
-            $addonBox.find('.icon').css('background-image', icon);
-            $addonBox.find('a').attr('href', href);
-            $addonBox.find('h4').text(title);
-            $addonBox.find('p').text(desc);
-            $addonBox.find('.addon').text(title);
-            $addonBox.find('.who').text(actor_name);
-            $addonBox.show();
+                $addonBox.find('.actor').css('background-image', actor_img);
+                $addonBox.find('.icon').css('background-image', icon);
+                $addonBox.find('.addon').attr('href', href);
+                $addonBox.find('h4').text(title);
+                $addonBox.find('p').text(desc);
+                $addonBox.find('.what').text(title);
+                $addonBox.find('.who').text(actor_name);
+                $addonBox.show();
+            }
         };
         $('.addonBox, .addonBox .more').click(function(e) {
             if (e.target == this) {
+                $introVideo.get(0).play();
                 page('/10years/firefox-family/');
             }
         });

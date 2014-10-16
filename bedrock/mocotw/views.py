@@ -311,8 +311,43 @@ def home(request, template):
     return l10n_utils.render(request, template, data)
 
 
+ADDON_NAMES = {
+    'quick-translator': 'Quick Translator',
+    'adblock-plus': 'ADBlocker',
+    'measureit': 'MeasureIt',
+    'lastpass-password-manager': 'LastPass Password Manager',
+    'foxclocks': 'FoxClocks',
+    'evernote-web-clipper': 'Evernote Web Clipper',
+    'clearly': 'Evernote Clearly',
+    'savebar': 'SaveBar',
+    'turn-off-the-lights': '關燈看影片',
+    'scrapbook': 'ScrapBook',
+    'nosquint': 'NoSquint',
+    'stock-market-quotes': 'Stock Market Quotes',
+    'auto-reload': 'Auto Reload',
+    'reminderfox': 'ReminderFox',
+    'healthpage': '健康頁 Health Page App',
+    'media-downloader': 'Youtube Downloader',
+    'bbsfox': 'BBSFox',
+    'personas-rotator': 'Personas Rotator',
+    'ie-tab': 'IE Tab',
+    'easyscreenshot': '網頁截圖',
+    'greasemonkey': 'GreaseMonkey',
+    'firegestures': 'FireGestures',
+    'snaplinksplus': 'Snap Links Plus',
+    'tile-tabs': 'Tile Tabs',
+    'panorama-tab-group-name': 'Panorama Tab Group Name',
+    'firebug': 'Firebug',
+    'jsonview': 'JSONView',
+    'sqlite-manager': 'SQLite Manager',
+    'copy-plain-text-2': 'Copy Plain Text 2',
+    'font-finder': 'Font Finder',
+}
+
+
 def firefox_family(request, addon):
     data = {
         'addon': addon,
+        'addon_name': None if addon not in ADDON_NAMES else ADDON_NAMES[addon],
     }
     return l10n_utils.render(request, 'mocotw/10years/firefox-family.html', data)

@@ -182,7 +182,7 @@ urlpatterns = patterns(
     page('10years/edm/browser-survey', 'mocotw/10years/edm/browser-survey-web.html'),
     page('10years', 'mocotw/10years/index.html'),
     page('10years/firefox-day', 'mocotw/10years/firefox-day.html'),
-    url(r'^10years/firefox-family/(?P<addon>[-A-z0-9]+/)?$', firefox_family, name='mocotw.10years.firefox-family'),
+    url(r'^10years/firefox-family/((?P<addon>[-A-z0-9]+)/)?$', firefox_family, name='mocotw.10years.firefox-family'),
     # page('10years/firefox-family', 'mocotw/10years/firefox-family.html'),
     page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 
