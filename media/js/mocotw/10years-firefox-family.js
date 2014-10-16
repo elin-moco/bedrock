@@ -7,8 +7,9 @@ $(function(){
     var isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints || navigator.maxTouchPoints || isSmallViewport;
 
     var BASE_URL = 'http://' + window.location.hostname + '/10years/firefox-family/';
-    var API_URL = 'https://ffclub.fancy.mozilla.com.tw/campaign/10years/firefox-family-award/';
+    var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/10years/firefox-family-award/';
     var voted = false;
+    var playing = false;
     var level = 0;
     var day;
     var winningPrice;
@@ -68,10 +69,14 @@ $(function(){
 
     window.fbAsyncInit = function () {
         FB.Event.subscribe('edge.create', function (response) {
-            console.log(response);
             if ('https://facebook.com/MozillaTaiwan' == response) {
                 level = 1;
+                if (!playing) {
                     goGetTicket();
+                }
+                else {
+                    updatePlate();
+                }
             }
             else if (0 == response.indexOf(BASE_URL)) {
                 if (!voted) {
@@ -87,13 +92,23 @@ $(function(){
             function (response) {
                 if (response && response.post_id) {
                     level = 1;
-                    goGetTicket();
+                    if (!playing) {
+                        goGetTicket();
+                    }
+                    else {
+                        updatePlate();
+                    }
                 }
             }
         );
     });
     $('.luckyChance .no-thanks').click(function() {
-        goGetTicket();
+        if (!playing) {
+            goGetTicket();
+        }
+        else {
+            updatePlate();
+        }
     });
 
     $('.get-ticket .day1').click(function() {
@@ -128,6 +143,27 @@ $(function(){
             showPrice(winningPrice);
         }
     });
+
+    function updatePlate() {
+        $('.shareBox').hide();
+        $('#wheel').attr('class', 'level'+level);
+        if (level == 1) {
+            $('#reward .better-chance').hide();
+        }
+    }
+
+    function remindChance() {
+        playing = true;
+        $('.shareBox').click(function(e) {
+            if (e.target == this) {
+                $(this).hide();
+            }
+        });
+        $('.shareBox .optional').hide();
+        $('#reward .better-chance').css({'opacity': 1, 'pointer-events': 'all'}).click(function() {
+            $('.shareBox').show();
+        });
+    }
 
     function showPrice(price) {
         $('#reward .action').hide();
@@ -178,7 +214,7 @@ $(function(){
                     if (ticket.existing) {
                         alert('你已經領過票囉！');
                     }
-                    $('.show-ticket .code').text(ticket.code);
+                    $('.show-ticket .code').text('序號：' + ticket.code);
                     $('.show-ticket .session').text(ticket.session);
                     $('.get-ticket').hide();
                     $('.show-ticket').show();
@@ -256,6 +292,9 @@ $(function(){
         var standUp = function() {
             $(this.target).siblings('.actor').addClass('stand');
         };
+        var preloadFbLikes = function() {
+            $('#all-addons .' + $(this.target).attr('data-actor')).loadLikeButtons();
+        };
         controller.addTween(fatherIn, TweenMax.to('#intro', 1, {css: {top: '-100%'}}), 1000);
         controller.addTween(fatherIn, TweenMax.to('#firefox-family-intro', 1, {volume: 0}), 800);
         controller.addTween(fatherIn, TweenMax.to('#scene > .clock .hour', 1, {rotation: 90}), 24000);
@@ -278,7 +317,7 @@ $(function(){
         controller.addTween(fatherIn, TweenMax.from('#fathers-room .addon-desc p', 1, {css: {marginTop: '40px', marginBottom: '-100px', opacity: '0'}}), 400, 2000);
 
 
-        controller.addTween(motherIn, TweenMax.to('#fathers-room', 1, {css: {top: '-101%'}}), 1000);
+        controller.addTween(motherIn, TweenMax.to('#fathers-room', 1, {css: {top: '-101%'}, onStart: preloadFbLikes}), 1000);
         controller.addTween(motherIn, TweenMax.from('#mothers-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(motherIn, TweenMax.from('#mothers-room .floor', 1, {css: {height: '0'}}), 500);
         controller.addTween(motherIn, TweenMax.from('#mothers-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
@@ -294,7 +333,7 @@ $(function(){
         controller.addTween(motherIn, TweenMax.from('#mothers-room .addon-desc h2', 1, {css: {marginTop: '40px', marginBottom: '-80px', opacity: '0'}}), 400, 1200);
         controller.addTween(motherIn, TweenMax.from('#mothers-room .addon-desc p', 1, {css: {marginTop: '40px', marginBottom: '-100px', opacity: '0'}}), 400, 2000);
 
-        controller.addTween(grandpaIn, TweenMax.to('#mothers-room', 1, {css: {top: '-101%'}}), 1000);
+        controller.addTween(grandpaIn, TweenMax.to('#mothers-room', 1, {css: {top: '-101%'}, onStart: preloadFbLikes}), 1000);
         controller.addTween(grandpaIn, TweenMax.from('#grandpas-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(grandpaIn, TweenMax.from('#grandpas-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
         controller.addTween(grandpaIn, TweenMax.from('#grandpas-room .actor', 1, {css: {paddingLeft: '2000px'}}), 1000, 500);
@@ -312,7 +351,7 @@ $(function(){
         controller.addTween(grandpaIn, TweenMax.from('#grandpas-room .addon-desc h2', 1, {css: {marginTop: '40px', marginBottom: '-80px', opacity: '0'}}), 400, 1200);
         controller.addTween(grandpaIn, TweenMax.from('#grandpas-room .addon-desc p', 1, {css: {marginTop: '40px', marginBottom: '-100px', opacity: '0'}}), 400, 2000);
 
-        controller.addTween(daughterIn, TweenMax.to('#grandpas-room', 1, {css: {top: '-101%'}}), 1000);
+        controller.addTween(daughterIn, TweenMax.to('#grandpas-room', 1, {css: {top: '-101%'}, onStart: preloadFbLikes}), 1000);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .actor', 1, {css: {paddingLeft: '2000px'}}), 1000, 500);
@@ -331,7 +370,7 @@ $(function(){
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .addon-desc h2', 1, {css: {marginTop: '40px', marginBottom: '-80px', opacity: '0'}}), 400, 1200);
         controller.addTween(daughterIn, TweenMax.from('#daughters-room .addon-desc p', 1, {css: {marginTop: '40px', marginBottom: '-100px', opacity: '0'}}), 400, 2000);
 
-        controller.addTween(sonIn, TweenMax.to('#daughters-room', 1, {css: {top: '-101%'}}), 1000);
+        controller.addTween(sonIn, TweenMax.to('#daughters-room', 1, {css: {top: '-101%'}, onStart: preloadFbLikes}), 1000);
         controller.addTween(sonIn, TweenMax.from('#sons-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(sonIn, TweenMax.from('#sons-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
         controller.addTween(sonIn, TweenMax.from('#sons-room .actor', 1, {css: {paddingLeft: '2000px'}}), 1000, 500);
@@ -346,7 +385,7 @@ $(function(){
         controller.addTween(sonIn, TweenMax.from('#sons-room .addon-desc h2', 1, {css: {marginTop: '40px', marginBottom: '-80px', opacity: '0'}}), 400, 1200);
         controller.addTween(sonIn, TweenMax.from('#sons-room .addon-desc p', 1, {css: {marginTop: '40px', marginBottom: '-100px', opacity: '0'}}), 400, 2000);
 
-        controller.addTween(boyfriendIn, TweenMax.to('#sons-room', 1, {css: {top: '-101%'}}), 1000);
+        controller.addTween(boyfriendIn, TweenMax.to('#sons-room', 1, {css: {top: '-101%'}, onStart: preloadFbLikes}), 1000);
         controller.addTween(boyfriendIn, TweenMax.from('#boyfriends-room', 1, {css: {top: '50%'}}), 1000);
         controller.addTween(boyfriendIn, TweenMax.from('#boyfriends-room .desk', 1, {css: {paddingRight: '1000px'}}), 500, 500);
         controller.addTween(boyfriendIn, TweenMax.from('#boyfriends-room .actor', 1, {css: {paddingLeft: '2000px'}}), 1000, 500);
@@ -380,6 +419,8 @@ $(function(){
             onReverseComplete: function() {
                 $('#all-addons').addClass('stand');
             }}), 500, 2000);
+        controller.addTween(addonsIn, TweenMax.from('#all-addons > h2', 1, {css: {opacity: 0}}), 500, 2000);
+
         //go get ticket
         controller.addTween(addonsIn, TweenMax.to('.announcements', 1, {css: {top: '0'},
             onStart: function() {
@@ -392,6 +433,7 @@ $(function(){
                 $('.announcements .ticket').hide();
                 $('#all-addons').removeClass('letsgo');
             }}), 500, 4000);
+        controller.addTween(addonsIn, TweenMax.to('#all-addons > h2', 1, {css: {opacity: 0}}), 500, 4000);
 
 
         controller.addTween(lotteryIn, TweenMax.to('.announcements', 1, {css: {top: '-50%'}}), 500);
@@ -400,6 +442,9 @@ $(function(){
             onStart: function() {
                 $('#wheel').attr('class', 'level'+level);
                 $('#reward .action').css('opacity', 1);
+                if (level == 0) {
+                    remindChance();
+                }
             }}), 1000);
     }
 

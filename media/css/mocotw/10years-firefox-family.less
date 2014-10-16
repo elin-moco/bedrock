@@ -112,6 +112,7 @@ body {
       font-size: 28px;
       span {
         display: block;
+        margin-top: 12px;
       }
     }
     p {
@@ -656,6 +657,10 @@ body {
     }
   }
 
+  h2 {
+
+  }
+
   .kwicks {
     height: 100%;
     > li {
@@ -667,8 +672,7 @@ body {
         bottom: 0;
         left: 240px;
         width: 320px;
-        height: 380px;
-        padding-top: 20px;
+        height: 450px;
         opacity: 0;
         .transition(opacity .2s linear);
         > li {
@@ -704,6 +708,9 @@ body {
         text-align: center;
         font-size: 22px;
         .transition(padding-right .5s ease-in-out);
+      }
+      .backpack h4 {
+        padding-bottom: 20px;
       }
       > .actor {
         position: absolute;
@@ -1038,6 +1045,12 @@ body {
       }
     }
   }
+  .better-chance {
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    .transition(opacity 0.5s ease-in-out);
+  }
 }
 
 .announcements {
@@ -1141,7 +1154,8 @@ body {
         bottom: 24px;
         text-align: center;
         font-weight: bold;
-        text-shadow: 1px 1px 3px #FFFFFF;
+        text-shadow: 1px 1px 2px #FFFFFF;
+        font-size: 13px;
       }
     }
     .session {
@@ -1312,7 +1326,7 @@ body {
         width: 18px;
         height: 18px;
         vertical-align: middle;
-        background: url(/media/img/mocotw/10years/fx-family/addons/share.png) no-repeat;
+        background: url(/media/img/mocotw/10years/fx-family/addons/like.png) no-repeat;
         background-size: 100% auto;
         margin-right: 8px;
       }
@@ -1459,6 +1473,14 @@ body {
     top: 0;
     &.stand {
       pointer-events: none;
+    }
+    h2 {
+      position: fixed;
+      z-index: 8;
+      bottom: 20px;
+      text-align: center;
+      width: 100%;
+      text-shadow: 2px 2px 5px #FFFFFF;
     }
   }
   #wheel-of-fortune {
