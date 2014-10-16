@@ -1,0 +1,332 @@
+@import "../sandstone/lib";
+
+ul, li {
+  margin: 0;
+  list-style-type: none;
+}
+
+hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 21px;
+  margin-top: 42px;
+}
+.label, .content {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.content {
+  color: #4D4E53;
+}
+
+#main-content {
+  padding: 0 50px;
+  font-size: 16px;
+}
+
+#background {
+  position: relative;
+  background: #FFFFFF;
+}
+
+#banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.intro {
+  padding: 34px 0;
+}
+
+.fb-post {
+  display: inline-block;
+  width: 400px;
+  vertical-align: top;
+}
+
+.event {
+  display: inline-block;
+  vertical-align: top;
+  width: 370px;
+  margin-left: 20px;
+  > ul > li {
+    margin-bottom: 16px;
+  }
+  .join {
+    float: right;
+    color: #FFFFFF;
+    &:link, &:hover {
+      color: #FFFFFF;
+    }
+    padding: 12px 14px;
+  }
+  .label {
+    width: 120px;
+    font-weight: bolder;
+    &:before {
+      .prefixIcon;
+    }
+  }
+  .content {
+    width: 220px;
+  }
+  .open-date:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-date.png) center no-repeat;
+  }
+  .open-time:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-time.png) center no-repeat;
+  }
+  .address:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-place.png) center no-repeat;
+  }
+  .reg-info:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-ticket.png) center no-repeat;
+  }
+  .early-rules {
+    font-size: 12px;
+    padding-left: 26px;
+  }
+  .period-label {
+    font-weight: bolder;
+    &:before {
+      .prefixIcon;
+    }
+  }
+  .reg-info.content li {
+    margin-left: 20px;
+    list-style-type: disc;
+  }
+}
+
+.event-content {
+  padding: 0 50px;
+}
+
+.tabs {
+  margin-top: 42px;
+  height: 640px;
+}
+.tabs > li {
+  float: left;
+  display: block;
+  width: 25%;
+}
+.tabs label.button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 0;
+  border-left: 1px solid #FFFFFF;
+  border-right: 1px solid #000000;
+  .border-radius(0);
+}
+.tabs .tab-content {
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  left: 0;
+  padding: 0 50px;
+  box-sizing: border-box;
+}
+.tabs input[type="radio"] {
+    position: absolute;
+    display: none;
+}
+.tabs [name="tabs"]:checked + label {
+    .box-shadow(@buttonShadowActive);
+}
+.tabs [name="tabs"]:checked ~ .tab-content {
+    display: block;
+}
+
+.prefixIcon {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+#exhibits-content {
+  h2 {
+    &:before {
+      .prefixIcon;
+      background: url(/media/img/mocotw/10years/fx-day/ex.png) center no-repeat;
+    }
+  }
+  > ul > li {
+    margin-bottom: 16px;
+  }
+  .label {
+    width: 180px;
+    font-weight: bolder;
+    &:before {
+      .prefixIcon;
+    }
+  }
+  .content {
+    width: 600px;
+  }
+  .tunnel:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-fx.png) center no-repeat;
+  }
+  .interactive:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-game.png) center no-repeat;
+  }
+  .sessions:before {
+    background: url(/media/img/mocotw/10years/fx-day/icon-community.png) center no-repeat;
+  }
+}
+#gifts-content {
+  h2 {
+    &:before {
+      .prefixIcon;
+      background: url(/media/img/mocotw/10years/fx-day/icon-gift.png) center no-repeat;
+    }
+  }
+}
+#guests-content {
+  h2 {
+    &:before {
+      .prefixIcon;
+      background: url(/media/img/mocotw/10years/fx-day/icon-guest.png) center no-repeat;
+    }
+  }
+}
+#location-content {
+  h2 {
+    &:before {
+      .prefixIcon;
+      background: url(/media/img/mocotw/10years/fx-day/icon-map.png) center no-repeat;
+    }
+  }
+}
+
+.loginBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  iframe {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.ticketBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  .ticketPopup {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+    background: #FFFFFF;
+    padding: 10px;
+    .border-radius(5px);
+    .box-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    .show-ticket {
+      display: none;
+    }
+  }
+  h3 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  .stub {
+    display: inline-block;
+    width: 160px;
+    height: 120px;
+    vertical-align: top;
+    margin-right: 10px;
+  }
+  .close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  .get-ticket {
+    text-align: center;
+    .stub {
+      background: url(/media/img/mocotw/10years/fx-family/ticket/ticket-1.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .skip {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+  .show-ticket {
+    display: none;
+    text-align: center;
+    .rules {
+      text-align: left;
+    }
+    .stub {
+      position: relative;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/ticket-2.png) center no-repeat;
+      background-size: 100% auto;
+      .code {
+        position: absolute;
+        display: block;
+        color: #000;
+        width: 100%;
+        bottom: 24px;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px #FFFFFF;
+        font-size: 13px;
+      }
+    }
+    .session {
+      text-shadow: 1px 1px 3px #FFFFFF;
+    }
+    .download:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+      background: url(/media/img/mocotw/10years/fx-family/ticket/icon-download.png) center no-repeat;
+      background-size: 100% auto;
+    }
+    .button {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font-size: 16px;
+    }
+  }
+  .button {
+    padding: 12px 14px;
+  }
+}

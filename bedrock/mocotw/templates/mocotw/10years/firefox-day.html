@@ -1,5 +1,6 @@
 {% extends "mocotw/10years/base.html" %}
 
+{% block page_title_prefix %}Firefox 十週年特展 - {% endblock %}
 {% block page_title %}網路自由日{% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/10years-fb.png') }}{% endblock %}
 
@@ -10,11 +11,140 @@
 {% endblock %}
 
 {% block content %}
+<div id="main-content">
+  <img id="banner" src="/media/img/mocotw/10years/fx-day/banner.png" alt=""/>
+  <div id="background">
+    <div class="event-content">
+      <div class="intro">
+        Mozilla 推動網路成為最大的平台，在這裡所有限制都被打破，開發者（Web Developer）/ 網路自造者（Web Maker）可以自由開放的在 Web 提交創意與想法，盡情創作自由交流，而每個人在網路上都享有發言、創作、學習、分享的權利，不受平台壟斷的限制。
+      </div>
+      <div class="fb-post" data-href="https://www.facebook.com/events/759754167401335/permalink/759754170734668/" data-width="400"><div class="fb-xfbml-parse-ignore">由 <a href="https://www.facebook.com/MozillaTaiwan">Mozilla Taiwan</a> <a href="https://www.facebook.com/events/759754167401335/permalink/759754170734668/">貼文</a>。</div></div>
+      <div class="event">
+        <ul>
+          <li>
+            <span class="open-date label">活動日期</span>
+            <span class="content">2014.11.22 Sat ~ 11/23 Sun</span>
+          </li>
+          <li>
+            <span class="open-time label">開放時間</span>
+            <span class="content">10:00am ~ 5:00pm</span>
+          </li>
+          <li>
+            <span class="address label">活動地點</span>
+            <span class="content">華山 1914 文創產業園區<br>中三館二樓 拱廳</span>
+          </li>
+        </ul>
+        <hr>
+        <ul>
+          <li>
+            <span class="reg-info label">報名資訊</span>
+            <ul class="reg-info content">
+              <li>網路報名入場</li>
+              <li>現場免費入場</li>
+            </ul>
+            <div class="early-rules">
+              持有早鳥報名序號者，於活動現場報到后可獲得 2014 Firefox OS 獨家限量海報乙張，並享有 Firefox OS 手機抽獎機會
+            </div>
+          </li>
+          <li>
+            <span class="period-label">早鳥報名時間：</span>
+            <span>10/16 ~ 11/10</span>
+          </li>
+          <li>
+            <span class="period-label">線上報名時間：</span>
+            <span>11/11 ~ 11/21 </span>
+          </li>
+        </ul>
+        <a class="join button">我要報名</a>
+      </div>
+    </div>
+    <ul class="tabs">
+      <li>
+        <input type="radio" name="tabs" id="tab-exhibits" checked />
+        <label for="tab-exhibits" class="button">特展內容</label>
+        <div id="exhibits-content" class="tab-content">
+          <h2>特展內容</h2>
+          <hr>
+          <ul>
+            <li>
+              <span class="tunnel label">Firefox 時光走廊：</span>
+              <span class="content">透過動靜態，分別呈現 Firefox 的過去、現在、未來，從十年前的 Firefox 瀏覽器 1.0 版起，到如今自訂性最高的新版 Firefox，以及採用純 Web 技術開發 的 Firefox OS 窺探未來網路世界的無限可能。</span>
+            </li>
+            <li>
+              <span class="interactive label">互動體驗區：</span>
+              <span class="content">邀請民眾體驗 Firefox 瀏覽器在網路隱私、視訊、3D遊戲的先進功能，透過趣味性的互動體驗，悠遊網路無極限。</span>
+            </li>
+            <li>
+              <span class="sessions label">社群議程：</span>
+              <span class="content">聽聽看 Mozilla 社群十年來與 Firefox 一同成長的經驗分享。</span>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" id="tab-gifts" />
+        <label for="tab-gifts" class="button">現場贈品</label>
+        <div id="gifts-content" class="tab-content">
+          <h2>現場贈品</h2>
+          <hr>
+          <img id="banner" src="/media/img/mocotw/10years/fx-day/pic-gift.png" alt=""/>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" id="tab-guests" />
+        <label for="tab-guests" class="button">神秘嘉賓</label>
+        <div id="guests-content" class="tab-content">
+          <h2>神秘嘉賓</h2>
+          <hr>
+          <img id="banner" src="/media/img/mocotw/10years/fx-day/pic-guest.png" alt=""/>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" id="tab-location" />
+        <label for="tab-location" class="button">現場地圖</label>
+        <div id="location-content" class="tab-content">
+          <h2>現場地圖</h2>
+          <hr>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3614.6610615718464!2d121.528325!3d25.045573999999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xd141926afa41a3bb!2z6I-v5bGx5Ym15oSP5paH5YyW!5e0!3m2!1szh-TW!2stw!4v1413481134543" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="loginBox">
+  <iframe src="about:blank"></iframe>
+</div>
+
+<div class="ticketBox">
+  <div class="ticketPopup">
+    <div class="get-ticket">
+      <h3>領取 「Firefox十週年 - <br>網路自由日」入場券</h3>
+      <div class="stub"></div>
+      <div class="actions">
+        <a class="day1 button" href="javascript:void(0);">11 月 22 日</a>
+        <a class="day2 button" href="javascript:void(0);">11 月 23 日</a>
+        <div>
+          請選取活動日期，場次另由系統建議。
+        </div>
+      </div>
+    </div>
+    <div class="show-ticket">
+      <h3>成功取得「Firefox十週年 - <br>網路自由日」活動入場券！</h3>
+      <div class="stub"><span class="code"></span></div>
+      <div class="rules">
+        建議你於「<span class="session"></span>」場次開場前 10 分鐘到場，以確保優先進場的權益。
+        凡於 11/10 (一) 前早鳥報名，活動當天憑此<b>入場序號</b>除了可<b>優先入場</b>之外，
+        還可獲得 <b>2014 Firefox OS 限量海報</b>乙張，並額外享有 <b>Firefox OS 手機</b>抽獎機會，
+        千萬別錯過了專屬於你的優惠權益喔！
+        <a class="download button" href="javascript:void(0);" target="_blank">下載</a>
+      </div>
+    </div>
+    <a class="close" href="javascript:void(0);">關閉</a>
+  </div>
+</div>
 
 <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-post" data-href="https://www.facebook.com/events/759754167401335/permalink/759754170734668/" data-width="466"><div class="fb-xfbml-parse-ignore">由 <a href="https://www.facebook.com/MozillaTaiwan">Mozilla Taiwan</a> <a href="https://www.facebook.com/events/759754167401335/permalink/759754170734668/">貼文</a>。</div></div>
-
-
 {% endblock %}
 
 {% block email_form %}{% endblock %}
