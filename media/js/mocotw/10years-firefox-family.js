@@ -7,7 +7,8 @@ $(function(){
     var isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints || navigator.maxTouchPoints || isSmallViewport;
 
     var BASE_URL = 'http://' + window.location.hostname + '/10years/firefox-family/';
-    var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/10years/firefox-family-award/';
+    var TICKET_BASE_URL = 'http://' + window.location.hostname + '/media/img/mocotw/10years/fx-day/tickets/';
+    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
     var voted = false;
     var playing = false;
     var level = 0;
@@ -101,6 +102,8 @@ $(function(){
                     }
                     $('.show-ticket .code').text('序號：' + ticket.code);
                     $('.show-ticket .session').text(ticket.session);
+                    $('.show-ticket .download').attr('href',
+                            TICKET_BASE_URL + ticket.session.replace(/[/:\s]/g, '') + '-' + ticket.code + '.png');
                     $('.get-ticket').hide();
                     $('.show-ticket').show();
                 }
