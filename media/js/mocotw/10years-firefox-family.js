@@ -13,13 +13,26 @@ $(function(){
     var level = 0;
     var day;
     var winningPrice;
-
-    $('#firefox-family-intro').on('pause', showScrollTip).on('timeupdate', function() {
+    var $introVideo = $('#firefox-family-intro');
+    $introVideo.on('pause', showScrollTip).on('timeupdate', function() {
         if (this.currentTime > 66) {
             showScrollTip();
         }
     });
 
+    $('#music-button').click(function () {
+        var $this = $(this);
+        if ($this.hasClass('on')) {
+            $this.removeClass('on');
+            $this.addClass('off');
+            $introVideo.prop('muted', true);
+        }
+        else {
+            $this.addClass('on');
+            $this.removeClass('off');
+            $introVideo.prop('muted', false);
+        }
+    });
 
     if (!isSmallViewport && !isTouch) {
         initScrollAnimations();
@@ -297,6 +310,7 @@ $(function(){
         };
         controller.addTween(fatherIn, TweenMax.to('#intro', 1, {css: {top: '-100%'}}), 1000);
         controller.addTween(fatherIn, TweenMax.to('#firefox-family-intro', 1, {volume: 0}), 800);
+        controller.addTween(fatherIn, TweenMax.to('#music-button', 1, {css: {opacity: 0}}), 500);
         controller.addTween(fatherIn, TweenMax.to('#scene > .clock .hour', 1, {rotation: 90}), 24000);
         controller.addTween(fatherIn, TweenMax.to('#scene > .clock .minute', 1, {rotation: 360*6}), 24000);
         controller.addTween(fatherIn, TweenMax.from('#fathers-room', 1, {css: {top: '50%'}}), 1000);

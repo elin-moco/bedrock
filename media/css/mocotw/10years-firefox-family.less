@@ -48,6 +48,21 @@ body {
   overflow: hidden;
   height: 800px;
   background-color: #98DCDC;
+  #music-button {
+    position: fixed;
+    z-index: 200;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+    width: 41px;
+    height: 32px;
+    &.on {
+      background: url(/media/img/mocotw/10years/fx-family/music-on.png) 0 0 no-repeat;
+    }
+    &.off {
+      background: url(/media/img/mocotw/10years/fx-family/music-off.png) 0 0 no-repeat;
+    }
+  }
 }
 
 #firefox-family-intro {
@@ -118,6 +133,29 @@ body {
     p {
       color: @textColorPrimary;
       text-align: left;
+    }
+    .logo-filled:before {
+      content: "下載";
+      position: absolute;
+      display: block;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 54px;
+      height: 24px;
+      background: url(/media/img/mocotw/10years/fx-family/download.png) 0 0 no-repeat;
+      background-size: auto 100%;
+      opacity: 0;
+      vertical-align: middle;
+      line-height: 24px;
+      text-align: right;
+      color: rgba(0, 0, 0, 0.5);
+      .transition(opacity .2s linear);
+    }
+    .addon-logo:hover .logo-filled:before {
+      opacity: 0.8;
     }
   }
   .actor {
@@ -1195,7 +1233,8 @@ body {
 
 #scroll-tip {
   display: block;
-  position: absolute;
+  position: fixed;
+  pointer-events: none;
   margin: auto;
   left: 0;
   right: 0;

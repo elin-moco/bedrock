@@ -1,7 +1,7 @@
 {% extends "mocotw/10years/base.html" %}
 
-{% block page_title_prefix %}{% endblock %}
-{% block page_title %}Firefox 十週年 - 幸福的狐家元件{% endblock %}
+{% block page_title %}幸福的狐家元件 帶你一窺幸福的秘訣{% endblock %}
+{% block page_desc %}歡慶 Firefox 十週年，超強附加元件大揭密，教你成為人生勝利組！還有幸運輪盤超多好禮等你試手氣，Firefox 十週年特展「網路自由日」入場券搶先拿！{% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/firefox-family-fb.png') }}{% endblock %}
 
 {% block extrahead %}
@@ -21,6 +21,7 @@
         <source src="{{ media('img/mocotw/10years/firefox-family.ogg') }}" type="video/ogg">
         Your browser does not support the <code>video</code> element.
       </video>
+      <a id="music-button" class="on" href="javascript:void(0);"></a>
       <span id="scroll-tip">
         <span class="text1">向下滾動</span>
         <span class="text2">（或按 Enter 自動播放）</span>
@@ -58,7 +59,7 @@
           </div>
           <div class="addon-desc">
             <h2>Quick Translator<span>爸爸（上班族）</span></h2>
-            <p>善於使用 Firefox 語言支援的類附加元件閱讀國內外文章，隨時充實自己，並與公司的國外同事、主管溝通良好，職場表現相當出色。</p>
+            <p>善於使用 Firefox 語言支援類的附加元件閱讀國內外文章，隨時充實自己，並與公司的國外同事、主管溝通良好，職場表現相當出色。</p>
           </div>
         </a>
       </div>
