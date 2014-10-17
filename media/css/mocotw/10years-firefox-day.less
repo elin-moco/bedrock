@@ -15,6 +15,12 @@ h2 {
   font-size: 21px;
   margin-top: 42px;
 }
+
+#wrapper {
+  padding-left: 50px;
+  padding-right: 50px;
+  box-sizing: border-box;
+}
 .label, .content {
   display: inline-block;
   vertical-align: top;
@@ -25,7 +31,7 @@ h2 {
 }
 
 #main-content {
-  padding: 0 50px;
+  padding: 0;
   font-size: 16px;
 }
 
@@ -42,19 +48,24 @@ h2 {
 
 .intro {
   padding: 34px 0;
+  text-align: left;
 }
 
 .fb-post {
   display: inline-block;
   width: 400px;
+  height: 373px;
   vertical-align: top;
+  padding-bottom: 42px;
 }
 
 .event {
   display: inline-block;
   vertical-align: top;
+  text-align: left;
   width: 370px;
   margin-left: 20px;
+  padding-bottom: 30px;
   > ul > li {
     margin-bottom: 16px;
   }
@@ -105,11 +116,11 @@ h2 {
 }
 
 .event-content {
+  text-align: center;
   padding: 0 50px;
 }
 
 .tabs {
-  margin-top: 42px;
   height: 640px;
 }
 .tabs > li {
@@ -328,5 +339,60 @@ h2 {
   }
   .button {
     padding: 12px 14px;
+  }
+}
+
+@media only screen and (max-width: @breakDesktop) {
+  #wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: @breakTablet) {
+  #exhibits-content .content {
+    width: 100%;
+  }
+  .tabs {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .tabs > li {
+    float: none;
+    width: 100%;
+  }
+  .tabs label.button {
+    display: none;
+  }
+  .tabs .tab-content {
+    display: block;
+    position: static;
+    padding: 0 20px;
+  }
+  .fb-post.fb_iframe_widget {
+    display: none;
+  }
+  .event {
+    width: 100%;
+    margin-left: 0;
+  }
+  .event-content {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  #wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .event-content {
+    padding: 0 10px;
+  }
+  .tabs .tab-content {
+    padding: 0 10px;
+  }
+  .ticketBox .ticketPopup {
+    box-sizing: border-box;
+    height: 360px;
   }
 }
