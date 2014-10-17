@@ -145,31 +145,31 @@
         }
         &:hover .piece {
           &.g {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.b {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.o {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.r {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.y {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.r2 {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.y2 {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.b2 {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
           &.o2 {
-              animation-play-state: running;
+              .animation-play-state(running);
           }
         }
         .piece {
@@ -243,22 +243,22 @@
         &:hover {
           .lens .balloon {
             &.lb {
-              animation-play-state: running;
+              .animation-play-state(running);
             }
             &.o {
-              animation-play-state: running;
+              .animation-play-state(running);
             }
             &.g {
-              animation-play-state: running;
+              .animation-play-state(running);
             }
             &.lo {
-              animation-play-state: running;
+              .animation-play-state(running);
             }
             &.r {
-              animation-play-state: running;
+              .animation-play-state(running);
             }
             &.b {
-              animation-play-state: running;
+              .animation-play-state(running);
             }
           }
         }
@@ -744,4 +744,12 @@
 }
 @-ms-keyframes piece8 {
   .piece8Keyframes;
+}
+
+.animation-play-state(@state) {
+  -ms-animation-play-state: @state;
+  -o-animation-play-state: @state;
+  -moz-animation-play-state: @state;
+  -webkit-animation-play-state: @state;
+  animation-play-state: @state;
 }
