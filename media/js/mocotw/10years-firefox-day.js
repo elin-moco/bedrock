@@ -48,7 +48,7 @@ $(function(){
         });
     }
 
-    $('.event .join').click(function() {
+    $('.event .join, .event .early-join').click(function() {
         showLoginBox();
     });
 
