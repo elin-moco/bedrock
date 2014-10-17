@@ -2,7 +2,8 @@
 
 {% block page_title_prefix %}Firefox 十週年特展 - {% endblock %}
 {% block page_title %}網路自由日{% endblock %}
-{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/10years-fb.png') }}{% endblock %}
+{% block page_desc %}Mozilla 推動網路成為最大的平台，在這裡所有限制都被打破，每個人在網路上都享有發言、創作、學習、分享的權利，不受平台壟斷的限制。{% endblock %}
+{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/fx-day/banner.png') }}{% endblock %}
 
 
 {% block extrahead %}
@@ -12,7 +13,7 @@
 
 {% block content %}
 <div id="main-content">
-  <img id="banner" src="/media/img/mocotw/10years/fx-day/banner.png" alt=""/>
+  <img id="banner" src="{{ media('img/mocotw/10years/fx-day/banner.png') }}" alt="Firefox 十週年特展 - 網路自由日"/>
   <div id="background">
     <div class="event-content">
       <div class="intro">
@@ -87,7 +88,7 @@
         <div id="gifts-content" class="tab-content">
           <h2>現場贈品</h2>
           <hr>
-          <img id="banner" src="/media/img/mocotw/10years/fx-day/pic-gift.png" alt=""/>
+          <img id="banner" src="{{ media('img/mocotw/10years/fx-day/pic-gift.png') }}" alt=""/>
         </div>
       </li>
       <li>
@@ -96,7 +97,7 @@
         <div id="guests-content" class="tab-content">
           <h2>神秘嘉賓</h2>
           <hr>
-          <img id="banner" src="/media/img/mocotw/10years/fx-day/pic-guest.png" alt=""/>
+          <img id="banner" src="{{ media('img/mocotw/10years/fx-day/pic-guest.png') }}" alt=""/>
         </div>
       </li>
       <li>
