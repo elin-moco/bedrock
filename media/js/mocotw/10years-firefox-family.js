@@ -296,8 +296,11 @@ $(function(){
         var autoScrolling = false;
         $('body').keyup(function (e) {
             if (13 == e.keyCode) {
+                var total = $(document).height();
+                var current = $(document).scrollTop();
+                var duration = total > current ? total - current : 1000;
                 if (!autoScrolling) {
-                    $.scrollTo($(document).height(), $(document).height(), {easing: 'linear'});
+                    $.scrollTo(total, duration, {easing: 'linear'});
                     autoScrolling = true;
                 }
                 else {
@@ -459,7 +462,7 @@ $(function(){
             },
             onReverseComplete: function() {
                 $('#all-addons').addClass('stand');
-            }}), 500, 2000);
+            }}), 500, 3000);
         controller.addTween(addonsIn, TweenMax.from('#all-addons > h2', 1, {css: {opacity: 0}}), 500, 2000);
         controller.addTween(addonsIn, TweenMax.to('#scroll-tip', 1, {css: {opacity: 0}}), 500, 2000);
 
