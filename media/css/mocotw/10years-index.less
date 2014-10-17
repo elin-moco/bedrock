@@ -102,6 +102,7 @@
       .animation(blink 0.5s infinite ease-in-out);
     }
     .emblem {
+      position: relative;
       display: inline-block;
       width: 164px;
       height: 164px;
@@ -116,7 +117,121 @@
     }
     &#firefox-family {
       &.running > .emblem {
-        background: url(/media/img/mocotw/10years/online-c.png) no-repeat;
+        background: url(/media/img/mocotw/10years/emblem/bg.png) no-repeat;
+        .pc {
+          position: absolute;
+          display: block;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 111px;
+          height: 110px;
+          background: url(/media/img/mocotw/10years/emblem/online-computer.png) bottom no-repeat;
+        }
+        .screen {
+          position: absolute;
+          display: block;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 100px;
+          height: 66px;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.7);
+        }
+        &:hover .piece {
+          &.g {
+              animation-play-state: running;
+          }
+          &.b {
+              animation-play-state: running;
+          }
+          &.o {
+              animation-play-state: running;
+          }
+          &.r {
+              animation-play-state: running;
+          }
+          &.y {
+              animation-play-state: running;
+          }
+          &.r2 {
+              animation-play-state: running;
+          }
+          &.y2 {
+              animation-play-state: running;
+          }
+          &.b2 {
+              animation-play-state: running;
+          }
+          &.o2 {
+              animation-play-state: running;
+          }
+        }
+        .piece {
+          position: absolute;
+          display: block;
+          width: 40px;
+          height: 39px;
+          &.g {
+            top: -50px;
+            left: 32px;
+            background: url(/media/img/mocotw/10years/emblem/online-g.png) no-repeat;
+            .animation(piece0 5s infinite linear -0.4s paused);
+          }
+          &.b {
+            top: 5px;
+            left: 111px;
+            background: url(/media/img/mocotw/10years/emblem/online-b.png) no-repeat;
+            .animation(piece1 5s infinite linear -0.4s paused);
+          }
+          &.o {
+            top: 66px;
+            left: 32px;
+            background: url(/media/img/mocotw/10years/emblem/online-o.png) no-repeat;
+            .animation(piece2 5s infinite linear  -0.4s paused);
+          }
+          &.r {
+            top: 5px;
+            left: -44px;
+            background: url(/media/img/mocotw/10years/emblem/online-r.png) no-repeat;
+            .animation(piece3 5s infinite linear -0.4s paused);
+          }
+          &.y {
+            top: -50px;
+            left: 32px;
+            background: url(/media/img/mocotw/10years/emblem/online-y.png) no-repeat;
+            .animation(piece4 5s infinite linear -0.4s paused);
+          }
+          &.r2 {
+            top: -24px;
+            left: 111px;
+            background: url(/media/img/mocotw/10years/emblem/online-r.png) no-repeat;
+            .animation(piece5 5s infinite linear -0.4s paused);
+          }
+          &.y2 {
+            top: 66px;
+            left: 62px;
+            background: url(/media/img/mocotw/10years/emblem/online-y.png) no-repeat;
+            .animation(piece6 5s infinite linear -0.4s paused);
+          }
+          &.b2 {
+            top: 34px;
+            left: -44px;
+            background: url(/media/img/mocotw/10years/emblem/online-b.png) no-repeat;
+            .animation(piece7 5s infinite linear -0.4s paused);
+          }
+          &.o2 {
+            top: -50px;
+            left: 2px;
+            background: url(/media/img/mocotw/10years/emblem/online-o.png) no-repeat;
+            .animation(piece8 5s infinite linear -0.4s paused);
+          }
+        }
       }
       &.preparing > .emblem {
         background: url(/media/img/mocotw/10years/online.png) no-repeat;
@@ -124,7 +239,85 @@
     }
     &#firefox-day {
       &.running > .emblem {
-        background: url(/media/img/mocotw/10years/offline-c.png) no-repeat;
+        background: url(/media/img/mocotw/10years/emblem/bg.png) no-repeat;
+        &:hover {
+          .lens .balloon {
+            &.lb {
+              animation-play-state: running;
+            }
+            &.o {
+              animation-play-state: running;
+            }
+            &.g {
+              animation-play-state: running;
+            }
+            &.lo {
+              animation-play-state: running;
+            }
+            &.r {
+              animation-play-state: running;
+            }
+            &.b {
+              animation-play-state: running;
+            }
+          }
+        }
+        .lens {
+          position: relative;
+          display: block;
+          width: 98%;
+          height: 98%;
+          overflow: hidden;
+          .border-radius(50%);
+          .balloon {
+            position: absolute;
+            display: block;
+            bottom: 0;
+
+            &.lb {
+              width: 21px;
+              height: 33px;
+              margin-left: 22px;
+              background: url(/media/img/mocotw/10years/emblem/offline-l-b.png) no-repeat;
+              .animation(rise1 2s infinite ease-in-out -1.08s paused);
+            }
+            &.o {
+              width: 20px;
+              height: 31px;
+              margin-left: 36px;
+              background: url(/media/img/mocotw/10years/emblem/offline-o.png) no-repeat;
+              .animation(rise1 2s infinite ease-in-out -0.8s paused);
+            }
+            &.g {
+              width: 29px;
+              height: 46px;
+              margin-left: 68px;
+              background: url(/media/img/mocotw/10years/emblem/offline-g.png) no-repeat;
+              .animation(rise1 2s infinite ease-in-out -0.92s paused);
+            }
+            &.lo {
+              width: 35px;
+              height: 55px;
+              margin-left: 89px;
+              background: url(/media/img/mocotw/10years/emblem/offline-l-o.png) no-repeat;
+              .animation(rise1 2s infinite ease-in-out -1.12s paused);
+            }
+            &.r {
+              width: 36px;
+              height: 53px;
+              margin-left: 91px;
+              background: url(/media/img/mocotw/10years/emblem/offline-r.png) no-repeat;
+              .animation(rise1 2s infinite ease-in-out -0.66s paused);
+            }
+            &.b {
+              width: 26px;
+              height: 40px;
+              margin-left: 138px;
+              background: url(/media/img/mocotw/10years/emblem/offline-b.png) no-repeat;
+              .animation(rise1 2s infinite ease-in-out -0.9s paused);
+            }
+          }
+        }
       }
       &.preparing > .emblem {
         background: url(/media/img/mocotw/10years/offline.png) no-repeat;
@@ -204,4 +397,351 @@
 }
 @-ms-keyframes blink {
   .blinkKeyframes();
+}
+
+.riseKeyframes(@direction: 1, @multiply: 1) {
+  0% {
+    left: 0;
+    bottom: -32%;
+  }
+  25% {
+    left: (10px * @direction) / @multiply;
+  }
+  50% {
+    left: (-10px * @direction) / @multiply;
+  }
+  75% {
+    left: (10px * @direction) / @multiply;
+  }
+  100% {
+    left: 0;
+    bottom: 120%;
+  }
+}
+
+@keyframes rise1 {
+  .riseKeyframes;
+}
+@-moz-keyframes rise1 {
+  .riseKeyframes;
+}
+@-webkit-keyframes rise1 {
+  .riseKeyframes;
+}
+@-o-keyframes rise1 {
+  .riseKeyframes;
+}
+@-ms-keyframes rise1 {
+  .riseKeyframes;
+}
+
+.piece0Keyframes() {
+  0% {
+    top: -50px;
+  }
+  8% {
+    top: 5px;
+  }
+  88% {
+    top: 5px;
+  }
+  100% {
+    top: 95px;
+  }
+}
+
+.piece1Keyframes() {
+  0% {
+    top: 5px;
+    left: 111px;
+  }
+  8% {
+    left: 111px;
+  }
+  16% {
+    left: 62px;
+  }
+  88% {
+    top: 5px;
+  }
+  100% {
+    top: 95px;
+    left: 62px;
+  }
+}
+
+.piece2Keyframes() {
+  0% {
+    top: 66px;
+  }
+  16% {
+    top: 66px;
+  }
+  24% {
+    top: 34px;
+  }
+  88% {
+    top: 34px;
+  }
+  100% {
+    top: 124px;
+  }
+}
+
+.piece3Keyframes() {
+  0% {
+    top: 5px;
+    left: -44px;
+  }
+  24% {
+    left: -44px;
+  }
+  32% {
+    left: 2px;
+  }
+  88% {
+    top: 5px;
+  }
+  100% {
+    top: 95px;
+    left: 2px;
+  }
+}
+
+.piece4Keyframes() {
+  0% {
+    top: -50px;
+  }
+  32% {
+    top: -50px;
+  }
+  40% {
+    top: -24px;
+  }
+  88% {
+    top: -24px;
+  }
+  100% {
+    top: 66px;
+  }
+}
+
+.piece5Keyframes() {
+  0% {
+    top: -24px;
+    left: 111px;
+  }
+  40% {
+    left: 111px;
+  }
+  48% {
+    left: 62px;
+  }
+  88% {
+    top: -24px;
+  }
+  100% {
+    left: 62px;
+    top: 66px;
+  }
+}
+
+.piece6Keyframes() {
+  0% {
+    top: 66px;
+  }
+  48% {
+    top: 66px;
+  }
+  56% {
+    top: 34px;
+  }
+  88% {
+    top: 34px;
+  }
+  100% {
+    top: 124px;
+  }
+}
+
+.piece7Keyframes() {
+  0% {
+    top: 34px;
+    left: -44px;
+  }
+  56% {
+    left: -44px;
+  }
+  64% {
+    left: 2px;
+  }
+  88% {
+    top: 34px;
+  }
+  100% {
+    top: 124px;
+    left: 2px;
+  }
+}
+
+.piece8Keyframes() {
+  0% {
+      top: -50px;
+  }
+  64% {
+      top: -50px;
+  }
+  72% {
+      top: -24px;
+  }
+  88% {
+      top: -24px;
+  }
+  100% {
+      top: 66px;
+  }
+}
+
+@keyframes piece0 {
+  .piece0Keyframes;
+}
+@-moz-keyframes piece0 {
+  .piece0Keyframes;
+}
+@-webkit-keyframes piece0 {
+  .piece0Keyframes;
+}
+@-o-keyframes piece0 {
+  .piece0Keyframes;
+}
+@-ms-keyframes piece0 {
+  .piece0Keyframes;
+}
+
+@keyframes piece1 {
+  .piece1Keyframes;
+}
+@-moz-keyframes piece1 {
+  .piece1Keyframes;
+}
+@-webkit-keyframes piece1 {
+  .piece1Keyframes;
+}
+@-o-keyframes piece1 {
+  .piece1Keyframes;
+}
+@-ms-keyframes piece1 {
+  .piece1Keyframes;
+}
+
+@keyframes piece2 {
+  .piece2Keyframes;
+}
+@-moz-keyframes piece2 {
+  .piece2Keyframes;
+}
+@-webkit-keyframes piece2 {
+  .piece2Keyframes;
+}
+@-o-keyframes piece2 {
+  .piece2Keyframes;
+}
+@-ms-keyframes piece2 {
+  .piece2Keyframes;
+}
+
+@keyframes piece3 {
+  .piece3Keyframes;
+}
+@-moz-keyframes piece3 {
+  .piece3Keyframes;
+}
+@-webkit-keyframes piece3 {
+  .piece3Keyframes;
+}
+@-o-keyframes piece3 {
+  .piece3Keyframes;
+}
+@-ms-keyframes piece3 {
+  .piece3Keyframes;
+}
+
+@keyframes piece4 {
+  .piece4Keyframes;
+}
+@-moz-keyframes piece4 {
+  .piece4Keyframes;
+}
+@-webkit-keyframes piece4 {
+  .piece4Keyframes;
+}
+@-o-keyframes piece4 {
+  .piece4Keyframes;
+}
+@-ms-keyframes piece4 {
+  .piece4Keyframes;
+}
+
+@keyframes piece5 {
+  .piece5Keyframes;
+}
+@-moz-keyframes piece5 {
+  .piece5Keyframes;
+}
+@-webkit-keyframes piece5 {
+  .piece5Keyframes;
+}
+@-o-keyframes piece5 {
+  .piece5Keyframes;
+}
+@-ms-keyframes piece5 {
+  .piece5Keyframes;
+}
+
+@keyframes piece6 {
+  .piece6Keyframes;
+}
+@-moz-keyframes piece6 {
+  .piece6Keyframes;
+}
+@-webkit-keyframes piece6 {
+  .piece6Keyframes;
+}
+@-o-keyframes piece6 {
+  .piece6Keyframes;
+}
+@-ms-keyframes piece6 {
+  .piece6Keyframes;
+}
+
+@keyframes piece7 {
+  .piece7Keyframes;
+}
+@-moz-keyframes piece7 {
+  .piece7Keyframes;
+}
+@-webkit-keyframes piece7 {
+  .piece7Keyframes;
+}
+@-o-keyframes piece7 {
+  .piece7Keyframes;
+}
+@-ms-keyframes piece7 {
+  .piece7Keyframes;
+}
+
+@keyframes piece8 {
+  .piece8Keyframes;
+}
+@-moz-keyframes piece8 {
+  .piece8Keyframes;
+}
+@-webkit-keyframes piece8 {
+  .piece8Keyframes;
+}
+@-o-keyframes piece8 {
+  .piece8Keyframes;
+}
+@-ms-keyframes piece8 {
+  .piece8Keyframes;
 }
