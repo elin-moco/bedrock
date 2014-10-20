@@ -1,5 +1,61 @@
 "use strict";
 
+function gaTrack(eventArray, callback) {
+    // submit eventArray to GA and call callback only after tracking has
+    // been sent, or if sending fails.
+    //
+    // callback is optional.
+    //
+    // Example usage:
+    //
+    // $(function() {
+    //      var handler = function(e) {
+    //           var _this = this;
+    //           e.preventDefault();
+    //           $(_this).off('submit', handler);
+    //           gaTrack(
+    //              ['_trackEvent', 'Newsletter Registration', 'submit', newsletter],
+    //              function() {$(_this).submit();}
+    //           );
+    //      };
+    //      $(thing).on('submit', handler);
+    // });
+    var timer = null;
+    var hasCallback = typeof(callback) === 'function';
+    var gaCallback;
+
+    // Only build new function if callback exists.
+    if (hasCallback) {
+        gaCallback = function() {
+            clearTimeout(timer);
+            callback();
+        };
+    }
+    // console.info(eventArray);
+    if (typeof(window._gaq) === 'object') {
+        // send event to GA
+        window._gaq.push(eventArray);
+        // Only set up timer and hitCallback if a callback exists.
+        if (hasCallback) {
+            // Failsafe - be sure we do the callback in a half-second
+            // even if GA isn't able to send in our trackEvent.
+            timer = setTimeout(gaCallback, 500);
+
+            // But ordinarily, we get GA to call us back immediately after
+            // it finishes sending our things.
+            // https://developers.google.com/analytics/devguides/collection/gajs/#PushingFunctions
+            // This is called after GA has sent the current pending data:
+            window._gaq.push(gaCallback);
+        }
+    } else {
+        // GA disabled or blocked or something, make sure we still
+        // call the caller's callback:
+        if (hasCallback) {
+            callback();
+        }
+    }
+}
+
 $(function(){
 
     var $w = $(window);
@@ -170,6 +226,7 @@ $(function(){
                     else {
                         updatePlate();
                     }
+                    gaTrack(['_trackEvent', 'New Fans', 'like', response]);
                 }
                 else if (0 == response.indexOf(BASE_URL)) {
                     if (!voted) {
@@ -191,6 +248,7 @@ $(function(){
                         else {
                             updatePlate();
                         }
+                        gaTrack(['_trackEvent', 'Social Interaction', 'share', response.post_id]);
                     }
                 }
             );
