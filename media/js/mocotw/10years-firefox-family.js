@@ -90,6 +90,27 @@ $(function(){
         initIntroVideo();
     }
 
+    enquire.register("screen and (max-width: 1000px)", {
+        deferSetup: true,
+        setup: function () {
+        },
+        match: function () {
+        },
+        unmatch: function () {
+            window.location.reload();
+        }
+    }, true).register("screen and (min-width: 999px)", {
+        deferSetup: true,
+        setup: function () {
+        },
+        match: function () {
+        },
+        unmatch: function () {
+            console.log('mobile');
+            window.location.reload();
+        }
+    }, true).listen();
+
 
     function updatePlate() {
         $('.shareBox').hide();
