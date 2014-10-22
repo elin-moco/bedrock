@@ -79,10 +79,15 @@ $(function(){
         initIntroVideo();
         initScrollHandlers();
         initScrollAnimations();
-        initAddosHandlers();
+        initAddosHandlers(false);
         initBonusHandlers();
         initTicketHandlers();
         initLotteryHandlers();
+    }
+    else {
+        initPages();
+        initAddosHandlers(true);
+        initIntroVideo();
     }
 
 
@@ -189,7 +194,7 @@ $(function(){
         $('#scroll-tip').css('opacity', 1);
     }
 
-    function initAddosHandlers() {
+    function initAddosHandlers(vertical) {
         $.fn.loadLikeButtons = function() {
             var $this = $(this);
             if ($this.find('.fb-like').size() == 0) {
@@ -206,10 +211,12 @@ $(function(){
 
         $('#all-addons').find('.kwicks').kwicks({
             spacing: 0,
-            maxSize: 640,
+            maxSize: vertical ? 480 : 640,
             behavior: 'menu',
-            selectOnClick: false,
-            easing: 'easeInOut'
+            selectOnClick: vertical,
+            deselectOnClick: vertical,
+            easing: 'easeInOut',
+            isVertical: vertical
         }).on('expand.kwicks', function(e, data) {
             $(data.expanded).loadLikeButtons();
         });

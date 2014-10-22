@@ -4,7 +4,6 @@
 
 html, body, #body-wrapper, #wrapper {
   width: 100%;
-//  height: 100%;
 }
 
 body {
@@ -14,9 +13,11 @@ body {
     position: absolute;
     display: block;
     top: 0;
+    z-index: 0;
     width: 100%;
     height: 800px;
     background: #98DCDC;
+    overflow: hidden;
   }
 }
 
@@ -46,10 +47,11 @@ body {
 #intro {
   .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
   overflow: hidden;
-  height: 800px;
   background-color: #98DCDC;
+  position: relative;
+  height: auto;
   #music-button {
-    position: fixed;
+    position: absolute;
     z-index: 200;
     display: block;
     right: 20px;
@@ -66,12 +68,8 @@ body {
 }
 
 #firefox-family-intro {
-  position: absolute;
+  position: relative;
   margin: auto;
-  top: -1000px;
-  bottom: -1000px;
-  left: 0;
-  right: 0;
   width: 100%;
   height: auto;
 }
@@ -105,13 +103,13 @@ body {
 .room {
   position: relative;
   text-align: center;
-  height: 800px;
   overflow: hidden;
+  height: 360px;
   .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
 
   .stage {
     position: relative;
-    display: inline-block;
+    display: none;
     width: 640px;
     height: 100%;
     vertical-align: middle;
@@ -121,6 +119,7 @@ body {
     position: relative;
     display: inline-block;
     width: 320px;
+    margin-top: 40px;
     text-align: center;
     text-decoration: none;
     h2 {
@@ -171,7 +170,7 @@ body {
   }
   .floor {
     position: absolute;
-    display: block;
+    display: none;
     margin: auto;
     bottom: 0;
     width: 100%;
@@ -651,7 +650,7 @@ body {
 #all-addons {
   display: block;
   width: 100%;
-  height: 800px;
+  height: 640px;
   .box-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
 
   .addon(@order, @actor) {
@@ -697,19 +696,25 @@ body {
   }
 
   h2 {
-
+    text-align: center;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 12px 0;
   }
 
   .kwicks {
+    width: 100%;
     height: 100%;
     > li {
+      width: 100%;
       height: 100%;
       > .addons {
         position: absolute;
         margin: auto;
         top: 0;
         bottom: 0;
-        left: 240px;
+        left: 0;
+        right: 0;
         width: 320px;
         height: 450px;
         opacity: 0;
@@ -742,16 +747,17 @@ body {
         right: 0;
         height: 30px;
         width: 116px;
-        padding-bottom: 80px;
         padding-right: 0;
         text-align: center;
         font-size: 22px;
-        .transition(padding-right .5s ease-in-out);
+        padding-bottom: 0;
+        .transition(opacity 0.5s ease-in-out);
       }
       .backpack h4 {
         padding-bottom: 20px;
       }
       > .actor {
+        display: none;
         position: absolute;
         margin: auto;
         top: 0;
@@ -765,6 +771,7 @@ body {
         .transition(padding-right .5s ease-in-out);
       }
       > .spotlights {
+        display: none;
         position: absolute;
         margin: auto;
         top: 0;
@@ -777,7 +784,11 @@ body {
         .transition(opacity .2s linear);
       }
       &.kwicks-expanded, &.kwicks-selected {
-        .actor, h3 {
+        h3 {
+          opacity: 0;
+          padding-right: 0;
+        }
+        .actor {
           padding-right: 360px;
         }
         .addons {
@@ -897,12 +908,14 @@ body {
 #wheel-of-fortune {
   position: relative;
   display: block;
+  margin-top: 54px;
   width: 100%;
-  height: 800px;
+  height: 150px;
   background: url(/media/img/mocotw/10years/fx-family/lottery/bg-raffle.png) center no-repeat;
-  background-size: auto 100%;
+  background-size: 100% auto;
   text-align: center;
   .middle {
+    display: none;
     position: absolute;
     margin: auto;
     width: 100%;
@@ -912,6 +925,11 @@ body {
     bottom: 0;
     right: 0;
     text-align: center;
+  }
+  #mobile-message {
+    h3 {
+      padding-top: 30px;
+    }
   }
   #reward {
     position: relative;
@@ -1579,6 +1597,16 @@ body {
     top: 0;
     width: 100%;
     height: 800px;
+    #music-button {
+      position: fixed;
+    }
+  }
+  #firefox-family-intro {
+    position: absolute;
+    top: -1000px;
+    bottom: -1000px;
+    left: 0;
+    right: 0;
   }
   .room {
     position: absolute;
@@ -1586,6 +1614,16 @@ body {
     margin: auto;
     top: 0;
     width: 100%;
+    height: 800px;
+    .stage {
+      display: inline-block;
+    }
+    .floor {
+      display: block;
+    }
+    .addon {
+      margin-top: 0px;
+    }
     .desk {
       padding-right: 0;
     }
@@ -1611,6 +1649,7 @@ body {
   #all-addons {
     z-index: 5;
     position: absolute;
+    height: 800px;
     top: 0;
     &.stand {
       pointer-events: none;
@@ -1619,17 +1658,73 @@ body {
       position: fixed;
       z-index: 8;
       bottom: 20px;
-      text-align: center;
       width: 100%;
       text-shadow: 2px 2px 5px #FFFFFF;
+      background: none;
+    }
+    .kwicks {
+      > li {
+        h3 {
+          padding-bottom: 80px;
+          .transition(padding-right .5s ease-in-out);
+        }
+        > .addons {
+          left: 240px;
+          right: auto;
+        }
+        &.kwicks-expanded, &.kwicks-selected {
+          h3 {
+            opacity: 1;
+            padding-right: 360px;
+          }
+        }
+        > .actor {
+          display: block;
+        }
+        > .spotlights {
+          display: block;
+        }
+      }
     }
   }
   #wheel-of-fortune {
     position: absolute;
+    margin-top: 0px;
     top: 0;
+    height: 800px;
+    background-size: auto 100%;
+    .middle {
+      display: block;
+    }
+    #mobile-message {
+      display: none;
+    }
   }
   .announcements {
     display: block;
     z-index: 100;
+  }
+}
+
+@media only screen and (max-width: @breakDesktop) {
+  html, body {
+    overflow-x: scroll;
+  }
+  html, body, #body-wrapper, #wrapper {
+    height: 100%;
+  }
+  body:before {
+    height: 120px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  #all-addons {
+    .fb_iframe_widget {
+      right: 0;
+    }
+  }
+  #wheel-of-fortune {
+    margin-top: 80px;
   }
 }
