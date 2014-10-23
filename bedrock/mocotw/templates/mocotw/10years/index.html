@@ -29,18 +29,19 @@
     </div>
   </div>
   <div id="events">
-    <a href="{{ url('mocotw.10years.browser-survey-result') }}" id="browser-survey" class="event running">
+    <a href="{{ url('mocotw.10years.browser-survey-result') }}" id="browser-survey" class="event preparing">
       <div class="emblem">
-        <div class="chart">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-          <div class="bar4"></div>
-          <div class="bar5"></div>
-        </div>
+        <canvas id="pulse" width="164" height="164"></canvas>
+{#        <div class="chart">#}
+{#          <div class="bar1"></div>#}
+{#          <div class="bar2"></div>#}
+{#          <div class="bar3"></div>#}
+{#          <div class="bar4"></div>#}
+{#          <div class="bar5"></div>#}
+{#        </div>#}
       </div>
       <h3>問卷調查結果</h3>
-      <p>The Web We Want<br>透過 Firefox 的問卷調查<br>大聲說出你想要什麼樣的瀏覽器<br>(調查已結束，看分析結果)</p>
+      <p>The Web We Want<br>透過 Firefox 的問卷調查<br>大聲說出你想要什麼樣的瀏覽器<br>(調查已結束，資料分析中)</p>
     </a>
     <a href="{{ url('mocotw.10years.firefox-family') }}" id="firefox-family" class="event running">
       <div class="emblem">

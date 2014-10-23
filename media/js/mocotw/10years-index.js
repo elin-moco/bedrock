@@ -80,5 +80,5 @@ $(function(){
         stopOnHover: true,
         autoPlay: true
     });
-//	$('#pulse').hoverPulse({maxOffsetX: 20, maxOffsetY: 24, lineWidth: 3});
+	$('#pulse').hoverPulse({maxOffsetX: 20, maxOffsetY: 24, lineWidth: 3});
 });
