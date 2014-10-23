@@ -59,9 +59,10 @@ function gaTrack(eventArray, callback) {
 $(function(){
 
     var $w = $(window);
+    var $html = $('html');
     var isSmallViewport = $w.width() < 1000;
     var isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints || navigator.maxTouchPoints || isSmallViewport;
-
+    var isOldIE = $html.hasClass('lt-ie10');
     var BASE_URL = 'http://' + window.location.hostname + '/10years/firefox-family/';
     var TICKET_BASE_URL = 'http://' + window.location.hostname + '/media/img/mocotw/10years/fx-day/tickets/';
     var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
@@ -72,8 +73,12 @@ $(function(){
     var winningPrice;
     var $introVideo = $('#firefox-family-intro');
 
+    if (isOldIE) {
+        return;
+    }
+
     if (!isSmallViewport && !isTouch) {
-        $('html').addClass('desktop');
+        $html.addClass('desktop');
         $('.room .actor').addClass('stand');
         initPages();
         initIntroVideo();

@@ -1025,6 +1025,7 @@ LOCALE_PATHS = (
 TEMPLATE_CONTEXT_PROCESSORS = get_template_context_processors(append=(
     'django.core.context_processors.csrf',
     'django.contrib.messages.context_processors.messages',
+    'bedrock.mocotw.context_processors.constants',
     'bedrock.mozorg.context_processors.canonical_path',
     'bedrock.mozorg.context_processors.current_year',
     'bedrock.mozorg.context_processors.funnelcake_param',

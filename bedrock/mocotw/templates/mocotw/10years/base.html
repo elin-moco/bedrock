@@ -4,6 +4,8 @@
 {% block page_title_prefix %}Firefox 十週年 - {% endblock %}
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/10years/10years-fb.png') }}{% endblock %}
 
+{% block html_classes %}{{ (' lt-ie9 ' if LT_IE9 else '') + (' lt-ie10 ' if LT_IE10 else '') }}{% endblock %}
+
 {% block extrahead %}
   {{ css('10years-base') }}
 {% endblock %}
