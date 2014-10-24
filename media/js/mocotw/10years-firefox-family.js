@@ -90,6 +90,7 @@ $(function(){
         initLotteryHandlers();
     }
     else {
+        $introVideo.attr('controls', true);
         initPages();
         initAddosHandlers(true);
         initIntroVideo();
