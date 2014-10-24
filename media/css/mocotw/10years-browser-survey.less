@@ -1,3 +1,264 @@
+@import "../sandstone/lib";
+
+html, body {
+  overflow-x: scroll;
+}
+html, body, #body-wrapper, #wrapper {
+  height: auto;
+}
+
+.no-animations {
+  #infographics {
+    background-image: url(/media/img/mocotw/10years/survey-result.png);
+  }
+  #animation-sprites {
+    display: none;
+  }
+}
+
+#infographics {
+  display: block;
+  margin: auto;
+  width: 876px;
+  height: 3177px;
+  background-image: url(/media/img/mocotw/10years/survey-result-outline.png);
+}
+
+.computer {
+  height: 910px;
+}
+
+.people {
+  text-align: center;
+  padding-top: 50px;
+  height: 200px;
+  .number {
+    font-size: 52px;
+    font-weight: bolder;
+    letter-spacing: 10px;
+    color: #F1911A;
+    margin-left: -250px;
+  }
+  .mass {
+    padding-right: 24px;
+    .group-s {
+      display: inline-block;
+    }
+    .ppl.l {
+      display: inline-block;
+      width: 22px;
+      height: 70px;
+      margin-right: 10px;
+      background: url(/media/img/mocotw/10years/survey-ppl-l.png) center bottom no-repeat;
+      background-size: auto 0;
+      vertical-align: bottom;
+      .transition(background-size .5s linear);
+      &.grown {
+        background-size: auto 70px;
+      }
+    }
+    .ppl.m {
+      display: inline-block;
+      width: 20px;
+      height: 60px;
+      margin-right: 2px;
+      background: url(/media/img/mocotw/10years/survey-ppl-m.png) center bottom no-repeat;
+      background-size: auto 0;
+      vertical-align: bottom;
+      .transition(background-size .4s linear);
+      &.grown {
+        background-size: auto 60px;
+      }
+    }
+    .ppl.s {
+      display: inline-block;
+      width: 9px;
+      height: 27px;
+      margin-top: 5px;
+      background: url(/media/img/mocotw/10years/survey-ppl-s.png) center bottom no-repeat;
+      background-size: auto 0;
+      vertical-align: bottom;
+      .transition(background-size .2s linear);
+      &.grown {
+        background-size: auto 27px;
+      }
+    }
+  }
+}
+
+.behaviors {
+  padding-top: 124px;
+  text-align: center;
+  padding-right: 20px;
+  .behavior {
+    display: inline-block;
+    width: 260px;
+    height: 59px;
+    text-align: left;
+    text-indent: 80px;
+    font-size: 26px;
+    color: #555656;
+  }
+}
+.gauge {
+  stroke: #DFDFDF;
+  stroke-width: 10px;
+  fill: none;
+}
+.avg-rating {
+  position: relative;
+  padding-top: 120px;
+  padding-right: 20px;
+  text-align: center;
+  .arc {
+    stroke: #F1911A;
+    stroke-width: 10px;
+    fill: none;
+  }
+  .number {
+    font-size: 12px;
+    color: #555656;
+    position: absolute;
+    margin: auto;
+    top: 107px;
+    left: 0;
+    right: 0;
+    text-indent: -10px;
+  }
+  .feature {
+    &.l {
+      margin-right: -5px;
+    }
+    &.m {
+      margin-left: 2px;
+      margin-right: -17px;
+    }
+    &.r {
+      margin-right: 15px;
+    }
+  }
+}
+.avg-user-rating {
+  position: relative;
+  padding-top: 100px;
+  padding-right: 20px;
+  text-align: center;
+  .arc {
+    stroke: #529FD9;
+    stroke-width: 10px;
+    fill: none;
+  }
+  .number {
+    font-size: 12px;
+    color: #555656;
+    position: absolute;
+    margin: auto;
+    top: 108px;
+    left: 0;
+    right: 0;
+    text-indent: -10px;
+  }
+  .feature {
+    &.l {
+      margin-right: 3px;
+    }
+    &.m {
+      margin-left: -5px;
+      margin-right: -15px;
+    }
+    &.r {
+      margin-right: 19px;
+    }
+  }
+}
+.feature {
+  position: relative;
+  display: inline-block;
+  width: 175px;
+  height: 175px;
+}
+.characteristics {
+  text-align: center;
+  padding-top: 194px;
+  height: 136px;
+  .nurves {
+    display: inline-block;
+    width: 106px;
+    height: 112px;
+    margin-left: 100px;
+    margin-top: 4px;
+    vertical-align: top;
+    text-align: left;
+    &:before {
+      content: "";
+      display: block;
+      width: 0px;
+      height: 112px;
+      background: url(/media/img/mocotw/10years/nurve.svg) no-repeat;
+      background-size: auto 100%;
+      .transition(width 0.5s linear);
+    }
+  }
+  .texts {
+    display: inline-block;
+    width: 250px;
+    height: 120px;
+    background: url(/media/img/mocotw/10years/survey-characteristics.png) no-repeat;
+    background-position: 0 0;
+    background-size: auto 100%;
+    vertical-align: top;
+    margin-left: -30px;
+    opacity: 0;
+    .transition(all 0.5s linear 0.5s);
+  }
+  &.analyze {
+    .nurves:before {
+      width: 106px;
+    }
+    .texts {
+      background-position: 40px 0;
+      opacity: 1;
+    }
+  }
+}
+.reading-rating {
+  text-align: center;
+  padding-top: 266px;
+  padding-right: 43px;
+}
+.browser {
+  display: inline-block;
+  width: 90px;
+  .number {
+    color: #A0A3A3;
+    font-size: 18px;
+    &.fx {
+      font-size: 24px;
+      color: #F1911A;
+      padding-right: 8px;
+    }
+  }
+}
+.debug-wire {
+  position: relative;
+  text-align: center;
+  padding-top: 196px;
+  .number {
+    position: absolute;
+    display: block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    font-size: 50px;
+    font-weight: bolder;
+    color: #555656;
+    text-indent: -20px;
+  }
+  svg {
+    display: inline-block;
+    margin-left: 50px;
+  }
+}
 
 .ss-choices {
   margin-top: 0;
@@ -77,14 +338,39 @@ ul li {
 
 #main-content {
   margin: auto;
-  width: 320px;
-  padding-bottom: 0;
+  width: auto;
+  padding: 0 0 40px 0;
 }
 
 .fb-fans-page {
   margin: auto;
   width: 320px;
   padding-bottom: 20px;
+}
+
+
+@media only screen and (max-width: @breakDesktop) {
+  html, body, #body-wrapper, #outer-wrapper, #wrapper {
+    width: @breakDesktop;
+  }
+}
+
+@media only screen and (max-width: @breakTablet) {
+  html, body, #body-wrapper, #outer-wrapper, #wrapper {
+    width: @breakDesktop;
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  html, body, #body-wrapper, #outer-wrapper, #wrapper {
+    width: @breakDesktop;
+  }
+}
+
+@media only screen and (max-width: @breakMobile) {
+  html, body, #body-wrapper, #outer-wrapper, #wrapper {
+    width: @breakDesktop;
+  }
 }
 
 @media only screen and (max-width: 480px) {
