@@ -43,10 +43,9 @@ $.fn.countInt = function(duration, from) {
     return $list;
 };
 
-$.fn.fillCircle = function(duration) {
+$.fn.fillCircle = function() {
     var $list = $(this);
     var $elems = [];
-    duration = typeof duration !== 'undefined' ? duration : 1000;
 
     $list.each(function() {
         var $this = $(this);
@@ -55,48 +54,12 @@ $.fn.fillCircle = function(duration) {
         var data_to = $this.attr('data-to');
         var from = typeof data_from !== 'undefined' ? data_from : 0;
         var to = typeof data_to !== 'undefined' ? data_to : 100;
-        $this.text(from);
+        var fullOffset = $this.attr('stroke-dasharray');
+        var fromOffset = (100 - from) * fullOffset / 100;
+        var toOffset = (100 - to) * fullOffset / 100;
+        $this.attr("stroke-dashoffset", fromOffset);
         $this.start = function() {
-            var i = 0;
-            var startAngle = -100;
-            var fullAngle = 360;
-            var fromAngle = startAngle + from * fullAngle / 100;
-            var toAngle = startAngle + to * fullAngle / 100;
-            var radius = 100;
-            var stime = new Date().getTime();
-            function step() {
-                var now = new Date().getTime();
-                var progress = now - stime;
-                var angle = Math.floor(fromAngle + (toAngle - fromAngle) * progress / duration);
-                var radians= (angle/180) * Math.PI;
-                var x = 200 + Math.cos(radians) * radius;
-                var y = 200 + Math.sin(radians) * radius;
-                var e = $this.attr("d");
-                var d;
-                if (i==0) {
-                    d = e+ " M "+x + " " + y;
-                }
-                else {
-                    d = e+ " L "+x + " " + y;
-                }
-                if (e != d) {
-                    $this.attr("d", d);
-                    i++;
-                }
-                if (progress <= duration) {
-                    requestAnimationFrame(step);
-                }
-                else {
-                    requestAnimationFrame(function() {
-                        radians= (toAngle/180) * Math.PI;
-                        x = 200 + Math.cos(radians) * radius;
-                        y = 200 + Math.sin(radians) * radius;
-                        d = e+ " L "+x + " " + y;
-                        $this.attr("d", d);
-                    });
-                }
-            }
-            requestAnimationFrame(step);
+            $this.attr("stroke-dashoffset", toOffset);
             return $this;
         };
         return $this;

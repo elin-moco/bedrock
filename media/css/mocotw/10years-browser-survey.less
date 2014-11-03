@@ -114,6 +114,7 @@ html, body, #body-wrapper, #wrapper {
     stroke: #F1911A;
     stroke-width: 10px;
     fill: none;
+    .transition(stroke-dashoffset 1s linear);
   }
   .number {
     font-size: 12px;
@@ -126,6 +127,10 @@ html, body, #body-wrapper, #wrapper {
     text-indent: -10px;
   }
   .feature {
+    svg {
+      .transform(rotate(-91deg));
+      .transform-origin(50% 50%);
+    }
     &.l {
       margin-right: -5px;
     }
@@ -147,6 +152,7 @@ html, body, #body-wrapper, #wrapper {
     stroke: #529FD9;
     stroke-width: 10px;
     fill: none;
+    .transition(stroke-dashoffset 1s linear);
   }
   .number {
     font-size: 12px;
@@ -159,6 +165,10 @@ html, body, #body-wrapper, #wrapper {
     text-indent: -10px;
   }
   .feature {
+    svg {
+      .transform(rotate(-91deg));
+      .transform-origin(50% 50%);
+    }
     &.l {
       margin-right: 3px;
     }
