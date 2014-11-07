@@ -90,7 +90,7 @@ $(function() {
     initResult();
     function initResult() {
         var $html = $('html');
-        if (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#AnimationEventsAttribute", "1.0") && Modernizr.cssanimations) {
+        if (Modernizr.svg && Modernizr.smil && Modernizr.cssanimations) {
             var pplCounter = $('.people .number').countInt();
             $('.people .number').waypoint(function() {
                 pplCounter.start();

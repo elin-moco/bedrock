@@ -908,7 +908,7 @@ MINIFY_BUNDLES = {
             'js/mocotw/10years-index.js',
         ),
         '10years-browser-survey': (
-            'js/libs/modernizr.custom.cssanimations.js',
+            'js/libs/modernizr.custom.svg.js',
             'js/libs/jquery.waypoints.min.js',
             'js/lightbeam/rAF.js',
             'js/mocotw/10years-browser-survey.js',
