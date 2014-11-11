@@ -18,7 +18,7 @@ from django.views.generic.simple import direct_to_template, redirect_to
 
 
 product_re = '(?P<product>firefox|mobile)'
-channel_re = '(?P<channel>beta|aurora|organizations)'
+channel_re = '(?P<channel>beta|aurora|nightly|organizations)'
 sysreq_re = r'^firefox/(?P<version>(%s|[a-z]+))/system-requirements/$' % version_re
 
 urlpatterns = patterns(
@@ -76,14 +76,14 @@ urlpatterns = patterns(
     redirect(r'^about/legal.html$', '//www.mozilla.org/en-US/about/legal.html'),
     redirect(r'^thunderbird/$', '//www.mozilla.org/en-US/thunderbird/'),
 
-    redirect(r'^mobile/$', 'firefox.android.index'),
+    redirect(r'^mobile/$', 'firefox.android.index', name='mozorg.mobile'),
     redirect(r'^mobile/home/$', 'firefox.android.index'),
     redirect(r'^firefox/mobile/home/$', 'firefox.android.index'),
     redirect(r'^firefox/mobile/$', 'firefox.android.index'),
-    redirect(r'^firefox/mobile/faq/$', 'firefox.android.faq'),
-    redirect(r'^firefox/mobile/features/$', 'firefox.android.index'),
+    redirect(r'^firefox/mobile/faq/$', 'firefox.android.faq', name='firefox.mobile.faq'),
+    redirect(r'^firefox/mobile/features/$', 'firefox.android.index', name='firefox.mobile.features'),
     # page('firefox/mobile', 'firefox/fx.html'),
-    redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
+    redirect(r'^firefox/fx/$', '/firefox/desktop/', name='firefox.fx'),
     redirect(r'^firefox/features/$', '/firefox/desktop/', name='firefox.features'),
     redirect(r'^firefox/customize/$', '/firefox/desktop/customize/', name='firefox.customize'),
     redirect(r'^firefox/security/$', '/firefox/desktop/trust/', name='firefox.security'),
@@ -122,16 +122,10 @@ urlpatterns = patterns(
     ('^eDM/(?P<path>.*)$', redirect_to, {'url': '/media/docs/mocotw/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
 
-    url('^(?:%s)/(?:%s/)?notes/$' % (product_re, channel_re),
-        latest_notes, name='firefox.notes'),
-    url('^firefox/(?:%s/)?system-requirements/$' % channel_re,
-        latest_sysreq, name='firefox.sysreq'),
-    url(sysreq_re, system_requirements,
-        name='firefox.system_requirements'),
-    url('^newsletter/subscribe/embed/$$',
-        subscribe_embed,
-        {'template': 'newsletter/subscribe-embed.html'},
-        name='newsletter.subscribe_embed'),
+    url('^(?:%s)/(?:%s/)?notes/$' % (product_re, channel_re), latest_notes, name='firefox.notes'),
+    url(r'^firefox/(?:%s/)?system-requirements/$' % channel_re, latest_sysreq, name='firefox.sysreq'),
+    url(sysreq_re, system_requirements, name='firefox.system_requirements'),
+    url(r'^newsletter/subscribe/embed/$$', subscribe_embed, {'template': 'newsletter/subscribe-embed.html'}, name='newsletter.subscribe_embed'),
     url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)(/)?$',
         one_newsletter_subscribe,
         name='newsletter.mozilla-and-you',

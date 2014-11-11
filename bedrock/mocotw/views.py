@@ -370,5 +370,5 @@ def latest_sysreq(request, channel='release'):
 
 
 @cache_control_expires(1)
-def system_requirements(request, fx_version, product='Firefox'):
-    return HttpResponseRedirect('//www.mozilla.org/en-US/firefox/%s/system-requirements/' % fx_version)
+def system_requirements(request, version, product='Firefox'):
+    return HttpResponseRedirect('//www.mozilla.org/en-US/firefox/%s/system-requirements/' % version)
