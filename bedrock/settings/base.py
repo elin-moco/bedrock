@@ -500,6 +500,18 @@ MINIFY_BUNDLES = {
         'gform': (
             'css/mocotw/gform.less',
         ),
+        'firefox_android': (
+            'css/base/mozilla-accordion.less',
+            'css/firefox/android.less',
+        ),
+        'firefox_independent': (
+            'css/firefox/independent-splash.less',
+            'css/firefox/independent.less',
+        ),
+        'firefox_developer': (
+            'css/base/mozilla-modal.less',
+            'css/firefox/developer.less',
+        ),
         '10years-base': (
             'css/mocotw/10years-base.less',
         ),
@@ -902,6 +914,25 @@ MINIFY_BUNDLES = {
         ),
         'gform': (
             'js/mocotw/gform.js',
+        ),
+        'firefox_android': (
+            'js/base/mozilla-accordion.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.cycle2.min.js',
+            'js/firefox/sync-animation.js',
+            'js/firefox/android.js',
+        ),
+        'firefox_android_ie9': (
+            'js/libs/matchMedia.addListener.js',
+        ),
+        'firefox_developer': (
+            'js/firefox/developer.js',
+            'js/base/mozilla-modal.js',
+        ),
+        'firefox_independent': (
+            'js/base/mozilla-share-cta.js',
+            'js/base/firefox-anniversary-video.js',
+            'js/firefox/independent.js',
         ),
         '10years-index': (
             'js/libs/owl.carousel.min.js',

@@ -4,16 +4,21 @@
 
 from django.conf.urls import *
 from bedrock.firefox import version_re
+from bedrock.firefox.views import latest_notes
 from bedrock.mozorg.util import page
 from bedrock.mozorg.views import contribute, partnerships, contribute_university_ambassadors
 from bedrock.mozorg.views import plugincheck
 from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, \
     one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, \
-    year_review_2013, subscribe_embed, newsletter, community, google_form_2014, firefox_family
+    year_review_2013, subscribe_embed, newsletter, community, google_form_2014, firefox_family, \
+    system_requirements, latest_sysreq
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
 from django.views.generic.simple import direct_to_template, redirect_to
 
+
+product_re = '(?P<product>firefox|mobile)'
+channel_re = '(?P<channel>beta|aurora|nightly|organizations)'
 sysreq_re = r'^firefox/(?P<version>(%s|[a-z]+))/system-requirements/$' % version_re
 
 urlpatterns = patterns(
@@ -56,7 +61,7 @@ urlpatterns = patterns(
     redirect(r'^firefox/mobile/sync/$', '/firefox/sync'),
     redirect(r'^firefox/firefoxos/$', '/firefox/os'),
     redirect(r'^firefox/central/$', '/firefox/features'),
-    redirect(r'^firefox/mobile/home/$', '/firefox/mobile/features'),
+    # redirect(r'^firefox/mobile/home/$', '/firefox/mobile/features'),
     redirect(r'^firefox/tw_beta/$', '/firefox'),
     redirect(r'^firefox/tw_features/$', '/firefox/features'),
     redirect(r'^firefox/beta/features/$', '/firefox/features'),
@@ -71,16 +76,22 @@ urlpatterns = patterns(
     redirect(r'^about/legal.html$', '//www.mozilla.org/en-US/about/legal.html'),
     redirect(r'^thunderbird/$', '//www.mozilla.org/en-US/thunderbird/'),
 
-    page('firefox/mobile', 'firefox/fx.html'),
-    # redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
+    redirect(r'^mobile/$', 'firefox.android.index', name='mozorg.mobile'),
+    redirect(r'^mobile/home/$', 'firefox.android.index'),
+    redirect(r'^firefox/mobile/home/$', 'firefox.android.index'),
+    redirect(r'^firefox/mobile/$', 'firefox.android.index'),
+    redirect(r'^firefox/mobile/faq/$', 'firefox.android.faq', name='firefox.mobile.faq'),
+    redirect(r'^firefox/mobile/features/$', 'firefox.android.index', name='firefox.mobile.features'),
+    # page('firefox/mobile', 'firefox/fx.html'),
+    redirect(r'^firefox/fx/$', '/firefox/desktop/', name='firefox.fx'),
     redirect(r'^firefox/features/$', '/firefox/desktop/', name='firefox.features'),
     redirect(r'^firefox/customize/$', '/firefox/desktop/customize/', name='firefox.customize'),
     redirect(r'^firefox/security/$', '/firefox/desktop/trust/', name='firefox.security'),
     redirect(r'^firefox/performance/$', '/firefox/desktop/fast/', name='firefox.performance'),
     redirect(r'^products/download/$', '/firefox/channel'),
     redirect(r'^firefox/central/$', '/firefox/mobile/features', name='firefox.central'),
-    redirect(r'^mobile/$', '/firefox/mobile/features', name='mozorg.mobile'),
-    redirect(r'^mobile/home/$', '/firefox/mobile/features'),
+    # redirect(r'^mobile/$', '/firefox/mobile/features', name='mozorg.mobile'),
+    # redirect(r'^mobile/home/$', '/firefox/mobile/features'),
     redirect(r'^mobile/sync/$', '/firefox/mobile/sync'),
     redirect(r'^join_us/$', '/newsletter/subscribe'),
     redirect(r'^join_us/share/$', '/newsletter/subscribe'),
@@ -102,7 +113,7 @@ urlpatterns = patterns(
     redirect(r'^click.php', '/'),
 
     redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements.html'),
-    (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),
+    # (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),
     ('^products/download\.html$', redirect_to,
      {'url': '//www.mozilla.org/en-US/products/download.html', 'query_string': True}),
     ('^zh-TW/products/download\.html$', redirect_to,
@@ -111,10 +122,10 @@ urlpatterns = patterns(
     ('^eDM/(?P<path>.*)$', redirect_to, {'url': '/media/docs/mocotw/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
 
-    url('^newsletter/subscribe/embed/$$',
-        subscribe_embed,
-        {'template': 'newsletter/subscribe-embed.html'},
-        name='newsletter.subscribe_embed'),
+    url('^(?:%s)/(?:%s/)?notes/$' % (product_re, channel_re), latest_notes, name='firefox.notes'),
+    url(r'^firefox/(?:%s/)?system-requirements/$' % channel_re, latest_sysreq, name='firefox.sysreq'),
+    url(sysreq_re, system_requirements, name='firefox.system_requirements'),
+    url(r'^newsletter/subscribe/embed/$$', subscribe_embed, {'template': 'newsletter/subscribe-embed.html'}, name='newsletter.subscribe_embed'),
     url('^newsletter/subscribe/(?P<target>[-_A-z0-9]*)(/)?$',
         one_newsletter_subscribe,
         name='newsletter.mozilla-and-you',

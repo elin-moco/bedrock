@@ -402,7 +402,6 @@ def equivalent_release_url(release):
         return releasenotes_url(equivalent_release)
 
 
-
 def get_download_url(channel='Release'):
     if channel == 'Aurora':
         # TODO: use reverse once bug 987517 is resolved

@@ -19,7 +19,7 @@
   <ul id="toggler-container" class="pager-tabs">
     <li id="beta-link"><a href="{{ php_url('/en-US/firefox/beta/') }}"><img src="{{ media('/img/firefox/channel/toggler-beta.png') }}" id="toggler-logo-beta" /></a></li>
     <li id="nightly-link"><a href="//{{ NIGHTLY_URL }}"><img src="{{ media('/img/mocotw/firefox/channel/toggler-nightly.png') }}" id="toggler-logo-nightly" /></a></li>
-    <li id="aurora-link"><a href="{{ php_url('/en-US/firefox/aurora/') }}"><img src="{{ media('/img/firefox/channel/toggler-aurora.png') }}" id="toggler-logo-aurora" /></a></li>
+    <li id="aurora-link"><a href="{{ php_url('/en-US/firefox/aurora/') }}"><img src="{{ media('/img/firefox/channel/toggler-dev.png') }}" id="toggler-logo-aurora" /></a></li>
   </ul>
 
   <a href="#" id="carousel-left"></a>
@@ -53,16 +53,16 @@
     </div>
 
     <div id="aurora" class="pager-page">
-      <h2 class="channel-title channel-title-aurora"><img src="{{ media('/img/firefox/channel/title-aurora.png') }}" alt="Firefox Aurora" /></h2>
-      <h3>在不穩定的環境中體驗創新</h3>
+      <h2 class="channel-title channel-title-aurora"><img src="{{ media('/img/firefox/channel/title-dev.png') }}" alt="Firefox Aurora" /></h2>
+      <h3>專為 Web 開發者所打造</h3>
       <div class="download-box" id="aurora-desktop">
         {{ download_firefox('aurora', icon=False, small=True) }}
       </div>
       <div class="download-box mobile" id="aurora-mobile">
         {{ download_firefox('aurora', icon=False, mobile=True, small=True) }}
       </div>
-      <p class="more"><a target="_blank" href="{{ php_url('/en-US/mobile/aurora/') }}">瞭解更多關於 Firefox Aurora 的資訊<span> »</span></a></p>
-      <p class="warning">Firefox Aurora 將會自動傳送使用回饋資訊至 Mozilla. <a target="_blank" href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
+      <p class="more"><a target="_blank" href="{{ url('firefox.developer') }}">瞭解更多關於 Firefox Developer 的資訊</a></p>
+      <p class="warning">Firefox Aurora 與 Firefox Developer 會自動傳送資料回 Mozilla。 <a target="_blank" href="{{ php_url('/legal/privacy/firefox.html#telemetry') }}">瞭解更多</a>。</p>
     </div>
 
   </div>
