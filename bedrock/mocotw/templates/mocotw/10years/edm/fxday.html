@@ -1,0 +1,225 @@
+<html lang="zh-TW" xml:lang="zh-TW">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>Firefox 十週年問卷調查 - 你想要什麼樣的瀏覽器</title>
+  <style>
+    * {
+      font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
+      letter-spacing: 0.06em;
+    }
+    body {
+      margin: 0;
+      background: #02539E;
+    }
+    table, thead, tbody, tr, td {
+      border-collapse: collapse;
+      border-spacing:0;
+      padding: 0;
+    }
+    table td a {
+      display: inline-block;
+      vertical-align: top;
+    }
+    a, a img {
+      outline: none;
+      margin: 0;
+    }
+
+    img {
+      display: block;
+      border: 0;
+    }
+
+    a, a p, a p b {
+      text-decoration: none;
+      border-width: 0;
+    }
+
+    b, p b {
+      color: #000000;
+    }
+
+    td, p, a {
+      color: #4D4E53;
+    }
+    table.container {
+      width: 700px;
+      margin: auto;
+      margin-top: 16px;
+    }
+    tr.content > td {
+      padding-left: 50px;
+    }
+    .content, .content td, .content td a {
+      font-size: 0;
+      line-height: 0;
+      mso-line-height-rule: exactly;
+    }
+    #logo {
+      width: 130px;
+      height: auto;
+    }
+    .header {
+      width: 100%;
+    }
+    .header td, .header td a {
+      font-size: 12px;
+      color: #FFFFFF;
+    }
+    .navigator {
+      text-align: right;
+    }
+    table.footer {
+      background: #ffffff;
+      width: 100%;
+    }
+
+    table.footer-content {
+      width: 653px;
+      margin: auto;
+      vertical-align: top;
+    }
+
+    table.footer td {
+      font-size: 12px;
+    }
+    td.mozilla-col {
+      padding-right: 20px;
+    }
+    td.mozilla-col img {
+      width: 80px;
+      height: 20px;
+    }
+    td.social-col, td.about-col {
+      vertical-align: top;
+      padding-top: 12px;
+      padding-bottom: 4px;
+      text-wrap: none;
+    }
+    td.social-col {
+      padding-right: 8px;
+    }
+    table.footer td.friend,
+    table.footer table.social-media td,
+    table.footer td.official,
+    table.footer td.contact,
+    table.footer td.license {
+      padding-bottom: 4px;
+      padding-right: 12px;
+    }
+    table.footer td.license {
+      font-size: 10px;
+    }
+    table.footer td.unsubscribe a {
+      color: gray;
+    }
+
+    {% if not is_web %}
+    .header-tip {
+      text-align: center;
+    }
+    .header-tip small {
+      color: #CCCCCC;
+      text-decoration: underline;
+    }
+    .header-tip a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    {% endif %}
+
+  </style>
+</head>
+<body>
+<table class="container" border="0" cellpadding="0" cellspacing="0">
+  {% if not is_web %}
+  <tr>
+    <td class="header-tip">
+      <a class="web-link" href="http://mozilla.com.tw/10years/edm/fxday/{{ tracking_code }}">
+        <small>無法正常顥示？請點此開啟網頁版</small>
+      </a>
+    </td>
+  </tr>
+  {% endif %}
+  <tr>
+    <td>
+      <table class="header">
+        <tr>
+          <td><a href="http://mozilla.com.tw/{{ tracking_code }}"><img id="logo" src="{{ 'header-logo-inverse.png'|load_image }}"/></a></td>
+          <td class="navigator">
+            <a href="https://www.facebook.com/MozillaTaiwan">FB 粉絲團</a>&nbsp;|&nbsp;
+            <a href="http://mozilla.com.tw{{ tracking_code }}">Mozilla</a>&nbsp;|&nbsp;
+            <a href="http://myfirefox.com.tw{{ tracking_code }}">MyFirefox</a>&nbsp;|&nbsp;
+            <a href="http://mozilla.com.tw/join_us/{{ tracking_code }}">訂閱電子報</a>&nbsp;|&nbsp;
+            <a href="http://mozilla.com.tw/firefox/download/{{ tracking_code }}">下載 Firefox</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr class="content">
+    <td valign="top"><a href="http://mozilla.com.tw/10years/firefox-day/{{ tracking_code }}"><img align="left" src="{{ 'edm-fxday-1.png'|load_image }}"/></a></td>
+  </tr>
+  <tr class="content">
+    <td valign="top"><a href="http://mozilla.com.tw/10years/firefox-day/{{ tracking_code }}"><img align="left" src="{{ 'edm-fxday-2.png'|load_image }}"/></a><a href="http://mozilla.com.tw/10years/firefox-day/{{ tracking_code }}"><img align="left" src="{{ 'edm-fxday-3.gif'|load_image }}"/></a></td>
+  </tr>
+  <tr class="content">
+    <td valign="top"><a href="http://mozilla.com.tw/10years/firefox-day/{{ tracking_code }}"><img align="left" src="{{ 'edm-fxday-4.png'|load_image }}"/></a></td>
+  </tr>
+</table>
+<table id="footer" class="footer" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <table class="footer-content">
+        <tr>
+          <td class="mozilla-col">
+            <a href="http://mozilla.org/en-US/" target="_blank">
+              <img style="border:0px;" alt="mozilla" src="{{ 'footer-mozilla.png'|load_image }}">
+            </a>
+          </td>
+          <td class="social-col">
+            <table>
+              <tr>
+                <td class="friend">與我們為友</td>
+              </tr>
+              <tr>
+                <td>
+                  <table class="social-media">
+                    <tr>
+                      <td><a href="https://www.facebook.com/MozillaTaiwan" target="_blank">Facebook</a></td>
+                      <td><a href="https://plus.google.com/u/0/114653167240123163859/posts" target="_blank">Google+</a></td>
+                      <td><a href="http://plurk.com/MozillaTaiwan" target="_blank">Plurk</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="http://www.youtube.com/user/MozillaTaiwan" target="_blank">Youtube</a></td>
+                      <td><a href="http://www.flickr.com/photos/mozillataiwan/" target="_blank">Flickr</a></td>
+                      <td><a href="http://mozilla.com.tw/join_us/{{ tracking_code }}" target="_blank">電子報</a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="about-col">
+            <table>
+              <tr>
+                <td class="official"><a href="http://mozilla.com.tw/{{ tracking_code }}">Mozilla Taiwan | 美商謀智 | mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="contact">聯繫我們：<a href="mailto:mozilla-tw@mozilla.com">mozilla-tw@mozilla.com.tw</a></td>
+              </tr>
+              <tr>
+                <td class="license">除另有註明外，本站內容皆採用<br>
+                  <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">創用 CC 姓名標示—相同方式分享條款 3.0</a> 或更新版本授權大眾使用。
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
