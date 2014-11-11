@@ -8,15 +8,18 @@ from datetime import datetime
 from commonware.response.decorators import xframe_allow
 from django.core.cache import cache
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.views.static import serve
+import re
+from bedrock.firefox.views import get_latest_version
 from bedrock.mocotw.forms import NewsletterForm
 from bedrock.mocotw.models import Newsletter
 from bedrock.mocotw.utils import read_newsletter_context, newsletter_context_vars, newsletter_subscribe, newsletter_unsubscribe, track_page
 from bedrock.mozorg import email_contribute
+from bedrock.mozorg.decorators import cache_control_expires
 from bedrock.mozorg.forms import ContributeForm
 from bedrock.newsletter.forms import NewsletterFooterForm
 from bedrock.sandstone.settings import BLOG_URL, TECH_URL, MYFF_URL, FFCLUB_URL, LOCAL_FFCLUB_URL
@@ -351,3 +354,21 @@ def firefox_family(request, addon):
         'addon_name': None if addon not in ADDON_NAMES else ADDON_NAMES[addon],
     }
     return l10n_utils.render(request, 'mocotw/10years/firefox-family.html', data)
+
+
+def latest_sysreq(request, channel='release'):
+    version = get_latest_version('firefox', channel)
+    if channel == 'beta':
+        version = re.sub(r'b\d+$', 'beta', version)
+    if channel == 'organizations':
+        version = re.sub(r'^(\d+).+', r'\1.0', version)
+    path = ['firefox', version, 'system-requirements']
+    locale = getattr(request, 'locale', None)
+    if locale:
+        path.insert(0, locale)
+    return HttpResponseRedirect('/' + '/'.join(path) + '/')
+
+
+@cache_control_expires(1)
+def system_requirements(request, fx_version, product='Firefox'):
+    return HttpResponseRedirect('//www.mozilla.org/en-US/firefox/%s/system-requirements/' % fx_version)

@@ -19,6 +19,8 @@
 {% set download_class = download_class ~ ' download-button-desktop' if not show_mobile else download_class %}
 {% set download_class = download_class ~ ' download-button-small' if small else download_class %}
 {% set download_class = download_class ~ ' download-button-noicon' if not icon else download_class %}
+{% set download_class = download_class ~ ' download-button-simple' if simple else download_class %}
+
 
 <div id="{{ id }}" class="{{ download_class }}">
   {% if show_desktop %}
@@ -30,7 +32,7 @@
     </div>
     {% set requirements_url = php_url('/firefox/' ~ build ~ '/system-requirements/') if build and build != 'nightly' else '/firefox/system-requirements/' %}
     <p class="unsupported-download">
-      {{ _('Your system doesn\'t meet the <a href="%(url)s">requirements</a> to run Firefox.')|format(url=requirements_url) }}
+      {{ _("Your system doesn't meet the <a href=\"%(url)s\">requirements</a> to run Firefox.")|format(url=product_url('firefox', 'sysreq', build)) }}
     </p>
   {% endif %}
   <ul class="download-list">
@@ -57,7 +59,7 @@
               {% if build == 'beta' %}
                 <strong class="download-title">{{ _('Firefox Beta') }}</strong>
               {% elif build == 'aurora' %}
-                <strong class="download-title">{{ _('Firefox Aurora') }}</strong>
+                <strong class="download-title">{{ _('<span>Firefox</span> Developer Edition') }}</strong>
               {% elif build == 'nightly' %}
                 <strong class="download-title">{{ _('Firefox Nightly') }}</strong>
               {% else %}
@@ -94,7 +96,7 @@
     <small class="download-other os_linux os_osx os_windows">
     </small>
     {% endif %}
-    <small class="download-other os_linux os_osx os_windows">
+    <small class="download-other download-other-desktop os_linux os_linux64 os_osx os_windows"{% if simple %} style="display: none !important;"{% endif %}>
       {% if build %}
         {% if build != 'nightly' %}
           <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/all-{{ build }}.html">{{ _('Systems &amp; Languages') }}</a> |

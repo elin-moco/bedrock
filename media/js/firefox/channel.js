@@ -30,17 +30,14 @@ $(document).ready(function() {
     pager.$container.bind('changePage', function(e, tab) {
         if (pager.currentPage.id == 'nightly') {
             $('body').addClass('night');
-            $('body').removeClass('space');
             $('body').removeClass('sky');
             $logo.attr('src', $logo.attr('data-inverse-src'));
         } else if (pager.currentPage.id == 'aurora') {
-            $('body').addClass('space');
-            $('body').removeClass('night');
+            $('body').addClass('night');
             $('body').removeClass('sky');
             $logo.attr('src', $logo.attr('data-inverse-src'));
         } else {
             $('body').addClass('sky');
-            $('body').removeClass('space');
             $('body').removeClass('night');
             $logo.attr('src', logoOriginalSrc);
         }
@@ -65,17 +62,14 @@ $(document).ready(function() {
     // init
     if (pager.currentPage.id == 'nightly') {
         $('body').addClass('night');
-        $('body').removeClass('space');
         $('body').removeClass('sky');
         $logo.attr('src', $logo.attr('data-inverse-src'));
     } else if (pager.currentPage.id == 'aurora') {
-        $('body').addClass('space');
-        $('body').removeClass('night');
+        $('body').addClass('night');
         $('body').removeClass('sky');
         $logo.attr('src', $logo.attr('data-inverse-src'));
     } else {
         $('body').addClass('sky');
-        $('body').removeClass('space');
         $('body').removeClass('night');
         $logo.attr('src', logoOriginalSrc);
     }
