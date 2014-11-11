@@ -83,7 +83,7 @@ urlpatterns = patterns(
     redirect(r'^firefox/mobile/faq/$', 'firefox.android.faq'),
     redirect(r'^firefox/mobile/features/$', 'firefox.android.index'),
     # page('firefox/mobile', 'firefox/fx.html'),
-    # redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
+    redirect(r'^firefox/$', '/firefox/desktop/', name='firefox.fx'),
     redirect(r'^firefox/features/$', '/firefox/desktop/', name='firefox.features'),
     redirect(r'^firefox/customize/$', '/firefox/desktop/customize/', name='firefox.customize'),
     redirect(r'^firefox/security/$', '/firefox/desktop/trust/', name='firefox.security'),
