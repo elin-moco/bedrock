@@ -377,3 +377,11 @@ def latest_sysreq(request, channel='release'):
 @cache_control_expires(1)
 def system_requirements(request, version, product='Firefox'):
     return HttpResponseRedirect('//www.mozilla.org/en-US/firefox/%s/system-requirements/' % version)
+
+
+def mozorg_redirect(request, *args):
+    return HttpResponseRedirect('//www.mozilla.org/en-US%s' % request.path)
+
+
+def mozorg_zhtw_redirect(request, *args):
+    return HttpResponseRedirect('//www.mozilla.org/zh-TW%s' % request.path)

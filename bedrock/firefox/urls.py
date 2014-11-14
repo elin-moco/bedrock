@@ -6,6 +6,7 @@ from django.conf.urls.defaults import *  # noqa
 from django.conf import settings
 
 from bedrock.firefox import version_re
+from bedrock.mocotw.views import mozorg_zhtw_redirect
 from bedrock.redirects.util import redirect
 from bedrock.mozorg.util import page
 import views
@@ -24,7 +25,6 @@ sysreq_re = latest_re % (version_re, 'system-requirements')
 urlpatterns = patterns('',
     redirect(r'^firefox/$', 'firefox.new', name='firefox'),
     url(r'^firefox/all/$', views.all_downloads, name='firefox.all'),
-    # page('firefox/central', 'firefox/central.html'),
     page('firefox/channel', 'firefox/channel.html'),
     redirect('^firefox/channel/android/$', 'firefox.channel'),
     page('firefox/geolocation', 'firefox/geolocation.html',
@@ -42,8 +42,6 @@ urlpatterns = patterns('',
     page('firefox/desktop/fast', 'firefox/desktop/fast.html'),
     page('firefox/desktop/customize', 'firefox/desktop/customize.html'),
     page('firefox/desktop/trust', 'firefox/desktop/trust.html'),
-    # page('firefox/mobile/features', 'firefox/mobile/features.html'),
-    # page('firefox/mobile/faq', 'firefox/mobile/faq.html'),
     page('firefox/android', 'firefox/android/index.html'),
     page('firefox/android/faq', 'firefox/android/faq.html'),
     page('firefox/os/faq', 'firefox/os/faq.html'),
@@ -52,7 +50,8 @@ urlpatterns = patterns('',
     page('firefox/new', 'firefox/new.html'),
     page('firefox/organizations/faq', 'firefox/organizations/faq.html'),
     page('firefox/organizations', 'firefox/organizations/organizations.html'),
-    page('firefox/nightly/firstrun', 'firefox/nightly_firstrun.html'),
+    redirect('firefox/nightly/firstrun', '//www.mozilla.org/zh-TW/firefox/nightly/firstrun'),
+
     url('^firefox/releases/$', views.releases_index,
         name='firefox.releases.index'),
     url(r'^firefox/installer-help/$', views.installer_help,
@@ -70,9 +69,10 @@ urlpatterns = patterns('',
 
     url(r'^firefox/unsupported/win/$', views.windows_billboards),
     url('^dnt/$', views.dnt, name='firefox.dnt'),
-    url(firstrun_re, views.FirstrunView.as_view(), name='firefox.firstrun'),
-    url(whatsnew_re, views.WhatsnewView.as_view(), name='firefox.whatsnew'),
-    url(tour_re, views.TourView.as_view(), name='firefox.tour'),
+    url(firstrun_re, mozorg_zhtw_redirect, name='firefox.firstrun'),
+    url(whatsnew_re, mozorg_zhtw_redirect, name='firefox.whatsnew'),
+    url(tour_re, mozorg_zhtw_redirect, name='firefox.tour'),
+
     url(r'^firefox/partners/$', views.firefox_partners,
         name='firefox.partners.index'),
 
