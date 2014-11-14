@@ -380,8 +380,8 @@ def system_requirements(request, version, product='Firefox'):
 
 
 def mozorg_redirect(request, *args):
-    return HttpResponseRedirect('//www.mozilla.org/en-US%s' % request.path)
+    return HttpResponseRedirect('//www.mozilla.org/en-US%s' % request.get_full_path())
 
 
 def mozorg_zhtw_redirect(request, *args):
-    return HttpResponseRedirect('//www.mozilla.org/zh-TW%s' % request.path)
+    return HttpResponseRedirect('//www.mozilla.org/zh-TW%s' % request.get_full_path())
