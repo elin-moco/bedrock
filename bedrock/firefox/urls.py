@@ -92,8 +92,7 @@ urlpatterns = patterns('',
     page('firefox/os/devices', 'firefox/os/devices.html'),
 
     url(releasenotes_re, views.release_notes, name='firefox.releasenotes'),
-    url(mobile_releasenotes_re, views.release_notes,
-        {'product': 'Firefox for Android'}, name='mobile.releasenotes'),
+    url(mobile_releasenotes_re, views.release_notes, name='mobile.releasenotes'),
     url(sysreq_re, views.system_requirements,
         name='firefox.system_requirements'),
 )

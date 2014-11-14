@@ -99,7 +99,7 @@
     <small class="download-other download-other-desktop os_linux os_linux64 os_osx os_windows"{% if simple %} style="display: none !important;"{% endif %}>
       {% if build %}
         {% if build != 'nightly' %}
-          <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/all-{{ build }}.html">{{ _('Systems &amp; Languages') }}</a> |
+          <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/{{ build }}/all/">{{ _('Systems &amp; Languages') }}</a> |
           <a target="_blank" href="//{{ MOFO_URL }}/en-US/firefox/{{ build }}/notes">{{ _('What’s New') }}</a> |
         {% else %}
           <a target="_blank" href="http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/">{{ _('其它 Nightly 版本 (FTP)') }}</a> |
