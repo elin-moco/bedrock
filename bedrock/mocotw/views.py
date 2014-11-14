@@ -291,12 +291,17 @@ def home(request, template):
     events = cache.get('home-events')
     if events is None:
         try:
-            eventApiUrl = 'https://%s/api/get_recent_events?count=5' % BLOG_URL
-            events = json.loads(urllib2.urlopen(eventApiUrl).read())['posts'][:5]
-            for event in events:
+            blogEventApiUrl = 'https://%s/api/get_recent_events?count=5' % BLOG_URL
+            blogEvents = json.loads(urllib2.urlopen(blogEventApiUrl).read())['posts'][:5]
+            for event in blogEvents:
                 event['title'] = event['post_title']
                 event['date'] = datetime.strptime(event['post_date'], '%Y-%m-%d %H:%M:%S').strftime('%Y/%m/%d')
                 event['url'] = 'http://%s/events/%s' % (BLOG_URL, event['event_slug'])
+            ffclubEventApiUrl = 'https://%s/api/recent_events/?secret=%s' % (FFCLUB_URL, FFCLUB_API_SECRET)
+            ffclubEvents = json.loads(urllib2.urlopen(ffclubEventApiUrl).read())['events']
+            for event in ffclubEvents:
+                event['date'] = datetime.strptime(event['date'], '%Y-%m-%d %H:%M:%S').strftime('%Y/%m/%d')
+            events = sorted(blogEvents + ffclubEvents, key=lambda k: k['date'], reverse=True)[:5]
             cache.set('home-events', events, 60*60*24)
         except Exception as e:
             print e
