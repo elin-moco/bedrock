@@ -27,8 +27,7 @@ from lib.l10n_utils import get_locale
 
 
 download_urls = {
-    'transition': '/{locale}/products/download.html',
-    'mocotw': 'https://mozilla.com.tw/firefox/download/',
+    'transition': '/firefox/new/?scene=2#download-fx',
     'direct': 'https://download.mozilla.org/',
     'aurora': 'https://ftp.mozilla.org/pub/mozilla.org/firefox/'
               'nightly/latest-mozilla-aurora',
@@ -44,16 +43,15 @@ download_urls = {
                      product_details.mobile_details['alpha_version'],
 }
 
-direct_download_urls = {
-    'win': 'http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe',
-    'win_express': 'http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe',
-    'win_full': 'http://download.myfirefox.com.tw/releases/full/zh-TW/Firefox-full-latest.exe',
-    'osx': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.dmg',
-    'linux': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.tar.bz2',
-    'linux_32bit': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.tar.bz2',
-    'linux_64bit': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest-x86_64.tar.bz2',
-}
-
+# direct_download_urls = {
+#     'win': 'http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe',
+#     'win_express': 'http://download.myfirefox.com.tw/releases/webins3.0/official/zh-TW/Firefox-latest.exe',
+#     'win_full': 'http://download.myfirefox.com.tw/releases/full/zh-TW/Firefox-full-latest.exe',
+#     'osx': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.dmg',
+#     'linux': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.tar.bz2',
+#     'linux_32bit': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest.tar.bz2',
+#     'linux_64bit': 'http://download.myfirefox.com.tw/releases/firefox/zh-TW/Firefox-latest-x86_64.tar.bz2',
+# }
 
 def _latest_pre_version(locale, version):
     builds = product_details.firefox_primary_builds
@@ -144,7 +142,7 @@ def make_download_link(product, build, version, platform, locale,
     elif build == 'aurora':
         return make_aurora_link(product, version, platform, locale,
                                 force_full_installer=force_full_installer)
-    elif build== 'beta':
+    elif build == 'beta':
         # The downloaders expect the platform in a certain format
         platform = {
             'os_windows': 'win',
@@ -185,19 +183,11 @@ def make_download_link(product, build, version, platform, locale,
             'os_linux': 'linux',
             'os_osx': 'osx'
         }[platform]
-        if direct_download:
-            platform_install = platform + ('' if install is None or 0 == len(install) else '_' + install)
-            if platform_install in direct_download_urls:
-                return direct_download_urls[platform_install]
-            else:
-                return direct_download_urls[platform]
+        if direct_download or force_direct:
+            tmpl = '?'.join([download_urls['direct'], 'product={prod}-{vers}&os={plat}&lang={locale}'])
+            return tmpl.format(prod=product, vers=version, plat=platform, locale=locale)
         else:
-            if install is None or 0 == len(install):
-                tmpl = '?'.join([download_urls['mocotw'], 'os={plat}'])
-            else:
-                tmpl = '?'.join([download_urls['mocotw'], 'os={plat}&install={install}'])
-
-            return tmpl.format(plat=platform, locale=locale, install=install)
+            return download_urls['transition']
 
 @jingo.register.function
 @jinja2.contextfunction
@@ -315,9 +305,6 @@ def download_firefox(ctx, build='release', small=False, icon=True,
     # Get the native name for current locale
     langs = product_details.languages
     locale_name = langs[locale]['native'] if locale in langs else locale
-
-    if build not in ('nightly', 'aurora', 'beta'):
-        locale_name = u'台灣版 (繁體中文)'
 
     data = {
         'locale_name': locale_name,

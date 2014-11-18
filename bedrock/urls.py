@@ -25,8 +25,8 @@ sitemaps = {
         0.9, 'weekly'),
     'firefox': ViewsSitemap(
         ['firefox.desktop.index', 'firefox.desktop.fast', 'firefox.desktop.customize', 'firefox.desktop.trust',
-         'mocotw.firefox-desktop', 'firefox.developer', 'firefox.independent',
-         'firefox.fx', 'firefox.features', 'firefox.mobile.features', 'firefox.download', 'firefox.os.index'],
+         'firefox.developer', 'firefox.independent',
+         'firefox.fx', 'firefox.features', 'firefox.mobile.features', 'firefox.new', 'firefox.os.index'],
         0.8, 'monthly'),
     'firefox_details': ViewsSitemap(
         ['firefox.customize', 'firefox.performance', 'firefox.technology', 'firefox.security',

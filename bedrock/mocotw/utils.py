@@ -15,6 +15,8 @@ from django.core.mail import EmailMultiAlternatives
 from email.errors import MessageError
 from email.header import Header
 from django.template.loader import render_to_string
+import jingo
+import jinja2
 
 
 log = logging.getLogger('prod_details')
@@ -240,3 +242,9 @@ def send_mail(subject, headers, from_email, to_mail, text_content, mail_content,
         log.error('Failed to send to %s.' % to_mail, e)
     except RuntimeError as e:
         log.error('Unexpected error when sending to %s.' % to_mail, e)
+
+
+@jingo.register.function
+@jinja2.contextfunction
+def l10n_has_tag(ctx, tag, langfile=None):
+    return False

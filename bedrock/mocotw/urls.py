@@ -23,7 +23,7 @@ sysreq_re = r'^firefox/(?P<version>(%s|[a-z]+))/system-requirements/$' % version
 
 urlpatterns = patterns(
     '',
-    page('firefox/desktop/taiwan', 'mocotw/firefox-desktop.html'),
+    # page('firefox/desktop/taiwan', 'mocotw/firefox-desktop.html'),
     page('news', 'mocotw/news.html'),
     page('about/manifesto', 'mocotw/about/manifesto.html'),
     page('about/space', 'mocotw/about/space.html'),
@@ -39,7 +39,7 @@ urlpatterns = patterns(
     page('myfirefox/edm-2014-01', 'mocotw/myfirefox/edm-2014-01.html'),
     page('myfirefox/edm-2014-04', 'mocotw/myfirefox/edm-2014-04.html'),
     page('firefoxflicks', 'firefoxflicks/list.html'),
-    page('firefox/download', 'firefox/download.html'),
+    # page('firefox/download', 'firefox/download.html'),
     page('firefox/ueip', 'firefox/ueip.html'),
     page('firefox/sync', 'firefox/sync.html'),
     page('firefox/phishing-protection', 'firefox/phishing-protection.html'),
@@ -114,10 +114,9 @@ urlpatterns = patterns(
 
     redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements.html'),
     # (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),
-    ('^products/download\.html$', redirect_to,
-     {'url': '//www.mozilla.org/en-US/products/download.html', 'query_string': True}),
-    ('^zh-TW/products/download\.html$', redirect_to,
-     {'url': '//www.mozilla.org/en-US/products/download.html', 'query_string': True}),
+    redirect(r'^firefox/download/$', '/firefox/new/?scene=2#download-fx'),
+    redirect(r'^products/download\.html$', '/firefox/new/?scene=2#download-fx'),
+    redirect(r'^zh-TW/products/download\.html$', '/firefox/new/?scene=2#download-fx'),
     ('^zh-TW/(?P<path>.*)$', redirect_to, {'url': '/%(path)s'}),
     ('^eDM/(?P<path>.*)$', redirect_to, {'url': '/media/docs/mocotw/%(path)s'}),
     ('^(?P<locale>en-US|zh-CN)/(?P<path>.*)$', redirect_to, {'url': '//www.mozilla.org/%(locale)s/%(path)s'}),
