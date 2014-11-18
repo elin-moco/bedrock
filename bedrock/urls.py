@@ -30,8 +30,7 @@ sitemaps = {
         0.8, 'monthly'),
     'firefox_details': ViewsSitemap(
         ['firefox.customize', 'firefox.performance', 'firefox.technology', 'firefox.security',
-         'firefox.faq', 'firefox.ueip', 'firefox.mobile.faq',
-         'firefox.partners.index', 'firefox.os.faq',
+         'firefox.mobile.faq', 'firefox.partners.index', 'firefox.os.faq',
          'firefox.all', 'firefox.channel',
          'firefox.dnt', 'firefox.phishing-protection', 'firefoxflicks.list', 'mozorg.plugincheck',
          ],
