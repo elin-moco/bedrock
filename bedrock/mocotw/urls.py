@@ -116,7 +116,7 @@ urlpatterns = patterns(
 
     redirect(r'^firefox/system-requirements.html$', '//www.mozilla.org/en-US/firefox/system-requirements.html'),
     # (sysreq_re, redirect_to, {'url': '//www.mozilla.org/en-US/firefox/%(version)s/system-requirements/'}),
-    redirect(r'^firefox/download/$', '/firefox/new/?scene=2#download-fx'),
+    redirect(r'^firefox/download/$', '/firefox/new/?scene=2#download-fx', name='firefox.download'),
     redirect(r'^products/download\.html$', '/firefox/new/?scene=2#download-fx'),
     redirect(r'^zh-TW/products/download\.html$', '/firefox/new/?scene=2#download-fx'),
     ('^zh-TW/(?P<path>.*)$', redirect_to, {'url': '/%(path)s'}),
