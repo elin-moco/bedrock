@@ -30,10 +30,6 @@
 
             var $that = $(this);
             var $li = $that.parent('li');
-            if($('.slided-it').size()!=0){
-              $('.slide-x').removeClass('slided-it');
-              $('#body-wrapper').removeClass('body-wrapper-lock').addClass('body-wrapper-default');
-            }
 
             if (!$li.hasClass('active')) {
                 _show_scene($that.attr('href'));
@@ -61,7 +57,7 @@
     $('.toggle-form').off().on('click', function(e) {
         e.preventDefault();
 
-        w.show_overlay('#form');
+        Mozilla.Modal.createModal(this, $('#form'), { allowScroll: false });
 
         w.ga_track('form/');
 

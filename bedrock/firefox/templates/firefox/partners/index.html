@@ -40,7 +40,7 @@
     <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">{{ _('Mozilla') }}</a>
     {% block site_header_nav %}
     <nav id="nav-main" role="navigation">
-      <span class="toggle" role="button" aria-controls="nav-main-menu" tabindex="0">{{_('Menu')}}</span>
+      <span class="toggle" role="button" aria-controls="nav-main-menu" aria-expanded="false" tabindex="0">{{_('Menu')}}</span>
       <ul id="nav-main-menu">
         <li class="first"><a href="#os">{{_('Firefox OS')}}</a></li>
         <li><a href="#marketplace">{{_('Marketplace')}}</a></li>
@@ -99,8 +99,24 @@
 
           <p class="partner-button"><a href="https://mobilepartners.mozilla.org/" class="button">{{ _('Partner with us') }}</a></p>
 
+          <div id="overview-news-links">
+            <div id="overview-news-wrapper">
+              <img src="{{ media('img/firefox/partners/mwc-2014-banner.png') }}" alt="{{ _('Mobile World Congress 2014') }}">
+              <div id="overview-news">
+                <h3>{{ _('Recent news') }}</h3>
+                <ul>
+                  <li><a href="{{ locale_headline_url }}">{{ locale_headline_title }}</a></li>
+                </ul>
+              </div> <!--/#overview-news-->
+            </div> <!--/#overview-news-wrapper-->
+
+            <div id="overview-links">
+              <a class="fxos-devices-link" href="{{ url('firefox.os.devices') }}">{{ _('View available Firefox OS devices') }}</a>
+            </div> <!--/#overview-links-->
+          </div> <!--/#overview-news-links-->
+
           <div class="partner-logos">
-            <div class="pager pager-with-tabs pager-no-history pager-auto-rotate">
+            <div class="pager pager-with-tabs pager-no-history pager-auto-rotate pager-auto-init">
               <div class="pager-content">
                 <div class="pager-page default-page">
                   <ul class="logos">
@@ -121,7 +137,7 @@
                     <li><img src="{{ media('img/firefox/partners/logos/light/kddi.png') }}" alt="KDDI" ></li>
 
                     <li><img src="{{ media('img/firefox/partners/logos/light/sprint.png') }}" alt="Sprint" ></li>
-                    <li><img src="{{ media('img/firefox/partners/logos/light/singtel.png') }}" alt="SingTel" ></li>
+                    <li><img src="{{ media('img/firefox/partners/logos/light/spreadtrum.png') }}" alt="Spreadtrum"></li>
                     <li><img src="{{ media('img/firefox/partners/logos/light/etisalat.png') }}" alt="Etisalat" ></li>
                     <li><img src="{{ media('img/firefox/partners/logos/light/koreatelecom.png') }}" alt="Korea Telecom" ></li>
                   </ul>
@@ -144,7 +160,7 @@
                     <li><img src="{{ media('img/firefox/partners/logos/marketplace/the-weather-channel.png') }}" alt="The Weather Channel"></li>
                     <li><img src="{{ media('img/firefox/partners/logos/marketplace/new-york-times.png') }}" alt="New York Times"></li>
 
-                    <li></li>{# to keep height from shifting #}
+                    <li><img src="{{ media('img/firefox/partners/logos/light/singtel.png') }}" alt="SingTel" ></li>
                   </ul>
                 </div>
               </div><!--/pager-content-->
@@ -156,23 +172,6 @@
           </div><!--/partner-logos-->
 
           <p id="more-partners">{{_('See more partners') }}</p>
-
-          <div id="overview-news-links">
-            <div id="overview-news-wrapper">
-              <img src="{{ media('img/firefox/partners/mwc-2014-banner.png') }}" alt="{{ _('Mobile World Congress 2014') }}">
-              <div id="overview-news">
-                <h3>{{ _('Recent news') }}</h3>
-                <ul>
-                  <li><a href="{{ locale_headline_url }}">{{ locale_headline_title }}</a></li>
-                </ul>
-              </div> <!--/#overview-news-->
-            </div> <!--/#overview-news-wrapper-->
-
-            <div id="overview-links">
-              <a class="fxos-devices-link" href="{{ url('firefox.os.devices') }}">{{ _('View available Firefox OS devices') }}</a>
-            </div> <!--/#overview-links-->
-          </div> <!--/#overview-news-links-->
-
         </div>
       </div>
     </section>
@@ -319,7 +318,7 @@
               <a href="https://mobilepartners.mozilla.org/" class="button">{{ _('Partner with us') }}</a>
             </p>
           </div>
-          <div class="marketplace-logos pager pager-with-tabs pager-no-history">
+          <div class="marketplace-logos pager pager-with-tabs pager-no-history pager-auto-init">
             <div class="pager-content">
               <div class="pager-page default-page">
                 <ul class="logos">
@@ -386,7 +385,7 @@
             </div>
             <div>
               <h4>{{ _('Have an app?') }}</h4>
-              <a href="https://developer.mozilla.org/zh-TW/docs/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F-840092-dup/Publishing/Submitting_an_app" rel="external">{{ _('Submit it to Firefox Marketplace today') }}</a>
+              <a href="https://developer.mozilla.org/docs/Apps/Publishing/Submitting_an_app" rel="external">{{ _('Submit it to Firefox Marketplace today') }}</a>
             </div>
           </div>
         </div>
