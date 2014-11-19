@@ -76,6 +76,16 @@ h2 {
       color: #FFFFFF;
     }
     padding: 12px 14px;
+    &.disabled {
+      &:link, &:visited {
+        background-image: linear-gradient(#CCC, #AAA);
+        box-shadow: none;
+        cursor: default;
+      }
+      &:hover, &:focus {
+        box-shadow: none;
+      }
+    }
   }
   .label {
     width: 120px;

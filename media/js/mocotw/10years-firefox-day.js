@@ -2,7 +2,8 @@
 
 $(function(){
 
-    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
+    var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/10years/firefox-family-award/';
+//    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
     var TICKET_BASE_URL = 'http://' + window.location.hostname + '/media/img/mocotw/10years/fx-day/tickets/';
     var mapUpdated = false;
 
@@ -41,6 +42,9 @@ $(function(){
                     $('.get-ticket').hide();
                     $('.show-ticket').show();
                 }
+                else if (ticket.result == 'ended') {
+                    alert('活動已結束。');
+                }
                 else {
                     alert('抱歉，取票時發生錯誤。');
                 }
@@ -48,7 +52,7 @@ $(function(){
         });
     }
 
-    $('.event .join, .event .early-join').click(function() {
+    $('.event .join:not(.disabled), .event .early-join').click(function() {
         showLoginBox();
     });
 
