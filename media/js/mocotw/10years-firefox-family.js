@@ -65,8 +65,7 @@ $(function(){
     var isOldIE = $html.hasClass('lt-ie10');
     var BASE_URL = 'http://' + window.location.hostname + '/10years/firefox-family/';
     var TICKET_BASE_URL = 'http://' + window.location.hostname + '/media/img/mocotw/10years/fx-day/tickets/';
-    var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/10years/firefox-family-award/';
-//    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
+    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
     var voted = true;
     var playing = false;
     var level = 0;

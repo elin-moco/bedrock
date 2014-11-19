@@ -2,8 +2,7 @@
 
 $(function(){
 
-    var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/10years/firefox-family-award/';
-//    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
+    var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
     var TICKET_BASE_URL = 'http://' + window.location.hostname + '/media/img/mocotw/10years/fx-day/tickets/';
     var mapUpdated = false;
 
