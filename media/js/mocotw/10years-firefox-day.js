@@ -41,6 +41,9 @@ $(function(){
                     $('.get-ticket').hide();
                     $('.show-ticket').show();
                 }
+                else if (ticket.result == 'ended') {
+                    alert('活動已結束。');
+                }
                 else {
                     alert('抱歉，取票時發生錯誤。');
                 }
@@ -48,7 +51,7 @@ $(function(){
         });
     }
 
-    $('.event .join, .event .early-join').click(function() {
+    $('.event .join:not(.disabled), .event .early-join').click(function() {
         showLoginBox();
     });
 

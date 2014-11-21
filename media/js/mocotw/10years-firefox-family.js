@@ -66,7 +66,7 @@ $(function(){
     var BASE_URL = 'http://' + window.location.hostname + '/10years/firefox-family/';
     var TICKET_BASE_URL = 'http://' + window.location.hostname + '/media/img/mocotw/10years/fx-day/tickets/';
     var API_URL = 'https://firefox.club.tw/campaign/10years/firefox-family-award/';
-    var voted = false;
+    var voted = true;
     var playing = false;
     var level = 0;
     var day;
@@ -166,6 +166,9 @@ $(function(){
                         $('#wheel-of-fortune .plate').attr('class', 'plate ' + price.slug);
                     }
                 }
+                else if (price.result == 'ended') {
+                    alert('活動已結束。');
+                }
                 else {
                     alert('抱歉，抽獎時發生錯誤。');
                 }
@@ -194,6 +197,9 @@ $(function(){
                             TICKET_BASE_URL + ticket.session.replace(/[/:\s]/g, '') + '-' + ticket.code + '.png');
                     $('.get-ticket').hide();
                     $('.show-ticket').show();
+                }
+                else if (ticket.result == 'ended') {
+                    alert('活動已結束。');
                 }
                 else {
                     alert('抱歉，取票時發生錯誤。');
