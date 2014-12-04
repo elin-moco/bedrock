@@ -199,4 +199,10 @@ urlpatterns = patterns(
     # page('10years/firefox-family', 'mocotw/10years/firefox-family.html'),
     page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 
+    # bug 1093985, 1105664, remove this once the Firefox Hello product page is ready
+
+    redirect(r'^firefox/hello/?.*$',
+             'https://support.mozilla.org/kb/respond-firefox-hello-invitation-guest-mode'),
+    redirect(r'^firefox/[3-9]\d\.\d(?:a1|a2|beta|\.\d)?/hello/start/?$',
+             'https://support.mozilla.org/kb/firefox-hello-make-and-receive-calls-guest-mode'),
 )
