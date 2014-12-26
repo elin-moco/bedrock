@@ -196,45 +196,4 @@
     </aside>
   </div>
 
-  <div id="newsletter-subscription">
-    {{ email_newsletter_form(include_country=False, include_language=False) }}
-  </div>
-
-  <div class="extra">
-    <div class="container">
-    <section class="extra-news">
-      <a href="http://myfirefox.com.tw/videos/"><h2>狐電視</h2></a>
-      <ul class="hfeed cycle-slideshow" data-cycle-timeout="6000" data-cycle-slides="> .hentry" data-cycle-fx="carousel" data-cycle-carousel-fluid="true" data-cycle-carousel-vertical="true" data-cycle-next=".news-buttons .btn-next" data-cycle-prev=".news-buttons .btn-prev" data-cycle-carousel-visible="1" data-cycle-pause-on-hover="true">
-        {% for video in videos %}
-        <li class="hentry">
-          <h3 class="entry-title">
-            <a class="url go" rel="bookmark external" href="{{ video['post_link'] }}">{{ video['post_title'] }}</a>
-          </h3>
-        </li>
-        {% endfor %}
-      </ul>
-      <p class="control"><a href="http://myfirefox.com.tw/videos/" class="go">更多影片</a></p>
-    </section>
-    <aside class="extra-links">
-      <ul>
-        <li>
-          <a href='http://myfirefox.com.tw/' class="myfx" target="_blank" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'index_icon', '']);">
-            <h4>MyFirefox</h4>
-            <p>台灣版Firefox全新正體中文首頁，<br>讓您每天都能享受最新科技新知</p>
-          </a>
-        </li>
-        <li>
-          <a href='https://tw.mall.yahoo.com/store/firefox' class="shop" target="_blank" onClick="_gaq.push(['_trackEvent', 'Myfirefox', 'store_icon', '']);">
-            <h4>火狐商城</h4>
-            <p>Mozilla Taiwan 官方唯一網路商店。<br>每季推出酷 Firefox 周邊商品！</p>
-          </a>
-        </li>
-      </ul>
-    </aside>
-    </div>
-  </div>
-
-
 {% endblock %}
-
-{% block email_form %}{% endblock %}
