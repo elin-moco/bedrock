@@ -6,7 +6,7 @@ $(document).ready(function() {
     var $logo = $('#masthead h2 img');
     var logoOriginalSrc = $logo.attr('src');
 
-    var pager = Mozilla.Pager.rootPagers[0];
+    var pager = Mozilla.Pager.pagers[0];
     var selected_href = false;
 
     var gaq_track = function(category, action, label) {
@@ -26,19 +26,19 @@ $(document).ready(function() {
         gaq_track('channel interaction', 'click', $(a).attr('url'));
         window.open($(a).attr('url'));
     }
-
+    var $body = $('body');
     pager.$container.bind('changePage', function(e, tab) {
         if (pager.currentPage.id == 'nightly') {
-            $('body').addClass('night');
-            $('body').removeClass('sky');
+            $body.addClass('night');
+            $body.removeClass('sky');
             $logo.attr('src', $logo.attr('data-inverse-src'));
         } else if (pager.currentPage.id == 'aurora') {
-            $('body').addClass('night');
-            $('body').removeClass('sky');
+            $body.addClass('night');
+            $body.removeClass('sky');
             $logo.attr('src', $logo.attr('data-inverse-src'));
         } else {
-            $('body').addClass('sky');
-            $('body').removeClass('night');
+            $body.addClass('sky');
+            $body.removeClass('night');
             $logo.attr('src', logoOriginalSrc);
         }
         gaq_track('channel interaction', 'changePage', pager.currentPage.id);
@@ -61,43 +61,43 @@ $(document).ready(function() {
 
     // init
     if (pager.currentPage.id == 'nightly') {
-        $('body').addClass('night');
-        $('body').removeClass('sky');
+        $body.addClass('night');
+        $body.removeClass('sky');
         $logo.attr('src', $logo.attr('data-inverse-src'));
     } else if (pager.currentPage.id == 'aurora') {
-        $('body').addClass('night');
-        $('body').removeClass('sky');
+        $body.addClass('night');
+        $body.removeClass('sky');
         $logo.attr('src', $logo.attr('data-inverse-src'));
     } else {
-        $('body').addClass('sky');
-        $('body').removeClass('night');
+        $body.addClass('sky');
+        $body.removeClass('night');
         $logo.attr('src', logoOriginalSrc);
     }
 
     $('.pager-tabs a.selected').bind('click.outgoing', function() {
         redirect(this);
     });
-    $('#beta-desktop .download-link').click(function(e){
+    $('#beta-desktop').find('.download-link').click(function(e){
         e.preventDefault();
         track_and_redirect('beta download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#beta-mobile .download-link').click(function(e){
+    $('#beta-mobile').find('.download-link').click(function(e){
         e.preventDefault();
         track_and_redirect('mobile beta download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#aurora-desktop .download-link').click(function(e){
+    $('#aurora-desktop').find('.download-link').click(function(e){
         e.preventDefault();
         track_and_redirect('aurora download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#aurora-mobile .download-link').click(function(e){
+    $('#aurora-mobile').find('.download-link').click(function(e){
         e.preventDefault();
         track_and_redirect('mobile aurora download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#nightly-desktop .download-link').click(function(e){
+    $('#nightly-desktop').find('.download-link').click(function(e){
         e.preventDefault();
         track_and_redirect('nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
-    $('#nightly-mobile .download-link').click(function(e){
+    $('#nightly-mobile').find('.download-link').click(function(e){
         e.preventDefault();
         track_and_redirect('mobile nightly download', 'click', $(this).attr('href'), $(this).attr('href'));
 	});
