@@ -296,6 +296,8 @@ MINIFY_BUNDLES = {
         'firefox_os_devices': (
             'css/libs/tipsy.css',
             'css/base/mozilla-modal.less',
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/os/get_device.less',
             'css/firefox/os/devices.less',
         ),
         'firefox_os_devices_ie': (
@@ -307,6 +309,11 @@ MINIFY_BUNDLES = {
         ),
         'firefox_os_mwc_2014_preview_ie7': (
             'css/firefox/os/mwc-2014-preview-ie7.less',
+        ),
+        'firefox_os_tv': (
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/template-resp.less',
+            'css/firefox/os/tv.less',
         ),
         'firefox_releases_index': (
             'css/firefox/releases-index.less',
@@ -573,14 +580,15 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.validate.js',
         ),
         'common': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/base/global.js',
             'js/base/footer-email-form.js',
             'js/base/mozilla-input-placeholder.js',
             'js/base/mozilla-image-helper.js',
         ),
         'common-resp': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
+            'js/libs/spin.min.js',
             'js/base/global.js',
             # 'js/sandstone/nav.js',
             #'js/base/nav-main-resp.js',
@@ -624,7 +632,8 @@ MINIFY_BUNDLES = {
             'js/mocotw/highlight-zh-tw.js',
         ),
         'firefox-resp': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
+            'js/libs/spin.min.js',
             'js/base/global.js',
             # 'js/sandstone/nav.js',
             # 'js/base/nav-main-resp.js',
@@ -711,6 +720,9 @@ MINIFY_BUNDLES = {
             'js/base/mozilla-modal.js',
             'js/firefox/mwc-2014-map.js',
             'js/firefox/os/mwc-2014-preview.js',
+        ),
+        'firefox_os_tv': (
+            'js/base/mozilla-pager.js',
         ),
         'firefox_faq': (
             'js/base/mozilla-accordion.js',

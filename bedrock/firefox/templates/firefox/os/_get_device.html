@@ -2,15 +2,235 @@
   <div id="get-device" class="modal-content">
     <div class="content">
       <h2>{{_('We work with a number of providers to offer Firefox OS on a variety of devices.')}}</h2>
-
-      <p id="provider-text-nojs">
-        {% trans link=url('firefox.os.faq') %}
-        Please read our FAQ for a <a href="{{link}}">full list of providers in available countries</a>.
-        {% endtrans %}
-      </p>
       <p id="provider-text-multi">{{_('Choose one from the list below to get a Firefox OS smartphone in your country.')}}</p>
       <p id="provider-text-single">{{_('Click on the provider below to get a Firefox OS smartphone in your country.')}}</p>
-      <p id="provider-links"></p>
+      <section id="provider-links">
+        <div class="provider" data-country="au">
+          <h3>{{ _('Australia') }}</h3>
+          <ul>
+            <li><a class="jbhifi" href="https://www.jbhifi.com.au/phones/Outright-Mobile-Handsets/zte/zte-open-c-handset-grey/624980/">ZTE Open C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="bd">
+          <h3>{{ _('Bangladesh') }}</h3>
+          <ul>
+            <li><a class="grameenphone" href="http://www.grameenphone.com/personal/offers/pre-book-symphony-gofox-f15">Symphony GoFox F15</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="be">
+          <h3>{{_('Belgium')}}</h3>
+          <ul>
+            <li><a class="ldlc" href="http://www.ldlc.be/fiche/PB00171571.html">LDLC</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="br">
+          <h3>{{_('Brazil')}}</h3>
+          <ul>
+            <li><a class="vivo" href="http://www.vivo.com.br/firefox">Vivo</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="cl">
+          <h3>{{_('Chile')}}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.movistar.cl/equipos/catalogo/producto/847/contrato/">Alcatel One Touch Fire</a></li>
+            <li><a class="movistar" href="http://www.movistar.cl/equipos/alcatel-fire-c">Alcatel One Touch Fire C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="ch">
+          <h3>{{_('Switzerland')}}</h3>
+          <ul>
+            <li><a class="ldlc" href="http://www.ldlc.ch/fiche/PB00171571.html">LDLC</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="co">
+          <h3>{{_('Colombia')}}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.movistar.co">Movistar</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="cr">
+          <h3>{{ _('Costa Rica') }}</h3>
+          <ul>
+            <li><a class="movistar" href="http://movistar.cr/tienda/Marcas/Alcatel/ALCATEL-FIRE-C/p/4ALCATEL_FIRE_C">Alcatel One Touch Fire C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="cz">
+          <h3>{{ _('Czech Republic') }}</h3>
+          <ul>
+            <li><a class="t-mobile" href="https://www.t-mobile.cz/telefony/detail-zarizeni/-/zarizeni/Alcatel/ALCATEL.ONETOUCH.FIRE.E/PO18220/?preferInstallmentPayment=true">Alcatel One Touch Fire E</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="de">
+          <h3>{{_('Germany')}}</h3>
+          <ul>
+            <li><a class="alcatel-one-touch-fire" href="http://aktion.congstar.de/firefox-os">Alcatel One Touch Fire</a></li>
+            <li><a class="alcatel-one-touch-fire-e" href="http://www.congstar.de/handy/alcatel-one-touch-fire-e-braun/">Alcatel One Touch Fire E</a></li>
+            <li><a class="alcatel-one-touch-fire o2" href="http://www.o2online.de/handy/alcatel-onetouch-fire-e/">Alcatel One Touch Fire E</a></li>
+            <li><a class="zte-open-c" href="http://www.ebay.de/itm/eBay-Exklusiv-ZTE-OPEN-C-Neuesten-Firefox-OS-DualCore-1-2-GHz-4-0-3G-Smartphone-/131151681046?ssPageName=STRK:MESE:IT">ZTE Open C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="es">
+          <h3>{{_('Spain')}}</h3>
+          <ul>
+            <li><a class="movistar" href="https://www.movistar.es/particulares/movil/moviles/ficha/alcatel-ot-fire-c?pestana=4&amp;desc=camp">Alcatel One Touch Fire C</a></li>
+            <li><a class="movistar" href="http://www.movistar.es/firefoxos?aff=aff-firefoxOS1">ZTE Open</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="fr">
+          <h3>{{_('France')}}</h3>
+          <ul>
+            <li><a class="zte-france" href="http://www.ztefrance.com/firefox-open-c.php">ZTE France</a></li>
+            <li><a class="e-leclerc" href="http://www.leclercmobile.fr/telephones-mobiles/notre-gamme/mobiles/Zte_Open-C.aspx">E.Leclerc</a></li>
+            <li><a class="darty" href="http://www.darty.com/nav/achat/gps_communication/telephone_mobile/telephone_portable/zte_open_c_bl_ls.html">Darty</a></li>
+            <li><a class="ldlc" href="http://www.ldlc.com/fiche/PB00171571.html">LDLC</a></li>
+            <li><a class="materiel-net" href="http://www.materiel.net/smartphone/zte-open-c-bleu-107188.html">Materiel.net</a></li>
+            <li><a class="cdiscount" href="http://www.cdiscount.com/telephonie/telephone-mobile/zte-open-c-bleu/f-144040207-zteopencbl.html">Cdiscount</a></li>
+            <li><a class="rue-du-commerce" href="http://www.rueducommerce.fr/Telephonie/Smartphone/Smartphone-classique/ZTE/4926226-Open-C-bleu.htm">Rue du commerce</a></li>
+            <li><a class="webdistrib" href="http://www.webdistrib.com/cat/Smartphone-ZTE-Open-C-Night-Blue-Firefox-OS-__p_925735.html">Webdistrib</a></li>
+            <li><a class="mistergooddeal" href="http://www.mistergooddeal.com/telephone-mobile/telephone/zte-open-c-bleu.htm">Mistergooddeal</a></li>
+            <li><a class="topachat" href="http://www.topachat.com/pages/detail2_cat_est_telephonie_puis_rubrique_est_wt_smartp_puis_ref_est_tl10012764.html">Top Achat</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="gb">
+          <h3>{{_('United Kingdom')}}</h3>
+          <ul>
+            <li><a class="ebay" href="http://item.ebay.co.uk/171301269724">eBay</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="gr">
+          <h3>{{_('Greece')}}</h3>
+          <ul>
+            <li><a class="cosmote" href="http://www.cosmote.gr/cosmoportal/cosmote.portal?_nfpb=true&amp;_pageLabel=HDV&amp;sku=20290038&amp;s=0">Alcatel One Touch Fire</a></li>
+            <li><a class="cosmote" href="http://www.cosmote.gr/cosmoportal/cosmote.portal?_nfpb=true&amp;_pageLabel=HDV&amp;sku=20294895">Alcatel One Touch Fire C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="gt">
+          <h3>{{ _('Guatemala') }}</h3>
+          <ul>
+            <li><a class="movistar" href="https://www.tienda.movistar.com.gt/interno/seguimiento/detalleTerminal.php?idTerm=150">ZTE Open II</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="hu">
+          <h3>{{_('Hungary')}}</h3>
+          <ul>
+            <li><a class="t-mobile" href="https://webshop.t-mobile.hu/webapp/wcs/stores/ProductDisplay?catalogId=2001&amp;storeId=2001&amp;langId=-11&amp;productId=644566">Alcatel One Touch Fire</a></li>
+            <li><a class="t-mobile" href="https://webshop.t-mobile.hu/webapp/wcs/stores/ProductDisplay?catalogId=2001&amp;storeId=2001&amp;langId=-11&amp;productId=737628">Alcatel One Touch Fire E</a></li>
+            <li><a class="telenor" href="http://www.telenor.hu/mobiltelefon/alcatel/one-touch-fire">Telenor</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="it">
+          <h3>{{_('Italy')}}</h3>
+          <ul>
+            <li><a class="tim" href="http://www.tim.it/prodotti/alcatel-one-touch-fire-mozilla-orange">TIM</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="in">
+          <h3>{{ _('India') }}</h3>
+          <ul>
+            <li><a class="intex" href="http://www.snapdeal.com/product/intex-cloud-fx/1356760619">Intex</a></li>
+            <li><a class="spice" href="http://www.snapdeal.com/product/spice-fire-one-mifx1/531126742">Spice Fire One MI FX1</a></li>
+            <li><a class="flipkart" href="http://www.flipkart.com/alcatel-onetouch-firec-4020d/p/itmdys6qffvs6tfd?pid=MOBDYS6NFPNRJUKF&amp;srno=b_10&amp;ref=aa7b01a4-0479-4661-a1e8-19033b513612">Alcatel One Touch Fire C 2G</a></li>
+            <li><a class="zen" href="http://www.homeshop18.com/zen-fire-fox-phone-u105/mobiles/mobile-phones/product:32873765/cid:3027/">Zen 105 Fire</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="jp">
+          <h3>{{ _('Japan') }}</h3>
+          <ul>
+            <li>
+              <a class="au" href="http://au-fx.kddi.com/products/">au Fx0</a>
+            </li>
+          </ul>
+        </div>
+        <div class="provider" data-country="lu">
+          <h3>{{_('Luxembourg')}}</h3>
+          <ul>
+            <li><a class="ldlc" href="http://www.ldlc.lu/fiche/PB00171571.html">LDLC</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="me">
+          <h3>{{_('Montenegro')}}</h3>
+          <ul>
+            <li><a class="telenor" href="http://www.telenor.me/sr/Privatni-korisnici/Uredjaji/Mobilni-telefoni/Alcatel/OT_Fire">Alcatel One Touch Fire</a></li>
+            <li><a class="t-mobile" href="http://www.telekom.me/product-details-updated.nspx?phoneid=673&amp;userType=2">Alcatel One Touch Fire C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="mk">
+          <h3>{{ _('Macedonia') }}</h3>
+          <ul>
+            <li><a class="t-mobile" href="http://www.t-mobile.mk/public/detali-za-telefon.nspx?phoneid=17162&amp;tariff=592&amp;subscription=2&amp;duration=2">Alcatel One Touch Fire C</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="mx">
+          <h3>{{_('Mexico')}}</h3>
+          <ul>
+            <li><a class="movistar" href="https://www.movistar.com.mx/catalogo">Movistar</a></li>
+            <li><a class="telcel" href="http://www.telcel.com/portal/equipos/begin.do?idEquipo=3618">Telcel</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="ni">
+          <h3>{{ _('Nicaragua') }}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.movistar.com.ni/Personas/Equipos/DetalleEquipo.aspx?Model=361">ZTE Open II</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="pa">
+          <h3>{{ _('Panama') }}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.movistar.com.pa/">ZTE Open II</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="pe">
+          <h3>{{_('Peru')}}</h3>
+          <ul>
+            <li><a class="movistar" href="http://catalogo.movistar.com.pe/alcatel-ot-4019-fire-c">Alcatel One Touch Fire C</a></li>
+            <li><a class="movistar" href="http://catalogo.movistar.com.pe/zte-open-2">ZTE Open II</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="ph">
+          <h3>{{ _('Philippines') }}</h3>
+          <ul>
+            <li><a class="cherry-mobile" href="http://www.cherrymobile.com.ph/products/smart-social/ace">Cherry Mobile Ace</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="pl">
+          <h3>{{_('Poland')}}</h3>
+          <ul>
+            <li><a class="t-mobile" href="http://www.t-mobile.pl/pl/firefox">T-Mobile</a></li>
+            <li><a class="t-mobile" href="http://www.t-mobile.pl/telefony-i-urzadzenia/telefony/cat10019.chtml">Alcatel One Touch Fire E</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="rs">
+          <h3>{{_('Serbia')}}</h3>
+          <ul>
+            <li><a class="telenor" href="https://www.telenor.rs/sr/Privatni-korisnici/webshop/Mobilni-telefoni/Alcatel/One_Touch_Fire">Telenor</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="ru">
+          <h3>{{_('Russia')}}</h3>
+          <ul>
+            <li><a class="ebay" href="http://www.ebay.com/itm/eBay-Exclusive-ZTE-OPEN-C-Dual-Core-4-Latest-Firefox-OS-3G-Unlocked-Smartphone-/111326263156?ssPageName=STRK:MESE:IT">eBay</a></li>
+            <li><a class="megafon" href="http://shop.megafon.ru/pathfinder.php?id=87125">MegaFon</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="sv">
+          <h3>{{_('El Salvador')}}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.movistar.com.sv/sv/root/catalogo/telefono.php?terminal=183">{{_('Movistar')}}</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="uy">
+          <h3>{{_('Uruguay')}}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.firefoxos.movistar.com.uy/">Movistar</a></li>
+          </ul>
+        </div>
+        <div class="provider" data-country="ve">
+          <h3>{{_('Venezuela')}}</h3>
+          <ul>
+            <li><a class="movistar" href="http://www.movistar.com.ve/movistar_firefox/index.html">Movistar</a></li>
+          </ul>
+        </div>
+      </section>
     </div>
   </div>
 </div>

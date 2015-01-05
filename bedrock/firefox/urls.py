@@ -91,6 +91,7 @@ urlpatterns = patterns('',
 
     page('mwc', 'firefox/os/mwc-2014-preview.html'),
     page('firefox/os/devices', 'firefox/os/devices.html'),
+    page('firefox/os/devices/tv', 'firefox/os/tv.html'),
 
     url(releasenotes_re, views.release_notes, name='firefox.releasenotes'),
     url(mobile_releasenotes_re, views.release_notes, name='mobile.releasenotes'),
