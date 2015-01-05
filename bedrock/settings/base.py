@@ -558,7 +558,7 @@ MINIFY_BUNDLES = {
             'js/mocotw/about-space.js',
         ),
         'community-index': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.cycle2.min.js',
             'js/libs/jquery.cycle2.carousel.min.js',
@@ -567,7 +567,7 @@ MINIFY_BUNDLES = {
             'js/mozorg/contribute-form.js',
         ),
         'community-student-workshop': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/libs/jquery-ui.js',
             'js/libs/jquery.ui.datepicker-zh-TW.js',
             'js/mocotw/community-student-workshop.js',
@@ -597,7 +597,7 @@ MINIFY_BUNDLES = {
             'js/base/mozilla-image-helper.js',
         ),
         'unsubscribe': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/base/global.js',
             'js/base/mozilla-input-placeholder.js',
         ),
@@ -619,7 +619,7 @@ MINIFY_BUNDLES = {
             'js/base/mozilla-expanders.js',
         ),
         'firefox': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/base/global.js',
             # 'js/sandstone/nav.js',
             #'js/base/nav-main.js',
@@ -826,7 +826,7 @@ MINIFY_BUNDLES = {
             'js/marketplace/marketplace.js',
         ),
         'mozorg-resp': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             # 'js/nav-main.js',
             'js/base/global.js',
             #'js/base/nav-main-resp.js',
@@ -895,7 +895,7 @@ MINIFY_BUNDLES = {
             'js/firefox/partners/desktop.js',
         ),
         'facebookapps_redirect': (
-            'js/libs/jquery-1.7.1.min.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/facebookapps/redirect.js',
         ),
         'facebookapps_downloadtab': (

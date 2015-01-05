@@ -61,7 +61,12 @@
   <body id="{% block body_id %}{% endblock %}" class="html-{{ DIR }} sky lang-{{ LANG }}"{% block body_attrs %}{% endblock %}>
     {% include 'sandstone/tabzilla.html' %}
    <div id="body-wrapper" class="body-wrapper-default">
-    <div id="strings" {% block string_data %}{% endblock %}></div>
+    <div id="strings"
+         data-global-close="{{ _('Close') }}"
+         data-global-next="{{ _('Next') }}"
+         data-global-previous="{{ _('Previous') }}"
+         data-global-update-firefox="{{ _('Update your Firefox') }}"
+         {% block string_data %}{% endblock %}></div>
     <div id="outer-wrapper" class="slide-x">
     <div id="wrapper">
 
