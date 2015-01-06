@@ -315,7 +315,11 @@ def home(request, template):
         except Exception as e:
             print e
 
-    data = {'posts': posts, 'events': events, 'videos': videos}
+    data = {
+        'posts': posts if posts else (),
+        'events': events if events else (),
+        'videos': videos if videos else ()
+    }
     return l10n_utils.render(request, template, data)
 
 
