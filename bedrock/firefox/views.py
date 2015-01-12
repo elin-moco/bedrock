@@ -421,3 +421,15 @@ def release_notes(request, fx_version, product='Firefox'):
 @cache_page(15 * 60)
 def system_requirements(request, fx_version, product='Firefox'):
     return HttpResponseRedirect('https://www.mozilla.org/en-US/%s' % request.path)
+
+
+def hello(request):
+    videos = {
+        'de': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_german',
+        'en-US': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_english',
+        'es-ES': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_spanish',
+        'id': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_indonesian',
+        'pt-BR': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_portugese',
+        'zh-TW': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_chinese'
+    }
+    return l10n_utils.render(request, 'firefox/hello.html', {'video_url': videos.get(request.locale, '')})
