@@ -511,6 +511,11 @@ MINIFY_BUNDLES = {
             'css/base/mozilla-accordion.less',
             'css/firefox/android.less',
         ),
+        'firefox_hello': (
+            'css/sandstone/sandstone-resp.less',
+            'css/base/mozilla-modal.less',
+            'css/firefox/hello.less',
+        ),
         'firefox_independent': (
             'css/firefox/independent-splash.less',
             'css/firefox/independent.less',
@@ -747,6 +752,16 @@ MINIFY_BUNDLES = {
             'js/firefoxflicks/init.js',
             'js/firefoxflicks/search.js',
             'js/firefoxflicks/vote.js',
+        ),
+        'firefox_hello': (
+            'js/firefox/australis/australis-uitour.js',
+            'js/libs/modernizr.custom.cssanimations.js',
+            'js/base/mozilla-modal.js',
+            'js/firefox/hello.js',
+        ),
+        'firefox_hello_ie9': (
+            'js/libs/matchMedia.js',
+            'js/libs/matchMedia.addListener.js',
         ),
         'firefox_whatsnew_fxos': (
             'js/firefox/whatsnew-fxos.js',
