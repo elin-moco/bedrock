@@ -25,7 +25,7 @@ sitemaps = {
         0.9, 'weekly'),
     'firefox': ViewsSitemap(
         ['firefox.desktop.index', 'firefox.desktop.fast', 'firefox.desktop.customize', 'firefox.desktop.trust',
-         'firefox.developer', 'firefox.independent',
+         'firefox.developer', 'firefox.independent', 'firefox.tiles', 'firefox.desktop.tips',
          'firefox.fx', 'firefox.features', 'firefox.mobile.features', 'firefox.new', 'firefox.os.index'],
         0.8, 'monthly'),
     'firefox_details': ViewsSitemap(
@@ -59,7 +59,8 @@ sitemaps = {
     'misc': ViewsSitemap(
         ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about', 'mocotw.eoy2013',
          'mocotw.2013review', 'mocotw.shop-with-firefox', 'firefox.speed', 'mocotw.2013review',
-         'mocotw.10years.index', 'mocotw.10years.browser-survey-result', 'mocotw.10years.firefox-family', 'mocotw.10years.firefox-day'],
+         'mocotw.10years.index', 'mocotw.10years.browser-survey-result', 'mocotw.10years.firefox-family',
+         'mocotw.10years.firefox-day', 'privacy.privacy-day'],
         0.4, 'monthly'),
 }
 
