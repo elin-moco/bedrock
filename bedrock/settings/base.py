@@ -213,6 +213,13 @@ MINIFY_BUNDLES = {
         'firefox_channel': (
             'css/firefox/channel.less',
         ),
+        'firefox-dashboard': (
+            'css/sandstone/sandstone-resp.less',
+            'css/firefox/template-resp.less',
+            'css/base/mozilla-accordion.less',
+            # 'css/firefox/menu-resp.less',
+            'css/firefox/dashboard.less',
+        ),
         'firefox_central': (
             'css/sandstone/video.less',
             'css/firefox/central.less',
@@ -238,6 +245,9 @@ MINIFY_BUNDLES = {
             'css/firefox/template-resp.less',
             'css/sandstone/video-resp.less',
             'css/firefox/mobile-sms.less',
+        ),
+        'firefox-tiles': (
+            'css/firefox/tiles.less',
         ),
         'firefox_faq': (
             'css/firefox/faq.less',
@@ -374,9 +384,10 @@ MINIFY_BUNDLES = {
             'css/sandstone/sandstone-resp.less',
             'css/firefox/desktop/trust.less',
         ),
-        'firefox_desktop_taiwan': (
+        'firefox_desktop_tips': (
             'css/sandstone/sandstone-resp.less',
-            'css/mocotw/firefox-desktop.less',
+            'css/libs/socialshare/socialshare.less',
+            'css/firefox/desktop/tips.less',
         ),
         'installer_help': (
             'css/firefox/template-resp.less',
@@ -430,6 +441,11 @@ MINIFY_BUNDLES = {
         ),
         'privacy': (
             'css/privacy/privacy.less',
+        ),
+        'privacy-day': (
+            'css/sandstone/sandstone-resp.less',
+            'css/base/mozilla-share-cta.less',
+            'css/privacy/privacy-day.less',
         ),
         'fb_privacy': (
             'css/privacy/fb-privacy.less',
@@ -623,6 +639,10 @@ MINIFY_BUNDLES = {
         'expanders': (
             'js/base/mozilla-expanders.js',
         ),
+        'accordion': (
+            'js/base/mozilla-accordion.js',
+            'js/base/mozilla-accordion-gatrack.js',
+        ),
         'firefox': (
             'js/libs/jquery-1.11.0.min.js',
             'js/base/global.js',
@@ -808,10 +828,11 @@ MINIFY_BUNDLES = {
             'js/firefox/desktop/intro-anim.js',
             'js/firefox/desktop/index.js',
         ),
-        'firefox_desktop_taiwan': (
-            'js/libs/jquery.waypoints.min.js',
-            'js/firefox/desktop/common.js',
-            'js/mocotw/firefox-desktop.js',
+        'firefox_desktop_tips': (
+            'js/base/mozilla-pager.js',
+            'js/libs/hammer.1.1.2.min.js',
+            'js/libs/socialshare.min.js',
+            'js/firefox/desktop/tips.js',
         ),
         'geolocation': (
             'js/libs/jquery.nyroModal.pack.js',
@@ -869,6 +890,13 @@ MINIFY_BUNDLES = {
         ),
         'privacy-firefoxos': (
             'js/privacy_firefoxos.js',
+        ),
+        'privacy-day': (
+            'js/base/mozilla-pager.js',
+            'js/base/mozilla-share-cta.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/privacy/privacy-day.js',
         ),
         'styleguide': (
             'js/styleguide/styleguide.js',

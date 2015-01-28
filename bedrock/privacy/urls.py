@@ -8,6 +8,7 @@ from bedrock.mozorg.util import page
 from bedrock.privacy import views
 
 urlpatterns = patterns('',
+    page('/tips', 'privacy/privacy-day.html'),
     page('/policies/firefox', 'privacy/firefox.html'),
     page('/policies/websites', 'privacy/websites.html'),
     page('/policies/thunderbird', 'privacy/thunderbird.html'),

@@ -426,6 +426,35 @@
     }
 }
 
+.leading-arrow() {
+    &:before {
+        content: "« "; /* laquo nbsp */
+        white-space: nowrap;
+    }
+}
+
+// Make a button look like an anchor
+.link-button() {
+    border: none;
+    background: transparent;
+    color: @linkBlue;
+    .font-size(@baseFontSize);
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+    .open-sans();
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        color: darken(@linkBlue, 10%);
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
 // A helper mixin for applying high-resolution background images (http://www.retinajs.com)
 // File-names should follow:
 // example.png
