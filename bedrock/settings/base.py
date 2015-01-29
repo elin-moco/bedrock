@@ -885,7 +885,6 @@ MINIFY_BUNDLES = {
             'js/plugincheck/check-plugins.js',
         ),
         'privacy': (
-            'js/base/mozilla-pager.js',
             'js/privacy/privacy.js',
         ),
         'privacy-firefoxos': (
