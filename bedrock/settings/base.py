@@ -501,6 +501,9 @@ MINIFY_BUNDLES = {
         'eoy2013': (
             'css/mocotw/eoy2013.less',
         ),
+        '2014review': (
+            'css/mocotw/2014review.less',
+        ),
         '2013review': (
             'css/mocotw/2013review.less',
         ),
@@ -932,6 +935,14 @@ MINIFY_BUNDLES = {
             'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.color.js',
             'js/mocotw/eoy2013.js',
+        ),
+        '2014review': (
+            'js/libs/enquire.min.js',
+            'js/libs/index.js',
+            'js/libs/jquery.easing.js',
+            'js/libs/jquery.scrollpath.js',
+            'js/libs/prefixfree.min.js',
+            'js/mocotw/2014review.js',
         ),
         '2013review': (
             'js/libs/enquire.min.js',

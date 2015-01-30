@@ -1,0 +1,490 @@
+{% extends "mocotw/base-resp.html" %}
+
+{% from 'macros.html' import facebook_share_url, gplus_share_url, plurk_share_url %}
+
+{% block page_title %}Mozilla Taiwan 2014 精彩回顧{% endblock %}
+{% block page_desc %}Mozilla Taiwan 2014 年的精彩活動回顧，玩遊戲送紅包袋！{% endblock %}
+{% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/2013review/video.png') }}{% endblock %}
+{% block body_class %}sky{% endblock %}
+
+{% block extrahead %}
+  {{ css('2014review') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('2014review') }}
+{% endblock %}
+
+{% block site_header_nav %}
+{% endblock %}
+
+{% block site_header_logo %}
+{% endblock %}
+
+{% block content %}
+  <div id="main-content">
+		<div class="land">
+      <div class="track">
+        <div class="map"></div>
+
+        <div id="firefox-mark" class="section-mark">Firefox</div>
+        <div id="firefoxos-mark" class="section-mark">Firefox OS</div>
+        <div id="community-mark" class="section-mark">Community</div>
+        <div id="openweb-mark" class="section-mark">Open Web</div>
+        <div id="blogs-mark" class="section-mark">Blogs</div>
+
+        <div id="b1-1" class="board">
+          <div class="ad firefox">
+            <a class="record" target="_blank" href="https://www.flickr.com/photos/mozillataiwan/sets/72157642236529605/">
+              <h3>Mozilla 首次參與台灣校園徵才</h3>
+              <ul>
+                <li>首次參與台灣校園徵才活動。</li>
+                <li>在台灣大學、清華大學與交通大學三場活動中，吸引上千名學生與專業人才參與。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b1-2" class="board">
+          <div class="ad firefox">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/5491/mozilla-introduces-the-most-customizable-firefox-ever-with-an-elegant-new-design">
+              <h3>發表全新改版 Firefox</h3>
+              <ul>
+                <li>正式發表 3 年以來全新改版的 Firefox。</li>
+                <li>首度內建 Firefox Accounts，將 Firefox 帳號隨身帶著走。</li>
+                <li>此一新版包含流暢且有趣新設計、新選單，與新自訂功能。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b1-3" class="board">
+          <div class="ad firefox">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6679/firefox-developer-edition">
+              <h3>首度推出 Developers 版 Firefox</h3>
+              <ul>
+                <li>為慶祝 Firefox 十歲生日，Mozilla發表首款專為開發者打造的瀏覽器。</li>
+                <li>開發者版本可讓開發者對網頁進行除錯，包含如 WebIDE 與 Firefox Tools Adapter 的強大新工具。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b1-4" class="board">
+          <div class="ad firefox">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6985/firefox-hello">
+              <h3>Firefox Hello 問世</h3>
+              <ul>
+                <li>WebRTC架構的視訊＼音訊功能「Firefox Hello」現身。</li>
+                <li>使用者不須另外下載軟體或建立帳戶，也能撥打免費語音或視訊電話。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b1-5" class="board">
+          <div class="ad firefox">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6782/firefox10th">
+              <h3>台灣與全球 Firefox 歡慶十歲生日</h3>
+              <ul>
+                <li>Firefox 紀念版與開發者版上線。</li>
+                <li>Firefox十周年網路自由日系列活動『幸福的狐家元件』以及於華山文創產業園。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-1" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/5003/firefox-os-unleashes-the-future-of-mobile">
+              <h3>Firefox OS 於 MWC 發表最新發展成果</h3>
+              <ul>
+                <li>公佈 7 款全新 Firefox OS 行動裝置。</li>
+                <li>全球 21 家電信商宣佈支援 Firefox OS。</li>
+                <li>更高效能 FIREFOX OS 裝置問世；改寫入門級智慧手機定義。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-2" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/5684/pre-orders-start-today-for-flame">
+              <h3>首款 Firefox OS 開發手機 Flame 開賣</h3>
+              <ul>
+                <li>為第一支 Firefox OS「參考平台手機」。</li>
+                <li>Flame具備中階手機的規格，主要針對開發者與貢獻者社群所設計。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-3" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/5740/firefox-os-cooperation-chunghwa-telecom">
+              <h3>2014 亞洲通訊博覽會 (MAE 2014)</h3>
+              <ul>
+                <li>參與於上海舉行的MAE，與中華電信簽合作備忘錄，Open Web 陣營再下一城。</li>
+                <li>宣佈首批平價 Firefox OS 智慧型手機即將於印度上巿。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-4" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="https://www.youtube.com/watch?v=1TmovZuTdrE">
+              <h3>年度媒體茶會</h3>
+              <ul>
+                <li>首度揭露Firefox OS 研發中心重鎮與台灣分公司最新發展，吸引科技與產業線重要媒體踴躍出席。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-5" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6399/matchstick-brings-firefox-os-to-your-hdtv">
+              <h3>首款 Firefox OS 電視棒現身</h3>
+              <ul>
+                <li>新創公司 MathStick, 配合使用開放程式碼技術，開發出第一個 Firefox OS  HDMI 電視棒。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-6" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6147/first-firefox-os-smartphones-available-in-india-this-week">
+              <h3>Firefox OS 手機印度開賣</h3>
+              <ul>
+                <li>首度進入亞洲巿場，鎖定智慧型手機首次使用者。</li>
+                <li>改寫入門等級智慧型手機定義。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-7" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6852/firefox-os-nearly-30-countries">
+              <h3>Firefox 進軍近 30 國</h3>
+              <ul>
+                <li>中美洲已全境上巿，非洲即將入列。</li>
+                <li>全球最親民價格的智慧型手機，已於菲律賓上巿。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b2-8" class="board">
+          <div class="ad firefoxos">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6893/kddi-first-firefox-os-in-japan">
+              <h3>Firefox 首款高階手機於日本上巿</h3>
+              <ul>
+                <li>Mozilla與KDDI 共同發表首款 Firefox OS 高階智慧手機「Fx0」。</li>
+                <li>由知名設計師吉岡德仁 (Tokujin Yoshioka) 所設計，支援 4G LTE、NFC、WebRTC 等。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b3-1" class="board">
+          <div class="ad community">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/5975/mozilla_at_coscup_2014">
+              <h3>COSCUP 開源人年會</h3>
+              <ul>
+                <li>謀智台客編輯 gasolin 參與議程分享 “Firefox OS －大型開放原始碼專案是怎麼煉成的” 帶來熱烈回響！</li>
+                <li>熱情的開源人參觀攤位，了解 Firefox OS 手機與 Mozilla；超過百位朋友訂閱 Firefox 電子報。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b3-2" class="board">
+          <div class="ad community">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6500/jsdc-2014">
+              <h3>JavaScript 年度盛會 – JSDC 2014 研討會</h3>
+              <ul>
+                <li>Firefox OS 手機高人氣！「 Firefox 十週年 – 網路自由日」活動也創造高詢問度。</li>
+                <li>Mozilla Firefox OS 開發工程師 Greg 所主講議程 「Functional JavaScript, why or why not?」聽眾爆滿，現場座無虛席。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b3-3" class="board">
+          <div class="ad community">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6554/fsa-midyear-gathering">
+              <h3>校園大使年中聚</h3>
+              <ul>
+                <li>過往及現任的 Firefox 校園大使相見歡！</li>
+                <li>分組拼豆活動、小任務與Appmaker 競賽，考驗創意與團隊默契。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b3-4" class="board">
+          <div class="ad community">
+            <a class="record" target="_blank" href="https://www.youtube.com/watch?v=LUxla-JYCIQ">
+              <h3>美國小學生企業參訪</h3>
+              <ul>
+                <li>分組拼豆活動、小任務與Appmaker 競賽，考驗創意與團隊默契。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b3-5" class="board">
+          <div class="ad community">
+            <a class="record" target="_blank" href="https://www.youtube.com/watch?v=LUxla-JYCIQ">
+              <h3>摩茲工寮搬新家</h3>
+              <ul>
+                <li>由社群共同管理的Mozilla空間。</li>
+                <li>位於八德路，靠近華山藝文中心。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b4-1" class="board">
+          <div class="ad openweb">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6521/play-awesome-indie-games-directly-in-firefox">
+              <h3>Mozilla 與遊戲平台 Humble Bundle 合作</h3>
+              <ul>
+                <li>Mozilla 率先開發的 asm.js技術，讓開發者能提供高品質、免外掛的線上遊戲。</li>
+                <li>Firefox 使用者可直接體驗 8 款高人氣獨立製作遊戲。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b4-2" class="board">
+          <div class="ad openweb">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6635/html5-reaches-the-recommendation-stage">
+              <h3>W3C 宣佈 HTML5 進入建議階段</h3>
+              <ul>
+                <li>HTML5已列入 W3C 建議公告；也是成為 W3C 標準前的最後階段。</li>
+                <li>Mozilla為創新開發 HTML5 的組織之一，「建議」階段呼應了 Mozilla 十年來念茲在茲的使命與心血。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b5-1" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="https://hacks.mozilla.org/2014/10/the-visibility-monitor-supported-by-gaia/">
+              <h3>謀智台客文章首度登上 Hacks</h3>
+              <ul>
+                <li>謀智台客 John Hu 撰寫的” The Visibility Monitor supported by Gaia,” 首度登上Hacks。</li>
+              </ul>
+            </a>
+          </div>
+        </div>
+        <div id="b5-2" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/5200">
+              <h3>Mozilla 與 Unity 共同發表 Unity 5</h3>
+            </a>
+          </div>
+        </div>
+        <div id="b5-3" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6757">
+              <h3>Firefox 新搜尋策略：強化選擇與創新</h3>
+            </a>
+          </div>
+        </div>
+        <div id="b5-4" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="http://blog.mozilla.com.tw/posts/6841">
+              <h3>Mozilla 與 Telenor 宣佈設立 WebRTC Competency Center</h3>
+            </a>
+          </div>
+        </div>
+        <div id="b5-5" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="http://tech.mozilla.com.tw/posts/4065">
+              <h3>從 JavaScript 的 Map/Reduce 談起 Functional Programming</h3>
+            </a>
+          </div>
+        </div>
+        <div id="b5-6" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="http://tech.mozilla.com.tw/posts/4667">
+              <h3>平價智慧手機大解密－Firefox OS 記憶體管理與優化</h3>
+            </a>
+          </div>
+        </div>
+        <div id="b5-7" class="board">
+          <div class="ad blog">
+            <a class="record" target="_blank" href="http://tech.mozilla.com.tw/posts/4759">
+              <h3>九個適應性設計小撇步，把你的網站打造成變形金剛！</h3>
+            </a>
+          </div>
+        </div>
+        <div id="i1-1" class="item"></div>
+        <div id="i1-2" class="item"></div>
+        <div id="i1-3" class="item"></div>
+        <div id="i1-4" class="item"></div>
+        <div id="i1-5" class="item"></div>
+        <div id="i2-1" class="item"></div>
+        <div id="i2-2" class="item"></div>
+        <div id="i2-3" class="item"></div>
+        <div id="i2-4" class="item"></div>
+        <div id="i2-5" class="item"></div>
+        <div id="i2-6" class="item"></div>
+        <div id="i2-7" class="item"></div>
+        <div id="i2-8" class="item"></div>
+        <div id="i3-1" class="item"></div>
+        <div id="i3-2" class="item"></div>
+        <div id="i3-3" class="item"></div>
+        <div id="i3-4" class="item"></div>
+        <div id="i3-5" class="item"></div>
+        <div id="i4-1" class="item"></div>
+        <div id="i4-2" class="item"></div>
+        <div id="i5-1" class="item"></div>
+        <div id="i5-2" class="item"></div>
+        <div id="i5-3" class="item"></div>
+        <div id="i5-4" class="item"></div>
+        <div id="i5-5" class="item"></div>
+        <div id="i5-6" class="item"></div>
+        <div id="i5-7" class="item"></div>
+        <div id="traffic-light">
+          <div class="red-light"></div>
+          <div class="yellow-light"></div>
+          <div class="green-light"></div>
+        </div>
+      </div>
+      <div id="kart" class="">
+      </div>
+      <div id="count-down">
+        <div class="three">
+        </div>
+        <div class="two">
+        </div>
+        <div class="one">
+        </div>
+        <div class="go">
+        </div>
+      </div>
+    </div>
+    <div class="main-title"></div>
+    <div class="main-menu">
+      <div class="start-game">開始遊戲</div>
+      <div class="review-mode">導覽模式</div>
+      <div class="review-video">回顧影片</div>
+    </div>
+    <div class="gift-note"></div>
+  </div>
+  <div id="popup" class="">
+    <div id="game-guide">
+      <div class="guide-content">
+        <div class="desc">
+          遊戲中請按上下鍵<br>
+          調整賽車前進方向
+        </div>
+        <div class="button ok">我知道了！</div>
+      </div>
+      <div class="sub-menu">
+        <div class="continue-game">繼續遊戲</div>
+        <div class="review-mode">導覽模式</div>
+        <div class="review-video">回顧影片</div>
+        <div class="sound-off">關閉音效</div>
+      </div>
+    </div>
+    <div id="tour-guide">
+      <div class="guide-content">
+        <div class="desc">
+          在導覽模式中捲動滾輪<br>
+          以沿賽道瀏覽精彩內容
+        </div>
+        <div class="button ok">我知道了！</div>
+      </div>
+      <div class="sub-menu">
+        <div class="review-mode">回導覽模式</div>
+        <div class="start-game">開始遊戲</div>
+        <div class="review-video">回顧影片</div>
+      </div>
+    </div>
+    <div id="review-video-2014">
+      <div class="video-content">
+        <iframe width="560" height="315" data-src="//www.youtube.com/embed/OY3v7qmyZDY?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+        <a class="close" href="javascript:void(0);">✖</a>
+      </div>
+      <div class="sub-menu">
+        <div class="continue-game">繼續遊戲</div>
+        <div class="review-mode">導覽模式</div>
+
+        <div class="review-mode">回導覽模式</div>
+        <div class="start-game">開始遊戲</div>
+
+        <div class="start-game">再玩一次</div>
+        <div class="review-mode">導覽模式</div>
+      </div>
+    </div>
+    <div id="race-billboard">
+      <div class="billboard-content">
+        <h2>Mozilla Taiwan 2014 精彩回顧<br>
+          恭喜獲得 <span>0</span> 分
+          <span class="button share"><span>分享活動<br>獲得紅包袋</span></span>
+        </h2>
+        <div class="sections">
+          <ul>
+            <li class="firefox">Firefox</li>
+            <li class="firefoxos">Firefox OS</li>
+            <li class="community">Community</li>
+            <li class="openweb">Open Web</li>
+            <li class="blogs">Blogs</li>
+          </ul>
+        </div>
+        <div class="records">
+          <ul>
+            <li class="record"><a href="https://www.flickr.com/photos/mozillataiwan/sets/72157642236529605/" target="_blank">Mozilla 首次參與台灣校園徵才</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/5491/mozilla-introduces-the-most-customizable-firefox-ever-with-an-elegant-new-design" target="_blank">發表全新改版 Firefox</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6679/firefox-developer-edition" target="_blank">首度推出 Developers 版 Firefox</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6985/firefox-hello" target="_blank">Firefox Hello 問世</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6782/firefox10th" target="_blank">全球 Firefox 歡慶十歲生日</a></li>
+          </ul>
+          <ul>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/5003/firefox-os-unleashes-the-future-of-mobile" target="_blank">Firefox OS 於 MWC 發表最新發展成果</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/5684/pre-orders-start-today-for-flame" target="_blank">首款 Firefox OS 開發手機 Flame 開賣</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/5740/firefox-os-cooperation-chunghwa-telecom" target="_blank">2014 亞洲通訊博覽會 (MAE 2014)</a></li>
+            <li class="record"><a href="https://www.youtube.com/watch?v=1TmovZuTdrE" target="_blank">年度媒體茶會</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6399/matchstick-brings-firefox-os-to-your-hdtv" target="_blank">首款 Firefox OS 電視棒現身</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6147/first-firefox-os-smartphones-available-in-india-this-week" target="_blank">Firefox OS 手機印度開賣</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6852/firefox-os-nearly-30-countries" target="_blank">Firefox 進軍近 30 國</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6893/kddi-first-firefox-os-in-japan" target="_blank">Firefox 首款高階機於日本上巿</a></li>
+          </ul>
+          <ul>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/5975/mozilla_at_coscup_2014" target="_blank">COSCUP 開源人年會</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6500/jsdc-2014" target="_blank">JavaScript 年度盛會－JSDC 2014 研討會</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6554/fsa-midyear-gathering" target="_blank">校園大使年中聚</a></li>
+            <li class="record"><a href="https://www.youtube.com/watch?v=LUxla-JYCIQ" target="_blank">美國小學生企業參訪</a></li>
+            <li class="record"><a href="https://www.youtube.com/watch?v=LUxla-JYCIQ" target="_blank">摩茲工寮搬新家</a></li>
+          </ul>
+          <ul>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6521/play-awesome-indie-games-directly-in-firefox" target="_blank">Mozilla 與遊戲發售平台 Humble Bundle 合作</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6635/html5-reaches-the-recommendation-stage" target="_blank">W3C 宣佈 HTML5 進入建議階段</a></li>
+          </ul>
+          <ul>
+            <li class="record"><a href="https://hacks.mozilla.org/2014/10/the-visibility-monitor-supported-by-gaia/" target="_blank">謀智台客文章首度登上 Hacks</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/5200" target="_blank">Mozilla 與 Unity 共同發表 Unity 5</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6757" target="_blank">Firefox 新搜尋策略：強化選擇與創新</a></li>
+            <li class="record"><a href="http://blog.mozilla.com.tw/posts/6841" target="_blank">Mozilla 與 Telenor 宣佈設立 WebRTC Competency Center</a></li>
+            <li class="record"><a href="http://tech.mozilla.com.tw/posts/4065" target="_blank">從 JavaScript 的 Map/Reduce 談起 Functional Programming</a></li>
+            <li class="record"><a href="http://tech.mozilla.com.tw/posts/4667" target="_blank">平價智慧手機大解密－Firefox OS 記憶體管理與優化</a></li>
+            <li class="record"><a href="http://tech.mozilla.com.tw/posts/4759" target="_blank">九個適應性設計小撇步，把你的網站打造成變形金剛！</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="sub-menu">
+        <div class="start-game">再玩一次</div>
+        <div class="review-mode">導覽模式</div>
+        <div class="review-video">回顧影片</div>
+      </div>
+    </div>
+    <div id="get-prize">
+      <div class="prize-content">
+        <div class="desc">
+          感謝你參與活動,分享成績或按讚加入 Mozilla Taiwan
+          粉絲團，將可獲得一份 Firefox 限量紅包袋喔!
+        </div>
+        <div class="button join"><span>加入粉絲團<br>獲得紅包袋</span></div>
+        <div class="button share"><span>分享活動<br>獲得紅包袋</span></div>
+      </div>
+      <div class="sub-menu">
+        <div class="start-game">再玩一次</div>
+        <div class="review-mode">導覽模式</div>
+        <div class="review-video">回顧影片</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block email_form %}
+{% endblock %}
+
+{% block site_footer %}
+{% endblock %}

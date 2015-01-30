@@ -250,6 +250,10 @@ def year_review_2013(request, spring):
     return l10n_utils.render(request, 'mocotw/2013review.html', {'canonical_path': '/2013-review/'})
 
 
+def year_review_2014(request):
+    return l10n_utils.render(request, 'mocotw/2014review.html', {'canonical_path': '/2014-review/'})
+
+
 @xframe_allow
 @csrf_exempt
 def subscribe_embed(request, template):
