@@ -1051,19 +1051,32 @@ body {
     .MidButton;
     display: none;
     background: url('/media/img/mocotw/2014review/bt-red-s.png');
-      &:before {
-        content: "";
-        display: inline-block;
-        width: 22px;
-        height: 100%;
-        margin-right: 10px;
-        vertical-align: middle;
-        background-image: url('/media/img/mocotw/2014review/icon-sound.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-      }
+    &.on:before {
+      background-image: url('/media/img/mocotw/2014review/icon-sound.png');
+      width: 22px;
+    }
+    &.off:before {
+      background-image: url('/media/img/mocotw/2014review/icon-mute.png');
+      width: 20px;
+    }
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
   }
+}
+
+#minimap {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 60px;
 }
 
 .game {
@@ -1219,14 +1232,20 @@ body {
     .sound-mode {
       .MidButton;
       background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &.on:before {
+        background-image: url('/media/img/mocotw/2014review/icon-sound.png');
+        width: 22px;
+      }
+      &.off:before {
+        background-image: url('/media/img/mocotw/2014review/icon-mute.png');
+        width: 20px;
+      }
       &:before {
         content: "";
         display: inline-block;
-        width: 22px;
         height: 100%;
         margin-right: 10px;
         vertical-align: middle;
-        background-image: url('/media/img/mocotw/2014review/icon-sound.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100% auto;
@@ -1302,7 +1321,7 @@ body {
 #review-video-2014 {
   display: none;
   .video-content {
-    .PopupFrame(640px, 360px);
+    .PopupFrame(600px, 360px);
   }
   iframe {
     position: absolute;

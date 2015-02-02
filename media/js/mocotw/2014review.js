@@ -7,6 +7,13 @@
     var firstPlay = true;
     var firstTour = true;
     var countingDown = false;
+    var navPoints = {
+        '#firefox': 700,
+        '#firefoxos': 6200,
+        '#community': 20700,
+        '#openweb': 25200,
+        '#blogs': 27500
+    };
     var items = [
         '1-1', '1-2', '1-3', '1-4', '1-5',
         '2-1', '2-2', '2-3', '2-4', '2-5', '2-6', '2-7', '2-8',
@@ -43,6 +50,7 @@
         '5-6': {dis: 34750},
         '5-7': {dis: 36650}
     };
+    var driftPoints;
     var tresureSettings = [6, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1];
     var itemsGet = [];
     var boardDistance = 550;
@@ -54,6 +62,24 @@
     var $gameMenu = $('.game-menu');
     var $scorePop = $('#score-pop');
     var score = 0;
+    var countdownSound = new Audio('/media/img/mocotw/2014review/mp3/countdown.mp3');
+    var scoreSound = new Audio('/media/img/mocotw/2014review/mp3/item-get.ogg');
+    var driftSound = new Audio('/media/img/mocotw/2014review/mp3/drift.mp3');
+    $(driftSound).on('ended', function() {
+        driftSound.src = driftSound.src;
+        console.info('ended');
+    });
+    var celebrateSound = new Audio('/media/img/mocotw/2014review/mp3/celebration.mp3');
+    celebrateSound.loop = true;
+    celebrateSound.volume = 0.8;
+    var raceBgm = new Audio('/media/img/mocotw/2014review/mp3/race-bgm.mp3');
+    raceBgm.loop = true;
+    raceBgm.volume = 0.5;
+//    var titleBgm = new Audio('/media/img/mocotw/2014review/mp3/title-bgm.mp3');
+//    titleBgm.loop = true;
+//    titleBgm.volume = 0.5;
+//    titleBgm.play();
+    var allSounds = [countdownSound, scoreSound, driftSound, celebrateSound, raceBgm];
 
     function shuffle(o){
         for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -76,6 +102,7 @@
         roadSettings = {};
         itemsGet = [];
         tresureSettings = shuffle(tresureSettings);
+        driftPoints = [1600, 4800, 7200, 9800, 10500, 12600, 14200, 19300, 26100, 28500, 30100, 31100, 35400];
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
             var setting = itemSettings[item];
@@ -165,9 +192,10 @@
                     case 'itemGet':
                         var $treasure = $('#i' + setting.item);
                         var kartPos = $kart.attr('class');
-                        if (-1 == $.inArray(setting.item, itemsGet) &&
+                        if (-1 == itemsGet.indexOf(setting.item) &&
                             ($treasure.hasClass(kartPos) || (kartPos == '' && $treasure.hasClass('mid')))) {
                             itemsGet.push(setting.item);
+                            scoreSound.play();
                             $treasure.css({'opacity': 0});
                             if ($treasure.hasClass('treasure6')) {
                                 score += 5;
@@ -187,12 +215,18 @@
                         break;
                 }
             }
+            var stepIndex = driftPoints.indexOf(step);
+            if (playing && stepIndex >= 0) {
+                driftPoints.splice(stepIndex, 1);
+                driftSound.play();
+            }
         }});
     }
 
     function countDownAndStart() {
         playing = true;
         countingDown = true;
+        countdownSound.play();
         $.fn.scrollPath("lockScroll");
         $('#count-down .three').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
             $('#count-down .two').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
@@ -204,6 +238,9 @@
                         $.fn.scrollPath("unlockScroll");
                         $.fn.scrollPath("resume", showBillboard);
                         countingDown = false;
+                        setTimeout(function() {
+                            raceBgm.play();
+                        }, 1000);
                     }});
                     $('#count-down .go').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250});
                 }});
@@ -211,25 +248,31 @@
         }});
     }
 
-    function gameReady() {
+    function gameReady(replay) {
         score = 0;
         $.fn.scrollPath("reset");
         $wrapper.attr('class', 'game');
         $items.css('opacity', 1);
+        $('#traffic-light .red-light').css('opacity', 1);
         $('#traffic-light .yellow-light').css('opacity', 0);
         $('#traffic-light .green-light').css('opacity', 0);
         $kart.css({'opacity': 1, 'width': '143px'});
-        if (!playing) {
-            if (firstPlay) {
-                firstPlay = false;
-                showGameGuide(false, closeGamePopupAndStart);
-            }
-            else {
-                countDownAndStart();
-            }
+        if (replay) {
+            countDownAndStart();
         }
         else {
-            $.fn.scrollPath("resume", showBillboard);
+            if (!playing) {
+                if (firstPlay) {
+                    firstPlay = false;
+                    showGameGuide(false, closeGamePopupAndStart);
+                }
+                else {
+                    countDownAndStart();
+                }
+            }
+            else {
+                $.fn.scrollPath("resume", showBillboard);
+            }
         }
     }
 
@@ -248,6 +291,7 @@
     }
 
     function play() {
+        celebrateSound.pause();
         if (onPopupClose) {
             onPopupClose();
         }
@@ -262,7 +306,18 @@
         }
     }
 
+    function replay() {
+        celebrateSound.pause();
+        if (onPopupClose) {
+            onPopupClose();
+        }
+        closePopup();
+        buildSettings(true);
+        gameReady(true);
+    }
+
     function tour() {
+        celebrateSound.pause();
         if (onPopupClose) {
             onPopupClose();
         }
@@ -294,6 +349,10 @@
         if ($wrapper.hasClass('game')) {
             $.fn.scrollPath("resume", showBillboard);
         }
+        else {
+            onPopupClose = null;
+            tour();
+        }
     }
 
     function closeGamePopupAndStart() {
@@ -309,10 +368,12 @@
     }
 
     function closeBillboardPopupAndContinue() {
+        celebrateSound.pause();
         showPrize(true);
     }
 
     function showPopup(type) {
+//        titleBgm.pause();
         $gameMenu.hide();
         $popup.attr('class', type);
         $popup.show();
@@ -349,6 +410,7 @@
     }
 
     function showReviewVideo(showMenu, onClose) {
+        celebrateSound.pause();
         onPopupClose = onClose;
         if (showMenu) {
             showSubmenu('review-video-2014');
@@ -361,6 +423,8 @@
     }
 
     function showBillboard() {
+        raceBgm.pause();
+        celebrateSound.play();
         for (var i = 0; i < itemsGet.length; i++) {
             $('#r' + itemsGet[i]).addClass('get');
         }
@@ -370,13 +434,15 @@
         showSubmenu('race-billboard');
         showPopup('billboard');
     }
+
     function showPrize() {
         onPopupClose = null;
         showSubmenu('get-prize');
         showPopup('prize');
     }
 
-    $('.main-menu > .start-game, .sub-menu > .start-game, .sub-menu > .restart-game').click(play);
+    $('.main-menu > .start-game, .sub-menu > .start-game').click(play);
+    $('.sub-menu > .restart-game').click(replay);
 
     $('.main-menu > .review-mode, .sub-menu > .review-mode, .sub-menu > .return-review-mode').click(tour);
 
@@ -402,6 +468,29 @@
             }
             if ($wrapper.hasClass('tour')) {
                 showTourGuide(true, closePopup);
+            }
+        }
+    });
+    $('#minimap-nav > area').click(function() {
+        alert(navPoints[$(this).attr('href')])
+    });
+    var $soundMode = $('.sound-mode');
+    $soundMode.click(function() {
+        var i = 0;
+        if ($soundMode.hasClass('on')) {
+            $soundMode.removeClass('on');
+            $soundMode.addClass('off');
+            $soundMode.text('音效已關');
+            for (i = 0; i < allSounds.length; i++) {
+                allSounds[i].muted = true;
+            }
+        }
+        else if ($soundMode.hasClass('off')) {
+            $soundMode.removeClass('off');
+            $soundMode.addClass('on');
+            $soundMode.text('音效已開');
+            for (i = 0; i < allSounds.length; i++) {
+                allSounds[i].muted = false;
             }
         }
     });
