@@ -50,22 +50,21 @@ body {
 
   .main-title {
     opacity: 0;
+    pointer-events: none;
   }
 
   .main-menu {
+    pointer-events: none;
     .start-game {
       opacity: 0;
-      pointer-events: none;
     }
 
     .review-video {
       opacity: 0;
-      pointer-events: none;
     }
 
     .review-mode {
       opacity: 0;
-      pointer-events: none;
     }
   }
 }
@@ -1161,8 +1160,16 @@ body {
 
 .gift-note {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 100px;
+  right: 20px;
+  width: 202px;
+  height: 58px;
+  color: #C13832;
+  font-size: 14px;
+  padding-top: 60px;
+  background-image: url('/media/img/mocotw/2014review/red-envelope.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 
 #popup {
