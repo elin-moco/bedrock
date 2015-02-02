@@ -85,6 +85,7 @@
     var trackTotal;
     var $navMap = $('#nav-map');
     var $navArea = $('#minimap-nav > area');
+    var $giftNote = $('.gift-note');
 
     function moveFox(step) {
         if (!trackTotal) {
@@ -309,6 +310,7 @@
     }
 
     function play() {
+        $giftNote.hide();
         celebrateSound.pause();
         if (onPopupClose) {
             onPopupClose();
@@ -335,6 +337,7 @@
     }
 
     function tour() {
+        $giftNote.hide();
         raceBgm.pause();
         celebrateSound.pause();
         if (onPopupClose) {

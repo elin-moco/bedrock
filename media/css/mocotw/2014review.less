@@ -1,8 +1,5 @@
 @import "../sandstone/lib";
 
-html, body {
-  overflow-x: visible;
-}
 
 html, body, #body-wrapper, #outer-wrapper, #wrapper, #main-content {
   height: 100%;
@@ -69,203 +66,720 @@ body {
   }
 }
 
-.land {
-  position: relative;
-  height: 100%;
-  top: 0;
-  .transition(all 1s linear)
-}
+@media only screen and (min-width: @breakTablet) {
 
-.track {
-  height: 100%;
-}
+  .land {
+    position: relative;
+    height: 100%;
+    top: 0;
+    .transition(all 1s linear)
+  }
 
-.map:before {
-  content: "";
-  background-image: url('/media/img/mocotw/2014review/map/grass-bg.svg');
-  background-repeat: repeat;
-  background-size: auto;
-  background-position: center;
-  display: block;
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-}
+  .track {
+    height: 100%;
+  }
 
-.map:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url('/media/img/mocotw/2014review/map/race-track.svg');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: top left;
-}
+  .map:before {
+    content: "";
+    background-image: url('/media/img/mocotw/2014review/map/grass-bg.svg');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+    display: block;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+  }
 
-.map {
-  display: block;
-  position: absolute;
-  margin: auto;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 80%;
-  height: 100%;
-  .transition(all 1s linear)
+  .map:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('/media/img/mocotw/2014review/map/race-track.svg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: top left;
+  }
+
+  .map {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 80%;
+    height: 100%;
+    .transition(all 1s linear)
+  }
+
+  .board {
+    position: absolute;
+    opacity: 0;
+    display: block;
+    width: 360px;
+    height: 270px;
+    z-index: 10000;
+    .transform-style(preserve-3d);
+    .transform-origin(50% 100%);
+    .transition(opacity .5s linear 1.5s);
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5%;
+      height: 20%;
+      margin: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #272727;
+    }
+    &.enlarge {
+      z-index: 10001;
+      .ad {
+        width: 300px;
+        height: 165px;
+        bottom: 24%;
+        background-size: 100%;
+        &.firefox:before {
+          opacity: 0;
+        }
+        &.firefoxos:before {
+          opacity: 0;
+        }
+        &.community:before {
+          opacity: 0;
+        }
+        &.openweb:before {
+          opacity: 0;
+        }
+        &.blog:before {
+          opacity: 0;
+        }
+        .record {
+          h3 {
+            font-size: 28px;
+            line-height: 30px;
+          }
+          ul li {
+            font-size: 14px;
+            line-height: 16px;
+            opacity: 1;
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+
+    .ad {
+      position: absolute;
+      display: block;
+      width: 120px;
+      height: 66px;
+      margin: auto;
+      box-sizing: border-box;
+      left: 0;
+      right: 0;
+      bottom: 12%;
+      .transform-origin(50% 100%);
+      .transform(scaleY(1.5));
+      .transition(all .25s linear);
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 113%;
+        height: 150%;
+        top: -26%;
+        left: -7%;
+        bottom: -20%;
+        right: -20%;
+        background-image: url('/media/img/mocotw/2014review/map/billboard.svg');
+        background-position: 0 0;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        pointer-events: none;
+      }
+      &.firefox:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #E4600D;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.firefoxos:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #1F91CF;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.community:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #FCC900;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.openweb:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #02539D;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.blog:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #F1911A;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+
+      .record {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 2%;
+        box-sizing: border-box;
+      }
+    }
+
+    &#b1-1 {
+      .transform(rotateZ(0deg));
+      top: 2716px;
+      left: 1750px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-1.png');
+      }
+    }
+    &#b1-2 {
+      .transform(rotateZ(45deg));
+      top: 2500px;
+      left: 1150px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-2.png');
+      }
+    }
+    &#b1-3 {
+      .transform(rotateZ(45deg));
+      top: 2300px;
+      left: 950px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-3.png');
+      }
+    }
+    &#b1-4 {
+      .transform(rotateZ(45deg));
+      top: 2100px;
+      left: 750px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-4.png');
+      }
+    }
+    &#b1-5 {
+      .transform(rotateZ(90deg));
+      top: 1700px;
+      left: 618px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-5.png');
+      }
+    }
+    &#b2-1 {
+      .transform(rotateZ(90deg));
+      top: 1400px;
+      left: 618px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-1.png');
+      }
+    }
+    &#b2-2 {
+      .transform(rotateZ(225deg));
+      top: 1280px;
+      left: 1050px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-2.png');
+      }
+    }
+    &#b2-3 {
+      .transform(rotateZ(135deg));
+      top: 1880px;
+      left: 1585px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-3.png');
+      }
+    }
+    &#b2-4 {
+      .transform(rotateZ(225deg));
+      top: 2000px;
+      left: 2075px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-4.png');
+      }
+    }
+    &#b2-5 {
+      .transform(rotateZ(45deg));
+      top: 1600px;
+      left: 2465px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-5.png');
+      }
+    }
+    &#b2-6 {
+      .transform(rotateZ(45deg));
+      top: 1400px;
+      left: 2265px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-6.png');
+      }
+    }
+    &#b2-7 {
+      .transform(rotateZ(45deg));
+      top: 1200px;
+      left: 2065px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-7.png');
+      }
+    }
+    &#b2-8 {
+      .transform(rotateZ(45deg));
+      top: 1000px;
+      left: 1865px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-8.png');
+      }
+    }
+    &#b3-1 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 1800px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-1.png');
+      }
+    }
+    &#b3-2 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 2150px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-2.png');
+      }
+    }
+    &#b3-3 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 2500px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-3.png');
+      }
+    }
+    &#b3-4 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 2850px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-4.png');
+      }
+    }
+    &#b3-5 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 3200px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-5.png');
+      }
+    }
+    &#b4-1 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 3600px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/openweb-1.png');
+      }
+    }
+    &#b4-2 {
+      .transform(rotateZ(225deg));
+      top: 630px;
+      left: 4050px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/openweb-2.png');
+      }
+    }
+    &#b5-1 {
+      .transform(rotateZ(225deg));
+      top: 880px;
+      left: 4300px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-1.png');
+      }
+    }
+    &#b5-2 {
+      .transform(rotateZ(315deg));
+      top: 1280px;
+      left: 4215px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-2.png');
+      }
+    }
+    &#b5-3 {
+      .transform(rotateZ(315deg));
+      top: 1860px;
+      left: 4150px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-3.png');
+      }
+    }
+    &#b5-4 {
+      .transform(rotateZ(315deg));
+      top: 2060px;
+      left: 3950px;
+      .ad {
+        .record h3 {
+          line-height: 14px;
+          font-size: 13px;
+        }
+        background-image: url('/media/img/mocotw/2014review/pics/blog-4.png');
+      }
+      &.enlarge .ad {
+        .record h3 {
+          line-height: 28px;
+          font-size: 26px;
+        }
+      }
+    }
+    &#b5-5 {
+      .transform(rotateZ(315deg));
+      top: 2260px;
+      left: 3750px;
+      .ad {
+        .record h3 {
+          line-height: 14px;
+          font-size: 13px;
+        }
+        background-image: url('/media/img/mocotw/2014review/pics/blog-5.png');
+      }
+      &.enlarge .ad {
+        .record h3 {
+          line-height: 28px;
+          font-size: 26px;
+        }
+      }
+    }
+    &#b5-6 {
+      .transform(rotateZ(315deg));
+      top: 2460px;
+      left: 3550px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-6.png');
+      }
+    }
+    &#b5-7 {
+      .transform(rotateZ(0deg));
+      top: 2715px;
+      left: 2950px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-7.png');
+      }
+    }
+  }
+
+  .item {
+    position: absolute;
+    display: block;
+    z-index: 10001;
+    opacity: 0;
+    width: 60px;
+    height: 72px;
+    .transform-origin(50% 100%);
+    .transition(all .5s linear);
+
+    &:before {
+      content: "";
+      position: relative;
+      display: block;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      margin: auto;
+      top: 0;
+    }
+
+    &.up:before {
+      top: -50px;
+    }
+
+    &.down:before {
+      top: 50px;
+    }
+
+    &.treasure1:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-1.png');
+      width: 44px;
+      height: 44px * 1.5;
+      margin-top: 4px;
+    }
+    &.treasure2:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-2.png');
+      width: 38px;
+      height: 48px * 1.5;
+    }
+    &.treasure3:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-3.png');
+      width: 46px;
+      height: 38px * 1.5;
+      margin-top: 10px;
+    }
+    &.treasure4:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-4.png');
+      width: 46px;
+      height: 37px * 1.5;
+      margin-top: 10px;
+    }
+    &.treasure5:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-5.png');
+      width: 59px;
+      height: 40px * 1.5;
+      margin-top: 8px;
+    }
+    &.treasure6:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-6.png');
+      width: 47px;
+      height: 47px * 1.5;
+    }
+    &#i1-1 {
+      .transform(rotateZ(0deg));
+      top: 3036px; //+320
+      left: 1900px; //+150
+    }
+    &#i1-2 {
+      .transform(rotateZ(45deg));
+      top: 2780px; //+280
+      left: 1220px; //+70
+    }
+    &#i1-3 {
+      .transform(rotateZ(45deg));
+      top: 2580px;
+      left: 1020px;
+    }
+    &#i1-4 {
+      .transform(rotateZ(45deg));
+      top: 2380px;
+      left: 820px;
+    }
+    &#i1-5 {
+      .transform(rotateZ(90deg));
+      top: 1700px+200;
+      left: 618px+30;
+    }
+    &#i2-1 {
+      .transform(rotateZ(90deg));
+      top: 1400px+200;
+      left: 618px+30;
+    }
+    &#i2-2 {
+      .transform(rotateZ(225deg));
+      top: 1280px+110;
+      left: 1050px+235;
+    }
+    &#i2-3 {
+      .transform(rotateZ(135deg));
+      top: 1880px+120;
+      left: 1585px+65;
+    }
+    &#i2-4 {
+      .transform(rotateZ(225deg));
+      top: 2000px+110;
+      left: 2075px+235;
+    }
+    &#i2-5 {
+      .transform(rotateZ(45deg));
+      top: 1600px+280;
+      left: 2465px+70;
+    }
+    &#i2-6 {
+      .transform(rotateZ(45deg));
+      top: 1400px+280;
+      left: 2265px+70;
+    }
+    &#i2-7 {
+      .transform(rotateZ(45deg));
+      top: 1200px+280;
+      left: 2065px+70;
+    }
+    &#i2-8 {
+      .transform(rotateZ(45deg));
+      top: 1000px+280;
+      left: 1865px+70;
+    }
+    &#i3-1 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 1800px+150;
+    }
+    &#i3-2 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 2150px+150;
+    }
+    &#i3-3 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 2500px+150;
+    }
+    &#i3-4 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 2850px+150;
+    }
+    &#i3-5 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 3200px+150;
+    }
+    &#i4-1 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 3600px+150;
+    }
+    &#i4-2 {
+      .transform(rotateZ(225deg));
+      top: 630px+110;
+      left: 4050px+235;
+    }
+    &#i5-1 {
+      .transform(rotateZ(225deg));
+      top: 880px+110;
+      left: 4300px+235;
+    }
+    &#i5-2 {
+      .transform(rotateZ(315deg));
+      top: 1280px+280;
+      left: 4215px+235;
+    }
+    &#i5-3 {
+      .transform(rotateZ(315deg));
+      top: 1860px+280;
+      left: 4150px+235;
+    }
+    &#i5-4 {
+      .transform(rotateZ(315deg));
+      top: 2060px+280;
+      left: 3950px+235;
+    }
+    &#i5-5 {
+      .transform(rotateZ(315deg));
+      top: 2260px+280;
+      left: 3750px+235;
+    }
+    &#i5-6 {
+      .transform(rotateZ(315deg));
+      top: 2460px+280;
+      left: 3550px+235;
+    }
+    &#i5-7 {
+      .transform(rotateZ(0deg));
+      top: 2715px+320;
+      left: 2950px+150;
+    }
+  }
+
+  .section-mark {
+    display: block;
+    position: absolute;
+    color: #4D4E53;
+    font-size: 48px;
+    font-weight: bolder;
+    z-index: 10000;
+    white-space: nowrap;
+    opacity: 0;
+    .transform-origin(50% 100%);
+    .transition(opacity .5s linear);
+
+    &#firefox-mark {
+      .transform(rotateZ(0deg) scaleY(1.5));
+      top: 2536px;
+      left: 1950px;
+    }
+
+    &#firefoxos-mark {
+      .transform(rotateZ(90deg) scaleY(1.5));
+      top: 1900px;
+      left: 1048px;
+    }
+
+    &#community-mark {
+      .transform(rotateZ(180deg) scaleY(1.5));
+      top: 1010px;
+      left: 2250px;
+    }
+
+    &#openweb-mark {
+      .transform(rotateZ(180deg) scaleY(1.5));
+      top: 1010px;
+      left: 3650px;
+    }
+
+    &#blogs-mark {
+      .transform(rotateZ(225deg) scaleY(1.5));
+      top: 1230px;
+      left: 4035px;
+    }
+  }
+  .main-title {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    z-index: 10000;
+  }
+  #kart {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    opacity: 0;
+    .transform(rotateX(-54deg));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 100%);
+  }
+  #traffic-light {
+    position: absolute;
+    top: 2780px;
+    left: 2137px;
+    z-index: 10000;
+    .transform(scaleY(1.5));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 100%);
+  }
 }
 
 .board {
-  position: absolute;
-  opacity: 0;
-  display: block;
-  width: 360px;
-  height: 270px;
-  z-index: 10000;
-  .transform-style(preserve-3d);
-  .transform-origin(50% 100%);
-  .transition(opacity .5s linear 1.5s);
-  &:before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 5%;
-    height: 20%;
-    margin: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #272727;
-  }
-  &.enlarge {
-    z-index: 10001;
-    .ad {
-      width: 300px;
-      height: 165px;
-      bottom: 24%;
-      background-size: 100%;
-      &.firefox:before {
-        opacity: 0;
-      }
-      &.firefoxos:before {
-        opacity: 0;
-      }
-      &.community:before {
-        opacity: 0;
-      }
-      &.openweb:before {
-        opacity: 0;
-      }
-      &.blog:before {
-        opacity: 0;
-      }
-      .record {
-        h3 {
-          font-size: 28px;
-          line-height: 30px;
-        }
-        ul li {
-          font-size: 14px;
-          line-height: 16px;
-          opacity: 1;
-          margin-right: 6px;
-        }
-      }
-    }
-  }
-
   .ad {
-    position: absolute;
-    display: block;
-    width: 120px;
-    height: 66px;
-    margin: auto;
-    box-sizing: border-box;
-    left: 0;
-    right: 0;
-    bottom: 12%;
-    .transform-origin(50% 100%);
-    .transform(scaleY(1.5));
-    .transition(all .25s linear);
-    &:after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 113%;
-      height: 150%;
-      top: -26%;
-      left: -7%;
-      bottom: -20%;
-      right: -20%;
-      background-image: url('/media/img/mocotw/2014review/map/billboard.svg');
-      background-position: 0 0;
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      pointer-events: none;
-    }
-    &.firefox:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #E4600D;
-      opacity: 1;
-      .transition(opacity .25s linear);
-    }
-    &.firefoxos:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #1F91CF;
-      opacity: 1;
-      .transition(opacity .25s linear);
-    }
-    &.community:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #FCC900;
-      opacity: 1;
-      .transition(opacity .25s linear);
-    }
-    &.openweb:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #02539D;
-      opacity: 1;
-      .transition(opacity .25s linear);
-    }
-    &.blog:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #F1911A;
-      opacity: 1;
-      .transition(opacity .25s linear);
-    }
-
     .record {
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      padding: 2%;
-      box-sizing: border-box;
       text-decoration: none;
       &:hover {
         text-decoration: none;
@@ -295,507 +809,17 @@ body {
       }
     }
   }
-
-  &#b1-1 {
-    .transform(rotateZ(0deg));
-    top: 2716px;
-    left: 1750px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-1.png');
-    }
-  }
-  &#b1-2 {
-    .transform(rotateZ(45deg));
-    top: 2500px;
-    left: 1150px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-2.png');
-    }
-  }
-  &#b1-3 {
-    .transform(rotateZ(45deg));
-    top: 2300px;
-    left: 950px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-3.png');
-    }
-  }
-  &#b1-4 {
-    .transform(rotateZ(45deg));
-    top: 2100px;
-    left: 750px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-4.png');
-    }
-  }
-  &#b1-5 {
-    .transform(rotateZ(90deg));
-    top: 1700px;
-    left: 618px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-5.png');
-    }
-  }
-  &#b2-1 {
-    .transform(rotateZ(90deg));
-    top: 1400px;
-    left: 618px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-1.png');
-    }
-  }
-  &#b2-2 {
-    .transform(rotateZ(225deg));
-    top: 1280px;
-    left: 1050px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-2.png');
-    }
-  }
-  &#b2-3 {
-    .transform(rotateZ(135deg));
-    top: 1880px;
-    left: 1585px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-3.png');
-    }
-  }
-  &#b2-4 {
-    .transform(rotateZ(225deg));
-    top: 2000px;
-    left: 2075px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-4.png');
-    }
-  }
-  &#b2-5 {
-    .transform(rotateZ(45deg));
-    top: 1600px;
-    left: 2465px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-5.png');
-    }
-  }
-  &#b2-6 {
-    .transform(rotateZ(45deg));
-    top: 1400px;
-    left: 2265px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-6.png');
-    }
-  }
-  &#b2-7 {
-    .transform(rotateZ(45deg));
-    top: 1200px;
-    left: 2065px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-7.png');
-    }
-  }
-  &#b2-8 {
-    .transform(rotateZ(45deg));
-    top: 1000px;
-    left: 1865px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/firefox-os-8.png');
-    }
-  }
-  &#b3-1 {
-    .transform(rotateZ(180deg));
-    top: 435px;
-    left: 1800px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/community-1.png');
-    }
-  }
-  &#b3-2 {
-    .transform(rotateZ(180deg));
-    top: 435px;
-    left: 2150px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/community-2.png');
-    }
-  }
-  &#b3-3 {
-    .transform(rotateZ(180deg));
-    top: 435px;
-    left: 2500px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/community-3.png');
-    }
-  }
-  &#b3-4 {
-    .transform(rotateZ(180deg));
-    top: 435px;
-    left: 2850px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/community-4.png');
-    }
-  }
-  &#b3-5 {
-    .transform(rotateZ(180deg));
-    top: 435px;
-    left: 3200px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/community-5.png');
-    }
-  }
-  &#b4-1 {
-    .transform(rotateZ(180deg));
-    top: 435px;
-    left: 3600px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/openweb-1.png');
-    }
-  }
-  &#b4-2 {
-    .transform(rotateZ(225deg));
-    top: 630px;
-    left: 4050px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/openweb-2.png');
-    }
-  }
-  &#b5-1 {
-    .transform(rotateZ(225deg));
-    top: 880px;
-    left: 4300px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/blog-1.png');
-    }
-  }
-  &#b5-2 {
-    .transform(rotateZ(315deg));
-    top: 1280px;
-    left: 4215px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/blog-2.png');
-    }
-  }
-  &#b5-3 {
-    .transform(rotateZ(315deg));
-    top: 1860px;
-    left: 4150px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/blog-3.png');
-    }
-  }
-  &#b5-4 {
-    .transform(rotateZ(315deg));
-    top: 2060px;
-    left: 3950px;
-    .ad {
-      .record h3 {
-        line-height: 14px;
-        font-size: 13px;
-      }
-      background-image: url('/media/img/mocotw/2014review/pics/blog-4.png');
-    }
-    &.enlarge .ad {
-      .record h3 {
-        line-height: 28px;
-        font-size: 26px;
-      }
-    }
-  }
-  &#b5-5 {
-    .transform(rotateZ(315deg));
-    top: 2260px;
-    left: 3750px;
-    .ad {
-      .record h3 {
-        line-height: 14px;
-        font-size: 13px;
-      }
-      background-image: url('/media/img/mocotw/2014review/pics/blog-5.png');
-    }
-    &.enlarge .ad {
-      .record h3 {
-        line-height: 28px;
-        font-size: 26px;
-      }
-    }
-  }
-  &#b5-6 {
-    .transform(rotateZ(315deg));
-    top: 2460px;
-    left: 3550px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/blog-6.png');
-    }
-  }
-  &#b5-7 {
-    .transform(rotateZ(0deg));
-    top: 2715px;
-    left: 2950px;
-    .ad {
-      background-image: url('/media/img/mocotw/2014review/pics/blog-7.png');
-    }
-  }
-}
-
-.item {
-  position: absolute;
-  display: block;
-  z-index: 10001;
-  opacity: 0;
-  width: 60px;
-  height: 72px;
-  .transform-origin(50% 100%);
-  .transition(all .5s linear);
-
-  &:before {
-    content: "";
-    position: relative;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    margin: auto;
-    top: 0;
-  }
-
-  &.up:before {
-    top: -50px;
-  }
-
-  &.down:before {
-    top: 50px;
-  }
-
-  &.treasure1:before {
-    background-image: url('/media/img/mocotw/2014review/map/treasure-1.png');
-    width: 44px;
-    height: 44px * 1.5;
-    margin-top: 4px;
-  }
-  &.treasure2:before {
-    background-image: url('/media/img/mocotw/2014review/map/treasure-2.png');
-    width: 38px;
-    height: 48px * 1.5;
-  }
-  &.treasure3:before {
-    background-image: url('/media/img/mocotw/2014review/map/treasure-3.png');
-    width: 46px;
-    height: 38px * 1.5;
-    margin-top: 10px;
-  }
-  &.treasure4:before {
-    background-image: url('/media/img/mocotw/2014review/map/treasure-4.png');
-    width: 46px;
-    height: 37px * 1.5;
-    margin-top: 10px;
-  }
-  &.treasure5:before {
-    background-image: url('/media/img/mocotw/2014review/map/treasure-5.png');
-    width: 59px;
-    height: 40px * 1.5;
-    margin-top: 8px;
-  }
-  &.treasure6:before {
-    background-image: url('/media/img/mocotw/2014review/map/treasure-6.png');
-    width: 47px;
-    height: 47px * 1.5;
-  }
-  &#i1-1 {
-    .transform(rotateZ(0deg));
-    top: 3036px;//+320
-    left: 1900px;//+150
-  }
-  &#i1-2 {
-    .transform(rotateZ(45deg));
-    top: 2780px;//+280
-    left: 1220px;//+70
-  }
-  &#i1-3 {
-    .transform(rotateZ(45deg));
-    top: 2580px;
-    left: 1020px;
-  }
-  &#i1-4 {
-    .transform(rotateZ(45deg));
-    top: 2380px;
-    left: 820px;
-  }
-  &#i1-5 {
-    .transform(rotateZ(90deg));
-    top: 1700px+200;
-    left: 618px+30;
-  }
-  &#i2-1 {
-    .transform(rotateZ(90deg));
-    top: 1400px+200;
-    left: 618px+30;
-  }
-  &#i2-2 {
-    .transform(rotateZ(225deg));
-    top: 1280px+110;
-    left: 1050px+235;
-  }
-  &#i2-3 {
-    .transform(rotateZ(135deg));
-    top: 1880px+120;
-    left: 1585px+65;
-  }
-  &#i2-4 {
-    .transform(rotateZ(225deg));
-    top: 2000px+110;
-    left: 2075px+235;
-  }
-  &#i2-5 {
-    .transform(rotateZ(45deg));
-    top: 1600px+280;
-    left: 2465px+70;
-  }
-  &#i2-6 {
-    .transform(rotateZ(45deg));
-    top: 1400px+280;
-    left: 2265px+70;
-  }
-  &#i2-7 {
-    .transform(rotateZ(45deg));
-    top: 1200px+280;
-    left: 2065px+70;
-  }
-  &#i2-8 {
-    .transform(rotateZ(45deg));
-    top: 1000px+280;
-    left: 1865px+70;
-  }
-  &#i3-1 {
-    .transform(rotateZ(180deg));
-    top: 435px+75;
-    left: 1800px+150;
-  }
-  &#i3-2 {
-    .transform(rotateZ(180deg));
-    top: 435px+75;
-    left: 2150px+150;
-  }
-  &#i3-3 {
-    .transform(rotateZ(180deg));
-    top: 435px+75;
-    left: 2500px+150;
-  }
-  &#i3-4 {
-    .transform(rotateZ(180deg));
-    top: 435px+75;
-    left: 2850px+150;
-  }
-  &#i3-5 {
-    .transform(rotateZ(180deg));
-    top: 435px+75;
-    left: 3200px+150;
-  }
-  &#i4-1 {
-    .transform(rotateZ(180deg));
-    top: 435px+75;
-    left: 3600px+150;
-  }
-  &#i4-2 {
-    .transform(rotateZ(225deg));
-    top: 630px+110;
-    left: 4050px+235;
-  }
-  &#i5-1 {
-    .transform(rotateZ(225deg));
-    top: 880px+110;
-    left: 4300px+235;
-  }
-  &#i5-2 {
-    .transform(rotateZ(315deg));
-    top: 1280px+280;
-    left: 4215px+235;
-  }
-  &#i5-3 {
-    .transform(rotateZ(315deg));
-    top: 1860px+280;
-    left: 4150px+235;
-  }
-  &#i5-4 {
-    .transform(rotateZ(315deg));
-    top: 2060px+280;
-    left: 3950px+235;
-  }
-  &#i5-5 {
-    .transform(rotateZ(315deg));
-    top: 2260px+280;
-    left: 3750px+235;
-  }
-  &#i5-6 {
-    .transform(rotateZ(315deg));
-    top: 2460px+280;
-    left: 3550px+235;
-  }
-  &#i5-7 {
-    .transform(rotateZ(0deg));
-    top: 2715px+320;
-    left: 2950px+150;
-  }
-}
-
-.section-mark {
-  display: block;
-  position: absolute;
-  color: #4D4E53;
-  font-size: 48px;
-  font-weight: bolder;
-  z-index: 10000;
-  white-space: nowrap;
-  opacity: 0;
-  .transform-origin(50% 100%);
-  .transition(opacity .5s linear);
-
-  &#firefox-mark {
-    .transform(rotateZ(0deg) scaleY(1.5));
-    top: 2536px;
-    left: 1950px;
-  }
-
-  &#firefoxos-mark {
-    .transform(rotateZ(90deg) scaleY(1.5));
-    top: 1900px;
-    left: 1048px;
-  }
-
-  &#community-mark {
-    .transform(rotateZ(180deg) scaleY(1.5));
-    top: 1010px;
-    left: 2250px;
-  }
-
-  &#openweb-mark {
-    .transform(rotateZ(180deg) scaleY(1.5));
-    top: 1010px;
-    left: 3650px;
-  }
-
-  &#blogs-mark {
-    .transform(rotateZ(225deg) scaleY(1.5));
-    top: 1230px;
-    left: 4035px;
-  }
 }
 
 #kart {
   display: block;
-  position: absolute;
   width: 1000px;
   height: 135px;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10000;
-  opacity: 0;
   background-image: url('/media/img/mocotw/2014review/kart.png');
   background-repeat: no-repeat;
   background-size: 143px 65px;
   background-position: right 60%;
   pointer-events: none;
-  .transform(rotateX(-54deg));
-  .transform-style(preserve-3d);
-  .transform-origin(50% 100%);
   .transition(all .5s ease-out);
   &.up {
     background-position: right 20%;
@@ -807,15 +831,9 @@ body {
 
 #traffic-light {
   display: block;
-  position: absolute;
   width: 99px;
   height: 266px;
-  top: 2780px;
-  left: 2137px;
   background: url('/media/img/mocotw/2014review/map/traffic-light.png') 0 0 no-repeat;
-  .transform(scaleY(1.5));
-  .transform-style(preserve-3d);
-  .transform-origin(50% 100%);
   .red-light {
     display: block;
     position: relative;
@@ -958,9 +976,6 @@ body {
 
 .main-title {
   display: block;
-  position: absolute;
-  top: 100px;
-  left: 50%;
   width: 334px;
   height: 92px;
   background: url('/media/img/mocotw/2014review/title.png');
@@ -968,6 +983,7 @@ body {
 }
 
 .main-menu {
+  display: block;
   position: absolute;
   top: 200px;
   left: 50%;
@@ -1159,6 +1175,7 @@ body {
 }
 
 .gift-note {
+  display: block;
   position: absolute;
   bottom: 100px;
   right: 20px;
@@ -1636,7 +1653,131 @@ body {
 }
 
 @media only screen and (max-width: @breakTablet) {
+  html {
+    height: auto;
+  }
+  body {
+    overflow: scroll;
+    background: url("/media/img/mocotw/2014review/map/grass-bg.svg") repeat;
+  }
   div.body-wrapper-default {
     overflow: visible;
+  }
+  .sky #outer-wrapper {
+    background: none;
+  }
+  #main-content {
+    padding: 0;
+  }
+  .main-title {
+    margin: auto;
+    width: 434px;
+    background-repeat: no-repeat;
+  }
+  #kart {
+    margin: auto;
+    width: 300px;
+    background-size: 215px 98px;
+    background-position: left center;
+  }
+  #traffic-light {
+    margin: auto;
+    width: 460px;
+    background-position: right top;
+    margin-top: -240px;
+    .green-light {
+      top: 11px;
+      margin: 17px 37px auto auto;
+    }
+    .yellow-light {
+      top: 14px;
+      margin: 17px 37px auto auto;
+    }
+    .red-light {
+      top: 17px;
+      margin: 17px 37px auto auto;
+    }
+  }
+
+  .section-mark {
+    color: #FFF;
+    text-shadow: 1px 1px #333;
+    background-color: #51331F;
+    margin: 0;
+    padding: 6px 12px;
+  }
+  .board {
+    .ad {
+      .record {
+        display: block;
+        h3 {
+          margin: 0;
+          padding: 6px 12px;
+        }
+        ul {
+          margin: 0;
+          padding: 0 12px 6px 12px;
+          li {
+            opacity: 1;
+            padding: 3px 0;
+          }
+        }
+      }
+    }
+    &:nth-child(odd) .firefox {
+      background-color: #B85212;
+    }
+    &:nth-child(even) .firefox {
+      background-color: #C67441;
+    }
+    &:nth-child(odd) .firefoxos {
+      background-color: #2E759A;
+    }
+    &:nth-child(even) .firefoxos {
+      background-color: #5890AD;
+    }
+    &:nth-child(odd) .community {
+      background-color: #C89C09;
+    }
+    &:nth-child(even) .community {
+      background-color: #D3AF39;
+    }
+    &:nth-child(odd) .openweb {
+      background-color: #1A4977;
+    }
+    &:nth-child(even) .openweb {
+      background-color: #476D91;
+    }
+    &:nth-child(odd) .blog {
+      background-color: #C0751C;
+    }
+    &:nth-child(even) .blog {
+      background-color: #CD9049;
+    }
+  }
+  #count-down {
+    display: none;
+  }
+  .main-menu {
+    display: none;
+  }
+  .gift-note {
+    display: none;
+  }
+  .item {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  #traffic-light {
+    display: none;
+  }
+  #kart {
+    width: 215px;
+  }
+  .main-title {
+    width: 300px;
+    background-size: 100% auto;
   }
 }
