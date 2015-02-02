@@ -6,6 +6,7 @@
     var playing = false;
     var firstPlay = true;
     var firstTour = true;
+    var countingDown = false;
     var items = [
         '1-1', '1-2', '1-3', '1-4', '1-5',
         '2-1', '2-2', '2-3', '2-4', '2-5', '2-6', '2-7', '2-8',
@@ -43,6 +44,7 @@
         '5-7': {dis: 36650}
     };
     var tresureSettings = [6, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1];
+    var itemsGet = [];
     var boardDistance = 550;
     var roadSettings;
     var $wrapper = $('#wrapper');
@@ -69,8 +71,10 @@
 
     function buildSettings(arrangeItems) {
         $kart.attr('class', '');
+        $('.record').removeClass('get');
         $items.removeClass('up down mid');
         roadSettings = {};
+        itemsGet = [];
         tresureSettings = shuffle(tresureSettings);
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
@@ -161,8 +165,9 @@
                     case 'itemGet':
                         var $treasure = $('#i' + setting.item);
                         var kartPos = $kart.attr('class');
-                        if (($treasure.hasClass(kartPos) || (kartPos == '' && $treasure.hasClass('mid')))) {
-                            roadSettings[step] = null;
+                        if (-1 == $.inArray(setting.item, itemsGet) &&
+                            ($treasure.hasClass(kartPos) || (kartPos == '' && $treasure.hasClass('mid')))) {
+                            itemsGet.push(setting.item);
                             $treasure.css({'opacity': 0});
                             if ($treasure.hasClass('treasure6')) {
                                 score += 5;
@@ -187,6 +192,8 @@
 
     function countDownAndStart() {
         playing = true;
+        countingDown = true;
+        $.fn.scrollPath("lockScroll");
         $('#count-down .three').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
             $('#count-down .two').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
                 $('#traffic-light .red-light').animate({opacity: 0}, {duration: 250, queue: false});
@@ -194,7 +201,9 @@
                 $('#count-down .one').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
                     $('#traffic-light .yellow-light').animate({opacity: 0}, {duration: 250, queue: false});
                     $('#traffic-light .green-light').animate({opacity: 1}, {duration: 250, queue: false, complete: function() {
+                        $.fn.scrollPath("unlockScroll");
                         $.fn.scrollPath("resume", showBillboard);
+                        countingDown = false;
                     }});
                     $('#count-down .go').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250});
                 }});
@@ -350,6 +359,9 @@
     }
 
     function showBillboard() {
+        for (var i = 0; i < itemsGet.length; i++) {
+            $('#r' + itemsGet[i]).addClass('get');
+        }
         $('#race-billboard .score').text(score);
         $wrapper.attr('class', 'over');
         onPopupClose = closeBillboardPopupAndContinue;
@@ -381,12 +393,14 @@
     });
 
     $('.game-menu > .pause-game').click(function() {
-        if ($wrapper.hasClass('game')) {
-            $.fn.scrollPath("pause");
-            showGameGuide(true, closeGamePopupAndResume);
-        }
-        if ($wrapper.hasClass('tour')) {
-            showTourGuide(true, closePopup);
+        if (!countingDown) {
+            if ($wrapper.hasClass('game')) {
+                $.fn.scrollPath("pause");
+                showGameGuide(true, closeGamePopupAndResume);
+            }
+            if ($wrapper.hasClass('tour')) {
+                showTourGuide(true, closePopup);
+            }
         }
     });
 

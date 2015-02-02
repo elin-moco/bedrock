@@ -1465,17 +1465,23 @@ body {
       width: 400px;
       vertical-align: top;
       padding-left: 25px;
-      ul li:before {
-        content: "";
-        display: inline-block;
-        width: 14px;
-        height: 10px;
-        margin-right: 6px;
-        vertical-align: middle;
-        background-image: url('/media/img/mocotw/2014review/treasure-5-s.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% auto;
+      ul li {
+        &.get:before {
+          opacity: 1;
+        }
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 14px;
+          height: 10px;
+          margin-right: 6px;
+          vertical-align: middle;
+          background-image: url('/media/img/mocotw/2014review/treasure-5-s.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 100% auto;
+          opacity: 0;
+        }
       }
     }
   }

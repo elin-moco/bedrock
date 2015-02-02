@@ -35,6 +35,7 @@
 		element,
 		scrollBar,
 		scrollHandle,
+        scrollLock = false,
         paused = false,
         scrollBlocker,
 
@@ -107,6 +108,14 @@
 				animateSteps( distance, duration, easing, callback );
 				return this;
 			},
+            lockScroll: function() {
+                scrollLock = true;
+				return this;
+            },
+            unlockScroll: function() {
+                scrollLock = false;
+				return this;
+            },
             reset: function() {
                 scrollToStep(0, false);
                 return this;
@@ -426,7 +435,7 @@
 
 	/* Handles mousewheel scrolling */
 	function scrollHandler( e ) {
-        if ($(e.target).is(settings.scrollBlocker) || $(e.target).parents().is(settings.scrollBlocker)) {
+        if (scrollLock || $(e.target).is(settings.scrollBlocker) || $(e.target).parents().is(settings.scrollBlocker)) {
     		e.preventDefault();
             return;
         }
