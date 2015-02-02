@@ -107,6 +107,10 @@
 				animateSteps( distance, duration, easing, callback );
 				return this;
 			},
+            reset: function() {
+                scrollToStep(0, false);
+                return this;
+            },
             pause: function() {
                 paused = true;
 				return this;

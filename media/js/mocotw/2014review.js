@@ -42,19 +42,40 @@
         '5-6': {dis: 34750},
         '5-7': {dis: 36650}
     };
+    var tresureSettings = [6, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1];
     var boardDistance = 550;
     var roadSettings;
+    var $wrapper = $('#wrapper');
+    var $mainContent = $('#main-content');
     var $kart = $('#kart');
     var $items = $('.item');
+    var $gameMenu = $('.game-menu');
+    var $scorePop = $('#score-pop');
+    var score = 0;
+
+    function shuffle(o){
+        for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+    }
+
+    function popScore(score) {
+        $scorePop.text('+' + score);
+        $scorePop.animate({top: '48%', 'font-size': '60px'}, {duration: 600, queue: false});
+        $scorePop.animate({opacity: 1}, {duration: 100}).delay(400)
+            .animate({opacity: 0}, {duration: 100, complete: function() {
+                $scorePop.css({'top': '64%', 'font-size': '24px'});
+            }});
+    }
 
     function buildSettings(arrangeItems) {
         $kart.attr('class', '');
         $items.removeClass('up down mid');
         roadSettings = {};
+        tresureSettings = shuffle(tresureSettings);
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
             var setting = itemSettings[item];
-            var type = Math.round(Math.random() * 5) + 1;
+            var type = tresureSettings[i];
             roadSettings[setting.dis - boardDistance] = {'item': item, 'action': 'boardOn'};
             roadSettings[setting.dis + boardDistance] = {'item': item, 'action': 'boardOff'};
 
@@ -81,7 +102,7 @@
     }
 
     function init(callback) {
-        $('#main-content').addClass('began');
+        $mainContent.addClass('began');
 
         $.fn.scrollPath("getPath", {scrollSpeed: 20, rotationSpeed: Math.PI / 10})
             .moveTo(2400, 3075, {name: "start"})
@@ -140,8 +161,21 @@
                     case 'itemGet':
                         var $treasure = $('#i' + setting.item);
                         var kartPos = $kart.attr('class');
-                        if ($treasure.hasClass(kartPos) || (kartPos == '' && $treasure.hasClass('mid'))) {
+                        if (($treasure.hasClass(kartPos) || (kartPos == '' && $treasure.hasClass('mid')))) {
+                            roadSettings[step] = null;
                             $treasure.css({'opacity': 0});
+                            if ($treasure.hasClass('treasure6')) {
+                                score += 5;
+                                popScore(5);
+                            }
+                            else if ($treasure.hasClass('treasure3') || $treasure.hasClass('treasure4') || $treasure.hasClass('treasure5')) {
+                                score += 4;
+                                popScore(4);
+                            }
+                            else {
+                                score += 3;
+                                popScore(3);
+                            }
                         }
                         break;
                     default:
@@ -155,8 +189,10 @@
         playing = true;
         $('#count-down .three').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
             $('#count-down .two').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
+                $('#traffic-light .red-light').animate({opacity: 0}, {duration: 250, queue: false});
                 $('#traffic-light .yellow-light').animate({opacity: 1}, {duration: 250, queue: false});
                 $('#count-down .one').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
+                    $('#traffic-light .yellow-light').animate({opacity: 0}, {duration: 250, queue: false});
                     $('#traffic-light .green-light').animate({opacity: 1}, {duration: 250, queue: false, complete: function() {
                         $.fn.scrollPath("resume", showBillboard);
                     }});
@@ -167,6 +203,9 @@
     }
 
     function gameReady() {
+        score = 0;
+        $.fn.scrollPath("reset");
+        $wrapper.attr('class', 'game');
         $items.css('opacity', 1);
         $('#traffic-light .yellow-light').css('opacity', 0);
         $('#traffic-light .green-light').css('opacity', 0);
@@ -186,9 +225,11 @@
     }
 
     function tourReady() {
+        $wrapper.attr('class', 'tour');
         playing = false;
         $items.css('opacity', 0);
-        $('#traffic-light .yellow-light').css('opacity', 1);
+        $('#traffic-light .red-light').css('opacity', 0);
+        $('#traffic-light .yellow-light').css('opacity', 0);
         $('#traffic-light .green-light').css('opacity', 1);
         $kart.css({'opacity': 1, 'width': '143px'});
         if (firstTour) {
@@ -198,6 +239,9 @@
     }
 
     function play() {
+        if (onPopupClose) {
+            onPopupClose();
+        }
         buildSettings(true);
         if (!initialized) {
             init(gameReady);
@@ -209,6 +253,10 @@
     }
 
     function tour() {
+        if (onPopupClose) {
+            onPopupClose();
+        }
+        $.fn.scrollPath("pause", showBillboard);
         buildSettings(false);
         if (!initialized) {
             init(tourReady);
@@ -225,26 +273,27 @@
 
     function closePopup() {
         $popup.hide();
+        $gameMenu.show();
     }
 
     function closeVideoPopup() {
         $popup.hide();
+        $gameMenu.show();
         $video.attr('src', 'about:blank');
+        if ($wrapper.hasClass('game')) {
+            $.fn.scrollPath("resume", showBillboard);
+        }
     }
 
     function closeGamePopupAndStart() {
         $popup.hide();
+        $gameMenu.show();
         countDownAndStart();
     }
 
     function closeGamePopupAndResume() {
         $popup.hide();
-        $.fn.scrollPath("resume", showBillboard);
-    }
-
-    function closeVideoPopupAndResume() {
-        $popup.hide();
-        $video.attr('src', 'about:blank');
+        $gameMenu.show();
         $.fn.scrollPath("resume", showBillboard);
     }
 
@@ -253,6 +302,7 @@
     }
 
     function showPopup(type) {
+        $gameMenu.hide();
         $popup.attr('class', type);
         $popup.show();
     }
@@ -288,7 +338,6 @@
     }
 
     function showReviewVideo(showMenu, onClose) {
-        console.info('showReviewVideo');
         onPopupClose = onClose;
         if (showMenu) {
             showSubmenu('review-video-2014');
@@ -301,6 +350,8 @@
     }
 
     function showBillboard() {
+        $('#race-billboard .score').text(score);
+        $wrapper.attr('class', 'over');
         onPopupClose = closeBillboardPopupAndContinue;
         showSubmenu('race-billboard');
         showPopup('billboard');
@@ -311,16 +362,36 @@
         showPopup('prize');
     }
 
-    $('.main-menu > .start-game').click(play);
+    $('.main-menu > .start-game, .sub-menu > .start-game, .sub-menu > .restart-game').click(play);
 
-    $('.main-menu > .review-mode').click(tour);
+    $('.main-menu > .review-mode, .sub-menu > .review-mode, .sub-menu > .return-review-mode').click(tour);
+
+    $('.sub-menu > .resume-game').click(function() {
+        if (onPopupClose) {
+            onPopupClose();
+        }
+    });
 
     $('.main-menu > .review-video').click(function() {
         showReviewVideo(false, closeVideoPopup);
     });
 
+    $('.sub-menu > .review-video').click(function() {
+        showReviewVideo(true, closeVideoPopup);
+    });
+
+    $('.game-menu > .pause-game').click(function() {
+        if ($wrapper.hasClass('game')) {
+            $.fn.scrollPath("pause");
+            showGameGuide(true, closeGamePopupAndResume);
+        }
+        if ($wrapper.hasClass('tour')) {
+            showTourGuide(true, closePopup);
+        }
+    });
+
     //Close popup
-    $('#review-video-2014 .close').click(function() {
+    $popup.find('.ok, .close').click(function() {
         if (onPopupClose) {
             onPopupClose();
         }

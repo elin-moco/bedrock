@@ -867,8 +867,8 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
-    width: 51px;
-    height: 79px;
+    width: 54px;
+    height: 82px;
     background: url('/media/img/mocotw/2014review/3.png') 0 0 no-repeat;
     opacity: 0;
   }
@@ -880,8 +880,8 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
-    width: 52px;
-    height: 78px;
+    width: 54px;
+    height: 80px;
     background: url('/media/img/mocotw/2014review/2.png') 0 0 no-repeat;
     opacity: 0;
   }
@@ -893,8 +893,8 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
-    width: 20px;
-    height: 75px;
+    width: 23px;
+    height: 78px;
     background: url('/media/img/mocotw/2014review/1.png') 0 0 no-repeat;
     opacity: 0;
   }
@@ -906,12 +906,28 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
-    width: 197px;
-    height: 80px;
+    width: 200px;
+    height: 82px;
     background: url('/media/img/mocotw/2014review/go.png') 0 0 no-repeat;
     opacity: 0;
   }
+  #score-pop {
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 16px;
+    top: 64%;
+    width: 23px;
+    height: 78px;
+    color: #C03832;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px #333;
+    pointer-events: none;
+    opacity: 0;
+  }
 }
+
 
 .BigButton {
   display: block;
@@ -922,6 +938,20 @@ body {
   font-size: 24px;
   vertical-align: middle;
   line-height: 54px;
+  margin: 10px 60px;
+  cursor: pointer;
+  .transition(opacity .25s linear);
+}
+
+.MidButton {
+  display: block;
+  width: 136px;
+  height: 38px;
+  text-align: center;
+  color: #FFF;
+  font-size: 16px;
+  vertical-align: middle;
+  line-height: 36px;
   margin: 10px 60px;
   cursor: pointer;
   .transition(opacity .25s linear);
@@ -946,16 +976,115 @@ body {
   .start-game {
     .BigButton;
     background: url('/media/img/mocotw/2014review/bt-red-b.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 42px;
+      height: 100%;
+      margin-right: 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-game-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
   }
 
   .review-video {
     .BigButton;
     background: url('/media/img/mocotw/2014review/bt-orange-b.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 43px;
+      height: 100%;
+      margin-right: 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-video-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
   }
 
   .review-mode {
     .BigButton;
     background: url('/media/img/mocotw/2014review/bt-blue-1-b.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 41px;
+      height: 100%;
+      margin-right: 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-history-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}
+
+.game-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  .pause-game {
+    .MidButton;
+    display: none;
+    background: url('/media/img/mocotw/2014review/bt-yellow-s.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 11px;
+      height: 100%;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-pause.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+  .sound-mode {
+    .MidButton;
+    display: none;
+    background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-sound.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+  }
+}
+
+.game {
+  .game-menu {
+    .pause-game {
+      display: block;
+    }
+    .sound-mode {
+      display: block;
+    }
+  }
+}
+
+.tour {
+  .game-menu {
+    .pause-game {
+      display: block;
+    }
+    .sound-mode {
+      display: none;
+    }
   }
 }
 
@@ -1003,7 +1132,106 @@ body {
     display: block;
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 6px;
+    .start-game {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 26px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-game-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .resume-game {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-yellow-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 13px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-play.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .restart-game {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 26px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-game-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .review-mode {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-blue-1-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 27px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-history-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .return-review-mode {
+      .review-mode;
+    }
+    .review-video {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-orange-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-video-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .sound-mode {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-sound.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
   }
   .desc {
     display: inline-block;
@@ -1108,6 +1336,54 @@ body {
       text-decoration: none;
     }
   }
+  .sub-menu {
+    .resume-game {
+      display: none;
+    }
+    .review-mode {
+      display: none;
+    }
+    .start-game {
+      display: none;
+    }
+    .return-review-mode {
+      display: none;
+    }
+    .restart-game {
+      display: none;
+    }
+  }
+}
+
+.game {
+  #review-video-2014 .sub-menu {
+    .resume-game {
+      display: block;
+    }
+    .review-mode {
+      display: block;
+    }
+  }
+}
+.tour {
+  #review-video-2014 .sub-menu {
+    .start-game {
+      display: block;
+    }
+    .return-review-mode {
+      display: block;
+    }
+  }
+}
+.over {
+  #review-video-2014 .sub-menu {
+    .restart-game {
+      display: block;
+    }
+    .review-mode {
+      display: block;
+    }
+  }
 }
 
 #race-billboard {
@@ -1203,6 +1479,10 @@ body {
       }
     }
   }
+  .sub-menu {
+    right: 40px;
+    bottom: 86px;
+  }
 }
 
 #get-prize {
@@ -1269,57 +1549,4 @@ body {
   div.body-wrapper-default {
     overflow: visible;
   }
-}
-
-.ShakeKeyframes {
-  0% { transform: translate(0px, 0px) rotate(0deg); }
-  2% { transform: translate(-0.5px, 0.5px) rotate(-0.5deg); }
-  4% { transform: translate(-2.5px, -1.5px) rotate(0.5deg); }
-  6% { transform: translate(1.5px, 1.5px) rotate(-1.5deg); }
-  8% { transform: translate(-1.5px, -2.5px) rotate(0.5deg); }
-  10% { transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
-  12% { transform: translate(-1.5px, 1.5px) rotate(-1.5deg); }
-  14% { transform: translate(-1.5px, 0.5px) rotate(0.5deg); }
-  16% { transform: translate(0.5px, 0.5px) rotate(-0.5deg); }
-  18% { transform: translate(0.5px, -2.5px) rotate(-0.5deg); }
-  20% { transform: translate(-2.5px, 0.5px) rotate(-1.5deg); }
-  22% { transform: translate(1.5px, 0.5px) rotate(-0.5deg); }
-  24% { transform: translate(-0.5px, -1.5px) rotate(-0.5deg); }
-  26% { transform: translate(-1.5px, 1.5px) rotate(0.5deg); }
-  28% { transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
-  30% { transform: translate(-2.5px, 0.5px) rotate(0.5deg); }
-  32% { transform: translate(1.5px, -0.5px) rotate(-0.5deg); }
-  34% { transform: translate(0.5px, -2.5px) rotate(-1.5deg); }
-  36% { transform: translate(0.5px, -2.5px) rotate(-0.5deg); }
-  38% { transform: translate(-2.5px, -0.5px) rotate(0.5deg); }
-  40% { transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
-  42% { transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
-  44% { transform: translate(-2.5px, -2.5px) rotate(0.5deg); }
-  46% { transform: translate(0.5px, -2.5px) rotate(0.5deg); }
-  48% { transform: translate(-0.5px, -2.5px) rotate(-0.5deg); }
-  50% { transform: translate(-0.5px, 0.5px) rotate(0.5deg); }
-  52% { transform: translate(1.5px, 0.5px) rotate(0.5deg); }
-  54% { transform: translate(-2.5px, 0.5px) rotate(-1.5deg); }
-  56% { transform: translate(-2.5px, 1.5px) rotate(0.5deg); }
-  58% { transform: translate(-2.5px, -2.5px) rotate(-0.5deg); }
-  60% { transform: translate(-0.5px, -2.5px) rotate(-0.5deg); }
-  62% { transform: translate(-1.5px, 0.5px) rotate(-0.5deg); }
-  64% { transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
-  66% { transform: translate(-2.5px, 0.5px) rotate(-0.5deg); }
-  68% { transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
-  70% { transform: translate(0.5px, 1.5px) rotate(0.5deg); }
-  72% { transform: translate(-2.5px, 1.5px) rotate(0.5deg); }
-  74% { transform: translate(1.5px, -0.5px) rotate(0.5deg); }
-  76% { transform: translate(-0.5px, -1.5px) rotate(0.5deg); }
-  78% { transform: translate(-0.5px, -2.5px) rotate(0.5deg); }
-  80% { transform: translate(1.5px, -0.5px) rotate(0.5deg); }
-  82% { transform: translate(-1.5px, 0.5px) rotate(-0.5deg); }
-  84% { transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
-  86% { transform: translate(0.5px, -0.5px) rotate(-1.5deg); }
-  88% { transform: translate(-2.5px, -2.5px) rotate(-1.5deg); }
-  90% { transform: translate(-1.5px, 1.5px) rotate(0.5deg); }
-  92% { transform: translate(-1.5px, 0.5px) rotate(0.5deg); }
-  94% { transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
-  96% { transform: translate(1.5px, 0.5px) rotate(-0.5deg); }
-  98% { transform: translate(-0.5px, -1.5px) rotate(0.5deg); }
 }
