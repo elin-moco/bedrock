@@ -251,6 +251,7 @@
         if (onPopupClose) {
             onPopupClose();
         }
+        closePopup();
         buildSettings(true);
         if (!initialized) {
             init(gameReady);
@@ -265,6 +266,7 @@
         if (onPopupClose) {
             onPopupClose();
         }
+        closePopup();
         $.fn.scrollPath("pause", showBillboard);
         buildSettings(false);
         if (!initialized) {
