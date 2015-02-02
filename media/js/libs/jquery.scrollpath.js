@@ -108,6 +108,11 @@
 				animateSteps( distance, duration, easing, callback );
 				return this;
 			},
+			navTo: function( dest, easing, callback ) {
+				var distance = dest - step;
+				animateSteps( distance, Math.abs(distance)/20+500, easing, callback );
+				return this;
+			},
             lockScroll: function() {
                 scrollLock = true;
 				return this;
@@ -121,14 +126,18 @@
                 return this;
             },
             pause: function() {
-                paused = true;
+                if (isAnimating) {
+                    paused = true;
+                }
 				return this;
             },
             resume: function(callback) {
-                paused = false;
                 var totalDistance = pathList.length - 1 - step;
 				animateSteps( totalDistance, totalDistance, 'linear', callback );
 				return this;
+            },
+            getTotalLength: function() {
+                return pathList.length - 1;
             }
 		};
 	
@@ -515,6 +524,7 @@
 						callback();
 					}
 					isAnimating = false;
+                    paused = false;
 				}
 				scrollToStep( nextStep, true );
 			}, duration / frames);

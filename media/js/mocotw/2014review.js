@@ -67,7 +67,6 @@
     var driftSound = new Audio('/media/img/mocotw/2014review/mp3/drift.mp3');
     $(driftSound).on('ended', function() {
         driftSound.src = driftSound.src;
-        console.info('ended');
     });
     var celebrateSound = new Audio('/media/img/mocotw/2014review/mp3/celebration.mp3');
     celebrateSound.loop = true;
@@ -80,6 +79,22 @@
 //    titleBgm.volume = 0.5;
 //    titleBgm.play();
     var allSounds = [countdownSound, scoreSound, driftSound, celebrateSound, raceBgm];
+    var navTrack = $('#nav-track').get(0);
+    var minifox = $('#minifox').get(0);
+    var navTrackTotal = navTrack.getTotalLength();
+    var trackTotal;
+    var $navMap = $('#nav-map');
+    var $navArea = $('#minimap-nav > area');
+
+    function moveFox(step) {
+        if (!trackTotal) {
+            trackTotal = $.fn.scrollPath("getTotalLength");
+        }
+        var navStep = navTrackTotal * ((step + 20000) % trackTotal) / trackTotal;
+        var p = navTrack.getPointAtLength(navStep);
+        minifox.setAttribute('x', p.x-10.5);
+        minifox.setAttribute('y', p.y-7.5);
+    }
 
     function shuffle(o){
         for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -137,38 +152,39 @@
 
         $.fn.scrollPath("getPath", {scrollSpeed: 20, rotationSpeed: Math.PI / 10})
             .moveTo(2400, 3075, {name: "start"})
-            .lineTo(1750, 3075, {name: "1"})
+            .lineTo(1750, 3075, {name: "p1"})
             .arc(1750, 2500, 575, Math.PI/2, Math.PI*(3/4), false, {rotate: -Math.PI/4 })
-            .lineTo(775, 2350, {name: "2"})
+            .lineTo(775, 2350, {name: "p2"})
             .arc(884, 2204, 180, Math.PI*(3/4), Math.PI, false, {rotate: -Math.PI/2 })
-            .lineTo(700, 1400, {name: "3"})
+            .lineTo(700, 1400, {name: "p3"})
             .arc(908, 1415, 208, Math.PI, -Math.PI/4, false, {rotate: -Math.PI*1.25 })
-            .lineTo(1490, 1690, {name: "4"})
+            .lineTo(1490, 1690, {name: "p4"})
             .arc(1450, 1736, 60, -Math.PI/4, Math.PI/4, false, {rotate: -Math.PI*1.75 })
-            .lineTo(1425, 1850, {name: "5"})
+            .lineTo(1425, 1850, {name: "p5"})
             .arc(1550, 1980, 180, -Math.PI*3/4, -Math.PI*1.75, true, {rotate: -Math.PI*0.75 })
-            .lineTo(1865, 1925, {name: "6"})
+            .lineTo(1865, 1925, {name: "p6"})
             .arc(1945, 1985, 100, -Math.PI*3/4, -Math.PI/4, false, {rotate: -Math.PI*1.25 })
-            .lineTo(2375, 2275, {name: "7"})
+            .lineTo(2375, 2275, {name: "p7"})
             .arc(2510, 2140, 190, -Math.PI*1.25, -Math.PI/4, true, {rotate: -Math.PI*0.25 })
-            .lineTo(1620, 980, {name: "8"})
+            .lineTo(1620, 980, {name: "p8"})
             .arc(1765, 825, 210, -Math.PI*1.25, -Math.PI/2, false, {rotate: -Math.PI })
-            .lineTo(3980, 615, {name: "9"})
+            .lineTo(3980, 615, {name: "p9"})
             .arc(3980, 815, 200, -Math.PI/2, -Math.PI/4, false, {rotate: -Math.PI*5/4 })
-            .lineTo(4660, 1215, {name: "10"})
+            .lineTo(4660, 1215, {name: "p10"})
             .arc(4620, 1315, 100, -Math.PI/4, Math.PI/4, false, {rotate: -Math.PI*7/4 })
-            .lineTo(4375, 1700, {name: "11"})
+            .lineTo(4375, 1700, {name: "p11"})
             .arc(4425, 1775, 90, Math.PI*5/4, Math.PI/4, true, {rotate: -Math.PI*3/4 })
-            .lineTo(4560, 1770, {name: "12"})
+            .lineTo(4560, 1770, {name: "p12"})
             .arc(4633, 1825, 90, Math.PI*5/4, Math.PI/4, false, {rotate: -Math.PI*7/4 })
-            .lineTo(3685, 2900, {name: "13"})
+            .lineTo(3685, 2900, {name: "p13"})
             .arc(3255, 2480, 600, Math.PI/4, Math.PI/2, false, {rotate: -Math.PI*2 })
-            .lineTo(2400, 3075, {name: "14"});
+            .lineTo(2400, 3075, {name: "p14"});
 
         // We're done with the path, let's initate the plugin on our wrapper element
         $(".track").scrollPath({drawPath: false, wrapAround: true, scrollBar: true, scrollBlocker: '#popup',
             initComplete: callback,
             onMove: function(step, direction) {
+            moveFox(step);
             var setting = roadSettings[step];
             if (setting) {
                 var $item = $('#b' + setting.item);
@@ -257,6 +273,7 @@
         $('#traffic-light .yellow-light').css('opacity', 0);
         $('#traffic-light .green-light').css('opacity', 0);
         $kart.css({'opacity': 1, 'width': '143px'});
+        $navMap.show();
         if (replay) {
             countDownAndStart();
         }
@@ -284,6 +301,7 @@
         $('#traffic-light .yellow-light').css('opacity', 0);
         $('#traffic-light .green-light').css('opacity', 1);
         $kart.css({'opacity': 1, 'width': '143px'});
+        $navMap.show();
         if (firstTour) {
             firstTour = false;
             showTourGuide(false, closePopup);
@@ -317,6 +335,7 @@
     }
 
     function tour() {
+        raceBgm.pause();
         celebrateSound.pause();
         if (onPopupClose) {
             onPopupClose();
@@ -410,6 +429,7 @@
     }
 
     function showReviewVideo(showMenu, onClose) {
+        raceBgm.pause();
         celebrateSound.pause();
         onPopupClose = onClose;
         if (showMenu) {
@@ -450,6 +470,7 @@
         if (onPopupClose) {
             onPopupClose();
         }
+        raceBgm.play();
     });
 
     $('.main-menu > .review-video').click(function() {
@@ -471,8 +492,20 @@
             }
         }
     });
-    $('#minimap-nav > area').click(function() {
-        alert(navPoints[$(this).attr('href')])
+    $navArea.click(function() {
+        if (!playing) {
+            var dest = navPoints[$(this).attr('href')];
+                $.fn.scrollPath("navTo", dest, 'linear', function() {
+            });
+        }
+    });
+    $navArea.mouseover(function(e) {
+        if (!playing) {
+            $navMap.addClass(e.target.id.substring(4));
+        }
+    });
+    $navArea.mouseout(function(e) {
+        $navMap.attr('class', '');
     });
     var $soundMode = $('.sound-mode');
     $soundMode.click(function() {

@@ -1072,11 +1072,69 @@ body {
   }
 }
 
-#minimap {
-  display: block;
+#nav-map {
+  display: none;
   position: absolute;
   top: 20px;
   right: 60px;
+  width: 295px;
+  height: 171px;
+  #minimap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    .border-radius(10px);
+  }
+  #minitrack {
+    top: 23px;
+    right: 28px;
+    width: 79%;
+    height: auto;
+    position: absolute;
+    pointer-events: none;
+  }
+  #nav-track {
+    fill: none;
+    stroke: rgba(255,255,255,0.5);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+  }
+  &.firefox {
+    #nav-track {
+      stroke-dasharray: 125,675;
+      stroke-dashoffset: 393;
+    }
+  }
+  &.firefoxos {
+    #nav-track {
+      stroke-dasharray: 235,515;
+      stroke-dashoffset: 213;
+    }
+  }
+  &.community {
+    #nav-track {
+      stroke-dasharray: 85,665;
+      stroke-dashoffset: 723;
+    }
+  }
+  &.openweb {
+    #nav-track {
+      stroke-dasharray: 35,805;
+      stroke-dashoffset: 723;
+    }
+  }
+  &.blogs {
+    #nav-track {
+      stroke-dasharray: 180,640;
+      stroke-dashoffset: 660;
+    }
+  }
 }
 
 .game {
