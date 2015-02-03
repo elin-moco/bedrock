@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-    if ($html.hasClass('lt-ie10')) {
+    if ($('html').hasClass('lt-ie10')) {
         return;
     }
     function desktopSetup() {

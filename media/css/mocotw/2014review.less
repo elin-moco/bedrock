@@ -66,11 +66,13 @@ body {
   }
 
   .main-title {
+    display: none;
     opacity: 0;
     pointer-events: none;
   }
 
   .main-menu {
+    display: none;
     pointer-events: none;
     .start-game {
       opacity: 0;
@@ -291,7 +293,7 @@ body {
     }
 
     &#b1-1 {
-      .transform(rotateZ(0deg));
+      .transform(rotateZ(0deg) rotateX(5deg));
       top: 2716px;
       left: 1750px;
       .ad {
@@ -519,7 +521,7 @@ body {
       }
     }
     &#b5-7 {
-      .transform(rotateZ(0deg));
+      .transform(rotateZ(0deg) rotateX(5deg));
       top: 2715px;
       left: 2950px;
       .ad {
@@ -782,17 +784,18 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 10000;
+    z-index: 100;
     opacity: 0;
-    .transform(scaleY(1.5));
+    .transform(rotateX(-5deg) scaleY(1.5));
+    .transform-style(preserve-3d);
     .transform-origin(50% 100%);
   }
   #traffic-light {
     position: absolute;
     top: 2780px;
     left: 2137px;
-    z-index: 10000;
-    .transform(scaleY(1.5));
+    z-index: 100;
+    .transform(rotateX(-5deg) scaleY(1.5));
     .transform-style(preserve-3d);
     .transform-origin(50% 100%);
   }
@@ -840,7 +843,6 @@ body {
   background-repeat: no-repeat;
   background-size: 143px 65px;
   background-position: right 60%;
-  pointer-events: none;
   .transition(all .5s ease-out);
   &.up {
     background-position: right 20%;
@@ -893,8 +895,7 @@ body {
   right: 0;
   width: 200px;
   height: 100%;
-  pointer-events: none;
-  z-index: 20000;
+  z-index: 200;
   .transform(scaleY(1.5));
   .transform-origin(50% 100%);
   .three {
@@ -1008,7 +1009,7 @@ body {
   position: absolute;
   top: 200px;
   left: 50%;
-
+  z-index: 10000;
   .start-game {
     .BigButton;
     background: url('/media/img/mocotw/2014review/bt-red-b.png');
