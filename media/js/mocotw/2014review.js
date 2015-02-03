@@ -369,6 +369,7 @@
         $gameMenu.show();
         $video.attr('src', 'about:blank');
         if ($wrapper.hasClass('game')) {
+            raceBgm.play();
             $.fn.scrollPath("resume", showBillboard);
         }
         else {
