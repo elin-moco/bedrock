@@ -9,8 +9,19 @@ body {
   overflow: hidden;
 }
 
+#masthead {
+  position: relative;
+  z-index: 10000;
+  nav li.topMenu {
+    > a, > a:link, > a:visited {
+      color: #FFFFFF;
+      font-weight: bold;
+      text-shadow: 1px 1px #333;
+    }
+  }
+}
 #tabzilla-panel {
-  z-index: 20000;
+  z-index: 10000;
 }
 
 #tabzilla {
