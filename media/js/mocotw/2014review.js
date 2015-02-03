@@ -376,7 +376,7 @@
                 raceBgm.play();
                 $.fn.scrollPath("resume", showBillboard);
             }
-            else {
+            else if ($wrapper.attr('class')) {
                 onPopupClose = null;
                 tour();
             }
