@@ -86,7 +86,9 @@ body {
   }
 }
 
-@media only screen and (min-width: @breakTablet) {
+@breakTabletPlus: @breakTablet + 1;
+
+@media only screen and (min-width: @breakTabletPlus) {
 
   .land {
     position: relative;
