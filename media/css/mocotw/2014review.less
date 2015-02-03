@@ -1651,6 +1651,134 @@ body {
     width: auto;
   }
 }
+@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+  .thumb {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 16px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+  .board {
+    .ad {
+      min-height: 80px;
+      padding-left: 80px;
+    }
+    &#b1-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-1.png");
+    }
+    &#b1-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-2.png");
+    }
+    &#b1-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-3.png");
+    }
+    &#b1-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-4.png");
+    }
+    &#b1-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-5.png");
+    }
+    &#b2-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-1.png");
+    }
+    &#b2-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-2.png");
+    }
+    &#b2-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-3.png");
+    }
+    &#b2-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-4.png");
+    }
+    &#b2-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-5.png");
+    }
+    &#b2-6:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-6.png");
+    }
+    &#b2-7:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-7.png");
+    }
+    &#b2-8:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-8.png");
+    }
+    &#b3-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-1.png");
+    }
+    &#b3-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-2.png");
+    }
+    &#b3-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-3.png");
+    }
+    &#b3-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-4.png");
+    }
+    &#b3-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-5.png");
+    }
+    &#b4-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/openweb-1.png");
+    }
+    &#b4-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/openweb-2.png");
+    }
+    &#b5-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-1.png");
+    }
+    &#b5-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-2.png");
+    }
+    &#b5-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-3.png");
+    }
+    &#b5-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-4.png");
+    }
+    &#b5-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-5.png");
+    }
+    &#b5-6:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-6.png");
+    }
+    &#b5-7:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-7.png");
+    }
+  }
+}
 
 @media only screen and (max-width: @breakTablet) {
   html {
@@ -1704,13 +1832,20 @@ body {
     text-shadow: 1px 1px #333;
     background-color: #51331F;
     margin: 0;
-    padding: 6px 12px;
+    padding: 12px;
+    font-size: 36px;
+  }
+  #firefox-mark {
+    margin-top: -60px;
   }
   .board {
+    position: relative;
     .ad {
       .record {
         display: block;
         h3 {
+          font-size: 20px;
+          line-height: 24px;
           margin: 0;
           padding: 6px 12px;
         }
@@ -1718,6 +1853,8 @@ body {
           margin: 0;
           padding: 0 12px 6px 12px;
           li {
+            font-size: 14px;
+            line-height: 16px;
             opacity: 1;
             padding: 3px 0;
           }
@@ -1726,33 +1863,63 @@ body {
     }
     &:nth-child(odd) .firefox {
       background-color: #B85212;
+      &:hover {
+        background-color: #7f3a07;
+      }
     }
     &:nth-child(even) .firefox {
       background-color: #C67441;
+      &:hover {
+        background-color: #7f3a07;
+      }
     }
     &:nth-child(odd) .firefoxos {
       background-color: #2E759A;
+      &:hover {
+        background-color: #265f7f;
+      }
     }
     &:nth-child(even) .firefoxos {
       background-color: #5890AD;
+      &:hover {
+        background-color: #265f7f;
+      }
     }
     &:nth-child(odd) .community {
       background-color: #C89C09;
+      &:hover {
+        background-color: #7f5f09;
+      }
     }
     &:nth-child(even) .community {
       background-color: #D3AF39;
+      &:hover {
+        background-color: #7f5f09;
+      }
     }
     &:nth-child(odd) .openweb {
       background-color: #1A4977;
+      &:hover {
+        background-color: #1a416f;
+      }
     }
     &:nth-child(even) .openweb {
       background-color: #476D91;
+      &:hover {
+        background-color: #1a416f;
+      }
     }
     &:nth-child(odd) .blog {
       background-color: #C0751C;
+      &:hover {
+        background-color: #7f4a14;
+      }
     }
     &:nth-child(even) .blog {
       background-color: #CD9049;
+      &:hover {
+        background-color: #7f4a14;
+      }
     }
   }
   #count-down {
@@ -1770,6 +1937,9 @@ body {
 }
 
 @media only screen and (max-width: @breakMobileLandscape) {
+  #firefox-mark {
+    margin-top: 0px;
+  }
   #traffic-light {
     display: none;
   }
