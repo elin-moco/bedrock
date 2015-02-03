@@ -9,6 +9,14 @@ body {
   overflow: hidden;
 }
 
+#tabzilla-panel {
+  z-index: 20000;
+}
+
+#tabzilla {
+  margin-top: -2px;
+}
+
 #wrapper {
   width: 100%;
 }
@@ -1106,8 +1114,6 @@ body {
   #minitrack {
     top: 23px;
     right: 28px;
-    width: 79%;
-    height: auto;
     position: absolute;
     pointer-events: none;
   }
@@ -1118,7 +1124,7 @@ body {
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-miterlimit: 10;
-    stroke-dasharray: 0;
+    stroke-dasharray: 0, 1000;
     stroke-dashoffset: 0;
   }
   &.firefox {
