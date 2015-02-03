@@ -7,6 +7,8 @@
 {% block page_image %}{{ settings.CANONICAL_URL }}{{ media('img/mocotw/2013review/video.png') }}{% endblock %}
 {% block body_class %}sky{% endblock %}
 
+{% block html_classes %}{{ (' lt-ie10 ' if LT_IE10 else '') }}{% endblock %}
+
 {% block extrahead %}
   {{ css('2014review') }}
 {% endblock %}
@@ -21,6 +23,7 @@
 {% block content %}
   <div id="main-content">
     <div class="main-title"></div>
+    {% if not LT_IE10 %}
 		<div class="land">
       <div id="kart" class="">
       </div>
@@ -439,7 +442,6 @@
         <div class="start-game">開始遊戲</div>
 
         <div class="restart-game">再玩一次</div>
-{#        <div class="review-mode">導覽模式</div>#}
       </div>
     </div>
     <div id="race-billboard">
@@ -520,6 +522,9 @@
       </div>
     </div>
   </div>
+  {% else %}
+      <div id="not-supported">抱歉，你的瀏覽器不支援部分 HTML5 技術，<br>請<a href="{{ url('firefox.fx') }}">下載使用 Firefox 瀏覽器</a>。</div>
+  {% endif %}
 {% endblock %}
 
 {% block email_form %}

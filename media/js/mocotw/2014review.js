@@ -1,6 +1,9 @@
 "use strict";
 
 (function () {
+    if ($html.hasClass('lt-ie10')) {
+        return;
+    }
     function desktopSetup() {
         var initialized = false;
         var playing = false;
