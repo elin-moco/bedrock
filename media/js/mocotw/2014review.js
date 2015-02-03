@@ -5,6 +5,8 @@
         return;
     }
     function desktopSetup() {
+        var BASE_URL = 'http://' + window.location.hostname + '/2014-review/';
+        var API_URL = 'https://ffclub.fancy.mozilla.com.tw/campaign/2014review/';
         var initialized = false;
         var playing = false;
         var firstPlay = true;
@@ -537,7 +539,7 @@
         });
 
         //Close popup
-        $popup.find('.ok, .close').click(function() {
+        $popup.find('.ok, .close, #race-billboard h2 .share').click(function() {
             if (onPopupClose) {
                 onPopupClose();
             }
@@ -586,6 +588,85 @@
                     break;
                 default :
                     break;
+            }
+        });
+
+        function showLoginBox() {
+            $('.prize-content').hide();
+            $('#login-box').attr('src', API_URL + 'login/').show();
+        }
+
+        window.fbAsyncInit = function () {
+            FB.Event.subscribe('edge.create', function (response) {
+                if ('https://facebook.com/MozillaTaiwan' == response) {
+                    showLoginBox();
+                    gaTrack(['_trackEvent', 'New Fans', 'like', response]);
+                }
+            });
+        };
+
+        $('#get-prize .share').click(function() {
+            FB.ui({method: 'feed', link: BASE_URL},
+                function (response) {
+                    if (response && response.post_id) {
+                        showLoginBox();
+                        gaTrack(['_trackEvent', 'Social Interaction', 'share', response.post_id]);
+                    }
+                }
+            );
+        });
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        // Listen to message from child window
+        eventer(messageEvent,function(e) {
+            //run function//
+            if (e.data == 'login=success') {
+                $('#login-box').hide();
+                $.ajax({
+                    url: API_URL + 'award/',
+                    data: {score: $('#race-billboard .score').text()},
+                    dataType: 'jsonp',
+                    success: function(price) {
+                        if (price.result == 'success') {
+                            if (price.existing) {
+                                alert('你已經領過獎囉！');
+                            }
+                            //show claim link
+                            var $claimPopup = $('#claim-message');
+                            $claimPopup.find('a').attr('href', API_URL + 'claim/');
+                            $claimPopup.show();
+                        }
+                        else if (price.result == 'ended') {
+                            alert('活動已結束。');
+                        }
+                        else {
+                            alert('抱歉，抽獎時發生錯誤。');
+                        }
+                    }
+                });
+            }
+        },false);
+
+        $.ajax({
+            url: API_URL + 'quota/',
+            dataType: 'jsonp',
+            success: function(price) {
+                if (price.result == 'success') {
+                    if (price.quota > 0) {
+                        var $quotaMessage = $('.gift-note .quota-remain');
+                        $quotaMessage.find('span').text(price.quota);
+                        $quotaMessage.show();
+                    }
+                    else {
+                        $('.gift-note .out-of-stock').show();
+                    }
+                }
+                else {
+                    $('.gift-note').hide();
+                }
             }
         });
     }

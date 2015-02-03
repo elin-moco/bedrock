@@ -1207,6 +1207,12 @@ body {
   background-image: url('/media/img/mocotw/2014review/red-envelope.png');
   background-repeat: no-repeat;
   background-size: 100% auto;
+  .quota-remain {
+    display: none;
+  }
+  .out-of-stock {
+    display: none;
+  }
 }
 
 #popup {
@@ -1615,32 +1621,44 @@ body {
 #get-prize {
   display: none;
   .prize-content {
-    .PopupFrame(400px, 150px);
+    .PopupFrame(380px, 350px);
     .desc {
       font-size: 15px;
       text-align: left;
       margin: 20px;
     }
     .button {
-      width: 120px;
+      width: 240px;
       margin: 0 15px;
-      padding: 8px;
+      padding: 16px 8px;
       span {
         display: inline-block;
         vertical-align: middle;
       }
     }
-    .join:before {
-      content: "";
-      display: inline-block;
-      width: 29px;
-      height: 27px;
-      margin-right: 8px;
-      vertical-align: middle;
-      background-image: url('/media/img/mocotw/2014review/icon-like.png');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100% auto;
+    .join {
+      cursor: default;
+      .fb_iframe_widget {
+        margin-top: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        .box-shadow(inset 1px 1px 2px #333);
+        .border-radius(3px);
+      }
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 29px;
+        height: 27px;
+        margin-right: 8px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-like.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .or {
+      margin: 8px;
     }
     .share:before {
       content: "";
@@ -1655,6 +1673,24 @@ body {
       background-size: 100% auto;
     }
     text-align: center;
+  }
+  #login-box {
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+  }
+  #claim-message {
+    .PopupFrame(320px, 160px);
+    display: none;
+    padding: 48px 24px;
+    box-sizing: border-box;
+    font-size: 16px;
   }
 }
 

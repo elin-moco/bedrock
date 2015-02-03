@@ -397,7 +397,10 @@
       <div class="pause-game">暫停遊戲</div>
       <div class="sound-mode on">音效已開</div>
     </div>
-    <div class="gift-note">本日紅包袋已發完，明日請早。</div>
+    <div class="gift-note">
+      <div class="quota-remain">今天還有 <span>0</span> 份紅包袋，<br>快來玩遊戲領紅包吧！</div>
+      <div class="out-of-stock">本日紅包袋已發完，明日請早。</div>
+    </div>
   </div>
   <div id="popup" class="">
     <div id="game-guide">
@@ -509,19 +512,38 @@
     <div id="get-prize">
       <div class="prize-content">
         <div class="desc">
-          感謝你參與活動,分享成績或按讚加入 Mozilla Taiwan
-          粉絲團，將可獲得一份 Firefox 限量紅包袋喔!
+          感謝你參與，分享活動或按讚加入 Mozilla Taiwan
+          粉絲團，將可獲得一份 Firefox 限量紅包袋喔！
         </div>
-        <div class="button join"><span>加入粉絲團<br>獲得紅包袋</span></div>
-        <div class="button share"><span>分享活動<br>獲得紅包袋</span></div>
+        <div class="button join">
+          <span>加入粉絲團<br>獲得紅包袋</span>
+          <div class="fb-like-box" data-href="https://www.facebook.com/MozillaTaiwan" data-width="220" data-colorscheme="dark" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+        </div>
+        <div class="or">或者</div>
+        <div class="button share">
+          <span>分享活動<br>獲得紅包袋</span>
+        </div>
       </div>
       <div class="sub-menu">
         <div class="restart-game">再玩一次</div>
         <div class="review-mode">導覽模式</div>
         <div class="review-video">回顧影片</div>
       </div>
+      <iframe id="login-box" src="about:blank"></iframe>
+      <div id="claim-message">
+        恭喜你獲得限量 Firefox 紅包袋乙份，<br>請<a target="_blank">點此填寫獎品寄送資料</a>。
+      </div>
     </div>
   </div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=135467439980355";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
   {% else %}
       <div id="not-supported">抱歉，你的瀏覽器不支援部分 HTML5 技術，<br>請<a href="{{ url('firefox.fx') }}">下載使用 Firefox 瀏覽器</a>。</div>
   {% endif %}
