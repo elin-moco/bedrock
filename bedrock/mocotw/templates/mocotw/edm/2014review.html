@@ -16,14 +16,21 @@
     }
     table, thead, tbody, tr, td {
       border-collapse: collapse;
+      border-spacing:0;
       padding: 0;
+    }
+    table td a {
+      display: inline-block;
+      vertical-align: top;
     }
 
     a, a img {
       outline: none;
+      margin: 0;
     }
 
     img {
+      display: block;
       border: 0;
     }
 
@@ -42,7 +49,6 @@
     table.container {
       width: 600px;
       margin: 16px auto 48px auto;
-      font-size: 0;
     }
     a.web-link {
       display: block;
@@ -54,7 +60,6 @@
       text-align: center;
     }
     td.header-tip small{
-      font-size: 11px;
       color: #808080;
       text-decoration: underline;
     }
@@ -72,6 +77,14 @@
     .navigator {
       text-align: right;
     }
+
+    .content, .content td, .content td a {
+      font-size: 0;
+      line-height: 0;
+      mso-line-height-rule: exactly;
+      vertical-align: top;
+    }
+
     table.footer {
       background: #ffffff;
       width: 100%;
@@ -145,10 +158,10 @@
       </table>
     </td>
   </tr>
-  <tr>
+  <tr class="content">
     <td><a href="http://mozilla.com.tw/2014-review/{{ tracking_code }}"><img src="{{ '2014review-edm-1.png'|load_image }}"/></a></td>
   </tr>
-  <tr>
+  <tr class="content">
     <td><a href="http://mozilla.com.tw/2014-review/{{ tracking_code }}"><img src="{{ '2014review-edm-2.gif'|load_image }}"/></a></td>
   </tr>
 </table>
