@@ -10,7 +10,7 @@ from bedrock.mozorg.views import contribute, partnerships, contribute_university
 from bedrock.mozorg.views import plugincheck
 from bedrock.mocotw.views import home, unsubscribe, subscribe, subscribed, campaign_tracker, issue, \
     one_newsletter_subscribe, one_newsletter_unsubscribe, google_form, subscription_count, workshop, \
-    year_review_2013, subscribe_embed, newsletter, community, google_form_2014, firefox_family, \
+    year_review_2013, year_review_2014, subscribe_embed, newsletter, community, google_form_2014, firefox_family, \
     system_requirements, latest_sysreq
 from bedrock.redirects.util import redirect
 from bedrock.sandstone.settings import BLOG_URL
@@ -147,6 +147,7 @@ urlpatterns = patterns(
     url(r'^about/partnerships/contact-bizdev/$', partnerships, name='about.partnerships.contact-bizdev'),
     url(r'^plugincheck/$', plugincheck, name='mozorg.plugincheck'),
     url(r'^2013-review/(?P<spring>[-A-z]+/)?$', year_review_2013, name='mocotw.2013review'),
+    url(r'^2014-review/$', year_review_2014, name='mocotw.2014review'),
 
     redirect(r'^register/student/$', '/newsletter/subscribe/student/', permanent=False),
     # url('^register/student/$', google_form,

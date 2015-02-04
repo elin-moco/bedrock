@@ -1,0 +1,2246 @@
+@import "../sandstone/lib";
+
+
+html, body, #body-wrapper, #outer-wrapper, #wrapper, #main-content {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+#masthead {
+  position: relative;
+  z-index: 10000;
+  nav li.topMenu {
+    > a, > a:link, > a:visited {
+      color: #FFFFFF;
+      font-weight: bold;
+      text-shadow: 1px 1px #333;
+    }
+  }
+}
+#tabzilla-panel {
+  z-index: 10000;
+}
+
+#tabzilla {
+  margin-top: -2px;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+#main-content {
+  perspective: 5000px;
+  perspective-origin: 50% 0px;
+  &:after {
+    display: none;
+  }
+}
+
+.began {
+
+  .land {
+    .transform(rotateX(54deg));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 0);
+    top: 12%;
+  }
+
+  .map {
+    left: 488px;
+    top: 425px;
+    width: 4396px;
+    height: 2848px;
+    margin-top: 0;
+  }
+
+  .section-mark {
+    opacity: 1;
+  }
+
+  .board {
+    opacity: 1;
+  }
+
+  .main-title {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .main-menu {
+    display: none;
+    pointer-events: none;
+    .start-game {
+      opacity: 0;
+    }
+
+    .review-video {
+      opacity: 0;
+    }
+
+    .review-mode {
+      opacity: 0;
+    }
+  }
+}
+
+@breakTabletPlus: @breakTablet + 1;
+
+@media only screen and (min-width: @breakTabletPlus) {
+
+  .land {
+    position: relative;
+    height: 100%;
+    top: 0;
+    .transition(all 1s linear)
+  }
+
+  .track {
+    height: 100%;
+  }
+
+  .map:before {
+    content: "";
+    background-image: url('/media/img/mocotw/2014review/map/grass-bg.svg');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+    display: block;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+  }
+
+  .map:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('/media/img/mocotw/2014review/map/race-track.svg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: top left;
+  }
+
+  .map {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 80%;
+    height: 100%;
+    .transition(all 1s linear)
+  }
+
+  .board {
+    position: absolute;
+    opacity: 0;
+    display: block;
+    width: 360px;
+    height: 270px;
+    z-index: 10000;
+    .transform-style(preserve-3d);
+    .transform-origin(50% 100%);
+    .transition(opacity .5s linear 1.5s);
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5%;
+      height: 20%;
+      margin: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #272727;
+    }
+    &.enlarge {
+      z-index: 10001;
+      .ad {
+        width: 300px;
+        height: 165px;
+        bottom: 24%;
+        background-size: 100%;
+        &.firefox:before {
+          opacity: 0;
+        }
+        &.firefoxos:before {
+          opacity: 0;
+        }
+        &.community:before {
+          opacity: 0;
+        }
+        &.openweb:before {
+          opacity: 0;
+        }
+        &.blog:before {
+          opacity: 0;
+        }
+        .record {
+          h3 {
+            font-size: 28px;
+            line-height: 30px;
+          }
+          ul li {
+            font-size: 14px;
+            line-height: 16px;
+            opacity: 1;
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+
+    .ad {
+      position: absolute;
+      display: block;
+      width: 120px;
+      height: 66px;
+      margin: auto;
+      box-sizing: border-box;
+      left: 0;
+      right: 0;
+      bottom: 12%;
+      cursor: pointer;
+      cursor: hand;
+      .transform-origin(50% 100%);
+      .transform(scaleY(1.5));
+      .transition(all .25s linear);
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 113%;
+        height: 150%;
+        top: -26%;
+        left: -7%;
+        bottom: -20%;
+        right: -20%;
+        background-image: url('/media/img/mocotw/2014review/map/billboard.svg');
+        background-position: 0 0;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        pointer-events: none;
+      }
+      &.firefox:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #E4600D;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.firefoxos:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #1F91CF;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.community:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #FCC900;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.openweb:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #02539D;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+      &.blog:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #F1911A;
+        opacity: 1;
+        .transition(opacity .25s linear);
+      }
+
+      .record {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 2%;
+        box-sizing: border-box;
+      }
+    }
+
+    &#b1-1 {
+      .transform(rotateZ(0deg) rotateX(-5deg));
+      top: 2716px;
+      left: 1750px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-1.png');
+      }
+    }
+    &#b1-2 {
+      .transform(rotateZ(45deg));
+      top: 2500px;
+      left: 1150px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-2.png');
+      }
+    }
+    &#b1-3 {
+      .transform(rotateZ(45deg));
+      top: 2300px;
+      left: 950px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-3.png');
+      }
+    }
+    &#b1-4 {
+      .transform(rotateZ(45deg));
+      top: 2100px;
+      left: 750px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-4.png');
+      }
+    }
+    &#b1-5 {
+      .transform(rotateZ(90deg));
+      top: 1700px;
+      left: 618px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-5.png');
+      }
+    }
+    &#b2-1 {
+      .transform(rotateZ(90deg));
+      top: 1400px;
+      left: 618px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-1.png');
+      }
+    }
+    &#b2-2 {
+      .transform(rotateZ(225deg));
+      top: 1280px;
+      left: 1050px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-2.png');
+      }
+    }
+    &#b2-3 {
+      .transform(rotateZ(135deg));
+      top: 1880px;
+      left: 1585px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-3.png');
+      }
+    }
+    &#b2-4 {
+      .transform(rotateZ(225deg));
+      top: 2000px;
+      left: 2075px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-4.png');
+      }
+    }
+    &#b2-5 {
+      .transform(rotateZ(45deg));
+      top: 1600px;
+      left: 2465px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-5.png');
+      }
+    }
+    &#b2-6 {
+      .transform(rotateZ(45deg));
+      top: 1400px;
+      left: 2265px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-6.png');
+      }
+    }
+    &#b2-7 {
+      .transform(rotateZ(45deg));
+      top: 1200px;
+      left: 2065px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-7.png');
+      }
+    }
+    &#b2-8 {
+      .transform(rotateZ(45deg));
+      top: 1000px;
+      left: 1865px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/firefox-os-8.png');
+      }
+    }
+    &#b3-1 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 1800px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-1.png');
+      }
+    }
+    &#b3-2 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 2150px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-2.png');
+      }
+    }
+    &#b3-3 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 2500px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-3.png');
+      }
+    }
+    &#b3-4 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 2850px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-4.png');
+      }
+    }
+    &#b3-5 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 3200px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/community-5.png');
+      }
+    }
+    &#b4-1 {
+      .transform(rotateZ(180deg));
+      top: 435px;
+      left: 3600px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/openweb-1.png');
+      }
+    }
+    &#b4-2 {
+      .transform(rotateZ(225deg));
+      top: 630px;
+      left: 4050px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/openweb-2.png');
+      }
+    }
+    &#b5-1 {
+      .transform(rotateZ(225deg));
+      top: 880px;
+      left: 4300px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-1.png');
+      }
+    }
+    &#b5-2 {
+      .transform(rotateZ(315deg));
+      top: 1280px;
+      left: 4215px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-2.png');
+      }
+    }
+    &#b5-3 {
+      .transform(rotateZ(315deg));
+      top: 1860px;
+      left: 4150px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-3.png');
+      }
+    }
+    &#b5-4 {
+      .transform(rotateZ(315deg));
+      top: 2060px;
+      left: 3950px;
+      .ad {
+        .record h3 {
+          line-height: 14px;
+          font-size: 13px;
+        }
+        background-image: url('/media/img/mocotw/2014review/pics/blog-4.png');
+      }
+      &.enlarge .ad {
+        .record h3 {
+          line-height: 28px;
+          font-size: 26px;
+        }
+      }
+    }
+    &#b5-5 {
+      .transform(rotateZ(315deg));
+      top: 2260px;
+      left: 3750px;
+      .ad {
+        .record h3 {
+          line-height: 14px;
+          font-size: 13px;
+        }
+        background-image: url('/media/img/mocotw/2014review/pics/blog-5.png');
+      }
+      &.enlarge .ad {
+        .record h3 {
+          line-height: 28px;
+          font-size: 26px;
+        }
+      }
+    }
+    &#b5-6 {
+      .transform(rotateZ(315deg));
+      top: 2460px;
+      left: 3550px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-6.png');
+      }
+    }
+    &#b5-7 {
+      .transform(rotateZ(0deg) rotateX(-5deg));
+      top: 2715px;
+      left: 2950px;
+      .ad {
+        background-image: url('/media/img/mocotw/2014review/pics/blog-7.png');
+      }
+    }
+  }
+
+  .item {
+    position: absolute;
+    display: block;
+    z-index: 10001;
+    opacity: 0;
+    width: 60px;
+    height: 72px;
+    .transform-origin(50% 100%);
+    .transition(all .5s linear);
+
+    &:before {
+      content: "";
+      position: relative;
+      display: block;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      margin: auto;
+      top: 0;
+    }
+
+    &.up:before {
+      top: -50px;
+    }
+
+    &.down:before {
+      top: 50px;
+    }
+
+    &.treasure1:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-1.png');
+      width: 44px;
+      height: 44px * 1.5;
+      margin-top: 4px;
+    }
+    &.treasure2:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-2.png');
+      width: 38px;
+      height: 48px * 1.5;
+    }
+    &.treasure3:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-3.png');
+      width: 46px;
+      height: 38px * 1.5;
+      margin-top: 10px;
+    }
+    &.treasure4:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-4.png');
+      width: 46px;
+      height: 37px * 1.5;
+      margin-top: 10px;
+    }
+    &.treasure5:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-5.png');
+      width: 59px;
+      height: 40px * 1.5;
+      margin-top: 8px;
+    }
+    &.treasure6:before {
+      background-image: url('/media/img/mocotw/2014review/map/treasure-6.png');
+      width: 47px;
+      height: 47px * 1.5;
+    }
+    &#i1-1 {
+      .transform(rotateZ(0deg));
+      top: 3036px; //+320
+      left: 1900px; //+150
+    }
+    &#i1-2 {
+      .transform(rotateZ(45deg));
+      top: 2780px; //+280
+      left: 1220px; //+70
+    }
+    &#i1-3 {
+      .transform(rotateZ(45deg));
+      top: 2580px;
+      left: 1020px;
+    }
+    &#i1-4 {
+      .transform(rotateZ(45deg));
+      top: 2380px;
+      left: 820px;
+    }
+    &#i1-5 {
+      .transform(rotateZ(90deg));
+      top: 1700px+200;
+      left: 618px+30;
+    }
+    &#i2-1 {
+      .transform(rotateZ(90deg));
+      top: 1400px+200;
+      left: 618px+30;
+    }
+    &#i2-2 {
+      .transform(rotateZ(225deg));
+      top: 1280px+110;
+      left: 1050px+235;
+    }
+    &#i2-3 {
+      .transform(rotateZ(135deg));
+      top: 1880px+120;
+      left: 1585px+65;
+    }
+    &#i2-4 {
+      .transform(rotateZ(225deg));
+      top: 2000px+110;
+      left: 2075px+235;
+    }
+    &#i2-5 {
+      .transform(rotateZ(45deg));
+      top: 1600px+280;
+      left: 2465px+70;
+    }
+    &#i2-6 {
+      .transform(rotateZ(45deg));
+      top: 1400px+280;
+      left: 2265px+70;
+    }
+    &#i2-7 {
+      .transform(rotateZ(45deg));
+      top: 1200px+280;
+      left: 2065px+70;
+    }
+    &#i2-8 {
+      .transform(rotateZ(45deg));
+      top: 1000px+280;
+      left: 1865px+70;
+    }
+    &#i3-1 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 1800px+150;
+    }
+    &#i3-2 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 2150px+150;
+    }
+    &#i3-3 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 2500px+150;
+    }
+    &#i3-4 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 2850px+150;
+    }
+    &#i3-5 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 3200px+150;
+    }
+    &#i4-1 {
+      .transform(rotateZ(180deg));
+      top: 435px+75;
+      left: 3600px+150;
+    }
+    &#i4-2 {
+      .transform(rotateZ(225deg));
+      top: 630px+110;
+      left: 4050px+235;
+    }
+    &#i5-1 {
+      .transform(rotateZ(225deg));
+      top: 880px+110;
+      left: 4300px+235;
+    }
+    &#i5-2 {
+      .transform(rotateZ(315deg));
+      top: 1280px+280;
+      left: 4215px+235;
+    }
+    &#i5-3 {
+      .transform(rotateZ(315deg));
+      top: 1860px+280;
+      left: 4150px+235;
+    }
+    &#i5-4 {
+      .transform(rotateZ(315deg));
+      top: 2060px+280;
+      left: 3950px+235;
+    }
+    &#i5-5 {
+      .transform(rotateZ(315deg));
+      top: 2260px+280;
+      left: 3750px+235;
+    }
+    &#i5-6 {
+      .transform(rotateZ(315deg));
+      top: 2460px+280;
+      left: 3550px+235;
+    }
+    &#i5-7 {
+      .transform(rotateZ(0deg));
+      top: 2715px+320;
+      left: 2950px+150;
+    }
+  }
+
+  .section-mark {
+    display: block;
+    position: absolute;
+    color: #4D4E53;
+    font-size: 48px;
+    font-weight: bolder;
+    z-index: 10000;
+    white-space: nowrap;
+    opacity: 0;
+    .transform-origin(50% 100%);
+    .transition(opacity .5s linear);
+
+    &#firefox-mark {
+      .transform(rotateZ(0deg) scaleY(1.5));
+      top: 2536px;
+      left: 1950px;
+    }
+
+    &#firefoxos-mark {
+      .transform(rotateZ(90deg) scaleY(1.5));
+      top: 1900px;
+      left: 1048px;
+    }
+
+    &#community-mark {
+      .transform(rotateZ(180deg) scaleY(1.5));
+      top: 1010px;
+      left: 2250px;
+    }
+
+    &#openweb-mark {
+      .transform(rotateZ(180deg) scaleY(1.5));
+      top: 1010px;
+      left: 3650px;
+    }
+
+    &#blogs-mark {
+      .transform(rotateZ(225deg) scaleY(1.5));
+      top: 1230px;
+      left: 4035px;
+    }
+  }
+  .main-title {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    z-index: 10000;
+  }
+  #kart {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    opacity: 0;
+    .transform(rotateX(-5deg) scaleY(1.5));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 100%);
+  }
+  #traffic-light {
+    position: absolute;
+    top: 2780px;
+    left: 2137px;
+    z-index: 100;
+    .transform(rotateX(-5deg) scaleY(1.5));
+    .transform-style(preserve-3d);
+    .transform-origin(50% 100%);
+  }
+}
+
+.board {
+  .ad {
+    .record {
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+        h3, ul li {
+          text-decoration: none;
+        }
+      }
+      h3 {
+        color: white;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 16px;
+        text-shadow: 1px 1px #333;
+        margin-bottom: 4px;
+        text-decoration: none;
+        .transition(all .25s linear);
+      }
+      ul li {
+        color: white;
+        font-size: 8px;
+        letter-spacing: 0;
+        line-height: 10px;
+        text-shadow: 1px 1px #333;
+        opacity: 0;
+        text-decoration: none;
+        .transition(all .25s linear);
+      }
+    }
+  }
+}
+
+#kart {
+  display: block;
+  width: 1000px;
+  height: 135px;
+  background-image: url('/media/img/mocotw/2014review/kart.png');
+  background-repeat: no-repeat;
+  background-size: 143px 65px;
+  background-position: right 60%;
+  .transition(all .5s ease-out);
+  &.up {
+    background-position: right 20%;
+  }
+  &.down {
+    background-position: right 100%;
+  }
+}
+
+#traffic-light {
+  display: block;
+  width: 99px;
+  height: 266px;
+  background: url('/media/img/mocotw/2014review/map/traffic-light.png') 0 0 no-repeat;
+  .red-light {
+    display: block;
+    position: relative;
+    margin: 17px auto auto;
+    width: 25px;
+    height: 25px;
+    background: url('/media/img/mocotw/2014review/map/traffic-light-red.png') 0 0 no-repeat;
+  }
+  .yellow-light {
+    display: block;
+    position: relative;
+    margin: 14px auto auto;
+    width: 25px;
+    height: 25px;
+    background: url('/media/img/mocotw/2014review/map/traffic-light-yellow.png') 0 0 no-repeat;
+    opacity: 1;
+  }
+  .green-light {
+    display: block;
+    position: relative;
+    margin: 14px auto auto;
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+    background: url('/media/img/mocotw/2014review/map/traffic-light-green.png') 0 0 no-repeat;
+  }
+}
+
+#count-down {
+  display: none;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 200;
+  .transform(rotateX(-5deg) scaleY(1.5));
+  .transform-origin(50% 100%);
+  .three {
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 54px;
+    height: 82px;
+    background: url('/media/img/mocotw/2014review/3.png') 0 0 no-repeat;
+    opacity: 0;
+  }
+  .two {
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 54px;
+    height: 80px;
+    background: url('/media/img/mocotw/2014review/2.png') 0 0 no-repeat;
+    opacity: 0;
+  }
+  .one {
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 23px;
+    height: 78px;
+    background: url('/media/img/mocotw/2014review/1.png') 0 0 no-repeat;
+    opacity: 0;
+  }
+  .go {
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 82px;
+    background: url('/media/img/mocotw/2014review/go.png') 0 0 no-repeat;
+    opacity: 0;
+  }
+  #score-pop {
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 16px;
+    top: 64%;
+    width: 23px;
+    height: 78px;
+    color: #C03832;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px #333;
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+
+.BigButton {
+  display: block;
+  width: 220px;
+  height: 61px;
+  text-align: center;
+  color: #FFF;
+  font-size: 24px;
+  vertical-align: middle;
+  line-height: 54px;
+  margin: 10px 60px;
+  cursor: pointer;
+  .transition(opacity .25s linear);
+}
+
+.MidButton {
+  display: block;
+  width: 136px;
+  height: 38px;
+  text-align: center;
+  color: #FFF;
+  font-size: 16px;
+  vertical-align: middle;
+  line-height: 36px;
+  margin: 10px 60px;
+  cursor: pointer;
+  .transition(opacity .25s linear);
+}
+
+.main-title {
+  display: block;
+  width: 334px;
+  height: 92px;
+  background: url('/media/img/mocotw/2014review/title.png');
+  .transition(opacity .25s linear);
+}
+
+.main-menu {
+  display: block;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  z-index: 10000;
+  .start-game {
+    .BigButton;
+    background: url('/media/img/mocotw/2014review/bt-red-b.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 42px;
+      height: 100%;
+      margin-right: 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-game-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+
+  .review-video {
+    .BigButton;
+    background: url('/media/img/mocotw/2014review/bt-orange-b.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 43px;
+      height: 100%;
+      margin-right: 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-video-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+
+  .review-mode {
+    .BigButton;
+    background: url('/media/img/mocotw/2014review/bt-blue-1-b.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 41px;
+      height: 100%;
+      margin-right: 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-history-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}
+
+.game-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  .pause-game {
+    .MidButton;
+    display: none;
+    background: url('/media/img/mocotw/2014review/bt-yellow-s.png');
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 11px;
+      height: 100%;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-pause.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+  .sound-mode {
+    .MidButton;
+    display: none;
+    background: url('/media/img/mocotw/2014review/bt-red-s.png');
+    &.on:before {
+      background-image: url('/media/img/mocotw/2014review/icon-sound.png');
+      width: 22px;
+    }
+    &.off:before {
+      background-image: url('/media/img/mocotw/2014review/icon-mute.png');
+      width: 20px;
+    }
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}
+
+#nav-map {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  width: 295px;
+  height: 171px;
+  #minimap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    .border-radius(10px);
+  }
+  #minitrack {
+    top: 23px;
+    right: 28px;
+    position: absolute;
+    pointer-events: none;
+  }
+  #nav-track {
+    fill: none;
+    stroke: rgba(255,255,255,0.5);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 0, 1000;
+    stroke-dashoffset: 100;
+  }
+  &.firefox {
+    #nav-track {
+      stroke-dasharray: 80, 720;
+      stroke-dashoffset: 393;
+    }
+  }
+  &.firefoxos {
+    #nav-track {
+      stroke-dasharray: 260, 470;
+      stroke-dashoffset: 238;
+    }
+  }
+  &.community {
+    #nav-track {
+      stroke-dasharray: 85,665;
+      stroke-dashoffset: 723;
+    }
+  }
+  &.openweb {
+    #nav-track {
+      stroke-dasharray: 35,805;
+      stroke-dashoffset: 723;
+    }
+  }
+  &.blogs {
+    #nav-track {
+      stroke-dasharray: 180,640;
+      stroke-dashoffset: 660;
+    }
+  }
+}
+
+.game {
+  .game-menu {
+    .pause-game {
+      display: block;
+    }
+    .sound-mode {
+      display: block;
+    }
+  }
+}
+
+.tour {
+  .game-menu {
+    .pause-game {
+      display: block;
+    }
+    .sound-mode {
+      display: none;
+    }
+  }
+}
+
+.gift-note {
+  display: block;
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  width: 202px;
+  height: 58px;
+  color: #C13832;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 60px;
+  background-image: url('/media/img/mocotw/2014review/red-envelope.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  .quota-remain {
+    display: none;
+  }
+  .out-of-stock {
+    display: none;
+  }
+}
+
+#mobile-message {
+  display: none;
+}
+
+#popup {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20000;
+  &.game {
+    #game-guide {
+      display: block;
+    }
+  }
+  &.tour {
+    #tour-guide {
+      display: block;
+    }
+  }
+  &.video {
+    #review-video-2014 {
+      display: block;
+    }
+  }
+  &.billboard {
+    #race-billboard {
+      display: block;
+    }
+  }
+  &.prize {
+    #get-prize {
+      display: block;
+    }
+  }
+  .sub-menu {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+    .start-game {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 26px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-game-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .resume-game {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-yellow-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 13px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-play.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .restart-game {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 26px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-game-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .review-mode {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-blue-1-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 27px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-history-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .return-review-mode {
+      .review-mode;
+    }
+    .review-video {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-orange-s.png');
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-video-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .sound-mode {
+      .MidButton;
+      background: url('/media/img/mocotw/2014review/bt-red-s.png');
+      &.on:before {
+        background-image: url('/media/img/mocotw/2014review/icon-sound.png');
+        width: 22px;
+      }
+      &.off:before {
+        background-image: url('/media/img/mocotw/2014review/icon-mute.png');
+        width: 20px;
+      }
+      &:before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+  }
+  .desc {
+    display: inline-block;
+    font-size: 14pt;
+    color: #4D4E53;
+    vertical-align: middle;
+  }
+  .ok {
+    display: block;
+    position: absolute;
+    padding: 6px;
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+.PopupFrame(@width, @height) {
+  position: absolute;
+  margin: auto;
+  width: @width;
+  height: @height;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  .box-shadow(0px 1px 22px rgba(0, 0, 0, 0.8));
+}
+
+#game-guide {
+  display: none;
+  .guide-content {
+    .PopupFrame(400px, 150px);
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 89px;
+      height: 100%;
+      margin: 0 20px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/keyboard.gif');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}
+
+#tour-guide {
+  display: none;
+  .guide-content {
+    .PopupFrame(400px, 150px);
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 100%;
+      margin: 0 24px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/mouse.gif');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}
+
+#review-video-2014 {
+  display: none;
+  .video-content {
+    .PopupFrame(600px, 360px);
+  }
+  iframe {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .close {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    top: -15px;
+    right: -15px;
+    color: #FFF;
+    background: none repeat scroll 0% 0% #000;
+    width: 30px;
+    height: 30px;
+    line-height: 32px;
+    vertical-align: middle;
+    text-align: center;
+    text-indent: 1px;
+    font-weight: 400;
+    font-size: 22px;
+    font-family: Arial,sans-serif;
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    box-sizing: content-box;
+    &:link {
+      text-decoration: none;
+    }
+  }
+  .sub-menu {
+    .resume-game {
+      display: none;
+    }
+    .review-mode {
+      display: none;
+    }
+    .start-game {
+      display: none;
+    }
+    .return-review-mode {
+      display: none;
+    }
+    .restart-game {
+      display: none;
+    }
+  }
+}
+
+.game {
+  #review-video-2014 .sub-menu {
+    .resume-game {
+      display: block;
+    }
+    .review-mode {
+      display: block;
+    }
+  }
+}
+.tour {
+  #review-video-2014 .sub-menu {
+    .start-game {
+      display: block;
+    }
+    .return-review-mode {
+      display: block;
+    }
+  }
+}
+.over {
+  #review-video-2014 .sub-menu {
+    .restart-game {
+      display: block;
+    }
+    .review-mode {
+      display: block;
+    }
+  }
+}
+
+#race-billboard {
+  display: none;
+  .billboard-content {
+    .PopupFrame(638px, 694px);
+    .box-shadow(none);
+    bottom: auto;
+    background: url('/media/img/mocotw/2014review/billboard.png');
+
+    h2 {
+      text-align: center;
+      text-shadow: 1px 1px #333;
+      color: #FFFFFF;
+      line-height: 50px;
+      font-size: 36px;
+      margin-top: 36px;
+      margin-bottom: 3px;
+    }
+    ul {
+      margin-bottom: 19px;
+      li {
+        margin: 0;
+        list-style: none;
+        text-shadow: 1px 1px #333;
+        color: #FFFFFF;
+        line-height: 17px;
+        font-size: 12px;
+        a {
+          color: #FFFFFF;
+        }
+      }
+    }
+    .share {
+      vertical-align: middle;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 19px;
+        height: 16px;
+        margin-right: 4px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-share-s.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .sections {
+      display: inline-block;
+      width: 80px;
+      vertical-align: top;
+      padding-left: 100px;
+      ul li {
+        font-weight: bolder;
+      }
+      .firefox {
+        height: 17px * 6 + 1;
+      }
+      .firefoxos {
+        height: 17px * 9 + 1;
+      }
+      .community {
+        height: 17px * 6 + 1;
+      }
+      .openweb {
+        height: 17px * 3 + 1;
+      }
+      .blogs {
+        height: 17px * 8 + 1;
+      }
+    }
+    .records {
+      display: inline-block;
+      width: 400px;
+      vertical-align: top;
+      padding-left: 25px;
+      ul li {
+        &.get:before {
+          opacity: 1;
+        }
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 14px;
+          height: 10px;
+          margin-right: 6px;
+          vertical-align: middle;
+          background-image: url('/media/img/mocotw/2014review/treasure-5-s.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 100% auto;
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .sub-menu {
+    right: 40px;
+    bottom: 86px;
+  }
+}
+
+#get-prize {
+  display: none;
+  .prize-content {
+    .PopupFrame(380px, 350px);
+    .desc {
+      font-size: 15px;
+      text-align: left;
+      margin: 20px;
+    }
+    .button {
+      width: 240px;
+      margin: 0 15px;
+      padding: 16px 8px;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .join {
+      cursor: default;
+      .fb_iframe_widget {
+        margin-top: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        .box-shadow(inset 1px 1px 2px #333);
+        .border-radius(3px);
+      }
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 29px;
+        height: 27px;
+        margin-right: 8px;
+        vertical-align: middle;
+        background-image: url('/media/img/mocotw/2014review/icon-like.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    }
+    .or {
+      margin: 8px;
+    }
+    .share:before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 27px;
+      margin-right: 6px;
+      vertical-align: middle;
+      background-image: url('/media/img/mocotw/2014review/icon-share-b.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+    text-align: center;
+  }
+  #login-box {
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+  }
+  #claim-message {
+    .PopupFrame(320px, 160px);
+    display: none;
+    padding: 48px 24px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .main-title {
+    top: 160px;
+  }
+  .main-menu {
+    top: 260px;
+  }
+}
+
+@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+  #wrapper {
+    width: 100%;
+  }
+
+  #masthead,
+  #main-feature,
+  #main-content,
+  .billboard,
+  .container {
+    width: auto;
+  }
+  .main-title {
+    top: 60px;
+    left: 40%;
+  }
+  .main-menu {
+    top: 160px;
+    left: 40%;
+  }
+}
+@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+  .thumb {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 16px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+  .board {
+    .ad {
+      min-height: 80px;
+      padding-left: 80px;
+    }
+    &#b1-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-1.png");
+    }
+    &#b1-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-2.png");
+    }
+    &#b1-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-3.png");
+    }
+    &#b1-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-4.png");
+    }
+    &#b1-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-5.png");
+    }
+    &#b2-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-1.png");
+    }
+    &#b2-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-2.png");
+    }
+    &#b2-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-3.png");
+    }
+    &#b2-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-4.png");
+    }
+    &#b2-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-5.png");
+    }
+    &#b2-6:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-6.png");
+    }
+    &#b2-7:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-7.png");
+    }
+    &#b2-8:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/firefox-os-8.png");
+    }
+    &#b3-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-1.png");
+    }
+    &#b3-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-2.png");
+    }
+    &#b3-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-3.png");
+    }
+    &#b3-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-4.png");
+    }
+    &#b3-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/community-5.png");
+    }
+    &#b4-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/openweb-1.png");
+    }
+    &#b4-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/openweb-2.png");
+    }
+    &#b5-1:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-1.png");
+    }
+    &#b5-2:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-2.png");
+    }
+    &#b5-3:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-3.png");
+    }
+    &#b5-4:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-4.png");
+    }
+    &#b5-5:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-5.png");
+    }
+    &#b5-6:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-6.png");
+    }
+    &#b5-7:before {
+      .thumb;
+      background-image: url("/media/img/mocotw/2014review/pics/blog-7.png");
+    }
+  }
+}
+
+@media only screen and (max-width: @breakTablet) {
+  html {
+    height: auto;
+  }
+  body {
+    overflow: scroll;
+    background: url("/media/img/mocotw/2014review/map/grass-bg.svg") repeat;
+  }
+  div.body-wrapper-default {
+    overflow: visible;
+  }
+  .sky #outer-wrapper {
+    background: none;
+  }
+  #main-content {
+    padding: 0;
+  }
+  .main-title {
+    margin: auto;
+    width: 434px;
+    background-repeat: no-repeat;
+  }
+  #kart {
+    margin: auto;
+    width: 300px;
+    background-size: 215px 98px;
+    background-position: left center;
+  }
+  #traffic-light {
+    margin: auto;
+    width: 460px;
+    background-position: right top;
+    margin-top: -240px;
+    .green-light {
+      top: 11px;
+      margin: 17px 37px auto auto;
+    }
+    .yellow-light {
+      top: 14px;
+      margin: 17px 37px auto auto;
+    }
+    .red-light {
+      top: 17px;
+      margin: 17px 37px auto auto;
+    }
+  }
+
+  .section-mark {
+    color: #FFF;
+    text-shadow: 1px 1px #333;
+    background-color: #51331F;
+    margin: 0;
+    padding: 12px;
+    font-size: 36px;
+  }
+  #firefox-mark {
+    margin-top: -60px;
+  }
+  .board {
+    position: relative;
+    .ad {
+      .record {
+        display: block;
+        h3 {
+          font-size: 20px;
+          line-height: 24px;
+          margin: 0;
+          padding: 6px 12px;
+        }
+        ul {
+          margin: 0;
+          padding: 0 12px 6px 12px;
+          li {
+            font-size: 14px;
+            line-height: 16px;
+            opacity: 1;
+            padding: 3px 0;
+          }
+        }
+      }
+    }
+    &:nth-child(odd) .firefox {
+      background-color: #B85212;
+      &:hover {
+        background-color: #7f3a07;
+      }
+    }
+    &:nth-child(even) .firefox {
+      background-color: #C67441;
+      &:hover {
+        background-color: #7f3a07;
+      }
+    }
+    &:nth-child(odd) .firefoxos {
+      background-color: #2E759A;
+      &:hover {
+        background-color: #265f7f;
+      }
+    }
+    &:nth-child(even) .firefoxos {
+      background-color: #5890AD;
+      &:hover {
+        background-color: #265f7f;
+      }
+    }
+    &:nth-child(odd) .community {
+      background-color: #C89C09;
+      &:hover {
+        background-color: #7f5f09;
+      }
+    }
+    &:nth-child(even) .community {
+      background-color: #D3AF39;
+      &:hover {
+        background-color: #7f5f09;
+      }
+    }
+    &:nth-child(odd) .openweb {
+      background-color: #1A4977;
+      &:hover {
+        background-color: #1a416f;
+      }
+    }
+    &:nth-child(even) .openweb {
+      background-color: #476D91;
+      &:hover {
+        background-color: #1a416f;
+      }
+    }
+    &:nth-child(odd) .blog {
+      background-color: #C0751C;
+      &:hover {
+        background-color: #7f4a14;
+      }
+    }
+    &:nth-child(even) .blog {
+      background-color: #CD9049;
+      &:hover {
+        background-color: #7f4a14;
+      }
+    }
+  }
+  #count-down {
+    display: none;
+  }
+  .main-menu {
+    display: none;
+  }
+  .gift-note {
+    display: none;
+  }
+  .item {
+    display: none;
+  }
+  #mobile-message {
+    display: block;
+    margin: 16px 16px 0 16px;
+    color: #C13832;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+  }
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+  #firefox-mark {
+    margin-top: 0px;
+  }
+  #traffic-light {
+    display: none;
+  }
+  #kart {
+    width: 215px;
+  }
+  .main-title {
+    width: 300px;
+    background-size: 100% auto;
+  }
+}
+
+.lt-ie10 {
+  html {
+    height: auto;
+  }
+  body {
+    overflow: scroll;
+    background-image: url("/media/img/mocotw/2014review/map/grass-bg.svg");
+    background-repeat: no-repeat;
+    background-color: #8DC53F;
+  }
+  .sky #outer-wrapper {
+    background: none;
+  }
+  .main-title {
+    position: static;
+    left: auto;
+    top: auto;
+    margin-bottom: 40px;
+  }
+  #not-supported {
+    a, a:link {
+      color: #0000ff;
+    }
+  }
+}
+
+.pyro > .before, .pyro > .after {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: -120px -218.66667px blue, 248px -16.66667px #00ff84, 190px 16.33333px #002bff, -113px -308.66667px #ff009d, -109px -287.66667px #ffb300, -50px -313.66667px #ff006e, 226px -31.66667px #ff4000, 180px -351.66667px #ff00d0, -12px -338.66667px #00f6ff, 220px -388.66667px #99ff00, -69px -27.66667px #ff0400, -111px -339.66667px #6200ff, 155px -237.66667px #00ddff, -152px -380.66667px #00ffd0, -50px -37.66667px #00ffdd, -95px -175.66667px #a6ff00, -88px 10.33333px #0d00ff, 112px -309.66667px #005eff, 69px -415.66667px #ff00a6, 168px -100.66667px #ff004c, -244px 24.33333px #ff6600, 97px -325.66667px #ff0066, -211px -182.66667px #00ffa2, 236px -126.66667px #b700ff, 140px -196.66667px #9000ff, 125px -175.66667px #00bbff, 118px -381.66667px #ff002f, 144px -111.66667px #ffae00, 36px -78.66667px #f600ff, -63px -196.66667px #c800ff, -218px -227.66667px #d4ff00, -134px -377.66667px #ea00ff, -36px -412.66667px #ff00d4, 209px -106.66667px #00fff2, 91px -278.66667px #000dff, -22px -191.66667px #9dff00, 139px -392.66667px #a6ff00, 56px -2.66667px #0099ff, -156px -276.66667px #ea00ff, -163px -233.66667px #00fffb, -238px -346.66667px #00ff73, 62px -363.66667px #0088ff, 244px -170.66667px #0062ff, 224px -142.66667px #b300ff, 141px -208.66667px #9000ff, 211px -285.66667px #ff6600, 181px -128.66667px #1e00ff, 90px -123.66667px #c800ff, 189px 70.33333px #00ffc8, -18px -383.66667px #00ff33, 100px -6.66667px #ff008c;
+  -moz-animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+  -webkit-animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+  -o-animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+  -ms-animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+  animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards; }
+
+.pyro > .after {
+  -moz-animation-delay: 1.25s, 1.25s, 1.25s;
+  -webkit-animation-delay: 1.25s, 1.25s, 1.25s;
+  -o-animation-delay: 1.25s, 1.25s, 1.25s;
+  -ms-animation-delay: 1.25s, 1.25s, 1.25s;
+  animation-delay: 1.25s, 1.25s, 1.25s;
+  -moz-animation-duration: 1.25s, 1.25s, 6.25s;
+  -webkit-animation-duration: 1.25s, 1.25s, 6.25s;
+  -o-animation-duration: 1.25s, 1.25s, 6.25s;
+  -ms-animation-duration: 1.25s, 1.25s, 6.25s;
+  animation-duration: 1.25s, 1.25s, 6.25s; }
+
+@-webkit-keyframes bang {
+  from {
+    box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
+@-moz-keyframes bang {
+  from {
+    box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
+@-o-keyframes bang {
+  from {
+    box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
+@-ms-keyframes bang {
+  from {
+    box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
+@keyframes bang {
+  from {
+    box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
+@-webkit-keyframes gravity {
+  to {
+    transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -webkit-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    opacity: 0; } }
+@-moz-keyframes gravity {
+  to {
+    transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -webkit-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    opacity: 0; } }
+@-o-keyframes gravity {
+  to {
+    transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -webkit-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    opacity: 0; } }
+@-ms-keyframes gravity {
+  to {
+    transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -webkit-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    opacity: 0; } }
+@keyframes gravity {
+  to {
+    transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -webkit-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    opacity: 0; } }
+@-webkit-keyframes position {
+  0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%; }
+
+  20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%; }
+
+  40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%; }
+
+  60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%; }
+
+  80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%; } }
+@-moz-keyframes position {
+  0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%; }
+
+  20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%; }
+
+  40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%; }
+
+  60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%; }
+
+  80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%; } }
+@-o-keyframes position {
+  0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%; }
+
+  20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%; }
+
+  40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%; }
+
+  60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%; }
+
+  80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%; } }
+@-ms-keyframes position {
+  0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%; }
+
+  20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%; }
+
+  40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%; }
+
+  60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%; }
+
+  80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%; } }
+@keyframes position {
+  0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%; }
+
+  20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%; }
+
+  40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%; }
+
+  60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%; }
+
+  80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%; } }
