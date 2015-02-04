@@ -43,6 +43,19 @@
       width: 600px;
       margin: 16px auto 48px auto;
     }
+    a.web-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    td.header-tip {
+      text-align: center;
+    }
+    td.header-tip small{
+      color: #808080;
+      text-decoration: underline;
+    }
     #logo {
       width: 130px;
       height: auto;
@@ -109,6 +122,15 @@
   <tr>
     <td colspan="2">
       <table class="header">
+        {% if not is_web %}
+        <tr>
+          <td class="header-tip" colspan="2">
+            <a class="web-link" href="{{ MOCO_URL }}/edm/2014review/{{ tracking_code }}">
+              <small>無法正常顥示？請點此開啟網頁版</small>
+            </a>
+          </td>
+        </tr>
+        {% endif %}
         <tr>
           <td><a href="http://mozilla.com.tw/{{ tracking_code }}"><img id="logo" src="{{ 'header-logo-inverse.png'|load_image }}"/></a></td>
           <td class="navigator">
@@ -125,7 +147,7 @@
     <td><a href="http://mozilla.com.tw/2014-review/{{ tracking_code }}"><img src="{{ '2014review-edm-1.png'|load_image }}"/></a></td>
   </tr>
   <tr>
-    <td><a href="http://mozilla.com.tw/2014-review/{{ tracking_code }}"><img src="{{ '2014review-edm-2.png'|load_image }}"/></a></td>
+    <td><a href="http://mozilla.com.tw/2014-review/{{ tracking_code }}"><img src="{{ '2014review-edm-2.gif'|load_image }}"/></a></td>
   </tr>
 </table>
 <table id="footer" class="footer">
