@@ -251,6 +251,7 @@
             countingDown = true;
             countdownSound.play();
             $.fn.scrollPath("lockScroll");
+            $('#count-down').show();
             $('#count-down .three').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
                 $('#count-down .two').animate({opacity: 1}, {duration: 250}).delay(500).animate({opacity: 0}, {duration: 250, complete: function() {
                     $('#traffic-light .red-light').animate({opacity: 0}, {duration: 250, queue: false});
@@ -262,6 +263,7 @@
                             $.fn.scrollPath("resume", showBillboard);
                             countingDown = false;
                             setTimeout(function() {
+                                $('#count-down').hide();
                                 raceBgm.play();
                             }, 1000);
                         }});
