@@ -367,7 +367,7 @@
         }
 
         var $popup = $('#popup');
-        var $video = $popup.find('iframe');
+        var $video = $popup.find('#review-video-2014 iframe');
         var onPopupClose = closePopup;
 
         function closePopup() {
@@ -444,6 +444,7 @@
         }
 
         function showReviewVideo(showMenu, onClose) {
+            console.info('showReview');
             raceBgm.pause();
             celebrateSound.pause();
             onPopupClose = onClose;
