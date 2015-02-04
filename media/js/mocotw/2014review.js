@@ -6,7 +6,7 @@
     }
     function desktopSetup() {
         var BASE_URL = 'http://' + window.location.hostname + '/2014-review/';
-        var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/2014review/';
+        var API_URL = 'https://firefox.club.tw/campaign/2014review/';
         var initialized = false;
         var playing = false;
         var firstPlay = true;
