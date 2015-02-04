@@ -6,7 +6,7 @@
     }
     function desktopSetup() {
         var BASE_URL = 'http://' + window.location.hostname + '/2014-review/';
-        var API_URL = 'https://ffclub.fancy.mozilla.com.tw/campaign/2014review/';
+        var API_URL = 'https://ffclub.inspire.mozilla.com.tw/campaign/2014review/';
         var initialized = false;
         var playing = false;
         var firstPlay = true;
@@ -669,6 +669,15 @@
                 }
             }
         });
+        if (!Modernizr.pointerevents) {
+            //pass through click event
+            $('.board > .ad .record').click(function(e) {
+                e.preventDefault();
+            });
+            $('.board > .ad').click(function() {
+                window.open($(this).find('.record').attr('href'));
+            });
+        }
     }
 
     enquire.register("screen and (max-width: 760px)", {

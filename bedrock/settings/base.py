@@ -964,8 +964,8 @@ MINIFY_BUNDLES = {
             'js/mocotw/eoy2013.js',
         ),
         '2014review': (
+            'js/libs/modernizr.custom.pointerevents.js',
             'js/libs/enquire.min.js',
-            'js/libs/index.js',
             'js/libs/jquery.easing.js',
             'js/libs/jquery.scrollpath.js',
             'js/libs/prefixfree.min.js',
