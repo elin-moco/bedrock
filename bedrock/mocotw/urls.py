@@ -200,6 +200,8 @@ urlpatterns = patterns(
     # page('10years/firefox-family', 'mocotw/10years/firefox-family.html'),
     page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 
+    page('edm/2014review', 'mocotw/edm/2014review-web.html'),
+
     # bug 1093985, 1105664, remove this once the Firefox Hello product page is ready
 
     redirect(r'^firefox/hello/?.*$',
