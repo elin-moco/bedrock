@@ -109,11 +109,14 @@
         }
 
         function popScore(score) {
+            var $countDown = $('#count-down');
+            $countDown.show();
             $scorePop.text('+' + score);
             $scorePop.animate({top: '48%', 'font-size': '60px'}, {duration: 600, queue: false});
             $scorePop.animate({opacity: 1}, {duration: 100}).delay(400)
                 .animate({opacity: 0}, {duration: 100, complete: function() {
                     $scorePop.css({'top': '64%', 'font-size': '24px'});
+                    $countDown.hide();
                 }});
         }
 
