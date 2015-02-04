@@ -60,7 +60,7 @@ sitemaps = {
         ['mocotw.news', 'mocotw.sumo', 'newsletter.index', 'lightbeam.lightbeam', 'lightbeam.about', 'mocotw.eoy2013',
          'mocotw.2013review', 'mocotw.shop-with-firefox', 'firefox.speed', 'mocotw.2013review',
          'mocotw.10years.index', 'mocotw.10years.browser-survey-result', 'mocotw.10years.firefox-family',
-         'mocotw.10years.firefox-day', 'privacy.privacy-day', 'privacy.principles'],
+         'mocotw.10years.firefox-day', 'privacy.privacy-day', 'privacy.principles', 'mocotw.2014review'],
         0.4, 'monthly'),
 }
 
