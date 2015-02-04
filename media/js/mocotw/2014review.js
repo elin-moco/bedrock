@@ -646,9 +646,11 @@
                         }
                         else if (price.result == 'ended') {
                             alert('活動已結束。');
+                            tour();
                         }
                         else {
                             alert('抱歉，抽獎時發生錯誤。');
+                            tour();
                         }
                     }
                 });
