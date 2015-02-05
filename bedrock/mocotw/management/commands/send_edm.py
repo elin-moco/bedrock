@@ -18,7 +18,7 @@ from bedrock.sandstone.settings import MOCO_URL
 from bedrock.settings import NEWSLETTER_PRESEND_LIST
 import commonware.log
 from BeautifulSoup import BeautifulSoup
-from jinja2.environment import DEFAULT_FILTERS
+import jingo
 
 log = commonware.log.getLogger('newsletter')
 
@@ -47,16 +47,16 @@ class Command(BaseCommand):
     image_prefix = ''
     mail_images = []
 
-    def load_image(self, file):
-        self.mail_images += [file, ]
-        return self.image_prefix + file
-
     def handle(self, *args, **options):
         self.options = options
         testing = True if 1 < len(args) else False
         sys.stdout = Unbuffered(sys.stdout)
+        comobj = self
 
-        DEFAULT_FILTERS['load_image'] = self.load_image
+        @jingo.register.filter
+        def load_image(file):
+            comobj.mail_images += [file, ]
+            return comobj.image_prefix + file
 
         template = args[0]
         image_path = 'media/img/%s/' % template[:template.rfind('/')]
