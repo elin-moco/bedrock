@@ -557,8 +557,19 @@
 
         //Close popup
         $popup.find('.ok, .close, #race-billboard h2 .share').click(function() {
-            if (onPopupClose) {
-                onPopupClose();
+            if (ended) {
+                FB.ui({method: 'feed', link: BASE_URL},
+                    function (response) {
+                        if (response && response.post_id) {
+                            gaTrack(['_trackEvent', 'Social Interaction', 'share', response.post_id]);
+                        }
+                    }
+                );
+            }
+            else {
+                if (onPopupClose) {
+                    onPopupClose();
+                }
             }
         });
         $popup.click(function(e) {
