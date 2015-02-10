@@ -7,6 +7,7 @@
     function desktopSetup() {
         var BASE_URL = 'http://' + window.location.hostname + '/2014-review/';
         var API_URL = 'https://firefox.club.tw/campaign/2014review/';
+        var ended = true;
         var initialized = false;
         var playing = false;
         var firstPlay = true;
@@ -322,7 +323,7 @@
 
         function play() {
             $giftNote.hide();
-            celebrateSound.pause();
+            hideFireworks();
             if (onPopupClose) {
                 onPopupClose();
             }
@@ -338,7 +339,7 @@
         }
 
         function replay() {
-            celebrateSound.pause();
+            hideFireworks();
             if (onPopupClose) {
                 onPopupClose();
             }
@@ -350,7 +351,7 @@
         function tour() {
             $giftNote.hide();
             raceBgm.pause();
-            celebrateSound.pause();
+            hideFireworks();
             if (onPopupClose) {
                 onPopupClose();
             }
@@ -402,8 +403,10 @@
         }
 
         function closeBillboardPopupAndContinue() {
-            celebrateSound.pause();
-            showPrize(true);
+            if (!ended) {
+                hideFireworks();
+                showPrize(true);
+            }
         }
 
         function showPopup(type) {
@@ -444,9 +447,8 @@
         }
 
         function showReviewVideo(showMenu, onClose) {
-            console.info('showReview');
+            hideFireworks();
             raceBgm.pause();
-            celebrateSound.pause();
             onPopupClose = onClose;
             if (showMenu) {
                 showSubmenu('review-video-2014');
@@ -460,7 +462,7 @@
 
         function showBillboard() {
             raceBgm.pause();
-            celebrateSound.play();
+            showFireworks();
             for (var i = 0; i < itemsGet.length; i++) {
                 $('#r' + itemsGet[i]).addClass('get');
             }
@@ -475,6 +477,15 @@
             onPopupClose = null;
             showSubmenu('get-prize');
             showPopup('prize');
+        }
+        function showFireworks() {
+            var fwElement = '<div class="pyro"><div class="before"></div><div class="after"></div></div>';
+            $(fwElement).prependTo('#race-billboard');
+            celebrateSound.play();
+        }
+        function hideFireworks() {
+            celebrateSound.pause();
+            $('.pyro').remove();
         }
 
         $('.main-menu > .start-game, .sub-menu > .start-game').click(play);
@@ -546,8 +557,19 @@
 
         //Close popup
         $popup.find('.ok, .close, #race-billboard h2 .share').click(function() {
-            if (onPopupClose) {
-                onPopupClose();
+            if (ended) {
+                FB.ui({method: 'feed', link: BASE_URL},
+                    function (response) {
+                        if (response && response.post_id) {
+                            gaTrack(['_trackEvent', 'Social Interaction', 'share', response.post_id]);
+                        }
+                    }
+                );
+            }
+            else {
+                if (onPopupClose) {
+                    onPopupClose();
+                }
             }
         });
         $popup.click(function(e) {
@@ -645,6 +667,10 @@
                             $claimPopup.find('a').attr('href', API_URL + 'claim/');
                             $claimPopup.show();
                         }
+                        else if (price.inventory == 'out-of-stock') {
+                            alert('本日紅包袋已發完，明日請早。');
+                            tour();
+                        }
                         else if (price.result == 'ended') {
                             alert('活動已結束。');
                             tour();
@@ -667,12 +693,19 @@
                         var $quotaMessage = $('.gift-note .quota-remain');
                         $quotaMessage.find('span').text(price.quota);
                         $quotaMessage.show();
+                        ended = false;
+                    }
+                    else if (price.inventory == 'out-of-stock') {
+                        ended = true;
+                        $('.gift-note .out-of-stock').show();
                     }
                     else {
-                        $('.gift-note .out-of-stock').show();
+                        $('.gift-note .quota-exceeded').show();
+                        ended = true;
                     }
                 }
                 else {
+                    ended = true;
                     $('.gift-note').hide();
                 }
             }
