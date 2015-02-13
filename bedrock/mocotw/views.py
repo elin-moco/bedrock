@@ -393,3 +393,11 @@ def mozorg_redirect(request, *args):
 
 def mozorg_zhtw_redirect(request, *args):
     return HttpResponseRedirect('//www.mozilla.org/zh-TW%s' % request.get_full_path())
+
+
+def page_not_found(request):
+    qs = request.META['QUERY_STRING']
+    path = request.path_info + ('?' + qs if qs else '')
+    if path.startswith('/firefox/'):
+        return HttpResponseRedirect('//www.mozilla.org/en-US' + path)
+    return l10n_utils.render(request, '404.html')

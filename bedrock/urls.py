@@ -17,6 +17,7 @@ patch()
 
 # The default django 500 handler doesn't run the ContextProcessors, which breaks
 # the base template page. So we replace it with one that does!
+handler404 = 'bedrock.mocotw.views.page_not_found'
 handler500 = 'lib.bedrock_util.server_error_view'
 
 sitemaps = {
