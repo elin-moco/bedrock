@@ -154,7 +154,7 @@ def google_form(request, template='mocotw/register/gform.html', formkey=None):
     gform = ''
 
     if formkey:
-        soup = BeautifulSoup(urllib2.urlopen('https://docs.google.com/spreadsheet/viewform?formkey=%s' % formkey).read())
+        soup = BeautifulSoup(urllib2.urlopen('https://docs.google.com/spreadsheet/viewform?formkey=%s&hl=zh-TW' % formkey).read())
         formResult = soup('div', {'class': 'ss-form-container'})
         for div in formResult:
             gform += div.prettify('utf-8').decode('utf-8')
