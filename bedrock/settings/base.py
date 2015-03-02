@@ -328,6 +328,12 @@ MINIFY_BUNDLES = {
         'firefox_os_mwc_2014_preview_ie7': (
             'css/firefox/os/mwc-2014-preview-ie7.less',
         ),
+        'firefox_os_mwc_2015_preview': {
+            'css/sandstone/sandstone-resp.less',
+            'css/base/mozilla-modal.less',
+            'css/firefox/family-nav.less',
+            'css/firefox/os/mwc-2015-preview.less',
+        },
         'firefox_os_tv': (
             'css/sandstone/sandstone-resp.less',
             'css/firefox/template-resp.less',
@@ -754,6 +760,14 @@ MINIFY_BUNDLES = {
             'js/firefox/mwc-2014-map.js',
             'js/firefox/os/mwc-2014-preview.js',
         ),
+        'firefox_os_mwc_2015_preview': {
+            'js/base/mozilla-modal.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/firefox/family-nav.js',
+            'js/firefox/mwc-2015-map.js',
+            'js/firefox/os/mwc-2015-preview.js',
+        },
         'firefox_os_tv': (
             'js/base/mozilla-pager.js',
         ),
