@@ -677,7 +677,7 @@ MINIFY_BUNDLES = {
             'js/mocotw/highlight-zh-tw.js',
         ),
         'firefox-resp': (
-            'js/libs/jquery-1.11.2.js',
+            'js/libs/jquery-1.11.0.min.js',
             'js/libs/spin.min.js',
             'js/base/global.js',
             # 'js/sandstone/nav.js',
