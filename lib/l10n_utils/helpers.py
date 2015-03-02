@@ -4,10 +4,21 @@
 
 import jingo
 import jinja2
+from babel.core import Locale, UnknownLocaleError
+from babel.dates import format_date
+from babel.numbers import format_number
 
 from django.conf import settings
+from django.utils.translation import get_language
 
-from dotlang import translate
+from dotlang import translate, lang_file_has_tag
+from gettext import template_has_tag
+
+
+babel_format_locale_map = {
+    'hsb': 'de',
+    'dsb': 'de',
+}
 
 
 def install_lang_files(ctx):
@@ -61,4 +72,53 @@ _ = gettext
 @jingo.register.filter
 def js_escape(string):
     import json
-    return json.dumps(string)[1:-1]
+    return json.dumps(string)[1:-1].replace('&nbsp;', '\\u00A0')
+
+
+@jingo.register.function
+@jinja2.contextfunction
+def l10n_has_tag(ctx, tag, langfile=None):
+    """Return boolean whether the given template's lang files have the given tag."""
+    if langfile:
+        return lang_file_has_tag(langfile, ctx['LANG'], tag)
+    else:
+        return template_has_tag(ctx['template'], ctx['LANG'], tag)
+
+
+def get_locale(lang):
+    """Return a babel Locale object for lang. defaults to LANGUAGE_CODE."""
+    lang = babel_format_locale_map.get(lang) or lang
+    try:
+        return Locale.parse(lang, sep='-')
+    except (UnknownLocaleError, ValueError):
+        return Locale(*settings.LANGUAGE_CODE.split('-'))
+
+
+def current_locale():
+    """
+    Return the current Locale object (from Babel). Defaults to locale
+    based on settings.LANGUAGE_CODE if locale does not exist.
+    """
+    return get_locale(get_language())
+
+
+@jingo.register.filter
+@jinja2.contextfilter
+def l10n_format_date(ctx, date, format='long'):
+    """
+    Formats a date according to the current locale. Wraps around
+    babel.dates.format_date.
+    """
+    lang = get_locale(ctx['LANG'])
+    return format_date(date, locale=lang, format=format)
+
+
+@jingo.register.filter
+@jinja2.contextfilter
+def l10n_format_number(ctx, number):
+    """
+    Formats a number according to the current locale. Wraps around
+    babel.numbers.format_number.
+    """
+    lang = get_locale(ctx['LANG'])
+    return format_number(number, locale=lang)

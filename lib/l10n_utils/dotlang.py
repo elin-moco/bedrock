@@ -17,7 +17,7 @@ import re
 from functools import partial
 
 from django.conf import settings
-from django.core.cache import cache
+from django.core.cache import get_cache
 from django.utils import translation
 from django.utils.functional import lazy
 
@@ -25,13 +25,15 @@ from jinja2 import Markup
 from tower import tweak_message
 from product_details import product_details
 
+from lib.l10n_utils.utils import ContainsEverything
 
+
+ALL_THE_THINGS = ContainsEverything()
 FORMAT_IDENTIFIER_RE = re.compile(r"""(%
                                       (?:\((\w+)\))? # Mapping key
                                       s)""", re.VERBOSE)
-
-
-TAG_REGEX = re.compile(r"^## (\w+) ##")
+TAG_REGEX = re.compile(r"^## ([\w-]+) ##")
+cache = get_cache('l10n')
 
 
 def parse(path, skip_untranslated=True, extract_comments=False):
@@ -213,7 +215,7 @@ def get_lang_path(path):
     return base
 
 
-def lang_file_is_active(path, lang):
+def lang_file_is_active(path, lang=None):
     """
     If the lang file for a locale exists and has the correct comment returns
     True, and False otherwise.
@@ -221,21 +223,20 @@ def lang_file_is_active(path, lang):
     :param lang: the language code
     :return: bool
     """
-    return lang_file_has_tag(path, lang, "active")
+    return lang_file_has_tag(path, lang, 'active')
 
 
-def lang_file_has_tag(path, lang, tag):
-    """
-    Return True if the lang file exists and has a line like "^## tag ##"
-    at the top. Stops looking at the line that doesn't have a tag.
+def lang_file_tag_set(path, lang=None):
+    """Return a set of tags for a specific lang file and locale.
 
     :param path: the relative lang file name
-    :param lang: the language code
-    @param tag: The string that should appear between ##'s. Can contain
-       alphanumerics and "_".
-    @return: bool
+    :param lang: the language code or the lang of the request if omitted
+    :return: set of strings
     """
+    if settings.DEV or lang == settings.LANGUAGE_CODE:
+        return ALL_THE_THINGS
 
+    lang = lang or fix_case(translation.get_language())
     rel_path = os.path.join('locale', lang, '%s.lang' % path)
     cache_key = 'tag:%s' % rel_path
     tag_set = cache.get(cache_key)
@@ -258,12 +259,28 @@ def lang_file_has_tag(path, lang, tag):
 
         cache.set(cache_key, tag_set, settings.DOTLANG_CACHE)
 
-    return tag in tag_set
+    return tag_set
 
 
-def get_translations(langfile):
+def lang_file_has_tag(path, lang=None, tag='active'):
     """
-    Return the list of available translations for the current page.
+    Return True if the lang file exists and has a line like "^## tag ##"
+    at the top. Stops looking at the line that doesn't have a tag.
+
+    Always returns true for the default lang.
+
+    :param path: the relative lang file name
+    :param lang: the language code or the lang of the request if omitted
+    @param tag: The string that should appear between ##'s. Can contain
+       alphanumerics and "_".
+    @return: bool
+    """
+    return tag in lang_file_tag_set(path, lang)
+
+
+def get_translations_for_langfile(langfile):
+    """
+    Return the list of available translations for the langfile.
 
     :param langfile: the path to a lang file, retrieved with get_lang_path()
     :return: dict, like {'en-US': 'English (US)', 'fr': 'Français'}

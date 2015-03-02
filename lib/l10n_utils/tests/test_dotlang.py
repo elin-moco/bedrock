@@ -11,7 +11,6 @@ from django.core import mail
 from django.core.cache import cache
 from django.core.urlresolvers import clear_url_caches
 from django.http import HttpRequest
-from django.test.client import Client
 from django.test.utils import override_settings
 
 from jingo import env
@@ -33,15 +32,14 @@ LANG_FILES = 'test_file'
 TEMPLATE_DIRS = (os.path.join(ROOT, 'templates'),)
 
 
+@override_settings(DEV=False, LANGUAGE_CODE='en-US')
 @patch.object(env, 'loader', FileSystemLoader(TEMPLATE_DIRS))
 @patch.object(settings, 'ROOT_URLCONF', 'lib.l10n_utils.tests.test_files.urls')
 @patch.object(settings, 'ROOT', ROOT)
 class TestLangFilesActivation(TestCase):
     def setUp(self):
         clear_url_caches()
-        self.client = Client()
 
-    @override_settings(DEV=False)
     def test_lang_file_is_active(self):
         """
         `lang_file_is_active` should return true if lang file has the
@@ -67,7 +65,6 @@ class TestLangFilesActivation(TestCase):
         ok_(not lang_file_has_tag('main', 'de', 'tag_after_non_tag_lines'))
         ok_(not lang_file_has_tag('main', 'de', 'no_such_tag'))
 
-    @override_settings(DEV=False)
     def test_active_locale_not_redirected(self):
         """ Active lang file should render correctly.
 
@@ -79,7 +76,6 @@ class TestLangFilesActivation(TestCase):
         doc = pq(response.content)
         eq_(doc('h1').text(), 'Die Lage von Mozilla')
 
-    @override_settings(DEV=False, LANGUAGE_CODE='en-US')
     def test_inactive_locale_redirected(self):
         """ Inactive locale should redirect to en-US. """
         response = self.client.get('/de/inactive-de-lang-file/')
@@ -100,7 +96,6 @@ class TestLangFilesActivation(TestCase):
         doc = pq(response.content)
         eq_(doc('h1').text(), 'Die Lage von Mozilla')
 
-    @override_settings(DEV=False)
     def test_active_alternate_lang_file(self):
         """Template with active alternate lang file should activate from it."""
         response = self.client.get('/de/state-of-mozilla/')
@@ -113,7 +108,6 @@ class TestDotlang(TestCase):
     def setUp(self):
         cache.clear()
         clear_url_caches()
-        self.client = Client()
 
     def test_parse(self):
         path = os.path.join(ROOT, 'test.lang')
@@ -344,7 +338,6 @@ class TestDotlang(TestCase):
         # test the case when LANG_FILES is a list
         lang_files_list = ['maude', 'bunny', 'uli']
         _lazy(trans_str, lang_files=lang_files_list).__unicode__()
-        print lang_files_list
         call_lang_files = lang_files_list + settings.DOTLANG_FILES
         trans_patch.assert_called_with(trans_str, call_lang_files)
 

@@ -7,6 +7,7 @@
 import os
 
 from django.conf import settings
+from django.core.cache import get_cache
 from django.test.utils import override_settings
 
 from mock import ANY, MagicMock, Mock, patch
@@ -14,11 +15,12 @@ from nose.tools import eq_, ok_
 
 from lib.l10n_utils.gettext import (_append_to_lang_file, langfiles_for_path,
                                     parse_python, parse_template,
-                                    po_msgs, pot_to_langfiles, template_is_active)
+                                    po_msgs, pot_to_langfiles, template_is_active,
+                                    _get_template_tag_set, template_has_tag)
 from lib.l10n_utils.tests import TempFileMixin
 from bedrock.mozorg.tests import TestCase
 
-
+cache = get_cache('l10n')
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test_files')
 TEMPLATE_DIRS = (os.path.join(ROOT, 'templates'))
 DOTLANG_FILES = ['dude', 'walter', 'donny']
@@ -29,38 +31,51 @@ TRUE_MOCK = Mock()
 TRUE_MOCK.return_value = True
 
 
-class TestTemplateIsActive(TestCase):
-    @override_settings(DEV=False)
-    @patch('lib.l10n_utils.gettext.parse_template')
-    @patch('lib.l10n_utils.gettext.lang_file_is_active')
-    @patch('django.core.cache.cache.get')
-    @patch('django.core.cache.cache.set')
-    def test_cache_hit(self, cache_set_mock, cache_get_mock, lang_active_mock,
-                       parse_template_mock):
+@override_settings(DEV=False)
+class TestTemplateTagFuncs(TestCase):
+    @patch('lib.l10n_utils.gettext._get_template_tag_set')
+    @patch('lib.l10n_utils.gettext.cache.get')
+    @patch('lib.l10n_utils.gettext.cache.set')
+    def test_cache_hit(self, cache_set_mock, cache_get_mock, template_tags_mock):
         """Should not call other methods on cache hit."""
-        cache_get_mock.return_value = True
+        cache_get_mock.return_value = set(['active'])
         self.assertTrue(template_is_active('the/dude', 'de'))
-        cache_get_mock.assert_called_once_with('template_active:de:the/dude')
-        self.assertFalse(lang_active_mock.called)
-        self.assertFalse(parse_template_mock.called)
+        cache_get_mock.assert_called_once_with('template_tag_set:the/dude:de')
+        self.assertFalse(template_tags_mock.called)
         self.assertFalse(cache_set_mock.called)
 
-    @override_settings(DEV=False)
-    @patch('lib.l10n_utils.gettext.parse_template')
-    @patch('lib.l10n_utils.gettext.lang_file_is_active')
-    @patch('django.core.cache.cache.get')
-    @patch('django.core.cache.cache.set')
-    def test_cache_miss(self, cache_set_mock, cache_get_mock, lang_active_mock,
-                        parse_template_mock):
+    @patch('lib.l10n_utils.gettext._get_template_tag_set')
+    @patch('lib.l10n_utils.gettext.cache.get')
+    @patch('lib.l10n_utils.gettext.cache.set')
+    def test_cache_miss(self, cache_set_mock, cache_get_mock, template_tags_mock):
         """Should check the files and set the cache on cache miss."""
         cache_get_mock.return_value = None
-        lang_active_mock.return_value = True
+        template_tags_mock.return_value = set(['active'])
         self.assertTrue(template_is_active('the/dude', 'de'))
-        cache_key = 'template_active:de:the/dude'
+        cache_key = 'template_tag_set:the/dude:de'
         cache_get_mock.assert_called_once_with(cache_key)
-        self.assertTrue(lang_active_mock.called)
-        self.assertFalse(parse_template_mock.called)
-        cache_set_mock.assert_called_once_with(cache_key, True, settings.DOTLANG_CACHE)
+        self.assertTrue(template_tags_mock.called)
+        cache_set_mock.assert_called_once_with(cache_key, set(['active']),
+                                               settings.DOTLANG_CACHE)
+
+    @patch('lib.l10n_utils.gettext.get_lang_path')
+    @patch('lib.l10n_utils.gettext.get_template')
+    @patch('lib.l10n_utils.gettext.parse_template')
+    @patch('lib.l10n_utils.gettext.lang_file_tag_set')
+    def test_get_template_tag_set(self, lang_file_tag_set, parse_template_mock, get_template,
+                                  get_lang_path):
+        """Should return a unique set of tags from all lang files."""
+        parse_template_mock.return_value = ['dude', 'walter']
+        lang_file_tag_set.side_effect = [set(['dude', 'donny']),
+                                         set(['dude', 'uli', 'bunny']),
+                                         set(['walter', 'brandt'])]
+        self.assertSetEqual(_get_template_tag_set('stuff', 'es'),
+                            set(['dude', 'walter', 'donny', 'uli', 'bunny', 'brandt']))
+
+    @override_settings(LANGUAGE_CODE='en-US')
+    def test_template_tag_set_default_locale(self):
+        """The default language should always have every tag."""
+        ok_(template_has_tag('the_dude', 'en-US', 'active'))
 
 
 class TestPOFiles(TestCase):
@@ -78,6 +93,12 @@ class TestPOFiles(TestCase):
             u'templates/some_lang_files.html': self.good_messages,
             u'templates/firefox/fx.html': [[None, u'Find out if your device '
                                                   u'is supported &nbsp;»']],
+            u'bedrock/firefox/templates/firefox/os/notes-1.3.html': [[
+                u'For bug 982755',
+                u'The WebIccManager API, which allows support for multiple sim cards, '
+                u'has had updates: iccChangeEvent has been added using using event '
+                u'generator <a href="%(url1)s">bug 814637</a>'
+            ]],
         }
         self.assertDictEqual(msgs, expected)
 
@@ -90,7 +111,7 @@ class TestPOFiles(TestCase):
         langfiles_mock.return_value = ['some_lang_files',
                                        'firefox/fx']
         pot_to_langfiles()
-        append_mock.assert_called_once_with(ANY, self.good_messages)
+        append_mock.assert_called_with(ANY, self.good_messages)
 
     @patch('os.path.exists', TRUE_MOCK)
     @patch('lib.l10n_utils.gettext.codecs')
@@ -149,6 +170,9 @@ class TestPOFiles(TestCase):
 
 
 class TestParseTemplate(TempFileMixin, TestCase):
+    def setUp(self):
+        cache.clear()
+
     @patch('lib.l10n_utils.gettext.codecs')
     def test_single_lang_file_added(self, codecs_mock):
         tempf = self.tempfile("""

@@ -302,6 +302,7 @@ MINIFY_BUNDLES = {
             'css/firefox/os/firefox-os.less',
         ),
         'firefox_os_new': (
+            'css/sandstone/sandstone-resp.less',
             'css/base/mozilla-modal.less',
             'css/firefox/family-nav.less',
             'css/firefox/os/get_device.less',

@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -11,14 +13,18 @@ from os.path import join
 from tokenize import generate_tokens, NAME, NEWLINE, OP, untokenize
 
 from django.conf import settings
-from django.core.cache import cache
+from django.core.cache import get_cache
 from django.template.loader import get_template
 from jinja2 import Environment
 
-from dotlang import parse as parse_lang, get_lang_path, lang_file_is_active
+from dotlang import (parse as parse_lang, get_lang_path,
+                     get_translations_for_langfile, lang_file_tag_set)
+from lib.l10n_utils.utils import ContainsEverything
 
 
+ALL_THE_THINGS = ContainsEverything()
 REGEX_URL = re.compile(r'.* (\S+/\S+\.[^:]+).*')
+cache = get_cache('l10n')
 
 
 def parse_po(path):
@@ -29,7 +35,9 @@ def parse_po(path):
 
     with codecs.open(path, 'r', 'utf-8') as lines:
         def parse_string(s):
-            return s.strip('"').replace('\\"', '"')
+            # remove first and last characters which are "
+            s = s.strip()[1:-1]
+            return s.replace('\\"', '"')
 
         def extract_content(s):
             # strip the first word and quotes
@@ -131,6 +139,11 @@ def parse_template(path):
     """Look through a template for the lang_files tag and extract the
     given lang files"""
 
+    cache_key = 'template_lang_files:{0}'.format(path)
+    lang_files = cache.get(cache_key)
+    if lang_files:
+        return lang_files
+
     src = codecs.open(path, encoding='utf-8').read()
     tokens = Environment().lex(src)
     lang_files = []
@@ -157,8 +170,54 @@ def parse_template(path):
                 # remove empties
                 lang_files = [lf for lf in lang_files if lf]
                 if lang_files:
+                    cache.set(cache_key, lang_files, settings.DOTLANG_CACHE)
                     return lang_files
     return []
+
+
+def _get_template_tag_set(lang, path):
+    lang_files = [get_lang_path(path)]
+    template = get_template(path)
+    lang_files.extend(parse_template(template.filename))
+    tag_set = set()
+    for lf in lang_files:
+        tag_set |= lang_file_tag_set(lf, lang)
+    return tag_set
+
+
+def template_tag_set(path, lang):
+    """Given a template path, return a set of tags from the lang files for the lang.
+
+    This should be for all of the lang files specified in the template.
+
+    :param path: relative path to the template.
+    :param lang: language code
+    :return: set of strings
+    """
+    if settings.DEV or lang == settings.LANGUAGE_CODE:
+        return ALL_THE_THINGS
+
+    cache_key = 'template_tag_set:{path}:{lang}'.format(lang=lang, path=path)
+    tag_set = cache.get(cache_key)
+    if tag_set is None:
+        tag_set = _get_template_tag_set(lang, path)
+        cache.set(cache_key, tag_set, settings.DOTLANG_CACHE)
+
+    return tag_set
+
+
+def template_has_tag(path, lang, tag):
+    """Given a template path, determine if it has a tag in a locale.
+
+    It has the tag if either the template's lang file, or the lang file
+    specified in the "set_lang_files" template tag has the tag.
+
+    :param path: relative path to the template.
+    :param lang: language code
+    :param tag: the tag in question
+    :return: boolean
+    """
+    return tag in template_tag_set(path, lang)
 
 
 def template_is_active(path, lang):
@@ -171,23 +230,24 @@ def template_is_active(path, lang):
     :param lang: language code
     :return: boolean
     """
-    if settings.DEV:
-        return True
+    return template_has_tag(path, lang, 'active')
 
-    cache_key = 'template_active:{lang}:{path}'.format(lang=lang, path=path)
-    is_active = cache.get(cache_key)
-    if is_active is None:
-        # try the quicker and more efficient check first
-        is_active = lang_file_is_active(get_lang_path(path), lang)
 
-        if not is_active:
-            template = get_template(path)
-            lang_files = parse_template(template.filename)
-            is_active = lang_files and lang_file_is_active(lang_files[0], lang)
+def translations_for_template(template_name):
+    """
+    Return the list of available translations for the template.
 
-        cache.set(cache_key, is_active, settings.DOTLANG_CACHE)
+    :param template_name: name of the template passed to render.
+    :return: dict, like {'en-US': 'English (US)', 'fr': 'Français'}
+    """
+    lang_files = [get_lang_path(template_name)]
+    template = get_template(template_name)
+    lang_files.extend(parse_template(template.filename))
+    active_translations = {}
+    for lf in lang_files:
+        active_translations.update(get_translations_for_langfile(lf))
 
-    return is_active
+    return active_translations
 
 
 def langfiles_for_path(path):
