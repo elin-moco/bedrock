@@ -107,6 +107,7 @@ CACHEBUST_IMGS = False
 JINGO_EXCLUDE_APPS = [
     'sitemap.xml',
     'admin',
+    'waffle',
 ]
 
 
@@ -300,6 +301,12 @@ MINIFY_BUNDLES = {
             'css/libs/jquery.pageslide.css',
             'css/firefox/os/firefox-os.less',
         ),
+        'firefox_os_new': (
+            'css/base/mozilla-modal.less',
+            'css/firefox/family-nav.less',
+            'css/firefox/os/get_device.less',
+            'css/firefox/os/firefox-os-new.less',
+        ),
         'firefox_os_ie': (
             'css/firefox/os/firefox-os-ie.less',
         ),
@@ -307,6 +314,7 @@ MINIFY_BUNDLES = {
             'css/libs/tipsy.css',
             'css/base/mozilla-modal.less',
             'css/sandstone/sandstone-resp.less',
+            'css/firefox/family-nav.less',
             'css/firefox/os/get_device.less',
             'css/firefox/os/devices.less',
         ),
@@ -500,6 +508,9 @@ MINIFY_BUNDLES = {
             'css/base/mozilla-modal.less',
             'css/libs/jquery.pageslide.css',
             'css/firefox/partners.less',
+            'css/firefox/family-nav.less',
+            'css/firefox/mwc-2015-schedule.less',
+            'css/firefox/mwc-2015-map.less',
         ),
         'partners-ie7': (
             'css/firefox/partners/ie7.less',
@@ -660,7 +671,7 @@ MINIFY_BUNDLES = {
             'js/mocotw/highlight-zh-tw.js',
         ),
         'firefox-resp': (
-            'js/libs/jquery-1.11.0.min.js',
+            'js/libs/jquery-1.11.2.js',
             'js/libs/spin.min.js',
             'js/base/global.js',
             # 'js/sandstone/nav.js',
@@ -717,31 +728,25 @@ MINIFY_BUNDLES = {
             'js/libs/modernizr.custom.csstransitions.js',
             'js/firefox/new.js',
         ),
-        'firefox_os': (
+        'firefox_os_new': (
             'js/base/mozilla-modal.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.waypoints-sticky.min.js',
-            'js/libs/tweenmax.1.9.7.min.js',
-            'js/libs/superscrollorama-1.0.1.js',
-            'js/libs/jquery.plusslider.js',
-            'js/libs/jquery.color.js',
             'js/libs/script.js',
-            'js/libs/socialshare.min.js',
-            'js/firefox/os/partner_data.js',
-            'js/firefox/os/firefox-os.js',
-            'js/firefox/os/desktop.js',
-            'js/firefox/os/have-it.js',
+            'js/firefox/family-nav.js',
+            'js/firefox/os/firefox-os-new.js',
         ),
         'firefox_os_ie9': (
             'js/libs/matchMedia.addListener.js',
         ),
         'firefox_os_devices': (
             'js/libs/jquery.tipsy.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
             'js/base/mozilla-pager.js',
             'js/base/mozilla-modal.js',
-            'js/libs/matchMedia.js',
-            'js/libs/matchMedia.addListener.js',
             'js/firefox/os/partner_data.js',
+            'js/firefox/family-nav.js',
             'js/firefox/os/devices.js',
         ),
         'firefox_os_mwc_2014_preview': (
@@ -920,8 +925,11 @@ MINIFY_BUNDLES = {
         'partners': (
             'js/libs/modernizr.custom.shiv-load.js',
             'js/base/mozilla-input-placeholder.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
             'js/base/mozilla-pager.js',
             'js/base/mozilla-modal.js',
+            'js/firefox/family-nav.js',
             'js/firefox/partners.js',
         ),
         'partners_common': (
@@ -936,7 +944,7 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.pageslide.min.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/tweenmax.1.9.7.min.js',
-            'js/libs/jquery.spritely-0.6.1.js',
+            'js/libs/jquery.spritely-0.6.7.js',
             'js/firefox/partners/desktop.js',
         ),
         'facebookapps_redirect': (
@@ -1024,6 +1032,9 @@ MINIFY_BUNDLES = {
         '10years-firefox-day': (
             'js/mocotw/10years-firefox-day.js',
         ),
+        'matchmedia_addlistener': {
+            'js/libs/matchMedia.addListener.js',
+        },
     }
 }
 
@@ -1109,8 +1120,10 @@ INSTALLED_APPS = get_apps(exclude=(
     '%s.facebookapps' % PROJECT_MODULE,
 
     # libs
+    'django_extensions',
     'lib.l10n_utils',
     'captcha',
+    'waffle',
 
     # web server
     'gunicorn',
@@ -1278,6 +1291,18 @@ PRESS_BLOGS = {
     'pl': 'press-pl/',
 }
 
+FXOS_PRESS_BLOG_LINKS = {
+    'en': 'https://blog.mozilla.org/press/category/firefox-os/',
+    # 'de': 'https://blog.mozilla.org/press-de/category/firefox-os/',
+    # 'es-ES': 'https://blog.mozilla.org/press-es/category/firefox-os/',
+    # 'es': 'https://blog.mozilla.org/press-latam/category/firefox-os/',
+    # 'fr': 'https://blog.mozilla.org/press-fr/category/firefox-os/',
+    # 'it': 'https://blog.mozilla.org/press-it/category/firefox-os/',
+    # 'pb-BR': 'https://blog.mozilla.org/press-br/category/firefox-os/',
+    # 'pl': 'https://blog.mozilla.org/press-pl/category/firefox-os/',
+    'zh-TW': 'http://blog.mozilla.com.tw/posts/category/firefox-os/',
+}
+
 MOBILIZER_LOCALE_LINK = {
     'en-US': 'https://wiki.mozilla.org/FirefoxOS/Community/Mobilizers',
     'hu': 'https://wiki.mozilla.org/Mobilizers/MobilizerHungary/',
@@ -1286,5 +1311,18 @@ MOBILIZER_LOCALE_LINK = {
     'gr': 'https://wiki.mozilla.org/Mobilizer/MobilizerGreece/',
     'cs': 'https://wiki.mozilla.org/Mobilizer/MobilizerCzechRepublic/'
 }
+
+FIREFOX_OS_FEEDS = (
+    # ('de', 'https://blog.mozilla.org/press-de/category/firefox-os/feed/'),
+    ('en-US', 'https://blog.mozilla.org/blog/category/firefox-os/feed/'),
+    # ('es-ES', 'https://blog.mozilla.org/press-es/category/firefox-os/feed/'),
+    # ('es', 'https://blog.mozilla.org/press-latam/category/firefox-os/feed/'),
+    # ('fr', 'https://blog.mozilla.org/press-fr/category/firefox-os/feed/'),
+    # ('it', 'https://blog.mozilla.org/press-it/category/firefox-os/feed/'),
+    # ('pl', 'https://blog.mozilla.org/press-pl/category/firefox-os/feed/'),
+    # ('pt-BR', 'https://blog.mozilla.org/press-br/category/firefox-os/feed/'),
+    ('zh-TW', 'http://blog.mozilla.com.tw/posts/category/firefox-os/feed/'),
+)
+FIREFOX_OS_FEED_LOCALES = [feed[0] for feed in FIREFOX_OS_FEEDS]
 
 API_SECRET = 'hush'

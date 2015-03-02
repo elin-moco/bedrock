@@ -52,6 +52,11 @@
     font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
 }
 
+.open-sans-italic() {
+    font-family: @baseFontFamily;
+    font-style: italic;
+}
+
 .open-sans-light() {
 //    font-family: 'Open Sans Light', sans-serif;
     font-family: "Open Sans",Arial,Helvetica,"Microsoft JhengHei","Apple LiGothic Medium",sans-serif;
@@ -99,6 +104,7 @@
 @gridRowWidthMobileWide:  (@gridColumnsMobileWide * @gridColumnWidthNarrow) + (@gridGutterWidth * (@gridColumnsMobileWide - 1));
 
 // Breakpoints for common devices
+@breakDesktopWide:        1400px;
 @breakDesktop:            1000px;
 @breakTablet:             760px;
 @breakMobileLandscape:    480px;

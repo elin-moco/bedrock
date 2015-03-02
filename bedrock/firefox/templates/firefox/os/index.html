@@ -4,12 +4,17 @@
 
 {% extends "firefox/base-resp.html" %}
 
+{% add_lang_files "firefox/os/devices" %}
+
 {% block page_title_prefix %}{% endblock %}
-{% block page_title %}{{_('Firefox OS — The Adaptive Phone — Great Smartphone Features, Apps and More')}}{% endblock %}
-{% block page_desc %}{{_('Firefox OS smartphones give you great adaptive features and apps that let you live every moment to its fullest and build a brighter future for the Web.')}}{% endblock %}
+{% block page_title %}{{_('Firefox OS — Just what you need — Great smartphone features, apps and more — Mozilla')}}{% endblock %}
+{% block page_desc %}{{_('Firefox OS is designed to give you just what you need, just when you need it. It comes with apps for all you do and you can download more of your favorites from the Firefox Marketplace. Smart has never been so simple.')}}{% endblock %}
 
 {% block body_id %}firefox-os{% endblock %}
 {% block body_class %}firefox-os{% endblock %}
+
+{# Do not load CSS bundle specified in base template (duplicate CSS). #}
+{% block site_css %}{% endblock %}
 
 {% block extrahead %}
   {{ super() }}
@@ -26,19 +31,33 @@
         <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">{{ _('Mozilla') }}</a>
 
         {% block site_header_logo %}
-        <h2 id="ffos-main-logo"><a href="#masthead" class="nav"><img src="{{ MEDIA_URL }}img/firefox/os/logo/firefox-os.png" alt="Firefox OS"></a></h2>
+        <h2 id="ffos-main-logo"><a href="#masthead" class="nav"><img src="{{ media('img/firefox/os/logo/firefox-os.png') }}" alt="Firefox OS"></a></h2>
         {% endblock %}
         {% block site_header_nav %}
-            <nav id="nav-main" role="navigation">
-            <span class="toggle" role="button" aria-controls="nav-main-menu" tabindex="0">{{_('Menu')}}</span>
-              <ul id="nav-main-menu">
-                <li class="first"><a class="nav" href="#adaptive-wrapper">{{_('The Adaptive Phone')}}</a></li>
-                <li><a class="nav" href="#have-it-all">{{_('The Features')}}</a></li>
-                <li><a class="nav" href="#mission">{{_('The Mission')}}</a></li>
-                <li class="last"><a href="{{ url('firefox.os.devices') }}">{{ _('The Devices') }}</a></li>
-              </ul>
-            </nav>
+          <nav id="nav-main" role="navigation">
+            <span class="toggle" role="button" aria-controls="nav-main-menu" aria-expanded="false" tabindex="0">{{_('Menu')}}</span>
+            <ul id="nav-main-menu">
+              <li class="first"><a class="nav" href="#adaptive-wrapper">{{_('The Adaptive Phone')}}</a></li>
+              <li><a class="nav" href="#have-it-all">{{_('The Features')}}</a></li>
+              <li><a class="nav" href="#mission">{{_('The Mission')}}</a></li>
+              <li class="last"><a href="{{ url('firefox.os.devices') }}">{{ _('The Devices') }}</a></li>
+            </ul>
+          </nav>
         {% endblock %}
+        <div id="lang-panel-container">
+          <button type="button" id="open-lang-panel" aria-controls="lang-panel" aria-expanded="false">
+            {{ _('Choose Language')}}
+          </button>
+          <div id="lang-panel">
+            <button type="button" id="close-lang-panel">{{ _('Close') }}</button>
+            <p>{{ _('Hello, we noticed you are in India. Choose your language:')}}</p>
+            <ul id="lang-panel-options">
+              <li><a href="#" data-lang="English">{{ _('English')}}</a></li>
+              <li><a href="/hi-IN/firefox/os" data-lang="Hindi">{{ _('Hindi')}}</a></li>
+              <li class="last"><a href="/ta/firefox/os" data-lang="Tamil">{{ _('Tamil')}}</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="cta-button">
           <a id="secondary-cta-signup" href="#email-form-wrapper" class="button newsletter-signup-toggle">{{_('Sign me up')}}</a>
           <a id="secondary-cta-phone" href="#get-device" class="button-green">{{_('Get a phone')}}</a>
@@ -207,8 +226,14 @@
           </li>
           <li>
             <a href="#maps" id="maps-link">
-              <div class="icon maps"></div>
-              <span>{{_('Maps')}}</span>
+              <div id="maps-link-india" class="india-show{% if request.locale not in ['hi-IN', 'ta'] %} hidden{% endif %}">
+                <div class="icon settings"></div>
+                <span>{{_('Dual SIM')}}</span>
+              </div>
+              <div id="maps-link-non-india" class="india-hide{% if request.locale in ['hi-IN', 'ta'] %} hidden{% endif %}">
+                <div class="icon maps"></div>
+                <span>{{_('Maps')}}</span>
+              </div>
             </a>
           </li>
           <li>
@@ -246,7 +271,7 @@
           <h2>{{_('Moments with friends')}}</h2>
           <p>{{_('Import your contacts directly from Facebook and share updates instantly.')}}</p>
         </div>
-        <img class="app center" id="contacts-app" src="{{ l10n_img('firefox/os/have-it-all/contacts.jpg') }}?2013-09" alt="{{_('Contacts app')}}">
+        <img class="app center" id="contacts-app" src="{{ l10n_img('firefox/os/have-it-all/contacts.jpg') }}" alt="{{_('Contacts app')}}">
         <div class="content right">
           <ul class="icon-list">
             <li class="icon contacts"></li>
@@ -283,21 +308,36 @@
             <li class="icon videos"></li>
           </ul>
         </div>
-        <img class="app left" id="music-app" src="{{ l10n_img('firefox/os/have-it-all/music.jpg') }}?2013-09" alt="{{_('Music app')}}">
+        <img class="app left" id="music-app" src="{{ l10n_img('firefox/os/have-it-all/music.jpg') }}" alt="{{_('Music app')}}">
         <img class="app center" id="radio-app" src="{{ l10n_img('firefox/os/have-it-all/radio.jpg') }}" alt="{{_('Radio app')}}">
       </section>
     </div>
 
     <div class="item-wrapper hia-anchor" id="maps">
       <section class="item">
+
         <div class="content left wide">
-          <h2>{{_('Moments in between')}}</h2>
-          <p>{{_('Get to where you’re going with directions, traffic and local transit information.')}}</p>
-          <ul class="icon-list">
-            <li class="icon maps"></li>
-          </ul>
+          <div id="maps-content-india" class="india-show{% if request.locale not in ['hi-IN', 'ta'] %} hidden{% endif %}">
+            <h2>{{_('Moments of choice')}}</h2>
+            <p>{{_('Take full control of calls and messages with dual SIM and dual standby functionality.')}}</p>
+            <ul class="icon-list">
+              <li class="icon settings"></li>
+            </ul>
+          </div> {#/--maps-content-india #}
+
+          <div id="maps-content-non-india" class="india-hide{% if request.locale in ['hi-IN', 'ta'] %} hidden{% endif %}">
+            <h2>{{_('Moments in between')}}</h2>
+            <p>{{_('Get to where you’re going with directions, traffic and local transit information.')}}</p>
+            <ul class="icon-list">
+              <li class="icon maps"></li>
+            </ul>
+          </div> {#/--maps-content-non-india #}
         </div>
-        <img class="app right" id="maps-app" src="{{ l10n_img('firefox/os/have-it-all/maps.jpg') }}?2013-09" alt="{{_('Maps app')}}">
+
+        <div class="app right app-image-wrapper" id="maps-app">
+          <img id="maps-app-india" src="{{ l10n_img('firefox/os/have-it-all/dualsim.png') }}" alt="{{_('Dual SIM')}}" class="india-show{% if request.locale not in ['hi-IN', 'ta'] %} hidden{% endif %}">
+          <img id="maps-app-non-india" src="{{ l10n_img('firefox/os/have-it-all/maps.jpg') }}" alt="{{_('Maps app')}}" class="india-hide{% if request.locale in ['hi-IN', 'ta'] %} hidden{% endif %}">
+        </div>
       </section>
     </div>
 
@@ -312,7 +352,7 @@
           </ul>
         </div>
         <img class="app center" id="messages-app" src="{{ l10n_img('firefox/os/have-it-all/messages.jpg') }}" alt="{{_('Messages app')}}">
-        <img class="app right" id="mail-app" src="{{ l10n_img('firefox/os/have-it-all/mail.jpg') }}?2013-09" alt="{{_('Email app')}}">
+        <img class="app right" id="mail-app" src="{{ l10n_img('firefox/os/have-it-all/mail.jpg') }}" alt="{{_('Email app')}}">
       </section>
     </div>
 
@@ -325,7 +365,7 @@
             <li class="icon marketplace"></li>
           </ul>
         </div>
-        <img class="app left" id="marketplace-app" src="{{ l10n_img('firefox/os/have-it-all/marketplace.jpg') }}?2013-09" alt="{{_('Marketplace app')}}">
+        <img class="app left" id="marketplace-app" src="{{ l10n_img('firefox/os/have-it-all/marketplace.jpg') }}" alt="{{_('Marketplace app')}}">
       </section>
     </div>
 
@@ -359,6 +399,26 @@
 
   <div id="useful-links">
     <section class="item container">
+      <div class="column column-first">
+        <h3>{{_('For partners &amp; developers:')}}</h3>
+        <ul>
+          <li>
+            {% trans link=url('firefox.partners.index') %}
+            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="https://developer.mozilla.org/docs/Web/Apps/Publishing/Submitting_an_app" %}
+            Get your app on Firefox OS <a href="{{link}}">Submit it to Firefox Marketplace</a>
+            {% endtrans %}
+          </li>
+          <li>
+            {% trans link="/firefox/os/notes/" %}
+            View the version notes <a href="{{link}}">Read about features, changes and more</a>
+            {% endtrans %}
+          </li>
+        </ul>
+      </div>
 
       <div class="column">
         <h3>{{_('For users:')}}</h3>
@@ -375,39 +435,6 @@
           </li>
         </ul>
       </div>
-
-      <div class="column column-first">
-        <h3>{{_('For partners &amp; developers:')}}</h3>
-        <ul>
-          <li>
-            {% trans link=url('firefox.partners.index') %}
-            Learn about partnership opportunities <a href="{{link}}">Visit the Firefox OS partner site</a>
-            {% endtrans %}
-          </li>
-          <li>
-            {% trans link="https://developer.mozilla.org/zh-TW/docs/%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F-840092-dup/Publishing/Submitting_an_app" %}
-            Get your app on Firefox OS <a href="{{link}}">Submit it to Firefox Marketplace</a>
-            {% endtrans %}
-          </li>
-          <li>
-            {% trans link="/firefox/os/notes/" %}
-            View the version notes <a href="{{link}}">Read about features, changes and more</a>
-            {% endtrans %}
-          </li>
-          <li>
-            免費下載 Firefox OS 模擬器
-            <a href="https://addons.mozilla.org/zh-TW/firefox/addon/firefox-os-simulator/?src=search">Firefox OS Simulator</a>
-          </li>
-          <li>
-            Firefox OS 研發部落格 <a href="//tech.mozilla.com.tw">謀智台客</a>
-          </li>
-          <li>
-            下載 Firefox OS 相關文件
-            <a href="/media/docs/mocotw/WebAPIs.pdf">Web APIs</a>
-            <a href="/media/docs/mocotw/business.pdf">營運模式</a>
-          </li>
-        </ul>
-      </div>
     </section>
   </div>
 </div>
@@ -421,17 +448,7 @@
   <div id="email-form-wrapper">
     <div id="email-form-content" class="modal-content">
       <div class="content">
-        <div id="footer-email-thanks">
-          <h3>{{ _('Thanks! Please check your inbox to confirm your subscription.') }}</h3>
-          <p>
-            {% trans %}
-              You'll receive an email from mozilla@e.mozilla.org to confirm your subscription.
-              If you don't see it, check your spam filter. You must confirm your subscription to receive our newsletter.
-            {% endtrans %}
-          </p>
-        </div>
-
-        {{ email_newsletter_form(include_country=False, include_language=False) }}
+        {{ email_newsletter_form('mozilla-and-you,os', _('Sign up for our monthly newsletter')) }}
       </div>
     </div>
   </div>

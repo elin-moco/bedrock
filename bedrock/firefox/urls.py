@@ -4,12 +4,14 @@
 
 from django.conf.urls.defaults import *  # noqa
 from django.conf import settings
+from waffle.decorators import waffle_switch
 
 from bedrock.firefox import version_re
 from bedrock.mocotw.views import mozorg_zhtw_redirect
 from bedrock.redirects.util import redirect
 from bedrock.mozorg.util import page
 import views
+from django.views.generic.simple import direct_to_template
 
 
 latest_re = r'^firefox(?:/(%s))?/%s/$'
@@ -84,7 +86,8 @@ urlpatterns = patterns('',
     url('^firefox/$', views.fx_home_redirect, name='firefox'),
 
 
-    page('firefox/os', 'firefox/os/index.html'),
+    url(r'^firefox/os/$', direct_to_template, {'template': 'firefox/os/index-new.html'}, name='fxos'),
+    url(r'^firefox/os/$', direct_to_template, {'template': 'firefox/os/index-new.html'}, name='firefox.os.index'),
     page('firefox/os/releases', 'firefox/os/releases.html'),
 
     # firefox/os/notes/ should redirect to the latest version; update this in /redirects/urls.py
@@ -92,7 +95,8 @@ urlpatterns = patterns('',
         views.release_notes, {'product': 'Firefox OS'},
         name='firefox.os.releasenotes'),
 
-    page('mwc', 'firefox/os/mwc-2014-preview.html'),
+    page('mwc', 'firefox/os/mwc-2015-preview.html',
+        decorators=waffle_switch('mwc-2015-preview')),
     page('firefox/os/devices', 'firefox/os/devices.html'),
     page('firefox/os/devices/tv', 'firefox/os/tv.html'),
 

@@ -239,53 +239,33 @@
     .partner-button, #overview-news-links {
         display: none;
     }
-    .partner-button {
-        margin-top: -35px;
-    }
-    .intro #more-partners {
-        display: block;
-    }
 }
 #overview {
-    background: url(/media/img/firefox/partners/overview-bg.png?2013-06) center -15px no-repeat;
     h2 {
-        font-size: 80px;
+        .font-size(80px);
         letter-spacing: -4px;
         .span-all();
-        padding-top: 60px;
+        padding-top: 20px;
         padding-bottom: 10px;
     }
     .intro {
         margin-top: @baseLine;
         p {
             .open-sans-light;
-            font-size: 18px;
+            .font-size(18px);
             letter-spacing: -0.01em;
         }
         .partner-logos {
             margin-top: @baseLine;
         }
-        #more-partners {
-            margin: -30px 0 0 0;
-            float: left;
-            display: none;
-            font-family: Journal;
-            font-size: 23px;
-            color: @textColorTertiary;
-            padding-right: 50px;
-            text-align: right;
-            width: 210px;
-            background: url(/media/img/firefox/partners/partners-arrow.png) 100% 50% no-repeat;
-        }
         .partner-button {
             float: right;
-            margin-bottom: 5px;
         }
     }
 }
 
 #overview-news-links {
-    padding-top: (@baseLine * 1.5);
+    clear: both;
 }
 
 #overview-news-wrapper {
@@ -351,13 +331,13 @@
         }
     }
     h3 {
-        font-size: 42px;
+        .font-size(42px);
     }
     #os-operators-intro {
         .span-all();
         padding-top: 120px;
         h3 {
-            font-size: 50px;
+            .font-size(50px);
             letter-spacing: -2px;
             margin-left: 0;
             margin-bottom: 40px;
@@ -369,7 +349,7 @@
                 margin: 10px 20px;
             }
         }
-        .logos {
+        .operator-screenshots {
             .span(6);
             margin-left: 0;
             margin-right: 0;
@@ -428,7 +408,7 @@
         .intro {
             .span-all();
             h3 {
-                font-size: 48px;
+                .font-size(48px);
                 letter-spacing: -2px;
                 text-align: center;
                 margin-bottom: @baseLine * 2;
@@ -457,7 +437,7 @@
             .intro {
                 .span-all();
                 h3 {
-                    font-size: 48px;
+                    .font-size(48px);
                     letter-spacing: -2px;
                     text-align: center;
                     margin-bottom: @baseLine * 2;
@@ -518,7 +498,7 @@
     }
     .article-header {
         h2 {
-            font-size: 78px;
+            .font-size(78px);
         }
     }
     .android-dude {
@@ -528,19 +508,19 @@
         left: -75px;
         width: 231px;
         height: 256px;
-        background: url(/media/img/firefox/partners/android-dude.png?2013-06) no-repeat 0 0;
+        background: url(/media/img/firefox/partners/android-dude.png) no-repeat 0 0;
         z-index: 130;
     }
     #android-partner {
         padding-top: 0;
-        background: url(/media/img/firefox/partners/android-partners-bg.png?2014-02) 50% 200px no-repeat;
+        background: url(/media/img/firefox/partners/android-partners-bg.png) 50% 200px no-repeat;
         .intro {
             padding-top: 120px;
             h3 {
-                font-size: 42px;
+                .font-size(42px);
             }
             h4 {
-                font-size: 26px;
+                .font-size(26px);
             }
         }
         .android-dude {
@@ -551,7 +531,7 @@
     .android-tablet {
         width: 1021px;
         height: 662px;
-        background: url(/media/img/firefox/partners/android-tablet-frame.png?2014-02) no-repeat 0 0;
+        background: url(/media/img/firefox/partners/android-tablet-frame.png) no-repeat 0 0;
         position: absolute;
         top: 150px;
         left: 50%;
@@ -560,11 +540,11 @@
         .tablet-screen {
             position: absolute;
             display: block;
-            top: 58px;
-            right: 127px;
+            top: 61px;
+            right: 139px;
             width: 767px;
             height: 488px;
-            background: url(/media/img/firefox/partners/android-tablet-screen.jpg?2014-02) no-repeat 0 0;
+            background: url(/media/img/firefox/partners/android-tablet-screen.jpg) no-repeat 0 0;
         }
     }
 }
@@ -582,7 +562,9 @@ body #partner-nav {
     padding: 0;
 }
 
-body #partner-menu, body #mwc-menu {
+body #partner-menu,
+body #mwc-menu,
+body #devices-menu {
     width: 60px;
     li {
         width: auto;
@@ -603,7 +585,7 @@ body #partner-menu, body #mwc-menu {
     width: 50px;
     padding: 0 0 18px 50px;
     margin: 0;
-    font-size: 23px;
+    .font-size(23px);
     background: url(/media/img/firefox/partners/menu-icons.png) 0 -720px no-repeat;
 }
 
@@ -613,9 +595,11 @@ body #partner-menu, body #mwc-menu {
         display: block;
         float: none;
         width: auto;
+        border-radius: 0;
         a {
             @shadow: 0 -1px rgba(0,0,0,0.1) inset;
             .box-shadow(@shadow);
+            border-radius: 0;
         }
         &:first-child a {
             border-radius: 3px 3px 0 0;
@@ -623,13 +607,16 @@ body #partner-menu, body #mwc-menu {
         &:last-child a {
             border-radius: 0 0 3px 3px;
         }
+        &.first a {
+            border-radius: 0;
+        }
         &.title {
             border-radius: 3px 3px 0 0;
             background: #515f6a;
             color: #fff;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 12px;
+            .font-size(@smallFontSize);
             text-align: center;
         }
     }
@@ -684,7 +671,7 @@ body #partner-menu, body #mwc-menu {
         }
     }
     #screen-os {
-        background: url(/media/img/firefox/partners/phone-os-screenshots.jpg?2014-02) 0 0 repeat-x;
+        background: url(/media/img/firefox/partners/phone-os-screenshots.jpg) 0 0 repeat-x;
         z-index: 0;
 
         -moz-animation: os-screenslide 20s ease infinite alternate;
@@ -759,7 +746,7 @@ body #partner-menu, body #mwc-menu {
         height: 636px;
     }
     .phone-overlay {
-        background: url(/media/img/firefox/partners/phone-android.png?2013-06) 50% 100% no-repeat;
+        background: url(/media/img/firefox/partners/phone-android.png) 50% 100% no-repeat;
         height: 636px;
     }
     &.android-phone-visible {
@@ -789,7 +776,7 @@ body #partner-menu, body #mwc-menu {
 
 html[lang="de"] {
     #overview h2 {
-        font-size: 66px;
+        .font-size(66px);
     }
 }
 
@@ -799,23 +786,23 @@ html[lang="el"] {
     }
 
     #overview h2 {
-        font-size: 66px;
+        .font-size(66px);
     }
 
     .partner-article .article-header nav a {
-        font-size: 12px;
+        .font-size(@smallFontSize);
         line-height: 1.2;
     }
 
     .partner-article .article-content .intro h4 {
-        font-size: 24px;
+        .font-size(24px);
     }
 }
 
 html[lang="fr"],
 html[lang="pt-BR"] {
     #overview h2 {
-        font-size: 72px;
+        .font-size(72px);
     }
 }
 
@@ -833,7 +820,7 @@ html[lang="ro"],
 html[lang="sr"] {
     #explore,
     #overview .intro #more-partners {
-        font-size: 14px;
+        .font-size(@baseFontSize);
         line-height: 1.2;
         font-family: inherit;
     }
@@ -846,13 +833,13 @@ html[lang="sr"] {
 html[lang|="es"],
 html[lang|="sr"] {
     #overview h2 {
-        font-size: 70px;
+        .font-size(70px);
     }
 }
 
 html[lang="ca"] {
     #overview-links li {
-        font-size: 13px;
+        .font-size(13px);
         line-height: 1.3em;
     }
 }
