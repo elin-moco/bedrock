@@ -37,15 +37,9 @@
 
 <main role="main">
   <div class="version-message-container">
-    {% if l10n_has_tag('ios_announce') %}
-      <div id="version-message-ios" class="version-message">
-        {{_('Firefox is coming soon to iOS! <a href="{url}">Sign up to learn more</a>.').format(url=url('newsletter.ios'))|safe }}
-      </div>
-    {% else %}
-      <div id="version-message-ios" class="version-message">
-        {{_('Sorry, Firefox is currently unsupported by iOS devices.')}}
-      </div>
-    {% endif %}
+    <div id="version-message-ios" class="version-message">
+      {{_('Sorry, Firefox is currently unsupported by iOS devices.')}}
+    </div>
     <div id="version-message-android-latest" class="version-message">
       {{_('Congrats! You’re using the latest version of Firefox.')}}
     </div>
@@ -55,13 +49,6 @@
     <div id="version-message-desktop-latest" class="version-message">
       {{_('Congrats! You’re using the latest version of Firefox.')}}
 
-    {% if l10n_has_tag('firefox_new_refresh_button') %}
-      <div id="refresh-firefox-wrapper">
-        <p>{{ _('Give Firefox a tune up') }}</p>
-        <button type="button" id="refresh-firefox" class="button">{{ _('Refresh Firefox') }}</button>
-        <a href="https://support.mozilla.org/kb/refresh-firefox-reset-add-ons-and-settings?utm_source=mozilla.org&amp;utm_medium=referral&amp;utm_campaign=learn-more-link" rel="external">{{ _('Learn more') }}</a>
-      </div>
-    {% endif %}
     </div>
     <div id="version-message-desktop-old" class="version-message">
       {{_('Looks like you’re using an older version of Firefox.')}}
@@ -77,17 +64,7 @@
     <div class="row">
       <img src="{{ media('img/firefox/new/firefox-logo.png') }}" alt="Firefox" />
       <h1 class="large">
-      {% if l10n_has_tag('fx10_independent') %}
-        {{ _('Choose Independent.') }}
-        <br>
-        {{ _('Choose Firefox.') }}
-      {% else %}
-        {%- if LANG in ['en-GB', 'en-US', 'en-ZA'] -%}
-          <span>Committed to you,</span> <span>your privacy</span> <span>and an open Web</span>
-        {%- else -%}
-          {{_('Committed to you, your privacy and an open Web')}}
-        {%- endif -%}
-      {% endif %}
+        {{_('Committed to you, your privacy and an open Web')}}
       </h1>
     </div>
   </div>
@@ -129,19 +106,15 @@
           </div>
           <div class="ios-links-wrapper latest-links-wrapper">
             <ul>
-              {% if l10n_has_tag('ios_announce') %}
-                <li><a href="{{ url('newsletter.ios') }}">{{_('Learn more about Firefox on iOS')}}</a></li>
-              {% elif l10n_has_tag('mobile_links') %}
-                <li>
-                  <a href="{{ settings.GOOGLE_PLAY_FIREFOX_LINK }}">{{_('Get Firefox on your Android device')}}</a>
-                </li>
-                <li>
-                  <a href="{{ url('firefox.os.index') }}">{{_('Learn about Firefox OS')}}</a>
-                </li>
-                <li>
-                  <a href="https://support.mozilla.org/kb/is-firefox-available-iphone-or-ipad">{{_('Why don’t we offer an iOS version?')}}</a>
-                </li>
-              {% endif %}
+              <li>
+                <a href="{{ settings.GOOGLE_PLAY_FIREFOX_LINK }}">{{_('Get Firefox on your Android device')}}</a>
+              </li>
+              <li>
+                <a href="{{ url('firefox.os.index') }}">{{_('Learn about Firefox OS')}}</a>
+              </li>
+              <li>
+                <a href="https://support.mozilla.org/kb/is-firefox-available-iphone-or-ipad">{{_('Why don’t we offer an iOS version?')}}</a>
+              </li>
             </ul>
           </div>
         </div>
