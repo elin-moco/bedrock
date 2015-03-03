@@ -233,7 +233,7 @@ def lang_file_tag_set(path, lang=None):
     :param lang: the language code or the lang of the request if omitted
     :return: set of strings
     """
-    if settings.DEV or lang == settings.LANGUAGE_CODE:
+    if lang == settings.LANGUAGE_CODE:
         return ALL_THE_THINGS
 
     lang = lang or fix_case(translation.get_language())

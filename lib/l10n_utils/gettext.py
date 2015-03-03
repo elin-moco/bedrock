@@ -194,7 +194,7 @@ def template_tag_set(path, lang):
     :param lang: language code
     :return: set of strings
     """
-    if settings.DEV or lang == settings.LANGUAGE_CODE:
+    if lang == settings.LANGUAGE_CODE:
         return ALL_THE_THINGS
 
     cache_key = 'template_tag_set:{path}:{lang}'.format(lang=lang, path=path)
