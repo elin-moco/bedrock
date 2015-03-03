@@ -202,13 +202,6 @@ urlpatterns = patterns(
 
     page('edm/2014review', 'mocotw/edm/2014review-web.html'),
 
-    # bug 1093985, 1105664, remove this once the Firefox Hello product page is ready
-
-    redirect(r'^firefox/hello/?.*$',
-             'https://support.mozilla.org/kb/respond-firefox-hello-invitation-guest-mode'),
-    redirect(r'^firefox/[3-9]\d\.\d(?:a1|a2|beta|\.\d)?/hello/start/?$',
-             'https://support.mozilla.org/kb/firefox-hello-make-and-receive-calls-guest-mode'),
-
     redirect(r'^firefox/about/$', '/about/'),
     redirect(r'^firefox/all.html$', '/firefox/all/'),
     redirect(r'^about/contact.html$', '/about/contact/'),
@@ -224,4 +217,5 @@ urlpatterns = patterns(
     redirect(r'^firefox/organizations/all.html$', '//www.mozilla.org/en-US/firefox/organizations/all/'),
     redirect(r'^firefox/livebookmarks.html', 'https://support.mozilla.org/zh-TW/kb/Live%20Bookmarks'),
     redirect(r'^firefox/beta/technology/$', '/firefox/desktop/fast/'),
+    redirect(r'^newsletter/ios/$', '//www.mozilla.org/en-US/newsletter/ios/', name='newsletter.ios')
 )
