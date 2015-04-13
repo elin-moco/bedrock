@@ -38,7 +38,7 @@ sitemaps = {
         0.7, 'monthly'),
     'about': ViewsSitemap(
         ['mozorg.products', 'mozorg.about', 'mozorg.about.manifesto', 'mocotw.about.space',
-         'mocotw.about.careers', 'mocotw.about.intern', 'mocotw.about.contact'],
+         'mocotw.about.careers', 'mocotw.about.contact'],
         0.6, 'monthly'),
     'community': ViewsSitemap(
         ['mozorg.contribute', 'mocotw.community.student.index', 'mocotw.community.student.rules',
