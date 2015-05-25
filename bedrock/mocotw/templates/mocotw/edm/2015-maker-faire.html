@@ -133,27 +133,10 @@
 <body>
 <table class="container">
   <tr>
-    <td colspan="2">
-      <table class="header">
-        {% if not is_web %}
-        <tr>
-          <td class="header-tip" colspan="2">
-            <a class="web-link" href="{{ MOCO_URL }}/edm/2015-maker-faire/{{ tracking_code }}">
-              <small>無法正常顥示？請點此開啟網頁版</small>
-            </a>
-          </td>
-        </tr>
-        {% endif %}
-        <tr>
-          <td><a href="http://mozilla.com.tw/{{ tracking_code }}"><img id="logo" src="{{ 'header-logo.png'|load_image }}"/></a></td>
-          <td class="navigator">
-            <a href="https://www.facebook.com/MozillaTaiwan">FB 粉絲團</a>&nbsp;|&nbsp;
-            <a href="http://mozilla.com.tw{{ tracking_code }}">Mozilla</a>&nbsp;|&nbsp;
-            <a href="http://mozilla.com.tw/join_us/{{ tracking_code }}">訂閱電子報</a>&nbsp;|&nbsp;
-            <a href="http://mozilla.com.tw/firefox/download/{{ tracking_code }}">下載 Firefox</a>
-          </td>
-        </tr>
-      </table>
+    <td class="header-tip" colspan="2">
+      <a class="web-link" href="{{ MOCO_URL }}/edm/2015-maker-faire/{{ tracking_code }}">
+        <small>無法正常顥示？請點此開啟網頁版</small>
+      </a>
     </td>
   </tr>
   <tr class="content">
