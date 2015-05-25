@@ -201,6 +201,7 @@ urlpatterns = patterns(
     page('10years/browser-survey', 'mocotw/10years/browser-survey-result.html'),
 
     page('edm/2014review', 'mocotw/edm/2014review-web.html'),
+    page('edm/2015-maker-faire', 'mocotw/edm/2015-maker-faire-web.html'),
 
     redirect(r'^firefox/about/$', '/about/'),
     redirect(r'^firefox/all.html$', '/firefox/all/'),

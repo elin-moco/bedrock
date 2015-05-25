@@ -1,0 +1,15 @@
+數位技術與實體世界相遇，Maker 浪潮即將催化第三次工業革命，你參與了嗎？
+
+Mozilla 今年首度參與於 5 月 30、31 日在華山 1914 文創園區登場的 Maker Faire Taipei 2015。
+兩天展期中，你將瞭解如何在樹莓派上執行 Firefox OS 並用 JavaScript 控制 LED 閃爍，
+我們也將示範包含遠端餵貓器、8x8 LED 桌球、WebVR 等多種基於最先進 WebAPI 的應用。
+
+本週末請與我們一起攜手以軟硬體創作體現開源精神！
+
+展覽時間：2015/05/30-31 10:00-17:00
+展覽地點：華山 1914 文創園區東二館 Firefox OS 展區（A17）
+
+展區參觀早鳥報名，就有機會抽中 Firefox OS 開發手機 Flame 一支！
+
+早鳥報名網址：
+https://docs.google.com/forms/d/16P1Ez33AXxPBvvOgT4Y4o7jOhNpEsxgHjkqwQOXdNus/viewform
