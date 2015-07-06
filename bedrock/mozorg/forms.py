@@ -154,7 +154,7 @@ class ContributeForm(forms.Form):
         widget=forms.widgets.Textarea(attrs={'required': 'required',
                                              'rows': '4',
                                              'cols': '30'}))
-    # captcha = ReCaptchaField(attrs={'theme': 'clean'})
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})
 
 
 class WebToLeadForm(forms.Form):

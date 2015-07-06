@@ -83,6 +83,10 @@
             </div>
           {% endif %}
         </div>
+        <div class="field field-captcha">
+          {{ form.captcha }}
+          {{ form.captcha.errors }}
+        </div>
       </div>
     </fieldset>
     <div class="form-submit">
