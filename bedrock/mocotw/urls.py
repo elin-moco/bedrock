@@ -218,5 +218,6 @@ urlpatterns = patterns(
     redirect(r'^firefox/organizations/all.html$', '//www.mozilla.org/en-US/firefox/organizations/all/'),
     redirect(r'^firefox/livebookmarks.html', 'https://support.mozilla.org/zh-TW/kb/Live%20Bookmarks'),
     redirect(r'^firefox/beta/technology/$', '/firefox/desktop/fast/'),
-    redirect(r'^newsletter/ios/$', '//www.mozilla.org/en-US/newsletter/ios/', name='newsletter.ios')
+    redirect(r'^newsletter/ios/$', '//www.mozilla.org/en-US/newsletter/ios/', name='newsletter.ios'),
+    redirect(r'^mozlando/$', '//www.youtube.com/watch?v=4UfZyFklY4o')
 )
