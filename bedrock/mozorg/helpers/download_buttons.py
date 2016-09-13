@@ -29,15 +29,15 @@ from lib.l10n_utils import get_locale
 download_urls = {
     'transition': '/firefox/new/?scene=2#download-fx',
     'direct': 'https://download.mozilla.org/',
-    'aurora': 'https://ftp.mozilla.org/pub/mozilla.org/firefox/'
+    'aurora': 'https://ftp.mozilla.org/pub/firefox/'
               'nightly/latest-mozilla-aurora',
-    'aurora-l10n': 'https://ftp.mozilla.org/pub/mozilla.org/firefox/'
+    'aurora-l10n': 'https://ftp.mozilla.org/pub/firefox/'
                    'nightly/latest-mozilla-aurora-l10n',
-    'aurora-mobile': 'https://ftp.mozilla.org/pub/mozilla.org/mobile/'
+    'aurora-mobile': 'https://ftp.mozilla.org/pub/mobile/'
                      'nightly/latest-mozilla-aurora-android/en-US/'
                      'fennec-%s.en-US.android-arm.apk' %
                      product_details.mobile_details['alpha_version'],
-    'aurora-mobile-l10n': 'https://ftp.mozilla.org/pub/mozilla.org/mobile/'
+    'aurora-mobile-l10n': 'https://ftp.mozilla.org/pub/mobile/'
                      'nightly/latest-mozilla-aurora-android/'
                      'fennec-%s.multi.android-arm.apk' %
                      product_details.mobile_details['alpha_version'],

@@ -23,7 +23,7 @@ log = logging.getLogger('prod_details')
 aurora_version_pattern = re.compile('firefox\-([a-z0-9\.]+)\.zh\-TW')
 aurora_file = '/firefox_aurora_version.json'
 aurora_key = 'LATEST_AURORA_VERSION'
-nightly_version_pattern = re.compile('firefox\-([a-z0-9\.]+)\.en\-US')
+nightly_version_pattern = re.compile('firefox\-([a-z0-9\.]+)\.zh\-TW')
 nightly_file = '/firefox_nightly_version.json'
 nightly_key = 'LATEST_NIGHTLY_VERSION'
 
@@ -43,17 +43,17 @@ def latest_nightly_version(locale):
     except KeyError:
         log.error('No version key found.')
         nightly_version = '24.0a1'
-    return nightly_version, []
+    return nightly_version, ['Windows', 'Linux', 'OS X']
 
 
 def make_nightly_mobile_link(version):
     #return download_urls['nightly-mobile-l10n']
-    return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-central-android/fennec-%s.multi.android-arm.apk' % version
+    return 'https://ftp.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-15-l10n/fennec-%s.zh-TW.android-arm.apk' % version
 
 
 def make_aurora_mobile_link(version):
     #return download_urls['aurora-mobile-l10n']
-    return 'https://ftp.mozilla.org/pub/mozilla.org/mobile/nightly/latest-mozilla-aurora-android/fennec-%s.multi.android-arm.apk' % version
+    return 'https://ftp.mozilla.org/pub/mobile/nightly/latest-mozilla-aurora-android-api-15-l10n/fennec-%s.zh-TW.android-arm.apk' % version
 
 
 def make_nightly_link(product, version, platform, locale):
@@ -66,7 +66,7 @@ def make_nightly_link(product, version, platform, locale):
     filename = filenames[platform]
 
     return ('%s/%s-%s.%s.%s' %
-            ('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk',
+            ('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n',
              product, version, locale, filename))
 
 
@@ -81,6 +81,7 @@ def download_version_details(source_file, version_pattern, target_file, target_k
     for version_match in versions_match:
         version = version_match.group(1)
     print version
+
     try:
         PROD_DETAILS_DIR = settings_fallback('PROD_DETAILS_DIR')
         f = open(PROD_DETAILS_DIR + target_file, 'w')
@@ -94,14 +95,14 @@ def download_version_details(source_file, version_pattern, target_file, target_k
 
 
 def download_aurora_details():
-    download_version_details('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n/',
+    download_version_details('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/',
                              aurora_version_pattern,
                              aurora_file,
                              aurora_key)
 
 
 def download_nightly_details():
-    download_version_details('https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/',
+    download_version_details('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/',
                              nightly_version_pattern,
                              nightly_file,
                              nightly_key)

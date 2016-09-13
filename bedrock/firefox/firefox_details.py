@@ -9,7 +9,7 @@ from product_details import ProductDetails
 class FirefoxDetails(ProductDetails):
     download_base_url_direct = 'https://download.mozilla.org/'
     download_base_url_transition = '/products/download.html'
-    download_base_url_aurora = 'http://ftp.mozilla.org/pub/mozilla.org/firefox/' \
+    download_base_url_aurora = 'http://ftp.mozilla.org/pub/firefox/' \
                                'nightly/latest-mozilla-aurora'
 
     platform_info = {
