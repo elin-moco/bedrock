@@ -26,7 +26,6 @@ urlpatterns = patterns(
     # page('firefox/desktop/taiwan', 'mocotw/firefox-desktop.html'),
     page('news', 'mocotw/news.html'),
     page('about/manifesto', 'mocotw/about/manifesto.html'),
-    page('about/space', 'mocotw/about/space.html'),
     page('about/careers', 'mocotw/about/careers.html'),
     page('about/contact', 'mocotw/about/contact.html'),
     page('community/student', 'mocotw/community/student/index.html'),
@@ -108,6 +107,7 @@ urlpatterns = patterns(
     redirect(r'projects/technologies.html$', '//www.mozilla.org/projects/technologies.html'),
     redirect(r'projects/calendar/$', '//www.mozilla.org/projects/calendar/'),
 
+    redirect(r'^about/space/$', '/about/contact'),
     redirect(r'^about/intern/$', '/about/careers'),
     redirect(r'^about/[A-z]*/[A-z]+$', '/about/'),
     redirect(r'^about/[A-z]+//[A-z]+$', '/about/'),
